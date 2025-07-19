@@ -8,7 +8,6 @@ import SafariServices
 import SwiftUI
 import WebKit
 
-@available(iOS 16.2, macCatalyst 16.2, *)
 private func getAccountPageLoginURL(region: HoYo.AccountRegion) -> String {
     /// 国际服尽量避免使用 HoYoLab 论坛社区的页面，免得 Apple 审核员工瞎基蔔乱点之后找事。
     switch (region, region.game) {
@@ -16,6 +15,45 @@ private func getAccountPageLoginURL(region: HoYo.AccountRegion) -> String {
     case (.hoyoLab, .genshinImpact): "https://act.hoyolab.com/app/community-game-records-sea/m.html#/ys"
     case (.hoyoLab, .starRail): "https://act.hoyolab.com/app/community-game-records-sea/rpg/m.html#/hsr"
     case (.hoyoLab, .zenlessZone): "https://act.hoyolab.com/app/zzz-game-record/index.html#/zzz"
+    }
+}
+
+private func getHTTPHeaderFields(region: HoYo.AccountRegion) -> [String: String] {
+    switch region {
+    case .miyoushe:
+        [
+            "Accept": """
+            text/html,application/xhtml+xml,application/xml;q=0.9,\
+            image/webp,image/apng,*/*;q=0.8,\
+            application/signed-exchange;v=b3;q=0.9
+            """,
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Connection": "keep-alive",
+            "Accept-Encoding": "gzip, deflate, br",
+            "User-Agent": """
+            Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) \
+            AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 \
+            Safari/604.1
+            """,
+            "cache-control": "max-age=0",
+        ]
+    case .hoyoLab:
+        [
+            "accept": """
+            text/html,application/xhtml+xml,\
+            application/xml;q=0.9,\
+            image/webp,image/apng,*/*;q=0.8,\
+            application/signed-exchange;v=b3;q=0.9
+            """,
+            "accept-language": "zh-CN,zh-Hans;q=0.9",
+            "accept-encoding": "gzip, deflate, br",
+            "user-agent": """
+            Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) \
+            AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 \
+            Safari/604.1
+            """,
+            "cache-control": "max-age=0",
+        ]
     }
 }
 
@@ -176,8 +214,74 @@ struct GetCookieWebView: View {
 
 // MARK: - CookieGetterWebView
 
-#if canImport(AppKit) && !canImport(UIKit)
-struct CookieGetterWebView: NSViewRepresentable {
+@MainActor
+struct CookieGetterWebView {
+    // MARK: Lifecycle
+
+    init(
+        url: String,
+        cleanCookies: Bool = true,
+        dataStore: WKWebsiteDataStore,
+        httpHeaderFields: [String: String]
+    ) {
+        self.url = url
+        self.cleanCookies = cleanCookies
+        self.dataStore = dataStore
+        self.httpHeaderFields = httpHeaderFields
+    }
+
+    // MARK: Internal
+
+    func makeURLRequest() -> URLRequest? {
+        guard let url = URL(string: url) else { return nil }
+        let timeoutInterval: TimeInterval = 10
+        var request = URLRequest(
+            url: url,
+            cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
+            timeoutInterval: timeoutInterval
+        )
+        request.allHTTPHeaderFields = httpHeaderFields
+        return request
+    }
+
+    func makeViewWithoutLoad() -> OPWebView {
+        if cleanCookies {
+            dataStore
+                .fetchDataRecords(
+                    ofTypes:
+                    WKWebsiteDataStore
+                        .allWebsiteDataTypes()
+                ) { records in
+                    records.forEach { record in
+                        WKWebsiteDataStore.default()
+                            .removeData(
+                                ofTypes: record.dataTypes,
+                                for: [record],
+                                completionHandler: {}
+                            )
+                        #if DEBUG
+                        print("WKWebsiteDataStore record deleted:", record)
+                        #endif
+                    }
+                }
+            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        }
+        let webview = OPWebView()
+        webview.configuration.websiteDataStore = dataStore
+        return webview
+    }
+
+    // MARK: Private
+
+    private var url: String = ""
+    private let cleanCookies: Bool
+    private let dataStore: WKWebsiteDataStore
+    private let httpHeaderFields: [String: String]
+}
+
+// MARK: CookieGetterWebView.Coordinator
+
+extension CookieGetterWebView {
     final class Coordinator: NSObject, WKNavigationDelegate {
         // MARK: Lifecycle
 
@@ -203,44 +307,14 @@ struct CookieGetterWebView: NSViewRepresentable {
             webView.evaluateJavaScript(jsonScript)
         }
     }
+}
 
-    var url: String = ""
-    let dataStore: WKWebsiteDataStore
-    let httpHeaderFields: [String: String]
-
+#if canImport(AppKit) && !canImport(UIKit)
+extension CookieGetterWebView: NSViewRepresentable {
     @MainActor
     func makeNSView(context: Context) -> OPWebView {
-        guard let url = URL(string: url)
-        else {
-            return OPWebView()
-        }
-        dataStore
-            .fetchDataRecords(
-                ofTypes: WKWebsiteDataStore
-                    .allWebsiteDataTypes()
-            ) { records in
-                records.forEach { record in
-                    WKWebsiteDataStore.default()
-                        .removeData(
-                            ofTypes: record.dataTypes,
-                            for: [record],
-                            completionHandler: {}
-                        )
-                    #if DEBUG
-                    print("WKWebsiteDataStore record deleted:", record)
-                    #endif
-                }
-            }
-        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
-        let timeoutInterval: TimeInterval = 10
-        var request = URLRequest(
-            url: url,
-            cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
-            timeoutInterval: timeoutInterval
-        )
-        request.allHTTPHeaderFields = httpHeaderFields
-        let webview = OPWebView()
-        webview.configuration.websiteDataStore = dataStore
+        guard let request = makeURLRequest() else { return OPWebView() }
+        let webview = makeViewWithoutLoad()
         webview.navigationDelegate = context.coordinator
         Task { webview.load(request) }
         return webview
@@ -269,70 +343,11 @@ struct CookieGetterWebView: NSViewRepresentable {
 
 #elseif canImport(UIKit)
 @available(iOS 16.2, macCatalyst 16.2, *)
-struct CookieGetterWebView: UIViewRepresentable {
-    final class Coordinator: NSObject, WKNavigationDelegate {
-        // MARK: Lifecycle
-
-        init(_ parent: CookieGetterWebView) {
-            self.parent = parent
-        }
-
-        // MARK: Internal
-
-        var parent: CookieGetterWebView
-
-        func webView(
-            _ webView: WKWebView,
-            didFinish _: WKNavigation!
-        ) {
-            let jsonScript = """
-            let timer = setInterval(() => {
-            var m = document.getElementById("driver-page-overlay");
-            m.parentNode.removeChild(m);
-            }, 300);
-            setTimeout(() => {clearInterval(timer);timer = null}, 10000);
-            """
-            webView.evaluateJavaScript(jsonScript)
-        }
-    }
-
-    var url: String = ""
-    let dataStore: WKWebsiteDataStore
-    let httpHeaderFields: [String: String]
-
+extension CookieGetterWebView: UIViewRepresentable {
     @MainActor
     func makeUIView(context: Context) -> OPWebView {
-        guard let url = URL(string: url)
-        else {
-            return OPWebView()
-        }
-        dataStore
-            .fetchDataRecords(
-                ofTypes: WKWebsiteDataStore
-                    .allWebsiteDataTypes()
-            ) { records in
-                records.forEach { record in
-                    WKWebsiteDataStore.default()
-                        .removeData(
-                            ofTypes: record.dataTypes,
-                            for: [record],
-                            completionHandler: {}
-                        )
-                    #if DEBUG
-                    print("WKWebsiteDataStore record deleted:", record)
-                    #endif
-                }
-            }
-        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
-        let timeoutInterval: TimeInterval = 10
-        var request = URLRequest(
-            url: url,
-            cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
-            timeoutInterval: timeoutInterval
-        )
-        request.allHTTPHeaderFields = httpHeaderFields
-        let webview = OPWebView()
-        webview.configuration.websiteDataStore = dataStore
+        guard let request = makeURLRequest() else { return OPWebView() }
+        let webview = makeViewWithoutLoad()
         webview.navigationDelegate = context.coordinator
         Task { webview.load(request) }
         return webview
@@ -359,46 +374,6 @@ struct CookieGetterWebView: UIViewRepresentable {
     }
 }
 #endif
-
-@available(iOS 16.2, macCatalyst 16.2, *)
-private func getHTTPHeaderFields(region: HoYo.AccountRegion) -> [String: String] {
-    switch region {
-    case .miyoushe:
-        [
-            "Accept": """
-            text/html,application/xhtml+xml,application/xml;q=0.9,\
-            image/webp,image/apng,*/*;q=0.8,\
-            application/signed-exchange;v=b3;q=0.9
-            """,
-            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
-            "Connection": "keep-alive",
-            "Accept-Encoding": "gzip, deflate, br",
-            "User-Agent": """
-            Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) \
-            AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 \
-            Safari/604.1
-            """,
-            "cache-control": "max-age=0",
-        ]
-    case .hoyoLab:
-        [
-            "accept": """
-            text/html,application/xhtml+xml,\
-            application/xml;q=0.9,\
-            image/webp,image/apng,*/*;q=0.8,\
-            application/signed-exchange;v=b3;q=0.9
-            """,
-            "accept-language": "zh-CN,zh-Hans;q=0.9",
-            "accept-encoding": "gzip, deflate, br",
-            "user-agent": """
-            Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) \
-            AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 \
-            Safari/604.1
-            """,
-            "cache-control": "max-age=0",
-        ]
-    }
-}
 
 #if os(iOS) && !targetEnvironment(macCatalyst)
 @available(iOS 16.2, macCatalyst 16.2, *)
