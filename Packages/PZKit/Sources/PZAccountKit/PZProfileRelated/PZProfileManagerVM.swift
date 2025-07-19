@@ -121,7 +121,9 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
                 do {
                     if await !assertion.state.isReleased {
                         // 此处的 newProfiles 已经是修过 priority 了的。
-                        try await self.profileActor?.replaceAllProfiles(with: Set(newProfiles))
+                        try await self.profileActor?.replaceProfilesMatchingUUID(
+                            with: Set(newProfiles)
+                        )
                     }
                     await assertion.release()
                 } catch {

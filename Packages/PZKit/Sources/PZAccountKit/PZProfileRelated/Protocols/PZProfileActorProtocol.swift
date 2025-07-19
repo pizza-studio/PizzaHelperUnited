@@ -36,6 +36,15 @@ public protocol PZProfileActorProtocol: Actor {
 }
 
 extension PZProfileActorProtocol {
+    public func replaceProfilesMatchingUUID(
+        with profileSendableSet: Set<PZProfileSendable>
+    ) throws {
+        try addOrUpdateProfilesWithDeletion(
+            profileSendableSet,
+            uuidsToDelete: Set(profileSendableSet.map(\.uuid))
+        )
+    }
+
     public func addOrUpdateProfiles(_ profileSendableSet: Set<PZProfileSendable>) throws {
         try addOrUpdateProfilesWithDeletion(profileSendableSet, uuidsToDelete: [])
     }
