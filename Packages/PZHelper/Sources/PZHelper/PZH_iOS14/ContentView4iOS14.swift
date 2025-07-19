@@ -27,7 +27,9 @@ public struct ContentView4iOS14: View {
             NavigationView {
                 contentsInsideNavigationContainer
             }
+            #if !canImport(AppKit)
             .navigationViewStyle(StackNavigationViewStyle())
+            #endif
         }
     }
 
@@ -131,12 +133,12 @@ public struct ContentView4iOS14: View {
         .navigationTitle(Text("app.appName.full", bundle: .module))
         .navBarTitleDisplayMode(.large)
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItem(placement: .confirmationAction) {
                 if theVM.taskState == .busy {
                     ProgressView()
                 }
             }
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItem(placement: .confirmationAction) {
                 Button {
                     theVM.startDocumentationPreparationTask(forced: false)
                 } label: {
