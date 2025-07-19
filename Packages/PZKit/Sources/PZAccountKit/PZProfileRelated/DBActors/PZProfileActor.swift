@@ -185,18 +185,6 @@ extension PZProfileActor {
         }
     }
 
-    public func addOrUpdateProfiles(
-        _ profileSendableSet: Set<PZProfileSendable>
-    ) throws {
-        try modelContext.transaction {
-            try profileSendableSet.sorted {
-                $0.priority < $1.priority
-            }.forEach {
-                try addOrUpdateProfileSansCommission($0, against: modelContext)
-            }
-        }
-    }
-
     /// This will add the profile if it is not already added.
     public func addOrUpdateProfile(_ profileSendable: PZProfileSendable) throws {
         try modelContext.transaction {
@@ -223,6 +211,25 @@ extension PZProfileActor {
             let restUUIDs = Set(profileSendableSet.map(\.uuid)).subtracting(handledUUIDs)
             let restProfilesToAdd: [PZProfileMO] = restUUIDs.compactMap { map[$0]?.asMO }
             restProfilesToAdd.forEach(modelContext.insert)
+        }
+    }
+
+    public func addOrUpdateProfilesWithDeletion(
+        _ profileSendableSet: Set<PZProfileSendable>,
+        uuidsToDelete: Set<UUID>
+    ) throws {
+        try modelContext.transaction {
+            try uuidsToDelete.forEach { uuid in
+                try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
+                    guard uuidsToDelete.contains(currentMO.uuid) else { return }
+                    modelContext.delete(currentMO)
+                }
+            }
+            try profileSendableSet.sorted {
+                $0.priority < $1.priority
+            }.forEach {
+                try addOrUpdateProfileSansCommission($0, against: modelContext)
+            }
         }
     }
 

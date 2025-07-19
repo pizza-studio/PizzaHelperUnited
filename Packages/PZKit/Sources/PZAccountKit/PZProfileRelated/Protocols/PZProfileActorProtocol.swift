@@ -11,7 +11,7 @@ import PZCoreDataKit4LocalAccounts
 
 public protocol PZProfileActorProtocol: Actor {
     func getSendableProfiles() -> [PZProfileSendable]
-    func addOrUpdateProfiles(_ profileSendableSet: Set<PZProfileSendable>) throws
+    func addOrUpdateProfilesWithDeletion(_ profileSendableSet: Set<PZProfileSendable>, uuidsToDelete: Set<UUID>) throws
     func addOrUpdateProfile(_ profileSendable: PZProfileSendable) throws
     func replaceAllProfiles(with profileSendableSet: Set<PZProfileSendable>) throws
     func deleteProfile(uuid: UUID) throws
@@ -36,6 +36,10 @@ public protocol PZProfileActorProtocol: Actor {
 }
 
 extension PZProfileActorProtocol {
+    public func addOrUpdateProfiles(_ profileSendableSet: Set<PZProfileSendable>) throws {
+        try addOrUpdateProfilesWithDeletion(profileSendableSet, uuidsToDelete: [])
+    }
+
     @discardableResult
     public func syncAllDataToUserDefaults() -> [PZProfileSendable] {
         var existingKeys = Set<String>(Defaults[.pzProfiles].keys)

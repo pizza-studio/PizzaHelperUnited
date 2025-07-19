@@ -132,16 +132,6 @@ extension CDProfileMOActor: PZProfileActorProtocol {
         }
     }
 
-    public func addOrUpdateProfiles(_ profileSendableSet: Set<PZProfileSendable>) throws {
-        try container.perform { context in
-            try profileSendableSet.sorted {
-                $0.priority < $1.priority
-            }.forEach { profileSendable in
-                try self.addOrUpdateProfileSansCommission(profileSendable, against: context)
-            }
-        }
-    }
-
     public func addOrUpdateProfile(_ profileSendable: PZProfileSendable) throws {
         try container.perform { context in
             try self.addOrUpdateProfileSansCommission(profileSendable, against: context)
@@ -168,6 +158,24 @@ extension CDProfileMOActor: PZProfileActorProtocol {
             let restUUIDs = Set(profileSendableSet.map(\.uuid)).subtracting(handledUUIDs)
             let restProfilesToAdd: [PZProfileCDMO] = restUUIDs.compactMap { map[$0]?.asCDMO }
             try restProfilesToAdd.forEach { try context.insert($0) }
+        }
+    }
+
+    public func addOrUpdateProfilesWithDeletion(
+        _ profileSendableSet: Set<PZProfileSendable>,
+        uuidsToDelete: Set<UUID>
+    ) throws {
+        try container.perform { context in
+            try context.fetch(PZProfileCDMO.all).forEach { currentCDMOObj in
+                let currentCDMO = try currentCDMOObj.decode()
+                guard uuidsToDelete.contains(currentCDMO.uuid) else { return }
+                context.delete(currentCDMOObj)
+            }
+            try profileSendableSet.sorted {
+                $0.priority < $1.priority
+            }.forEach { profileSendable in
+                try self.addOrUpdateProfileSansCommission(profileSendable, against: context)
+            }
         }
     }
 
