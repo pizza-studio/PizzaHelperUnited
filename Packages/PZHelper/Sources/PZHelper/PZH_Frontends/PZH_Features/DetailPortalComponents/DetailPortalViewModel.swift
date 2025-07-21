@@ -93,11 +93,6 @@ public final class DetailPortalViewModel {
             if oldValue != currentProfile, currentProfile != nil {
                 if case let .progress(task) = refreshingStatus { task.cancel() }
                 refreshingStatus = .standby
-                withAnimation {
-                    taskStatus4CharInventory.cancelAndStandBy()
-                    taskStatus4Ledger.cancelAndStandBy()
-                    taskStatus4BattleReport.cancelAndStandBy()
-                }
                 refresh()
             }
         }
@@ -105,6 +100,11 @@ public final class DetailPortalViewModel {
 
     public func refresh() {
         guard case .standby = refreshingStatus else { return }
+        withAnimation {
+            taskStatus4CharInventory.cancelAndStandBy()
+            taskStatus4Ledger.cancelAndStandBy()
+            taskStatus4BattleReport.cancelAndStandBy()
+        }
         let task = Task {
             // 此处的 `HoYo.waitFor300ms()` 是必需的，否则伺服器会喷 TOO MANY REQUESTS。
             await self.fetchCharacterInventoryList()
