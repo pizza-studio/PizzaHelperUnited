@@ -33,12 +33,18 @@ open class TaskManagedVM: TaskManagedVMProtocol {
                     guard let this = self else { return }
                     await theTask.value
                     await MainActor.run {
-                        this.taskState = .standby
+                        withAnimation {
+                            this.taskState = .standby
+                        }
                     }
                 }
-                taskState = .busy
+                withAnimation {
+                    taskState = .busy
+                }
             } else {
-                taskState = .standby
+                withAnimation {
+                    taskState = .standby
+                }
             }
         }
     }
@@ -182,7 +188,9 @@ extension TaskManagedVMProtocol {
                                 completionHandler?(retrieved)
                             }
                             this.currentError = nil
-                            this.taskState = .standby // 此步骤必需。
+                            withAnimation {
+                                this.taskState = .standby // 此步骤必需。
+                            }
                         }
                     }
                 } catch {
@@ -190,7 +198,9 @@ extension TaskManagedVMProtocol {
                         guard let this = self else { return }
                         // Ensure handleError is called on the main actor
                         (errorHandler ?? { error in this.handleError(error) })(error)
-                        this.taskState = .standby // 此步骤必需。
+                        withAnimation {
+                            this.taskState = .standby // 此步骤必需。
+                        }
                     }
                 }
             }
