@@ -13,17 +13,23 @@ import SwiftUI
 import WallpaperKit
 import WidgetKit
 
+// NOTE: 所有 AppIntent Conformation 都需要在 SPM 外部（也就是 Xcode Target 内）就地实作。
+// 任何基于 Protocols 的抽象工作都会妨碍到 AppIntent 的实际可用性。
+
 @available(iOS 16.2, macCatalyst 16.2, *)
-struct StaminaTimerRefreshIntent: AppIntent {
+public struct StaminaTimerIntent4Redraw: AppIntent {
+    // MARK: Lifecycle
+
+    public init() {}
+
     // MARK: Public
 
+    public static var title: LocalizedStringResource { "pzWidgetsKit.WidgetRefreshIntent.Refresh" }
     public static var isDiscoverable: Bool { false }
 
-    // MARK: Internal
+    public let getLatestRemoteNotes: Bool = false
 
-    static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
-
-    func perform() async throws -> some IntentResult {
+    public func perform() async throws -> some IntentResult {
         let activities = StaminaLiveActivityController.shared.currentActivities
         let profiles = PZWidgets.getAllProfiles()
         for activity in activities {
@@ -31,7 +37,7 @@ struct StaminaTimerRefreshIntent: AppIntent {
                 profile.uuid == activity.attributes.profileUUID
             })
             guard let profile else { continue }
-            let result = try await profile.getDailyNote()
+            let result = try await profile.getDailyNote(cached: !getLatestRemoteNotes)
             StaminaLiveActivityController.shared.updateResinRecoveryTimerActivity(
                 for: profile, data: result
             )
@@ -41,21 +47,30 @@ struct StaminaTimerRefreshIntent: AppIntent {
 }
 
 @available(iOS 16.2, macCatalyst 16.2, *)
-struct StaminaTimerRerenderIntent: AppIntent {
+public struct StaminaTimerIntent4Refetch: AppIntent {
+    // MARK: Lifecycle
+
+    public init() {}
+
     // MARK: Public
 
+    public static var title: LocalizedStringResource { "pzWidgetsKit.WidgetRefreshIntent.Refresh" }
     public static var isDiscoverable: Bool { false }
 
-    // MARK: Internal
+    public let getLatestRemoteNotes: Bool = true
 
-    static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
-
-    func perform() async throws -> some IntentResult {
-        Task {
-            let activities = StaminaLiveActivityController.shared.currentActivities
-            for activity in activities {
-                await activity.update(activity.content)
-            }
+    public func perform() async throws -> some IntentResult {
+        let activities = StaminaLiveActivityController.shared.currentActivities
+        let profiles = PZWidgets.getAllProfiles()
+        for activity in activities {
+            let profile = profiles.first(where: { profile in
+                profile.uuid == activity.attributes.profileUUID
+            })
+            guard let profile else { continue }
+            let result = try await profile.getDailyNote(cached: !getLatestRemoteNotes)
+            StaminaLiveActivityController.shared.updateResinRecoveryTimerActivity(
+                for: profile, data: result
+            )
         }
         return .result()
     }
@@ -67,7 +82,7 @@ struct StaminaTimerSharedActivityWidget: Widget {
         ActivityConfiguration(
             for: LiveActivityAttributes.self
         ) { context in
-            StaminaTimerLiveActivityWidgetView<StaminaTimerRerenderIntent, StaminaTimerRefreshIntent>(
+            StaminaTimerLiveActivityWidgetView<StaminaTimerIntent4Redraw, StaminaTimerIntent4Refetch>(
                 context: context
             )
         } dynamicIsland: { context in
