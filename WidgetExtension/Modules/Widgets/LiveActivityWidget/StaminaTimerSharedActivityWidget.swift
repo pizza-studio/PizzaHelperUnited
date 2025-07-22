@@ -25,14 +25,16 @@ struct StaminaTimerRefreshIntent: AppIntent {
 
     func perform() async throws -> some IntentResult {
         let activities = StaminaLiveActivityController.shared.currentActivities
-        let accounts = PZWidgets.getAllProfiles()
+        let profiles = PZWidgets.getAllProfiles()
         for activity in activities {
-            let account = accounts.first(where: { account in
-                account.uuid == activity.attributes.profileUUID
+            let profile = profiles.first(where: { profile in
+                profile.uuid == activity.attributes.profileUUID
             })
-            guard let account else { continue }
-            let result = try await account.getDailyNote()
-            StaminaLiveActivityController.shared.updateResinRecoveryTimerActivity(for: account, data: result)
+            guard let profile else { continue }
+            let result = try await profile.getDailyNote()
+            StaminaLiveActivityController.shared.updateResinRecoveryTimerActivity(
+                for: profile, data: result
+            )
         }
         return .result()
     }
