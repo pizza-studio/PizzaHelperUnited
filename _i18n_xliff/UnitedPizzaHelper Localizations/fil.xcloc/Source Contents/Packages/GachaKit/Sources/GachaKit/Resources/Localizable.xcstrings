@@ -232,6 +232,16 @@
         }
       }
     },
+    "gachaKit.exchange.formatExplain.uigfv4.refugee" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into a UIGFv4 format to import instead. This process is automatic."
+          }
+        }
+      }
+    },
     "gachaKit.exchange.import.info.time" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -811,7 +821,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Due to occasional server-side accidents, the game server may return duplicated gacha entries with incorrect transaction IDs, polluting the local database. If the bleaching mode is enabled, this app will use the latest fetch results as the trust source of correct transaction IDs and remove the incorrect entries on the local side, but this can be deceived by the polluted data from the game server. Nevertheless, as long as a game version deprecates, all gacha records during its operation period will become static and trustable."
+            "value" : "We are not authorized to publicly state what actually happened on the server hosting official gacha records. The following descriptions are assumptions based on observations. Due to possible occasional server-side issues, the game server might return duplicated gacha entries with incorrect transaction IDs, potentially polluting the local database. If the bleaching mode is enabled, this app will use the latest fetch results as the trusted source for correct transaction IDs and remove possibly incorrect entries locally, but this could be affected by potentially polluted data from the game server. Nevertheless, once a game version deprecates, all gacha records during its operation period are likely to become static and trustworthy."
           }
         }
       }
@@ -821,7 +831,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Local database can get polluted? Why?"
+            "value" : "Why invalid records appear in pulled results?"
           }
         }
       }
@@ -996,7 +1006,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import / Export Gacha Records"
+            "value" : "Import / Export Gacha Records from File"
           }
         }
       }
@@ -1221,6 +1231,28 @@
         }
       }
     },
+    "gachaKit.poolType.srCollabWarpFateUBWCharacter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collab. Character Warp"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.srCollabWarpFateUBWLightCone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collab. Light Cone Warp"
+          }
+        }
+      }
+    },
     "gachaKit.poolType.srDepartureWarp" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1364,6 +1396,16 @@
         }
       }
     },
+    "gachaKit.prompt.remoteChangesDetected.withRecommendedAction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Rebuild Gacha UID List” or restart this app to let those changes visible to you."
+          }
+        }
+      }
+    },
     "gachaKit.reviewFromAppraiser.gi" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1441,13 +1483,13 @@
         }
       }
     },
-    "gachaKit.stats.surinukeEvasionRate" : {
+    "gachaKit.stats.standardItemHitRate" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Surinuke Evasion Rate"
+            "value" : "Standard Hit Rate"
           }
         }
       }

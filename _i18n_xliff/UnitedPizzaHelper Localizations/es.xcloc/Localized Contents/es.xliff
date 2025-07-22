@@ -1,169 +1,292 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
-  <file original="Packages/AbyssRankKit/Sources/AbyssRankKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
+  <file original="INIntents4iOS16/en.lproj/PZProfileIntentBackports.strings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
-      <trans-unit id="abyssRankKit.availableSince20230401" xml:space="preserve">
-        <source>Available From 2023-04-01</source>
-        <target state="translated">Disponible desde 2023-04-01</target>
+      <trans-unit id="appEntity_localProfile" xml:space="preserve">
+        <source>Profile</source>
+        <target>Perfil</target>
+        <note>appEntity_</note>
+      </trans-unit>
+      <trans-unit id="appEntity_widgetBackground" xml:space="preserve">
+        <source>Widget Background</source>
+        <target>Fondo del Widget</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.collection.1:%@%@%lld" xml:space="preserve">
-        <source>%@·%@·Floor %lld</source>
-        <target state="translated">%@·%@·Piso %lld</target>
-        <note>detail</note>
+      <trans-unit id="appEnum_ExpeditionDisplayPolicy_displayExclusively" xml:space="preserve">
+        <source>Display Exclusively</source>
+        <target>Mostrar exclusivamente</target>
+        <note>appEnum_</note>
       </trans-unit>
-      <trans-unit id="abyssRankKit.collection.2:%@%@%lld%@" xml:space="preserve">
-        <source>%@·%@·Floor %lld·%@</source>
-        <target state="translated">%@·%@·Piso %lld·%@</target>
-        <note>detail</note>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.half.1" xml:space="preserve">
-        <source>1st</source>
-        <target state="translated">1ro</target>
+      <trans-unit id="appEnum_ExpeditionDisplayPolicy_displayWhenAvailable" xml:space="preserve">
+        <source>Display If Available</source>
+        <target>Mostrar si Está Disponible</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.half.2" xml:space="preserve">
-        <source>2nd</source>
-        <target state="translated">2º</target>
+      <trans-unit id="appEnum_ExpeditionDisplayPolicy_neverDisplay" xml:space="preserve">
+        <source>Never Display</source>
+        <target>Nunca Mostrar</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.faq" xml:space="preserve">
-        <source>Spiral Abyss Top Lists FAQ</source>
-        <target state="translated">Preguntas frecuentes sobre las listas principales del Abismo Espiral</target>
+      <trans-unit id="appEnum_ExpeditionDisplayPolicy_title" xml:space="preserve">
+        <source>Expedition Display Policy</source>
+        <target>Política de Visualización de Expediciones</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.floor.title:%lld" xml:space="preserve">
-        <source>F.%lld</source>
-        <target state="translated">F.%lld</target>
+      <trans-unit id="appEnum_StaminaContentRevolverStyle_asRoundMeter" xml:space="preserve">
+        <source>Round Meter</source>
+        <target>Medidor Redondo</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.holdingRate.36star" xml:space="preserve">
-        <source>36-Star Player Owning Rate</source>
-        <target state="translated">Tasa de Posesión de Jugadores de 36 Estrellas</target>
+      <trans-unit id="appEnum_StaminaContentRevolverStyle_asTimeStampWhenWillAccomplish" xml:space="preserve">
+        <source>Timestamp (when finished)</source>
+        <target>Marca de tiempo (cuando finalizado)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.holdingRate.all" xml:space="preserve">
-        <source>All Player Owning Rate</source>
-        <target state="translated">Tasa de propiedad de todos los jugadores</target>
+      <trans-unit id="appEnum_StaminaContentRevolverStyle_asTimerCountDown" xml:space="preserve">
+        <source>Countdown Timer</source>
+        <target>Temporizador de cuenta regresiva</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.note.1" xml:space="preserve">
-        <source>· 36-star players only · Percentage = Used Players / Owning Players</source>
-        <target state="translated">· Solo jugadores de 36 estrellas · Porcentaje = Jugadores Usados / Jugadores Propietarios</target>
+      <trans-unit id="appEnum_StaminaContentRevolverStyle_byDefault" xml:space="preserve">
+        <source>Default</source>
+        <target>Predeterminado</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.note.2" xml:space="preserve">
-        <source>·36-star players only·Teams including Travelers are merged</source>
-        <target state="translated">·Solo jugadores de 36 estrellas·Los equipos que incluyen viajeros se fusionan</target>
+      <trans-unit id="appEnum_StaminaContentRevolverStyle_title" xml:space="preserve">
+        <source>Auto Rotation of Stamina Widget Styles</source>
+        <target>Rotación Automática de Estilos del Widget de Resistencia</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.note.3" xml:space="preserve">
-        <source>· Data collected after %@</source>
-        <target state="translated">· Datos recopilados después de %@</target>
+      <trans-unit id="appEnum_WeeklyBossesDisplayMethod_alwaysHidden" xml:space="preserve">
+        <source>always hidden</source>
+        <target>siempre oculto</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.season.1" xml:space="preserve">
-        <source>FH</source>
-        <target state="translated">FH</target>
+      <trans-unit id="appEnum_WeeklyBossesDisplayMethod_alwaysVisible" xml:space="preserve">
+        <source>always visible</source>
+        <target>siempre visible</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.season.2" xml:space="preserve">
-        <source>SH</source>
-        <target state="translated">Compártelo</target>
+      <trans-unit id="appEnum_WeeklyBossesDisplayMethod_hiddenIfAllCompleted" xml:space="preserve">
+        <source>hidden if all completed</source>
+        <target>oculto si todo está completado</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.season.both" xml:space="preserve">
-        <source>Both</source>
-        <target state="translated">Ambos</target>
+      <trans-unit id="appEnum_WeeklyBossesDisplayMethod_title" xml:space="preserve">
+        <source>Weekly Bosses Info Display Method</source>
+        <target>Método de Pantalla de Información de Jefes Semanales</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.season.unit" xml:space="preserve">
+      <trans-unit id="appEnum_WidgetSupportedGame_GI" xml:space="preserve">
+        <source>Genshin Impact</source>
+        <target>Genshin Impact</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum_WidgetSupportedGame_HSR" xml:space="preserve">
+        <source>Star Rail</source>
+        <target>Star Rail</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum_WidgetSupportedGame_ZZZ" xml:space="preserve">
+        <source>Zenless Zone Zero</source>
+        <target>Zenless Zone Zero</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum_WidgetSupportedGame_allGames" xml:space="preserve">
+        <source>All Games</source>
+        <target>Todos los juegos</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum_WidgetSupportedGame_title" xml:space="preserve">
+        <source>Supported Game</source>
+        <target>Juego compatible</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_bool_false" xml:space="preserve">
+        <source>false</source>
+        <target>falso</target>
+        <note>intent_bool_</note>
+      </trans-unit>
+      <trans-unit id="intent_bool_true" xml:space="preserve">
+        <source>true</source>
+        <target>verdadero</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_description_chooseTheGame" xml:space="preserve">
+        <source>Choose the game</source>
+        <target>Elige el juego</target>
+        <note>intent_description_</note>
+      </trans-unit>
+      <trans-unit id="intent_description_pickTheLocalProfileDuoForThisWidget" xml:space="preserve">
+        <source>Choose 2 local profiles for this widget</source>
+        <target>Elige dos perfiles locales para este widget</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_description_pickTheLocalProfileForThisWidget" xml:space="preserve">
+        <source>Choose a local profile for this widget</source>
+        <target>Elige un perfil local para este widget</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_echoOfWarDisplayMethod" xml:space="preserve">
+        <source>Echo of War Display</source>
+        <target>Pantalla de Ecos de la guerra</target>
+        <note>intent_field_</note>
+      </trans-unit>
+      <trans-unit id="intent_field_expeditionDisplayPolicy" xml:space="preserve">
+        <source>Expedition Display Policy</source>
+        <target>Política de Visualización de Expediciones</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_followSystemDarkMode" xml:space="preserve">
+        <source>Follow system color scheme</source>
+        <target>Seguir el esquema de color del sistema</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_game" xml:space="preserve">
+        <source>Game</source>
+        <target>Juego</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_inverseSelectMode" xml:space="preserve">
+        <source>Inverse the Selection</source>
+        <target>Invertir la selección</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_localProfile" xml:space="preserve">
+        <source>Local profile</source>
+        <target>Perfil local</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_localProfile_slot1" xml:space="preserve">
+        <source>Local profile #1</source>
+        <target>Perfil local #1</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_localProfile_slot2" xml:space="preserve">
+        <source>Local profile #2</source>
+        <target>Perfil local #2</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_showMaterialsInLargeSizeWidget" xml:space="preserve">
+        <source>[GI] Show daily materials (large-sized widgets only)</source>
+        <target>[GI] Mostrar materiales diarios (solo widgets grandes)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_showStaminaOnly" xml:space="preserve">
+        <source>Show Player Stamina Only</source>
+        <target>Mostrar solo la resistencia del jugador</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_showTransformer" xml:space="preserve">
+        <source>[GI] Show transformer status</source>
+        <target>[GI] Mostrar estado del transformador</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_staminaDisplayStyle" xml:space="preserve">
+        <source>Stamina display style (Resin / Trailblazing Power / Zenless Energy)</source>
+        <target>Estilo de visualización de la resistencia (Resina / Poder de Aventurero / Energía Zenless)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_trounceBlossomDisplayMethod" xml:space="preserve">
+        <source>Trounce Blossom Display</source>
+        <target>Pantalla de Flor de cruzada</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_useRandomWallpaper" xml:space="preserve">
+        <source>Use random wallpaper</source>
+        <target>Usar fondo de pantalla aleatorio</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_useTinyGlassDisplayStyle" xml:space="preserve">
+        <source>Use Tiny Glass Display Style</source>
+        <target>Usar estilo de visualización de vidrio pequeño</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_wallpaper" xml:space="preserve">
+        <source>Wallpaper</source>
+        <target>Fondo de pantalla</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_name_selectGameOnly" xml:space="preserve">
+        <source>Only choose the game</source>
+        <target>Solo elige el juego</target>
+        <note>intent_name_</note>
+      </trans-unit>
+      <trans-unit id="intent_name_selectLocalProfile" xml:space="preserve">
+        <source>Choose Local Profile</source>
+        <target>Elegir perfil local</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_name_selectLocalProfile4Peripherals" xml:space="preserve">
+        <source>Choose Local Profile (only)</source>
+        <target>Elegir perfil local (únicamente)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_name_selectLocalProfile4PeripheralsWithExtraConfig" xml:space="preserve">
+        <source>Choose Local Profile with Extra Configuration</source>
+        <target>Elegir perfil local con configuración extra</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_name_selectLocalProfileDuo" xml:space="preserve">
+        <source>Choose Local Profile (Dual)</source>
+        <target>Elegir perfil local (Doble)</target>
+        <note/>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="INIntents4iOS16/InfoPlist.xcstrings" source-language="en" target-language="es" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>INIntents4iOS16</source>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>INIntents4iOS16</source>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
         <source/>
-        <target state="translated"/>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="INIntents4iOS16/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+    </header>
+    <body>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.server.filter.all" xml:space="preserve">
-        <source>All Server</source>
-        <target state="translated">Todos los servidores</target>
+      <trans-unit id="appEntity.localProfile" xml:space="preserve">
+        <source>appEntity.localProfile</source>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.title" xml:space="preserve">
-        <source>Spiral Abyss Top Lists</source>
-        <target state="translated">Listas principales del Abismo Espiral</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.characterSansRestart" xml:space="preserve">
-        <source>Non-restarted Player Usage Rate</source>
-        <target state="translated">Tasa de uso de reproductor no reiniciado</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.characters" xml:space="preserve">
-        <source>Character Usage Rate</source>
-        <target state="translated">Tasa de Uso de Personaje</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.disclaimer" xml:space="preserve">
-        <source>Utilization ratings are only for reference in Abyss team formation, and do not represent any evaluation of characters.</source>
-        <target state="translated">Las calificaciones de utilización son solo para referencia en la formación de equipos del Abismo y no representan ninguna evaluación de personajes.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.recommended.t0" xml:space="preserve">
-        <source>Highly Recommended Characters</source>
-        <target state="translated">Personajes Altamente Recomendados</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.recommended.t1" xml:space="preserve">
-        <source>Recommended Characters</source>
-        <target state="translated">Personajes recomendados</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.recommended.t2" xml:space="preserve">
-        <source>Preferred Characters</source>
-        <target state="translated">Caracteres preferidos</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.recommended.t3" xml:space="preserve">
-        <source>Optional Characters</source>
-        <target state="translated">Caracteres opcionales</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.recommended.t4" xml:space="preserve">
-        <source>Discretionary Characters</source>
-        <target state="translated">Caracteres Discrecionales</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.recommended.t5" xml:space="preserve">
-        <source>Universally Available Characters</source>
-        <target state="translated">Personajes Universalmente Disponibles</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.teams" xml:space="preserve">
-        <source>Team Usage Rate</source>
-        <target state="translated">Tasa de Uso del Equipo</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.stat.1:%lld%@%@%@" xml:space="preserve">
-        <source>%lld data counted %@
-%@ · Generated at %@</source>
-        <target state="translated">%lld datos contados %@
-%@ · Generado en %@</target>
-        <note>Only used for exported image.</note>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.stat.2:%lld%@" xml:space="preserve">
-        <source>%lld data counted %@</source>
-        <target state="translated">%lld datos contados %@</target>
+      <trans-unit id="appEntity.widgetBackground" xml:space="preserve">
+        <source>appEntity.widgetBackground</source>
         <note/>
       </trans-unit>
     </body>
   </file>
   <file original="Packages/EnkaKit/Sources/EnkaKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
+      <trans-unit id="enka.ASCV.scrollingGuide.appKit" xml:space="preserve">
+        <source>Use context menu to switch the current character;
+Tap anywhere to dismiss.</source>
+        <target state="translated">Usa el menú contextual para cambiar el personaje actual;
+Toca en cualquier parte para cerrar.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="enka.ASCV.summarzeToClipboard.asMD" xml:space="preserve">
         <source>Summarize to Clipboard as Markdown</source>
         <target state="translated">Resumir al Portapapeles como Markdown</target>
@@ -199,17 +322,17 @@
         <note/>
       </trans-unit>
       <trans-unit id="enka.genshinStylePhotosForHSR.featureOption.disclaimer" xml:space="preserve">
-        <source>This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875).</source>
-        <target state="translated">Este conjunto de fotos de identificación podría no ser aplicable en ciertas circunstancias en esta aplicación. Además, un aviso: Las fotos de identificación de personajes al estilo Genshin **NO provienen de activos de diseño de personajes filtrados de Hoyoverse / Cognosphere / MiHoYo**. En su lugar, estos activos se renderizan utilizando [los modelos de MikuMikuDance publicados por MiHoYo en público](https://www.aplaybox.com/u/516827875).</target>
+        <source>This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875) or [other publicly available resources](https://www.aplaybox.com/u/106842826).</source>
+        <target state="translated">Este conjunto de fotos de identificación podría no ser aplicable en ciertas circunstancias en esta aplicación. Además, un aviso: Las fotos de identificación de personajes al estilo Genshin **NO provienen de activos de diseño de personajes filtrados de Hoyoverse / Cognosphere / MiHoYo**. En su lugar, estos activos se renderizan utilizando [los modelos de MikuMikuDance publicados por MiHoYo en público](https://www.aplaybox.com/u/516827875) u [otros recursos públicos disponibles](https://www.aplaybox.com/u/106842826).</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.credit.genshin" xml:space="preserve">
-        <source>The background totem assets used for ID Photos of Genshin Impact characters in this app are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. These totems is visible only if “Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels” is disabled.</source>
-        <target state="translated">Los elementos de tótem de fondo utilizados para las fotos de identificación de personajes de Genshin Impact en esta aplicación son de Star Rail (excluyendo Geo, Dendro y Hydro), representando el elemento Teyvat de cada personaje. Estos tótems son visibles solo si la opción "Usar fondos de tarjetas de presentación para fotos de identificación de personajes de Genshin y paneles de construcción de conjuntos" está deshabilitada.</target>
+        <source>The background totem assets used for ID Photos of Genshin Impact characters in this app are for representing both their life paths and their elemental powers by default. The element is represented by the color used for rendering the totem. If there's no matched lifepath available, then the totem pattern will be the elemental totem instead. The elemental totem assets used in such case are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. Nevertheless, these totems' visibility can be toggled in UI Settings.</source>
+        <target state="translated">Los tótems de fondo utilizados para las fotos de identificación de personajes de Genshin Impact en esta app representan por defecto tanto sus caminos de vida como sus poderes elementales. El elemento se representa mediante el color utilizado para renderizar el tótem. Si no hay un camino de vida coincidente, el patrón del tótem será el tótem elemental. Los assets de tótem elemental utilizados en ese caso provienen de Star Rail (excepto Geo, Dendro y Hydro), representando el elemento Teyvat de cada personaje. Sin embargo, la visibilidad de estos tótems se puede cambiar en la configuración de la interfaz de usuario.</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.credit.starRail" xml:space="preserve">
-        <source>The background totem assets used for ID Photos of Star Rail in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem.</source>
+        <source>The background totem assets used for ID Photos of Star Rail characters in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem.</source>
         <target state="translated">Los elementos de tótem de fondo utilizados para las Fotos de Identificación de Star Rail en esta aplicación sirven para representar tanto sus caminos de vida como sus poderes elementales. El elemento está representado por el color utilizado para renderizar el tótem.</target>
         <note/>
       </trans-unit>
@@ -384,8 +507,8 @@
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.showCase.useNameCardBGWithGICharacters" xml:space="preserve">
-        <source>Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels</source>
-        <target state="translated">Usa fondos de Tarjetas de Presentación para las Fotos de Identificación de Personajes de Genshin y paneles de Construcción de Escaparate</target>
+        <source>Use Namecard backgrounds for Genshin Characters’ ShowCase Build panels</source>
+        <target state="translated">Usar fondos de Tarjeta de Presentación para los paneles de Construcción de Escaparate de personajes de Genshin</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.showCase.useRealCharacterNames" xml:space="preserve">
@@ -393,11 +516,16 @@
         <target state="translated">Mostrar los nombres reales de los personajes en su lugar</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.display.showCase.useTotemWithGenshinIDPhotos" xml:space="preserve">
+        <source>Use totem backgrounds for Genshin Characters’ ID Photos</source>
+        <target state="translated">Usar fondos de tótem para las fotos de identificación de personajes de Genshin</target>
+        <note/>
+      </trans-unit>
     </body>
   </file>
   <file original="Packages/GachaKit/Sources/GachaKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="gachaKit.EntryException.timeRawValueNotParsable" xml:space="preserve">
@@ -604,6 +732,11 @@ Empty selection indicates selecting all profiles.</source>
       <trans-unit id="gachaKit.exchange.formatExplain.uigfv4" xml:space="preserve">
         <source>UIGF v4.0, established by the UIGF committee, is a coalescent exchangeable format for gacha records of many games produced by Cognosphere and MiHoYo.</source>
         <target state="translated">UIGF v4.0, establecido por el comité UIGF, es un formato intercambiable coalescente para registros de gacha de muchos juegos producidos por Cognosphere y MiHoYo.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.exchange.formatExplain.uigfv4.refugee" xml:space="preserve">
+        <source>If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into a UIGFv4 format to import instead. This process is automatic.</source>
+        <target state="translated">Si tienes un archivo Old Pizza Refugee Data para importar, selecciona el formato UIGFv4. La aplicación comenzará a convertir sus entradas de gacha para corregir todos los itemIDs y luego las convertirá al formato UIGFv4 para importarlas. Este proceso es automático.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.info.time" xml:space="preserve">
@@ -822,13 +955,13 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents" xml:space="preserve">
-        <source>Due to occasional server-side accidents, the game server may return duplicated gacha entries with incorrect transaction IDs, polluting the local database. If the bleaching mode is enabled, this app will use the latest fetch results as the trust source of correct transaction IDs and remove the incorrect entries on the local side, but this can be deceived by the polluted data from the game server. Nevertheless, as long as a game version deprecates, all gacha records during its operation period will become static and trustable.</source>
-        <target state="translated">Debido a accidentes ocasionales del servidor, el servidor del juego puede devolver entradas de gacha duplicadas con identificaciones de transacción incorrectas, contaminando la base de datos local. Si el modo de blanqueo está activado, esta aplicación usará los resultados más recientes como fuente confiable de identificaciones correctas y eliminará las entradas incorrectas localmente, aunque podría ser engañada por los datos contaminados del servidor del juego. Sin embargo, una vez que una versión del juego quede obsoleta, todos los registros de gacha de su período de operación serán estáticos y confiables.</target>
+        <source>We are not authorized to publicly state what actually happened on the server hosting official gacha records. The following descriptions are assumptions based on observations. Due to possible occasional server-side issues, the game server might return duplicated gacha entries with incorrect transaction IDs, potentially polluting the local database. If the bleaching mode is enabled, this app will use the latest fetch results as the trusted source for correct transaction IDs and remove possibly incorrect entries locally, but this could be affected by potentially polluted data from the game server. Nevertheless, once a game version deprecates, all gacha records during its operation period are likely to become static and trustworthy.</source>
+        <target state="translated">No estamos autorizados a declarar públicamente qué pasó realmente en el servidor que aloja los registros oficiales de gacha. Las siguientes descripciones son suposiciones basadas en observaciones. Debido a posibles problemas ocasionales del servidor, el servidor del juego podría devolver entradas de gacha duplicadas con identificaciones de transacción incorrectas, lo que podría contaminar la base de datos local. Si el modo de blanqueo está activado, esta aplicación usará los resultados más recientes como fuente confiable para identificaciones correctas y eliminará las entradas posiblemente incorrectas localmente, aunque esto podría verse afectado por datos potencialmente contaminados del servidor del juego. Sin embargo, una vez que una versión del juego quede obsoleta, es probable que todos los registros de gacha de su período de operación se vuelvan estáticos y confiables.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents.linkTitle" xml:space="preserve">
-        <source>Local database can get polluted? Why?</source>
-        <target state="translated">¿La base de datos local puede contaminarse? ¿Por qué?</target>
+        <source>Why invalid records appear in pulled results?</source>
+        <target state="translated">¿Por qué aparecen registros no válidos en los resultados obtenidos?</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.sectionHeader.urgeUsersToBackupFirst" xml:space="preserve">
@@ -897,8 +1030,8 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.exchangeGachaRecords" xml:space="preserve">
-        <source>Import / Export Gacha Records</source>
-        <target state="translated">Importar / Exportar Registros de Gacha</target>
+        <source>Import / Export Gacha Records from File</source>
+        <target state="translated">Importar / Exportar Registros de Gacha desde Archivo</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.inheritCloudDataFromPreviousVersions" xml:space="preserve">
@@ -966,6 +1099,16 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Deformación de Evento de Personaje</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.poolType.srCollabWarpFateUBWCharacter" xml:space="preserve">
+        <source>Collab. Character Warp</source>
+        <target state="translated">Warp de Colaboración de Personaje</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.poolType.srCollabWarpFateUBWLightCone" xml:space="preserve">
+        <source>Collab. Light Cone Warp</source>
+        <target state="translated">Warp de Cono de Luz de Colaboración</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.poolType.srDepartureWarp" xml:space="preserve">
         <source>Departure Warp</source>
         <target state="translated">Salida Warp</target>
@@ -1031,6 +1174,11 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Por favor, elige un perfil de gacha. Si no puedes ver uno, entonces importa algunos registros de gacha primero.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.prompt.remoteChangesDetected.withRecommendedAction" xml:space="preserve">
+        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Rebuild Gacha UID List” or restart this app to let those changes visible to you.</source>
+        <target state="translated">Se detectaron cambios remotos de iCloud SwiftData y ya se aplicaron en el backend. Por favor, revisa el menú desplegable superior derecho para ejecutar “Reconstruir lista de UID de Gacha” o reinicia esta aplicación para que los cambios sean visibles.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.reviewFromAppraiser.gi" xml:space="preserve">
         <source>Paimon’s Appraisement</source>
         <target state="translated">Tasación de Paimon</target>
@@ -1066,9 +1214,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Tiradas Acumuladas (desde el último ★5)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.surinukeEvasionRate" xml:space="preserve">
-        <source>Surinuke Evasion Rate</source>
-        <target state="translated">Tasa de Evasión de Surinuke</target>
+      <trans-unit id="gachaKit.stats.standardItemHitRate" xml:space="preserve">
+        <source>Standard Hit Rate</source>
+        <target state="translated">Tasa de Acierto Estándar</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.totalPulls" xml:space="preserve">
@@ -1085,7 +1233,7 @@ Empty selection indicates selecting all profiles.</source>
   </file>
   <file original="Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="todayMaterialsKit.character.short" xml:space="preserve">
@@ -1127,7 +1275,7 @@ Empty selection indicates selecting all profiles.</source>
   </file>
   <file original="Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/MaterialNames.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="asset.dailyMaterial:talentAdmonition" xml:space="preserve">
@@ -1314,7 +1462,7 @@ Empty selection indicates selecting all profiles.</source>
   </file>
   <file original="Packages/PZAboutKit/Sources/PZAboutKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="aboutKit.3rdParty.headline" xml:space="preserve">
@@ -1472,6 +1620,11 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">YouTube</target>
         <note/>
       </trans-unit>
+      <trans-unit id="aboutKit.contributor.retiredOn:%@" xml:space="preserve">
+        <source>Stopped participating in the development since: %@</source>
+        <target state="translated">Dejó de participar en el desarrollo desde: %@</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.koni" xml:space="preserve">
         <source>App Icon Illustrator, The Pizza Helper (v5 Engine Testflight)</source>
         <target state="translated">Ilustrador de iconos de aplicaciones, The Pizza Helper (v5 Engine Testflight)</target>
@@ -1484,9 +1637,9 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.xinzoruo" xml:space="preserve">
         <source>App Icon Illustrator, Pizza Helper for Genshin (v4)
-App Icon Illustrator, The Pizza Helper (v5)</source>
+App Icon Illustrator, The Pizza Helper (v5.0)</source>
         <target state="translated">Ilustrador de Iconos de Aplicación, Pizza Helper for Genshin (v4)
-Ilustrador de iconos de aplicaciones, The Pizza Helper (v5)</target>
+Ilustrador de iconos de aplicaciones, The Pizza Helper (v5.0)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.yulijushi" xml:space="preserve">
@@ -1584,7 +1737,7 @@ Ilustrador de iconos de aplicaciones, The Pizza Helper (v5)</target>
         <target state="translated">Ngô Phi Phương</target>
         <note>Localization Contributor (VI)</note>
       </trans-unit>
-      <trans-unit id="aboutKit.contributors.name.pan93412" xml:space="preserve">
+      <trans-unit id="aboutKit.contributors.name.panbystar" xml:space="preserve">
         <source>Pan93412</source>
         <target state="translated">Pan93412</target>
         <note/>
@@ -1624,6 +1777,13 @@ Ilustrador de iconos de aplicaciones, The Pizza Helper (v5)</target>
         <target state="translated">Actualizar</target>
         <note/>
       </trans-unit>
+      <trans-unit id="aboutKit.ourApps.miHoYoCopyrightNotice" xml:space="preserve">
+        <source>Copyright (excl. the Swift program part of this app): (c) All rights reserved by miHoYo and its subsidiaries. Other properties and any right, title, and interest thereof and therein (intellectual property rights included) not derived from miHoYo's game titles ("Star Rail", "Genshin Impact", "Zenless Zone Zero", etc.) belong to their respective owners.</source>
+        <target state="translated">Derechos de autor (excluyendo la parte del programa Swift de esta aplicación): (c) Todos los derechos reservados por miHoYo y sus filiales. Otras propiedades y cualquier derecho, título e interés relacionados con las mismas (incluidos los derechos de propiedad intelectual) que no deriven de los títulos de juegos de miHoYo ("Star Rail", "Genshin Impact", "Zenless Zone Zero", etc.) pertenecen a sus respectivos propietarios.&#13;
+&#13;
+</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="aboutKit.ourApps.pizzaStudio" xml:space="preserve">
         <source>Pizza Studio</source>
         <target state="translated">Estudio de Pizza</target>
@@ -1634,6 +1794,11 @@ Ilustrador de iconos de aplicaciones, The Pizza Helper (v5)</target>
         <target state="translated">Un equipo de desarrolladores de FOSS</target>
         <note/>
       </trans-unit>
+      <trans-unit id="aboutKit.ourApps.pizzaStudioCopyrightNotice" xml:space="preserve">
+        <source>Copyright (the Swift program part of this app, excluding the data models used for decoding external JSON files): (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).</source>
+        <target state="translated">Derechos de autor (la parte del programa Swift de esta aplicación, excluyendo los modelos de datos utilizados para decodificar archivos JSON externos): (c) 2024 en adelante Pizza Studio (Licencia AGPL v3.0 o posterior).</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="aboutKit.ourApps.pzHelper" xml:space="preserve">
         <source>The Pizza Helper</source>
         <target state="translated">El Ayudante de Pizza</target>
@@ -1641,13 +1806,9 @@ Ilustrador de iconos de aplicaciones, The Pizza Helper (v5)</target>
       </trans-unit>
       <trans-unit id="aboutKit.ourApps.pzHelper.description" xml:space="preserve">
         <source>- The successor of both PizzaHelper4Genshin and PizzaHelper4HSR. Powered by the next-generation United Pizza Engine.
-- The program part of this software is open-sourced under AGPLv3 License.
-- The Pizza Helper and its predecessors are not affiliated with miHoYo Co., Ltd. nor its subsidiaries.
-- The game contents and materials of the following titles are trademarks and copyrights of miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”.</source>
+- This app is not a miHoYo official product but a fan creation.</source>
         <target state="translated">- El sucesor de ambos PizzaHelper4Genshin y PizzaHelper4HSR. Impulsado por el motor unificado de pizza de próxima generación.
-- La parte del programa de este software es de código abierto bajo la licencia AGPLv3.
-- El asistente de pizza y sus predecesores no están afiliados con miHoYo Co., Ltd. ni sus subsidiarias.
-- Los contenidos y materiales de los siguientes títulos son marcas registradas y derechos de autor de miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”.</target>
+- Esta aplicación no es un producto oficial de miHoYo, sino una creación de fans.</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.ourApps.pzHelper4BA" xml:space="preserve">
@@ -1682,121 +1843,9 @@ Ilustrador de iconos de aplicaciones, The Pizza Helper (v5)</target>
       </trans-unit>
     </body>
   </file>
-  <file original="Packages/PZDictionaryKit/Sources/PZDictionaryKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
-    </header>
-    <body>
-      <trans-unit id="tool.dictionary.detail.copy_succeeded" xml:space="preserve">
-        <source>Copied</source>
-        <target state="translated">Copiado</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.detail.target.header" xml:space="preserve">
-        <source>Hit words</source>
-        <target state="translated">Palabras acertadas</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.detail.title" xml:space="preserve">
-        <source>Detail</source>
-        <target state="translated">Detalle</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.detail.translations.header" xml:space="preserve">
-        <source>Translations</source>
-        <target state="translated">Traducciones</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.fetch_more" xml:space="preserve">
-        <source>Click here to fetch more results.</source>
-        <target state="translated">Haz clic aquí para obtener más resultados.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.english" xml:space="preserve">
-        <source>English</source>
-        <target state="translated">Inglés</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.french" xml:space="preserve">
-        <source>French</source>
-        <target state="translated">Francés</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.german" xml:space="preserve">
-        <source>German</source>
-        <target state="translated">Alemán</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.indonesian" xml:space="preserve">
-        <source>Indonesian</source>
-        <target state="translated">indonesio</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.japanese" xml:space="preserve">
-        <source>Japanese</source>
-        <target state="translated">Japonés</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.korean" xml:space="preserve">
-        <source>Korean</source>
-        <target state="translated">Coreano</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.portuguese" xml:space="preserve">
-        <source>Portuguese</source>
-        <target state="translated">Portugués</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.russian" xml:space="preserve">
-        <source>Russian</source>
-        <target state="translated">Ruso</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.simplified_chinese" xml:space="preserve">
-        <source>Simplified Chinese</source>
-        <target state="translated">Chino simplificado</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.spanish" xml:space="preserve">
-        <source>Spanish</source>
-        <target state="translated">Español</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.thai" xml:space="preserve">
-        <source>Thai</source>
-        <target state="translated">Tailandés</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.traditional_chinese" xml:space="preserve">
-        <source>Traditional Chinese</source>
-        <target state="translated">Chino tradicional</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.vietnamese" xml:space="preserve">
-        <source>Vietnamese</source>
-        <target state="translated">Vietnamita</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.not_found" xml:space="preserve">
-        <source>No result. Try another. </source>
-        <target state="translated">Sin resultados. Intente otro.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.prompt_for_keywords" xml:space="preserve">
-        <source>Type some keywords to start a query.</source>
-        <target state="translated">Escribe algunas palabras clave para iniciar una consulta.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.title" xml:space="preserve">
-        <source>Pizza Dictionary</source>
-        <target state="translated">Diccionario de Pizza</target>
-        <note/>
-      </trans-unit>
-    </body>
-  </file>
   <file original="Packages/PZHelper-Watch/Sources/PZHelper-Watch/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="watch.dailyNote.card.dailyTask.label" xml:space="preserve">
@@ -1911,11 +1960,6 @@ Ilustrador de iconos de aplicaciones, The Pizza Helper (v5)</target>
         <target state="translated">Espere a que los datos se sincronicen desde iCloud. Si estás en TestFlight, probablemente debas forzar la sincronización de los perfiles locales a este reloj desde la versión iOS de esta aplicación.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="watch.widget.settings.sync.frequency.title" xml:space="preserve">
-        <source>Widget Sync Frequency</source>
-        <target state="translated">Frecuencia de Sincronización del Widget</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="watch.widget.settings.sync.speed:%@" xml:space="preserve">
         <source>Per %@</source>
         <target state="translated">Por %@</target>
@@ -1925,7 +1969,7 @@ Ilustrador de iconos de aplicaciones, The Pizza Helper (v5)</target>
   </file>
   <file original="Packages/PZHelper/Sources/PZHelper/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="Error: %@" xml:space="preserve">
@@ -1933,9 +1977,9 @@ Ilustrador de iconos de aplicaciones, The Pizza Helper (v5)</target>
         <target state="translated">Error: %@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="FAQ" xml:space="preserve">
-        <source>FAQ</source>
-        <target state="translated">Preguntas frecuentes</target>
+      <trans-unit id="app.appName.full" xml:space="preserve">
+        <source>The Pizza Helper</source>
+        <target state="translated">The Pizza Helper</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.dailynote.card.dailyTask.extraReward.notReceived" xml:space="preserve">
@@ -2060,6 +2104,11 @@ Retrieved</source>
         <target state="translated">No se encontró un perfil local en este dispositivo. Puedes cambiar a la página de Configuración de la aplicación y agregar uno. :)</target>
         <note/>
       </trans-unit>
+      <trans-unit id="app.dailynote.noCard.switchToSettingsPage" xml:space="preserve">
+        <source>Go To Settings Page</source>
+        <target state="translated">Ir a la Página de Configuración</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="app.language.restartRequired.description" xml:space="preserve">
         <source>New UI language settings of an app on macOS / iOS always require the app to restart to make sure the new language setting becomes effective to it. Even if the user manually change this through System Settings, user will still be prompted the necessity of restarting the app, and it will be not this app but the macOS / iOS who prompts it.
 
@@ -2071,6 +2120,11 @@ This app will quit after you confirm this message.</source>
 Hemos creado este cambiador de idioma para ahorrar a los usuarios algunos segundos. Este diseño es extremadamente amigable para personas con TDAH, ya que es probable que los pacientes con TDAH olviden lo que iban a hacer mientras navegan entre páginas anidadas en la Configuración del Sistema de iOS / macOS.
 
 Esta aplicación se cerrará después de que confirmes este mensaje.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="app.language.restartRequired.widgets.description" xml:space="preserve">
+        <source>Some features, such as System Notifications, Widgets, etc., require restarting Springboard (on iOS) or logging out and back in (on macOS) to apply changes to this setting. If this feels complex, you may simply reboot your device instead. Note that already-scheduled system notifications may not reflect the latest app language change.</source>
+        <target state="translated">Algunas funciones, como las notificaciones del sistema, los widgets, etc., requieren reiniciar Springboard (en iOS) o cerrar sesión y volver a iniciarla (en macOS) para aplicar los cambios de esta configuración. Si esto parece complicado, puedes en su lugar simplemente reiniciar tu dispositivo. Ten en cuenta que las notificaciones del sistema ya programadas podrían no reflejar el último cambio de idioma de la aplicación.</target>
         <note/>
       </trans-unit>
       <trans-unit id="dpv.characterInventory.navTitle" xml:space="preserve">
@@ -2088,6 +2142,11 @@ Esta aplicación se cerrará después de que confirmes este mensaje.</target>
         <target state="translated">Toca aquí para ver los resultados previamente almacenados en caché.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="dpv.peripherals.footer.whySomeContentsAreRemoved" xml:space="preserve">
+        <source>The "Travel Stats" and "Trailblazing Stats" features have been intentionally removed, as they did not provide a better user experience compared to those offered by HoYoLAB and Miyoushe.</source>
+        <target state="translated">Las funciones de „Estadísticas de Viaje“ y „Estadísticas Pioneras“ han sido eliminadas intencionadamente, ya que no ofrecían una mejor experiencia de usuario en comparación con las de HoYoLAB y Miyoushe.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="dpv.query.menuCommandTitle" xml:space="preserve">
         <source>Showcase Query</source>
         <target state="translated">Consulta de Vitrina</target>
@@ -2096,6 +2155,11 @@ Esta aplicación se cerrará después de que confirmes este mensaje.</target>
       <trans-unit id="profile.accountConnectivity.buttonTitle" xml:space="preserve">
         <source>Test connection</source>
         <target state="translated">Probar conexión</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="profile.accountConnectivity.insufficientDataVisibility" xml:space="preserve">
+        <source>Please expose the data visibility of this UID through HoYoLAB / Miyoushe app. If you are the UID owner, you may follow the following screenshot to config the data visibility.</source>
+        <target state="translated">Por favor, exponga la visibilidad de los datos de este UID a través de la aplicación HoYoLAB / Miyoushe. Si usted es el propietario de este UID, puede seguir la siguiente captura de pantalla para configurar la visibilidad de los datos.</target>
         <note/>
       </trans-unit>
       <trans-unit id="profile.label.allowNotification" xml:space="preserve">
@@ -2118,9 +2182,9 @@ Esta aplicación se cerrará después de que confirmes este mensaje.</target>
         <target state="translated">Huella Digital del Dispositivo</target>
         <note/>
       </trans-unit>
-      <trans-unit id="profile.label.fp.extraNotice.zzz" xml:space="preserve">
-        <source>⚠︎ Zenless Zone Zero UIDs governed by Miyoushe require the user to manually fill in his / her device fingerprint by himself / herself.</source>
-        <target state="translated">⚠︎ Los UIDs de Zenless Zone Zero gestionados por Miyoushe requieren que el usuario complete manualmente la huella digital de su dispositivo por sí mismo.</target>
+      <trans-unit id="profile.label.fp.extraNotice.deviceFP" xml:space="preserve">
+        <source>⚠︎ UIDs governed by Miyoushe might need the user to manually fill in his / her device fingerprint by himself / herself in order to show some extra information.</source>
+        <target state="translated">⚠︎ Los UIDs gestionados por Miyoushe podrían requerir que el usuario complete manualmente la huella digital de su dispositivo por sí mismo para mostrar información adicional.</target>
         <note/>
       </trans-unit>
       <trans-unit id="profile.label.game" xml:space="preserve">
@@ -2199,8 +2263,8 @@ Esta aplicación se cerrará después de que confirmes este mensaje.</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.2" xml:space="preserve">
-        <source>This procedure is not an illegal procedure such as plug-ins. This program abides by the relevant content of miHoYo's secondary creation rules. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ.</source>
-        <target state="translated">Este procedimiento no es un procedimiento ilegal, como los complementos. Este programa cumple con el contenido relevante de las reglas de creación secundaria de miHoYo. Esta aplicación es un proyecto de código abierto. Todos pueden comprobar y supervisar todos los comportamientos subyacentes de este programa. Para más detalles, consulta Configuración - Preguntas frecuentes.</target>
+        <source>This procedure is not like those illegal procedures such as infiltrative cheating injectors (i.e. mods). This program abides by the relevant content of miHoYo's secondary creation rules. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ.</source>
+        <target state="translated">Este procedimiento no es un procedimiento ilegal, como inyectores de trampas infiltrantes (es decir, mods). Este programa cumple con el contenido relevante de las reglas de creación secundaria de miHoYo. Esta aplicación es un proyecto de código abierto. Todos pueden comprobar y supervisar todos los comportamientos subyacentes de este programa. Para más detalles, consulta Configuración - Preguntas frecuentes.</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.title.1" xml:space="preserve">
@@ -2455,6 +2519,91 @@ El enlace anterior, si se hace clic directamente, aplicará automáticamente el 
         <target state="translated">Esta página se ha creado en cumplimiento con lo solicitado por el Comité de Revisión de la App Store.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="refugee.export.failedInSavingToFile" xml:space="preserve">
+        <source>Failed from dumping the Old Pizza Refugee Data file.</source>
+        <target state="translated">Error al exportar el archivo de datos de Old Pizza Refugee.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.fileSavedTo:" xml:space="preserve">
+        <source>Successfully dumped the Old Pizza Refugee Data file to:</source>
+        <target state="translated">Archivo de datos de Old Pizza Refugee exportado correctamente a:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.succeededInSavingToFile" xml:space="preserve">
+        <source>Successfully dumped the Old Pizza Refugee Data file.</source>
+        <target state="translated">El archivo de datos de Old Pizza Refugee se ha exportado correctamente.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.exportableCount.gachaEntries" xml:space="preserve">
+        <source>Wish Record Entries</source>
+        <target state="translated">Entradas de historial de deseos</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.exportableCount.header" xml:space="preserve">
+        <source>Exportable Data Count</source>
+        <target state="translated">Cantidad de datos exportables</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.exportableCount.profiles" xml:space="preserve">
+        <source>Local Profiles</source>
+        <target state="translated">Perfiles locales</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.footer.exportInstructions" xml:space="preserve">
+        <source>You may tap the button situated in the top-trailing of this view to start preparing the data for export. Once the data is successfully prepared for export, the file export dialog will pop-up to ask you where do you want to place the file.</source>
+        <target state="translated">Puedes tocar el botón situado en la esquina superior derecha de esta vista para comenzar a preparar los datos para exportar. Una vez que los datos estén listos, aparecerá el diálogo de exportación de archivos para preguntarte dónde deseas guardar el archivo.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.footer.whyServiceTerminatedForOS21" xml:space="preserve">
+        <source>This device's system version is older than OS24 (iOS 17 / macOS 14 / watchOS 10), which falls outside the current service perimeter of The Pizza Helper.
+
+Both main developers of "Pizza Helper for Genshin" (up to v4) had to step down from development in 2024 due to their own career plans, and the development of "Pizza Helper for HSR" was also suspended. The remaining developer found it overwhelming to maintain both apps alone, hence the launch of the "Unified Pizza Engine" project to combine both apps. This resulted in "The Pizza Helper" v5 which was released in mid-November 2024.
+
+The built-in SwiftUI frameworks in older system versions have many defects that significantly affect maintenance efficiency. Therefore, the Unified Pizza Engine chose OS24 (iOS 17 / macOS 14 / watchOS 10) as its primary development target. The Observable Macro framework introduced in this generation allows the frontend to respond more quickly and precisely to micro-scale backend data changes, instead of the old Combine-based approach that would often redraw the entire UI at once. The old technology could even cause delayed UI updates and other issues, negatively impacting both user experience and development efficiency. Additionally, OS24 introduced SwiftData, which solves CoreData's long-standing concurrency-safety issues. The entire development process of the Unified Pizza Engine leverages Swift's modern concurrency technologies.
+
+Starting from v2.5.0, "Pizza Helper for Genshin" supported the "Spiral Abyss Top Lists" (and the related personal battle report uploading feature), which was available on OS21 (iOS 14, macOS 11, watchOS 8). After the release of Pizza Helper v5 at the end of 2024, the project, out of various concerns, implemented a "zero data collection" strategy. As a result, the Spiral Abyss Leaderboard and related personal battle report uploading features were discontinued in the summer of 2025. However, this poses an obvious data security risk for existing users who cannot upgrade to OS24: after the incoming decommission of the dedicated leaderboard server, older versions of the app on older systems may still try to upload data. If the server's IP address falls into the hands of a new owner, it could lead to uncontrollable information security risks.
+
+To address this, the three developers reached a consensus: allow The Pizza Helper v5 to be built and executable for OS21 (iOS 14, etc.) with a limitation for systems below OS24: The Pizza Helper v5 will no longer provide any features on OS21 ~ OS23 except allowing users to export their old account data (i.e. the current saying "local profile") and draw history for import on a new device running OS24 and above.
+
+The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, so it can no longer provide service to users on systems below OS24. As always, FOSS (Free and Open Source Software) does not mean unlimited availability or unlimited responsibility. We hope for the understanding of all affected users.</source>
+        <target state="translated">La versión del sistema de este dispositivo es anterior a OS24 (iOS 17 / macOS 14 / watchOS 10), lo que lo deja fuera del alcance de servicio actual de The Pizza Helper.
+
+Ambos desarrolladores principales de "Pizza Helper para Genshin" (hasta la v4) tuvieron que abandonar el desarrollo en 2024 por motivos profesionales, y el desarrollo de "Pizza Helper para HSR" también fue suspendido. El desarrollador restante encontró abrumador mantener ambas apps solo, por lo que se lanzó el proyecto "Unified Pizza Engine" para combinar ambas apps. Esto dio lugar a The Pizza Helper v5, lanzado a mediados de noviembre de 2024.
+
+Los frameworks SwiftUI integrados en versiones antiguas del sistema tienen muchos defectos que afectan significativamente la eficiencia de mantenimiento. Por ello, Unified Pizza Engine eligió OS24 (iOS 17 / macOS 14 / watchOS 10) como su principal objetivo de desarrollo. El framework Observable Macro introducido en esta generación permite al frontend responder más rápido y con mayor precisión a cambios pequeños de los datos de backend, a diferencia del antiguo enfoque basado en Combine que solía redibujar toda la interfaz de usuario. La tecnología antigua incluso podía provocar retrasos en la actualización de la UI y otros problemas, afectando negativamente la experiencia de usuario y la eficiencia de desarrollo. Además, OS24 introdujo SwiftData, que resuelve los problemas históricos de concurrencia de CoreData. Todo el desarrollo de Unified Pizza Engine aprovecha las modernas tecnologías de concurrencia de Swift.
+
+Desde la v2.5.0, "Pizza Helper para Genshin" soportaba la función "Clasificaciones del Abismo Espiral" (y la subida de reportes personales) en OS21 (iOS 14, macOS 11, watchOS 8). Tras el lanzamiento de The Pizza Helper v5 a finales de 2024, el proyecto, por diversas razones, adoptó una estrategia de "cero recopilación de datos". Como resultado, las clasificaciones del Abismo Espiral y el reporte personal se eliminaron en verano de 2025. Sin embargo, esto plantea un riesgo de seguridad de datos para los usuarios que no pueden actualizar a OS24: tras la desactivación del servidor, las apps antiguas podrían seguir intentando subir datos, y si la IP del servidor cae en manos de un nuevo propietario, puede haber riesgos de seguridad incontrolables.
+
+Para abordar esto, los tres desarrolladores acordaron permitir la compilación y ejecución de The Pizza Helper v5 en OS21 (iOS 14, etc.), pero con la limitación de que en sistemas por debajo de OS24, The Pizza Helper v5 solo permitirá exportar datos antiguos de cuenta e historial de sorteos para su importación en un nuevo dispositivo con OS24 o superior.
+
+The Pizza Helper v5 no puede arriesgarse a la pérdida de datos al degradar SwiftData a CoreData, por lo que ya no puede prestar servicio a usuarios con sistemas inferiores a OS24. Como siempre, el FOSS (software libre y de código abierto) no significa disponibilidad o responsabilidad ilimitada. Esperamos la comprensión de todos los usuarios afectados.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.limitedServiceCategory4iOS16.footer" xml:space="preserve">
+        <source>Only widgets are available for iOS 16.2 &amp; macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Locale Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14.</source>
+        <target state="translated">Solo los widgets están disponibles para iOS 16.2 y macOS 13. Otras funciones aún requieren iOS 17 / macOS 14 o posterior. Si ves algún error al navegar por el Administrador de Perfiles Locales, se debe a errores relacionados con SwiftUI en iOS 16 / macOS 13 y la única solución es actualizar a iOS 17 / macOS 14.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.limitedServiceCategory4iOS16.header" xml:space="preserve">
+        <source>Remained Services for iOS 16 &amp; macOS 13 Users:</source>
+        <target state="translated">Servicios disponibles para usuarios de iOS 16 y macOS 13:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.liveActivity.featureLabel" xml:space="preserve">
+        <source>Stamina Timer</source>
+        <target state="translated">Temporizador de Resistencia</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.liveActivity.tapHereToInitiate" xml:space="preserve">
+        <source>Tap to Initiate</source>
+        <target state="translated">Toca para iniciar</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.noDataExportable" xml:space="preserve">
+        <source>No local data exportable for now. This view awaits for iCloud background data updates, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later.</source>
+        <target state="translated">No hay datos locales exportables por ahora. Esta vista espera actualizaciones de datos en segundo plano de iCloud, pero todos los datos de iCloud pueden ser heredados via iCloud por esta app en iOS 17 o posterior.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="setting.display.restoreTabOnLaunching" xml:space="preserve">
         <source>Restore previous tab on launch</source>
         <target state="translated">Restaurar la pestaña anterior al iniciar</target>
@@ -2491,13 +2640,13 @@ El enlace anterior, si se hace clic directamente, aplicará automáticamente el 
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.timeZone4GI.description" xml:space="preserve">
-        <source>The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Abyss Rank Statistics, Daily Material, Official In-Game Events, etc.</source>
-        <target state="translated">La configuración de zona horaria en esta sección es para mostrar al menos la siguiente información de inteligencia (de Genshin Impact): estadísticas de rango del abismo, material diario, eventos oficiales en el juego, etc.</target>
+        <source>The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Daily Material, Official In-Game Events, etc.</source>
+        <target state="translated">La configuración de zona horaria en esta sección es para mostrar al menos la siguiente información de inteligencia (de Genshin Impact): material diario, eventos oficiales en el juego, etc.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="settings.display.timeZone4GI.title" xml:space="preserve">
-        <source>TimeZone for displaying GI universal information</source>
-        <target state="translated">Zona horaria para mostrar la inteligencia universal GI</target>
+      <trans-unit id="settings.display.timeZone4OfficialFeedsEtc.title" xml:space="preserve">
+        <source>TimeZone for displaying universal information</source>
+        <target state="translated">Zona horaria para mostrar información universal</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.dailyTask.datePicker" xml:space="preserve">
@@ -2750,34 +2899,9 @@ El enlace anterior, si se hace clic directamente, aplicará automáticamente el 
         <target state="translated">No puedes agregar valores duplicados</target>
         <note/>
       </trans-unit>
-      <trans-unit id="settings.privacy.SnapHutao.enforceUsername.title" xml:space="preserve">
-        <source>Halt submission to HutaoDB until username is filled here</source>
-        <target state="translated">Detener el envío a HutaoDB hasta que el nombre de usuario esté completado aquí</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.privacy.SnapHutao.footer" xml:space="preserve">
-        <source>Snap Hutao may release some benefits to a user if the username field here is correctly supplied in the uploaded battle report. Snap Hutao reserves the rights to explain the further details. If the enforcer toggle is ON, your battle reports will be uploaded to HutaoDB **only if** the username field is **not** blank.</source>
-        <target state="translated">Snap Hutao puede ofrecer algunos beneficios a un usuario si el campo de nombre de usuario se completa correctamente en el informe de batalla subido. Snap Hutao se reserva el derecho de explicar los detalles adicionales. Si el interruptor de refuerzo está activado, tus informes de batalla se subirán a HutaoDB **solo si** el campo de nombre de usuario **no** está vacío.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.privacy.SnapHutao.username.title" xml:space="preserve">
-        <source>Snap Hutao Username</source>
-        <target state="translated">Correo electrónico del ID de Snap Hutao</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.privacy.abyssDataCollect" xml:space="preserve">
-        <source>Allow to Collect Spiral Abyss Battle Reports Data</source>
-        <target state="translated">Permitir la recopilación de datos de informes de batalla del Abismo Espiral</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.privacy.abyssDataCollect.detail" xml:space="preserve">
-        <source>We are looking forward to collect the Genshin characters you own and you used in the Spiral Abyss and send them to Snap.Hutao Database (i.e. HutaoDB) and Pizza DB. Allowing us to collect the data will help HutaoDB &amp; PizzaAbyssDB to supply more-accurate information of the real-time Spiral Abyss Chacacter Usage Rate, Team Usage Rate, etc. information available-to-watch in the App. The information also consists of the related in-game Genshin UID but no other of your game account information to help HutaoDB potentially refuse forged records from identified cheaters.</source>
-        <target state="translated">Estamos ansiosos por recopilar los personajes de Genshin que posees y que usaste en el Abismo Espiral y enviarlos a la base de datos Snap.Hutao (es decir, HutaoDB) y Pizza DB. Permitirnos recopilar los datos ayudará a HutaoDB y PizzaAbyssDB a proporcionar información más precisa sobre la tasa de uso de personajes del Abismo Espiral en tiempo real, la tasa de uso de equipos, etc., disponible para consultar en la aplicación. La información también incluye el UID de Genshin en el juego relacionado, pero no otra información de tu cuenta de juego, para ayudar a HutaoDB a rechazar potencialmente registros falsificados de tramposos identificados.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.privacy.abyssDataCollect.faqLink" xml:space="preserve">
-        <source>Tap here to read the FAQs about it.</source>
-        <target state="translated">Toca aquí para leer las preguntas frecuentes sobre esto.</target>
+      <trans-unit id="settings.privacy.noOptionsAvailable" xml:space="preserve">
+        <source>There’s no privacy options available since the removal of certain features. This app now collects nothing.</source>
+        <target state="translated">Debido a la eliminación de ciertas funciones, no hay opciones de privacidad disponibles. Esta aplicación ahora no recoge nada.</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.privacy.title" xml:space="preserve">
@@ -2823,6 +2947,16 @@ La aplicación se reiniciará después de confirmar este mensaje.</target>
         <target state="translated">Contenedor de grupo</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.profile.advanced.fingerprintPropagation.buttonTitle" xml:space="preserve">
+        <source>Propagate</source>
+        <target state="translated">Propagar</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.profile.advanced.fingerprintPropagation.footer" xml:space="preserve">
+        <source>Local profiles configured for Miyoushe-managed UIDs are recommended to use the same device fingerprint (x-rpc-device_fp) to ensure consistent identification. Click “Propagate” button to apply the same device fingerprint to all such local profiles.</source>
+        <target state="translated">Los perfiles locales configurados para los UID gestionados por Miyoushe deben usar la misma huella de dispositivo (x-rpc-device_fp) para garantizar una identificación coherente. Haz clic en el botón “Propagar” para aplicar la misma huella de dispositivo a todos los perfiles locales de este tipo.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.profile.advanced.navTitle" xml:space="preserve">
         <source>Advanced Options</source>
         <target state="translated">Opciones Avanzadas</target>
@@ -2863,57 +2997,6 @@ La aplicación se reiniciará después de confirmar este mensaje.</target>
         <target state="translated">Volver a iniciar sesión en HoYoLAB / Miyoushe</target>
         <note>Account detail</note>
       </trans-unit>
-      <trans-unit id="settings.resinTimer.autoInit.toggle.title" xml:space="preserve">
-        <source>Automatically initiate Stamina Timer Live Activity</source>
-        <target state="translated">Iniciar automáticamente la actividad en vivo del temporizador de resistencia</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.background.choose" xml:space="preserve">
-        <source>Choose Background</source>
-        <target state="translated">Elegir fondo</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.dynamicIsland.howToHide.answer" xml:space="preserve">
-        <source>You can slide the Dynamic Island from left / right to the middle to hide it. 
-Swipe left on the Stamina Timer on the lock screen to turn off the resin timer and the Dynamic Island.</source>
-        <target state="translated">Puedes deslizar la Isla Dinámica de izquierda/derecha al centro para ocultarla. Desliza hacia la izquierda en el Temporizador de Resistencia en la pantalla de bloqueo para apagar el temporizador de resina y la Isla Dinámica.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.explanation" xml:space="preserve">
-        <source>Stamina Timer is how this app utilizes the Live Activity feature of the iOS. You can click the ellipsis circle to the right of the Real-Time Note of a local profile in the Today tab to initiate it.</source>
-        <target state="translated">Stamina Timer es cómo esta aplicación utiliza la función de Actividad en Vivo de iOS. Puedes hacer clic en el círculo de puntos suspensivos a la derecha de la Nota en Tiempo Real de un perfil local en la pestaña Hoy para iniciarlo.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.gotoSystemSettings" xml:space="preserve">
-        <source>Go to System Settings to enable Live Activity for this app</source>
-        <target state="translated">Vaya a Configuración del Sistema para habilitar Actividad en Vivo para esta aplicación</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.randomBackground.title" xml:space="preserve">
-        <source>Use Random Background</source>
-        <target state="translated">Usar fondo aleatorio</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.realtimeActivity.notEnabled" xml:space="preserve">
-        <source>Live Activity for this app is not permitted by the system</source>
-        <target state="translated">La actividad en vivo para esta aplicación no está permitida por el sistema</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.settings.navTitle" xml:space="preserve">
-        <source>Stamina Timer Settings</source>
-        <target state="translated">Configuración del Temporizador de Resistencia</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.showExpedition.title" xml:space="preserve">
-        <source>Show Expedition</source>
-        <target state="translated">Mostrar Expedición</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.useTransparentBackground.title" xml:space="preserve">
-        <source>Use Glass Material Background</source>
-        <target state="translated">Usar fondo de material de vidrio</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="settings.section.appStoreRelated.header" xml:space="preserve">
         <source>App Store</source>
         <target state="translated">App Store</target>
@@ -2932,6 +3015,57 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       <trans-unit id="settings.section.visualSettings.header" xml:space="preserve">
         <source>UI-Related Settings</source>
         <target state="translated">Configuraciones relacionadas con la interfaz de usuario</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.autoInit.toggle.title" xml:space="preserve">
+        <source>Automatically initiate Stamina Timer Live Activity</source>
+        <target state="translated">Iniciar automáticamente la actividad en vivo del temporizador de resistencia</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.background.choose" xml:space="preserve">
+        <source>Choose Background</source>
+        <target state="translated">Elegir fondo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.dynamicIsland.howToHide.answer" xml:space="preserve">
+        <source>You can slide the Dynamic Island from left / right to the middle to hide it. 
+Swipe left on the Stamina Timer on the lock screen to turn off the resin timer and the Dynamic Island.</source>
+        <target state="translated">Puedes deslizar la Isla Dinámica de izquierda/derecha al centro para ocultarla. Desliza hacia la izquierda en el Temporizador de Resistencia en la pantalla de bloqueo para apagar el temporizador de resina y la Isla Dinámica.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.explanation" xml:space="preserve">
+        <source>Stamina Timer is how this app utilizes the Live Activity feature of the iOS. You can click the ellipsis circle to the right of the Real-Time Note of a local profile in the Today tab to initiate it.</source>
+        <target state="translated">Stamina Timer es cómo esta aplicación utiliza la función de Actividad en Vivo de iOS. Puedes hacer clic en el círculo de puntos suspensivos a la derecha de la Nota en Tiempo Real de un perfil local en la pestaña Hoy para iniciarlo.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.gotoSystemSettings" xml:space="preserve">
+        <source>Go to System Settings to enable Live Activity for this app</source>
+        <target state="translated">Vaya a Configuración del Sistema para habilitar Actividad en Vivo para esta aplicación</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.randomBackground.title" xml:space="preserve">
+        <source>Use Random Background</source>
+        <target state="translated">Usar fondo aleatorio</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.realtimeActivity.notEnabled" xml:space="preserve">
+        <source>Live Activity for this app is not permitted by the system</source>
+        <target state="translated">La actividad en vivo para esta aplicación no está permitida por el sistema</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.settings.navTitle" xml:space="preserve">
+        <source>Stamina Timer Settings</source>
+        <target state="translated">Configuración del Temporizador de Resistencia</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.showExpedition.title" xml:space="preserve">
+        <source>Show Expedition</source>
+        <target state="translated">Mostrar Expedición</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.useTransparentBackground.title" xml:space="preserve">
+        <source>Use Glass Material Background</source>
+        <target state="translated">Usar fondo de material de vidrio</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.uiSettings.title" xml:space="preserve">
@@ -2984,6 +3118,11 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">Utilidades</target>
         <note/>
       </trans-unit>
+      <trans-unit id="tab.utils.featureRemovalNotice" xml:space="preserve">
+        <source>Some features are intentionally removed due to lack of maintenance and usability.</source>
+        <target state="translated">Algunas funciones han sido eliminadas intencionadamente debido a la falta de mantenimiento y usabilidad.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="tab.utils.fullTitle" xml:space="preserve">
         <source>Utilities</source>
         <target state="translated">Utilidades</target>
@@ -2994,151 +3133,201 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">miHoYo Mapa Interactivo</target>
         <note/>
       </trans-unit>
+      <trans-unit id="tools.hoyoMap.sectionDescription" xml:space="preserve">
+        <source>This menu will directly display the corresponding map webpage using the system's default browser.</source>
+        <target state="translated">Este menú mostrará directamente la página web del mapa correspondiente utilizando el navegador predeterminado del sistema.</target>
+        <note/>
+      </trans-unit>
     </body>
   </file>
   <file original="Packages/PZHoYoLabKit/Sources/PZHoYoLabKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
-      <trans-unit id="hylKit.abyssReport.floor.1stHalf" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.floor.1stHalf" xml:space="preserve">
         <source>1H</source>
         <target state="translated">1H</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.floor.2ndHalf" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.floor.2ndHalf" xml:space="preserve">
         <source>2H</source>
         <target state="translated">2H</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.floor.thisFloorIsSkipped" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.floor.thisFloorIsSkipped" xml:space="preserve">
         <source>This floor is intentionally skipped.</source>
         <target state="translated">Este piso se omite intencionadamente</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.floor.title:%@" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.floor.title:%@" xml:space="preserve">
         <source>Floor #%@</source>
         <target state="translated">Piso #%@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.SnapHutaoEmailEmptyNotice" xml:space="preserve">
-        <source>⚠︎ The upload of personal battle reports to HutaoDB is suspended until the Snap Hutao-related options in the Privacy Settings of this app are correctly configured.</source>
-        <target state="translated">⚠︎ La carga de informes de batalla personales a HutaoDB está suspendida hasta que las opciones relacionadas con Snap Hutao en la Configuración de Privacidad de esta aplicación se configuren correctamente.</target>
+      <trans-unit id="hylKit.battleReport.gi.attendanceMethod.multiplayer" xml:space="preserve">
+        <source>Multiplayer</source>
+        <target state="translated">Multijugador</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.battle" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.attendanceMethod.singleplayer" xml:space="preserve">
+        <source>Singleplayer</source>
+        <target state="translated">Un jugador</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReport.gi.stat.battle" xml:space="preserve">
         <source>Battles</source>
         <target state="translated">Batallas</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.deepest" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.deepest" xml:space="preserve">
         <source>Deepest Descent</source>
         <target state="translated">Descenso Más Profundo</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.mostDamageTaken" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.maxRoomDMG" xml:space="preserve">
+        <source>Max Total DMG (1 Round)</source>
+        <target state="translated">Daño máx. ronda</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReport.gi.stat.mostDamageTaken" xml:space="preserve">
         <source>DMG Taken</source>
         <target state="translated">Daño Recibido</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.mostDefeats" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.mostDefeats" xml:space="preserve">
         <source>Most Defeats</source>
         <target state="translated">Más derrotas</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.mostESkills" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.mostESkills" xml:space="preserve">
         <source>Elemental Skills</source>
         <target state="translated">Habilidades Elementales</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.mostQSkills" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.mostQSkills" xml:space="preserve">
         <source>Elemental Bursts</source>
         <target state="translated">Explosiones Elementales</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.star" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.secondsSpent" xml:space="preserve">
+        <source>Total Seconds Spent</source>
+        <target state="translated">Segundos totales gastados</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReport.gi.stat.star" xml:space="preserve">
         <source>Abyss Star Obtained</source>
         <target state="translated">Estrella del Abismo Obtenida</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.strongest" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.strongest" xml:space="preserve">
         <source>Best Single Strike</source>
         <target state="translated">Mejor Golpe Único</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.summary" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.summary" xml:space="preserve">
         <source>Challenge Summary</source>
         <target state="translated">Resumen del desafío</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.win" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.win" xml:space="preserve">
         <source>Wins</source>
         <target state="translated">Victorias</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.hsr.stat.maxFloorConquered" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.hsr.stat.maxFloorConquered" xml:space="preserve">
         <source>Highest Floor Reached</source>
         <target state="translated">Piso más alto alcanzado</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.hsr.stat.numOfBattles" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.hsr.stat.numOfBattles" xml:space="preserve">
         <source>Battles Fought</source>
         <target state="translated">Batallas libradas</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.hsr.stat.seasonID" xml:space="preserve">
-        <source>Season ID</source>
-        <target state="translated">ID de temporada</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.abyssReport.hsr.stat.starsGained" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.hsr.stat.starsGained" xml:space="preserve">
         <source>Stars Gained</source>
         <target state="translated">Estrellas Ganadas</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.hsr.stats.header" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.hsr.stats.header" xml:space="preserve">
         <source>Statistics</source>
         <target state="translated">Estadísticas</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.noDataAvailableForThisSeason" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.noDataAvailableForThisSeason" xml:space="preserve">
         <source>No data available for this season.</source>
         <target state="translated">No hay datos disponibles para esta temporada</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.room.title:%@" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.room.title:%@" xml:space="preserve">
         <source>Room #%@</source>
         <target state="translated">Sala #%@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.seasonPicker.current" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.round.title:%@" xml:space="preserve">
+        <source>Round #%@</source>
+        <target state="translated">Ronda #%@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReport.seasonPicker.current" xml:space="preserve">
         <source>CURR</source>
         <target state="translated">ABBR</target>
         <note>Shortened </note>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.seasonPicker.previous" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.seasonPicker.previous" xml:space="preserve">
         <source>PREV</source>
         <target state="translated">ANT</target>
         <note>Shortened</note>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReportView4GI.navTitle" xml:space="preserve">
-        <source>Battle Report: Spiral Abyss</source>
-        <target state="translated">Informe de Batalla: Abismo Espiral</target>
+      <trans-unit id="hylKit.battleReport.stat.seasonID" xml:space="preserve">
+        <source>Season ID</source>
+        <target state="translated">ID de temporada</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReportView4GI.navTitle.tiny" xml:space="preserve">
+      <trans-unit id="hylKit.battleReportView4GI.navTitle.spiralAbyss" xml:space="preserve">
         <source>Spiral Abyss</source>
         <target state="translated">Abismo Espiral</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReportView4HSR.navTitle" xml:space="preserve">
-        <source>Battle Report: Forgotten Hall</source>
-        <target state="translated">Informe de batalla: Sala Olvidada</target>
+      <trans-unit id="hylKit.battleReportView4GI.navTitle.stygianOnslaught" xml:space="preserve">
+        <source>Stygian Onslaught</source>
+        <target state="translated">Conflagración estigia</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReportView4HSR.navTitle.tiny" xml:space="preserve">
+      <trans-unit id="hylKit.battleReportView4GI.navTitle.treasuresStarward" xml:space="preserve">
+        <source>Battle Report: Treasures Starward</source>
+        <target state="translated">Informe de batalla: Rumbo a las estrellas</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView4GI.navTitle.treasuresStarward.tiny" xml:space="preserve">
+        <source>Treasures Starward</source>
+        <target state="translated">Rumbo a las estrellas</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView4HSR.navTitle.apocalypticShadow" xml:space="preserve">
+        <source>Apocalyptic Shadow</source>
+        <target state="translated">Espejismo apocalíptico</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView4HSR.navTitle.forgottenHall" xml:space="preserve">
         <source>Forgotten Hall</source>
         <target state="translated">Pasillo Olvidado</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView4HSR.navTitle.pureFiction" xml:space="preserve">
+        <source>Pure Fiction</source>
+        <target state="translated">Pura ficción</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView4HSR.navTitle.treasuresLightward" xml:space="preserve">
+        <source>Battle Report: Treasures Lightward</source>
+        <target state="translated">Informe de batalla: En busca de fortuna</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView4HSR.navTitle.treasuresLightward.tiny" xml:space="preserve">
+        <source>Treasures Lightward</source>
+        <target state="translated">En busca de fortuna</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.inventoryView.characters.count.character:%lld%lld%lld" xml:space="preserve">
@@ -3331,126 +3520,6 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">Libro mayor para pases SR y Stella Jades</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.abyss" xml:space="preserve">
-        <source>Spiral Abyss</source>
-        <target state="translated">Abismo Espiral</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.achievements" xml:space="preserve">
-        <source>Achievements</source>
-        <target state="translated">Logros</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.characters" xml:space="preserve">
-        <source>Characters</source>
-        <target state="translated">Caracteres</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.chest.1" xml:space="preserve">
-        <source>Common Chests Opened</source>
-        <target state="translated">Cofres Comunes Abiertos</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.chest.2" xml:space="preserve">
-        <source>Exquisite Chests Opened</source>
-        <target state="translated">Cofres Exquisitos Abiertos</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.chest.3" xml:space="preserve">
-        <source>Precious Chests Opened</source>
-        <target state="translated">Cofres preciosos abiertos</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.chest.4" xml:space="preserve">
-        <source>Luxurious Chests Opened</source>
-        <target state="translated">Cofres lujosos abiertos</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.daysActive" xml:space="preserve">
-        <source>Days Active</source>
-        <target state="translated">Días Activos</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.domains" xml:space="preserve">
-        <source>Domains Unlocked</source>
-        <target state="translated">Dominios desbloqueados</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.anemo" xml:space="preserve">
-        <source>Anemoculus</source>
-        <target state="translated">Anemoculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.cryo" xml:space="preserve">
-        <source>Cryoculus</source>
-        <target state="translated">Cryoculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.dendro" xml:space="preserve">
-        <source>Dendroculus</source>
-        <target state="translated">Dendroculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.electro" xml:space="preserve">
-        <source>Electroculus</source>
-        <target state="translated">Electroculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.geo" xml:space="preserve">
-        <source>Geoculus</source>
-        <target state="translated">Geoculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.hydro" xml:space="preserve">
-        <source>Hydroculus</source>
-        <target state="translated">Hydroculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.pyro" xml:space="preserve">
-        <source>Pyroculus</source>
-        <target state="translated">Pyroculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.navTitle" xml:space="preserve">
-        <source>Travel Stats</source>
-        <target state="translated">Estadísticas de Viaje</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.waypoints" xml:space="preserve">
-        <source>Waypoints Unlocked</source>
-        <target state="translated">Puntos de ruta desbloqueados</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4HSR.achievements" xml:space="preserve">
-        <source>Achievements</source>
-        <target state="translated">Logros</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4HSR.characters" xml:space="preserve">
-        <source>Characters</source>
-        <target state="translated">Caracteres</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4HSR.chest" xml:space="preserve">
-        <source>Chests Opened</source>
-        <target state="translated">Cofres Abiertos</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4HSR.daysActive" xml:space="preserve">
-        <source>Days Active</source>
-        <target state="translated">Días Activos</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4HSR.mostRecentChallenge" xml:space="preserve">
-        <source>Recent Challenge</source>
-        <target state="translated">Desafío reciente</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4HSR.navTitle" xml:space="preserve">
-        <source>Trailblazing Stats</source>
-        <target state="translated">Estadísticas Pioneras</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="pieChart.total" xml:space="preserve">
         <source>Total</source>
         <target state="translated">Total</target>
@@ -3460,7 +3529,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZInGameEventKit/Sources/PZInGameEventKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="igev.gameEvents.daysLeft:%lld" xml:space="preserve">
@@ -3492,7 +3561,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZAccountKit/Resources/HoYoLangNames.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="hoyo.lang.chs" xml:space="preserve">
@@ -3574,7 +3643,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZAccountKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="MiHoYoAPIError.countryRegionRestriction" xml:space="preserve">
@@ -3806,7 +3875,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZBaseKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="app.language.de" xml:space="preserve">
@@ -4113,44 +4182,402 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZWidgetsKit/Sources/PZWidgetsKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
+      <trans-unit id="%@" translate="no" xml:space="preserve">
+        <source>%@</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="app.dailynote.initiateLiveActivity" xml:space="preserve">
         <source>Initiate Live Activity</source>
         <target state="translated">Iniciar actividad en vivo</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzAccountKit.CreateLiveActivityError.noInfo" xml:space="preserve">
+      <trans-unit id="pzWidgetsKit.CreateLiveActivityError.noInfo" xml:space="preserve">
         <source>Failed from fetching Real-Time Notes.</source>
         <target state="translated">Error al obtener Notas en Tiempo Real</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzAccountKit.CreateLiveActivityError.systemSettings" xml:space="preserve">
+      <trans-unit id="pzWidgetsKit.CreateLiveActivityError.systemSettings" xml:space="preserve">
         <source>The current system settings hinder this app from using Live Activity feature.</source>
         <target state="translated">La configuración actual del sistema impide que esta aplicación use la función de Actividad en Vivo.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzAccountKit.CreateLiveActivityError.unknown:%@" xml:space="preserve">
+      <trans-unit id="pzWidgetsKit.CreateLiveActivityError.unknown:%@" xml:space="preserve">
         <source>[Unknown Exception] %@</source>
         <target state="translated">[Excepción desconocida] %@</target>
         <note/>
       </trans-unit>
+      <trans-unit id="pzWidgetsKit.WidgetRefreshIntent.Refresh" xml:space="preserve">
+        <source>Refresh</source>
+        <target state="translated">Actualizar</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.currentStamina" xml:space="preserve">
+        <source>Current Stamina</source>
+        <target state="translated">Resistencia actual</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.dailyTask" xml:space="preserve">
+        <source>Daily Commission</source>
+        <target state="translated">Comisión diaria</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.expedition.status.finished" xml:space="preserve">
+        <source>Finished</source>
+        <target state="translated">Terminado</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.expedition.status.pending" xml:space="preserve">
+        <source>Pending</source>
+        <target state="translated">Pendiente</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.expedition.timeToAllCompletion" xml:space="preserve">
+        <source>Will Finish At:</source>
+        <target state="translated">Terminará a las:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.homeCoin" xml:space="preserve">
+        <source>Realm Currency</source>
+        <target state="translated">Moneda del Reino</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.infoBlock.refilledAt:%@" xml:space="preserve">
+        <source>Till %@</source>
+        <target state="translated">Hasta %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.infoBlock.staminaFullyFilledDescription" xml:space="preserve">
+        <source>0 hr 0 min
+Stamina is Full</source>
+        <target state="translated">0 hr 0 min
+La resistencia está llena</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.infoBlock.staminaFullyFilledDescription.tiny" xml:space="preserve">
+        <source>Filled Up</source>
+        <target state="translated">Lleno</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.infoBlock.transformerAvailable" xml:space="preserve">
+        <source>Available</source>
+        <target state="translated">Disponible</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.infoBlock.zzzScratchableCard.done" xml:space="preserve">
+        <source>Scratched</source>
+        <target state="translated">Rayado</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.infoBlock.zzzScratchableCard.notYet" xml:space="preserve">
+        <source>Available</source>
+        <target state="translated">Disponible</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.material.sunday" xml:space="preserve">
+        <source>All materials are 
+available on Sunday</source>
+        <target state="translated">Todos los materiales 
+están disponibles el domingo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.next20Stamina:%lld" xml:space="preserve">
+        <source>Until %lld Stamina:</source>
+        <target state="translated">Hasta %lld Aguante:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.nextMaxStamina" xml:space="preserve">
+        <source>Until Max Stamina:</source>
+        <target state="translated">Hasta la Resistencia Máxima:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.stamina" xml:space="preserve">
+        <source>Player Stamina</source>
+        <target state="translated">Resistencia del jugador</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.stamina.full" xml:space="preserve">
+        <source>Filled Up</source>
+        <target state="translated">Lleno</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.status.not_received" xml:space="preserve">
+        <source>(unreceived)</source>
+        <target state="translated">(no recibido)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.unit.day:%lld" xml:space="preserve">
+        <source>%lld days</source>
+        <target state="translated">%lld días</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.unit.minute:%lld|==|plural.one" xml:space="preserve">
+        <source>%lld min</source>
+        <target state="translated">%lld min</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.unit.minute:%lld|==|plural.other" xml:space="preserve">
+        <source>%lld mins</source>
+        <target state="translated">%lld min</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.blue" xml:space="preserve">
+        <source>Blue</source>
+        <target state="translated">Azul</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.anemo" xml:space="preserve">
+        <source>Anemo</source>
+        <target state="translated">Anemo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.cryo" xml:space="preserve">
+        <source>Cryo</source>
+        <target state="translated">Crío</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.dendro" xml:space="preserve">
+        <source>Dendro</source>
+        <target state="translated">Dendro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.electro" xml:space="preserve">
+        <source>Electro</source>
+        <target state="translated">Electro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.geo" xml:space="preserve">
+        <source>Geo</source>
+        <target state="translated">Geo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.hydro" xml:space="preserve">
+        <source>Hydro</source>
+        <target state="translated">Hidro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.imago" xml:space="preserve">
+        <source>Imago</source>
+        <target state="translated">Imago</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.physico" xml:space="preserve">
+        <source>Physico</source>
+        <target state="translated">Physico</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.pyro" xml:space="preserve">
+        <source>Pyro</source>
+        <target state="translated">Pyro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.quanto" xml:space="preserve">
+        <source>Quanto</source>
+        <target state="translated">Quanto</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gold" xml:space="preserve">
+        <source>Gold</source>
+        <target state="translated">Oro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gray" xml:space="preserve">
+        <source>Gray</source>
+        <target state="translated">Gris</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.green" xml:space="preserve">
+        <source>Green</source>
+        <target state="translated">Verde</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.intertwinedFate" xml:space="preserve">
+        <source>March 7th &amp; Intertwined Fate</source>
+        <target state="translated">7 de marzo y Destino Entrecruzado</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.purple" xml:space="preserve">
+        <source>Purple</source>
+        <target state="translated">Morado</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.red" xml:space="preserve">
+        <source>Red</source>
+        <target state="translated">Rojo</target>
+        <note/>
+      </trans-unit>
     </body>
   </file>
-  <file original="Packages/WallpaperKit/Sources/WallpaperKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
+  <file original="Packages/WallpaperKit/Sources/WallpaperConfigKit/Resources/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
+      <trans-unit id="imageCropper.hint.fingerGestures" xml:space="preserve">
+        <source>You may also use finger gestures on the preview image.</source>
+        <target state="translated">También puede aplicar gestos con los dedos en la imagen de vista previa.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="imageCropper.hint.mouseGesture" xml:space="preserve">
+        <source>You may also use mouse gestures on the preview image.</source>
+        <target state="translated">También puede aplicar gestos con el ratón en la imagen de vista previa.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.display.appBackground" xml:space="preserve">
         <source>App Background</source>
         <target state="translated">Fondo de la Aplicación</target>
         <note/>
       </trans-unit>
-      <trans-unit id="settings.resinTimer.background.navTitle" xml:space="preserve">
+      <trans-unit id="settings.display.appUserWallpaper" xml:space="preserve">
+        <source>App User Wallpaper</source>
+        <target state="translated">Fondo de pantalla del usuario de la aplicación</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.appWallpaper.navDescription" xml:space="preserve">
+        <source>⚠︎ This option will be automatically reset to factory default if the specified value points to an invalid user wallpaper.</source>
+        <target state="translated">⚠︎ Esta opción se restablecerá automáticamente a los valores predeterminados de fábrica si el valor especificado indica un fondo de pantalla de usuario no válido.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.appWallpaper.navSectionHeader" xml:space="preserve">
+        <source>App Background</source>
+        <target state="translated">Fondo de la aplicación</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.appWallpaper.userWallPaper.notSpecified" xml:space="preserve">
+        <source>Disabled</source>
+        <target state="translated">Desactivado</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.background.navTitle" xml:space="preserve">
         <source>Stamina Timer Background</source>
         <target state="translated">Fondo del temporizador de resistencia</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.navTitle.step1.chooseImage" xml:space="preserve">
+        <source>Choose Image</source>
+        <target state="translated">Elegir imagen</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.navTitle.step2.cropHorizontal" xml:space="preserve">
+        <source>Crop (Horizontal)</source>
+        <target state="translated">Recortar (Horizontal)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.navTitle.step3.cropSquared" xml:space="preserve">
+        <source>Crop (Squared)</source>
+        <target state="translated">Recortar (Cuadrado)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.step1.button.pickImageUsingFileImporter" xml:space="preserve">
+        <source>Pick Image From Finder / Files App</source>
+        <target state="translated">Elegir imagen desde Finder / Archivos</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.step1.button.pickImageUsingPhotoPicker" xml:space="preserve">
+        <source>Pick Image From Photos App</source>
+        <target state="translated">Elegir imagen desde Fotos</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.step1.footerDescription.1" xml:space="preserve">
+        <source>Choose your preferred method to select a source image for your custom wallpaper. In the next two steps, you'll be able to crop it to fit two different desktop widget sizes.</source>
+        <target state="translated">Elija su método preferido para seleccionar una imagen de origen para su fondo de pantalla personalizado. En los siguientes dos pasos, podrá recortarla para que se ajuste a dos tamaños diferentes de widgets de escritorio.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.step1.footerDescription.2" xml:space="preserve">
+        <source>Please keep your own copy of your original image files. User wallpapers saved in this app is in extremely low quality with reduced dimensions.</source>
+        <target state="translated">Por favor, conserve su propia copia de los archivos de imagen originales. Los fondos de pantalla de usuario guardados en esta aplicación tienen una calidad extremadamente baja y dimensiones reducidas.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.clickToAddYourFirstWallpaper" xml:space="preserve">
+        <source>Click Here to Add a Wallpaper</source>
+        <target state="translated">Haz clic aquí para agregar un fondo de pantalla</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.contextMenu.removeWallpaperEntry" xml:space="preserve">
+        <source>Remove</source>
+        <target state="translated">Eliminar</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.contextMenu.renameWallpaperEntry" xml:space="preserve">
+        <source>Rename</source>
+        <target state="translated">Renombrar</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.editingWallpaperName.fieldLabel" xml:space="preserve">
+        <source>Name</source>
+        <target state="translated">Nombre</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.editingWallpaperName.prompt" xml:space="preserve">
+        <source>Please enter a new name for this wallpaper.</source>
+        <target state="translated">Por favor, ingresa un nuevo nombre para este fondo de pantalla.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.emptyContentsNotice" xml:space="preserve">
+        <source>There's no user-supplied wallpaper yet.</source>
+        <target state="translated">Aún no hay fondos de pantalla proporcionados por el usuario.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.exchange.export.failedInSavingToFile" xml:space="preserve">
+        <source>Failed from dumping all user wallpapers.</source>
+        <target state="translated">Error al volcar todos los fondos de pantalla del usuario.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.exchange.export.fileSavedTo:" xml:space="preserve">
+        <source>Successfully dumped all user wallpapers into file:</source>
+        <target state="translated">Se han exportado correctamente todos los fondos de pantalla del usuario en el archivo:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.exchange.export.menuTitle" xml:space="preserve">
+        <source>Package &amp; Export All User Wallpapers</source>
+        <target state="translated">Empaquetar y Exportar Todos los Fondos de Pantalla del Usuario</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.exchange.export.succeededInSavingToFile" xml:space="preserve">
+        <source>Successfully dumped all user wallpapers.</source>
+        <target state="translated">Se han exportado correctamente todos los fondos de pantalla del usuario.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.exchange.import.menuTitle" xml:space="preserve">
+        <source>Import a Pack of User Wallpapers</source>
+        <target state="translated">Importar un paquete de fondos de pantalla del usuario</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.footerNotice.maximumEntryAmountReached" xml:space="preserve">
+        <source>Maximum 10 user wallpapers allowed. While this restriction can possibly be breached by importing a pack of user wallpapers, please beware that this breach may cause performance issues.</source>
+        <target state="translated">Máximo 10 fondos de pantalla permitidos. Si bien esta restricción puede ser evadida importando un paquete de fondos de pantalla de usuario, tenga en cuenta que esto puede causar problemas de rendimiento.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.menu.addNewWallpaper" xml:space="preserve">
+        <source>Add New Wallpaper</source>
+        <target state="translated">Agregar nuevo fondo de pantalla</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.navDescription" xml:space="preserve">
+        <source>User-supplied wallpapers are not listed in the Wallpaper Gallery and are independent of the app's bundled wallpapers.</source>
+        <target state="translated">Los fondos de pantalla proporcionados por el usuario no se muestran en la Galería de Fondos de Pantalla y son independientes de los fondos incluidos en la aplicación.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.navTitle" xml:space="preserve">
+        <source>User Wallpaper Manager</source>
+        <target state="translated">Gestor de Fondos de Usuario</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.navTitle.tiny" xml:space="preserve">
+        <source>User Wallpapers</source>
+        <target state="translated">Fondos de Usuario</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.toast.taskFailed" xml:space="preserve">
+        <source>Failed</source>
+        <target state="translated">Fallido</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.toast.taskSucceeded" xml:space="preserve">
+        <source>Done</source>
+        <target state="translated">Hecho</target>
         <note/>
       </trans-unit>
       <trans-unit id="wallpaperGallery.navTitle" xml:space="preserve">
@@ -4177,7 +4604,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="SharedBundles/Settings.bundle/en.lproj/Settings.strings" datatype="plaintext" source-language="en" target-language="es">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="Please go to 📱 [Settings] -&gt; [General] -&gt; [Language &amp; Region] and add the language you wish to set as the second language. " xml:space="preserve">
@@ -4212,7 +4639,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="ThePizzaHelper/InfoPlist.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4239,7 +4666,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="ThePizzaHelper/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4251,7 +4678,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="UnitedPizzaHelperEngine/InfoPlist.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4278,7 +4705,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="UnitedPizzaHelperEngine/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4290,7 +4717,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="WatchApp/InfoPlist.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4317,7 +4744,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="WatchApp/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4329,7 +4756,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="WidgetExtension/InfoPlist.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4348,49 +4775,14 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="WidgetExtension/Localizable.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="%@" translate="no" xml:space="preserve">
         <source>%@</source>
         <note/>
       </trans-unit>
-      <trans-unit id="app.background.blue" xml:space="preserve">
-        <source>Blue</source>
-        <target state="translated">Azul</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.background.gold" xml:space="preserve">
-        <source>Gold</source>
-        <target state="translated">Oro</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.background.gray" xml:space="preserve">
-        <source>Gray</source>
-        <target state="translated">Gris</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.background.green" xml:space="preserve">
-        <source>Green</source>
-        <target state="translated">Verde</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.background.intertwinedFate" xml:space="preserve">
-        <source>March 7th &amp; Intertwined Fate</source>
-        <target state="translated">7 de marzo y Destino Entrecruzado</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.background.purple" xml:space="preserve">
-        <source>Purple</source>
-        <target state="translated">Morado</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.background.red" xml:space="preserve">
-        <source>Red</source>
-        <target state="translated">Rojo</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="appEntity.localeProfile" xml:space="preserve">
+      <trans-unit id="appEntity.localProfile" xml:space="preserve">
         <source>Profile</source>
         <target state="translated">Perfil</target>
         <note/>
@@ -4400,27 +4792,47 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">Fondo del Widget</target>
         <note/>
       </trans-unit>
-      <trans-unit id="appEnum.AutoRotationUsingResinWidgetStyle.asRoundMeter" xml:space="preserve">
+      <trans-unit id="appEnum.ExpeditionDisplayPolicy.displayExclusively" xml:space="preserve">
+        <source>Display Exclusively</source>
+        <target state="translated">Mostrar exclusivamente</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum.ExpeditionDisplayPolicy.displayWhenAvailable" xml:space="preserve">
+        <source>Display If Available</source>
+        <target state="translated">Mostrar si Está Disponible</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum.ExpeditionDisplayPolicy.neverDisplay" xml:space="preserve">
+        <source>Never Display</source>
+        <target state="translated">Nunca Mostrar</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum.ExpeditionDisplayPolicy.title" xml:space="preserve">
+        <source>Expedition Display Policy</source>
+        <target state="translated">Política de Visualización de Expediciones</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum.StaminaContentRevolverStyle.asRoundMeter" xml:space="preserve">
         <source>Round Meter</source>
         <target state="translated">Medidor Redondo</target>
         <note/>
       </trans-unit>
-      <trans-unit id="appEnum.AutoRotationUsingResinWidgetStyle.asTimeStampWhenWillAccomplish" xml:space="preserve">
+      <trans-unit id="appEnum.StaminaContentRevolverStyle.asTimeStampWhenWillAccomplish" xml:space="preserve">
         <source>Timestamp (when finished)</source>
         <target state="translated">Marca de tiempo (cuando finalizado)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="appEnum.AutoRotationUsingResinWidgetStyle.asTimerCountDown" xml:space="preserve">
+      <trans-unit id="appEnum.StaminaContentRevolverStyle.asTimerCountDown" xml:space="preserve">
         <source>Countdown Timer</source>
         <target state="translated">Temporizador de cuenta regresiva</target>
         <note/>
       </trans-unit>
-      <trans-unit id="appEnum.AutoRotationUsingResinWidgetStyle.byDefault" xml:space="preserve">
+      <trans-unit id="appEnum.StaminaContentRevolverStyle.byDefault" xml:space="preserve">
         <source>Default</source>
         <target state="translated">Predeterminado</target>
         <note/>
       </trans-unit>
-      <trans-unit id="appEnum.AutoRotationUsingResinWidgetStyle.title" xml:space="preserve">
+      <trans-unit id="appEnum.StaminaContentRevolverStyle.title" xml:space="preserve">
         <source>Auto Rotation of Stamina Widget Styles</source>
         <target state="translated">Rotación Automática de Estilos del Widget de Resistencia</target>
         <note/>
@@ -4470,59 +4882,14 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">Juego compatible</target>
         <note/>
       </trans-unit>
-      <trans-unit id="game.elements.anemo" xml:space="preserve">
-        <source>Anemo</source>
-        <target state="translated">Anemo</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.cryo" xml:space="preserve">
-        <source>Cryo</source>
-        <target state="translated">Crío</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.dendro" xml:space="preserve">
-        <source>Dendro</source>
-        <target state="translated">Dendro</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.electro" xml:space="preserve">
-        <source>Electro</source>
-        <target state="translated">Electro</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.geo" xml:space="preserve">
-        <source>Geo</source>
-        <target state="translated">Geo</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.hydro" xml:space="preserve">
-        <source>Hydro</source>
-        <target state="translated">Hidro</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.imago" xml:space="preserve">
-        <source>Imago</source>
-        <target state="translated">Imago</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.physico" xml:space="preserve">
-        <source>Physico</source>
-        <target state="translated">Physico</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.pyro" xml:space="preserve">
-        <source>Pyro</source>
-        <target state="translated">Pyro</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.quanto" xml:space="preserve">
-        <source>Quanto</source>
-        <target state="translated">Quanto</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="intent.description.chooseTheGame" xml:space="preserve">
         <source>Choose the game</source>
         <target state="translated">Elige el juego</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent.description.pickTheLocalProfileDuoForThisWidget" xml:space="preserve">
+        <source>Choose 2 local profiles for this widget</source>
+        <target state="translated">Elige dos perfiles locales para este widget</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.description.pickTheLocalProfileForThisWidget" xml:space="preserve">
@@ -4533,6 +4900,11 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       <trans-unit id="intent.field.echoOfWarDisplayMethod" xml:space="preserve">
         <source>Echo of War Display</source>
         <target state="translated">Pantalla de Ecos de la guerra</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent.field.expeditionDisplayPolicy" xml:space="preserve">
+        <source>Expedition Display Policy</source>
+        <target state="translated">Política de Visualización de Expediciones</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.field.followSystemDarkMode" xml:space="preserve">
@@ -4550,14 +4922,29 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">Invertir la selección</target>
         <note/>
       </trans-unit>
-      <trans-unit id="intent.field.localeProfile" xml:space="preserve">
+      <trans-unit id="intent.field.localProfile" xml:space="preserve">
         <source>Local profile</source>
         <target state="translated">Perfil local</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent.field.localProfile.slot1" xml:space="preserve">
+        <source>Local profile #1</source>
+        <target state="translated">Perfil local #1</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent.field.localProfile.slot2" xml:space="preserve">
+        <source>Local profile #2</source>
+        <target state="translated">Perfil local #2</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.field.showMaterialsInLargeSizeWidget" xml:space="preserve">
         <source>[GI] Show daily materials (large-sized widgets only)</source>
         <target state="translated">[GI] Mostrar materiales diarios (solo widgets grandes)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent.field.showStaminaOnly" xml:space="preserve">
+        <source>Show Player Stamina Only</source>
+        <target state="translated">Mostrar solo la resistencia del jugador</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.field.showTransformer" xml:space="preserve">
@@ -4580,6 +4967,11 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">Usar fondo de pantalla aleatorio</target>
         <note/>
       </trans-unit>
+      <trans-unit id="intent.field.useTinyGlassDisplayStyle" xml:space="preserve">
+        <source>Use Tiny Glass Display Style</source>
+        <target state="translated">Usar estilo de visualización de vidrio pequeño</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="intent.field.wallpaper" xml:space="preserve">
         <source>Wallpaper</source>
         <target state="translated">Fondo de pantalla</target>
@@ -4595,14 +4987,19 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">Elegir perfil local</target>
         <note/>
       </trans-unit>
-      <trans-unit id="intent.name.selectLocalProfileOnly" xml:space="preserve">
+      <trans-unit id="intent.name.selectLocalProfile4Peripherals" xml:space="preserve">
         <source>Choose Local Profile (only)</source>
         <target state="translated">Elegir perfil local (únicamente)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="intent.name.selectLocalProfileWithExtraConfig" xml:space="preserve">
+      <trans-unit id="intent.name.selectLocalProfile4PeripheralsWithExtraConfig" xml:space="preserve">
         <source>Choose Local Profile with Extra Configuration</source>
         <target state="translated">Elegir perfil local con configuración extra</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent.name.selectLocalProfileDuo" xml:space="preserve">
+        <source>Choose Local Profile (Dual)</source>
+        <target state="translated">Elegir perfil local (Doble)</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.WidgetRefreshIntent.Refresh" xml:space="preserve">
@@ -4641,13 +5038,13 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.homeCoin" xml:space="preserve">
-        <source>Realm Currency (GI)</source>
-        <target state="translated">Moneda del Reino (GI)</target>
+        <source>Realm Currency (GI), only effective if being configured with a local profile configured using a Genshin Impact UID.</source>
+        <target state="translated">Moneda del Reino (GI), solo es efectivo si se configura con un perfil local configurado con un UID de Genshin Impact.</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.homeCoin.2" xml:space="preserve">
-        <source>Alternative Realm Currency (GI)</source>
-        <target state="translated">Moneda de Reino Alternativo (GI)</target>
+        <source>Alternative Realm Currency (GI), only effective if being configured with a local profile configured using a Genshin Impact UID.</source>
+        <target state="translated">Moneda de Reino Alternativo (GI), solo es efectivo si se configura con un perfil local configurado con un UID de Genshin Impact.</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.stamina" xml:space="preserve">
@@ -4665,56 +5062,9 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">Estado de Resistencia Alternativa del Jugador (incl. Resina Original, Energía de Trailblaze y Energía de Batería ZZZ; no confundir con la resistencia en el juego de Genshin Impact)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzWidgetsKit.currentStamina" xml:space="preserve">
-        <source>Current Stamina</source>
-        <target state="translated">Resistencia actual</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.dailyTask" xml:space="preserve">
-        <source>Daily Commission</source>
-        <target state="translated">Comisión diaria</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="pzWidgetsKit.expedition" xml:space="preserve">
         <source>Expedition &amp; Assignments</source>
         <target state="translated">Expedición y Asignaciones</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.expedition.status.finished" xml:space="preserve">
-        <source>Finished</source>
-        <target state="translated">Terminado</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.expedition.status.pending" xml:space="preserve">
-        <source>Pending</source>
-        <target state="translated">Pendiente</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.expedition.timeToAllCompletion" xml:space="preserve">
-        <source>Will Finish At:</source>
-        <target state="translated">Terminará a las:</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.homeCoin" xml:space="preserve">
-        <source>Realm Currency</source>
-        <target state="translated">Moneda del Reino</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.infoBlock.refilledAt:%@" xml:space="preserve">
-        <source>Till %@</source>
-        <target state="translated">Hasta %@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.infoBlock.staminaFullyFilledDescription" xml:space="preserve">
-        <source>0 hr 0 min
-Stamina is Full</source>
-        <target state="translated">0 hr 0 min
-La resistencia está llena</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.infoBlock.transformerAvailable" xml:space="preserve">
-        <source>Available</source>
-        <target state="translated">Disponible</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.infoBlock.zzzScratchableCard.done" xml:space="preserve">
@@ -4732,24 +5082,9 @@ La resistencia está llena</target>
         <target state="translated">Muestra los eventos recientes y los materiales de armas o talentos que se pueden obtener hoy en Genshin Impact.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzWidgetsKit.material.sunday" xml:space="preserve">
-        <source>All materials are available in Sunday</source>
-        <target state="translated">Todos los materiales están disponibles el domingo</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="pzWidgetsKit.material.title" xml:space="preserve">
         <source>[GI] Today’s Materials &amp; Official Events</source>
         <target state="translated">[GI] Materiales y Eventos Oficiales de Hoy</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.next20Stamina:%lld" xml:space="preserve">
-        <source>Until %lld Stamina:</source>
-        <target state="translated">Hasta %lld Aguante:</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.nextMaxStamina" xml:space="preserve">
-        <source>Until Max Stamina:</source>
-        <target state="translated">Hasta la Resistencia Máxima:</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.officialFeed.description" xml:space="preserve">
@@ -4760,16 +5095,6 @@ La resistencia está llena</target>
       <trans-unit id="pzWidgetsKit.officialFeed.title" xml:space="preserve">
         <source>Official Feeds</source>
         <target state="translated">Fuentes oficiales</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.stamina" xml:space="preserve">
-        <source>Player Stamina</source>
-        <target state="translated">Resistencia del jugador</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.stamina.full" xml:space="preserve">
-        <source>Full</source>
-        <target state="translated">Completo</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.stamina.refillTime.countdown.ofSb" xml:space="preserve">
@@ -4807,24 +5132,19 @@ La resistencia está llena</target>
         <target state="translated">Verifica el estado de recuperación de tu resistencia</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzWidgetsKit.status.not_received" xml:space="preserve">
-        <source>(unreceived)</source>
-        <target state="translated">(no recibido)</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="pzWidgetsKit.status.title" xml:space="preserve">
         <source>Player Status</source>
         <target state="translated">Estado del Jugador</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzWidgetsKit.unit.day:%lld" xml:space="preserve">
-        <source>%lld days</source>
-        <target state="translated">%lld días</target>
+      <trans-unit id="pzWidgetsKit.statusDualProfile.enquiry.title" xml:space="preserve">
+        <source>Check the stamina recovery status of two profiles in the same widget</source>
+        <target state="translated">Verifica el estado de recuperación de resistencia de dos perfiles en el mismo widget</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzWidgetsKit.unit.minute:%lld" xml:space="preserve">
-        <source>%lld mins</source>
-        <target state="translated">%lldmin</target>
+      <trans-unit id="pzWidgetsKit.statusDualProfile.title" xml:space="preserve">
+        <source>Player Status (Dual Profile)</source>
+        <target state="translated">Estado del Jugador (Perfil Doble)</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.widgetError.noProfileFound" xml:space="preserve">
@@ -4866,7 +5186,7 @@ La resistencia está llena</target>
   </file>
   <file original="WidgetExtension/Resources/InfoPlist.xcstrings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">

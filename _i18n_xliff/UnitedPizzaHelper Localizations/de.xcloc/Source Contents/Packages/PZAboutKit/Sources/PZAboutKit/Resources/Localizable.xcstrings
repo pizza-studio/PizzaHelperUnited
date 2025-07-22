@@ -321,6 +321,16 @@
         }
       }
     },
+    "aboutKit.contributor.retiredOn:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stopped participating in the development since: %@"
+          }
+        }
+      }
+    },
     "aboutKit.contributor.subtitleAsAssetCrew.koni" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -348,7 +358,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Icon Illustrator, Pizza Helper for Genshin (v4)\nApp Icon Illustrator, The Pizza Helper (v5)"
+            "value" : "App Icon Illustrator, Pizza Helper for Genshin (v4)\nApp Icon Illustrator, The Pizza Helper (v5.0)"
           }
         }
       }
@@ -514,7 +524,7 @@
         }
       }
     },
-    "aboutKit.contributors.name.pan93412" : {
+    "aboutKit.contributors.name.panbystar" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -610,6 +620,16 @@
         }
       }
     },
+    "aboutKit.ourApps.miHoYoCopyrightNotice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright (excl. the Swift program part of this app): (c) All rights reserved by miHoYo and its subsidiaries. Other properties and any right, title, and interest thereof and therein (intellectual property rights included) not derived from miHoYo's game titles (\"Star Rail\", \"Genshin Impact\", \"Zenless Zone Zero\", etc.) belong to their respective owners."
+          }
+        }
+      }
+    },
     "aboutKit.ourApps.pizzaStudio" : {
       "localizations" : {
         "en" : {
@@ -630,6 +650,16 @@
         }
       }
     },
+    "aboutKit.ourApps.pizzaStudioCopyrightNotice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright (the Swift program part of this app, excluding the data models used for decoding external JSON files): (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later)."
+          }
+        }
+      }
+    },
     "aboutKit.ourApps.pzHelper" : {
       "localizations" : {
         "en" : {
@@ -645,7 +675,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- The successor of both PizzaHelper4Genshin and PizzaHelper4HSR. Powered by the next-generation United Pizza Engine.\n- The program part of this software is open-sourced under AGPLv3 License.\n- The Pizza Helper and its predecessors are not affiliated with miHoYo Co., Ltd. nor its subsidiaries.\n- The game contents and materials of the following titles are trademarks and copyrights of miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”."
+            "value" : "- The successor of both PizzaHelper4Genshin and PizzaHelper4HSR. Powered by the next-generation United Pizza Engine.\n- This app is not a miHoYo official product but a fan creation."
           }
         }
       }

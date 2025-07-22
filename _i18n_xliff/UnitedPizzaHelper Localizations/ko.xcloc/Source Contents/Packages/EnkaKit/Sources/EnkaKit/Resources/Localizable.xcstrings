@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "enka.ASCV.scrollingGuide.appKit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use context menu to switch the current character;\nTap anywhere to dismiss."
+          }
+        }
+      }
+    },
     "enka.ASCV.summarzeToClipboard.asMD" : {
       "localizations" : {
         "en" : {
@@ -67,7 +77,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875)."
+            "value" : "This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875) or [other publicly available resources](https://www.aplaybox.com/u/106842826)."
           }
         }
       }
@@ -78,7 +88,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The background totem assets used for ID Photos of Genshin Impact characters in this app are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. These totems is visible only if “Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels” is disabled."
+            "value" : "The background totem assets used for ID Photos of Genshin Impact characters in this app are for representing both their life paths and their elemental powers by default. The element is represented by the color used for rendering the totem. If there's no matched lifepath available, then the totem pattern will be the elemental totem instead. The elemental totem assets used in such case are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. Nevertheless, these totems' visibility can be toggled in UI Settings."
           }
         }
       }
@@ -89,7 +99,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The background totem assets used for ID Photos of Star Rail in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem."
+            "value" : "The background totem assets used for ID Photos of Star Rail characters in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem."
           }
         }
       }
@@ -474,7 +484,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels"
+            "value" : "Use Namecard backgrounds for Genshin Characters’ ShowCase Build panels"
           }
         }
       }
@@ -486,6 +496,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show characters’ real names instead"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.useTotemWithGenshinIDPhotos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use totem backgrounds for Genshin Characters’ ID Photos"
           }
         }
       }

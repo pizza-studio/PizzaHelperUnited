@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "hylKit.abyssReport.floor.1stHalf" : {
+    "hylKit.battleReport.floor.1stHalf" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -12,7 +12,7 @@
         }
       }
     },
-    "hylKit.abyssReport.floor.2ndHalf" : {
+    "hylKit.battleReport.floor.2ndHalf" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -23,7 +23,7 @@
         }
       }
     },
-    "hylKit.abyssReport.floor.thisFloorIsSkipped" : {
+    "hylKit.battleReport.floor.thisFloorIsSkipped" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -34,7 +34,7 @@
         }
       }
     },
-    "hylKit.abyssReport.floor.title:%@" : {
+    "hylKit.battleReport.floor.title:%@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -44,17 +44,27 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.SnapHutaoEmailEmptyNotice" : {
+    "hylKit.battleReport.gi.attendanceMethod.multiplayer" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ The upload of personal battle reports to HutaoDB is suspended until the Snap Hutao-related options in the Privacy Settings of this app are correctly configured."
+            "value" : "Multiplayer"
           }
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.battle" : {
+    "hylKit.battleReport.gi.attendanceMethod.singleplayer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Singleplayer"
+          }
+        }
+      }
+    },
+    "hylKit.battleReport.gi.stat.battle" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -65,7 +75,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.deepest" : {
+    "hylKit.battleReport.gi.stat.deepest" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -76,7 +86,18 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.mostDamageTaken" : {
+    "hylKit.battleReport.gi.stat.maxRoomDMG" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Max Total DMG (1 Round)"
+          }
+        }
+      }
+    },
+    "hylKit.battleReport.gi.stat.mostDamageTaken" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -87,7 +108,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.mostDefeats" : {
+    "hylKit.battleReport.gi.stat.mostDefeats" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -98,7 +119,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.mostESkills" : {
+    "hylKit.battleReport.gi.stat.mostESkills" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -109,7 +130,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.mostQSkills" : {
+    "hylKit.battleReport.gi.stat.mostQSkills" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -120,7 +141,18 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.star" : {
+    "hylKit.battleReport.gi.stat.secondsSpent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Seconds Spent"
+          }
+        }
+      }
+    },
+    "hylKit.battleReport.gi.stat.star" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -131,7 +163,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.strongest" : {
+    "hylKit.battleReport.gi.stat.strongest" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -142,7 +174,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.summary" : {
+    "hylKit.battleReport.gi.stat.summary" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -153,7 +185,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.win" : {
+    "hylKit.battleReport.gi.stat.win" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -164,7 +196,7 @@
         }
       }
     },
-    "hylKit.abyssReport.hsr.stat.maxFloorConquered" : {
+    "hylKit.battleReport.hsr.stat.maxFloorConquered" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -175,7 +207,7 @@
         }
       }
     },
-    "hylKit.abyssReport.hsr.stat.numOfBattles" : {
+    "hylKit.battleReport.hsr.stat.numOfBattles" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -186,18 +218,7 @@
         }
       }
     },
-    "hylKit.abyssReport.hsr.stat.seasonID" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Season ID"
-          }
-        }
-      }
-    },
-    "hylKit.abyssReport.hsr.stat.starsGained" : {
+    "hylKit.battleReport.hsr.stat.starsGained" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -208,7 +229,7 @@
         }
       }
     },
-    "hylKit.abyssReport.hsr.stats.header" : {
+    "hylKit.battleReport.hsr.stats.header" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -219,7 +240,7 @@
         }
       }
     },
-    "hylKit.abyssReport.noDataAvailableForThisSeason" : {
+    "hylKit.battleReport.noDataAvailableForThisSeason" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -230,7 +251,7 @@
         }
       }
     },
-    "hylKit.abyssReport.room.title:%@" : {
+    "hylKit.battleReport.room.title:%@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -240,7 +261,17 @@
         }
       }
     },
-    "hylKit.abyssReport.seasonPicker.current" : {
+    "hylKit.battleReport.round.title:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Round #%@"
+          }
+        }
+      }
+    },
+    "hylKit.battleReport.seasonPicker.current" : {
       "comment" : "Shortened ",
       "extractionState" : "manual",
       "localizations" : {
@@ -252,7 +283,7 @@
         }
       }
     },
-    "hylKit.abyssReport.seasonPicker.previous" : {
+    "hylKit.battleReport.seasonPicker.previous" : {
       "comment" : "Shortened",
       "extractionState" : "manual",
       "localizations" : {
@@ -264,18 +295,18 @@
         }
       }
     },
-    "hylKit.abyssReportView4GI.navTitle" : {
+    "hylKit.battleReport.stat.seasonID" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Battle Report: Spiral Abyss"
+            "value" : "Season ID"
           }
         }
       }
     },
-    "hylKit.abyssReportView4GI.navTitle.tiny" : {
+    "hylKit.battleReportView4GI.navTitle.spiralAbyss" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -286,24 +317,90 @@
         }
       }
     },
-    "hylKit.abyssReportView4HSR.navTitle" : {
+    "hylKit.battleReportView4GI.navTitle.stygianOnslaught" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Battle Report: Forgotten Hall"
+            "value" : "Stygian Onslaught"
           }
         }
       }
     },
-    "hylKit.abyssReportView4HSR.navTitle.tiny" : {
+    "hylKit.battleReportView4GI.navTitle.treasuresStarward" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Battle Report: Treasures Starward"
+          }
+        }
+      }
+    },
+    "hylKit.battleReportView4GI.navTitle.treasuresStarward.tiny" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treasures Starward"
+          }
+        }
+      }
+    },
+    "hylKit.battleReportView4HSR.navTitle.apocalypticShadow" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apocalyptic Shadow"
+          }
+        }
+      }
+    },
+    "hylKit.battleReportView4HSR.navTitle.forgottenHall" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Forgotten Hall"
+          }
+        }
+      }
+    },
+    "hylKit.battleReportView4HSR.navTitle.pureFiction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pure Fiction"
+          }
+        }
+      }
+    },
+    "hylKit.battleReportView4HSR.navTitle.treasuresLightward" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Battle Report: Treasures Lightward"
+          }
+        }
+      }
+    },
+    "hylKit.battleReportView4HSR.navTitle.treasuresLightward.tiny" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treasures Lightward"
           }
         }
       }
@@ -706,248 +803,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ledger for SR Passes & Stella Jades"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.abyss" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spiral Abyss"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.achievements" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Achievements"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.characters" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Characters"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.chest.1" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Common Chests Opened"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.chest.2" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exquisite Chests Opened"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.chest.3" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Precious Chests Opened"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.chest.4" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Luxurious Chests Opened"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.daysActive" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Days Active"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.domains" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Domains Unlocked"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.eyeball.anemo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Anemoculus"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.eyeball.cryo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cryoculus"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.eyeball.dendro" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dendroculus"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.eyeball.electro" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Electroculus"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.eyeball.geo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geoculus"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.eyeball.hydro" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hydroculus"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.eyeball.pyro" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pyroculus"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.navTitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Travel Stats"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4GI.waypoints" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Waypoints Unlocked"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4HSR.achievements" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Achievements"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4HSR.characters" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Characters"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4HSR.chest" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chests Opened"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4HSR.daysActive" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Days Active"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4HSR.mostRecentChallenge" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recent Challenge"
-          }
-        }
-      }
-    },
-    "hylKit.travelStats4HSR.navTitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trailblazing Stats"
           }
         }
       }

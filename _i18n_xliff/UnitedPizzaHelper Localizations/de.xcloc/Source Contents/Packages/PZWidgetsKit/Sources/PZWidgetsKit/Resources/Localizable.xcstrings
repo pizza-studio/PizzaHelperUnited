@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@" : {
+      "shouldTranslate" : false
+    },
     "app.dailynote.initiateLiveActivity" : {
       "localizations" : {
         "en" : {
@@ -11,7 +14,7 @@
         }
       }
     },
-    "pzAccountKit.CreateLiveActivityError.noInfo" : {
+    "pzWidgetsKit.CreateLiveActivityError.noInfo" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21,7 +24,7 @@
         }
       }
     },
-    "pzAccountKit.CreateLiveActivityError.systemSettings" : {
+    "pzWidgetsKit.CreateLiveActivityError.systemSettings" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -31,12 +34,437 @@
         }
       }
     },
-    "pzAccountKit.CreateLiveActivityError.unknown:%@" : {
+    "pzWidgetsKit.CreateLiveActivityError.unknown:%@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "[Unknown Exception] %@"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.currentStamina" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Stamina"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.dailyTask" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Commission"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.expedition.status.finished" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finished"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.expedition.status.pending" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pending"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.expedition.timeToAllCompletion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Will Finish At:"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.homeCoin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Realm Currency"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.infoBlock.refilledAt:%@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Till %@"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.infoBlock.staminaFullyFilledDescription" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0 hr 0 min\nStamina is Full"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.infoBlock.staminaFullyFilledDescription.tiny" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filled Up"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.infoBlock.transformerAvailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.infoBlock.zzzScratchableCard.done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scratched"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.infoBlock.zzzScratchableCard.notYet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.material.sunday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All materials are \navailable on Sunday"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.next20Stamina:%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Until %lld Stamina:"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.nextMaxStamina" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Until Max Stamina:"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.stamina" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player Stamina"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.stamina.full" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filled Up"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.status.not_received" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(unreceived)"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.unit.day:%lld" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld day"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld days"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.unit.minute:%lld" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld min"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld mins"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.blue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blue"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.gameElements.anemo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anemo"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.gameElements.cryo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cryo"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.gameElements.dendro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dendro"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.gameElements.electro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Electro"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.gameElements.geo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geo"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.gameElements.hydro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hydro"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.gameElements.imago" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imago"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.gameElements.physico" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Physico"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.gameElements.pyro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyro"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.gameElements.quanto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quanto"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.gold" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gold"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.gray" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gray"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.green" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Green"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.intertwinedFate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "March 7th & Intertwined Fate"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.purple" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purple"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetBackgroundColorScheme.red" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.WidgetRefreshIntent.Refresh" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh"
           }
         }
       }
