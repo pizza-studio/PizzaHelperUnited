@@ -215,6 +215,24 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
         )
     }
 
+    // MARK: Internal
+
+    nonisolated internal func didObserveChangesFromSwiftData() {
+        Task { @MainActor in
+            if Defaults[.automaticallyDeduplicatePZProfiles] {
+                try await self.profileActor?.deduplicate()
+            }
+            await self.profileActor?.syncAllDataToUserDefaults()
+            ProfileManagerVM.shared.profiles = Defaults[.pzProfiles].values.sorted {
+                $0.priority < $1.priority
+            }
+            Broadcaster.shared.refreshTodayTab()
+            Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+            Broadcaster.shared.requireOSNotificationCenterAuthorization()
+            // MultiNoteViewModel 会自己主动监视且清理无效值，不用在此处再安排相关操作。
+        }
+    }
+
     // MARK: Private
 
     private let debouncer: Debouncer = .init(delay: 0.5)
@@ -260,22 +278,6 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
                     }
                 }
             }
-        }
-    }
-
-    nonisolated private func didObserveChangesFromSwiftData() {
-        Task { @MainActor in
-            if Defaults[.automaticallyDeduplicatePZProfiles] {
-                try await self.profileActor?.deduplicate()
-            }
-            await self.profileActor?.syncAllDataToUserDefaults()
-            ProfileManagerVM.shared.profiles = Defaults[.pzProfiles].values.sorted {
-                $0.priority < $1.priority
-            }
-            Broadcaster.shared.refreshTodayTab()
-            Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
-            Broadcaster.shared.requireOSNotificationCenterAuthorization()
-            // MultiNoteViewModel 会自己主动监视且清理无效值，不用在此处再安排相关操作。
         }
     }
 }
