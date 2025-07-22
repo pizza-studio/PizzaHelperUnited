@@ -20,8 +20,9 @@ extension BundledWallpaper {
 public struct LiveActivityWallpaperView: View {
     // MARK: Lifecycle
 
-    public init(game: Pizza.SupportedGame? = nil) {
+    public init(game: Pizza.SupportedGame? = nil, wpIDOverride: Set<String> = []) {
         self.game = game
+        self.wpIDOverride = wpIDOverride.isEmpty ? nil : wpIDOverride
     }
 
     // MARK: Public
@@ -55,26 +56,39 @@ public struct LiveActivityWallpaperView: View {
 
     @StateObject private var broadcaster = Broadcaster.shared
     @StateObject private var folderMonitor = UserWallpaperFileHandler.folderMonitor
+    @State private var wpIDOverride: Set<String>?
 
     @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
 
     private let game: Pizza.SupportedGame?
 
+    private var wpIDs: Binding<Set<String>> {
+        .init {
+            wpIDOverride ?? liveActivityWallpaperIDs
+        } set: { newValue in
+            if wpIDOverride != nil {
+                wpIDOverride = newValue
+            } else {
+                liveActivityWallpaperIDs = newValue
+            }
+        }
+    }
+
     private var viewRefreshHash: Int {
         Set(
             [
                 broadcaster.eventForUserWallpaperDidSave.hashValue,
-                liveActivityWallpaperIDs.hashValue,
+                wpIDs.wrappedValue.hashValue,
                 folderMonitor.stateHash.hashValue,
             ]
         ).hashValue
     }
 
-    private var labvParser: LiveActivityBackgroundValueParser { .init($liveActivityWallpaperIDs) }
+    private var labvParser: LiveActivityBackgroundValueParser { .init(wpIDs) }
 
     private var currentSettings: BackgroundSettings {
         if labvParser.useEmptyBackground.wrappedValue { return .noBackground }
-        let ids = liveActivityWallpaperIDs
+        let ids = wpIDs.wrappedValue
         var idsToRemove: Set<String> = []
         let mapped: [Wallpaper] = ids.compactMap { idStr in
             Wallpaper(id: idStr) {
@@ -82,7 +96,7 @@ public struct LiveActivityWallpaperView: View {
             }
         }
         if !idsToRemove.isEmpty {
-            liveActivityWallpaperIDs = ids.subtracting(idsToRemove)
+            wpIDs.wrappedValue = ids.subtracting(idsToRemove)
         }
         return .multiple(.init(mapped))
     }
