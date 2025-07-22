@@ -22,25 +22,26 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
     // MARK: Public
 
     public var body: some View {
-        let mainContent = contentView
+        let mainContent = Group {
+            if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
+                Button(intent: RendererIntent()) {
+                    contentView
+                }
+                .buttonStyle(.plain)
+            } else {
+                contentView
+            }
+        }
+        mainContent
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         #if !os(watchOS)
             .background {
                 LiveActivityWallpaperView(game: context.state.game)
                     .scaleEffect(context.state.game == .starRail ? 1.05 : 1) // HSR 的名片有光边。
             }
         #endif
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .activityBackgroundTint(.clear)
-        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
-            Button(intent: RendererIntent()) {
-                mainContent
-            }
-            .buttonStyle(.plain)
             .ignoresSafeArea()
-        } else {
-            mainContent
-                .ignoresSafeArea()
-        }
     }
 
     // MARK: Internal
