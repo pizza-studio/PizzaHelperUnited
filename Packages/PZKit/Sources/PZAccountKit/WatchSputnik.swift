@@ -115,6 +115,7 @@ extension AppleWatchSputnik: WCSessionDelegate {
                     await ProfileManagerVM.shared
                         .profileActor?
                         .watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
+                    await ProfileManagerVM.shared.didObserveChangesFromSwiftData()
                 }
                 await assertion.release()
             }
