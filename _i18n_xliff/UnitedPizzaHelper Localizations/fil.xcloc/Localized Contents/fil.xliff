@@ -1,168 +1,292 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
-  <file original="Packages/AbyssRankKit/Sources/AbyssRankKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
+  <file original="INIntents4iOS16/en.lproj/PZProfileIntentBackports.strings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
-      <trans-unit id="abyssRankKit.availableSince20230401" xml:space="preserve">
-        <source>Available From 2023-04-01</source>
-        <target state="translated">Magagamit Mula 2023-04-01</target>
+      <trans-unit id="appEntity_localProfile" xml:space="preserve">
+        <source>Profile</source>
+        <target>Profile</target>
+        <note>appEntity_</note>
+      </trans-unit>
+      <trans-unit id="appEntity_widgetBackground" xml:space="preserve">
+        <source>Widget Background</source>
+        <target>Likuran ng Widget</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.collection.1:%@%@%lld" xml:space="preserve">
-        <source>%@·%@·Floor %lld</source>
-        <target state="translated">%@·%@·Palapag %lld</target>
-        <note>detail</note>
+      <trans-unit id="appEnum_ExpeditionDisplayPolicy_displayExclusively" xml:space="preserve">
+        <source>Display Exclusively</source>
+        <target>Ipakita nang Eksklusibo</target>
+        <note>appEnum_</note>
       </trans-unit>
-      <trans-unit id="abyssRankKit.collection.2:%@%@%lld%@" xml:space="preserve">
-        <source>%@·%@·Floor %lld·%@</source>
-        <target state="translated">%@·%@·Palapag %lld·%@</target>
-        <note>detail</note>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.half.1" xml:space="preserve">
-        <source>1st</source>
-        <target state="translated">ika-1</target>
+      <trans-unit id="appEnum_ExpeditionDisplayPolicy_displayWhenAvailable" xml:space="preserve">
+        <source>Display If Available</source>
+        <target>Ipakita Kung May Magagamit</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.half.2" xml:space="preserve">
-        <source>2nd</source>
-        <target state="translated">Ika-2</target>
+      <trans-unit id="appEnum_ExpeditionDisplayPolicy_neverDisplay" xml:space="preserve">
+        <source>Never Display</source>
+        <target>Hindi Kailanman Ipakita</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.faq" xml:space="preserve">
-        <source>Spiral Abyss Top Lists FAQ</source>
-        <target state="translated">Mga FAQ ng Nangungunang Listahan sa Spiral Abyss</target>
+      <trans-unit id="appEnum_ExpeditionDisplayPolicy_title" xml:space="preserve">
+        <source>Expedition Display Policy</source>
+        <target>Patakaran sa Pagpapakita ng Ekspedisyon</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.floor.title:%lld" xml:space="preserve">
-        <source>F.%lld</source>
-        <target state="translated">F.%lld</target>
+      <trans-unit id="appEnum_StaminaContentRevolverStyle_asRoundMeter" xml:space="preserve">
+        <source>Round Meter</source>
+        <target>Bilog na Metro</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.holdingRate.36star" xml:space="preserve">
-        <source>36-Star Player Owning Rate</source>
-        <target state="translated">Rate ng Pagmamay-ari ng 36-Star Player</target>
+      <trans-unit id="appEnum_StaminaContentRevolverStyle_asTimeStampWhenWillAccomplish" xml:space="preserve">
+        <source>Timestamp (when finished)</source>
+        <target>Timestamp (kapag natapos)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.holdingRate.all" xml:space="preserve">
-        <source>All Player Owning Rate</source>
-        <target state="translated">Antas ng Pagmamay-ari ng Lahat ng Manlalaro</target>
+      <trans-unit id="appEnum_StaminaContentRevolverStyle_asTimerCountDown" xml:space="preserve">
+        <source>Countdown Timer</source>
+        <target>Countdown Timer</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.note.1" xml:space="preserve">
-        <source>· 36-star players only · Percentage = Used Players / Owning Players</source>
-        <target state="translated">· 36-bituin na manlalaro lamang · Porsyento = Ginamit na Manlalaro / Nagmamay-ari na Manlalaro</target>
+      <trans-unit id="appEnum_StaminaContentRevolverStyle_byDefault" xml:space="preserve">
+        <source>Default</source>
+        <target>Default</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.note.2" xml:space="preserve">
-        <source>·36-star players only·Teams including Travelers are merged</source>
-        <target state="translated">·Para sa mga manlalaro na may 36-star lang·Pinagsama ang mga team na kasama ang Travelers</target>
+      <trans-unit id="appEnum_StaminaContentRevolverStyle_title" xml:space="preserve">
+        <source>Auto Rotation of Stamina Widget Styles</source>
+        <target>Awtomatikong Pag-ikot ng mga Estilo ng Stamina Widget</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.note.3" xml:space="preserve">
-        <source>· Data collected after %@</source>
-        <target state="translated">· Datos na nakolekta pagkatapos ng %@</target>
+      <trans-unit id="appEnum_WeeklyBossesDisplayMethod_alwaysHidden" xml:space="preserve">
+        <source>always hidden</source>
+        <target>laging nakatago</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.season.1" xml:space="preserve">
-        <source>FH</source>
-        <target state="translated">FH</target>
+      <trans-unit id="appEnum_WeeklyBossesDisplayMethod_alwaysVisible" xml:space="preserve">
+        <source>always visible</source>
+        <target>laging nakikita</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.season.2" xml:space="preserve">
-        <source>SH</source>
-        <target state="translated">SH</target>
+      <trans-unit id="appEnum_WeeklyBossesDisplayMethod_hiddenIfAllCompleted" xml:space="preserve">
+        <source>hidden if all completed</source>
+        <target>nakatago kung natapos lahat</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.season.both" xml:space="preserve">
-        <source>Both</source>
-        <target state="translated">Pareho</target>
+      <trans-unit id="appEnum_WeeklyBossesDisplayMethod_title" xml:space="preserve">
+        <source>Weekly Bosses Info Display Method</source>
+        <target>Paraan ng Pagpapakita ng Impormasyon ng Lingguhang Bosses</target>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.season.unit" xml:space="preserve">
+      <trans-unit id="appEnum_WidgetSupportedGame_GI" xml:space="preserve">
+        <source>Genshin Impact</source>
+        <target>Genshin Impact</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum_WidgetSupportedGame_HSR" xml:space="preserve">
+        <source>Star Rail</source>
+        <target>Star Rail</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum_WidgetSupportedGame_ZZZ" xml:space="preserve">
+        <source>Zenless Zone Zero</source>
+        <target>Zenless Zone Zero</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum_WidgetSupportedGame_allGames" xml:space="preserve">
+        <source>All Games</source>
+        <target>Lahat ng Laro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum_WidgetSupportedGame_title" xml:space="preserve">
+        <source>Supported Game</source>
+        <target>Sinusuportahang Laro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_bool_false" xml:space="preserve">
+        <source>false</source>
+        <target>mali</target>
+        <note>intent_bool_</note>
+      </trans-unit>
+      <trans-unit id="intent_bool_true" xml:space="preserve">
+        <source>true</source>
+        <target>tama</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_description_chooseTheGame" xml:space="preserve">
+        <source>Choose the game</source>
+        <target>Piliin ang laro</target>
+        <note>intent_description_</note>
+      </trans-unit>
+      <trans-unit id="intent_description_pickTheLocalProfileDuoForThisWidget" xml:space="preserve">
+        <source>Choose 2 local profiles for this widget</source>
+        <target>Piliin ang dalawang lokal na profile para sa widget na ito</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_description_pickTheLocalProfileForThisWidget" xml:space="preserve">
+        <source>Choose a local profile for this widget</source>
+        <target>Piliin ang isang lokal na profile para sa widget na ito</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_echoOfWarDisplayMethod" xml:space="preserve">
+        <source>Echo of War Display</source>
+        <target>Ipakita ang Echo of War</target>
+        <note>intent_field_</note>
+      </trans-unit>
+      <trans-unit id="intent_field_expeditionDisplayPolicy" xml:space="preserve">
+        <source>Expedition Display Policy</source>
+        <target>Patakaran sa Pagpapakita ng Ekspedisyon</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_followSystemDarkMode" xml:space="preserve">
+        <source>Follow system color scheme</source>
+        <target>Sundin ang scheme ng kulay ng sistema</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_game" xml:space="preserve">
+        <source>Game</source>
+        <target>Laro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_inverseSelectMode" xml:space="preserve">
+        <source>Inverse the Selection</source>
+        <target>Baligtarin ang Pagpili</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_localProfile" xml:space="preserve">
+        <source>Local profile</source>
+        <target>Pook na lokal</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_localProfile_slot1" xml:space="preserve">
+        <source>Local profile #1</source>
+        <target>Pook na lokal #1</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_localProfile_slot2" xml:space="preserve">
+        <source>Local profile #2</source>
+        <target>Pook na lokal #2</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_showMaterialsInLargeSizeWidget" xml:space="preserve">
+        <source>[GI] Show daily materials (large-sized widgets only)</source>
+        <target>[GI] Ipakita ang mga materyales araw-araw (para sa malalaking widget lamang)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_showStaminaOnly" xml:space="preserve">
+        <source>Show Player Stamina Only</source>
+        <target>Ipakita lamang ang stamina ng manlalaro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_showTransformer" xml:space="preserve">
+        <source>[GI] Show transformer status</source>
+        <target>Ipakita ang status ng transformer</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_staminaDisplayStyle" xml:space="preserve">
+        <source>Stamina display style (Resin / Trailblazing Power / Zenless Energy)</source>
+        <target>Estilo ng pagpapakita ng Stamina (Resin / Trailblazing Power / Zenless Energy)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_trounceBlossomDisplayMethod" xml:space="preserve">
+        <source>Trounce Blossom Display</source>
+        <target>Ipakita ang Trounce Blossom</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_useRandomWallpaper" xml:space="preserve">
+        <source>Use random wallpaper</source>
+        <target>Gumamit ng random na wallpaper</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_useTinyGlassDisplayStyle" xml:space="preserve">
+        <source>Use Tiny Glass Display Style</source>
+        <target>Gumamit ng Maliit na Estilo ng Display ng Salamin</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_field_wallpaper" xml:space="preserve">
+        <source>Wallpaper</source>
+        <target>Papel de dinding</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_name_selectGameOnly" xml:space="preserve">
+        <source>Only choose the game</source>
+        <target>Piliin lamang ang laro</target>
+        <note>intent_name_</note>
+      </trans-unit>
+      <trans-unit id="intent_name_selectLocalProfile" xml:space="preserve">
+        <source>Choose Local Profile</source>
+        <target>Piliin ang Lokal na Profile</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_name_selectLocalProfile4Peripherals" xml:space="preserve">
+        <source>Choose Local Profile (only)</source>
+        <target>Pumili ng Lokal na Profile (lamang)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_name_selectLocalProfile4PeripheralsWithExtraConfig" xml:space="preserve">
+        <source>Choose Local Profile with Extra Configuration</source>
+        <target>Piliin ang Lokal na Profile na may Karagdagang Pag-configure</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent_name_selectLocalProfileDuo" xml:space="preserve">
+        <source>Choose Local Profile (Dual)</source>
+        <target>Piliin ang Lokal na Dual Profile</target>
+        <note/>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="INIntents4iOS16/InfoPlist.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>INIntents4iOS16</source>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>INIntents4iOS16</source>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
         <source/>
-        <target state="translated"/>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="INIntents4iOS16/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+    </header>
+    <body>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.server.filter.all" xml:space="preserve">
-        <source>All Server</source>
-        <target state="translated">Lahat ng Server</target>
+      <trans-unit id="appEntity.localProfile" xml:space="preserve">
+        <source>appEntity.localProfile</source>
         <note/>
       </trans-unit>
-      <trans-unit id="abyssRankKit.rank.title" xml:space="preserve">
-        <source>Spiral Abyss Top Lists</source>
-        <target state="translated">Mga Nangungunang Listahan sa Spiral Abyss</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.characterSansRestart" xml:space="preserve">
-        <source>Non-restarted Player Usage Rate</source>
-        <target state="translated">Rate ng Paggamit ng Manlalaro na Hindi Muling Nagsimula</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.characters" xml:space="preserve">
-        <source>Character Usage Rate</source>
-        <target state="translated">Rate ng Paggamit ng Karakter</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.disclaimer" xml:space="preserve">
-        <source>Utilization ratings are only for reference in Abyss team formation, and do not represent any evaluation of characters.</source>
-        <target state="translated">Ang paggamit ng ratings ay para lamang sa sanggunian sa Abyss team formation, at hindi kumakatawan sa anumang pagsusuri ng mga character.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.recommended.t0" xml:space="preserve">
-        <source>Highly Recommended Characters</source>
-        <target state="translated">Lubos na Inirerekomendang mga Karakter</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.recommended.t1" xml:space="preserve">
-        <source>Recommended Characters</source>
-        <target state="translated">Inirerekomendang mga Tauhan</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.recommended.t2" xml:space="preserve">
-        <source>Preferred Characters</source>
-        <target state="translated">Pinapaborang mga Karakter</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.recommended.t3" xml:space="preserve">
-        <source>Optional Characters</source>
-        <target state="translated">Opsyonal na Mga Karakter</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.recommended.t4" xml:space="preserve">
-        <source>Discretionary Characters</source>
-        <target state="translated">Diskresyonaryong Mga Karakter</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.recommended.t5" xml:space="preserve">
-        <source>Universally Available Characters</source>
-        <target state="translated">Pangkalahatang Magagamit na mga Karakter</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.rank.usageRate.teams" xml:space="preserve">
-        <source>Team Usage Rate</source>
-        <target state="translated">Rate ng Paggamit ng Koponan</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.stat.1:%lld%@%@%@" xml:space="preserve">
-        <source>%lld data counted %@
-%@ · Generated at %@</source>
-        <target state="translated">%lld data ang nabilang %@", %@", · Nilikha noong %@",</target>
-        <note>Only used for exported image.</note>
-      </trans-unit>
-      <trans-unit id="abyssRankKit.stat.2:%lld%@" xml:space="preserve">
-        <source>%lld data counted %@</source>
-        <target state="translated">%lld data na bilang %@</target>
+      <trans-unit id="appEntity.widgetBackground" xml:space="preserve">
+        <source>appEntity.widgetBackground</source>
         <note/>
       </trans-unit>
     </body>
   </file>
   <file original="Packages/EnkaKit/Sources/EnkaKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
+      <trans-unit id="enka.ASCV.scrollingGuide.appKit" xml:space="preserve">
+        <source>Use context menu to switch the current character;
+Tap anywhere to dismiss.</source>
+        <target state="translated">Gamitin ang context menu upang palitan ang kasalukuyang karakter;
+Tapikin kahit saan upang isara.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="enka.ASCV.summarzeToClipboard.asMD" xml:space="preserve">
         <source>Summarize to Clipboard as Markdown</source>
         <target state="translated">Ibuod sa Clipboard bilang Markdown</target>
@@ -202,17 +326,17 @@
         <note/>
       </trans-unit>
       <trans-unit id="enka.genshinStylePhotosForHSR.featureOption.disclaimer" xml:space="preserve">
-        <source>This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875).</source>
-        <target state="translated">Ang hanay ng ID photos na ito ay maaaring hindi naaangkop sa ilang pagkakataon sa app na ito. Gayundin, isang disclaimer: Ang mga ID photos ng karakter na Genshin-style ay **HINDI mula sa leaked na disenyo ng mga karakter mula sa Hoyoverse / Cognosphere / MiHoYo**. Sa halip, ang mga asset na ito ay nilikha gamit ang [mga MikuMikuDance models na inilabas ng MiHoYo sa publiko](https://www.aplaybox.com/u/516827875).</target>
+        <source>This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875) or [other publicly available resources](https://www.aplaybox.com/u/106842826).</source>
+        <target state="translated">Ang hanay ng ID photos na ito ay maaaring hindi naaangkop sa ilang pagkakataon sa app na ito. Gayundin, isang disclaimer: Ang mga ID photos ng karakter na Genshin-style ay **HINDI mula sa leaked na disenyo ng mga karakter mula sa Hoyoverse / Cognosphere / MiHoYo**. Sa halip, ang mga asset na ito ay nilikha gamit ang [mga MikuMikuDance models na inilabas ng MiHoYo sa publiko](https://www.aplaybox.com/u/516827875) o [iba pang pampublikong mapagkukunan](https://www.aplaybox.com/u/106842826).</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.credit.genshin" xml:space="preserve">
-        <source>The background totem assets used for ID Photos of Genshin Impact characters in this app are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. These totems is visible only if “Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels” is disabled.</source>
-        <target state="translated">Ang mga background totem asset na ginamit para sa ID Photos ng mga character ng Genshin Impact sa app na ito ay mula sa Star Rail (hindi kasama ang Geo, Dendro, at Hydro), na kumakatawan sa Teyvat Element ng bawat karakter. Ang mga totem na ito ay makikita lamang kung naka-disable ang “Gumamit ng Namecard backgrounds para sa ID Photos ng Genshin Characters at ShowCase Build panels.”</target>
+        <source>The background totem assets used for ID Photos of Genshin Impact characters in this app are for representing both their life paths and their elemental powers by default. The element is represented by the color used for rendering the totem. If there's no matched lifepath available, then the totem pattern will be the elemental totem instead. The elemental totem assets used in such case are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. Nevertheless, these totems' visibility can be toggled in UI Settings.</source>
+        <target state="translated">Ang mga background na totem asset na ginagamit para sa ID Photos ng mga karakter ng Genshin Impact sa app na ito ay para sa pagpapakita ng kanilang mga landas ng buhay at mga kapangyarihang elemental bilang default. Ang elemento ay kinakatawan ng kulay na ginamit sa pag-render ng totem. Kung walang tumutugmang lifepath, ang pattern ng totem ay magiging elemental totem. Ang mga asset ng elemental totem na ginagamit sa ganitong kaso ay mula sa Star Rail (maliban sa Geo, Dendro, at Hydro), na kumakatawan sa Teyvat Element ng bawat karakter. Gayunpaman, ang visibility ng mga totem na ito ay maaaring baguhin sa UI Settings.</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.credit.starRail" xml:space="preserve">
-        <source>The background totem assets used for ID Photos of Star Rail in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem.</source>
+        <source>The background totem assets used for ID Photos of Star Rail characters in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem.</source>
         <target state="translated">Ang mga background na totem asset na ginamit para sa ID Photos ng Star Rail sa app na ito ay kumakatawan sa kanilang mga landas ng buhay at ng kanilang mga kapangyarihang elemental. Ang element ay kinakatawan ng kulay na ginamit para sa pag-render ng totem.</target>
         <note/>
       </trans-unit>
@@ -387,8 +511,8 @@
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.showCase.useNameCardBGWithGICharacters" xml:space="preserve">
-        <source>Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels</source>
-        <target state="translated">Gumamit ng mga background ng Namecard para sa mga ID Photos ng Genshin Characters at mga panel ng ShowCase Build</target>
+        <source>Use Namecard backgrounds for Genshin Characters’ ShowCase Build panels</source>
+        <target state="translated">Gumamit ng mga background ng Namecard para sa ShowCase Build panels ng mga Genshin Character</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.showCase.useRealCharacterNames" xml:space="preserve">
@@ -396,11 +520,16 @@
         <target state="translated">Ipakita ang tunay na pangalan ng mga karakter sa halip</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.display.showCase.useTotemWithGenshinIDPhotos" xml:space="preserve">
+        <source>Use totem backgrounds for Genshin Characters’ ID Photos</source>
+        <target state="translated">Gumamit ng mga totem na background para sa mga ID Photo ng Genshin Characters</target>
+        <note/>
+      </trans-unit>
     </body>
   </file>
   <file original="Packages/GachaKit/Sources/GachaKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="gachaKit.EntryException.timeRawValueNotParsable" xml:space="preserve">
@@ -607,6 +736,11 @@ Empty selection indicates selecting all profiles.</source>
       <trans-unit id="gachaKit.exchange.formatExplain.uigfv4" xml:space="preserve">
         <source>UIGF v4.0, established by the UIGF committee, is a coalescent exchangeable format for gacha records of many games produced by Cognosphere and MiHoYo.</source>
         <target state="translated">Ang UIGF v4.0, na itinatag ng komite ng UIGF, ay isang pinagsanib na palitan na format para sa mga tala ng gacha ng maraming laro na ginawa ng Cognosphere at MiHoYo.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.exchange.formatExplain.uigfv4.refugee" xml:space="preserve">
+        <source>If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into a UIGFv4 format to import instead. This process is automatic.</source>
+        <target state="translated">Kung mayroon kang Old Pizza Refugee Data file na i-import, piliin ang UIGFv4 format. Awtomatikong sisimulan ng app ang pag-convert ng mga gacha entry, aayusin ang lahat ng itemID, at iko-convert ang mga ito sa UIGFv4 format para i-import. Ang prosesong ito ay awtomatiko.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.info.time" xml:space="preserve">
@@ -825,13 +959,13 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents" xml:space="preserve">
-        <source>Due to occasional server-side accidents, the game server may return duplicated gacha entries with incorrect transaction IDs, polluting the local database. If the bleaching mode is enabled, this app will use the latest fetch results as the trust source of correct transaction IDs and remove the incorrect entries on the local side, but this can be deceived by the polluted data from the game server. Nevertheless, as long as a game version deprecates, all gacha records during its operation period will become static and trustable.</source>
-        <target state="translated">Dahil sa mga hindi inaasahang insidente sa server, maaaring magbalik ang game server ng mga dobleng gacha entry na may maling transaction ID, na nagdudulot ng polusyon sa lokal na database. Kung naka-enable ang bleaching mode, gagamitin ng app na ito ang pinakabagong resulta ng pagkuha bilang mapagkakatiwalaang pinagmulan ng tamang transaction ID at aalisin ang maling entry, ngunit maaaring malinlang ng kontaminadong data mula sa game server. Gayunpaman, kapag ang isang game version ay nag-expire, lahat ng gacha record mula sa operasyon nito ay magiging static at mapagkakatiwalaan.</target>
+        <source>We are not authorized to publicly state what actually happened on the server hosting official gacha records. The following descriptions are assumptions based on observations. Due to possible occasional server-side issues, the game server might return duplicated gacha entries with incorrect transaction IDs, potentially polluting the local database. If the bleaching mode is enabled, this app will use the latest fetch results as the trusted source for correct transaction IDs and remove possibly incorrect entries locally, but this could be affected by potentially polluted data from the game server. Nevertheless, once a game version deprecates, all gacha records during its operation period are likely to become static and trustworthy.</source>
+        <target state="translated">Kami ay hindi awtorisadong maghayag sa publiko kung ano ang aktuwal na nangyari sa server na nagho-host ng mga opisyal na rekord ng gacha. Ang mga sumusunod na paglalarawan ay mga palagay batay sa mga obserbasyon. Dahil sa posibleng mga paminsan-minsang isyu sa server, maaaring magbalik ang game server ng mga dobleng gacha entry na may maling transaction ID, na posibleng magdulot ng polusyon sa lokal na database. Kung naka-enable ang bleaching mode, gagamitin ng app na ito ang pinakabagong resulta ng pagkuha bilang mapagkakatiwalaang pinagmulan ng tamang transaction ID at aalisin ang mga posibleng maling entry nang lokal, ngunit maaaring maapektohan ito ng potensyal na kontaminadong data mula sa game server. Gayunpaman, kapag ang isang game version ay nag-expire, malamang na ang lahat ng gacha record mula sa operasyon nito ay magiging static at mapagkakatiwalaan.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents.linkTitle" xml:space="preserve">
-        <source>Local database can get polluted? Why?</source>
-        <target state="translated">Ang lokal na database ay maaaring marumihan? Bakit?</target>
+        <source>Why invalid records appear in pulled results?</source>
+        <target state="translated">Bakit lumilitaw ang mga hindi wastong rekord sa mga hinintay na resulta?</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.sectionHeader.urgeUsersToBackupFirst" xml:space="preserve">
@@ -900,8 +1034,8 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.exchangeGachaRecords" xml:space="preserve">
-        <source>Import / Export Gacha Records</source>
-        <target state="translated">I-import / I-export ang mga Rekord ng Gacha</target>
+        <source>Import / Export Gacha Records from File</source>
+        <target state="translated">I-import / I-export ang mga Rekord ng Gacha mula sa File</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.inheritCloudDataFromPreviousVersions" xml:space="preserve">
@@ -969,6 +1103,16 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Pangyayari ng Pagwarp ng Tauhan</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.poolType.srCollabWarpFateUBWCharacter" xml:space="preserve">
+        <source>Collab. Character Warp</source>
+        <target state="translated">Collaboration Character Warp</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.poolType.srCollabWarpFateUBWLightCone" xml:space="preserve">
+        <source>Collab. Light Cone Warp</source>
+        <target state="translated">Collaboration Light Cone Warp</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.poolType.srDepartureWarp" xml:space="preserve">
         <source>Departure Warp</source>
         <target state="translated">Pag-alis Warp</target>
@@ -1034,6 +1178,11 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Pumili ng isang gacha profile. Kung walang makita, mangyaring mag-import muna ng ilang gacha records.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.prompt.remoteChangesDetected.withRecommendedAction" xml:space="preserve">
+        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Rebuild Gacha UID List” or restart this app to let those changes visible to you.</source>
+        <target state="translated">May natukoy na remote iCloud SwiftData na mga pagbabago at naipatupad na sa backend. Pakisuri ang dropdown menu sa itaas-kanan upang patakbuhin ang “Rebuild Gacha UID List” o i-restart ang app na ito upang makita ang mga pagbabagong iyon.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.reviewFromAppraiser.gi" xml:space="preserve">
         <source>Paimon’s Appraisement</source>
         <target state="translated">Pagsusuri ni Paimon</target>
@@ -1069,9 +1218,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Mga Naiipon na Hila (mula noong huling ★5)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.surinukeEvasionRate" xml:space="preserve">
-        <source>Surinuke Evasion Rate</source>
-        <target state="translated">Rate ng Surinuke Evasion</target>
+      <trans-unit id="gachaKit.stats.standardItemHitRate" xml:space="preserve">
+        <source>Standard Hit Rate</source>
+        <target state="translated">Standard Hit Rate</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.totalPulls" xml:space="preserve">
@@ -1088,7 +1237,7 @@ Empty selection indicates selecting all profiles.</source>
   </file>
   <file original="Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="todayMaterialsKit.character.short" xml:space="preserve">
@@ -1130,7 +1279,7 @@ Empty selection indicates selecting all profiles.</source>
   </file>
   <file original="Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/MaterialNames.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="asset.dailyMaterial:talentAdmonition" xml:space="preserve">
@@ -1317,7 +1466,7 @@ Empty selection indicates selecting all profiles.</source>
   </file>
   <file original="Packages/PZAboutKit/Sources/PZAboutKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="aboutKit.3rdParty.headline" xml:space="preserve">
@@ -1475,6 +1624,11 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">YouTube</target>
         <note/>
       </trans-unit>
+      <trans-unit id="aboutKit.contributor.retiredOn:%@" xml:space="preserve">
+        <source>Stopped participating in the development since: %@</source>
+        <target state="translated">Tumigil sa paglahok sa pag-develop mula: %@</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.koni" xml:space="preserve">
         <source>App Icon Illustrator, The Pizza Helper (v5 Engine Testflight)</source>
         <target state="translated">Illustrator ng App Icon, The Pizza Helper (v5 Engine Testflight)</target>
@@ -1487,9 +1641,9 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.xinzoruo" xml:space="preserve">
         <source>App Icon Illustrator, Pizza Helper for Genshin (v4)
-App Icon Illustrator, The Pizza Helper (v5)</source>
+App Icon Illustrator, The Pizza Helper (v5.0)</source>
         <target state="translated">Illustrador ng Icon ng App, Pizza Helper for Genshin (v4)
-Illustrator ng App Icon, The Pizza Helper (v5)</target>
+Illustrator ng App Icon, The Pizza Helper (v5.0)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.yulijushi" xml:space="preserve">
@@ -1587,7 +1741,7 @@ Illustrator ng App Icon, The Pizza Helper (v5)</target>
         <target state="translated">Ngô Phi Phương</target>
         <note>Localization Contributor (VI)</note>
       </trans-unit>
-      <trans-unit id="aboutKit.contributors.name.pan93412" xml:space="preserve">
+      <trans-unit id="aboutKit.contributors.name.panbystar" xml:space="preserve">
         <source>Pan93412</source>
         <target state="translated">Pan93412</target>
         <note/>
@@ -1627,6 +1781,12 @@ Illustrator ng App Icon, The Pizza Helper (v5)</target>
         <target state="translated">I-update</target>
         <note/>
       </trans-unit>
+      <trans-unit id="aboutKit.ourApps.miHoYoCopyrightNotice" xml:space="preserve">
+        <source>Copyright (excl. the Swift program part of this app): (c) All rights reserved by miHoYo and its subsidiaries. Other properties and any right, title, and interest thereof and therein (intellectual property rights included) not derived from miHoYo's game titles ("Star Rail", "Genshin Impact", "Zenless Zone Zero", etc.) belong to their respective owners.</source>
+        <target state="translated">Copyright (hindi kasama ang bahagi ng programa ng Swift ng app na ito): (c) Lahat ng karapatan ay nakalaan kay miHoYo at sa mga subsidiary nito. Ang iba pang mga ari-arian at anumang karapatan, titulo, at interes nito at doon (kabilang ang mga karapatan sa intelektwal na ari-arian) na hindi nagmula sa mga pamagat ng laro ng miHoYo ("Star Rail", "Genshin Impact", "Zenless Zone Zero", atbp.) ay pag-aari ng kani-kanilang may-ari.&#13;
+</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="aboutKit.ourApps.pizzaStudio" xml:space="preserve">
         <source>Pizza Studio</source>
         <target state="translated">Pizza Studio</target>
@@ -1637,6 +1797,11 @@ Illustrator ng App Icon, The Pizza Helper (v5)</target>
         <target state="translated">Isang koponan ng mga developer ng FOSS</target>
         <note/>
       </trans-unit>
+      <trans-unit id="aboutKit.ourApps.pizzaStudioCopyrightNotice" xml:space="preserve">
+        <source>Copyright (the Swift program part of this app, excluding the data models used for decoding external JSON files): (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).</source>
+        <target state="translated">Copyright (ang bahagi ng programa ng Swift ng app na ito, hindi kasama ang mga modelo ng data na ginamit para sa pag-decode ng mga panlabas na JSON file): (c) 2024 at pasulong Pizza Studio (AGPL v3.0 License o mas bago).</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="aboutKit.ourApps.pzHelper" xml:space="preserve">
         <source>The Pizza Helper</source>
         <target state="translated">Ang Tumulong sa Pizza</target>
@@ -1644,13 +1809,9 @@ Illustrator ng App Icon, The Pizza Helper (v5)</target>
       </trans-unit>
       <trans-unit id="aboutKit.ourApps.pzHelper.description" xml:space="preserve">
         <source>- The successor of both PizzaHelper4Genshin and PizzaHelper4HSR. Powered by the next-generation United Pizza Engine.
-- The program part of this software is open-sourced under AGPLv3 License.
-- The Pizza Helper and its predecessors are not affiliated with miHoYo Co., Ltd. nor its subsidiaries.
-- The game contents and materials of the following titles are trademarks and copyrights of miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”.</source>
+- This app is not a miHoYo official product but a fan creation.</source>
         <target state="translated">- Ang kahalili ng parehong PizzaHelper4Genshin at PizzaHelper4HSR. Pinapagana ng next-generation na United Pizza Engine.
-- Ang bahagi ng programa ng software na ito ay open-sourced sa ilalim ng AGPLv3 License.
-- Ang Pizza Helper at ang mga nauna nitong bersyon ay hindi kaanib sa miHoYo Co., Ltd. ni sa mga subsidiaries nito.
-- Ang mga nilalaman ng laro at mga materyales ng mga sumusunod na pamagat ay trademarks at copyrights ng miHoYo Co., Ltd.: "Star Rail (HSR)", "Genshin Impact", "Zenless Zone Zero".</target>
+- Ang app na ito ay hindi opisyal na produkto ng miHoYo, kundi isang likha ng mga tagahanga.</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.ourApps.pzHelper4BA" xml:space="preserve">
@@ -1685,121 +1846,9 @@ Illustrator ng App Icon, The Pizza Helper (v5)</target>
       </trans-unit>
     </body>
   </file>
-  <file original="Packages/PZDictionaryKit/Sources/PZDictionaryKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
-    </header>
-    <body>
-      <trans-unit id="tool.dictionary.detail.copy_succeeded" xml:space="preserve">
-        <source>Copied</source>
-        <target state="translated">Nakopya</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.detail.target.header" xml:space="preserve">
-        <source>Hit words</source>
-        <target state="translated">Mga natamang salita</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.detail.title" xml:space="preserve">
-        <source>Detail</source>
-        <target state="translated">Detalye</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.detail.translations.header" xml:space="preserve">
-        <source>Translations</source>
-        <target state="translated">Mga Salin</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.fetch_more" xml:space="preserve">
-        <source>Click here to fetch more results.</source>
-        <target state="translated">I-click dito para makuha ang higit pang mga resulta.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.english" xml:space="preserve">
-        <source>English</source>
-        <target state="translated">Ingles</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.french" xml:space="preserve">
-        <source>French</source>
-        <target state="translated">Pranses</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.german" xml:space="preserve">
-        <source>German</source>
-        <target state="translated">Aleman</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.indonesian" xml:space="preserve">
-        <source>Indonesian</source>
-        <target state="translated">Indonesyo</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.japanese" xml:space="preserve">
-        <source>Japanese</source>
-        <target state="translated">Hapones</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.korean" xml:space="preserve">
-        <source>Korean</source>
-        <target state="translated">Koreano</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.portuguese" xml:space="preserve">
-        <source>Portuguese</source>
-        <target state="translated">Portuges</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.russian" xml:space="preserve">
-        <source>Russian</source>
-        <target state="translated">Ruso</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.simplified_chinese" xml:space="preserve">
-        <source>Simplified Chinese</source>
-        <target state="translated">Pinapayak na Tsino</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.spanish" xml:space="preserve">
-        <source>Spanish</source>
-        <target state="translated">Espanyol</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.thai" xml:space="preserve">
-        <source>Thai</source>
-        <target state="translated">Thai</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.traditional_chinese" xml:space="preserve">
-        <source>Traditional Chinese</source>
-        <target state="translated">Tradisyunal na Tsino</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.language.vietnamese" xml:space="preserve">
-        <source>Vietnamese</source>
-        <target state="translated">Biyetnames</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.not_found" xml:space="preserve">
-        <source>No result. Try another. </source>
-        <target state="translated">Walang nahanap. Subukang muli. </target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.prompt_for_keywords" xml:space="preserve">
-        <source>Type some keywords to start a query.</source>
-        <target state="translated">Mag-type ng ilang mga keyword upang simulan ang isang query.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="tool.dictionary.title" xml:space="preserve">
-        <source>Pizza Dictionary</source>
-        <target state="translated">Diksyunaryong Pizza</target>
-        <note/>
-      </trans-unit>
-    </body>
-  </file>
   <file original="Packages/PZHelper-Watch/Sources/PZHelper-Watch/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="watch.dailyNote.card.dailyTask.label" xml:space="preserve">
@@ -1914,11 +1963,6 @@ Illustrator ng App Icon, The Pizza Helper (v5)</target>
         <target state="translated">Mangyaring maghintay para sa pag-sync ng data mula sa iCloud. Kung ikaw ay nasa TestFlight, malamang na kailangan mong i-force-push ang mga lokal na profile sa relo na ito mula sa bersyon ng app na ito para sa iOS.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="watch.widget.settings.sync.frequency.title" xml:space="preserve">
-        <source>Widget Sync Frequency</source>
-        <target state="translated">Dalas ng Pag-sync ng Widget</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="watch.widget.settings.sync.speed:%@" xml:space="preserve">
         <source>Per %@</source>
         <target state="translated">Ayon sa %@</target>
@@ -1928,7 +1972,7 @@ Illustrator ng App Icon, The Pizza Helper (v5)</target>
   </file>
   <file original="Packages/PZHelper/Sources/PZHelper/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="Error: %@" xml:space="preserve">
@@ -1936,9 +1980,9 @@ Illustrator ng App Icon, The Pizza Helper (v5)</target>
         <target state="translated">Error: %@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="FAQ" xml:space="preserve">
-        <source>FAQ</source>
-        <target state="translated">Mga Madalas Itanong</target>
+      <trans-unit id="app.appName.full" xml:space="preserve">
+        <source>The Pizza Helper</source>
+        <target state="translated">The Pizza Helper</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.dailynote.card.dailyTask.extraReward.notReceived" xml:space="preserve">
@@ -2063,6 +2107,11 @@ Retrieved</source>
         <target state="translated">Walang lokal na profile na natagpuan sa device na ito. Maaari kang pumunta sa App Settings page at magdagdag ng isa. :)</target>
         <note/>
       </trans-unit>
+      <trans-unit id="app.dailynote.noCard.switchToSettingsPage" xml:space="preserve">
+        <source>Go To Settings Page</source>
+        <target state="translated">Pumunta sa Settings Page</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="app.language.restartRequired.description" xml:space="preserve">
         <source>New UI language settings of an app on macOS / iOS always require the app to restart to make sure the new language setting becomes effective to it. Even if the user manually change this through System Settings, user will still be prompted the necessity of restarting the app, and it will be not this app but the macOS / iOS who prompts it.
 
@@ -2074,6 +2123,11 @@ This app will quit after you confirm this message.</source>
 Ginawa namin ang language switcher na ito upang makatipid ng ilang segundo para sa mga gumagamit. Ang disenyo na ito ay napaka-ADHD-friendly sapagkat ang mga may ADHD ay madalas nakakalimutan ang gagawin habang naglilipat-lipat sa mga naka-nest na pahina sa System Settings ng iOS / macOS.
 
 Ang app na ito ay magsasara pagkatapos mong kumpirmahin ang mensaheng ito.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="app.language.restartRequired.widgets.description" xml:space="preserve">
+        <source>Some features, such as System Notifications, Widgets, etc., require restarting Springboard (on iOS) or logging out and back in (on macOS) to apply changes to this setting. If this feels complex, you may simply reboot your device instead. Note that already-scheduled system notifications may not reflect the latest app language change.</source>
+        <target state="translated">Ang ilang feature, tulad ng System Notifications, Widgets, atbp., ay nangangailangan ng pag-restart ng Springboard (sa iOS) o pag-log out at muling pag-login (sa macOS) upang maipatupad ang mga pagbabago sa setting na ito. Kung pakiramdam mo ay kumplikado ito, maaari kang mag-reboot na lang ng iyong device. Tandaan na ang mga naka-iskedyul nang system notification ay maaaring hindi sumasalamin sa pinakabagong pagbabago sa wika ng app.</target>
         <note/>
       </trans-unit>
       <trans-unit id="dpv.characterInventory.navTitle" xml:space="preserve">
@@ -2091,6 +2145,11 @@ Ang app na ito ay magsasara pagkatapos mong kumpirmahin ang mensaheng ito.</targ
         <target state="translated">I-tap dito upang makita ang mga dating naka-cache na resulta.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="dpv.peripherals.footer.whySomeContentsAreRemoved" xml:space="preserve">
+        <source>The "Travel Stats" and "Trailblazing Stats" features have been intentionally removed, as they did not provide a better user experience compared to those offered by HoYoLAB and Miyoushe.</source>
+        <target state="translated">Ang mga tampok na „Mga Estadistika ng Paglalakbay“ at „Stats ng Pagtahak“ ay sadyang inalis dahil hindi nila naibigay ang mas magandang karanasan ng gumagamit kumpara sa mga inaalok ng HoYoLAB at Miyoushe.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="dpv.query.menuCommandTitle" xml:space="preserve">
         <source>Showcase Query</source>
         <target state="translated">Query sa Pagpapakita</target>
@@ -2099,6 +2158,11 @@ Ang app na ito ay magsasara pagkatapos mong kumpirmahin ang mensaheng ito.</targ
       <trans-unit id="profile.accountConnectivity.buttonTitle" xml:space="preserve">
         <source>Test connection</source>
         <target state="translated">Subukin ang koneksyon</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="profile.accountConnectivity.insufficientDataVisibility" xml:space="preserve">
+        <source>Please expose the data visibility of this UID through HoYoLAB / Miyoushe app. If you are the UID owner, you may follow the following screenshot to config the data visibility.</source>
+        <target state="translated">Paki-hayag ang visibility ng datos ng UID na ito sa pamamagitan ng HoYoLAB / Miyoushe app. Kung ikaw ang may-ari ng UID na ito, maaari mong sundan ang sumusunod na screenshot upang i-config ang visibility ng datos.</target>
         <note/>
       </trans-unit>
       <trans-unit id="profile.label.allowNotification" xml:space="preserve">
@@ -2121,9 +2185,9 @@ Ang app na ito ay magsasara pagkatapos mong kumpirmahin ang mensaheng ito.</targ
         <target state="translated">Fingerprint ng Device</target>
         <note/>
       </trans-unit>
-      <trans-unit id="profile.label.fp.extraNotice.zzz" xml:space="preserve">
-        <source>⚠︎ Zenless Zone Zero UIDs governed by Miyoushe require the user to manually fill in his / her device fingerprint by himself / herself.</source>
-        <target state="translated">⚠︎ Ang mga Zenless Zone Zero UID na pinamamahalaan ng Miyoushe ay nangangailangan na manu-manong punan ng user ang fingerprint ng kanyang device.</target>
+      <trans-unit id="profile.label.fp.extraNotice.deviceFP" xml:space="preserve">
+        <source>⚠︎ UIDs governed by Miyoushe might need the user to manually fill in his / her device fingerprint by himself / herself in order to show some extra information.</source>
+        <target state="translated">⚠︎ Ang mga UID na pinamamahalaan ng Miyoushe ay maaaring mangailangan na manu-manong punan ng user ang fingerprint ng kanyang device upang magpakita ng karagdagang impormasyon.</target>
         <note/>
       </trans-unit>
       <trans-unit id="profile.label.game" xml:space="preserve">
@@ -2202,8 +2266,8 @@ Ang app na ito ay magsasara pagkatapos mong kumpirmahin ang mensaheng ito.</targ
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.2" xml:space="preserve">
-        <source>This procedure is not an illegal procedure such as plug-ins. This program abides by the relevant content of miHoYo's secondary creation rules. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ.</source>
-        <target state="translated">Ang pamamaraang ito ay hindi isang ilegal na pamamaraan gaya ng mga plug-in. Ang programang ito ay sumusunod sa kaukulang nilalaman ng mga patakaran ng sekundaryong paglikha ng miHoYo. Ang App na ito ay isang proyekto ng bukas na pinagmulan. Maaaring suriin at bantayan ng lahat ang lahat ng mga nakapaloob na kilos ng programang ito. Para sa mga detalye, tingnan ang Mga Setting - FAQ.</target>
+        <source>This procedure is not like those illegal procedures such as infiltrative cheating injectors (i.e. mods). This program abides by the relevant content of miHoYo's secondary creation rules. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ.</source>
+        <target state="translated">Ang pamamaraang ito ay hindi isang ilegal na pamamaraan gaya ng infiltrative cheating injectors (hal. mods). Ang programang ito ay sumusunod sa kaukulang nilalaman ng mga patakaran ng sekundaryong paglikha ng miHoYo. Ang App na ito ay isang proyekto ng bukas na pinagmulan. Maaaring suriin at bantayan ng lahat ang lahat ng mga nakapaloob na kilos ng programang ito. Para sa mga detalye, tingnan ang Mga Setting - FAQ.</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.title.1" xml:space="preserve">
@@ -2458,6 +2522,91 @@ Ang link sa itaas, kapag direktang na-click, ay awtomatikong ilalapat ang user-a
         <target state="translated">Ginawa ang pahinang ito alinsunod sa hinihingi ng Lupon ng Pagsusuri ng App Store.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="refugee.export.failedInSavingToFile" xml:space="preserve">
+        <source>Failed from dumping the Old Pizza Refugee Data file.</source>
+        <target state="translated">Nabigo sa pag-export ng Old Pizza Refugee Data file.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.fileSavedTo:" xml:space="preserve">
+        <source>Successfully dumped the Old Pizza Refugee Data file to:</source>
+        <target state="translated">Matagumpay na na-export ang Old Pizza Refugee Data file sa:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.succeededInSavingToFile" xml:space="preserve">
+        <source>Successfully dumped the Old Pizza Refugee Data file.</source>
+        <target state="translated">Matagumpay na na-export ang Old Pizza Refugee Data file.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.exportableCount.gachaEntries" xml:space="preserve">
+        <source>Wish Record Entries</source>
+        <target state="translated">Mga Entry ng Wish Record</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.exportableCount.header" xml:space="preserve">
+        <source>Exportable Data Count</source>
+        <target state="translated">Bilang ng Maaaring I-export na Data</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.exportableCount.profiles" xml:space="preserve">
+        <source>Local Profiles</source>
+        <target state="translated">Mga Lokal na Profile</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.footer.exportInstructions" xml:space="preserve">
+        <source>You may tap the button situated in the top-trailing of this view to start preparing the data for export. Once the data is successfully prepared for export, the file export dialog will pop-up to ask you where do you want to place the file.</source>
+        <target state="translated">Maaari mong i-tap ang button sa itaas na kanang bahagi ng view na ito upang simulan ang paghahanda ng data para sa export. Kapag handa na ang data, lalabas ang file export dialog para itanong kung saan mo gustong ilagay ang file.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.footer.whyServiceTerminatedForOS21" xml:space="preserve">
+        <source>This device's system version is older than OS24 (iOS 17 / macOS 14 / watchOS 10), which falls outside the current service perimeter of The Pizza Helper.
+
+Both main developers of "Pizza Helper for Genshin" (up to v4) had to step down from development in 2024 due to their own career plans, and the development of "Pizza Helper for HSR" was also suspended. The remaining developer found it overwhelming to maintain both apps alone, hence the launch of the "Unified Pizza Engine" project to combine both apps. This resulted in "The Pizza Helper" v5 which was released in mid-November 2024.
+
+The built-in SwiftUI frameworks in older system versions have many defects that significantly affect maintenance efficiency. Therefore, the Unified Pizza Engine chose OS24 (iOS 17 / macOS 14 / watchOS 10) as its primary development target. The Observable Macro framework introduced in this generation allows the frontend to respond more quickly and precisely to micro-scale backend data changes, instead of the old Combine-based approach that would often redraw the entire UI at once. The old technology could even cause delayed UI updates and other issues, negatively impacting both user experience and development efficiency. Additionally, OS24 introduced SwiftData, which solves CoreData's long-standing concurrency-safety issues. The entire development process of the Unified Pizza Engine leverages Swift's modern concurrency technologies.
+
+Starting from v2.5.0, "Pizza Helper for Genshin" supported the "Spiral Abyss Top Lists" (and the related personal battle report uploading feature), which was available on OS21 (iOS 14, macOS 11, watchOS 8). After the release of Pizza Helper v5 at the end of 2024, the project, out of various concerns, implemented a "zero data collection" strategy. As a result, the Spiral Abyss Leaderboard and related personal battle report uploading features were discontinued in the summer of 2025. However, this poses an obvious data security risk for existing users who cannot upgrade to OS24: after the incoming decommission of the dedicated leaderboard server, older versions of the app on older systems may still try to upload data. If the server's IP address falls into the hands of a new owner, it could lead to uncontrollable information security risks.
+
+To address this, the three developers reached a consensus: allow The Pizza Helper v5 to be built and executable for OS21 (iOS 14, etc.) with a limitation for systems below OS24: The Pizza Helper v5 will no longer provide any features on OS21 ~ OS23 except allowing users to export their old account data (i.e. the current saying "local profile") and draw history for import on a new device running OS24 and above.
+
+The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, so it can no longer provide service to users on systems below OS24. As always, FOSS (Free and Open Source Software) does not mean unlimited availability or unlimited responsibility. We hope for the understanding of all affected users.</source>
+        <target state="translated">Ang bersyon ng system ng device na ito ay mas luma kaysa OS24 (iOS 17 / macOS 14 / watchOS 10), kaya hindi ito saklaw ng kasalukuyang serbisyo ng The Pizza Helper.
+
+Ang dalawang pangunahing developer ng "Pizza Helper para sa Genshin" (hanggang v4) ay parehong kinailangang tumigil sa pag-develop noong 2024 dahil sa kani-kanilang career plans, at ang development ng "Pizza Helper para sa HSR" ay nasuspinde rin. Ang natirang developer ay natagpuang napakabigat na panatilihin ang dalawang app nang mag-isa, kaya't napagdesisyunan niyang pagsamahin ang dalawang app sa pamamagitan ng "Unified Pizza Engine." Ito ang naging The Pizza Helper v5 na inilabas noong kalagitnaan ng Nobyembre 2024.
+
+Maraming depekto ang built-in na SwiftUI frameworks ng mas lumang system versions na malaki ang epekto sa maintenance efficiency. Kaya't napili ng Unified Pizza Engine na gawing pangunahing development target ang OS24 (iOS 17 / macOS 14 / watchOS 10). Ang Observable Macro framework na ipinakilala sa OS24 ay nagpapabilis at nagpapahusay sa pagtugon ng frontend sa maliliit na pagbabago mula sa backend data, hindi gaya ng luma at Combine-based na approach na madalas mag-redraw ng buong UI. Maaari pang magdulot ng delayed UI updates ang lumang teknolohiya at iba pang isyu na nakakaapekto sa user experience at development. Dagdag pa rito, ang SwiftData na ipinakilala sa OS24 ay nagresolba sa matagal nang concurrency-safety issues ng CoreData. Buong proseso ng pag-develop ng Unified Pizza Engine ay gumamit ng makabagong concurrency technologies ng Swift.
+
+Simula v2.5.0, sinusuportahan ng "Pizza Helper para sa Genshin" ang "Spiral Abyss Top Lists" (at kaugnay na upload ng personal battle report) sa OS21 (iOS 14, macOS 11, watchOS 8). Pagkatapos ilabas ang The Pizza Helper v5 sa dulo ng 2024, ipinatupad ng proyekto ang "zero data collection" dahil sa iba’t ibang dahilan. Kaya’t tinanggal ang Spiral Abyss Leaderboard at kaugnay na battle report uploading sa tag-init ng 2025. Ngunit nagdudulot ito ng panganib sa data security para sa mga hindi makapag-upgrade sa OS24: kapag na-decommission ang server para sa leaderboard, maaaring subukang mag-upload pa rin ng lumang app mula sa lumang system. Kapag napunta ang server's IP sa ibang tao, maaaring magdulot ito ng hindi makontrol na panganib sa data security.
+
+Bilang tugon, nagkasundo ang tatlong developer na payagan ang The Pizza Helper v5 na ma-build at mag-run sa OS21 (iOS 14, atbp.) ngunit limitado sa mga system na mas mababa sa OS24: tanging export ng lumang account data at draw history lang ang papayagan para sa import sa bagong device na tumatakbo sa OS24 pataas.
+
+Hindi maaaring i-downgrade ang SwiftData papuntang CoreData dahil sa panganib ng data loss, kaya hindi na maaaring magpatuloy magbigay-serbisyo sa mga gumagamit ng system na mas mababa sa OS24. Tulad ng dati, ang FOSS (Free and Open Source Software) ay hindi nangangahulugang walang limitasyon sa availability o responsibilidad. Sana'y maunawaan ito ng mga apektadong user.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.limitedServiceCategory4iOS16.footer" xml:space="preserve">
+        <source>Only widgets are available for iOS 16.2 &amp; macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Locale Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14.</source>
+        <target state="translated">Tanging widgets lang ang available para sa iOS 16.2 at macOS 13. Kailangan pa rin ng iOS 17 / macOS 14 o mas bago para sa ibang features. Kung makaranas ka ng bug habang nagna-navigate sa Locale Profile Manager, ito ay dahil sa mga SwiftUI-related na bug sa iOS 16 / macOS 13 at ang tanging solusyon ay mag-upgrade sa iOS 17 / macOS 14.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.limitedServiceCategory4iOS16.header" xml:space="preserve">
+        <source>Remained Services for iOS 16 &amp; macOS 13 Users:</source>
+        <target state="translated">Mga natitirang serbisyo para sa mga gumagamit ng iOS 16 at macOS 13:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.liveActivity.featureLabel" xml:space="preserve">
+        <source>Stamina Timer</source>
+        <target state="translated">Stamina Timer</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.liveActivity.tapHereToInitiate" xml:space="preserve">
+        <source>Tap to Initiate</source>
+        <target state="translated">I-tap para simulan</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.noDataExportable" xml:space="preserve">
+        <source>No local data exportable for now. This view awaits for iCloud background data updates, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later.</source>
+        <target state="translated">Walang lokal na data na maaaring i-export sa ngayon. Ang view na ito ay naghihintay ng iCloud background data updates, ngunit lahat ng iCloud data ay maaaring mamanahin via iCloud ng app na ito kapag tumatakbo sa iOS 17 o mas bago.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="setting.display.restoreTabOnLaunching" xml:space="preserve">
         <source>Restore previous tab on launch</source>
         <target state="translated">Ibalik ang nakaraang tab sa paglulunsad</target>
@@ -2494,13 +2643,13 @@ Ang link sa itaas, kapag direktang na-click, ay awtomatikong ilalapat ang user-a
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.timeZone4GI.description" xml:space="preserve">
-        <source>The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Abyss Rank Statistics, Daily Material, Official In-Game Events, etc.</source>
-        <target state="translated">Ang mga settings ng TimeZone sa bahaging ito ay para sa pagpapakita ng kahit man lang ang sumusunod na impormasyon (ng Genshin Impact): Mga Istatisika ng Ranggo ng Abyss, Pang-araw-araw na Materyal, Opisyal na In-Game na Kaganapan, atbp.</target>
+        <source>The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Daily Material, Official In-Game Events, etc.</source>
+        <target state="translated">Ang mga settings ng TimeZone sa bahaging ito ay para sa pagpapakita ng kahit man lang ang sumusunod na impormasyon (ng Genshin Impact): Pang-araw-araw na Materyal, Opisyal na In-Game na Kaganapan, atbp.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="settings.display.timeZone4GI.title" xml:space="preserve">
-        <source>TimeZone for displaying GI universal information</source>
-        <target state="translated">TimeZone para sa pagpapakita ng GI universal intelligence</target>
+      <trans-unit id="settings.display.timeZone4OfficialFeedsEtc.title" xml:space="preserve">
+        <source>TimeZone for displaying universal information</source>
+        <target state="translated">TimeZone para sa pagpapakita ng universal information</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.dailyTask.datePicker" xml:space="preserve">
@@ -2753,34 +2902,9 @@ Ang link sa itaas, kapag direktang na-click, ay awtomatikong ilalapat ang user-a
         <target state="translated">Hindi ka makakapagdagdag ng mga dobleng halaga.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="settings.privacy.SnapHutao.enforceUsername.title" xml:space="preserve">
-        <source>Halt submission to HutaoDB until username is filled here</source>
-        <target state="translated">Itigil ang pagsusumite sa HutaoDB hangga't hindi napupunan ang username dito</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.privacy.SnapHutao.footer" xml:space="preserve">
-        <source>Snap Hutao may release some benefits to a user if the username field here is correctly supplied in the uploaded battle report. Snap Hutao reserves the rights to explain the further details. If the enforcer toggle is ON, your battle reports will be uploaded to HutaoDB **only if** the username field is **not** blank.</source>
-        <target state="translated">Maaaring magbigay ang Snap Hutao ng ilang benepisyo sa gumagamit kung ang nakalaan na field ng username ay tama ang pagkakagamit sa ini-upload na ulat ng labanan. Inilalaan ng Snap Hutao ang karapatang ipaliwanag ang mga karagdagang detalye. Kung naka-ON ang enforcer toggle, ang iyong mga ulat ng labanan ay ia-upload sa HutaoDB **kung at lamang kung** ang nakalaan na field ng username ay **hindi** blangko.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.privacy.SnapHutao.username.title" xml:space="preserve">
-        <source>Snap Hutao Username</source>
-        <target state="translated">Snap Hutao ID Email</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.privacy.abyssDataCollect" xml:space="preserve">
-        <source>Allow to Collect Spiral Abyss Battle Reports Data</source>
-        <target state="translated">Payagan ang Pagkolekta ng Spiral Abyss Battle Reports Data</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.privacy.abyssDataCollect.detail" xml:space="preserve">
-        <source>We are looking forward to collect the Genshin characters you own and you used in the Spiral Abyss and send them to Snap.Hutao Database (i.e. HutaoDB) and Pizza DB. Allowing us to collect the data will help HutaoDB &amp; PizzaAbyssDB to supply more-accurate information of the real-time Spiral Abyss Chacacter Usage Rate, Team Usage Rate, etc. information available-to-watch in the App. The information also consists of the related in-game Genshin UID but no other of your game account information to help HutaoDB potentially refuse forged records from identified cheaters.</source>
-        <target state="translated">Inaasahan namin na makolekta ang mga Genshin character na pagmamay-ari mo at ginamit mo sa Spiral Abyss at ipadala ang mga ito sa Snap.Hutao Database (i.e. HutaoDB) at Pizza DB. Ang pagbibigay-daan sa amin na makolekta ang data ay makakatulong sa HutaoDB at PizzaAbyssDB na magbigay ng mas-tumpak na impormasyon tungkol sa real-time na Spiral Abyss Character Usage Rate, Team Usage Rate, atbp. na impormasyon na maaaring mapanood sa App. Ang impormasyon ay binubuo rin ng kaugnay na in-game Genshin UID ngunit wala ng iba pang impormasyon ng iyong game account upang makatulong sa HutaoDB na potensyal na tanggihan ang pekeng talaan mula sa mga nakilalang manloloko.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.privacy.abyssDataCollect.faqLink" xml:space="preserve">
-        <source>Tap here to read the FAQs about it.</source>
-        <target state="translated">Pindutin dito para basahin ang FAQs tungkol dito.</target>
+      <trans-unit id="settings.privacy.noOptionsAvailable" xml:space="preserve">
+        <source>There’s no privacy options available since the removal of certain features. This app now collects nothing.</source>
+        <target state="translated">Dahil sa pag-alis ng ilang mga feature, walang available na mga opsyon sa privacy. Ang app na ito ngayon ay walang kinokolekta.</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.privacy.title" xml:space="preserve">
@@ -2826,6 +2950,16 @@ I-re-restart ang app pagkatapos mong kumpirmahin ang mensaheng ito.</target>
         <target state="translated">Group Container</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.profile.advanced.fingerprintPropagation.buttonTitle" xml:space="preserve">
+        <source>Propagate</source>
+        <target state="translated">Propagate</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.profile.advanced.fingerprintPropagation.footer" xml:space="preserve">
+        <source>Local profiles configured for Miyoushe-managed UIDs are recommended to use the same device fingerprint (x-rpc-device_fp) to ensure consistent identification. Click “Propagate” button to apply the same device fingerprint to all such local profiles.</source>
+        <target state="translated">Ang mga lokal na profile na na-configure para sa mga UID na pinamamahalaan ng Miyoushe ay inirerekomenda na gumamit ng parehong device fingerprint (x-rpc-device_fp) upang matiyak ang pare-parehong pagkakakilanlan. I-click ang pindutang “Propagate” upang ilapat ang parehong device fingerprint sa lahat ng naturang lokal na profile.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.profile.advanced.navTitle" xml:space="preserve">
         <source>Advanced Options</source>
         <target state="translated">Mga Advanced na Opsyon</target>
@@ -2866,58 +3000,6 @@ I-re-restart ang app pagkatapos mong kumpirmahin ang mensaheng ito.</target>
         <target state="translated">Muling mag-login sa HoYoLAB / Miyoushe</target>
         <note>Account detail</note>
       </trans-unit>
-      <trans-unit id="settings.resinTimer.autoInit.toggle.title" xml:space="preserve">
-        <source>Automatically initiate Stamina Timer Live Activity</source>
-        <target state="translated">Awtomatikong simulan ang Stamina Timer Live Activity</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.background.choose" xml:space="preserve">
-        <source>Choose Background</source>
-        <target state="translated">Piliin ang Background</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.dynamicIsland.howToHide.answer" xml:space="preserve">
-        <source>You can slide the Dynamic Island from left / right to the middle to hide it. 
-Swipe left on the Stamina Timer on the lock screen to turn off the resin timer and the Dynamic Island.</source>
-        <target state="translated">Maaari mong i-slide ang Dynamic Island mula kaliwa / kanan papunta sa gitna upang itago ito. 
-I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer at ang Dynamic Island.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.explanation" xml:space="preserve">
-        <source>Stamina Timer is how this app utilizes the Live Activity feature of the iOS. You can click the ellipsis circle to the right of the Real-Time Note of a local profile in the Today tab to initiate it.</source>
-        <target state="translated">Ang Stamina Timer ay kung paano ginagamit ng app na ito ang Live Activity na tampok ng iOS. Maaari mong i-click ang bilog na ellipsis sa kanan ng Real-Time Note ng lokal na profile sa tab na Today upang simulan ito.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.gotoSystemSettings" xml:space="preserve">
-        <source>Go to System Settings to enable Live Activity for this app</source>
-        <target state="translated">Pumunta sa Mga Setting ng Sistema upang paganahin ang Live na Aktibidad para sa app na ito</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.randomBackground.title" xml:space="preserve">
-        <source>Use Random Background</source>
-        <target state="translated">Gumamit ng Random na Background</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.realtimeActivity.notEnabled" xml:space="preserve">
-        <source>Live Activity for this app is not permitted by the system</source>
-        <target state="translated">Hindi pinapayagan ng sistema ang Aktibong Gawain para sa app na ito</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.settings.navTitle" xml:space="preserve">
-        <source>Stamina Timer Settings</source>
-        <target state="translated">Mga Setting ng Oras ng Tibay</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.showExpedition.title" xml:space="preserve">
-        <source>Show Expedition</source>
-        <target state="translated">Ipakita ang Ekspedisyon</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.resinTimer.useTransparentBackground.title" xml:space="preserve">
-        <source>Use Glass Material Background</source>
-        <target state="translated">Gumamit ng Salamin na Materyal na Background</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="settings.section.appStoreRelated.header" xml:space="preserve">
         <source>App Store</source>
         <target state="translated">App Store</target>
@@ -2936,6 +3018,58 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
       <trans-unit id="settings.section.visualSettings.header" xml:space="preserve">
         <source>UI-Related Settings</source>
         <target state="translated">Mga Seting Kaugnay sa UI</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.autoInit.toggle.title" xml:space="preserve">
+        <source>Automatically initiate Stamina Timer Live Activity</source>
+        <target state="translated">Awtomatikong simulan ang Stamina Timer Live Activity</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.background.choose" xml:space="preserve">
+        <source>Choose Background</source>
+        <target state="translated">Piliin ang Background</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.dynamicIsland.howToHide.answer" xml:space="preserve">
+        <source>You can slide the Dynamic Island from left / right to the middle to hide it. 
+Swipe left on the Stamina Timer on the lock screen to turn off the resin timer and the Dynamic Island.</source>
+        <target state="translated">Maaari mong i-slide ang Dynamic Island mula kaliwa / kanan papunta sa gitna upang itago ito. 
+I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer at ang Dynamic Island.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.explanation" xml:space="preserve">
+        <source>Stamina Timer is how this app utilizes the Live Activity feature of the iOS. You can click the ellipsis circle to the right of the Real-Time Note of a local profile in the Today tab to initiate it.</source>
+        <target state="translated">Ang Stamina Timer ay kung paano ginagamit ng app na ito ang Live Activity na tampok ng iOS. Maaari mong i-click ang bilog na ellipsis sa kanan ng Real-Time Note ng lokal na profile sa tab na Today upang simulan ito.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.gotoSystemSettings" xml:space="preserve">
+        <source>Go to System Settings to enable Live Activity for this app</source>
+        <target state="translated">Pumunta sa Mga Setting ng Sistema upang paganahin ang Live na Aktibidad para sa app na ito</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.randomBackground.title" xml:space="preserve">
+        <source>Use Random Background</source>
+        <target state="translated">Gumamit ng Random na Background</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.realtimeActivity.notEnabled" xml:space="preserve">
+        <source>Live Activity for this app is not permitted by the system</source>
+        <target state="translated">Hindi pinapayagan ng sistema ang Aktibong Gawain para sa app na ito</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.settings.navTitle" xml:space="preserve">
+        <source>Stamina Timer Settings</source>
+        <target state="translated">Mga Setting ng Oras ng Tibay</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.showExpedition.title" xml:space="preserve">
+        <source>Show Expedition</source>
+        <target state="translated">Ipakita ang Ekspedisyon</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.useTransparentBackground.title" xml:space="preserve">
+        <source>Use Glass Material Background</source>
+        <target state="translated">Gumamit ng Salamin na Materyal na Background</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.uiSettings.title" xml:space="preserve">
@@ -2988,6 +3122,11 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <target state="translated">Mga Kagamitan</target>
         <note/>
       </trans-unit>
+      <trans-unit id="tab.utils.featureRemovalNotice" xml:space="preserve">
+        <source>Some features are intentionally removed due to lack of maintenance and usability.</source>
+        <target state="translated">Ang ilang mga feature ay sadyang inalis dahil sa kakulangan ng maintenance at usability.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="tab.utils.fullTitle" xml:space="preserve">
         <source>Utilities</source>
         <target state="translated">Mga Kagamitan</target>
@@ -2998,151 +3137,201 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <target state="translated">miHoYo Mapa ng Pakikipag-ugnayan</target>
         <note/>
       </trans-unit>
+      <trans-unit id="tools.hoyoMap.sectionDescription" xml:space="preserve">
+        <source>This menu will directly display the corresponding map webpage using the system's default browser.</source>
+        <target state="translated">Ang menu na ito ay direktang magpapakita ng katumbas na webpage ng mapa gamit ang default na browser ng system.</target>
+        <note/>
+      </trans-unit>
     </body>
   </file>
   <file original="Packages/PZHoYoLabKit/Sources/PZHoYoLabKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
-      <trans-unit id="hylKit.abyssReport.floor.1stHalf" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.floor.1stHalf" xml:space="preserve">
         <source>1H</source>
         <target state="translated">1H</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.floor.2ndHalf" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.floor.2ndHalf" xml:space="preserve">
         <source>2H</source>
         <target state="translated">2T</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.floor.thisFloorIsSkipped" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.floor.thisFloorIsSkipped" xml:space="preserve">
         <source>This floor is intentionally skipped.</source>
         <target state="translated">Ang palapag na ito ay sinadyang laktawan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.floor.title:%@" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.floor.title:%@" xml:space="preserve">
         <source>Floor #%@</source>
         <target state="translated">Palapag #%@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.SnapHutaoEmailEmptyNotice" xml:space="preserve">
-        <source>⚠︎ The upload of personal battle reports to HutaoDB is suspended until the Snap Hutao-related options in the Privacy Settings of this app are correctly configured.</source>
-        <target state="translated">⚠︎ Ang pag-upload ng personal na mga battle report sa HutaoDB ay nasuspinde hangga't hindi wastong nako-configure ang mga opsyon na kaugnay sa Snap Hutao sa Privacy Settings ng app na ito.</target>
+      <trans-unit id="hylKit.battleReport.gi.attendanceMethod.multiplayer" xml:space="preserve">
+        <source>Multiplayer</source>
+        <target state="translated">Maramihan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.battle" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.attendanceMethod.singleplayer" xml:space="preserve">
+        <source>Singleplayer</source>
+        <target state="translated">Isang manlalaro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReport.gi.stat.battle" xml:space="preserve">
         <source>Battles</source>
         <target state="translated">Labanan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.deepest" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.deepest" xml:space="preserve">
         <source>Deepest Descent</source>
         <target state="translated">Pinakamalalim na Paglusong</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.mostDamageTaken" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.maxRoomDMG" xml:space="preserve">
+        <source>Max Total DMG (1 Round)</source>
+        <target state="translated">Pinakamataas na DMG/Round</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReport.gi.stat.mostDamageTaken" xml:space="preserve">
         <source>DMG Taken</source>
         <target state="translated">Natanggap na Pinsala</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.mostDefeats" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.mostDefeats" xml:space="preserve">
         <source>Most Defeats</source>
         <target state="translated">Pinakamaraming Talo</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.mostESkills" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.mostESkills" xml:space="preserve">
         <source>Elemental Skills</source>
         <target state="translated">Mga Kakayahan ng Elemento</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.mostQSkills" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.mostQSkills" xml:space="preserve">
         <source>Elemental Bursts</source>
         <target state="translated">Pagputok ng Elemental</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.star" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.secondsSpent" xml:space="preserve">
+        <source>Total Seconds Spent</source>
+        <target state="translated">Kabuuang Segundong Ginugol</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReport.gi.stat.star" xml:space="preserve">
         <source>Abyss Star Obtained</source>
         <target state="translated">Nakamit na ang Bituin ng Kalaliman</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.strongest" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.strongest" xml:space="preserve">
         <source>Best Single Strike</source>
         <target state="translated">Pinakamahusay na Isang Tirada</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.summary" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.summary" xml:space="preserve">
         <source>Challenge Summary</source>
         <target state="translated">Buod ng Hamon</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.gi.stat.win" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.gi.stat.win" xml:space="preserve">
         <source>Wins</source>
         <target state="translated">Panalo</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.hsr.stat.maxFloorConquered" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.hsr.stat.maxFloorConquered" xml:space="preserve">
         <source>Highest Floor Reached</source>
         <target state="translated">Pinakamataas na Naabot na Palapag</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.hsr.stat.numOfBattles" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.hsr.stat.numOfBattles" xml:space="preserve">
         <source>Battles Fought</source>
         <target state="translated">Mga Laban na Nilabanan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.hsr.stat.seasonID" xml:space="preserve">
-        <source>Season ID</source>
-        <target state="translated">ID ng Season</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.abyssReport.hsr.stat.starsGained" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.hsr.stat.starsGained" xml:space="preserve">
         <source>Stars Gained</source>
         <target state="translated">Mga Pumaskil na Bituin</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.hsr.stats.header" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.hsr.stats.header" xml:space="preserve">
         <source>Statistics</source>
         <target state="translated">Istatistika</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.noDataAvailableForThisSeason" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.noDataAvailableForThisSeason" xml:space="preserve">
         <source>No data available for this season.</source>
         <target state="translated">Walang available na data para sa panahong ito.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.room.title:%@" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.room.title:%@" xml:space="preserve">
         <source>Room #%@</source>
         <target state="translated">Kwarto #%@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.seasonPicker.current" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.round.title:%@" xml:space="preserve">
+        <source>Round #%@</source>
+        <target state="translated">Round #%@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReport.seasonPicker.current" xml:space="preserve">
         <source>CURR</source>
         <target state="translated">PERA</target>
         <note>Shortened </note>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReport.seasonPicker.previous" xml:space="preserve">
+      <trans-unit id="hylKit.battleReport.seasonPicker.previous" xml:space="preserve">
         <source>PREV</source>
         <target state="translated">NAKARAAN</target>
         <note>Shortened</note>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReportView4GI.navTitle" xml:space="preserve">
-        <source>Battle Report: Spiral Abyss</source>
-        <target state="translated">Ulat ng Laban: Spiral Abyss</target>
+      <trans-unit id="hylKit.battleReport.stat.seasonID" xml:space="preserve">
+        <source>Season ID</source>
+        <target state="translated">ID ng Season</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReportView4GI.navTitle.tiny" xml:space="preserve">
+      <trans-unit id="hylKit.battleReportView4GI.navTitle.spiralAbyss" xml:space="preserve">
         <source>Spiral Abyss</source>
         <target state="translated">Paitaas na Kawalan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReportView4HSR.navTitle" xml:space="preserve">
-        <source>Battle Report: Forgotten Hall</source>
-        <target state="translated">Ulat ng Labanan: Nakalimutang Bulwagan</target>
+      <trans-unit id="hylKit.battleReportView4GI.navTitle.stygianOnslaught" xml:space="preserve">
+        <source>Stygian Onslaught</source>
+        <target state="translated">Stygian Onslaught</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.abyssReportView4HSR.navTitle.tiny" xml:space="preserve">
+      <trans-unit id="hylKit.battleReportView4GI.navTitle.treasuresStarward" xml:space="preserve">
+        <source>Battle Report: Treasures Starward</source>
+        <target state="translated">Ulat ng Labanan: Treasures Starward</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView4GI.navTitle.treasuresStarward.tiny" xml:space="preserve">
+        <source>Treasures Starward</source>
+        <target state="translated">Treasures Starward</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView4HSR.navTitle.apocalypticShadow" xml:space="preserve">
+        <source>Apocalyptic Shadow</source>
+        <target state="translated">Apocalyptic Shadow</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView4HSR.navTitle.forgottenHall" xml:space="preserve">
         <source>Forgotten Hall</source>
         <target state="translated">Nakalimutang Bulwagan</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView4HSR.navTitle.pureFiction" xml:space="preserve">
+        <source>Pure Fiction</source>
+        <target state="translated">Pure Fiction</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView4HSR.navTitle.treasuresLightward" xml:space="preserve">
+        <source>Battle Report: Treasures Lightward</source>
+        <target state="translated">Ulat ng Labanan: Treasures Lightward</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView4HSR.navTitle.treasuresLightward.tiny" xml:space="preserve">
+        <source>Treasures Lightward</source>
+        <target state="translated">Treasures Lightward</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.inventoryView.characters.count.character:%lld%lld%lld" xml:space="preserve">
@@ -3335,126 +3524,6 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <target state="translated">Ledger para sa SR Pasetes at Stella Jades</target>
         <note/>
       </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.abyss" xml:space="preserve">
-        <source>Spiral Abyss</source>
-        <target state="translated">Spiral Abyss</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.achievements" xml:space="preserve">
-        <source>Achievements</source>
-        <target state="translated">Mga Nakamit</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.characters" xml:space="preserve">
-        <source>Characters</source>
-        <target state="translated">Mga Tauhan</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.chest.1" xml:space="preserve">
-        <source>Common Chests Opened</source>
-        <target state="translated">Mga Karaniwang Kabaong na Binuksan</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.chest.2" xml:space="preserve">
-        <source>Exquisite Chests Opened</source>
-        <target state="translated">Mga Binuksang Kasangkapang Kahulugan</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.chest.3" xml:space="preserve">
-        <source>Precious Chests Opened</source>
-        <target state="translated">Mga Nabasang Mahalagang Kahon</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.chest.4" xml:space="preserve">
-        <source>Luxurious Chests Opened</source>
-        <target state="translated">Maluhong Mga Kahon na Nabuksan</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.daysActive" xml:space="preserve">
-        <source>Days Active</source>
-        <target state="translated">Mga Araw na Aktibo</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.domains" xml:space="preserve">
-        <source>Domains Unlocked</source>
-        <target state="translated">Mga Dominyong Nakabukas</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.anemo" xml:space="preserve">
-        <source>Anemoculus</source>
-        <target state="translated">Anemoculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.cryo" xml:space="preserve">
-        <source>Cryoculus</source>
-        <target state="translated">Cryoculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.dendro" xml:space="preserve">
-        <source>Dendroculus</source>
-        <target state="translated">Dendroculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.electro" xml:space="preserve">
-        <source>Electroculus</source>
-        <target state="translated">Electroculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.geo" xml:space="preserve">
-        <source>Geoculus</source>
-        <target state="translated">Geokulo</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.hydro" xml:space="preserve">
-        <source>Hydroculus</source>
-        <target state="translated">Hydroculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.eyeball.pyro" xml:space="preserve">
-        <source>Pyroculus</source>
-        <target state="translated">Pyroculus</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.navTitle" xml:space="preserve">
-        <source>Travel Stats</source>
-        <target state="translated">Mga Estadistika ng Paglalakbay</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4GI.waypoints" xml:space="preserve">
-        <source>Waypoints Unlocked</source>
-        <target state="translated">Mga Waypoint na Nabuksan</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4HSR.achievements" xml:space="preserve">
-        <source>Achievements</source>
-        <target state="translated">Mga Nakamit</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4HSR.characters" xml:space="preserve">
-        <source>Characters</source>
-        <target state="translated">Mga Karakter</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4HSR.chest" xml:space="preserve">
-        <source>Chests Opened</source>
-        <target state="translated">Mga Nabasang Kaban</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4HSR.daysActive" xml:space="preserve">
-        <source>Days Active</source>
-        <target state="translated">Mga Araw na Aktibo</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4HSR.mostRecentChallenge" xml:space="preserve">
-        <source>Recent Challenge</source>
-        <target state="translated">Kamakailang Hamon</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="hylKit.travelStats4HSR.navTitle" xml:space="preserve">
-        <source>Trailblazing Stats</source>
-        <target state="translated">Stats ng Pagtahak</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="pieChart.total" xml:space="preserve">
         <source>Total</source>
         <target state="translated">Kabuuan</target>
@@ -3464,7 +3533,7 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="Packages/PZInGameEventKit/Sources/PZInGameEventKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="igev.gameEvents.daysLeft:%lld" xml:space="preserve">
@@ -3496,7 +3565,7 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="Packages/PZKit/Sources/PZAccountKit/Resources/HoYoLangNames.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="hoyo.lang.chs" xml:space="preserve">
@@ -3578,7 +3647,7 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="Packages/PZKit/Sources/PZAccountKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="MiHoYoAPIError.countryRegionRestriction" xml:space="preserve">
@@ -3810,7 +3879,7 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="Packages/PZKit/Sources/PZBaseKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="app.language.de" xml:space="preserve">
@@ -4117,44 +4186,402 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="Packages/PZWidgetsKit/Sources/PZWidgetsKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
+      <trans-unit id="%@" translate="no" xml:space="preserve">
+        <source>%@</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="app.dailynote.initiateLiveActivity" xml:space="preserve">
         <source>Initiate Live Activity</source>
         <target state="translated">Simulan ang Live na Aktibidad</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzAccountKit.CreateLiveActivityError.noInfo" xml:space="preserve">
+      <trans-unit id="pzWidgetsKit.CreateLiveActivityError.noInfo" xml:space="preserve">
         <source>Failed from fetching Real-Time Notes.</source>
         <target state="translated">Nabigo sa pagkuha ng Real-Time na Tala.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzAccountKit.CreateLiveActivityError.systemSettings" xml:space="preserve">
+      <trans-unit id="pzWidgetsKit.CreateLiveActivityError.systemSettings" xml:space="preserve">
         <source>The current system settings hinder this app from using Live Activity feature.</source>
         <target state="translated">Ang kasalukuyang mga setting ng sistema ay hadlang sa app na ito mula sa paggamit ng Live Activity na tampok.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzAccountKit.CreateLiveActivityError.unknown:%@" xml:space="preserve">
+      <trans-unit id="pzWidgetsKit.CreateLiveActivityError.unknown:%@" xml:space="preserve">
         <source>[Unknown Exception] %@</source>
         <target state="translated">[Hindi alam na eksepsyon] %@</target>
         <note/>
       </trans-unit>
+      <trans-unit id="pzWidgetsKit.WidgetRefreshIntent.Refresh" xml:space="preserve">
+        <source>Refresh</source>
+        <target state="translated">I-refresh</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.currentStamina" xml:space="preserve">
+        <source>Current Stamina</source>
+        <target state="translated">Kasulukuyang Tiyaga</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.dailyTask" xml:space="preserve">
+        <source>Daily Commission</source>
+        <target state="translated">Pang-araw-araw na Komisyon</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.expedition.status.finished" xml:space="preserve">
+        <source>Finished</source>
+        <target state="translated">Tapos na</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.expedition.status.pending" xml:space="preserve">
+        <source>Pending</source>
+        <target state="translated">Nakahold</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.expedition.timeToAllCompletion" xml:space="preserve">
+        <source>Will Finish At:</source>
+        <target state="translated">Matatapos Sa:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.homeCoin" xml:space="preserve">
+        <source>Realm Currency</source>
+        <target state="translated">Pera ng Kaharian</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.infoBlock.refilledAt:%@" xml:space="preserve">
+        <source>Till %@</source>
+        <target state="translated">Hanggang %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.infoBlock.staminaFullyFilledDescription" xml:space="preserve">
+        <source>0 hr 0 min
+Stamina is Full</source>
+        <target state="translated">0 oras 0 min
+Puno na ang Stamina</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.infoBlock.staminaFullyFilledDescription.tiny" xml:space="preserve">
+        <source>Filled Up</source>
+        <target state="translated">Puno na</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.infoBlock.transformerAvailable" xml:space="preserve">
+        <source>Available</source>
+        <target state="translated">Magagamit</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.infoBlock.zzzScratchableCard.done" xml:space="preserve">
+        <source>Scratched</source>
+        <target state="translated">Gasgas</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.infoBlock.zzzScratchableCard.notYet" xml:space="preserve">
+        <source>Available</source>
+        <target state="translated">Magagamit</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.material.sunday" xml:space="preserve">
+        <source>All materials are 
+available on Sunday</source>
+        <target state="translated">Ang lahat ng materyales 
+ay makukuha sa Linggo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.next20Stamina:%lld" xml:space="preserve">
+        <source>Until %lld Stamina:</source>
+        <target state="translated">Hanggang %lld Tiyaga:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.nextMaxStamina" xml:space="preserve">
+        <source>Until Max Stamina:</source>
+        <target state="translated">Hanggang Max Stamina:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.stamina" xml:space="preserve">
+        <source>Player Stamina</source>
+        <target state="translated">Tibay ng Manlalaro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.stamina.full" xml:space="preserve">
+        <source>Filled Up</source>
+        <target state="translated">Puno na</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.status.not_received" xml:space="preserve">
+        <source>(unreceived)</source>
+        <target state="translated">(hindi natanggap)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.unit.day:%lld" xml:space="preserve">
+        <source>%lld days</source>
+        <target state="translated">%lld araw</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.unit.minute:%lld|==|plural.one" xml:space="preserve">
+        <source>%lld min</source>
+        <target state="translated">%lld minuto</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.unit.minute:%lld|==|plural.other" xml:space="preserve">
+        <source>%lld mins</source>
+        <target state="translated">%lld minuto</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.blue" xml:space="preserve">
+        <source>Blue</source>
+        <target state="translated">Asul</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.anemo" xml:space="preserve">
+        <source>Anemo</source>
+        <target state="translated">Anemo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.cryo" xml:space="preserve">
+        <source>Cryo</source>
+        <target state="translated">Cryo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.dendro" xml:space="preserve">
+        <source>Dendro</source>
+        <target state="translated">Dendro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.electro" xml:space="preserve">
+        <source>Electro</source>
+        <target state="translated">Elektrisidad</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.geo" xml:space="preserve">
+        <source>Geo</source>
+        <target state="translated">Geo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.hydro" xml:space="preserve">
+        <source>Hydro</source>
+        <target state="translated">Hydro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.imago" xml:space="preserve">
+        <source>Imago</source>
+        <target state="translated">Imago</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.physico" xml:space="preserve">
+        <source>Physico</source>
+        <target state="translated">Physico</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.pyro" xml:space="preserve">
+        <source>Pyro</source>
+        <target state="translated">Pyro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gameElements.quanto" xml:space="preserve">
+        <source>Quanto</source>
+        <target state="translated">Quanto</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gold" xml:space="preserve">
+        <source>Gold</source>
+        <target state="translated">Ginto</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.gray" xml:space="preserve">
+        <source>Gray</source>
+        <target state="translated">Abuhin</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.green" xml:space="preserve">
+        <source>Green</source>
+        <target state="translated">Berde</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.intertwinedFate" xml:space="preserve">
+        <source>March 7th &amp; Intertwined Fate</source>
+        <target state="translated">Ika-7 ng Marso &amp; Ugnayang Tadhana</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.purple" xml:space="preserve">
+        <source>Purple</source>
+        <target state="translated">Lila</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.widgetBackgroundColorScheme.red" xml:space="preserve">
+        <source>Red</source>
+        <target state="translated">Pula</target>
+        <note/>
+      </trans-unit>
     </body>
   </file>
-  <file original="Packages/WallpaperKit/Sources/WallpaperKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
+  <file original="Packages/WallpaperKit/Sources/WallpaperConfigKit/Resources/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
+      <trans-unit id="imageCropper.hint.fingerGestures" xml:space="preserve">
+        <source>You may also use finger gestures on the preview image.</source>
+        <target state="translated">Maaari ka ring gumamit ng mga finger gesture sa preview image.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="imageCropper.hint.mouseGesture" xml:space="preserve">
+        <source>You may also use mouse gestures on the preview image.</source>
+        <target state="translated">Maaari ka ring gumamit ng mga mouse gesture sa preview image.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.display.appBackground" xml:space="preserve">
         <source>App Background</source>
         <target state="translated">Likuran ng App</target>
         <note/>
       </trans-unit>
-      <trans-unit id="settings.resinTimer.background.navTitle" xml:space="preserve">
+      <trans-unit id="settings.display.appUserWallpaper" xml:space="preserve">
+        <source>App User Wallpaper</source>
+        <target state="translated">Wallpaper ng User ng App</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.appWallpaper.navDescription" xml:space="preserve">
+        <source>⚠︎ This option will be automatically reset to factory default if the specified value points to an invalid user wallpaper.</source>
+        <target state="translated">⚠︎ Ang opsyong ito ay awtomatikong mare-reset sa default ng pabrika kung ang tinukoy na value ay nagpapahiwatig ng hindi wastong wallpaper ng user.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.appWallpaper.navSectionHeader" xml:space="preserve">
+        <source>App Background</source>
+        <target state="translated">Background ng App</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.appWallpaper.userWallPaper.notSpecified" xml:space="preserve">
+        <source>Disabled</source>
+        <target state="translated">Hindi pinagana</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.staminaTimer.background.navTitle" xml:space="preserve">
         <source>Stamina Timer Background</source>
         <target state="translated">Background ng Timer ng Stamina</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.navTitle.step1.chooseImage" xml:space="preserve">
+        <source>Choose Image</source>
+        <target state="translated">Pumili ng Larawan</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.navTitle.step2.cropHorizontal" xml:space="preserve">
+        <source>Crop (Horizontal)</source>
+        <target state="translated">I-crop (Pahalang)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.navTitle.step3.cropSquared" xml:space="preserve">
+        <source>Crop (Squared)</source>
+        <target state="translated">I-crop (Parisukat)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.step1.button.pickImageUsingFileImporter" xml:space="preserve">
+        <source>Pick Image From Finder / Files App</source>
+        <target state="translated">Kumuha ng Larawan mula sa Finder / Files App</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.step1.button.pickImageUsingPhotoPicker" xml:space="preserve">
+        <source>Pick Image From Photos App</source>
+        <target state="translated">Kumuha ng Larawan mula sa Photos App</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.step1.footerDescription.1" xml:space="preserve">
+        <source>Choose your preferred method to select a source image for your custom wallpaper. In the next two steps, you'll be able to crop it to fit two different desktop widget sizes.</source>
+        <target state="translated">Piliin ang iyong gustong paraan para pumili ng source image para sa iyong custom wallpaper. Sa susunod na dalawang hakbang, maaari mong i-crop ito para magkasya sa dalawang magkaibang laki ng desktop widget.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.step1.footerDescription.2" xml:space="preserve">
+        <source>Please keep your own copy of your original image files. User wallpapers saved in this app is in extremely low quality with reduced dimensions.</source>
+        <target state="translated">Mangyaring panatilihin ang sariling kopya ng iyong orihinal na mga file ng larawan. Ang mga wallpaper ng user na naka-save sa app na ito ay may napakababang kalidad at nabawasang sukat.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.clickToAddYourFirstWallpaper" xml:space="preserve">
+        <source>Click Here to Add a Wallpaper</source>
+        <target state="translated">Mag-click Dito para Magdagdag ng Wallpaper</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.contextMenu.removeWallpaperEntry" xml:space="preserve">
+        <source>Remove</source>
+        <target state="translated">Alisin</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.contextMenu.renameWallpaperEntry" xml:space="preserve">
+        <source>Rename</source>
+        <target state="translated">Palitan ang pangalan</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.editingWallpaperName.fieldLabel" xml:space="preserve">
+        <source>Name</source>
+        <target state="translated">Pangalan</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.editingWallpaperName.prompt" xml:space="preserve">
+        <source>Please enter a new name for this wallpaper.</source>
+        <target state="translated">Mangyaring maglagay ng bagong pangalan para sa wallpaper na ito.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.emptyContentsNotice" xml:space="preserve">
+        <source>There's no user-supplied wallpaper yet.</source>
+        <target state="translated">Wala pang wallpaper na ibinigay ng user.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.exchange.export.failedInSavingToFile" xml:space="preserve">
+        <source>Failed from dumping all user wallpapers.</source>
+        <target state="translated">Nabigo sa pag-dump ng lahat ng wallpaper ng user.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.exchange.export.fileSavedTo:" xml:space="preserve">
+        <source>Successfully dumped all user wallpapers into file:</source>
+        <target state="translated">Matagumpay na na-export ang lahat ng wallpaper ng user sa file:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.exchange.export.menuTitle" xml:space="preserve">
+        <source>Package &amp; Export All User Wallpapers</source>
+        <target state="translated">I-package at I-export Lahat ng Wallpaper ng User</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.exchange.export.succeededInSavingToFile" xml:space="preserve">
+        <source>Successfully dumped all user wallpapers.</source>
+        <target state="translated">Matagumpay na na-dump ang lahat ng wallpaper ng user.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.exchange.import.menuTitle" xml:space="preserve">
+        <source>Import a Pack of User Wallpapers</source>
+        <target state="translated">Mag-import ng Isang Balot ng Wallpaper ng User</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.footerNotice.maximumEntryAmountReached" xml:space="preserve">
+        <source>Maximum 10 user wallpapers allowed. While this restriction can possibly be breached by importing a pack of user wallpapers, please beware that this breach may cause performance issues.</source>
+        <target state="translated">Maximum 10 wallpaper ang pinapayagan. Bagaman ang paghihigpit na ito ay maaaring malabag sa pamamagitan ng pag-import ng isang pack ng mga wallpaper ng user, mangyaring mag-ingat na ang paglabag na ito ay maaaring magdulot ng mga isyu sa pagganap.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.menu.addNewWallpaper" xml:space="preserve">
+        <source>Add New Wallpaper</source>
+        <target state="translated">Magdagdag ng Bagong Wallpaper</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.navDescription" xml:space="preserve">
+        <source>User-supplied wallpapers are not listed in the Wallpaper Gallery and are independent of the app's bundled wallpapers.</source>
+        <target state="translated">Ang mga wallpaper na ibinigay ng user ay hindi nakalista sa Gallery ng mga Wallpaper at hindi nakadepende sa mga nakabalot na wallpaper ng app.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.navTitle" xml:space="preserve">
+        <source>User Wallpaper Manager</source>
+        <target state="translated">Manager ng Wallpaper ng User</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.navTitle.tiny" xml:space="preserve">
+        <source>User Wallpapers</source>
+        <target state="translated">Mga Wallpaper ng User</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.toast.taskFailed" xml:space="preserve">
+        <source>Failed</source>
+        <target state="translated">Nabigo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWallpaperMgr.toast.taskSucceeded" xml:space="preserve">
+        <source>Done</source>
+        <target state="translated">Tapos na</target>
         <note/>
       </trans-unit>
       <trans-unit id="wallpaperGallery.navTitle" xml:space="preserve">
@@ -4181,7 +4608,7 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="SharedBundles/Settings.bundle/en.lproj/Settings.strings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="Please go to 📱 [Settings] -&gt; [General] -&gt; [Language &amp; Region] and add the language you wish to set as the second language. " xml:space="preserve">
@@ -4219,7 +4646,7 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="ThePizzaHelper/InfoPlist.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4246,7 +4673,7 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="ThePizzaHelper/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4258,7 +4685,7 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="UnitedPizzaHelperEngine/InfoPlist.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4285,7 +4712,7 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="UnitedPizzaHelperEngine/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4297,7 +4724,7 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="WatchApp/InfoPlist.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4324,7 +4751,7 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="WatchApp/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4336,7 +4763,7 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="WidgetExtension/InfoPlist.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4355,49 +4782,14 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
   </file>
   <file original="WidgetExtension/Localizable.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="%@" translate="no" xml:space="preserve">
         <source>%@</source>
         <note/>
       </trans-unit>
-      <trans-unit id="app.background.blue" xml:space="preserve">
-        <source>Blue</source>
-        <target state="translated">Asul</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.background.gold" xml:space="preserve">
-        <source>Gold</source>
-        <target state="translated">Ginto</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.background.gray" xml:space="preserve">
-        <source>Gray</source>
-        <target state="translated">Abuhin</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.background.green" xml:space="preserve">
-        <source>Green</source>
-        <target state="translated">Berde</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.background.intertwinedFate" xml:space="preserve">
-        <source>March 7th &amp; Intertwined Fate</source>
-        <target state="translated">Ika-7 ng Marso &amp; Ugnayang Tadhana</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.background.purple" xml:space="preserve">
-        <source>Purple</source>
-        <target state="translated">Lila</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.background.red" xml:space="preserve">
-        <source>Red</source>
-        <target state="translated">Pula</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="appEntity.localeProfile" xml:space="preserve">
+      <trans-unit id="appEntity.localProfile" xml:space="preserve">
         <source>Profile</source>
         <target state="translated">Profile</target>
         <note/>
@@ -4407,27 +4799,47 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <target state="translated">Likuran ng Widget</target>
         <note/>
       </trans-unit>
-      <trans-unit id="appEnum.AutoRotationUsingResinWidgetStyle.asRoundMeter" xml:space="preserve">
+      <trans-unit id="appEnum.ExpeditionDisplayPolicy.displayExclusively" xml:space="preserve">
+        <source>Display Exclusively</source>
+        <target state="translated">Ipakita nang Eksklusibo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum.ExpeditionDisplayPolicy.displayWhenAvailable" xml:space="preserve">
+        <source>Display If Available</source>
+        <target state="translated">Ipakita Kung May Magagamit</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum.ExpeditionDisplayPolicy.neverDisplay" xml:space="preserve">
+        <source>Never Display</source>
+        <target state="translated">Hindi Kailanman Ipakita</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum.ExpeditionDisplayPolicy.title" xml:space="preserve">
+        <source>Expedition Display Policy</source>
+        <target state="translated">Patakaran sa Pagpapakita ng Ekspedisyon</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="appEnum.StaminaContentRevolverStyle.asRoundMeter" xml:space="preserve">
         <source>Round Meter</source>
         <target state="translated">Bilog na Metro</target>
         <note/>
       </trans-unit>
-      <trans-unit id="appEnum.AutoRotationUsingResinWidgetStyle.asTimeStampWhenWillAccomplish" xml:space="preserve">
+      <trans-unit id="appEnum.StaminaContentRevolverStyle.asTimeStampWhenWillAccomplish" xml:space="preserve">
         <source>Timestamp (when finished)</source>
         <target state="translated">Timestamp (kapag natapos)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="appEnum.AutoRotationUsingResinWidgetStyle.asTimerCountDown" xml:space="preserve">
+      <trans-unit id="appEnum.StaminaContentRevolverStyle.asTimerCountDown" xml:space="preserve">
         <source>Countdown Timer</source>
         <target state="translated">Countdown Timer</target>
         <note/>
       </trans-unit>
-      <trans-unit id="appEnum.AutoRotationUsingResinWidgetStyle.byDefault" xml:space="preserve">
+      <trans-unit id="appEnum.StaminaContentRevolverStyle.byDefault" xml:space="preserve">
         <source>Default</source>
         <target state="translated">Default</target>
         <note/>
       </trans-unit>
-      <trans-unit id="appEnum.AutoRotationUsingResinWidgetStyle.title" xml:space="preserve">
+      <trans-unit id="appEnum.StaminaContentRevolverStyle.title" xml:space="preserve">
         <source>Auto Rotation of Stamina Widget Styles</source>
         <target state="translated">Awtomatikong Pag-ikot ng mga Estilo ng Stamina Widget</target>
         <note/>
@@ -4477,59 +4889,14 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <target state="translated">Sinusuportahang Laro</target>
         <note/>
       </trans-unit>
-      <trans-unit id="game.elements.anemo" xml:space="preserve">
-        <source>Anemo</source>
-        <target state="translated">Anemo</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.cryo" xml:space="preserve">
-        <source>Cryo</source>
-        <target state="translated">Cryo</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.dendro" xml:space="preserve">
-        <source>Dendro</source>
-        <target state="translated">Dendro</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.electro" xml:space="preserve">
-        <source>Electro</source>
-        <target state="translated">Elektrisidad</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.geo" xml:space="preserve">
-        <source>Geo</source>
-        <target state="translated">Geo</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.hydro" xml:space="preserve">
-        <source>Hydro</source>
-        <target state="translated">Hydro</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.imago" xml:space="preserve">
-        <source>Imago</source>
-        <target state="translated">Imago</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.physico" xml:space="preserve">
-        <source>Physico</source>
-        <target state="translated">Physico</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.pyro" xml:space="preserve">
-        <source>Pyro</source>
-        <target state="translated">Pyro</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="game.elements.quanto" xml:space="preserve">
-        <source>Quanto</source>
-        <target state="translated">Quanto</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="intent.description.chooseTheGame" xml:space="preserve">
         <source>Choose the game</source>
         <target state="translated">Piliin ang laro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent.description.pickTheLocalProfileDuoForThisWidget" xml:space="preserve">
+        <source>Choose 2 local profiles for this widget</source>
+        <target state="translated">Piliin ang dalawang lokal na profile para sa widget na ito</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.description.pickTheLocalProfileForThisWidget" xml:space="preserve">
@@ -4540,6 +4907,11 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
       <trans-unit id="intent.field.echoOfWarDisplayMethod" xml:space="preserve">
         <source>Echo of War Display</source>
         <target state="translated">Ipakita ang Echo of War</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent.field.expeditionDisplayPolicy" xml:space="preserve">
+        <source>Expedition Display Policy</source>
+        <target state="translated">Patakaran sa Pagpapakita ng Ekspedisyon</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.field.followSystemDarkMode" xml:space="preserve">
@@ -4557,14 +4929,29 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <target state="translated">Baligtarin ang Pagpili</target>
         <note/>
       </trans-unit>
-      <trans-unit id="intent.field.localeProfile" xml:space="preserve">
+      <trans-unit id="intent.field.localProfile" xml:space="preserve">
         <source>Local profile</source>
         <target state="translated">Pook na lokal</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent.field.localProfile.slot1" xml:space="preserve">
+        <source>Local profile #1</source>
+        <target state="translated">Pook na lokal #1</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent.field.localProfile.slot2" xml:space="preserve">
+        <source>Local profile #2</source>
+        <target state="translated">Pook na lokal #2</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.field.showMaterialsInLargeSizeWidget" xml:space="preserve">
         <source>[GI] Show daily materials (large-sized widgets only)</source>
         <target state="translated">[GI] Ipakita ang mga materyales araw-araw (para sa malalaking widget lamang)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent.field.showStaminaOnly" xml:space="preserve">
+        <source>Show Player Stamina Only</source>
+        <target state="translated">Ipakita lamang ang stamina ng manlalaro</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.field.showTransformer" xml:space="preserve">
@@ -4587,6 +4974,11 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <target state="translated">Gumamit ng random na wallpaper</target>
         <note/>
       </trans-unit>
+      <trans-unit id="intent.field.useTinyGlassDisplayStyle" xml:space="preserve">
+        <source>Use Tiny Glass Display Style</source>
+        <target state="translated">Gumamit ng Maliit na Estilo ng Display ng Salamin</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="intent.field.wallpaper" xml:space="preserve">
         <source>Wallpaper</source>
         <target state="translated">Papel de dinding</target>
@@ -4602,14 +4994,19 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <target state="translated">Piliin ang Lokal na Profile</target>
         <note/>
       </trans-unit>
-      <trans-unit id="intent.name.selectLocalProfileOnly" xml:space="preserve">
+      <trans-unit id="intent.name.selectLocalProfile4Peripherals" xml:space="preserve">
         <source>Choose Local Profile (only)</source>
         <target state="translated">Pumili ng Lokal na Profile (lamang)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="intent.name.selectLocalProfileWithExtraConfig" xml:space="preserve">
+      <trans-unit id="intent.name.selectLocalProfile4PeripheralsWithExtraConfig" xml:space="preserve">
         <source>Choose Local Profile with Extra Configuration</source>
         <target state="translated">Piliin ang Lokal na Profile na may Karagdagang Pag-configure</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="intent.name.selectLocalProfileDuo" xml:space="preserve">
+        <source>Choose Local Profile (Dual)</source>
+        <target state="translated">Piliin ang Lokal na Dual Profile</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.WidgetRefreshIntent.Refresh" xml:space="preserve">
@@ -4648,13 +5045,13 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.homeCoin" xml:space="preserve">
-        <source>Realm Currency (GI)</source>
-        <target state="translated">Salaping Pantahanan (GI)</target>
+        <source>Realm Currency (GI), only effective if being configured with a local profile configured using a Genshin Impact UID.</source>
+        <target state="translated">Salaping Pantahanan (GI), epektibo lamang kung ikinonpigura gamit ang lokal na profile na naka-configure gamit ang Genshin Impact UID.</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.homeCoin.2" xml:space="preserve">
-        <source>Alternative Realm Currency (GI)</source>
-        <target state="translated">Alternatibong Perang ng Mundo (GI)</target>
+        <source>Alternative Realm Currency (GI), only effective if being configured with a local profile configured using a Genshin Impact UID.</source>
+        <target state="translated">Alternatibong Perang ng Mundo (GI), epektibo lamang kung ikinonpigura gamit ang lokal na profile na naka-configure gamit ang Genshin Impact UID.</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.stamina" xml:space="preserve">
@@ -4672,56 +5069,9 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <target state="translated">Kahaliling Status ng Tibay ng Manlalaro (kasama ang Original Resin, Trailblaze Power, at ZZZ Battery Energy; huwag malito sa in-game stamina ng Genshin Impact)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzWidgetsKit.currentStamina" xml:space="preserve">
-        <source>Current Stamina</source>
-        <target state="translated">Kasulukuyang Tiyaga</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.dailyTask" xml:space="preserve">
-        <source>Daily Commission</source>
-        <target state="translated">Pang-araw-araw na Komisyon</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="pzWidgetsKit.expedition" xml:space="preserve">
         <source>Expedition &amp; Assignments</source>
         <target state="translated">Ekspedisyon at Mga Asignatura</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.expedition.status.finished" xml:space="preserve">
-        <source>Finished</source>
-        <target state="translated">Tapos na</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.expedition.status.pending" xml:space="preserve">
-        <source>Pending</source>
-        <target state="translated">Nakahold</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.expedition.timeToAllCompletion" xml:space="preserve">
-        <source>Will Finish At:</source>
-        <target state="translated">Matatapos Sa:</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.homeCoin" xml:space="preserve">
-        <source>Realm Currency</source>
-        <target state="translated">Pera ng Kaharian</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.infoBlock.refilledAt:%@" xml:space="preserve">
-        <source>Till %@</source>
-        <target state="translated">Hanggang %@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.infoBlock.staminaFullyFilledDescription" xml:space="preserve">
-        <source>0 hr 0 min
-Stamina is Full</source>
-        <target state="translated">0 oras 0 min
-Puno na ang Stamina</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.infoBlock.transformerAvailable" xml:space="preserve">
-        <source>Available</source>
-        <target state="translated">Magagamit</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.infoBlock.zzzScratchableCard.done" xml:space="preserve">
@@ -4739,24 +5089,9 @@ Puno na ang Stamina</target>
         <target state="translated">Ipakita ang mga kamakailang pangyayari at ang mga materyales ng sandata o talento na makukuha ngayon sa Genshin Impact</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzWidgetsKit.material.sunday" xml:space="preserve">
-        <source>All materials are available in Sunday</source>
-        <target state="translated">Ang lahat ng materyales ay makukuha sa Linggo</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="pzWidgetsKit.material.title" xml:space="preserve">
         <source>[GI] Today’s Materials &amp; Official Events</source>
         <target state="translated">Mga Materyales at Opisyal na Kaganapan Ngayon</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.next20Stamina:%lld" xml:space="preserve">
-        <source>Until %lld Stamina:</source>
-        <target state="translated">Hanggang %lld Tiyaga:</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.nextMaxStamina" xml:space="preserve">
-        <source>Until Max Stamina:</source>
-        <target state="translated">Hanggang Max Stamina:</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.officialFeed.description" xml:space="preserve">
@@ -4767,16 +5102,6 @@ Puno na ang Stamina</target>
       <trans-unit id="pzWidgetsKit.officialFeed.title" xml:space="preserve">
         <source>Official Feeds</source>
         <target state="translated">Opisyal na Mga Feed</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.stamina" xml:space="preserve">
-        <source>Player Stamina</source>
-        <target state="translated">Tibay ng Manlalaro</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="pzWidgetsKit.stamina.full" xml:space="preserve">
-        <source>Full</source>
-        <target state="translated">Buong</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.stamina.refillTime.countdown.ofSb" xml:space="preserve">
@@ -4814,24 +5139,19 @@ Puno na ang Stamina</target>
         <target state="translated">Suriin ang iyong status sa pag-recover ng stamina</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzWidgetsKit.status.not_received" xml:space="preserve">
-        <source>(unreceived)</source>
-        <target state="translated">(hindi natanggap)</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="pzWidgetsKit.status.title" xml:space="preserve">
         <source>Player Status</source>
         <target state="translated">Katayuan ng Manlalaro</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzWidgetsKit.unit.day:%lld" xml:space="preserve">
-        <source>%lld days</source>
-        <target state="translated">%lld araw</target>
+      <trans-unit id="pzWidgetsKit.statusDualProfile.enquiry.title" xml:space="preserve">
+        <source>Check the stamina recovery status of two profiles in the same widget</source>
+        <target state="translated">Suriin ang status ng pag-recover ng stamina ng dalawang profile sa parehong widget</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzWidgetsKit.unit.minute:%lld" xml:space="preserve">
-        <source>%lld mins</source>
-        <target state="translated">%lldmin</target>
+      <trans-unit id="pzWidgetsKit.statusDualProfile.title" xml:space="preserve">
+        <source>Player Status (Dual Profile)</source>
+        <target state="translated">Katayuan ng Manlalaro (Dual Profile)</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.widgetError.noProfileFound" xml:space="preserve">
@@ -4873,7 +5193,7 @@ Puno na ang Stamina</target>
   </file>
   <file original="WidgetExtension/Resources/InfoPlist.xcstrings" source-language="en" target-language="fil" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">

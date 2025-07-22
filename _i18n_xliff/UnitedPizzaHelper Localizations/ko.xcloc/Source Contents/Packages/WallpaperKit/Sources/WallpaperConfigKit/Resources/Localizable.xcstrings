@@ -1,0 +1,393 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "imageCropper.hint.fingerGestures" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may also use finger gestures on the preview image."
+          }
+        }
+      }
+    },
+    "imageCropper.hint.mouseGesture" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may also use mouse gestures on the preview image."
+          }
+        }
+      }
+    },
+    "settings.display.appBackground" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Background"
+          }
+        }
+      }
+    },
+    "settings.display.appUserWallpaper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App User Wallpaper"
+          }
+        }
+      }
+    },
+    "settings.display.appWallpaper.navDescription" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ This option will be automatically reset to factory default if the specified value points to an invalid user wallpaper."
+          }
+        }
+      }
+    },
+    "settings.display.appWallpaper.navSectionHeader" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Background"
+          }
+        }
+      }
+    },
+    "settings.display.appWallpaper.userWallPaper.notSpecified" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabled"
+          }
+        }
+      }
+    },
+    "settings.staminaTimer.background.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stamina Timer Background"
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.clickToAddYourFirstWallpaper" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click Here to Add a Wallpaper"
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.contextMenu.removeWallpaperEntry" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove"
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.contextMenu.renameWallpaperEntry" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rename"
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.editingWallpaperName.fieldLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.editingWallpaperName.prompt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter a new name for this wallpaper."
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.emptyContentsNotice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There's no user-supplied wallpaper yet."
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.exchange.export.failedInSavingToFile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed from dumping all user wallpapers."
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.exchange.export.fileSavedTo:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully dumped all user wallpapers into file:"
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.exchange.export.menuTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Package & Export All User Wallpapers"
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.exchange.export.succeededInSavingToFile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully dumped all user wallpapers."
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.exchange.import.menuTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import a Pack of User Wallpapers"
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.footerNotice.maximumEntryAmountReached" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum 10 user wallpapers allowed. While this restriction can possibly be breached by importing a pack of user wallpapers, please beware that this breach may cause performance issues."
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.menu.addNewWallpaper" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add New Wallpaper"
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.navDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User-supplied wallpapers are not listed in the Wallpaper Gallery and are independent of the app's bundled wallpapers."
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User Wallpaper Manager"
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.navTitle.tiny" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User Wallpapers"
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.toast.taskFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed"
+          }
+        }
+      }
+    },
+    "userWallpaperMgr.toast.taskSucceeded" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "userWPCropper.navTitle.step1.chooseImage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Image"
+          }
+        }
+      }
+    },
+    "userWPCropper.navTitle.step2.cropHorizontal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crop (Horizontal)"
+          }
+        }
+      }
+    },
+    "userWPCropper.navTitle.step3.cropSquared" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crop (Squared)"
+          }
+        }
+      }
+    },
+    "userWPCropper.step1.button.pickImageUsingFileImporter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick Image From Finder / Files App"
+          }
+        }
+      }
+    },
+    "userWPCropper.step1.button.pickImageUsingPhotoPicker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick Image From Photos App"
+          }
+        }
+      }
+    },
+    "userWPCropper.step1.footerDescription.1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your preferred method to select a source image for your custom wallpaper. In the next two steps, you'll be able to crop it to fit two different desktop widget sizes."
+          }
+        }
+      }
+    },
+    "userWPCropper.step1.footerDescription.2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please keep your own copy of your original image files. User wallpapers saved in this app is in extremely low quality with reduced dimensions."
+          }
+        }
+      }
+    },
+    "wallpaperGallery.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wallpaper Gallery"
+          }
+        }
+      }
+    },
+    "wpKit.assign.background4App" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assign as App Background"
+          }
+        }
+      }
+    },
+    "wpKit.assign.backgrounds4LiveActivity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assign as Live Activity Background"
+          }
+        }
+      }
+    },
+    "wpKit.gamePicker.Pizza.shortName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PZ"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

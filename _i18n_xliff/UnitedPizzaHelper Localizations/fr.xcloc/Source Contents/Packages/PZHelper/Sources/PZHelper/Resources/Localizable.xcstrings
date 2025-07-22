@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "app.appName.full" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper"
+          }
+        }
+      }
+    },
     "app.dailynote.card.daily_training.label" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -267,6 +277,17 @@
         }
       }
     },
+    "app.dailynote.noCard.switchToSettingsPage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go To Settings Page"
+          }
+        }
+      }
+    },
     "app.language.restartRequired.description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -274,6 +295,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "New UI language settings of an app on macOS / iOS always require the app to restart to make sure the new language setting becomes effective to it. Even if the user manually change this through System Settings, user will still be prompted the necessity of restarting the app, and it will be not this app but the macOS / iOS who prompts it.\n\nWe make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.\n\nThis app will quit after you confirm this message."
+          }
+        }
+      }
+    },
+    "app.language.restartRequired.widgets.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some features, such as System Notifications, Widgets, etc., require restarting Springboard (on iOS) or logging out and back in (on macOS) to apply changes to this setting. If this feels complex, you may simply reboot your device instead. Note that already-scheduled system notifications may not reflect the latest app language change."
           }
         }
       }
@@ -311,6 +343,17 @@
         }
       }
     },
+    "dpv.peripherals.footer.whySomeContentsAreRemoved" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The \"Travel Stats\" and \"Trailblazing Stats\" features have been intentionally removed, as they did not provide a better user experience compared to those offered by HoYoLAB and Miyoushe."
+          }
+        }
+      }
+    },
     "dpv.query.menuCommandTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -332,16 +375,6 @@
         }
       }
     },
-    "FAQ" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "FAQ"
-          }
-        }
-      }
-    },
     "profile.accountConnectivity.buttonTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -349,6 +382,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Test connection"
+          }
+        }
+      }
+    },
+    "profile.accountConnectivity.insufficientDataVisibility" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please expose the data visibility of this UID through HoYoLAB / Miyoushe app. If you are the UID owner, you may follow the following screenshot to config the data visibility."
           }
         }
       }
@@ -397,13 +441,13 @@
         }
       }
     },
-    "profile.label.fp.extraNotice.zzz" : {
+    "profile.label.fp.extraNotice.deviceFP" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Zenless Zone Zero UIDs governed by Miyoushe require the user to manually fill in his / her device fingerprint by himself / herself."
+            "value" : "⚠︎ UIDs governed by Miyoushe might need the user to manually fill in his / her device fingerprint by himself / herself in order to show some extra information."
           }
         }
       }
@@ -579,7 +623,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This procedure is not an illegal procedure such as plug-ins. This program abides by the relevant content of miHoYo's secondary creation rules. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ."
+            "value" : "This procedure is not like those illegal procedures such as infiltrative cheating injectors (i.e. mods). This program abides by the relevant content of miHoYo's secondary creation rules. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ."
           }
         }
       }
@@ -1087,6 +1131,139 @@
         }
       }
     },
+    "refugee.export.failedInSavingToFile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed from dumping the Old Pizza Refugee Data file."
+          }
+        }
+      }
+    },
+    "refugee.export.fileSavedTo:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully dumped the Old Pizza Refugee Data file to:"
+          }
+        }
+      }
+    },
+    "refugee.export.succeededInSavingToFile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully dumped the Old Pizza Refugee Data file."
+          }
+        }
+      }
+    },
+    "refugee.exportableCount.gachaEntries" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wish Record Entries"
+          }
+        }
+      }
+    },
+    "refugee.exportableCount.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportable Data Count"
+          }
+        }
+      }
+    },
+    "refugee.exportableCount.profiles" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local Profiles"
+          }
+        }
+      }
+    },
+    "refugee.footer.exportInstructions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may tap the button situated in the top-trailing of this view to start preparing the data for export. Once the data is successfully prepared for export, the file export dialog will pop-up to ask you where do you want to place the file."
+          }
+        }
+      }
+    },
+    "refugee.footer.whyServiceTerminatedForOS21" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device's system version is older than OS24 (iOS 17 / macOS 14 / watchOS 10), which falls outside the current service perimeter of The Pizza Helper.\n\nBoth main developers of \"Pizza Helper for Genshin\" (up to v4) had to step down from development in 2024 due to their own career plans, and the development of \"Pizza Helper for HSR\" was also suspended. The remaining developer found it overwhelming to maintain both apps alone, hence the launch of the \"Unified Pizza Engine\" project to combine both apps. This resulted in \"The Pizza Helper\" v5 which was released in mid-November 2024.\n\nThe built-in SwiftUI frameworks in older system versions have many defects that significantly affect maintenance efficiency. Therefore, the Unified Pizza Engine chose OS24 (iOS 17 / macOS 14 / watchOS 10) as its primary development target. The Observable Macro framework introduced in this generation allows the frontend to respond more quickly and precisely to micro-scale backend data changes, instead of the old Combine-based approach that would often redraw the entire UI at once. The old technology could even cause delayed UI updates and other issues, negatively impacting both user experience and development efficiency. Additionally, OS24 introduced SwiftData, which solves CoreData's long-standing concurrency-safety issues. The entire development process of the Unified Pizza Engine leverages Swift's modern concurrency technologies.\n\nStarting from v2.5.0, \"Pizza Helper for Genshin\" supported the \"Spiral Abyss Top Lists\" (and the related personal battle report uploading feature), which was available on OS21 (iOS 14, macOS 11, watchOS 8). After the release of Pizza Helper v5 at the end of 2024, the project, out of various concerns, implemented a \"zero data collection\" strategy. As a result, the Spiral Abyss Leaderboard and related personal battle report uploading features were discontinued in the summer of 2025. However, this poses an obvious data security risk for existing users who cannot upgrade to OS24: after the incoming decommission of the dedicated leaderboard server, older versions of the app on older systems may still try to upload data. If the server's IP address falls into the hands of a new owner, it could lead to uncontrollable information security risks.\n\nTo address this, the three developers reached a consensus: allow The Pizza Helper v5 to be built and executable for OS21 (iOS 14, etc.) with a limitation for systems below OS24: The Pizza Helper v5 will no longer provide any features on OS21 ~ OS23 except allowing users to export their old account data (i.e. the current saying \"local profile\") and draw history for import on a new device running OS24 and above.\n\nThe Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, so it can no longer provide service to users on systems below OS24. As always, FOSS (Free and Open Source Software) does not mean unlimited availability or unlimited responsibility. We hope for the understanding of all affected users."
+          }
+        }
+      }
+    },
+    "refugee.limitedServiceCategory4iOS16.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only widgets are available for iOS 16.2 & macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Locale Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14."
+          }
+        }
+      }
+    },
+    "refugee.limitedServiceCategory4iOS16.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remained Services for iOS 16 & macOS 13 Users:"
+          }
+        }
+      }
+    },
+    "refugee.liveActivity.featureLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stamina Timer"
+          }
+        }
+      }
+    },
+    "refugee.liveActivity.tapHereToInitiate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to Initiate"
+          }
+        }
+      }
+    },
+    "refugee.noDataExportable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No local data exportable for now. This view awaits for iCloud background data updates, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later."
+          }
+        }
+      }
+    },
     "setting.display.restoreTabOnLaunching" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1170,18 +1347,18 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Abyss Rank Statistics, Daily Material, Official In-Game Events, etc."
+            "value" : "The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Daily Material, Official In-Game Events, etc."
           }
         }
       }
     },
-    "settings.display.timeZone4GI.title" : {
+    "settings.display.timeZone4OfficialFeedsEtc.title" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TimeZone for displaying GI universal information"
+            "value" : "TimeZone for displaying universal information"
           }
         }
       }
@@ -1687,65 +1864,12 @@
         }
       }
     },
-    "settings.privacy.abyssDataCollect" : {
-      "extractionState" : "manual",
+    "settings.privacy.noOptionsAvailable" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Allow to Collect Spiral Abyss Battle Reports Data"
-          }
-        }
-      }
-    },
-    "settings.privacy.abyssDataCollect.detail" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We are looking forward to collect the Genshin characters you own and you used in the Spiral Abyss and send them to Snap.Hutao Database (i.e. HutaoDB) and Pizza DB. Allowing us to collect the data will help HutaoDB & PizzaAbyssDB to supply more-accurate information of the real-time Spiral Abyss Chacacter Usage Rate, Team Usage Rate, etc. information available-to-watch in the App. The information also consists of the related in-game Genshin UID but no other of your game account information to help HutaoDB potentially refuse forged records from identified cheaters."
-          }
-        }
-      }
-    },
-    "settings.privacy.abyssDataCollect.faqLink" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap here to read the FAQs about it."
-          }
-        }
-      }
-    },
-    "settings.privacy.SnapHutao.enforceUsername.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Halt submission to HutaoDB until username is filled here"
-          }
-        }
-      }
-    },
-    "settings.privacy.SnapHutao.footer" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao may release some benefits to a user if the username field here is correctly supplied in the uploaded battle report. Snap Hutao reserves the rights to explain the further details. If the enforcer toggle is ON, your battle reports will be uploaded to HutaoDB **only if** the username field is **not** blank."
-          }
-        }
-      }
-    },
-    "settings.privacy.SnapHutao.username.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao Username"
+            "value" : "There’s no privacy options available since the removal of certain features. This app now collects nothing."
           }
         }
       }
@@ -1817,6 +1941,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Group Container"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.fingerprintPropagation.buttonTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Propagate"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.fingerprintPropagation.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local profiles configured for Miyoushe-managed UIDs are recommended to use the same device fingerprint (x-rpc-device_fp) to ensure consistent identification. Click “Propagate” button to apply the same device fingerprint to all such local profiles."
           }
         }
       }
@@ -1910,107 +2054,6 @@
         }
       }
     },
-    "settings.resinTimer.autoInit.toggle.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Automatically initiate Stamina Timer Live Activity"
-          }
-        }
-      }
-    },
-    "settings.resinTimer.background.choose" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choose Background"
-          }
-        }
-      }
-    },
-    "settings.resinTimer.dynamicIsland.howToHide.answer" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You can slide the Dynamic Island from left / right to the middle to hide it. \nSwipe left on the Stamina Timer on the lock screen to turn off the resin timer and the Dynamic Island."
-          }
-        }
-      }
-    },
-    "settings.resinTimer.explanation" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stamina Timer is how this app utilizes the Live Activity feature of the iOS. You can click the ellipsis circle to the right of the Real-Time Note of a local profile in the Today tab to initiate it."
-          }
-        }
-      }
-    },
-    "settings.resinTimer.gotoSystemSettings" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go to System Settings to enable Live Activity for this app"
-          }
-        }
-      }
-    },
-    "settings.resinTimer.randomBackground.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Use Random Background"
-          }
-        }
-      }
-    },
-    "settings.resinTimer.realtimeActivity.notEnabled" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Live Activity for this app is not permitted by the system"
-          }
-        }
-      }
-    },
-    "settings.resinTimer.settings.navTitle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stamina Timer Settings"
-          }
-        }
-      }
-    },
-    "settings.resinTimer.showExpedition.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show Expedition"
-          }
-        }
-      }
-    },
-    "settings.resinTimer.useTransparentBackground.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Use Glass Material Background"
-          }
-        }
-      }
-    },
     "settings.section.appStoreRelated.header" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2051,6 +2094,107 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "UI-Related Settings"
+          }
+        }
+      }
+    },
+    "settings.staminaTimer.autoInit.toggle.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatically initiate Stamina Timer Live Activity"
+          }
+        }
+      }
+    },
+    "settings.staminaTimer.background.choose" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Background"
+          }
+        }
+      }
+    },
+    "settings.staminaTimer.dynamicIsland.howToHide.answer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can slide the Dynamic Island from left / right to the middle to hide it. \nSwipe left on the Stamina Timer on the lock screen to turn off the resin timer and the Dynamic Island."
+          }
+        }
+      }
+    },
+    "settings.staminaTimer.explanation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stamina Timer is how this app utilizes the Live Activity feature of the iOS. You can click the ellipsis circle to the right of the Real-Time Note of a local profile in the Today tab to initiate it."
+          }
+        }
+      }
+    },
+    "settings.staminaTimer.gotoSystemSettings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to System Settings to enable Live Activity for this app"
+          }
+        }
+      }
+    },
+    "settings.staminaTimer.randomBackground.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Random Background"
+          }
+        }
+      }
+    },
+    "settings.staminaTimer.realtimeActivity.notEnabled" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live Activity for this app is not permitted by the system"
+          }
+        }
+      }
+    },
+    "settings.staminaTimer.settings.navTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stamina Timer Settings"
+          }
+        }
+      }
+    },
+    "settings.staminaTimer.showExpedition.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Expedition"
+          }
+        }
+      }
+    },
+    "settings.staminaTimer.useTransparentBackground.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Glass Material Background"
           }
         }
       }
@@ -2165,6 +2309,17 @@
         }
       }
     },
+    "tab.utils.featureRemovalNotice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some features are intentionally removed due to lack of maintenance and usability."
+          }
+        }
+      }
+    },
     "tab.utils.fullTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2183,6 +2338,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "miHoYo Interactive Map"
+          }
+        }
+      }
+    },
+    "tools.hoyoMap.sectionDescription" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This menu will directly display the corresponding map webpage using the system's default browser."
           }
         }
       }

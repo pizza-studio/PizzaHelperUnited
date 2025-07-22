@@ -24,6 +24,7 @@
       }
     },
     "dailyNote.zzz.vhsState.awaitingForOperation" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -34,6 +35,7 @@
       }
     },
     "dailyNote.zzz.vhsState.inOperation" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -44,6 +46,7 @@
       }
     },
     "dailyNote.zzz.vhsState.revenueAvailable" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

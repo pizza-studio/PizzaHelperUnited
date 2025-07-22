@@ -4,84 +4,7 @@
     "%@" : {
       "shouldTranslate" : false
     },
-    "app.background.blue" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Blue"
-          }
-        }
-      }
-    },
-    "app.background.gold" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gold"
-          }
-        }
-      }
-    },
-    "app.background.gray" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gray"
-          }
-        }
-      }
-    },
-    "app.background.green" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Green"
-          }
-        }
-      }
-    },
-    "app.background.intertwinedFate" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "March 7th & Intertwined Fate"
-          }
-        }
-      }
-    },
-    "app.background.purple" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Purple"
-          }
-        }
-      }
-    },
-    "app.background.red" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Red"
-          }
-        }
-      }
-    },
-    "appEntity.localeProfile" : {
+    "appEntity.localProfile" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -101,7 +24,47 @@
         }
       }
     },
-    "appEnum.AutoRotationUsingResinWidgetStyle.asRoundMeter" : {
+    "appEnum.ExpeditionDisplayPolicy.displayExclusively" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Display Exclusively"
+          }
+        }
+      }
+    },
+    "appEnum.ExpeditionDisplayPolicy.displayWhenAvailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Display If Available"
+          }
+        }
+      }
+    },
+    "appEnum.ExpeditionDisplayPolicy.neverDisplay" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Never Display"
+          }
+        }
+      }
+    },
+    "appEnum.ExpeditionDisplayPolicy.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expedition Display Policy"
+          }
+        }
+      }
+    },
+    "appEnum.StaminaContentRevolverStyle.asRoundMeter" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -111,7 +74,7 @@
         }
       }
     },
-    "appEnum.AutoRotationUsingResinWidgetStyle.asTimerCountDown" : {
+    "appEnum.StaminaContentRevolverStyle.asTimerCountDown" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -121,7 +84,7 @@
         }
       }
     },
-    "appEnum.AutoRotationUsingResinWidgetStyle.asTimeStampWhenWillAccomplish" : {
+    "appEnum.StaminaContentRevolverStyle.asTimeStampWhenWillAccomplish" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -131,7 +94,7 @@
         }
       }
     },
-    "appEnum.AutoRotationUsingResinWidgetStyle.byDefault" : {
+    "appEnum.StaminaContentRevolverStyle.byDefault" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -141,7 +104,7 @@
         }
       }
     },
-    "appEnum.AutoRotationUsingResinWidgetStyle.title" : {
+    "appEnum.StaminaContentRevolverStyle.title" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -241,122 +204,22 @@
         }
       }
     },
-    "game.elements.anemo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Anemo"
-          }
-        }
-      }
-    },
-    "game.elements.cryo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cryo"
-          }
-        }
-      }
-    },
-    "game.elements.dendro" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dendro"
-          }
-        }
-      }
-    },
-    "game.elements.electro" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Electro"
-          }
-        }
-      }
-    },
-    "game.elements.geo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geo"
-          }
-        }
-      }
-    },
-    "game.elements.hydro" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hydro"
-          }
-        }
-      }
-    },
-    "game.elements.imago" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imago"
-          }
-        }
-      }
-    },
-    "game.elements.physico" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Physico"
-          }
-        }
-      }
-    },
-    "game.elements.pyro" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pyro"
-          }
-        }
-      }
-    },
-    "game.elements.quanto" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quanto"
-          }
-        }
-      }
-    },
     "intent.description.chooseTheGame" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choose the game"
+          }
+        }
+      }
+    },
+    "intent.description.pickTheLocalProfileDuoForThisWidget" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose 2 local profiles for this widget"
           }
         }
       }
@@ -377,6 +240,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Echo of War Display"
+          }
+        }
+      }
+    },
+    "intent.field.expeditionDisplayPolicy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expedition Display Policy"
           }
         }
       }
@@ -411,12 +284,32 @@
         }
       }
     },
-    "intent.field.localeProfile" : {
+    "intent.field.localProfile" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Local profile"
+          }
+        }
+      }
+    },
+    "intent.field.localProfile.slot1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local profile #1"
+          }
+        }
+      }
+    },
+    "intent.field.localProfile.slot2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local profile #2"
           }
         }
       }
@@ -427,6 +320,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "[GI] Show daily materials (large-sized widgets only)"
+          }
+        }
+      }
+    },
+    "intent.field.showStaminaOnly" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Player Stamina Only"
           }
         }
       }
@@ -471,6 +374,16 @@
         }
       }
     },
+    "intent.field.useTinyGlassDisplayStyle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Tiny Glass Display Style"
+          }
+        }
+      }
+    },
     "intent.field.wallpaper" : {
       "localizations" : {
         "en" : {
@@ -501,7 +414,7 @@
         }
       }
     },
-    "intent.name.selectLocalProfileOnly" : {
+    "intent.name.selectLocalProfile4Peripherals" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -511,12 +424,22 @@
         }
       }
     },
-    "intent.name.selectLocalProfileWithExtraConfig" : {
+    "intent.name.selectLocalProfile4PeripheralsWithExtraConfig" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choose Local Profile with Extra Configuration"
+          }
+        }
+      }
+    },
+    "intent.name.selectLocalProfileDuo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Local Profile (Dual)"
           }
         }
       }
@@ -593,7 +516,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Realm Currency (GI)"
+            "value" : "Realm Currency (GI), only effective if being configured with a local profile configured using a Genshin Impact UID."
           }
         }
       }
@@ -604,7 +527,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alternative Realm Currency (GI)"
+            "value" : "Alternative Realm Currency (GI), only effective if being configured with a local profile configured using a Genshin Impact UID."
           }
         }
       }
@@ -642,26 +565,6 @@
         }
       }
     },
-    "pzWidgetsKit.currentStamina" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Current Stamina"
-          }
-        }
-      }
-    },
-    "pzWidgetsKit.dailyTask" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Daily Commission"
-          }
-        }
-      }
-    },
     "pzWidgetsKit.expedition" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -669,76 +572,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Expedition & Assignments"
-          }
-        }
-      }
-    },
-    "pzWidgetsKit.expedition.status.finished" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Finished"
-          }
-        }
-      }
-    },
-    "pzWidgetsKit.expedition.status.pending" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pending"
-          }
-        }
-      }
-    },
-    "pzWidgetsKit.expedition.timeToAllCompletion" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Will Finish At:"
-          }
-        }
-      }
-    },
-    "pzWidgetsKit.homeCoin" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Realm Currency"
-          }
-        }
-      }
-    },
-    "pzWidgetsKit.infoBlock.refilledAt:%@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Till %@"
-          }
-        }
-      }
-    },
-    "pzWidgetsKit.infoBlock.staminaFullyFilledDescription" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "0 hr 0 min\nStamina is Full"
-          }
-        }
-      }
-    },
-    "pzWidgetsKit.infoBlock.transformerAvailable" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Available"
           }
         }
       }
@@ -776,16 +609,6 @@
         }
       }
     },
-    "pzWidgetsKit.material.sunday" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "All materials are available in Sunday"
-          }
-        }
-      }
-    },
     "pzWidgetsKit.material.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -793,26 +616,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "[GI] Today’s Materials & Official Events"
-          }
-        }
-      }
-    },
-    "pzWidgetsKit.next20Stamina:%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Until %lld Stamina:"
-          }
-        }
-      }
-    },
-    "pzWidgetsKit.nextMaxStamina" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Until Max Stamina:"
           }
         }
       }
@@ -835,26 +638,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Official Feeds"
-          }
-        }
-      }
-    },
-    "pzWidgetsKit.stamina" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Player Stamina"
-          }
-        }
-      }
-    },
-    "pzWidgetsKit.stamina.full" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Full"
           }
         }
       }
@@ -934,16 +717,6 @@
         }
       }
     },
-    "pzWidgetsKit.status.not_received" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(unreceived)"
-          }
-        }
-      }
-    },
     "pzWidgetsKit.status.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -955,46 +728,24 @@
         }
       }
     },
-    "pzWidgetsKit.unit.day:%lld" : {
+    "pzWidgetsKit.statusDualProfile.enquiry.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld day"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld days"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check the stamina recovery status of two profiles in the same widget"
           }
         }
       }
     },
-    "pzWidgetsKit.unit.minute:%lld" : {
+    "pzWidgetsKit.statusDualProfile.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld min"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld mins"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player Status (Dual Profile)"
           }
         }
       }

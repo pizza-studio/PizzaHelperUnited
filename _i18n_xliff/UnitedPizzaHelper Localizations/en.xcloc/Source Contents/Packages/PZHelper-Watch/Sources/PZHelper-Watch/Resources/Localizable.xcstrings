@@ -225,16 +225,6 @@
         }
       }
     },
-    "watch.widget.settings.sync.frequency.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Widget Sync Frequency"
-          }
-        }
-      }
-    },
     "watch.widget.settings.sync.speed:%@" : {
       "extractionState" : "manual",
       "localizations" : {
