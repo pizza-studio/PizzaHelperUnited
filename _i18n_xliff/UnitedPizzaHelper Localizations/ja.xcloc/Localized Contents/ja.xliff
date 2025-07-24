@@ -743,7 +743,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.uigfv4.refugee" xml:space="preserve">
         <source>If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into a UIGFv4 format to import instead. This process is automatic.</source>
-        <target state="translated">旧ピザ難民資料をお持ちした場合、UIGFv4 フォーマットを選択してください。アプリは自動的にガチャ記録の itemID を修正し、UIGFv4 フォーマットに変換してインポートします。この処理は自動で行われます。</target>
+        <target state="translated">旧ピザ難民資料をお持ちした場合、UIGFv4 フォーマットを選択してください。アプリは自動的にガチャ記録の itemID を修正し、UIGFv4 フォーマットに変換して読み込みます。この処理は自動で行われます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.info.time" xml:space="preserve">
@@ -2979,12 +2979,12 @@ The app will restart after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="settings.profile.clickHereToLogin" xml:space="preserve">
         <source>Click here to login:</source>
-        <target state="translated">ここをタップしてゴグイン:</target>
+        <target state="translated">ここをタップしてログイン:</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.clickHereToLogin.reLogin" xml:space="preserve">
         <source>Click here to login again:</source>
-        <target state="translated">ここをタップして再ゴグイン:</target>
+        <target state="translated">ここをタップしてロゴグイン:</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.importAllUIDs" xml:space="preserve">
