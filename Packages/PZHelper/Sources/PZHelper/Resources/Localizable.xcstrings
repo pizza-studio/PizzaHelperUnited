@@ -14294,7 +14294,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ここをタップしてゴグイン:"
+            "value" : "ここをタップしてログイン:"
           }
         },
         "ko" : {
@@ -14371,7 +14371,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ここをタップして再ゴグイン:"
+            "value" : "ここをタップしてロゴグイン:"
           }
         },
         "ko" : {
