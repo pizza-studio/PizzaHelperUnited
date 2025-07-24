@@ -51,7 +51,7 @@ struct ProfileBackupRestoreMenu<T: View>: View {
                 extraItem()
             }
         } label: {
-            Image(systemSymbol: .externaldriveFillBadgePersonCrop)
+            Image(systemSymbol: .filemenuAndSelection)
         }
         .apply { coreContent in
             coreContent
