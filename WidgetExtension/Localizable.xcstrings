@@ -1641,7 +1641,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "該当ウィジェットのための2つのプロファイルのご指定を"
+            "value" : "このウィジェットに2つのプロファイルのご指定を"
           }
         },
         "ko" : {
@@ -1717,7 +1717,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "該当ウィジェットのためのプロファイルのご指定を"
+            "value" : "このウィジェットにプロファイルのご指定を"
           }
         },
         "ko" : {
@@ -2857,7 +2857,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "袖珍硝子表示スタイル"
+            "value" : "ミニガラス表示スタイル"
           }
         },
         "ko" : {
