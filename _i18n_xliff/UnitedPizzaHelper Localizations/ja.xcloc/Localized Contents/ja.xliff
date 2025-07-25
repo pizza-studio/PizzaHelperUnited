@@ -122,12 +122,12 @@
       </trans-unit>
       <trans-unit id="intent_description_pickTheLocalProfileDuoForThisWidget" xml:space="preserve">
         <source>Choose 2 local profiles for this widget</source>
-        <target>該当ウィジェットのための2つのプロファイルのご指定を</target>
+        <target>このウィジェットに2つのプロファイルのご指定を</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent_description_pickTheLocalProfileForThisWidget" xml:space="preserve">
         <source>Choose a local profile for this widget</source>
-        <target>該当ウィジェットのためのプロファイルのご指定を</target>
+        <target>このウィジェットにプロファイルのご指定を</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent_field_echoOfWarDisplayMethod" xml:space="preserve">
@@ -202,7 +202,7 @@
       </trans-unit>
       <trans-unit id="intent_field_useTinyGlassDisplayStyle" xml:space="preserve">
         <source>Use Tiny Glass Display Style</source>
-        <target>袖珍硝子表示スタイル</target>
+        <target>ミニガラス表示スタイル</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent_field_wallpaper" xml:space="preserve">
@@ -2561,7 +2561,7 @@ macOS で米遊社アカウント削除リンクを表示するために、Safar
       </trans-unit>
       <trans-unit id="refugee.exportableCount.profiles" xml:space="preserve">
         <source>Local Profiles</source>
-        <target state="translated">ローカルプロファイル</target>
+        <target state="translated">プロファイル</target>
         <note/>
       </trans-unit>
       <trans-unit id="refugee.footer.exportInstructions" xml:space="preserve">
@@ -2589,14 +2589,14 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
 
 『原神ピザ助手』は v2.5.0 から「深境螺旋ランキング」（および関連する個人作戦報告アップロード機能）を OS21（iOS 14、macOS 11、watchOS 8）でサポートしていました。2024 年末に『ピザ助手(無印)』v5 が実装された後、様々な配慮により、「データ不収集」方針が採用され、2025 年夏には原神向け「深境螺旋ランキング」機能と個人作戦報告アップロード機能が削除されました。しかし、OS24 へアップグレードできない既存ユーザーにとっては重大な情報セキュリティリスクが残ります。ランキング専用サーバーの契約終了後も、旧バージョンのアプリがデータをアップロードし続ける可能性があり、そのサーバーの IP が新たな所有者の手に渡った場合、制御不能な情報流出リスクとなります。
 
-この状況に対応するため、三人の開発者は『ピザ助手(無印)』v5 を OS21（iOS 14 など）向けにもビルドすることで合意しましたが、OS24 未満のシステムでは旧バージョンのローカルプロファイル（旧称「ローカルアカウント」）データやガチャ履歴の書き出しのみを提供し、ユーザーが新しいデバイス（OS24 以降）で読み込めるようにします。
+この状況に対応するため、三人の開発者は『ピザ助手(無印)』v5 を OS21（iOS 14 など）向けにもビルドすることで合意しましたが、OS24 未満のシステムでは旧バージョンのプロファイル（旧称「ローカルアカウント」）データやガチャ履歴の書き出しのみを提供し、ユーザーが新しいデバイス（OS24 以降）で読み込めるようにします。
 
 『ピザ助手(無印)』v5 はデータ損失のリスクを冒してまで SwiftData を CoreData へダウングレードできないため、OS24 未満のシステムへのサポートは継続できません。FOSS（フリー・オープンソース・ソフトウェア）は無限の利用可能性や責任を意味しません。ご理解のほど、よろしくお願いいたします。</target>
         <note/>
       </trans-unit>
       <trans-unit id="refugee.limitedServiceCategory4iOS16.footer" xml:space="preserve">
         <source>Only widgets are available for iOS 16.2 &amp; macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Locale Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14.</source>
-        <target state="translated">iOS 16.2・macOS 13 ではウィジェットのみ利用可能です。他の機能は iOS 17 / macOS 14 以降が必要です。ローカルプロファイルマネージャーのナビゲーション操作中に不具合が発生した場合、それは iOS 16 / macOS 13 の SwiftUI 関連バグが原因であり、唯一の解決策は iOS 17 / macOS 14 へのアップグレードです。</target>
+        <target state="translated">iOS 16.2・macOS 13 ではウィジェットのみ利用可能です。他の機能は iOS 17 / macOS 14 以降が必要です。プロファイルマネージャーのナビゲーション操作中に不具合が発生した場合、それは iOS 16 / macOS 13 の SwiftUI 関連バグが原因であり、唯一の解決策は iOS 17 / macOS 14 へのアップグレードです。</target>
         <note/>
       </trans-unit>
       <trans-unit id="refugee.limitedServiceCategory4iOS16.header" xml:space="preserve">
@@ -2711,7 +2711,7 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
       </trans-unit>
       <trans-unit id="settings.notification.faq.howNotificationsGetScheduled" xml:space="preserve">
         <source>This app or its widgets will attempt to automatically reschedule relevant notifications when retrieving Real-Time Note data for a specific local profile. During each scheduling, it will proactively try to clear any previously scheduled, unreasonable, and unsent notifications made for this local profile. Notifications will only be scheduled if the system settings allow the app to send system notifications, and if the app has successfully retrieved real-time note data, in cases where the relevant preferences permit it.</source>
-        <target state="translated">敝アプリまたはその付属のウィジェットは、特定のローカルプロファイルに対するリアルタイム便箋情報を取得する際に、そのプロファイルに関する通知を自動で再予定しようとします。該当プロファイルの新しい通知を予定するたびに、以前に（そのプロファイルのために）予定された不適切な未送信通知があれば、それらを自動的に削除しようとします。通知は、システム設定が本アプリの通知送信を許可しており、さらに本アプリがリアルタイム便箋情報の取得に成功した場合に限り、関連の通知設定が許可されている状況でのみ予定されます。</target>
+        <target state="translated">敝アプリまたはその付属のウィジェットは、特定のプロファイルに対するリアルタイム便箋情報を取得する際に、そのプロファイルに関する通知を自動で再予定しようとします。該当プロファイルの新しい通知を予定するたびに、以前に（そのプロファイルのために）予定された不適切な未送信通知があれば、それらを自動的に削除しようとします。通知は、システム設定が本アプリの通知送信を許可しており、さらに本アプリがリアルタイム便箋情報の取得に成功した場合に限り、関連の通知設定が許可されている状況でのみ予定されます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.giRealmCurrency.allow" xml:space="preserve">
@@ -2926,7 +2926,7 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
       </trans-unit>
       <trans-unit id="settings.profile.advanced.autoDeduplication.title" xml:space="preserve">
         <source>Automatically deduplicate local profiles</source>
-        <target state="translated">重複のローカルプロファイルを自動的に排除</target>
+        <target state="translated">重複のプロファイルを自動的に排除</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.advanced.dbSaveLocation.footer" xml:space="preserve">
@@ -2935,7 +2935,7 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
 ⚠️ Please EXPORT your local profiles PRIOR TO touching this toggle.</source>
         <target state="translated">⚠️ 開発者から技術的なサポートを求めている間に行うように指示されない限り、この切り替えボタンを触らないでください。
 
-⚠️ この切り替えボタンを触る前に、ローカルのプロファイルをお書き出しください。</target>
+⚠️ この切り替えボタンを触る前に、該当端末からプロファイルをお書き出しください。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.advanced.dbSaveLocation.restartRequired.description" xml:space="preserve">
@@ -2949,7 +2949,7 @@ The app will restart after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="settings.profile.advanced.dbSaveLocation.title" xml:space="preserve">
         <source>Local Profile Storage Location</source>
-        <target state="translated">ローカルプロファイルのストレージ場所</target>
+        <target state="translated">プロファイルのストレージ場所</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.advanced.dbSaveLocation.toAppContainer" xml:space="preserve">
@@ -2969,7 +2969,7 @@ The app will restart after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="settings.profile.advanced.fingerprintPropagation.footer" xml:space="preserve">
         <source>Local profiles configured for Miyoushe-managed UIDs are recommended to use the same device fingerprint (x-rpc-device_fp) to ensure consistent identification. Click “Propagate” button to apply the same device fingerprint to all such local profiles.</source>
-        <target state="translated">米遊社が管理するUID用に設定されたローカルプロファイルは、一貫した識別を確保するために同じ端末指紋（x-rpc-device_fp）を使用することが推奨されます。「端末指紋を一括適用する」ボタンをクリックして、すべてのそのようなローカルプロファイルに同じ端末指紋を適用します。</target>
+        <target state="translated">米遊社が管理するUIDのために設定されたプロファイルは、一貫した識別を確保するために同じ端末指紋（x-rpc-device_fp）を使用することが推奨されます。「端末指紋を一括適用する」ボタンをクリックして、すべてのそのようなプロファイルに同じ端末指紋を適用します。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.advanced.navTitle" xml:space="preserve">
@@ -4899,12 +4899,12 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="intent.description.pickTheLocalProfileDuoForThisWidget" xml:space="preserve">
         <source>Choose 2 local profiles for this widget</source>
-        <target state="translated">該当ウィジェットのための2つのプロファイルのご指定を</target>
+        <target state="translated">このウィジェットに2つのプロファイルのご指定を</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.description.pickTheLocalProfileForThisWidget" xml:space="preserve">
         <source>Choose a local profile for this widget</source>
-        <target state="translated">該当ウィジェットのためのプロファイルのご指定を</target>
+        <target state="translated">このウィジェットにプロファイルのご指定を</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.field.echoOfWarDisplayMethod" xml:space="preserve">
@@ -4979,7 +4979,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="intent.field.useTinyGlassDisplayStyle" xml:space="preserve">
         <source>Use Tiny Glass Display Style</source>
-        <target state="translated">袖珍硝子表示スタイル</target>
+        <target state="translated">ミニガラス表示スタイル</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.field.wallpaper" xml:space="preserve">
