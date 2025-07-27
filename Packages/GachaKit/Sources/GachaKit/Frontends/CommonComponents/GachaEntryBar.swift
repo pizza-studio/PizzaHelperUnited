@@ -35,8 +35,6 @@ public struct GachaEntryBar: View {
                                 .environment(theVM)
                                 .fontWeight(.medium)
                                 .fontWidth(.condensed)
-                            itemIDText
-                                .fontWidth(.condensed)
                         }
                         if debug {
                             HStack {
@@ -45,18 +43,25 @@ public struct GachaEntryBar: View {
                                     .foregroundColor(.secondary)
                                     .fontWidth(.condensed)
                             }
+                        } else {
+                            itemIDText
+                                .fontWidth(.condensed)
                         }
                     }
-                    Spacer()
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                     VStack(alignment: .trailing) {
                         if let drawCount, entry.rarity != .rank3 {
                             Text(drawCount.description)
                                 .font(showDate ? .caption2 : .body)
                         } else if debug {
-                            Text(entry.uidWithGame)
-                                .font(.caption2)
-                                .fontWidth(.condensed)
+                            HStack {
+                                itemIDText
+                                    .fontWidth(.condensed)
+                                Text(entry.uidWithGame)
+                                    .font(.caption2)
+                                    .fontWidth(.condensed)
+                            }
                         }
                         if showDate {
                             Text(Self.dateFormatter.string(from: entry.time))
@@ -92,12 +97,10 @@ public struct GachaEntryBar: View {
     let debug: Bool
     let debugMenu: Bool
 
-    @MainActor var itemIDText: Text {
+    @MainActor @ViewBuilder var itemIDText: some View {
         if showDate {
             Text(verbatim: "\(entry.itemID)")
-                .font(.caption).foregroundColor(.secondary)
-        } else {
-            Text(verbatim: "")
+                .font(.caption2).foregroundColor(.secondary)
         }
     }
 
