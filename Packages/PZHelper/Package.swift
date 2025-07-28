@@ -59,6 +59,9 @@ let package = Package(
                 .product(name: "WallpaperConfigKit", package: "WallpaperKit"),
                 .product(name: "PZWidgetsKit", package: "PZWidgetsKit"),
             ],
+            resources: [
+                .process("Resources/"),
+            ],
             swiftSettings: sharedSwiftSettings
         ),
         .testTarget(
