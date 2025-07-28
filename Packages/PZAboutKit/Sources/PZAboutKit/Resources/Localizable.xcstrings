@@ -3189,6 +3189,82 @@
         }
       }
     },
+    "aboutKit.contributors.category.i18n.previous.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht alle dieser Mitwirkenden sind seit Version 5.0+ an der Lokalisierungsarbeit beteiligt. Wir würdigen sie hier dennoch für ihre Beiträge zu den vorherigen Hauptversionen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not all of these contributors are taking part into the localization work since v5.0+. We still credit them here for their contributions against the previous major releases."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No todos estos colaboradores participan en el trabajo de localización desde la versión 5.0+. Aun así, los mencionamos aquí por sus contribuciones en versiones principales anteriores."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hindi lahat ng mga tagapag-ambag na ito ay kasali pa sa lokal na pagsasalin mula v5.0+. Binibigyan pa rin namin sila ng kredito dito para sa kanilang mga ambag sa mga nakaraang pangunahing bersyon."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tous ces contributeurs ne participent plus à la localisation depuis la version 5.0+. Nous les remercions néanmoins ici pour leurs contributions aux versions majeures précédentes."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non tutti questi collaboratori partecipano al lavoro di localizzazione dalla versione 5.0+. Li ringraziamo comunque qui per i loro contributi alle precedenti versioni principali."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "v5.0以降の翻訳（ローカリゼーション）には全員が参加したわけではありませんが、それ以前の主要リリースへの貢献に感謝し、引き続きここにその名を記載させていただきます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 기여자들 모두가 v5.0+ 이후 현지화 작업에 참여하고 있지는 않습니다. 이전 주요 릴리스에 대한 그들의 기여를 여기에서 계속 인정합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не все эти участники продолжают работать над локализацией с версии 5.0+. Тем не менее, мы указываем их здесь за вклад в предыдущие основные версии."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không phải tất cả những người đóng góp này đều tham gia vào công việc bản địa hóa kể từ v5.0+. Chúng tôi vẫn ghi nhận họ ở đây vì những đóng góp của họ cho các bản phát hành lớn trước đó."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上述翻译贡献者们并非都有参与对 v5.0+ 的翻译工作，但我们仍在此感谢他们对以往主要版本的贡献。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上述翻譯貢獻者們並非都有參與對 v5.0+ 的翻譯工作，但我們仍在此感謝他們對以往主要版本的貢獻。"
+          }
+        }
+      }
+    },
     "aboutKit.contributors.category.mainCrew" : {
       "localizations" : {
         "de" : {
