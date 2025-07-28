@@ -8,7 +8,6 @@ import WebKit
 
 // MARK: - GeetestValidateCoordinator
 
-@available(iOS 16.2, macCatalyst 16.2, *)
 class GeetestValidateCoordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     // MARK: Lifecycle
 
@@ -19,6 +18,10 @@ class GeetestValidateCoordinator: NSObject, WKNavigationDelegate, WKScriptMessag
     // MARK: Internal
 
     var parent: GeetestValidateView
+
+    var geetestURL: URL {
+        URL(string: "https://gi.pizzastudio.org/geetest/")!
+    }
 
     // Receive message from website
     func userContentController(
@@ -32,35 +35,19 @@ class GeetestValidateCoordinator: NSObject, WKNavigationDelegate, WKScriptMessag
             }
         }
     }
-}
 
-#if canImport(AppKit) && !canImport(UIKit)
-struct GeetestValidateView: NSViewRepresentable {
-    typealias Coordinator = GeetestValidateCoordinator
-
-    let challenge: String
-    // swiftlint:disable:next identifier_name
-    let gt: String
-
-    let webView = WKWebView()
-    @State private var isValidationObtained = false // 标识是否已获取到 validate.value 的内容
-
-    @State var completion: (String) -> Void
-
-    @MainActor
-    func makeNSView(context: Context) -> WKWebView {
-        webView.navigationDelegate = context.coordinator
+    func makeView(_ webView: WKWebView) -> WKWebView {
+        webView.navigationDelegate = self
         webView.configuration.userContentController.removeAllScriptMessageHandlers()
-        webView.configuration.userContentController.add(context.coordinator, name: "callbackHandler")
+        webView.configuration.userContentController.add(self, name: "callbackHandler")
         webView.customUserAgent = """
         Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148
         """
         return webView
     }
 
-    @MainActor
-    func updateNSView(_ nsView: WKWebView, context: Context) {
-        let url = URL(string: "https://gi.pizzastudio.org/geetest/")!
+    func updateView(_ webView: WKWebView, challenge: String, gt: String) {
+        let url = geetestURL
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.queryItems = [
             URLQueryItem(name: "challenge", value: challenge),
@@ -75,8 +62,24 @@ struct GeetestValidateView: NSViewRepresentable {
             "Referer": "https://webstatic.mihoyo.com",
         ]
 
-        Task { nsView.load(request) }
+        Task { webView.load(request) }
     }
+}
+
+// MARK: - GeetestValidateView
+
+struct GeetestValidateView: View {
+    typealias Body = Never
+    typealias Coordinator = GeetestValidateCoordinator
+
+    let challenge: String
+    // swiftlint:disable:next identifier_name
+    let gt: String
+
+    let webView = WKWebView()
+    // @State private var isValidationObtained = false // 标识是否已获取到 validate.value 的内容
+
+    @State var completion: (String) -> Void
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -84,60 +87,33 @@ struct GeetestValidateView: NSViewRepresentable {
 
     func finishWithValidate(_ validate: String) {
         completion(validate)
+    }
+}
+
+#if canImport(AppKit) && !canImport(UIKit)
+extension GeetestValidateView: NSViewRepresentable {
+    @MainActor
+    func makeNSView(context: Context) -> WKWebView {
+        context.coordinator.makeView(webView)
+    }
+
+    @MainActor
+    func updateNSView(_ nsView: WKWebView, context: Context) {
+        context.coordinator.updateView(nsView, challenge: challenge, gt: gt)
     }
 }
 
 #elseif canImport(UIKit)
 @available(iOS 16.2, macCatalyst 16.2, *)
-struct GeetestValidateView: UIViewRepresentable {
-    typealias Coordinator = GeetestValidateCoordinator
-
-    let challenge: String
-    // swiftlint:disable:next identifier_name
-    let gt: String
-
-    let webView = WKWebView()
-    @State private var isValidationObtained = false // 标识是否已获取到 validate.value 的内容
-
-    @State var completion: (String) -> Void
-
+extension GeetestValidateView: UIViewRepresentable {
     @MainActor
     func makeUIView(context: Context) -> WKWebView {
-        webView.navigationDelegate = context.coordinator
-        webView.configuration.userContentController.removeAllScriptMessageHandlers()
-        webView.configuration.userContentController.add(context.coordinator, name: "callbackHandler")
-        webView.customUserAgent = """
-        Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148
-        """
-        return webView
+        context.coordinator.makeView(webView)
     }
 
     @MainActor
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        let url = URL(string: "https://gi.pizzastudio.org/geetest/")!
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        components?.queryItems = [
-            URLQueryItem(name: "challenge", value: challenge),
-            URLQueryItem(name: "gt", value: gt),
-        ]
-        guard let finalURL = components?.url else {
-            return
-        }
-
-        var request = URLRequest(url: finalURL)
-        request.allHTTPHeaderFields = [
-            "Referer": "https://webstatic.mihoyo.com",
-        ]
-
-        Task { uiView.load(request) }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    func finishWithValidate(_ validate: String) {
-        completion(validate)
+        context.coordinator.updateView(uiView, challenge: challenge, gt: gt)
     }
 }
 
