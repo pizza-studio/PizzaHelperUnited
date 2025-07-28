@@ -326,7 +326,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="enka.genshinStylePhotosForHSR.featureOption.disclaimer" xml:space="preserve">
         <source>This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875) or [other publicly available resources](https://www.aplaybox.com/u/106842826).</source>
-        <target state="translated">これらの画像は弊アプリで効かぬ場合はございます。なお：弊アプリで使用していた「原神のキャラ写真スタイルに基づいたキャラ写真」素材は、**情報漏洩者からの素材でなく**、「[MiHoYo公式提供したミクミクダンス用モデル](https://www.aplaybox.com/u/516827875)」や[その他の公開リソース](https://www.aplaybox.com/u/106842826)を使って作ったものである。</target>
+        <target state="translated">これらの画像は当アプリで効かない場合はございます。なお：当アプリで使用していた「原神のキャラ写真スタイルに基づいたキャラ写真」素材は、**情報漏洩者からの素材でなく**、「[MiHoYo公式提供したミクミクダンス用モデル](https://www.aplaybox.com/u/516827875)」や[その他の公開リソース](https://www.aplaybox.com/u/106842826)を使って作ったものである。</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.credit.genshin" xml:space="preserve">
@@ -336,7 +336,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.credit.starRail" xml:space="preserve">
         <source>The background totem assets used for ID Photos of Star Rail characters in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem.</source>
-        <target state="translated">弊アプリ内の「崩壊：スターレイル」キャラクターの画像の背景紋様は、キャラクターの「運命の途」と「元素能力属性」両方を示します。「元素能力属性」は紋様の色彩で表現します。</target>
+        <target state="translated">当アプリ内の「崩壊：スターレイル」キャラクターの画像の背景紋様は、キャラクターの「運命の途」と「元素能力属性」両方を示します。「元素能力属性」は紋様の色彩で表現します。</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.navTitle" xml:space="preserve">
@@ -471,7 +471,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="settings.display.enkaStatus.sectionTitle" xml:space="preserve">
         <source>On-Device Enka Database Status</source>
-        <target state="translated">該当端末での EnkaDB 資料の状況</target>
+        <target state="translated">この端末での EnkaDB 資料の状況</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.showCase.colorizeArtifactSubPropCounts" xml:space="preserve">
@@ -538,7 +538,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="gachaKit.FileExchangeException.accessFailureComDlg32" xml:space="preserve">
         <source>Insufficient privileges on accessing the given file.</source>
-        <target state="translated">該当ファイルのアクセスにはさらなる権限が必要である。</target>
+        <target state="translated">このファイルのアクセスにはさらなる権限が必要である。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.FileExchangeException.fileNotExist" xml:space="preserve">
@@ -563,7 +563,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="gachaKit.GMDB.gmdbExpired.explanation" xml:space="preserve">
         <source>GachaMetaDB is out of date for handling certain gacha item entries in either the local app gacha entry database or from external sources. This DB contains crucial info for mapping ItemIDs and their translations, plus telling the rarity type of each gacha item.</source>
-        <target state="translated">GachaMetaDB は、（該当端末での）弊アプリのガチャ記録データベースや外部ソースからの特定のガチャ部品記録の処理において古くなり、ガチャ記録の交換などのお役に立てられません。このデータベースには、ItemID とその（諸言語の）名称をお互いに参照するための重要な情報が含まれており、各ガチャ部品の稀有度情報も載っております。</target>
+        <target state="translated">GachaMetaDB は、（この端末での）当アプリのガチャ記録データベースや外部ソースからの特定のガチャ部品記録の処理において古くなり、ガチャ記録の交換などのお役に立てられません。このデータベースには、ItemID とその（諸言語の）名称をお互いに参照するための重要な情報が含まれており、各ガチャ部品の稀有度情報も載っております。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.DatabaseExpired" xml:space="preserve">
@@ -588,7 +588,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="gachaKit.GachaRootView.navDescription" xml:space="preserve">
         <source>This app does not contain paid gacha. The Gacha Record Manager in this app only allows users to manage their personal gacha records for some of the games supported by this app. // Your gacha records in this app will only be stored in the private iCloud space of your current Apple ID, as well as on any Apple devices that are signed in with that Apple ID and have this app installed and in-use, hence no privacy concerns needed. // Zenless Zone Zero is currently not supported by this feature.</source>
-        <target state="translated">弊アプリには有料ガチャは含まれておりません。このガチャ記録管理機能は、弊アプリのサポート対象としている一部のゲームにおいてユーザーが自分のガチャ記録を管理することのみが可能です。貴殿のガチャ記録は、該当端末のログインしている Apple ID の iCloud ストレージ内、そしてその Apple ID のサインイン状態中（且つ弊アプリを実装してお用いしていた）Apple デバイスにのみ保存されておりますので、プライバシー上のご配慮は要りません。「ゼンレスゾーンゼロ（絶区ゼロ）」は現時点で弊アプリのこの機能のサポート対象外です。</target>
+        <target state="translated">当アプリには有料ガチャは含まれておりません。このガチャ記録管理機能は、当アプリのサポート対象としている一部のゲームにおいてユーザーが自分のガチャ記録を管理することのみが可能です。貴殿のガチャ記録は、この端末のログインしている Apple ID の iCloud ストレージ内、そしてその Apple ID のサインイン状態中（且つ当アプリを実装してお用いしていた）Apple デバイスにのみ保存されておりますので、プライバシー上のご配慮は要りません。「ゼンレスゾーンゼロ（絶区ゼロ）」は現時点で当アプリのこの機能のサポート対象外です。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaRootView.navTitle" xml:space="preserve">
@@ -598,12 +598,12 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.invalidServer" xml:space="preserve">
         <source>[ParseGachaURLError] Server invalid.</source>
-        <target state="translated">[ParseGachaURLError] サーバー情報は使えぬ。</target>
+        <target state="translated">[ParseGachaURLError] サーバー情報は使えません。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.invalidURL" xml:space="preserve">
         <source>[ParseGachaURLError] URL invalid.</source>
-        <target state="translated">[ParseGachaURLError] 該当URLは使えぬ。</target>
+        <target state="translated">[ParseGachaURLError] このURLは使えません。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.noAuthenticationKey" xml:space="preserve">
@@ -728,7 +728,7 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">⚠︎ UIGF v2.3 そそれ以前の規格に準じて書き出した JSON・XLSX ファイルには時間帯情報は欠けており、それを書き出したそれぞれのアプリの各自の時間帯情報処理手順はそれぞれです。
  - 「Snap.HuTao」アプリの古いバージョン (v1.7.16_2023-11-10 まで) から書き出した（これらの廃止規格に準じた）ファイルを読み込む場合、時間帯を「UTC+0」と設置してください。
  - 「Xunkong」の古いバージョン (v1.4.4_2024-04-24 まで) から書き出した（これらの廃止規格に準じた）ファイルを読み込む場合、時間帯の設定をサーバーの時間帯と一致してください。「Xunkong」は UIGF v2.4 をサッポートをしたことはなくて、v1.5.0 版 (2024-09-21) にてガチャ時間帯のサポートと共に UIGF v3.0 のサポートも実装しました。
- - 「Teyvat Helper (YShelper；テイワット小助手)」アプリから書き出した（これらの廃止規格に準じた）ファイルを読み込む場合、該当ファイルを書き出した端末のあの時点の時間帯と設置してください。</target>
+ - 「Teyvat Helper (YShelper；テイワット小助手)」アプリから書き出した（これらの廃止規格に準じた）ファイルを読み込む場合、このファイルを書き出した端末のあの時点の時間帯と設置してください。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.srgfv1" xml:space="preserve">
@@ -963,7 +963,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents" xml:space="preserve">
         <source>We are not authorized to publicly state what actually happened on the server hosting official gacha records. The following descriptions are assumptions based on observations. Due to possible occasional server-side issues, the game server might return duplicated gacha entries with incorrect transaction IDs, potentially polluting the local database. If the bleaching mode is enabled, this app will use the latest fetch results as the trusted source for correct transaction IDs and remove possibly incorrect entries locally, but this could be affected by potentially polluted data from the game server. Nevertheless, once a game version deprecates, all gacha records during its operation period are likely to become static and trustworthy.</source>
-        <target state="translated">公式のガチャ記録を提供するサーバーで実際に何が起こったかは、弊アプリの開発チームとして断言することではございませんので、以下の説明は、観察に基づく推測です。サーバー側の偶発的な問題が起こる可能性により、ゲームサーバーから送り返されるガチャ記録データが重複したり、取扱番号に誤りがあったりする可能性があります。この結果、端末内のデータベースが汚染される可能性があります。「異常なる既存データを掃除する」スイッチがONの場合、このアプリは最新のガチャ記録を基準として、端末内のデータベースの取扱番号が正しいかどうかを点検し、誤ったデータを排除しようとします。しかし、この汚染現象により、点検中の判断が誤る可能性があります。いずれにせよ、ゲームのサービスが終了する時点で、サービス期間中のすべてのガチャ記録は、おそらくサーバー側で確定し、信頼できる結果となるでしょう。</target>
+        <target state="translated">公式のガチャ記録を提供するサーバーで実際に何が起こったかは、当アプリの開発チームとして断言することではございませんので、以下の説明は、観察に基づく推測です。サーバー側の偶発的な問題が起こる可能性により、ゲームサーバーから送り返されるガチャ記録データが重複したり、取扱番号に誤りがあったりする可能性があります。この結果、端末内のデータベースが汚染される可能性があります。「異常なる既存データを掃除する」スイッチがONの場合、このアプリは最新のガチャ記録を基準として、端末内のデータベースの取扱番号が正しいかどうかを点検し、誤ったデータを排除しようとします。しかし、この汚染現象により、点検中の判断が誤る可能性があります。いずれにせよ、ゲームのサービスが終了する時点で、サービス期間中のすべてのガチャ記録は、おそらくサーバー側で確定し、信頼できる結果となるでしょう。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents.linkTitle" xml:space="preserve">
@@ -1013,17 +1013,17 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID" xml:space="preserve">
         <source>Click Here to Remove All Records Under This Gacha Profile</source>
-        <target state="translated">タップして該当ガチャプロファイルの全ての記録を削除</target>
+        <target state="translated">タップしてこのガチャプロファイルの全ての記録を削除</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.confirmingDeletingAllRecordsOfThisGPID" xml:space="preserve">
         <source>Confirming removal of all records under this gacha profile. Proceed?</source>
-        <target state="translated">該当ガチャプロファイルの全ての記録を削除する。続行するかどうかのご確認を。</target>
+        <target state="translated">このガチャプロファイルの全ての記録を削除する。続行するかどうかのご確認を。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.currentGame" xml:space="preserve">
         <source>Current Game</source>
-        <target state="translated">該当ゲーム</target>
+        <target state="translated">このゲーム</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.navTitle" xml:space="preserve">
@@ -1474,7 +1474,7 @@ Empty selection indicates selecting all profiles.</source>
     <body>
       <trans-unit id="aboutKit.3rdParty.headline" xml:space="preserve">
         <source>Our app uses the following open source components and third-party APIs, and we would like to thank their authors.</source>
-        <target state="translated">弊アプリは次のFOSSコンポーネントと他者 API を使用しており、それらの作成者に感謝します。</target>
+        <target state="translated">当アプリは次のFOSSコンポーネントと他者 API を使用しており、それらの作成者に感謝します。</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.3rdParty.navTitle" xml:space="preserve">
@@ -1706,7 +1706,7 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.category.i18n.current.description" xml:space="preserve">
         <source>The primary languages of this app are English, Traditional Chinese, Simplified Chinese, and Japanese. All other languages are secondary, as no one in the development team can fluently understand or use them. We rely on ChatGPT to create draft translations for these languages, and we warmly welcome volunteers who wish to help improve them. Having a Mac with Xcode 16 (or a later version) installed will make it much easier for contributors to participate.</source>
-        <target state="translated">弊アプリの主要言語は、英語、繁体字中国語、簡体字中国語、日本語です。他の言語は補助的な言語であり、開発チームのメンバーは理解または使用できません。これらの言語には、ChatGPT で翻訳の下書きを作成していますが、翻訳改善を希望するボランティアの方々を歓迎します。Xcode 16（またはそれ以降のバージョン）をインストールした Mac があると、作業が大変楽になります。なお、既存の和訳にも文法的な間違いに対するご意見もよろしくお願いいたします。</target>
+        <target state="translated">当アプリの主要言語は、英語、繁体字中国語、簡体字中国語、日本語です。他の言語は補助的な言語であり、開発チームのメンバーは理解または使用できません。これらの言語には、ChatGPT で翻訳の下書きを作成していますが、翻訳改善を希望するボランティアの方々を歓迎します。Xcode 16（またはそれ以降のバージョン）をインストールした Mac があると、作業が大変楽になります。なお、既存の和訳にも文法的な間違いに対するご意見もよろしくお願いいたします。</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.category.i18n.previous" xml:space="preserve">
@@ -1967,7 +1967,7 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
       </trans-unit>
       <trans-unit id="watch.sync.tips" xml:space="preserve">
         <source>Please wait for the data to sync from iCloud. If you are on TestFlight, you probably have to force-push the local profiles to this watch from the iOS version of this app.</source>
-        <target state="translated">プロファイル資料がiCloudから同期してくるのを待ってください。TestFlight の場合、弊アプリのiOS版から該当端末へ押し込む必要もある場合がございます。</target>
+        <target state="translated">プロファイル資料がiCloudから同期してくるのを待ってください。TestFlight の場合、当アプリのiOS版からこの端末へ押し込む必要もある場合がございます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="watch.widget.settings.sync.speed:%@" xml:space="preserve">
@@ -2113,7 +2113,7 @@ Retrieved</source>
       </trans-unit>
       <trans-unit id="app.dailynote.noCard.suggestion" xml:space="preserve">
         <source>No local profile found on this device. You may switch to the App Settings page and add one. :)</source>
-        <target state="translated">該当端末でプロファイルを見つけませんでした。アプリ設定画面で新しいプロファイルをご追加ください。</target>
+        <target state="translated">この端末でプロファイルを見つけませんでした。アプリ設定画面で新しいプロファイルをご追加ください。</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.dailynote.noCard.switchToSettingsPage" xml:space="preserve">
@@ -2172,7 +2172,7 @@ iOS 側です。
       </trans-unit>
       <trans-unit id="profile.accountConnectivity.insufficientDataVisibility" xml:space="preserve">
         <source>Please expose the data visibility of this UID through HoYoLAB / Miyoushe app. If you are the UID owner, you may follow the following screenshot to config the data visibility.</source>
-        <target state="translated">該当UIDのデータ公開設定を『HoYoLAB』 或いは 『米遊社』アプリを通じて行ってください。該当UIDの所有者である場合は、以下のスクリーンショットを参考にデータ公開設定を行ってください。</target>
+        <target state="translated">このUIDのデータ公開設定を『HoYoLAB』 或いは 『米遊社』アプリを通じて行ってください。このUIDの所有者である場合は、以下のスクリーンショットを参考にデータ公開設定を行ってください。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profile.label.allowNotification" xml:space="preserve">
@@ -2197,7 +2197,7 @@ iOS 側です。
       </trans-unit>
       <trans-unit id="profile.label.fp.extraNotice.deviceFP" xml:space="preserve">
         <source>⚠︎ UIDs governed by Miyoushe might need the user to manually fill in his / her device fingerprint by himself / herself in order to show some extra information.</source>
-        <target state="translated">⚠︎ 該当プロファイルのUIDは米遊社在籍の場合、追加情報を表示するために、ご自分で備えたデバイス指紋のご記入が要する場合はございます。</target>
+        <target state="translated">⚠︎ このプロファイルのUIDは米遊社在籍の場合、追加情報を表示するために、ご自分で備えたデバイス指紋のご記入が要する場合はございます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profile.label.game" xml:space="preserve">
@@ -2315,11 +2315,11 @@ iOS 側です。
 → A related game account (under the managment of its related HoYoLAB / Miyoushe account) must enable the public visibility of the character showcase through in-game settings in order to let the related information displayable in this app.</source>
         <target state="translated">下記の事項をご注意してからご続行ください：
 
-→ 米遊社 ・ HoYoLAB アカウントの入会・管理・退会についての一切機能は、弊アプリのサポート対象外です。米遊社 ・ HoYoLAB アプリを使うか、あるいは MiHoYo / Cognosphere 社からの公式 Web サービスで該当事項をお行いください。この画面の右上隅にある管理リンクをタップしてから、その Web サービスページへ続行できます。
+→ 米遊社 ・ HoYoLAB アカウントの入会・管理・退会についての一切機能は、当アプリのサポート対象外です。米遊社 ・ HoYoLAB アプリを使うか、あるいは MiHoYo / Cognosphere 社からの公式 Web サービスでこの事項をお行いください。この画面の右上隅にある管理リンクをタップしてから、その Web サービスページへ続行できます。
 
-→ いずれの米遊社 ・ HoYoLAB 新規アカウントは、必ず該当ゲーム（上記のご指定のゲーム）で少なくとも一回お遊びしてから、弊アプリで利用可能です。
+→ いずれの米遊社 ・ HoYoLAB 新規アカウントは、必ずこのゲーム（上記のご指定のゲーム）で少なくとも一回お遊びしてから、当アプリで利用可能です。
 
-→ いずれの米遊社 ・ HoYoLAB アカウントでも、それに管理している該当ゲームのアカウントは、必ずゲーム内の設定でキャラクターショウケースの内容を公開と設定してから、弊アプリでそのショウケースの内容は見えます。</target>
+→ いずれの米遊社 ・ HoYoLAB アカウントでも、それに管理しているこのゲームのアカウントは、必ずゲーム内の設定でキャラクターショウケースの内容を公開と設定してから、当アプリでそのショウケースの内容は見えます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.pleaseFinish.title" xml:space="preserve">
@@ -2409,12 +2409,12 @@ iOS 側です。
       </trans-unit>
       <trans-unit id="profileMgr.login.server.temporarilyDownNotice" xml:space="preserve">
         <source>Sorry, login feature for this server is temporarily down. We are working on this. You can now manually config your local profile with your own effective Miyoushe / HoYoLAB Cookie. </source>
-        <target state="translated">深く残念ながら、該当サーバーのログインは現時点でできません。一刻も早く使えるよう、我らは策を練っています。幸い、「米遊社・HoYoLAB」の使えるCookieデータがお持ちしている場合、ご自分でそれを書き込んでログインするのは可能です。</target>
+        <target state="translated">深く残念ながら、このサーバーのログインは現時点でできません。一刻も早く使えるよう、我らは策を練っています。幸い、「米遊社・HoYoLAB」の使えるCookieデータがお持ちしている場合、ご自分でそれを書き込んでログインするのは可能です。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.loginError.noGameUIDFound" xml:space="preserve">
         <source>No UIDs found against the specified game. This HoYoLAB / Miyoushe account is required to play the game for at least once before being logged in via this app against this game.</source>
-        <target state="translated">該当ゲームに応ずるUIDは見つかりませんでした。該当 HoYoLAB / 米遊社アカウントは少なくとも該当ゲームを一回やったことのない限り、弊アプリで「このゲームのアカウントとして」使う意味はございません。</target>
+        <target state="translated">このゲームに応ずるUIDは見つかりませんでした。この HoYoLAB / 米遊社アカウントは少なくともこのゲームを一回やったことのない限り、当アプリで「このゲームのアカウントとして」使う意味はございません。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.manage.title" xml:space="preserve">
@@ -2516,7 +2516,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
 
 macOS で米遊社アカウント削除リンクを表示するために、Safari ブラウザのユーザーエージェント(User-Agent, UA)を iPhone のUAと変更する必要でございます。macOS の Safari の開発者メニューを使用して UA を変更する方法については、Apple サポートにお問い合わせください。
 
-弊アプリで直接に上記のリンクをクリックした場合、自動的に iPhone の UA を適用します。</target>
+当アプリで直接に上記のリンクをクリックした場合、自動的に iPhone の UA を適用します。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.withdrawal.warning" xml:space="preserve">
@@ -2631,12 +2631,12 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push" xml:space="preserve">
         <source>Force-push your local profiles to paired Apple Watch</source>
-        <target state="translated">該当端末の全てのプロファイルをペアリング済みのApple Watchに押し込む</target>
+        <target state="translated">この端末の全てのプロファイルをペアリング済みのApple Watchに押し込む</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push.footer" xml:space="preserve">
         <source>This is useful when the synchronization-via-iCloud feature defects on your Apple Watch.</source>
-        <target state="translated">Apple WatchでのiCloud経由のプロファイル同期が利用できぬ場合にのみ役立つ機能である。</target>
+        <target state="translated">Apple WatchでのiCloud経由のプロファイル同期が利用できない場合にのみ役立つ機能である。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push.received" xml:space="preserve">
@@ -2711,7 +2711,7 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
       </trans-unit>
       <trans-unit id="settings.notification.faq.howNotificationsGetScheduled" xml:space="preserve">
         <source>This app or its widgets will attempt to automatically reschedule relevant notifications when retrieving Real-Time Note data for a specific local profile. During each scheduling, it will proactively try to clear any previously scheduled, unreasonable, and unsent notifications made for this local profile. Notifications will only be scheduled if the system settings allow the app to send system notifications, and if the app has successfully retrieved real-time note data, in cases where the relevant preferences permit it.</source>
-        <target state="translated">敝アプリまたはその付属のウィジェットは、特定のプロファイルに対するリアルタイム便箋情報を取得する際に、そのプロファイルに関する通知を自動で再予定しようとします。該当プロファイルの新しい通知を予定するたびに、以前に（そのプロファイルのために）予定された不適切な未送信通知があれば、それらを自動的に削除しようとします。通知は、システム設定が本アプリの通知送信を許可しており、さらに本アプリがリアルタイム便箋情報の取得に成功した場合に限り、関連の通知設定が許可されている状況でのみ予定されます。</target>
+        <target state="translated">敝アプリまたはその付属のウィジェットは、特定のプロファイルに対するリアルタイム便箋情報を取得する際に、そのプロファイルに関する通知を自動で再予定しようとします。このプロファイルの新しい通知を予定するたびに、以前に（そのプロファイルのために）予定された不適切な未送信通知があれば、それらを自動的に削除しようとします。通知は、システム設定が本アプリの通知送信を許可しており、さらに本アプリがリアルタイム便箋情報の取得に成功した場合に限り、関連の通知設定が許可されている状況でのみ予定されます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.giRealmCurrency.allow" xml:space="preserve">
@@ -2821,7 +2821,7 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
       </trans-unit>
       <trans-unit id="settings.notification.insufficientSystemPrivileges" xml:space="preserve">
         <source>This app is not yet authorized in system settings to push notifications.</source>
-        <target state="translated">弊アプリは未だに通知を送るシステム権限は持っておりません。</target>
+        <target state="translated">当アプリは未だに通知を送るシステム権限は持っておりません。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.katheryneRewards.datePicker" xml:space="preserve">
@@ -2935,7 +2935,7 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
 ⚠️ Please EXPORT your local profiles PRIOR TO touching this toggle.</source>
         <target state="translated">⚠️ 開発者から技術的なサポートを求めている間に行うように指示されない限り、この切り替えボタンを触らないでください。
 
-⚠️ この切り替えボタンを触る前に、該当端末からプロファイルをお書き出しください。</target>
+⚠️ この切り替えボタンを触る前に、この端末からプロファイルをお書き出しください。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.advanced.dbSaveLocation.restartRequired.description" xml:space="preserve">
@@ -2989,7 +2989,7 @@ The app will restart after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="settings.profile.importAllUIDs" xml:space="preserve">
         <source>Import all UIDs of these games from this account</source>
-        <target state="translated">該当アカウントのこれらのゲームの全てのUIDを一気に読み込む</target>
+        <target state="translated">このアカウントのこれらのゲームの全てのUIDを一気に読み込む</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.importAllUIDs.explanation" xml:space="preserve">
@@ -3024,7 +3024,7 @@ The app will restart after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="settings.section.profileManagement.header" xml:space="preserve">
         <source>Manage Local Profiles</source>
-        <target state="translated">該当端末で保存したプロフィールの管理</target>
+        <target state="translated">この端末で保存したプロフィールの管理</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.section.visualSettings.header" xml:space="preserve">
@@ -3051,12 +3051,12 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="settings.staminaTimer.explanation" xml:space="preserve">
         <source>Stamina Timer is how this app utilizes the Live Activity feature of the iOS. You can click the ellipsis circle to the right of the Real-Time Note of a local profile in the Today tab to initiate it.</source>
-        <target state="translated">スタミナタイマーは、弊アプリが iOS のライブアクティビティ機能を利用する方法です。「今日」タブでいずれのプロファイルの「リアルタイム便箋」の右にある三点アイコンをクリックすると、スタミナタイマーのライブアクティビティが開始されます。</target>
+        <target state="translated">スタミナタイマーは、当アプリが iOS のライブアクティビティ機能を利用する方法です。「今日」タブでいずれのプロファイルの「リアルタイム便箋」の右にある三点アイコンをクリックすると、スタミナタイマーのライブアクティビティが開始されます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.staminaTimer.gotoSystemSettings" xml:space="preserve">
         <source>Go to System Settings to enable Live Activity for this app</source>
-        <target state="translated">システム設定に移動して、弊アプリのライブアクティビティを有効にしてください。</target>
+        <target state="translated">システム設定に移動して、当アプリのライブアクティビティを有効にしてください。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.staminaTimer.randomBackground.title" xml:space="preserve">
@@ -3066,7 +3066,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="settings.staminaTimer.realtimeActivity.notEnabled" xml:space="preserve">
         <source>Live Activity for this app is not permitted by the system</source>
-        <target state="translated">システムから弊アプリへ「ライブアクティビティの権限」を下されておりませんでした</target>
+        <target state="translated">システムから当アプリへ「ライブアクティビティの権限」を下されておりませんでした</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.staminaTimer.settings.navTitle" xml:space="preserve">
@@ -3273,7 +3273,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="hylKit.battleReport.noDataAvailableForThisSeason" xml:space="preserve">
         <source>No data available for this season.</source>
-        <target state="translated">該当シーズンの作戦報告はございません。</target>
+        <target state="translated">このシーズンの作戦報告はございません。</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.battleReport.room.title:%@" xml:space="preserve">
@@ -3664,7 +3664,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
     <body>
       <trans-unit id="MiHoYoAPIError.countryRegionRestriction" xml:space="preserve">
         <source>[HoYoAPIErr] The network environment in your current geo location is out of HoYoLAB service perimeter.</source>
-        <target state="translated">[HoYoAPIエラー] 該当端末の所在地理上の位置のネットワーク環境は HoYoLAB のサービス対象範囲外とされております。</target>
+        <target state="translated">[HoYoAPIエラー] この端末の所在地理上の位置のネットワーク環境は HoYoLAB のサービス対象範囲外とされております。</target>
         <note/>
       </trans-unit>
       <trans-unit id="MiHoYoAPIError.fingerPrintInvalidOrMissing" xml:space="preserve">
@@ -4217,7 +4217,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="pzWidgetsKit.CreateLiveActivityError.systemSettings" xml:space="preserve">
         <source>The current system settings hinder this app from using Live Activity feature.</source>
-        <target state="translated">現在のシステム設定により、弊アプリのライブアクティビティ利用権限は不足である。</target>
+        <target state="translated">現在のシステム設定により、当アプリのライブアクティビティ利用権限は不足である。</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.CreateLiveActivityError.unknown:%@" xml:space="preserve">
@@ -5014,7 +5014,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.WidgetRefreshIntent.Refresh" xml:space="preserve">
         <source>Refresh the Widget</source>
-        <target state="translated">該当ウィジェットをリロードする</target>
+        <target state="translated">このウィジェットをリロードする</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.autoDisplay" xml:space="preserve">

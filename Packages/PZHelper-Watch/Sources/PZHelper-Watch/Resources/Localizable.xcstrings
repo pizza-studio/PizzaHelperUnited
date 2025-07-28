@@ -1642,7 +1642,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "プロファイル資料がiCloudから同期してくるのを待ってください。TestFlight の場合、弊アプリのiOS版から該当端末へ押し込む必要もある場合がございます。"
+            "value" : "プロファイル資料がiCloudから同期してくるのを待ってください。TestFlight の場合、当アプリのiOS版からこの端末へ押し込む必要もある場合がございます。"
           }
         },
         "ko" : {
