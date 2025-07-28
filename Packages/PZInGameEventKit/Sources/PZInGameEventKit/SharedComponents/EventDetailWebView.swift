@@ -57,10 +57,8 @@ struct EventDetailWebView {
     }
 }
 
-#if os(macOS)
-
 @available(iOS 15.0, macCatalyst 15.0, *)
-extension EventDetailWebView: NSViewRepresentable {
+extension EventDetailWebView {
     class Coordinator: NSObject, WKScriptMessageHandler, WKUIDelegate {
         // MARK: Lifecycle
 
@@ -96,32 +94,44 @@ extension EventDetailWebView: NSViewRepresentable {
                 break
             }
         }
-    }
 
+        func makeView() -> OPWebView {
+            parent.webView.configuration.userContentController.add(
+                self,
+                name: "getArticleInfoBeforeLoaded"
+            )
+            return parent.webView
+        }
+
+        func updateView(_ webView: OPWebView) {
+            webView.uiDelegate = self
+            if let startPageURL = Bundle.module.url(
+                forResource: "article",
+                withExtension: "html"
+            ) {
+                webView.loadFileURL(
+                    startPageURL,
+                    allowingReadAccessTo: Bundle.module.bundleURL
+                )
+            }
+        }
+    }
+}
+
+#if os(macOS)
+
+@available(iOS 15.0, macCatalyst 15.0, *)
+extension EventDetailWebView: NSViewRepresentable {
     static func dismantleNSView(_ nsView: OPWebView, coordinator: Coordinator) {
-        nsView.configuration.userContentController
-            .removeScriptMessageHandler(forName: "getArticleInfoBeforeLoaded")
+        nsView.removeJSMsgHandler("getArticleInfoBeforeLoaded")
     }
 
     func makeNSView(context: Context) -> OPWebView {
-        webView.configuration.userContentController.add(
-            makeCoordinator(),
-            name: "getArticleInfoBeforeLoaded"
-        )
-        return webView
+        context.coordinator.makeView()
     }
 
     func updateNSView(_ nsView: OPWebView, context: Context) {
-        nsView.uiDelegate = context.coordinator
-        if let startPageURL = Bundle.module.url(
-            forResource: "article",
-            withExtension: "html"
-        ) {
-            nsView.loadFileURL(
-                startPageURL,
-                allowingReadAccessTo: Bundle.module.bundleURL
-            )
-        }
+        context.coordinator.updateView(nsView)
     }
 
     func makeCoordinator() -> Coordinator {
@@ -133,67 +143,16 @@ extension EventDetailWebView: NSViewRepresentable {
 
 @available(iOS 15.0, macCatalyst 15.0, *)
 extension EventDetailWebView: UIViewRepresentable {
-    class Coordinator: NSObject, WKScriptMessageHandler, WKUIDelegate {
-        // MARK: Lifecycle
-
-        init(_ parent: EventDetailWebView) {
-            self.parent = parent
-        }
-
-        // MARK: Internal
-
-        var parent: EventDetailWebView
-
-        func userContentController(
-            _ userContentController: WKUserContentController,
-            didReceive message: WKScriptMessage
-        ) {
-            print("message: \(message.name)")
-            switch message.name {
-            case "getArticleInfoBeforeLoaded":
-                if let articleData = try? JSONSerialization.data(
-                    withJSONObject: parent.getArticleDic(),
-                    options: JSONSerialization.WritingOptions.prettyPrinted
-                ) {
-                    let articleInfo = String(
-                        data: articleData,
-                        encoding: String.Encoding.utf8
-                    )
-
-                    let inputJS = "updateArticleInfo(\(articleInfo ?? ""))"
-                    print(inputJS)
-                    parent.webView.evaluateJavaScript(inputJS)
-                }
-            default:
-                break
-            }
-        }
-    }
-
     static func dismantleUIView(_ uiView: OPWebView, coordinator: Coordinator) {
-        uiView.configuration.userContentController
-            .removeScriptMessageHandler(forName: "getArticleInfoBeforeLoaded")
+        uiView.removeJSMsgHandler("getArticleInfoBeforeLoaded")
     }
 
     func makeUIView(context: Context) -> OPWebView {
-        webView.configuration.userContentController.add(
-            makeCoordinator(),
-            name: "getArticleInfoBeforeLoaded"
-        )
-        return webView
+        context.coordinator.makeView()
     }
 
     func updateUIView(_ uiView: OPWebView, context: Context) {
-        uiView.uiDelegate = context.coordinator
-        if let startPageURL = Bundle.module.url(
-            forResource: "article",
-            withExtension: "html"
-        ) {
-            uiView.loadFileURL(
-                startPageURL,
-                allowingReadAccessTo: Bundle.module.bundleURL
-            )
-        }
+        context.coordinator.updateView(uiView)
     }
 
     func makeCoordinator() -> Coordinator {
