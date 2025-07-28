@@ -3689,13 +3689,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "嗯"
+            "value" : "OK"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "嗯"
+            "value" : "OK"
           }
         }
       }
