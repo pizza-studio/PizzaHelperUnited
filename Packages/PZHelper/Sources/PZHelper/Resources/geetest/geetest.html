@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2df1c7c2317b29ce3af103b66fec5e6e";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <script src="geetest_dependency_jquery.js"></script>
+        <script src="geetest_dependency_gt.js"></script>
+
+        <script>
+            function getParam(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) { return pair[1]; }
+                }
+                return (false);
+            }
+            var handler = function (captchaObj) {
+                captchaObj.appendTo('#captcha');
+                captchaObj.onReady(function () {
+                    $("#wait").hide();
+                    captchaObj.verify();
+                });
+                captchaObj.onSuccess(function () {
+                    var result = captchaObj.getValidate();
+                    var validate = $('#validate')[0];
+                    // validate.value = "vl:" + result.geetest_validate + ";" + "ch:" + result.geetest_challenge + ";";
+                    validate.value = result.geetest_validate;
+                    validate.select();//选中文本
+                    document.execCommand("copy");
+
+                    window.webkit.messageHandlers.callbackHandler.postMessage(validate.value);
+                });
+                captchaObj.onError(function (error) {
+                    alert(error.msg);
+                });
+                captchaObj.onClose(function () {
+                    alert("请先验证 / Please Verify First");
+                    captchaObj.reset();
+                    captchaObj.verify();
+                });
+                // 更多前端接口说明请参见：http://docs.geetest.com/install/client/web-front/
+            };
+
+            window.onload = function () {
+                $('#text').hide();
+                $('#wait').show();
+                var gt = getParam("gt");
+                var challenge = getParam("challenge");
+                // 调用 initGeetest 进行初始化
+                // 参数1：配置参数
+                // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
+                initGeetest({
+                    // 以下 4 个配置参数为必须，不能缺少
+                    gt: gt,
+                    challenge: challenge,
+                    offline: false, // 表示用户后台检测极验服务器是否宕机
+                    new_captcha: true, // 用于宕机时表示是新验证码的宕机
+
+                    product: "bind", // 产品形式，包括：float，popup
+                    width: "300px",
+                    https: true
+
+                    // 更多前端配置参数说明请参见：http://docs.geetest.com/install/client/web-front/
+                }, handler);
+            };
+        </script>
+
+        <style>
+          body {
+            margin: 50px 0;
+            text-align: center;
+            font-family: "PingFangSC-Regular", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+          }
+
+          .inp {
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            padding: 0 10px;
+            width: 320px;
+            height: 40px;
+            font-size: 18px;
+          }
+
+          .btn {
+            display: inline-block;
+            box-sizing: border-box;
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            color: #666;
+            cursor: pointer;
+            background: white linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+          }
+
+          .btn:hover {
+            background: white linear-gradient(0deg, #ffffff 0%, #f3f3f3 100%)
+          }
+
+          #captcha {
+            width: 300px;
+            display: inline-block;
+          }
+
+          label {
+            vertical-align: top;
+            display: inline-block;
+            width: 120px;
+            text-align: right;
+          }
+
+          #text {
+            height: 42px;
+            width: 298px;
+            text-align: center;
+            border-radius: 2px;
+            background-color: #F3F3F3;
+            color: #BBBBBB;
+            font-size: 14px;
+            letter-spacing: 0.1px;
+            line-height: 42px;
+          }
+
+          #wait {
+            display: none;
+            height: 42px;
+            width: 298px;
+            text-align: center;
+            border-radius: 2px;
+            background-color: #F3F3F3;
+          }
+
+          .loading {
+            margin: auto;
+            width: 70px;
+            height: 20px;
+          }
+
+          .loading-dot {
+            float: left;
+            width: 8px;
+            height: 8px;
+            margin: 18px 4px;
+            background: #ccc;
+
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+
+            opacity: 0;
+
+            -webkit-box-shadow: 0 0 2px black;
+            -moz-box-shadow: 0 0 2px black;
+            -ms-box-shadow: 0 0 2px black;
+            -o-box-shadow: 0 0 2px black;
+            box-shadow: 0 0 2px black;
+
+            -webkit-animation: loadingFade 1s infinite;
+            -moz-animation: loadingFade 1s infinite;
+            animation: loadingFade 1s infinite;
+          }
+
+          .loading-dot:nth-child(1) {
+            -webkit-animation-delay: 0s;
+            -moz-animation-delay: 0s;
+            animation-delay: 0s;
+          }
+
+          .loading-dot:nth-child(2) {
+            -webkit-animation-delay: 0.1s;
+            -moz-animation-delay: 0.1s;
+            animation-delay: 0.1s;
+          }
+
+          .loading-dot:nth-child(3) {
+            -webkit-animation-delay: 0.2s;
+            -moz-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+          }
+
+          .loading-dot:nth-child(4) {
+            -webkit-animation-delay: 0.3s;
+            -moz-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+          }
+
+          @-webkit-keyframes loadingFade {
+            0% { opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0; }
+          }
+
+          @-moz-keyframes loadingFade {
+            0% { opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0; }
+          }
+
+          @keyframes loadingFade {
+            0% { opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0; }
+          }
+        </style>
+</head>
+
+<body>
+
+    <div>
+        <div id="captcha">
+            <div id="text">
+                请先生成 / Please generate captcha...
+            </div>
+            <div id="wait" class="show">
+                <div class="loading">
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+
+    <div>
+        <label for="validate">结果 </label>
+        <input class="inp" id="validate" type="text">
+    </div>
+    <br>
+</body>
+
+</html>
