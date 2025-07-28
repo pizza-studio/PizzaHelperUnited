@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Foundation
 import PZAccountKit
 import SwiftUI
 import WebKit
@@ -17,11 +18,11 @@ class GeetestValidateCoordinator: NSObject, WKNavigationDelegate, WKScriptMessag
 
     // MARK: Internal
 
-    var parent: GeetestValidateView
-
-    var geetestURL: URL {
-        URL(string: "https://gi.pizzastudio.org/geetest/")!
+    nonisolated static var geetestURL: URL? {
+        Bundle.module.url(forResource: "geetest", withExtension: "html")
     }
+
+    var parent: GeetestValidateView
 
     // Receive message from website
     func userContentController(
@@ -47,7 +48,7 @@ class GeetestValidateCoordinator: NSObject, WKNavigationDelegate, WKScriptMessag
     }
 
     func updateView(_ webView: WKWebView, challenge: String, gt: String) {
-        let url = geetestURL
+        guard let url = Self.geetestURL else { return }
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.queryItems = [
             URLQueryItem(name: "challenge", value: challenge),
