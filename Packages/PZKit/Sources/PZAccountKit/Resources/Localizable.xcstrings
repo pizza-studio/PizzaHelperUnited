@@ -428,7 +428,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPIエラー] 該当端末の所在地理上の位置のネットワーク環境は HoYoLAB のサービス対象範囲外とされております。"
+            "value" : "[HoYoAPIエラー] この端末の所在地理上の位置のネットワーク環境は HoYoLAB のサービス対象範囲外とされております。"
           }
         },
         "ko" : {
