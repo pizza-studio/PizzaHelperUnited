@@ -5481,6 +5481,286 @@
           }
         }
       }
+    },
+    "oobe.feature.backupYourData.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSSアプリは、ずっと安定して使えるとは限らないので、ガチャ履歴などはUIGF形式でこまめにバックアップしてデータを守って下さいね！"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS并不意味着可以一直安定地使用。请对自己的数据负责。您可以勤加备份自己的抽卡记录（导出为 UIGF 格式）。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS並不意味著可以一直安定地使用。請對自己的資料負責。您可以勤加備份自己的抽卡記錄（匯出為 UIGF 格式）。"
+          }
+        }
+      }
+    },
+    "oobe.feature.backupYourData.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backup Proactively"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "こまめにバックアップ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请勤加备份"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請勤加備份"
+          }
+        }
+      }
+    },
+    "oobe.feature.contactDevs.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may refer to “Settings -> About” to know how to contact the devs for possible help."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開発チームへの連絡先は、アプリ内の「アプリ設定→アプリについて」に記載されていますので、そちらをご覧下さい！"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您在「设定->关于」画面可以找到开发者们的联络方式。这或许可以帮到您。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您在「設定->關於」畫面可以找到開發者們的聯絡方式。這或許可以幫到您。"
+          }
+        }
+      }
+    },
+    "oobe.feature.contactDevs.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact Us"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開発チームへの連絡方法"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "联络开发者"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聯絡開發者"
+          }
+        }
+      }
+    },
+    "oobe.feature.menuButton.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It situates at top-trailing corner of the UI when it’s available. Tap it to call the feature menu."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアイコンが(UIの右上隅に)表示された時に、それをタップすれは、さまざまな機能が使えるメニューを呼び出すことが出来ます！"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该按钮会在可用时在画面右上角显示。点击即可弹出功能选单。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該按鈕會在可用時坐落於畫面右上角。點一下就可以叫出功能選單。"
+          }
+        }
+      }
+    },
+    "oobe.feature.menuButton.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu Icon"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メニューアイコン"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选单按钮"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選單按鈕"
+          }
+        }
+      }
+    },
+    "oobe.feature.notification.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get noticed when your in-game player stamina is full. This is configurable through in-app settings."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ゲーム内のスタミナが全回復した時に通知を受け取ることができます！この設定はアプリ内の設定で変更可能です！"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当玩家体力回满时，您可以收到通知。该功能可通过 App 设定画面来配置。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "當玩家體力回滿時，您可以收到通知。該功能可藉由 App 設定畫面來配置。"
+          }
+        }
+      }
+    },
+    "oobe.feature.notification.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知"
+          }
+        }
+      }
+    },
+    "oobe.feature.widget.detail:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app supports Dynamic Island, Live Activities, and multiple kinds of widgets. Please tap [here](%@) to read Apple official articles to learn how to use widgets."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアプリではDynamic Island、ライブアクティビティ、様々なウィジェットに対応しています。ウィジェットの使い方を学びたい場合は「[こ↑こ↓](%@)」←をタップしてAppleの公式記事をご覧下さい！"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本软件支持灵动岛 (动态岛)、实时活动 (Live Activity）、以及各种小工具。请点按[此处](%@)阅读 Apple 官方的说明手册来学习如何使用小工具。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝應用支援動態島、即時動態（Live Activity）、以及各種小工具。請點按[此處](%@)閱讀 Apple 官方的說明手冊來學習如何使用小工具。"
+          }
+        }
+      }
+    },
+    "oobe.feature.widget.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウィジェット"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小工具 (小组件)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小工具"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
