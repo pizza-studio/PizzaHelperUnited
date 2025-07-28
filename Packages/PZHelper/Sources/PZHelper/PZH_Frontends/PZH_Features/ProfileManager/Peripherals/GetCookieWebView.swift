@@ -271,6 +271,10 @@ struct CookieGetterWebView {
         return webview
     }
 
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
     // MARK: Private
 
     private var url: String = ""
@@ -306,71 +310,52 @@ extension CookieGetterWebView {
             """
             webView.evaluateJavaScript(jsonScript)
         }
+
+        func makeView() -> OPWebView {
+            guard let request = parent.makeURLRequest() else { return OPWebView() }
+            let webview = parent.makeViewWithoutLoad()
+            webview.navigationDelegate = self
+            Task { webview.load(request) }
+            return webview
+        }
+
+        func updateView(_ webview: OPWebView) {
+            if let url = URL(string: parent.url) {
+                let timeoutInterval: TimeInterval = 10
+                var request = URLRequest(
+                    url: url,
+                    cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
+                    timeoutInterval: timeoutInterval
+                )
+                request.httpShouldHandleCookies = false
+                request.allHTTPHeaderFields = parent.httpHeaderFields
+                print(request.description)
+                Task { webview.load(request) }
+            }
+        }
     }
 }
 
 #if canImport(AppKit) && !canImport(UIKit)
 extension CookieGetterWebView: NSViewRepresentable {
-    @MainActor
     func makeNSView(context: Context) -> OPWebView {
-        guard let request = makeURLRequest() else { return OPWebView() }
-        let webview = makeViewWithoutLoad()
-        webview.navigationDelegate = context.coordinator
-        Task { webview.load(request) }
-        return webview
+        context.coordinator.makeView()
     }
 
-    @MainActor
-    func updateNSView(_ nsView: OPWebView, context _: Context) {
-        if let url = URL(string: url) {
-            let timeoutInterval: TimeInterval = 10
-            var request = URLRequest(
-                url: url,
-                cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
-                timeoutInterval: timeoutInterval
-            )
-            request.httpShouldHandleCookies = false
-            request.allHTTPHeaderFields = httpHeaderFields
-            print(request.description)
-            Task { nsView.load(request) }
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+    func updateNSView(_ nsView: OPWebView, context: Context) {
+        context.coordinator.updateView(nsView)
     }
 }
 
 #elseif canImport(UIKit)
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension CookieGetterWebView: UIViewRepresentable {
-    @MainActor
     func makeUIView(context: Context) -> OPWebView {
-        guard let request = makeURLRequest() else { return OPWebView() }
-        let webview = makeViewWithoutLoad()
-        webview.navigationDelegate = context.coordinator
-        Task { webview.load(request) }
-        return webview
+        context.coordinator.makeView()
     }
 
-    @MainActor
-    func updateUIView(_ uiView: OPWebView, context _: Context) {
-        if let url = URL(string: url) {
-            let timeoutInterval: TimeInterval = 10
-            var request = URLRequest(
-                url: url,
-                cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
-                timeoutInterval: timeoutInterval
-            )
-            request.httpShouldHandleCookies = false
-            request.allHTTPHeaderFields = httpHeaderFields
-            print(request.description)
-            Task { uiView.load(request) }
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+    func updateUIView(_ uiView: OPWebView, context: Context) {
+        context.coordinator.updateView(uiView)
     }
 }
 #endif
