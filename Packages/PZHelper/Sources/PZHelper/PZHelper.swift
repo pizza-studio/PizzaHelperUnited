@@ -114,6 +114,7 @@ private struct AppInitializer: ViewModifier {
             .checkAndReloadWidgetTimeline()
             .hookEULACheckerOnOOBE()
             .hookPrivacyPolicyCheckerOnOOBE()
+            .hookOOBEView()
             .handleHoYoBackgroundSessions()
             .performEnkaDBSanityCheck()
     }
