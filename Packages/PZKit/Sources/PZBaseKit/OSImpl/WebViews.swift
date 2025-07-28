@@ -12,8 +12,7 @@ import WebKit
 
 // MARK: - WebBrowserView
 
-#if os(macOS)
-public struct WebBrowserView: NSViewRepresentable {
+public struct WebBrowserView: View {
     // MARK: Lifecycle
 
     public init(url: String) {
@@ -22,10 +21,11 @@ public struct WebBrowserView: NSViewRepresentable {
 
     // MARK: Public
 
+    public typealias Body = Never
+
     public var url: String = ""
 
-    @MainActor
-    public func makeNSView(context: Context) -> WKWebView {
+    public func makeView() -> OPWebView {
         guard let url = URL(string: url)
         else {
             return OPWebView()
@@ -36,45 +36,37 @@ public struct WebBrowserView: NSViewRepresentable {
         return webview
     }
 
-    @MainActor
-    public func updateNSView(_ nsView: WKWebView, context: Context) {
+    public func updateView(_ webView: WKWebView) {
         if let url = URL(string: url) {
             let request = URLRequest(url: url)
-            Task { nsView.load(request) }
+            Task { webView.load(request) }
         }
     }
 }
 
-#elseif os(iOS) || targetEnvironment(macCatalyst)
-public struct WebBrowserView: UIViewRepresentable {
-    // MARK: Lifecycle
-
-    public init(url: String) {
-        self.url = url
+#if os(macOS)
+extension WebBrowserView: NSViewRepresentable {
+    @MainActor
+    public func makeNSView(context: Context) -> WKWebView {
+        makeView()
     }
 
-    // MARK: Public
+    @MainActor
+    public func updateNSView(_ nsView: WKWebView, context: Context) {
+        updateView(nsView)
+    }
+}
 
-    public var url: String = ""
-
+#elseif os(iOS) || targetEnvironment(macCatalyst)
+extension WebBrowserView: UIViewRepresentable {
     @MainActor
     public func makeUIView(context: Context) -> WKWebView {
-        guard let url = URL(string: url)
-        else {
-            return OPWebView()
-        }
-        let request = URLRequest(url: url)
-        let webview = OPWebView()
-        Task { webview.load(request) }
-        return webview
+        makeView()
     }
 
     @MainActor
     public func updateUIView(_ uiView: WKWebView, context: Context) {
-        if let url = URL(string: url) {
-            let request = URLRequest(url: url)
-            Task { uiView.load(request) }
-        }
+        updateView(uiView)
     }
 }
 #endif
@@ -90,6 +82,12 @@ public final class OPWebView: WKWebView {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+
+    // MARK: Public
+
+    public func removeJSMsgHandler(_ name: String) {
+        configuration.userContentController.removeScriptMessageHandler(forName: name)
     }
 
     // MARK: Internal
