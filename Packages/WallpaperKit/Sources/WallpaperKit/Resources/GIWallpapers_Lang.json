@@ -242,7 +242,12 @@
     "210244" : "Skirk – Einsamer Schatten",
     "210245" : "Dahlia – Heilige Berufung",
     "210246" : "Feierlichkeit – Aufwendige Gala",
-    "210247" : "Erlebnispass – Spekulation"
+    "210247" : "Erlebnispass – Spekulation",
+    "210248" : "Ineffa – Befehle",
+    "210249" : "Natlan – Flammenrad",
+    "210250" : "Natlan – Jagd nach dem Wind",
+    "210251" : "Erlebnispass – Leichtbrise",
+    "210252" : "Feierlichkeit – Thunfisch-Reis"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -487,7 +492,12 @@
     "210244" : "Skirk: Lone Shadow",
     "210245" : "Dahlia: Sacred Duty",
     "210246" : "Celebration: Lavish Gala",
-    "210247" : "Travel Notes: Speculation"
+    "210247" : "Travel Notes: Speculation",
+    "210248" : "Ineffa: Command",
+    "210249" : "Natlan: Wheel of Flame",
+    "210250" : "Natlan: Chasing the Wind",
+    "210251" : "Travel Notes: Easy Breezy",
+    "210252" : "Celebration: Tuna On Rice"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -732,7 +742,12 @@
     "210244" : "Skirk - Sombra solitaria",
     "210245" : "Dahlia - Deber sagrado",
     "210246" : "Celebración - Banquete de gala",
-    "210247" : "PB - Hipótesis"
+    "210247" : "PB - Hipótesis",
+    "210248" : "Ineffa - Órdenes",
+    "210249" : "Natlan - Rueda flamígera",
+    "210250" : "Natlan - Siguiendo al viento",
+    "210251" : "PB - Brisapacible",
+    "210252" : "Celebración - Atún con arroz"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -977,7 +992,12 @@
     "210244" : "Skirk - Ombre solitaire",
     "210245" : "Dahlia - Devoir sacré",
     "210246" : "Célébration - Gala",
-    "210247" : "PB - Spéculation"
+    "210247" : "PB - Spéculation",
+    "210248" : "Ineffa - Ordre",
+    "210249" : "Natlan - Roue des flammes",
+    "210250" : "Natlan - Air",
+    "210251" : "PB - Brisedouce",
+    "210252" : "Célébration - Thon sur riz"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1222,7 +1242,12 @@
     "210244" : "Skirk: Lone Shadow",
     "210245" : "Dahlia: Sacred Duty",
     "210246" : "Celebration: Lavish Gala",
-    "210247" : "Catatan Perjalanan: Spekulasi"
+    "210247" : "Catatan Perjalanan: Spekulasi",
+    "210248" : "Ineffa: Command",
+    "210249" : "Natlan: Roda Api",
+    "210250" : "Natlan: Mengejar Angin",
+    "210251" : "Catatan Perjalanan: Santai Saja",
+    "210252" : "Perayaan: Tuna Sashimi"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1467,7 +1492,12 @@
     "210244" : "Skirk: Ombra solitaria",
     "210245" : "Dahlia: Dovere sacro",
     "210246" : "Celebrazione: Galà sfarzoso",
-    "210247" : "Appunti di viaggio: Ipotesi"
+    "210247" : "Appunti di viaggio: Ipotesi",
+    "210248" : "Ineffa: Comando",
+    "210249" : "Natlan: Ruota della Fiamma",
+    "210250" : "Natlan: Inseguendo il vento",
+    "210251" : "Appunti di viaggio: Dolce brezza",
+    "210252" : "Celebrazione: Tonno su riso"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1712,7 +1742,12 @@
     "210244" : "スカーク・孤影",
     "210245" : "ダリア・天職",
     "210246" : "祭典・饗宴",
-    "210247" : "紀行・知略"
+    "210247" : "紀行・知略",
+    "210248" : "イネファ・指示",
+    "210249" : "ナタ・灼輪",
+    "210250" : "ナタ・風乗り",
+    "210251" : "紀行・のびのび",
+    "210252" : "祭典・マグロとシャリ"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -1957,7 +1992,12 @@
     "210244" : "스커크·고독",
     "210245" : "달리아·천직",
     "210246" : "축제·향연",
-    "210247" : "기행·추론"
+    "210247" : "기행·추론",
+    "210248" : "이네파·명령",
+    "210249" : "나타·불벼림",
+    "210250" : "나타·둥실",
+    "210251" : "기행·느긋",
+    "210252" : "축제·초밥"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2202,7 +2242,12 @@
     "210244" : "Skirk: Sombra Solitária",
     "210245" : "Dahlia: Dever Divino",
     "210246" : "Celebração: Banquete Luxuoso",
-    "210247" : "Passe de Batalha: Especulativo"
+    "210247" : "Passe de Batalha: Especulativo",
+    "210248" : "Ineffa: Comando",
+    "210249" : "Natlan: Roda das Chamas",
+    "210250" : "Natlan: Perseguindo o Vento",
+    "210251" : "Passe de Batalha: Uma Brisa de Fácil",
+    "210252" : "Celebração: Arroz e Atum"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2447,7 +2492,12 @@
     "210244" : "Одинокая тень",
     "210245" : "Священный долг",
     "210246" : "Пиршество",
-    "210247" : "Размышления"
+    "210247" : "Размышления",
+    "210248" : "Команда",
+    "210249" : "Колесо пламени",
+    "210250" : "В погоне за ветром",
+    "210251" : "Безмятежность",
+    "210252" : "Тунец с рисом"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -2692,7 +2742,12 @@
     "210244" : "Skirk - เงาเดียวดาย",
     "210245" : "Dahlia - หน้าที่ศักดิ์สิทธิ์",
     "210246" : "การฉลอง - งานเลี้ยงสุดหรู",
-    "210247" : "บันทึก - คาดการณ์"
+    "210247" : "บันทึก - คาดการณ์",
+    "210248" : "Ineffa - คำสั่ง",
+    "210249" : "Natlan - กงล้อเปลวเพลิง",
+    "210250" : "Natlan - ล่าวายุ",
+    "210251" : "บันทึก - แสนสบาย",
+    "210252" : "การฉลอง - ข้าวทูน่า"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -2937,7 +2992,12 @@
     "210244" : "Skirk: Yalnız Gölge",
     "210245" : "Dahlia: Kutsal Vazife",
     "210246" : "Kutlama: Görkemli Gala",
-    "210247" : "Gezi Notları: Spekülasyon"
+    "210247" : "Gezi Notları: Spekülasyon",
+    "210248" : "Ineffa: Komut",
+    "210249" : "Natlan: Alev Çarkı",
+    "210250" : "Natlan: Rüzgarın Peşinde",
+    "210251" : "Gezi Notları: Sefa Yeli",
+    "210252" : "Kutlama: Ton Balığı Nigiri"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3182,7 +3242,12 @@
     "210244" : "Skirk - Bóng Dáng Cô Độc",
     "210245" : "Dahlia - Thiên Chức",
     "210246" : "Lễ Hội - Tiệc Tùng",
-    "210247" : "Nhật Ký Hành Trình - Suy Tưởng"
+    "210247" : "Nhật Ký Hành Trình - Suy Tưởng",
+    "210248" : "Ineffa - Chỉ Lệnh",
+    "210249" : "Natlan - Bánh Xe Lửa",
+    "210250" : "Natlan - Đuổi Theo Gió",
+    "210251" : "Nhật Ký Hành Trình - Nhàn Nhã",
+    "210252" : "Lễ Hội - Cơm Cá Ngừ"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3427,7 +3492,12 @@
     "210244" : "丝柯克·孤影",
     "210245" : "塔利雅·天职",
     "210246" : "庆典·宴飨",
-    "210247" : "纪行·推想"
+    "210247" : "纪行·推想",
+    "210248" : "伊涅芙·指令",
+    "210249" : "纳塔·煅轮",
+    "210250" : "纳塔·巡风",
+    "210251" : "纪行·悠悠",
+    "210252" : "庆典·鲔米"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -3672,6 +3742,11 @@
     "210244" : "絲柯克·孤影",
     "210245" : "塔利雅·天職",
     "210246" : "慶典·宴饗",
-    "210247" : "紀行·推想"
+    "210247" : "紀行·推想",
+    "210248" : "伊涅芙·指令",
+    "210249" : "納塔·煅輪",
+    "210250" : "納塔·巡風",
+    "210251" : "紀行·悠悠",
+    "210252" : "慶典·鮪米"
   }
 }
