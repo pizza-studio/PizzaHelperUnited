@@ -59,12 +59,12 @@ public struct LedgerView4GI: LedgerView {
                     Spacer()
                     Text(verbatim: "\(data.date ?? "")")
                 }
-                .secondaryColorVerseBackground()
+                .headerFooterTextVisibilityEnhanced()
             } footer: {
                 Text("hylKit.ledger4GI.tip", bundle: .module)
                     .font(.footnote)
                     .multilineTextAlignment(.leading)
-                    .secondaryColorVerseBackground()
+                    .headerFooterTextVisibilityEnhanced()
             }
             .listRowMaterialBackground()
 
@@ -89,7 +89,7 @@ public struct LedgerView4GI: LedgerView {
                 )
             } header: {
                 Text("hylKit.ledger4GI.billThisMonth:\(data.dataMonth.description)", bundle: .module)
-                    .secondaryColorVerseBackground()
+                    .headerFooterTextVisibilityEnhanced()
             } footer: {
                 footerChart
             }
