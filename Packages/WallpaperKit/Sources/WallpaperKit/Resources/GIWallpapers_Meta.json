@@ -1,1114 +1,1362 @@
 [
   {
     "game" : "GI",
-    "id" : "210001"
+    "id" : "210001",
+    "officialFileNameStem" : "UI_NameCardPic_0_P"
   },
   {
     "game" : "GI",
-    "id" : "210002"
+    "id" : "210002",
+    "officialFileNameStem" : "UI_NameCardPic_Bp1_P"
   },
   {
     "bindedCharID" : "10000021",
     "game" : "GI",
-    "id" : "210003"
+    "id" : "210003",
+    "officialFileNameStem" : "UI_NameCardPic_Ambor_P"
   },
   {
     "bindedCharID" : "10000029",
     "game" : "GI",
-    "id" : "210004"
+    "id" : "210004",
+    "officialFileNameStem" : "UI_NameCardPic_Klee_P"
   },
   {
     "bindedCharID" : "10000016",
     "game" : "GI",
-    "id" : "210005"
+    "id" : "210005",
+    "officialFileNameStem" : "UI_NameCardPic_Diluc_P"
   },
   {
     "bindedCharID" : "10000020",
     "game" : "GI",
-    "id" : "210006"
+    "id" : "210006",
+    "officialFileNameStem" : "UI_NameCardPic_Razor_P"
   },
   {
     "bindedCharID" : "10000022",
     "game" : "GI",
-    "id" : "210007"
+    "id" : "210007",
+    "officialFileNameStem" : "UI_NameCardPic_Venti_P"
   },
   {
     "bindedCharID" : "10000003",
     "game" : "GI",
-    "id" : "210008"
+    "id" : "210008",
+    "officialFileNameStem" : "UI_NameCardPic_Qin_P"
   },
   {
     "bindedCharID" : "10000014",
     "game" : "GI",
-    "id" : "210009"
+    "id" : "210009",
+    "officialFileNameStem" : "UI_NameCardPic_Barbara_P"
   },
   {
     "bindedCharID" : "10000015",
     "game" : "GI",
-    "id" : "210010"
+    "id" : "210010",
+    "officialFileNameStem" : "UI_NameCardPic_Kaeya_P"
   },
   {
     "bindedCharID" : "10000006",
     "game" : "GI",
-    "id" : "210011"
+    "id" : "210011",
+    "officialFileNameStem" : "UI_NameCardPic_Lisa_P"
   },
   {
     "bindedCharID" : "10000043",
     "game" : "GI",
-    "id" : "210012"
+    "id" : "210012",
+    "officialFileNameStem" : "UI_NameCardPic_Sucrose_P"
   },
   {
     "bindedCharID" : "10000031",
     "game" : "GI",
-    "id" : "210013"
+    "id" : "210013",
+    "officialFileNameStem" : "UI_NameCardPic_Fischl_P"
   },
   {
     "bindedCharID" : "10000034",
     "game" : "GI",
-    "id" : "210014"
+    "id" : "210014",
+    "officialFileNameStem" : "UI_NameCardPic_Noel_P"
   },
   {
     "bindedCharID" : "10000041",
     "game" : "GI",
-    "id" : "210015"
+    "id" : "210015",
+    "officialFileNameStem" : "UI_NameCardPic_Mona_P"
   },
   {
     "bindedCharID" : "10000032",
     "game" : "GI",
-    "id" : "210016"
+    "id" : "210016",
+    "officialFileNameStem" : "UI_NameCardPic_Bennett_P"
   },
   {
     "bindedCharID" : "10000023",
     "game" : "GI",
-    "id" : "210017"
+    "id" : "210017",
+    "officialFileNameStem" : "UI_NameCardPic_Xiangling_P"
   },
   {
     "bindedCharID" : "10000025",
     "game" : "GI",
-    "id" : "210018"
+    "id" : "210018",
+    "officialFileNameStem" : "UI_NameCardPic_Xingqiu_P"
   },
   {
     "bindedCharID" : "10000035",
     "game" : "GI",
-    "id" : "210019"
+    "id" : "210019",
+    "officialFileNameStem" : "UI_NameCardPic_Qiqi_P"
   },
   {
     "bindedCharID" : "10000042",
     "game" : "GI",
-    "id" : "210020"
+    "id" : "210020",
+    "officialFileNameStem" : "UI_NameCardPic_Keqing_P"
   },
   {
     "bindedCharID" : "10000003_200301",
     "game" : "GI",
-    "id" : "210021"
+    "id" : "210021",
+    "officialFileNameStem" : "UI_NameCardPic_Csxy1_P"
   },
   {
     "game" : "GI",
-    "id" : "210022"
+    "id" : "210022",
+    "officialFileNameStem" : "UI_NameCardPic_Mxsy_P"
   },
   {
     "game" : "GI",
-    "id" : "210023"
+    "id" : "210023",
+    "officialFileNameStem" : "UI_NameCardPic_Yxzl_P"
   },
   {
     "game" : "GI",
-    "id" : "210024"
+    "id" : "210024",
+    "officialFileNameStem" : "UI_NameCardPic_Md_P"
   },
   {
     "game" : "GI",
-    "id" : "210025"
+    "id" : "210025",
+    "officialFileNameStem" : "UI_NameCardPic_Ly_P"
   },
   {
     "game" : "GI",
-    "id" : "210026"
+    "id" : "210026",
+    "officialFileNameStem" : "UI_NameCardPic_Yszj_P"
   },
   {
     "game" : "GI",
-    "id" : "210027"
+    "id" : "210027",
+    "officialFileNameStem" : "UI_NameCardPic_Sss_P"
   },
   {
     "bindedCharID" : "10000016_201601",
     "game" : "GI",
-    "id" : "210028"
+    "id" : "210028",
+    "officialFileNameStem" : "UI_NameCardPic_Tzz1_P"
   },
   {
     "game" : "GI",
-    "id" : "210029"
+    "id" : "210029",
+    "officialFileNameStem" : "UI_NameCardPic_Sj1_P"
   },
   {
     "game" : "GI",
-    "id" : "210030"
+    "id" : "210030",
+    "officialFileNameStem" : "UI_NameCardPic_Olah1_P"
   },
   {
     "game" : "GI",
-    "id" : "210031"
+    "id" : "210031",
+    "officialFileNameStem" : "UI_NameCardPic_Zdg1_P"
   },
   {
     "game" : "GI",
-    "id" : "210032"
+    "id" : "210032",
+    "officialFileNameStem" : "UI_NameCardPic_Lyws1_P"
   },
   {
     "game" : "GI",
-    "id" : "210033"
+    "id" : "210033",
+    "officialFileNameStem" : "UI_NameCardPic_Ysxf1_P"
   },
   {
     "bindedCharID" : "10000027",
     "game" : "GI",
-    "id" : "210038"
+    "id" : "210038",
+    "officialFileNameStem" : "UI_NameCardPic_Ningguang_P"
   },
   {
     "bindedCharID" : "10000024",
     "game" : "GI",
-    "id" : "210039"
+    "id" : "210039",
+    "officialFileNameStem" : "UI_NameCardPic_Beidou_P"
   },
   {
     "bindedCharID" : "10000036",
     "game" : "GI",
-    "id" : "210040"
+    "id" : "210040",
+    "officialFileNameStem" : "UI_NameCardPic_Chongyun_P"
   },
   {
     "game" : "GI",
-    "id" : "210041"
+    "id" : "210041",
+    "officialFileNameStem" : "UI_NameCardPic_Tzz2_P"
   },
   {
     "bindedCharID" : "10000031_203101",
     "game" : "GI",
-    "id" : "210042"
+    "id" : "210042",
+    "officialFileNameStem" : "UI_NameCardPic_Bp2_P"
   },
   {
     "bindedCharID" : "10000039",
     "game" : "GI",
-    "id" : "210043"
+    "id" : "210043",
+    "officialFileNameStem" : "UI_NameCardPic_Diona_P"
   },
   {
     "bindedCharID" : "10000030",
     "game" : "GI",
-    "id" : "210044"
+    "id" : "210044",
+    "officialFileNameStem" : "UI_NameCardPic_Zhongli_P"
   },
   {
     "bindedCharID" : "10000044",
     "game" : "GI",
-    "id" : "210045"
+    "id" : "210045",
+    "officialFileNameStem" : "UI_NameCardPic_Xinyan_P"
   },
   {
     "bindedCharID" : "10000033",
     "game" : "GI",
-    "id" : "210046"
+    "id" : "210046",
+    "officialFileNameStem" : "UI_NameCardPic_Tartaglia_P"
   },
   {
     "game" : "GI",
-    "id" : "210047"
+    "id" : "210047",
+    "officialFileNameStem" : "UI_NameCardPic_Md2_P"
   },
   {
     "game" : "GI",
-    "id" : "210048"
+    "id" : "210048",
+    "officialFileNameStem" : "UI_NameCardPic_Md1_P"
   },
   {
     "game" : "GI",
-    "id" : "210049"
+    "id" : "210049",
+    "officialFileNameStem" : "UI_NameCardPic_Ly1_P"
   },
   {
     "game" : "GI",
-    "id" : "210050"
+    "id" : "210050",
+    "officialFileNameStem" : "UI_NameCardPic_Ly2_P"
   },
   {
     "game" : "GI",
-    "id" : "210051"
+    "id" : "210051",
+    "officialFileNameStem" : "UI_NameCardPic_Tzz3_P"
   },
   {
     "game" : "GI",
-    "id" : "210052"
+    "id" : "210052",
+    "officialFileNameStem" : "UI_NameCardPic_Xssdlk_P"
   },
   {
     "bindedCharID" : "10000037",
     "game" : "GI",
-    "id" : "210053"
+    "id" : "210053",
+    "officialFileNameStem" : "UI_NameCardPic_Ganyu_P"
   },
   {
     "bindedCharID" : "10000038",
     "game" : "GI",
-    "id" : "210054"
+    "id" : "210054",
+    "officialFileNameStem" : "UI_NameCardPic_Albedo_P"
   },
   {
     "game" : "GI",
-    "id" : "210055"
+    "id" : "210055",
+    "officialFileNameStem" : "UI_NameCardPic_Bp3_P"
   },
   {
     "game" : "GI",
-    "id" : "210056"
+    "id" : "210056",
+    "officialFileNameStem" : "UI_NameCardPic_ElderTree_P"
   },
   {
     "game" : "GI",
-    "id" : "210057"
+    "id" : "210057",
+    "officialFileNameStem" : "UI_NameCardPic_EffigyChallenge_P"
   },
   {
     "bindedCharID" : "10000026",
     "game" : "GI",
-    "id" : "210058"
+    "id" : "210058",
+    "officialFileNameStem" : "UI_NameCardPic_Xiao_P"
   },
   {
     "bindedCharID" : "10000046",
     "game" : "GI",
-    "id" : "210059"
+    "id" : "210059",
+    "officialFileNameStem" : "UI_NameCardPic_Hutao_P"
   },
   {
     "game" : "GI",
-    "id" : "210060"
+    "id" : "210060",
+    "officialFileNameStem" : "UI_NameCardPic_Bp4_P"
   },
   {
     "game" : "GI",
-    "id" : "210061"
+    "id" : "210061",
+    "officialFileNameStem" : "UI_NameCardPic_LanternRite_P"
   },
   {
     "game" : "GI",
-    "id" : "210062"
+    "id" : "210062",
+    "officialFileNameStem" : "UI_NameCardPic_TheatreMechanicus_P"
   },
   {
     "bindedCharID" : "10000045",
     "game" : "GI",
-    "id" : "210063"
+    "id" : "210063",
+    "officialFileNameStem" : "UI_NameCardPic_Rosaria_P"
   },
   {
     "game" : "GI",
-    "id" : "210064"
+    "id" : "210064",
+    "officialFileNameStem" : "UI_NameCardPic_Bp5_P"
   },
   {
     "bindedCharID" : "10000029_202901",
     "game" : "GI",
-    "id" : "210065"
+    "id" : "210065",
+    "officialFileNameStem" : "UI_NameCardPic_RedandWhite_P"
   },
   {
     "game" : "GI",
-    "id" : "210066"
+    "id" : "210066",
+    "officialFileNameStem" : "UI_NameCardPic_Razer_P"
   },
   {
     "game" : "GI",
-    "id" : "210067"
+    "id" : "210067",
+    "officialFileNameStem" : "UI_NameCardPic_ChannellerSlab_P"
   },
   {
     "game" : "GI",
-    "id" : "210068"
+    "id" : "210068",
+    "officialFileNameStem" : "UI_NameCardPic_HideandSeek_P"
   },
   {
     "bindedCharID" : "10000048",
     "game" : "GI",
-    "id" : "210069"
+    "id" : "210069",
+    "officialFileNameStem" : "UI_NameCardPic_Feiyan_P"
   },
   {
     "bindedCharID" : "10000051",
     "game" : "GI",
-    "id" : "210070"
+    "id" : "210070",
+    "officialFileNameStem" : "UI_NameCardPic_Eula_P"
   },
   {
     "game" : "GI",
-    "id" : "210071"
+    "id" : "210071",
+    "officialFileNameStem" : "UI_NameCardPic_Bp6_P"
   },
   {
     "game" : "GI",
-    "id" : "210072"
+    "id" : "210072",
+    "officialFileNameStem" : "UI_NameCardPic_Homeworld_P"
   },
   {
     "bindedCharID" : "10000047",
     "game" : "GI",
-    "id" : "210073"
+    "id" : "210073",
+    "officialFileNameStem" : "UI_NameCardPic_Kazuha_P"
   },
   {
     "bindedCharID" : "10000014_201401",
     "game" : "GI",
-    "id" : "210074"
+    "id" : "210074",
+    "officialFileNameStem" : "UI_NameCardPic_Bp7_P"
   },
   {
     "game" : "GI",
-    "id" : "210075"
+    "id" : "210075",
+    "officialFileNameStem" : "UI_NameCardPic_Homeworld1_P"
   },
   {
     "game" : "GI",
-    "id" : "210076"
+    "id" : "210076",
+    "officialFileNameStem" : "UI_NameCardPic_Google_P"
   },
   {
     "game" : "GI",
-    "id" : "210077"
+    "id" : "210077",
+    "officialFileNameStem" : "UI_NameCardPic_BounceConjuringChallenge_P"
   },
   {
     "game" : "GI",
-    "id" : "210078"
+    "id" : "210078",
+    "officialFileNameStem" : "UI_NameCardPic_EffigyChallenge02_P"
   },
   {
     "game" : "GI",
-    "id" : "210079"
+    "id" : "210079",
+    "officialFileNameStem" : "UI_NameCardPic_Oraionokami_P"
   },
   {
     "game" : "GI",
-    "id" : "210080"
+    "id" : "210080",
+    "officialFileNameStem" : "UI_NameCardPic_Bp8_P"
   },
   {
     "bindedCharID" : "10000002",
     "game" : "GI",
-    "id" : "210081"
+    "id" : "210081",
+    "officialFileNameStem" : "UI_NameCardPic_Ayaka_P"
   },
   {
     "bindedCharID" : "10000049",
     "game" : "GI",
-    "id" : "210082"
+    "id" : "210082",
+    "officialFileNameStem" : "UI_NameCardPic_Yoimiya_P"
   },
   {
     "bindedCharID" : "10000053",
     "game" : "GI",
-    "id" : "210083"
+    "id" : "210083",
+    "officialFileNameStem" : "UI_NameCardPic_Sayu_P"
   },
   {
     "game" : "GI",
-    "id" : "210084"
+    "id" : "210084",
+    "officialFileNameStem" : "UI_NameCardPic_Dq1_P"
   },
   {
     "game" : "GI",
-    "id" : "210085"
+    "id" : "210085",
+    "officialFileNameStem" : "UI_NameCardPic_Dq2_P"
   },
   {
     "game" : "GI",
-    "id" : "210086"
+    "id" : "210086",
+    "officialFileNameStem" : "UI_NameCardPic_Ysxf2_P"
   },
   {
     "game" : "GI",
-    "id" : "210087"
+    "id" : "210087",
+    "officialFileNameStem" : "UI_NameCardPic_Csxy2_P"
   },
   {
     "game" : "GI",
-    "id" : "210088"
+    "id" : "210088",
+    "officialFileNameStem" : "UI_NameCardPic_Tzz4_P"
   },
   {
     "game" : "GI",
-    "id" : "210089"
+    "id" : "210089",
+    "officialFileNameStem" : "UI_NameCardPic_Homeworld2_P"
   },
   {
     "game" : "GI",
-    "id" : "210090"
+    "id" : "210090",
+    "officialFileNameStem" : "UI_NameCardPic_Daoqi1_P"
   },
   {
     "bindedCharID" : "10000027_202701",
     "game" : "GI",
-    "id" : "210091"
+    "id" : "210091",
+    "officialFileNameStem" : "UI_NameCardPic_TheatreMechanicus2_P"
   },
   {
     "bindedCharID" : "10000052",
     "game" : "GI",
-    "id" : "210092"
+    "id" : "210092",
+    "officialFileNameStem" : "UI_NameCardPic_Shougun_P"
   },
   {
     "bindedCharID" : "10000054",
     "game" : "GI",
-    "id" : "210093"
+    "id" : "210093",
+    "officialFileNameStem" : "UI_NameCardPic_Kokomi_P"
   },
   {
     "bindedCharID" : "10000056",
     "game" : "GI",
-    "id" : "210094"
+    "id" : "210094",
+    "officialFileNameStem" : "UI_NameCardPic_Sara_P"
   },
   {
     "bindedCharID" : "10000062",
     "game" : "GI",
-    "id" : "210095"
+    "id" : "210095",
+    "officialFileNameStem" : "UI_NameCardPic_Aloy_P"
   },
   {
     "game" : "GI",
-    "id" : "210096"
+    "id" : "210096",
+    "officialFileNameStem" : "UI_NameCardPic_Bp9_P"
   },
   {
     "game" : "GI",
-    "id" : "210097"
+    "id" : "210097",
+    "officialFileNameStem" : "UI_NameCardPic_Daoqi2_P"
   },
   {
     "bindedCharID" : "10000002_200201",
     "game" : "GI",
-    "id" : "210098"
+    "id" : "210098",
+    "officialFileNameStem" : "UI_NameCardPic_Fishing_P"
   },
   {
     "game" : "GI",
-    "id" : "210099"
+    "id" : "210099",
+    "officialFileNameStem" : "UI_NameCardPic_Concert_P"
   },
   {
     "game" : "GI",
-    "id" : "210100"
+    "id" : "210100",
+    "officialFileNameStem" : "UI_NameCardPic_Sumo_P"
   },
   {
     "bindedCharID" : "10000050",
     "game" : "GI",
-    "id" : "210101"
+    "id" : "210101",
+    "officialFileNameStem" : "UI_NameCardPic_Tohma_P"
   },
   {
     "game" : "GI",
-    "id" : "210102"
+    "id" : "210102",
+    "officialFileNameStem" : "UI_NameCardPic_Bp10_P"
   },
   {
     "game" : "GI",
-    "id" : "210103"
+    "id" : "210103",
+    "officialFileNameStem" : "UI_NameCardPic_Daoqi3_P"
   },
   {
     "bindedCharID" : "10000055",
     "game" : "GI",
-    "id" : "210104"
+    "id" : "210104",
+    "officialFileNameStem" : "UI_NameCardPic_Gorou_P"
   },
   {
     "bindedCharID" : "10000057",
     "game" : "GI",
-    "id" : "210105"
+    "id" : "210105",
+    "officialFileNameStem" : "UI_NameCardPic_Itto_P"
   },
   {
     "game" : "GI",
-    "id" : "210106"
+    "id" : "210106",
+    "officialFileNameStem" : "UI_NameCardPic_Bp11_P"
   },
   {
     "bindedCharID" : "10000063",
     "game" : "GI",
-    "id" : "210107"
+    "id" : "210107",
+    "officialFileNameStem" : "UI_NameCardPic_Shenhe_P"
   },
   {
     "bindedCharID" : "10000064",
     "game" : "GI",
-    "id" : "210108"
+    "id" : "210108",
+    "officialFileNameStem" : "UI_NameCardPic_Yunjin_P"
   },
   {
     "game" : "GI",
-    "id" : "210109"
+    "id" : "210109",
+    "officialFileNameStem" : "UI_NameCardPic_Daoqi4_P"
   },
   {
     "game" : "GI",
-    "id" : "210110"
+    "id" : "210110",
+    "officialFileNameStem" : "UI_NameCardPic_Bp12_P"
   },
   {
     "game" : "GI",
-    "id" : "210111"
+    "id" : "210111",
+    "officialFileNameStem" : "UI_NameCardPic_Bartender_P"
   },
   {
     "bindedCharID" : "10000058",
     "game" : "GI",
-    "id" : "210112"
+    "id" : "210112",
+    "officialFileNameStem" : "UI_NameCardPic_Yae1_P"
   },
   {
     "game" : "GI",
-    "id" : "210113"
+    "id" : "210113",
+    "officialFileNameStem" : "UI_NameCardPic_Bp13_P"
   },
   {
     "bindedCharID" : "10000066",
     "game" : "GI",
-    "id" : "210114"
+    "id" : "210114",
+    "officialFileNameStem" : "UI_NameCardPic_Ayato_P"
   },
   {
     "game" : "GI",
-    "id" : "210115"
+    "id" : "210115",
+    "officialFileNameStem" : "UI_NameCardPic_LuminanceStone_P"
   },
   {
     "game" : "GI",
-    "id" : "210116"
+    "id" : "210116",
+    "officialFileNameStem" : "UI_NameCardPic_Tzz5_P"
   },
   {
     "bindedCharID" : "10000042_204201",
     "game" : "GI",
-    "id" : "210117"
+    "id" : "210117",
+    "officialFileNameStem" : "UI_NameCardPic_Cenyan1_P"
   },
   {
     "game" : "GI",
-    "id" : "210118"
+    "id" : "210118",
+    "officialFileNameStem" : "UI_NameCardPic_Bp14_P"
   },
   {
     "bindedCharID" : "10000060",
     "game" : "GI",
-    "id" : "210119"
+    "id" : "210119",
+    "officialFileNameStem" : "UI_NameCardPic_Yelan_P"
   },
   {
     "bindedCharID" : "10000065",
     "game" : "GI",
-    "id" : "210120"
+    "id" : "210120",
+    "officialFileNameStem" : "UI_NameCardPic_Shinobu_P"
   },
   {
     "bindedCharID" : "10000060_206001",
     "game" : "GI",
-    "id" : "210121"
+    "id" : "210121",
+    "officialFileNameStem" : "UI_NameCardPic_Bp15_P"
   },
   {
     "bindedCharID" : "10000059",
     "game" : "GI",
-    "id" : "210122"
+    "id" : "210122",
+    "officialFileNameStem" : "UI_NameCardPic_Heizo_P"
   },
   {
     "game" : "GI",
-    "id" : "210123"
+    "id" : "210123",
+    "officialFileNameStem" : "UI_NameCardPic_Bp16_P"
   },
   {
     "bindedCharID" : "10000069",
     "game" : "GI",
-    "id" : "210124"
+    "id" : "210124",
+    "officialFileNameStem" : "UI_NameCardPic_Tighnari_P"
   },
   {
     "bindedCharID" : "10000067",
     "game" : "GI",
-    "id" : "210125"
+    "id" : "210125",
+    "officialFileNameStem" : "UI_NameCardPic_Collei_P"
   },
   {
     "bindedCharID" : "10000068",
     "game" : "GI",
-    "id" : "210126"
+    "id" : "210126",
+    "officialFileNameStem" : "UI_NameCardPic_Dori_P"
   },
   {
     "bindedCharID" : "10000006_200601",
     "game" : "GI",
-    "id" : "210127"
+    "id" : "210127",
+    "officialFileNameStem" : "UI_NameCardPic_Bp17_P"
   },
   {
     "game" : "GI",
-    "id" : "210128"
+    "id" : "210128",
+    "officialFileNameStem" : "UI_NameCardPic_Csxy3_P"
   },
   {
     "game" : "GI",
-    "id" : "210129"
+    "id" : "210129",
+    "officialFileNameStem" : "UI_NameCardPic_Ysxf3_P"
   },
   {
     "game" : "GI",
-    "id" : "210130"
+    "id" : "210130",
+    "officialFileNameStem" : "UI_NameCardPic_Xm1_P"
   },
   {
     "game" : "GI",
-    "id" : "210131"
+    "id" : "210131",
+    "officialFileNameStem" : "UI_NameCardPic_Xumi1_P"
   },
   {
     "bindedCharID" : "10000015_201501",
     "game" : "GI",
-    "id" : "210132"
+    "id" : "210132",
+    "officialFileNameStem" : "UI_NameCardPic_Xumi2_P"
   },
   {
     "game" : "GI",
-    "id" : "210133"
+    "id" : "210133",
+    "officialFileNameStem" : "UI_NameCardPic_Bp18_P"
   },
   {
     "bindedCharID" : "10000071",
     "game" : "GI",
-    "id" : "210134"
+    "id" : "210134",
+    "officialFileNameStem" : "UI_NameCardPic_Cyno_P"
   },
   {
     "bindedCharID" : "10000072",
     "game" : "GI",
-    "id" : "210135"
+    "id" : "210135",
+    "officialFileNameStem" : "UI_NameCardPic_Candace_P"
   },
   {
     "bindedCharID" : "10000070",
     "game" : "GI",
-    "id" : "210136"
+    "id" : "210136",
+    "officialFileNameStem" : "UI_NameCardPic_Nilou_P"
   },
   {
     "game" : "GI",
-    "id" : "210137"
+    "id" : "210137",
+    "officialFileNameStem" : "UI_NameCardPic_Yszj2_P"
   },
   {
     "game" : "GI",
-    "id" : "210138"
+    "id" : "210138",
+    "officialFileNameStem" : "UI_NameCardPic_Xm2_P"
   },
   {
     "game" : "GI",
-    "id" : "210139"
+    "id" : "210139",
+    "officialFileNameStem" : "UI_NameCardPic_Tzz6_P"
   },
   {
     "bindedCharID" : "10000073",
     "game" : "GI",
-    "id" : "210140"
+    "id" : "210140",
+    "officialFileNameStem" : "UI_NameCardPic_Nahida_P"
   },
   {
     "bindedCharID" : "10000074",
     "game" : "GI",
-    "id" : "210141"
+    "id" : "210141",
+    "officialFileNameStem" : "UI_NameCardPic_Layla_P"
   },
   {
     "game" : "GI",
-    "id" : "210142"
+    "id" : "210142",
+    "officialFileNameStem" : "UI_NameCardPic_Bp19_P"
   },
   {
     "bindedCharID" : "10000075",
     "game" : "GI",
-    "id" : "210143"
+    "id" : "210143",
+    "officialFileNameStem" : "UI_NameCardPic_Wanderer_P"
   },
   {
     "bindedCharID" : "10000076",
     "game" : "GI",
-    "id" : "210144"
+    "id" : "210144",
+    "officialFileNameStem" : "UI_NameCardPic_Faruzan_P"
   },
   {
     "game" : "GI",
-    "id" : "210145"
+    "id" : "210145",
+    "officialFileNameStem" : "UI_NameCardPic_Gcg1_P"
   },
   {
     "game" : "GI",
-    "id" : "210146"
+    "id" : "210146",
+    "officialFileNameStem" : "UI_NameCardPic_Bp20_P"
   },
   {
     "bindedCharID" : "10000078",
     "game" : "GI",
-    "id" : "210147"
+    "id" : "210147",
+    "officialFileNameStem" : "UI_NameCardPic_Alhatham_P"
   },
   {
     "bindedCharID" : "10000077",
     "game" : "GI",
-    "id" : "210148"
+    "id" : "210148",
+    "officialFileNameStem" : "UI_NameCardPic_Yaoyao_P"
   },
   {
     "bindedCharID" : "10000023_202301",
     "game" : "GI",
-    "id" : "210149"
+    "id" : "210149",
+    "officialFileNameStem" : "UI_NameCardPic_Cadillac_P"
   },
   {
     "bindedCharID" : "10000063_206301",
     "game" : "GI",
-    "id" : "210150"
+    "id" : "210150",
+    "officialFileNameStem" : "UI_NameCardPic_Bp21_P"
   },
   {
     "game" : "GI",
-    "id" : "210151"
+    "id" : "210151",
+    "officialFileNameStem" : "UI_NameCardPic_Xm3_P"
   },
   {
     "bindedCharID" : "10000079",
     "game" : "GI",
-    "id" : "210152"
+    "id" : "210152",
+    "officialFileNameStem" : "UI_NameCardPic_Dehya_P"
   },
   {
     "bindedCharID" : "10000080",
     "game" : "GI",
-    "id" : "210153"
+    "id" : "210153",
+    "officialFileNameStem" : "UI_NameCardPic_Mika_P"
   },
   {
     "game" : "GI",
-    "id" : "210154"
+    "id" : "210154",
+    "officialFileNameStem" : "UI_NameCardPic_Bp22_P"
   },
   {
     "bindedCharID" : "10000082",
     "game" : "GI",
-    "id" : "210155"
+    "id" : "210155",
+    "officialFileNameStem" : "UI_NameCardPic_Baizhuer_P"
   },
   {
     "bindedCharID" : "10000081",
     "game" : "GI",
-    "id" : "210156"
+    "id" : "210156",
+    "officialFileNameStem" : "UI_NameCardPic_Kaveh_P"
   },
   {
     "game" : "GI",
-    "id" : "210157"
+    "id" : "210157",
+    "officialFileNameStem" : "UI_NameCardPic_Xm4_P"
   },
   {
     "game" : "GI",
-    "id" : "210158"
+    "id" : "210158",
+    "officialFileNameStem" : "UI_NameCardPic_Tzz7_P"
   },
   {
     "game" : "GI",
-    "id" : "210159"
+    "id" : "210159",
+    "officialFileNameStem" : "UI_NameCardPic_Vasara_P"
   },
   {
     "game" : "GI",
-    "id" : "210160"
+    "id" : "210160",
+    "officialFileNameStem" : "UI_NameCardPic_OfferingPari_P"
   },
   {
     "game" : "GI",
-    "id" : "210161"
+    "id" : "210161",
+    "officialFileNameStem" : "UI_NameCardPic_Bp23_P"
   },
   {
     "bindedCharID" : "10000061",
     "game" : "GI",
-    "id" : "210162"
+    "id" : "210162",
+    "officialFileNameStem" : "UI_NameCardPic_Kirara_P"
   },
   {
     "game" : "GI",
-    "id" : "210163"
+    "id" : "210163",
+    "officialFileNameStem" : "UI_NameCardPic_Bp24_P"
   },
   {
     "game" : "GI",
-    "id" : "210164"
+    "id" : "210164",
+    "officialFileNameStem" : "UI_NameCardPic_Bp25_P"
   },
   {
     "bindedCharID" : "10000084",
     "game" : "GI",
-    "id" : "210165"
+    "id" : "210165",
+    "officialFileNameStem" : "UI_NameCardPic_Liney_P"
   },
   {
     "bindedCharID" : "10000083",
     "game" : "GI",
-    "id" : "210166"
+    "id" : "210166",
+    "officialFileNameStem" : "UI_NameCardPic_Linette_P"
   },
   {
     "bindedCharID" : "10000085",
     "game" : "GI",
-    "id" : "210167"
+    "id" : "210167",
+    "officialFileNameStem" : "UI_NameCardPic_Freminet_P"
   },
   {
     "game" : "GI",
-    "id" : "210168"
+    "id" : "210168",
+    "officialFileNameStem" : "UI_NameCardPic_FD1_P"
   },
   {
     "game" : "GI",
-    "id" : "210169"
+    "id" : "210169",
+    "officialFileNameStem" : "UI_NameCardPic_Ysxf4_P"
   },
   {
     "game" : "GI",
-    "id" : "210170"
+    "id" : "210170",
+    "officialFileNameStem" : "UI_NameCardPic_Csxy4_P"
   },
   {
     "game" : "GI",
-    "id" : "210171"
+    "id" : "210171",
+    "officialFileNameStem" : "UI_NameCardPic_Fontaine1_P"
   },
   {
     "game" : "GI",
-    "id" : "210172"
+    "id" : "210172",
+    "officialFileNameStem" : "UI_NameCardPic_Fontaine2_P"
   },
   {
     "game" : "GI",
-    "id" : "210173"
+    "id" : "210173",
+    "officialFileNameStem" : "UI_NameCardPic_Bp26_P"
   },
   {
     "bindedCharID" : "10000087",
     "game" : "GI",
-    "id" : "210174"
+    "id" : "210174",
+    "officialFileNameStem" : "UI_NameCardPic_Neuvillette_P"
   },
   {
     "bindedCharID" : "10000086",
     "game" : "GI",
-    "id" : "210175"
+    "id" : "210175",
+    "officialFileNameStem" : "UI_NameCardPic_Wriothesley_P"
   },
   {
     "game" : "GI",
-    "id" : "210176"
+    "id" : "210176",
+    "officialFileNameStem" : "UI_NameCardPic_Bp27_P"
   },
   {
     "game" : "GI",
-    "id" : "210177"
+    "id" : "210177",
+    "officialFileNameStem" : "UI_NameCardPic_Guqin_P"
   },
   {
     "game" : "GI",
-    "id" : "210178"
+    "id" : "210178",
+    "officialFileNameStem" : "UI_NameCardPic_Tzz8_P"
   },
   {
     "game" : "GI",
-    "id" : "210179"
+    "id" : "210179",
+    "officialFileNameStem" : "UI_NameCardPic_FD2_P"
   },
   {
     "bindedCharID" : "10000089",
     "game" : "GI",
-    "id" : "210180"
+    "id" : "210180",
+    "officialFileNameStem" : "UI_NameCardPic_Furina_P"
   },
   {
     "bindedCharID" : "10000088",
     "game" : "GI",
-    "id" : "210181"
+    "id" : "210181",
+    "officialFileNameStem" : "UI_NameCardPic_Charlotte_P"
   },
   {
     "game" : "GI",
-    "id" : "210182"
+    "id" : "210182",
+    "officialFileNameStem" : "UI_NameCardPic_FD3_P"
   },
   {
     "bindedCharID" : "10000070_207001",
     "game" : "GI",
-    "id" : "210183"
+    "id" : "210183",
+    "officialFileNameStem" : "UI_NameCardPic_Bp28_P"
   },
   {
     "bindedCharID" : "10000091",
     "game" : "GI",
-    "id" : "210184"
+    "id" : "210184",
+    "officialFileNameStem" : "UI_NameCardPic_Navia_P"
   },
   {
     "bindedCharID" : "10000090",
     "game" : "GI",
-    "id" : "210185"
+    "id" : "210185",
+    "officialFileNameStem" : "UI_NameCardPic_Chevreuse_P"
   },
   {
     "game" : "GI",
-    "id" : "210186"
+    "id" : "210186",
+    "officialFileNameStem" : "UI_NameCardPic_Bp29_P"
   },
   {
     "bindedCharID" : "10000093",
     "game" : "GI",
-    "id" : "210187"
+    "id" : "210187",
+    "officialFileNameStem" : "UI_NameCardPic_Liuyun_P"
   },
   {
     "bindedCharID" : "10000092",
     "game" : "GI",
-    "id" : "210188"
+    "id" : "210188",
+    "officialFileNameStem" : "UI_NameCardPic_Gaming_P"
   },
   {
     "game" : "GI",
-    "id" : "210189"
+    "id" : "210189",
+    "officialFileNameStem" : "UI_NameCardPic_Chenyu1_P"
   },
   {
     "game" : "GI",
-    "id" : "210190"
+    "id" : "210190",
+    "officialFileNameStem" : "UI_NameCardPic_OfferingSilong_P"
   },
   {
     "bindedCharID" : "10000025_202501",
     "game" : "GI",
-    "id" : "210191"
+    "id" : "210191",
+    "officialFileNameStem" : "UI_NameCardPic_Bp30_P"
   },
   {
     "bindedCharID" : "10000037_203701",
     "game" : "GI",
-    "id" : "210192"
+    "id" : "210192",
+    "officialFileNameStem" : "UI_NameCardPic_OST4_P"
   },
   {
     "bindedCharID" : "10000094",
     "game" : "GI",
-    "id" : "210193"
+    "id" : "210193",
+    "officialFileNameStem" : "UI_NameCardPic_Chiori_P"
   },
   {
     "game" : "GI",
-    "id" : "210194"
+    "id" : "210194",
+    "officialFileNameStem" : "UI_NameCardPic_Bp31_P"
   },
   {
     "bindedCharID" : "10000096",
     "game" : "GI",
-    "id" : "210195"
+    "id" : "210195",
+    "officialFileNameStem" : "UI_NameCardPic_Arlecchino_P"
   },
   {
     "game" : "GI",
-    "id" : "210196"
+    "id" : "210196",
+    "officialFileNameStem" : "UI_NameCardPic_Deep_P"
   },
   {
     "game" : "GI",
-    "id" : "210197"
+    "id" : "210197",
+    "officialFileNameStem" : "UI_NameCardPic_Tzz9_P"
   },
   {
     "game" : "GI",
-    "id" : "210198"
+    "id" : "210198",
+    "officialFileNameStem" : "UI_NameCardPic_WishingPond_P"
   },
   {
     "game" : "GI",
-    "id" : "210199"
+    "id" : "210199",
+    "officialFileNameStem" : "UI_NameCardPic_GreatFestivalV2_P"
   },
   {
     "bindedCharID" : "10000098",
     "game" : "GI",
-    "id" : "210200"
+    "id" : "210200",
+    "officialFileNameStem" : "UI_NameCardPic_Clorinde_P"
   },
   {
     "bindedCharID" : "10000095",
     "game" : "GI",
-    "id" : "210201"
+    "id" : "210201",
+    "officialFileNameStem" : "UI_NameCardPic_Sigewinne_P"
   },
   {
     "bindedCharID" : "10000097",
     "game" : "GI",
-    "id" : "210202"
+    "id" : "210202",
+    "officialFileNameStem" : "UI_NameCardPic_Sethos_P"
   },
   {
     "game" : "GI",
-    "id" : "210203"
+    "id" : "210203",
+    "officialFileNameStem" : "UI_NameCardPic_RoleCombat_P"
   },
   {
     "game" : "GI",
-    "id" : "210204"
+    "id" : "210204",
+    "officialFileNameStem" : "UI_NameCardPic_Bp33_P"
   },
   {
     "bindedCharID" : "10000099",
     "game" : "GI",
-    "id" : "210205"
+    "id" : "210205",
+    "officialFileNameStem" : "UI_NameCardPic_Emilie_P"
   },
   {
     "bindedCharID" : "10000061_206101",
     "game" : "GI",
-    "id" : "210206"
+    "id" : "210206",
+    "officialFileNameStem" : "UI_NameCardPic_Bp34_P"
   },
   {
     "game" : "GI",
-    "id" : "210207"
+    "id" : "210207",
+    "officialFileNameStem" : "UI_NameCardPic_RedandWhite2_P"
   },
   {
     "bindedCharID" : "10000101",
     "game" : "GI",
-    "id" : "210208"
+    "id" : "210208",
+    "officialFileNameStem" : "UI_NameCardPic_Kinich_P"
   },
   {
     "bindedCharID" : "10000102",
     "game" : "GI",
-    "id" : "210209"
+    "id" : "210209",
+    "officialFileNameStem" : "UI_NameCardPic_Mualani_P"
   },
   {
     "bindedCharID" : "10000100",
     "game" : "GI",
-    "id" : "210210"
+    "id" : "210210",
+    "officialFileNameStem" : "UI_NameCardPic_Kachina_P"
   },
   {
     "game" : "GI",
-    "id" : "210211"
+    "id" : "210211",
+    "officialFileNameStem" : "UI_NameCardPic_NatlanSW1_P"
   },
   {
     "game" : "GI",
-    "id" : "210212"
+    "id" : "210212",
+    "officialFileNameStem" : "UI_NameCardPic_NatlanSW2_P"
   },
   {
     "game" : "GI",
-    "id" : "210213"
+    "id" : "210213",
+    "officialFileNameStem" : "UI_NameCardPic_Ysxf5_P"
   },
   {
     "game" : "GI",
-    "id" : "210214"
+    "id" : "210214",
+    "officialFileNameStem" : "UI_NameCardPic_RoleCombat2_P"
   },
   {
     "game" : "GI",
-    "id" : "210215"
+    "id" : "210215",
+    "officialFileNameStem" : "UI_NameCardPic_Natlan1_P"
   },
   {
     "game" : "GI",
-    "id" : "210216"
+    "id" : "210216",
+    "officialFileNameStem" : "UI_NameCardPic_Dfcq1_P"
   },
   {
     "game" : "GI",
-    "id" : "210217"
+    "id" : "210217",
+    "officialFileNameStem" : "UI_NameCardPic_Bp35_P"
   },
   {
     "game" : "GI",
-    "id" : "210218"
+    "id" : "210218",
+    "officialFileNameStem" : "UI_NameCardPic_Yellow_P"
   },
   {
     "bindedCharID" : "10000103",
     "game" : "GI",
-    "id" : "210219"
+    "id" : "210219",
+    "officialFileNameStem" : "UI_NameCardPic_Xilonen_P"
   },
   {
     "game" : "GI",
-    "id" : "210220"
+    "id" : "210220",
+    "officialFileNameStem" : "UI_NameCardPic_Bp36_P"
   },
   {
     "bindedCharID" : "10000104",
     "game" : "GI",
-    "id" : "210221"
+    "id" : "210221",
+    "officialFileNameStem" : "UI_NameCardPic_Chasca_P"
   },
   {
     "bindedCharID" : "10000105",
     "game" : "GI",
-    "id" : "210222"
+    "id" : "210222",
+    "officialFileNameStem" : "UI_NameCardPic_Olorun_P"
   },
   {
     "game" : "GI",
-    "id" : "210223"
+    "id" : "210223",
+    "officialFileNameStem" : "UI_NameCardPic_Natlan2_P"
   },
   {
     "game" : "GI",
-    "id" : "210224"
+    "id" : "210224",
+    "officialFileNameStem" : "UI_NameCardPic_Dfcq2_P"
   },
   {
     "game" : "GI",
-    "id" : "210225"
+    "id" : "210225",
+    "officialFileNameStem" : "UI_NameCardPic_Bp37_P"
   },
   {
     "bindedCharID" : "10000106",
     "game" : "GI",
-    "id" : "210226"
+    "id" : "210226",
+    "officialFileNameStem" : "UI_NameCardPic_Mavuika_P"
   },
   {
     "bindedCharID" : "10000107",
     "game" : "GI",
-    "id" : "210227"
+    "id" : "210227",
+    "officialFileNameStem" : "UI_NameCardPic_Citlali_P"
   },
   {
     "bindedCharID" : "10000108",
     "game" : "GI",
-    "id" : "210228"
+    "id" : "210228",
+    "officialFileNameStem" : "UI_NameCardPic_Lanyan_P"
   },
   {
     "game" : "GI",
-    "id" : "210229"
+    "id" : "210229",
+    "officialFileNameStem" : "UI_NameCardPic_Csxy5_P"
   },
   {
     "game" : "GI",
-    "id" : "210230"
+    "id" : "210230",
+    "officialFileNameStem" : "UI_NameCardPic_Tzz10_P"
   },
   {
     "game" : "GI",
-    "id" : "210231"
+    "id" : "210231",
+    "officialFileNameStem" : "UI_NameCardPic_MusicGame01_P"
   },
   {
     "bindedCharID" : "10000046_204601",
     "game" : "GI",
-    "id" : "210232"
+    "id" : "210232",
+    "officialFileNameStem" : "UI_NameCardPic_Bp38_P"
   },
   {
     "bindedCharID" : "10000109",
     "game" : "GI",
-    "id" : "210233"
+    "id" : "210233",
+    "officialFileNameStem" : "UI_NameCardPic_Mizuki_P"
   },
   {
     "game" : "GI",
-    "id" : "210234"
+    "id" : "210234",
+    "officialFileNameStem" : "UI_NameCardPic_TowerChallenge_P"
   },
   {
     "game" : "GI",
-    "id" : "210235"
+    "id" : "210235",
+    "officialFileNameStem" : "UI_NameCardPic_Bp39_P"
   },
   {
     "bindedCharID" : "10000111",
     "game" : "GI",
-    "id" : "210236"
+    "id" : "210236",
+    "officialFileNameStem" : "UI_NameCardPic_Varesa_P"
   },
   {
     "bindedCharID" : "10000110",
     "game" : "GI",
-    "id" : "210237"
+    "id" : "210237",
+    "officialFileNameStem" : "UI_NameCardPic_Iansan_P"
   },
   {
     "game" : "GI",
-    "id" : "210238"
+    "id" : "210238",
+    "officialFileNameStem" : "UI_NameCardPic_Natlan3_P"
   },
   {
     "game" : "GI",
-    "id" : "210239"
+    "id" : "210239",
+    "officialFileNameStem" : "UI_NameCardPic_Dfcq3_P"
   },
   {
     "game" : "GI",
-    "id" : "210240"
+    "id" : "210240",
+    "officialFileNameStem" : "UI_NameCardPic_Bp40_P"
   },
   {
     "bindedCharID" : "10000112",
     "game" : "GI",
-    "id" : "210241"
+    "id" : "210241",
+    "officialFileNameStem" : "UI_NameCardPic_Escoffier_P"
   },
   {
     "bindedCharID" : "10000113",
     "game" : "GI",
-    "id" : "210242"
+    "id" : "210242",
+    "officialFileNameStem" : "UI_NameCardPic_Ifa_P"
   },
   {
     "game" : "GI",
-    "id" : "210243"
+    "id" : "210243",
+    "officialFileNameStem" : "UI_NameCardPic_Bp41_P"
   },
   {
     "bindedCharID" : "10000114",
     "game" : "GI",
-    "id" : "210244"
+    "id" : "210244",
+    "officialFileNameStem" : "UI_NameCardPic_SkirkNew_P"
   },
   {
     "bindedCharID" : "10000115",
     "game" : "GI",
-    "id" : "210245"
+    "id" : "210245",
+    "officialFileNameStem" : "UI_NameCardPic_Dahlia_P"
   },
   {
     "game" : "GI",
-    "id" : "210246"
+    "id" : "210246",
+    "officialFileNameStem" : "UI_NameCardPic_RedandWhite3_P"
   },
   {
     "game" : "GI",
-    "id" : "210247"
+    "id" : "210247",
+    "officialFileNameStem" : "UI_NameCardPic_Bp42_P"
   },
   {
     "bindedCharID" : "10000116",
     "game" : "GI",
-    "id" : "210248"
+    "id" : "210248",
+    "officialFileNameStem" : "UI_NameCardPic_Ineffa_P"
   },
   {
     "bindedCharID" : "10000032_203201",
     "game" : "GI",
-    "id" : "210249"
+    "id" : "210249",
+    "officialFileNameStem" : "UI_NameCardPic_NatlanOffering_P"
   },
   {
     "game" : "GI",
-    "id" : "210250"
+    "id" : "210250",
+    "officialFileNameStem" : "UI_NameCardPic_Natlan4_P"
   },
   {
     "game" : "GI",
-    "id" : "210251"
+    "id" : "210251",
+    "officialFileNameStem" : "UI_NameCardPic_Bp43_P"
   },
   {
     "game" : "GI",
-    "id" : "210252"
+    "id" : "210252",
+    "officialFileNameStem" : "UI_NameCardPic_Event58_P"
   }
 ]
