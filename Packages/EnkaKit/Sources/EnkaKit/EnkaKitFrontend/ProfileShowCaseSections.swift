@@ -187,7 +187,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
                     Text(verbatim: "\(extraTerms.equilibriumLevel): \(worldLevel)")
                 }
             }
-            .secondaryColorVerseBackground()
+            .headerFooterTextVisibilityEnhanced()
         }
     }
 

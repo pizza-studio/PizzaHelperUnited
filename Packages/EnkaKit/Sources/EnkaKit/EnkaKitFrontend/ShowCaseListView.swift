@@ -161,7 +161,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                 Spacer()
                 Text(verbatim: "\(extraTerms.equilibriumLevel): \(profile.rawInfo.worldLevel)")
             }
-            .secondaryColorVerseBackground()
+            .headerFooterTextVisibilityEnhanced()
         }
     }
 

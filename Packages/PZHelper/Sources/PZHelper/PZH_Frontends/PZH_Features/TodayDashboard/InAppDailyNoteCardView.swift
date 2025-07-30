@@ -48,7 +48,7 @@ struct InAppDailyNoteCardView: View {
                         )
                     } label: {
                         Image(systemSymbol: .ellipsisCircle)
-                            .secondaryColorVerseBackground()
+                            .headerFooterTextVisibilityEnhanced()
                     }
                     #else
                     EmptyView()
@@ -57,7 +57,7 @@ struct InAppDailyNoteCardView: View {
                     EmptyView()
                 }
             }
-            .secondaryColorVerseBackground()
+            .headerFooterTextVisibilityEnhanced()
             .textCase(.none)
         }
         .react(to: broadcaster.eventForJustSwitchedToTodayTab) {
