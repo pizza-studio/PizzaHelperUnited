@@ -160,12 +160,14 @@ public final class WallpaperAsset: Identifiable, Encodable {
         id: String,
         nameTextMapHash: String,
         assetName: String,
+        officialFileNameStem: String,
         assetName4LiveActivity: String,
         bindedCharID: String? = nil
     ) {
         self.id = id
         self.nameTextMapHash = nameTextMapHash
         self.assetName = assetName
+        self.officialFileNameStem = officialFileNameStem
         self.assetName4LiveActivity = assetName4LiveActivity
         self.bindedCharID = bindedCharID
     }
@@ -175,6 +177,7 @@ public final class WallpaperAsset: Identifiable, Encodable {
     public let game: String = "GI"
     public let id: String
     public let nameTextMapHash: String
+    public let officialFileNameStem: String
     public let assetName: String
     public let assetName4LiveActivity: String
     public var bindedCharID: String? // 原神专用
@@ -183,6 +186,7 @@ public final class WallpaperAsset: Identifiable, Encodable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(game, forKey: .game)
         try container.encode(id, forKey: .id)
+        try container.encode(officialFileNameStem, forKey: .officialFileNameStem)
         // try container.encode(nameTextMapHash, forKey: .nameTextMapHash)
         // try container.encode(assetName, forKey: .assetName)
         // try container.encode(assetName4LiveActivity, forKey: .assetName4LiveActivity)
@@ -198,6 +202,7 @@ public final class WallpaperAsset: Identifiable, Encodable {
         case id
         case nameTextMapHash
         case assetName
+        case officialFileNameStem
         case assetName4LiveActivity
         case bindedCharID
     }
@@ -302,6 +307,7 @@ let assetObjects: [WallpaperAsset] = try await MaterialExcelConfigData.getRemote
         id: id,
         nameTextMapHash: nameHash,
         assetName: rawValue.guardedIconName,
+        officialFileNameStem: "\(rawValue.guardedIconName)",
         assetName4LiveActivity: rawValue.guardedIconName
     )
 }
