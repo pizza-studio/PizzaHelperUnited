@@ -35,18 +35,30 @@ extension CDGachaMOActor {
         -> [CDGachaMOProtocol] {
         try getAllDataEntriesVanilla(for: game) { genshinDataRAW in
             if fixItemIDs {
-                // Fix Genshin ItemIDs.
-                genshinDataRAW.fixItemIDs()
-                if genshinDataRAW.mightHaveNonCHSLanguageTag {
-                    try genshinDataRAW.updateLanguage(.langCHS)
-                }
-                for idx in 0 ..< genshinDataRAW.count {
-                    let currentObj = genshinDataRAW[idx]
-                    guard Int(currentObj.itemId) == nil else { continue }
-                    Task { @MainActor in
-                        try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
+                var localGMDBAlreadyReset = false
+                var redoTask = true
+                taskRedo: while redoTask {
+                    // Fix Genshin ItemIDs.
+                    genshinDataRAW.fixItemIDs()
+                    if genshinDataRAW.mightHaveNonCHSLanguageTag {
+                        try genshinDataRAW.updateLanguage(.langCHS)
                     }
-                    throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
+                    for idx in 0 ..< genshinDataRAW.count {
+                        let currentObj = genshinDataRAW[idx]
+                        guard Int(currentObj.itemId) == nil else { continue }
+                        if !localGMDBAlreadyReset {
+                            GachaMeta.Sputnik.resetLocalGachaMetaDB(for: .genshinImpact)
+                            localGMDBAlreadyReset = true
+                            continue taskRedo
+                        } else {
+                            redoTask = false
+                            Task { @MainActor in
+                                try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
+                            }
+                            throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
+                        }
+                    }
+                    redoTask = false
                 }
             }
         }
