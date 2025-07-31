@@ -3470,73 +3470,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lokaler GachaMetaDB-Cache ist abgelaufen"
+            "value" : "Lokaler GachaMetaDB-Cache ist abgelaufen. Ein möglicher Grund ist das Scheitern beim Abrufen der neuesten Remote-Datenbank. Wenn Sie sich in Festlandchina befinden und keinen stabilen Zugriff auf GitHub haben, wenden Sie sich bitte an den Entwickler, um den Status der veralteten Spiegelserver zu klären."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Local GachaMetaDB cache expired."
+            "value" : "Local GachaMetaDB cache expired. A possible reason is the failure of fetching the latest remote database. If you are situated in Mainland China without solid access to GitHub, please contact the developer regarding the situation of the outdated mirrors."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El caché local de GachaMetaDB ha caducado."
+            "value" : "La caché local de GachaMetaDB ha caducado. Una posible razón es el fallo al obtener la última base de datos remota. Si te encuentras en China continental sin acceso estable a GitHub, contacta con el desarrollador para consultar la situación de los espejos desactualizados."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mag-expire ang Local GachaMetaDB cache."
+            "value" : "Nag-expire ang local GachaMetaDB cache. Posibleng dahilan ay ang kabiguang makuha ang pinakabagong remote database. Kung ikaw ay nasa Mainland China at walang matatag na access sa GitHub, mangyaring kontakin ang developer tungkol sa sitwasyon ng mga luma nang mirror."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le cache local GachaMetaDB a expiré"
+            "value" : "Le cache local GachaMetaDB a expiré. Une raison possible est l'échec de la récupération de la dernière base de données distante. Si vous êtes en Chine continentale sans accès fiable à GitHub, veuillez contacter le développeur concernant la situation des miroirs obsolètes."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il cache locale di GachaMetaDB è scaduto."
+            "value" : "La cache locale di GachaMetaDB è scaduta. Una possibile ragione è il fallimento nel recuperare l'ultimo database remoto. Se ti trovi nella Cina continentale senza accesso stabile a GitHub, contatta lo sviluppatore riguardo la situazione dei mirror obsoleti."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ローカルGachaMetaDBキャッシュは古すぎて失効だと判断しました。"
+            "value" : "ローカルGachaMetaDBキャッシュは失効しました。主な原因は最新のリモートデータベースの取得失敗です。中国本土でGitHubへの安定したアクセスがない場合は、開発者に連絡してミラーの古い状況について確認してください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "로컬 GachaMetaDB 캐시가 만료되었습니다."
+            "value" : "로컬 GachaMetaDB 캐시가 만료되었습니다. 가능한 원인은 최신 원격 데이터베이스를 가져오지 못한 것입니다. 중국 본토에서 GitHub에 안정적으로 접근할 수 없다면, 개발자에게 연락하여 구버전 미러의 상황을 문의하세요."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Срок действия локального кеша GachaMetaDB истек"
+            "value" : "Срок действия локального кеша GachaMetaDB истек. Возможная причина — не удалось получить последнюю удалённую базу данных. Если вы находитесь в материковом Китае без стабильного доступа к GitHub, обратитесь к разработчику по поводу ситуации с устаревшими зеркалами."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bộ nhớ đệm GachaMetaDB cục bộ đã hết hạn."
+            "value" : "Bộ nhớ đệm GachaMetaDB cục bộ đã hết hạn. Nguyên nhân có thể là do không lấy được cơ sở dữ liệu từ xa mới nhất. Nếu bạn ở Trung Quốc đại lục mà không thể truy cập ổn định vào GitHub, hãy liên hệ với nhà phát triển để hỏi về tình trạng các máy chủ mirror đã lỗi thời."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本机 GachaMetaDB 缓存已过期。"
+            "value" : "本机 GachaMetaDB 缓存已过期。可能是未能获取到最新的远端数据库。如果您身处中国大陆且无法稳定访问 GitHub，请联系开发者调查确认相关资料库在中国大陆的镜照是否过期。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本機 GachaMetaDB 快取已過期。"
+            "value" : "本機 GachaMetaDB 快取已過期。可能是未能獲取到最新的遠端資料庫。如果您位於中國大陸且無法穩定訪問 GitHub，請聯絡開發者調查確認相關資料庫在中國大陸的鏡照是否過期。"
           }
         }
       }
