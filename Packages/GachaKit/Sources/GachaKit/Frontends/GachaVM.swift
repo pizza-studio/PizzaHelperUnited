@@ -384,20 +384,35 @@ extension GachaVM {
                         )
                         isRefugee = true
                         var genshinDataRAW = refugeeData.oldGachaEntries4GI
-                        genshinDataRAW.fixItemIDs()
-                        if genshinDataRAW.mightHaveNonCHSLanguageTag {
-                            try genshinDataRAW.updateLanguage(.langCHS)
-                        }
-                        for idx in 0 ..< genshinDataRAW.count {
-                            let currentObj = genshinDataRAW[idx]
-                            guard Int(currentObj.itemId) == nil else { continue }
-                            Task { @MainActor in
+
+                        var localGMDBAlreadyReset = false
+                        var redoTask = true
+                        taskRedo: while redoTask {
+                            // Fix Genshin ItemIDs.
+                            genshinDataRAW.fixItemIDs()
+                            if genshinDataRAW.mightHaveNonCHSLanguageTag {
+                                try genshinDataRAW.updateLanguage(.langCHS)
+                            }
+                            for idx in 0 ..< genshinDataRAW.count {
+                                let currentObj = genshinDataRAW[idx]
+                                guard Int(currentObj.itemId) == nil else { continue }
                                 // 读取难民档案时出现 GMDB 匹配错误的可能性非常小，因为旧版披萨的 GMDB 太旧、恐无法获取记录。
                                 // 但这里仍旧按照例行步骤处理，以防万一。
-                                try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
+                                if !localGMDBAlreadyReset {
+                                    GachaMeta.Sputnik.resetLocalGachaMetaDB(for: .genshinImpact)
+                                    localGMDBAlreadyReset = true
+                                    continue taskRedo
+                                } else {
+                                    redoTask = false
+                                    Task { @MainActor in
+                                        try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
+                                    }
+                                    throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
+                                }
                             }
-                            throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
+                            redoTask = false
                         }
+
                         let newUIGFEntries4Genshin = genshinDataRAW.map(\.asPZGachaEntrySendable)
                         fetchedFile = try UIGFv4(info: .init(), entries: newUIGFEntries4Genshin, lang: .langCHS)
                         fetchedFile.info = .init(

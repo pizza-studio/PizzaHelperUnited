@@ -28,6 +28,11 @@ extension GachaFetchModels.PageFetched.FetchedEntry {
         if fixItemIDs, game == .genshinImpact, itemID.isNotInt {
             var newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
             if newItemID == nil {
+                GachaMeta.Sputnik.resetLocalGachaMetaDB(for: .genshinImpact)
+                newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
+            }
+            /// Check whether GachaItemDB is expired after resetting to the latest bundled version.
+            if newItemID == nil {
                 try await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
                 newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
             }
@@ -67,6 +72,11 @@ extension PZGachaEntryProtocol {
         guard Pizza.SupportedGame(rawValue: game) == .genshinImpact, itemID.isNotInt else { return }
         var newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
         if newItemID == nil {
+            GachaMeta.Sputnik.resetLocalGachaMetaDB(for: .genshinImpact)
+            newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
+        }
+        /// Check whether GachaItemDB is expired after resetting to the latest bundled version.
+        if newItemID == nil {
             try await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
             newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
         }
@@ -81,6 +91,11 @@ extension PZGachaEntryProtocol {
         guard itemID.isNotInt else { return self }
         var result = self
         var newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
+        if newItemID == nil {
+            GachaMeta.Sputnik.resetLocalGachaMetaDB(for: .genshinImpact)
+            newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
+        }
+        /// Check whether GachaItemDB is expired after resetting to the latest bundled version.
         if newItemID == nil {
             try await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
             newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
