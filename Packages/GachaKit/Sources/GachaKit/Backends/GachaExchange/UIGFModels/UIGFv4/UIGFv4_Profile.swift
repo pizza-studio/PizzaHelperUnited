@@ -45,6 +45,10 @@ extension UIGFv4 {
             if ItemType.self == GachaItemGI.self {
                 /// Check whether GachaItemDB is expired.
                 if GachaMeta.sharedDB.mainDB4GI.checkIfExpired(against: Set<String>(list.map(\.itemID))) {
+                    GachaMeta.Sputnik.resetLocalGachaMetaDB(for: .genshinImpact)
+                }
+                /// Check whether GachaItemDB is expired after resetting to the latest bundled version.
+                if GachaMeta.sharedDB.mainDB4GI.checkIfExpired(against: Set<String>(list.map(\.itemID))) {
                     defer {
                         Task { @MainActor in
                             try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
