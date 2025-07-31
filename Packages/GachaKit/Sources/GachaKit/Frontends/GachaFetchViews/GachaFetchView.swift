@@ -4,6 +4,7 @@
 
 import AlertToast
 import Charts
+import GachaMetaDB
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
@@ -69,6 +70,9 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                 case let .got(page: page, gachaType: gachaType, newItemCount: newItemCount, cancel: cancel):
                     GotSomeItemView(page: page, gachaType: gachaType, newItemCount: newItemCount, cancel: cancel)
                 case let .failFetching(page: page, gachaType: gachaType, error: error, retry: retry):
+                    if case let .databaseExpired(game) = error as? GachaMeta.GMDBError {
+                        GachaEntryExpiredRow(alwaysVisible: true, games: [game])
+                    }
                     FailFetchingView(page: page, gachaType: gachaType, error: error, retry: retry)
                         .onAppear {
                             gachaRootVM.updateMappedEntriesByPools()
@@ -579,7 +583,7 @@ extension GachaFetchView4Game {
 
         var body: some View {
             Label {
-                Text(verbatim: "\(error)")
+                Text(verbatim: "\(error.localizedDescription)" + "\n\(error)")
             } icon: {
                 Image(systemSymbol: .exclamationmarkCircle)
                     .foregroundColor(.red)
