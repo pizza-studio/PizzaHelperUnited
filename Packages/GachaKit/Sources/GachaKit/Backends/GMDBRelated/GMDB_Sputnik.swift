@@ -69,6 +69,20 @@ extension GachaMeta {
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaMeta.Sputnik {
+    public static func resetLocalGachaMetaDB(for game: Pizza.SupportedGame) {
+        /// 此处重复了 observation API 的异步反应动作，因为此处要求必须立刻重置完毕。
+        switch game {
+        case .genshinImpact:
+            Defaults.reset(.localGachaMetaDB4GI, .localGachaMetaDBReversed4GI)
+            GachaMeta.sharedDB.mainDB4GI = Defaults[.localGachaMetaDB4GI]
+            GachaMeta.sharedDB.reversedDB4GI = Defaults[.localGachaMetaDBReversed4GI]
+        case .starRail:
+            Defaults.reset(.localGachaMetaDB4HSR)
+            GachaMeta.sharedDB.mainDB4HSR = Defaults[.localGachaMetaDB4HSR]
+        case .zenlessZone: return // 暂不支持。
+        }
+    }
+
     @MainActor
     public static func updateLocalGachaMetaDB(for game: Pizza.SupportedGame) async throws {
         do {
