@@ -42,12 +42,12 @@
       </trans-unit>
       <trans-unit id="appEnum_StaminaContentRevolverStyle_asTimeStampWhenWillAccomplish" xml:space="preserve">
         <source>Timestamp (when finished)</source>
-        <target>任務完成の時点</target>
+        <target>完了予定時刻</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum_StaminaContentRevolverStyle_asTimerCountDown" xml:space="preserve">
         <source>Countdown Timer</source>
-        <target>減算時計</target>
+        <target>カウントダウン</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum_StaminaContentRevolverStyle_byDefault" xml:space="preserve">
@@ -57,7 +57,7 @@
       </trans-unit>
       <trans-unit id="appEnum_StaminaContentRevolverStyle_title" xml:space="preserve">
         <source>Auto Rotation of Stamina Widget Styles</source>
-        <target>任意のスタミナ表示スタイルを用いる</target>
+        <target>スタミナ表示スタイルの自動切替</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum_WeeklyBossesDisplayMethod_alwaysHidden" xml:space="preserve">
@@ -97,7 +97,7 @@
       </trans-unit>
       <trans-unit id="appEnum_WidgetSupportedGame_allGames" xml:space="preserve">
         <source>All Games</source>
-        <target>全てのゲーム</target>
+        <target>すべてのゲーム</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum_WidgetSupportedGame_title" xml:space="preserve">
@@ -117,17 +117,17 @@
       </trans-unit>
       <trans-unit id="intent_description_chooseTheGame" xml:space="preserve">
         <source>Choose the game</source>
-        <target>ゲームをご指定</target>
+        <target>ゲームを選択</target>
         <note>intent_description_</note>
       </trans-unit>
       <trans-unit id="intent_description_pickTheLocalProfileDuoForThisWidget" xml:space="preserve">
         <source>Choose 2 local profiles for this widget</source>
-        <target>このウィジェットに2つのプロファイルのご指定を</target>
+        <target>このウィジェット用に2つのプロファイルを選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent_description_pickTheLocalProfileForThisWidget" xml:space="preserve">
         <source>Choose a local profile for this widget</source>
-        <target>このウィジェットにプロファイルのご指定を</target>
+        <target>このウィジェット用のプロファイルを選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent_field_echoOfWarDisplayMethod" xml:space="preserve">
@@ -197,7 +197,7 @@
       </trans-unit>
       <trans-unit id="intent_field_useRandomWallpaper" xml:space="preserve">
         <source>Use random wallpaper</source>
-        <target>任意の壁紙を用いる</target>
+        <target>ランダムな壁紙を使用</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent_field_useTinyGlassDisplayStyle" xml:space="preserve">
@@ -212,27 +212,27 @@
       </trans-unit>
       <trans-unit id="intent_name_selectGameOnly" xml:space="preserve">
         <source>Only choose the game</source>
-        <target>ゲームのみをご指定</target>
+        <target>ゲームのみを選択</target>
         <note>intent_name_</note>
       </trans-unit>
       <trans-unit id="intent_name_selectLocalProfile" xml:space="preserve">
         <source>Choose Local Profile</source>
-        <target>プロファイルをご指定</target>
+        <target>プロファイルを選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent_name_selectLocalProfile4Peripherals" xml:space="preserve">
         <source>Choose Local Profile (only)</source>
-        <target>プロファイルだけをご指定</target>
+        <target>プロファイルだけを選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent_name_selectLocalProfile4PeripheralsWithExtraConfig" xml:space="preserve">
         <source>Choose Local Profile with Extra Configuration</source>
-        <target>プロファイルのご指定且つ追加設定</target>
+        <target>プロファイルを選択＆追加設定</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent_name_selectLocalProfileDuo" xml:space="preserve">
         <source>Choose Local Profile (Dual)</source>
-        <target>2つのプロファイルをご指定</target>
+        <target>2つのプロファイルを選択</target>
         <note/>
       </trans-unit>
     </body>
@@ -441,7 +441,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="settings.display.customizingNameForKunikuzushi.prompt" xml:space="preserve">
         <source>Please enter your preferred name for Wanderer (Kunikuzushi)</source>
-        <target state="translated">放浪者（雷電国崩）の名前をお好きにしてご記入ください</target>
+        <target state="translated">放浪者（雷電国崩）の名前をお好みで入力してください</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.enkaStatus.defaultDBQueryHost" xml:space="preserve">
@@ -466,7 +466,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="settings.display.enkaStatus.lastEnkaDBCheckDate" xml:space="preserve">
         <source>Database updates are previously checked at:</source>
-        <target state="translated">前回のデータベースアップデート点検をした時点</target>
+        <target state="translated">前回のデータベースアップデート確認をした時点</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.enkaStatus.sectionTitle" xml:space="preserve">
@@ -543,12 +543,12 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="gachaKit.FileExchangeException.fileNotExist" xml:space="preserve">
         <source>Either the specified file does not exist or is inaccessible.</source>
-        <target state="translated">ご指定のファイルは不存在か、あるいはアクセスできないと判断しました。</target>
+        <target state="translated">指定されたファイルが存在しないか、アクセスできません。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.FileExchangeException.fileParseFailure" xml:space="preserve">
         <source>The given file does not match the chosen file format.</source>
-        <target state="translated">ご指定のファイルは、ご指定のファイル規格として解読できませんでした。</target>
+        <target state="translated">指定されたファイルは、選択されたファイル形式として解読できませんでした。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.FileExchangeException.uigfEntryInsertionError" xml:space="preserve">
@@ -664,15 +664,15 @@ Tap anywhere to dismiss.</source>
       <trans-unit id="gachaKit.exchange.chooseProfiles.export.prompt" xml:space="preserve">
         <source>Choose the gacha profiles to export.
 Empty selection indicates selecting all profiles.</source>
-        <target state="translated">書き出すガチャプロファイルをご指定ください。
-未指定の場合、全員の資料を書き出すとみなします。</target>
+        <target state="translated">書き出すガチャプロファイルを選択してください。
+未選択の場合、すべてのプロファイルが書き出されます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.chooseProfiles.import.prompt" xml:space="preserve">
         <source>Choose the gacha profiles to import.
 Empty selection indicates selecting all profiles.</source>
-        <target state="translated">読み込むガチャプロファイルをご指定ください。
-未指定の場合、全員の資料を読み込むとみなします。</target>
+        <target state="translated">読み込むガチャプロファイルを選択してください。
+未選択の場合、すべてのプロファイルが読み込まれます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.export.clickHereToExport" xml:space="preserve">
@@ -687,7 +687,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.export.failedInSavingToFile" xml:space="preserve">
         <source>Failed from dumping the exchangeable gacha records file.</source>
-        <target state="translated">残念ながら、交換用ガチャ記録ファイルは書き出しできませんでした。</target>
+        <target state="translated">残念ながら、交換用ガチャ記録ファイルは書き出せませんでした。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.export.fileSavedTo:" xml:space="preserve">
@@ -758,7 +758,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeeded" xml:space="preserve">
         <source>Successfully imported all entries from the specified profile(s) of the given file.</source>
-        <target state="translated">ご指定したファイルからご指定のプロファイルの全てのガチャ記録の読み込みは無事完了しました。</target>
+        <target state="translated">指定されたファイルからすべてのガチャ記録の読み込みが完了しました。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeededReport.sectionHeader" xml:space="preserve">
@@ -773,27 +773,27 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.navTitle.exportData" xml:space="preserve">
         <source>Export Gacha Records</source>
-        <target state="translated">ガチャ記録の書出し</target>
+        <target state="translated">ガチャ記録の書き出し</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.navTitle.importData" xml:space="preserve">
         <source>Import Gacha Records</source>
-        <target state="translated">ガチャ記録の読込み</target>
+        <target state="translated">ガチャ記録の読み込み</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.startImportingData.button" xml:space="preserve">
         <source>Click Here to Start Import</source>
-        <target state="translated">タップして読み込みを始める</target>
+        <target state="translated">タップして読み込みを開始</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.tabTitle.exportData" xml:space="preserve">
         <source>EXPORT</source>
-        <target state="translated">書出す</target>
+        <target state="translated">書き出し</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.tabTitle.importData" xml:space="preserve">
         <source>IMPORT</source>
-        <target state="translated">読込む</target>
+        <target state="translated">読み込み</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.export.share.warnings.doNotShareToPublicCollectors" xml:space="preserve">
@@ -843,7 +843,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.gachaProfileMenu.chooseProfile" xml:space="preserve">
         <source>Choose Profile</source>
-        <target state="translated">ガチャUIDのご選択</target>
+        <target state="translated">プロファイルを選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.chart.count" xml:space="preserve">
@@ -2409,7 +2409,7 @@ iOS 側です。
       </trans-unit>
       <trans-unit id="profileMgr.exchange.export.failedInSavingToFile" xml:space="preserve">
         <source>Failed from dumping all local profiles.</source>
-        <target state="translated">残念ながら、プロファイルは書き出しできませんでした。</target>
+        <target state="translated">残念ながら、プロファイルは書き出せませんでした。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.exchange.export.fileSavedTo:" xml:space="preserve">
@@ -4512,7 +4512,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="settings.display.appWallpaper.userWallPaper.notSpecified" xml:space="preserve">
         <source>Disabled</source>
-        <target state="translated">不起用</target>
+        <target state="translated">不使用</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.staminaTimer.background.navTitle" xml:space="preserve">
@@ -4587,7 +4587,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="userWallpaperMgr.exchange.export.failedInSavingToFile" xml:space="preserve">
         <source>Failed from dumping all user wallpapers.</source>
-        <target state="translated">残念ながら、ユーザー壁紙は書き出しできませんでした。</target>
+        <target state="translated">残念ながら、ユーザー壁紙は書き出せませんでした。</target>
         <note/>
       </trans-unit>
       <trans-unit id="userWallpaperMgr.exchange.export.fileSavedTo:" xml:space="preserve">
@@ -4884,12 +4884,12 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="appEnum.StaminaContentRevolverStyle.asTimeStampWhenWillAccomplish" xml:space="preserve">
         <source>Timestamp (when finished)</source>
-        <target state="translated">任務完成の時点</target>
+        <target state="translated">完了予定時刻</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum.StaminaContentRevolverStyle.asTimerCountDown" xml:space="preserve">
         <source>Countdown Timer</source>
-        <target state="translated">減算時計</target>
+        <target state="translated">カウントダウン</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum.StaminaContentRevolverStyle.byDefault" xml:space="preserve">
@@ -4899,7 +4899,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="appEnum.StaminaContentRevolverStyle.title" xml:space="preserve">
         <source>Auto Rotation of Stamina Widget Styles</source>
-        <target state="translated">任意のスタミナ表示スタイルを用いる</target>
+        <target state="translated">スタミナ表示スタイルの自動切替</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum.WeeklyBossesDisplayMethod.alwaysHidden" xml:space="preserve">
@@ -4939,7 +4939,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="appEnum.WidgetSupportedGame.allGames" xml:space="preserve">
         <source>All Games</source>
-        <target state="translated">全てのゲーム</target>
+        <target state="translated">すべてのゲーム</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum.WidgetSupportedGame.title" xml:space="preserve">
@@ -4949,17 +4949,17 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="intent.description.chooseTheGame" xml:space="preserve">
         <source>Choose the game</source>
-        <target state="translated">ゲームをご指定</target>
+        <target state="translated">ゲームを選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.description.pickTheLocalProfileDuoForThisWidget" xml:space="preserve">
         <source>Choose 2 local profiles for this widget</source>
-        <target state="translated">このウィジェットに2つのプロファイルのご指定を</target>
+        <target state="translated">このウィジェット用に2つのプロファイルを選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.description.pickTheLocalProfileForThisWidget" xml:space="preserve">
         <source>Choose a local profile for this widget</source>
-        <target state="translated">このウィジェットにプロファイルのご指定を</target>
+        <target state="translated">このウィジェット用のプロファイルを選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.field.echoOfWarDisplayMethod" xml:space="preserve">
@@ -5029,7 +5029,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="intent.field.useRandomWallpaper" xml:space="preserve">
         <source>Use random wallpaper</source>
-        <target state="translated">任意の壁紙を用いる</target>
+        <target state="translated">ランダムな壁紙を使用</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.field.useTinyGlassDisplayStyle" xml:space="preserve">
@@ -5059,7 +5059,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="intent.name.selectLocalProfile4PeripheralsWithExtraConfig" xml:space="preserve">
         <source>Choose Local Profile with Extra Configuration</source>
-        <target state="translated">プロファイルのご指定且つ追加設定</target>
+        <target>プロファイルを選択＆追加設定</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.name.selectLocalProfileDuo" xml:space="preserve">
