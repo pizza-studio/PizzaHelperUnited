@@ -109,7 +109,7 @@ public struct GachaRootView: View {
                             }
                         } label: {
                             Label(
-                                "gachaKit.menu.rebuildGachaUIDList".i18nGachaKit,
+                                "gachaKit.menu.reloadData".i18nGachaKit,
                                 systemSymbol: .gearshapeArrowTriangle2Circlepath
                             )
                         }
@@ -165,7 +165,7 @@ extension GachaRootView {
             if theVM.currentGPID != nil {
                 GachaProfileView()
             } else if !theVM.hasGPID.wrappedValue {
-                Text("gachaKit.prompt.pleaseChooseGachaProfile", bundle: .module)
+                Text("gachaKit.prompt.pleaseChooseGachaPuller", bundle: .module)
             } else {
                 Text("gachaKit.prompt.noGachaProfileFound", bundle: .module)
             }

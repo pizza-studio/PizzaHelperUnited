@@ -237,7 +237,7 @@ extension GachaImportSections {
                 nameIDMap: theVM.nameIDMap
             )
         } header: {
-            Text("gachaKit.exchange.chooseProfiles.import.prompt", bundle: .module)
+            Text("gachaKit.exchange.chooseGachaPullers.import.prompt", bundle: .module)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .textCase(.none)
         }

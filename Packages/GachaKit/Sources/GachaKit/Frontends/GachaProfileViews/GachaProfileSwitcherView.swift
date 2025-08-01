@@ -7,6 +7,7 @@ import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 
+/// Gacha Profile 对用户而言的称谓是 Gacha Puller / 抽卡人 / ガチャ主。
 @available(iOS 17.0, macCatalyst 17.0, *)
 public struct GachaProfileSwitcherView: View {
     // MARK: Lifecycle
@@ -60,7 +61,7 @@ public struct GachaProfileSwitcherView: View {
             if let profile = theVM.currentGPID {
                 Text(profile.uidWithGame).fontWidth(.condensed)
             } else {
-                Text("gachaKit.gachaProfileMenu.chooseProfile", bundle: .module)
+                Text("gachaKit.gachaPullerMenu.chooseGachaPuller", bundle: .module)
             }
         }
         .padding(4).padding(.leading, 12)

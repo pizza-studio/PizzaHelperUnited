@@ -98,7 +98,7 @@ public struct GachaExportSections: View {
                 nameIDMap: theVM.nameIDMap
             )
         } header: {
-            Text("gachaKit.exchange.chooseProfiles.export.prompt", bundle: .module)
+            Text("gachaKit.exchange.chooseGachaPullers.export.prompt", bundle: .module)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .textCase(.none)
         }
