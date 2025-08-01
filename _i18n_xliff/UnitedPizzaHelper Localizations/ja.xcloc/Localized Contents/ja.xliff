@@ -267,10 +267,12 @@
       </trans-unit>
       <trans-unit id="appEntity.localProfile" xml:space="preserve">
         <source>appEntity.localProfile</source>
+        <target>プロファイル</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEntity.widgetBackground" xml:space="preserve">
         <source>appEntity.widgetBackground</source>
+        <target>ウィジェットの背景画像</target>
         <note/>
       </trans-unit>
     </body>
@@ -5044,17 +5046,17 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="intent.name.selectGameOnly" xml:space="preserve">
         <source>Only choose the game</source>
-        <target state="translated">ゲームのみをご指定</target>
+        <target state="translated">ゲームのみを選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.name.selectLocalProfile" xml:space="preserve">
         <source>Choose Local Profile</source>
-        <target state="translated">プロファイルをご指定</target>
+        <target state="translated">プロファイルを選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.name.selectLocalProfile4Peripherals" xml:space="preserve">
         <source>Choose Local Profile (only)</source>
-        <target state="translated">プロファイルだけをご指定</target>
+        <target state="translated">プロファイルだけを選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.name.selectLocalProfile4PeripheralsWithExtraConfig" xml:space="preserve">
@@ -5064,7 +5066,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="intent.name.selectLocalProfileDuo" xml:space="preserve">
         <source>Choose Local Profile (Dual)</source>
-        <target state="translated">2つのプロファイルをご指定</target>
+        <target state="translated">2つのプロファイルを選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.WidgetRefreshIntent.Refresh" xml:space="preserve">
