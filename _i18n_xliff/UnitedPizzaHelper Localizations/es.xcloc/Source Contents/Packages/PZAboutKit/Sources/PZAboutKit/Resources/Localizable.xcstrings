@@ -447,6 +447,16 @@
         }
       }
     },
+    "aboutKit.contributors.category.i18n.previous.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not all of these contributors are taking part into the localization work since v5.0+. We still credit them here for their contributions against the previous major releases."
+          }
+        }
+      }
+    },
     "aboutKit.contributors.category.mainCrew" : {
       "localizations" : {
         "en" : {
@@ -746,6 +756,107 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Privacy Policy"
+          }
+        }
+      }
+    },
+    "oobe.feature.backupYourData.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup."
+          }
+        }
+      }
+    },
+    "oobe.feature.backupYourData.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backup Proactively"
+          }
+        }
+      }
+    },
+    "oobe.feature.contactDevs.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may refer to “Settings -> About” to know how to contact the devs for possible help."
+          }
+        }
+      }
+    },
+    "oobe.feature.contactDevs.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact Us"
+          }
+        }
+      }
+    },
+    "oobe.feature.menuButton.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It situates at top-trailing corner of the UI when it’s available. Tap it to call the feature menu."
+          }
+        }
+      }
+    },
+    "oobe.feature.menuButton.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu Icon"
+          }
+        }
+      }
+    },
+    "oobe.feature.notification.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get noticed when your in-game player stamina is full. This is configurable through in-app settings."
+          }
+        }
+      }
+    },
+    "oobe.feature.notification.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        }
+      }
+    },
+    "oobe.feature.widget.detail:%@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app supports Dynamic Island, Live Activities, and multiple kinds of widgets. Please tap [here](%@) to read Apple official articles to learn how to use widgets."
+          }
+        }
+      }
+    },
+    "oobe.feature.widget.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets"
           }
         }
       }

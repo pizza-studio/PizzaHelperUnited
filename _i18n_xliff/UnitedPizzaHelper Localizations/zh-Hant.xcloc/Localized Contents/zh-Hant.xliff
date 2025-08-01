@@ -567,8 +567,8 @@ Tap anywhere to dismiss.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.DatabaseExpired" xml:space="preserve">
-        <source>Local GachaMetaDB cache expired.</source>
-        <target state="translated">本機 GachaMetaDB 快取已過期。</target>
+        <source>Local GachaMetaDB cache expired. A possible reason is the failure of fetching the latest remote database. If you are situated in Mainland China without solid access to GitHub, please contact the developer regarding the situation of the outdated mirrors.</source>
+        <target state="translated">本機 GachaMetaDB 快取已過期。可能是未能獲取到最新的遠端資料庫。如果您位於中國大陸且無法穩定訪問 GitHub，請聯絡開發者調查確認相關資料庫在中國大陸的鏡照是否過期。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.EmptyFetchResult" xml:space="preserve">
@@ -1221,9 +1221,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">墊數（自前次五星起算）</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.standardItemHitRate" xml:space="preserve">
-        <source>Standard Hit Rate</source>
-        <target state="translated">常駐命中率</target>
+      <trans-unit id="gachaKit.stats.standardItemEvasionRate" xml:space="preserve">
+        <source>Standard Evasion Rate</source>
+        <target state="translated">非常駐命中率</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.totalPulls" xml:space="preserve">
@@ -1713,6 +1713,11 @@ App 圖示繪師 (統一披薩小助手 v5.0)</target>
         <target state="translated">部分翻譯提供者（舊版）</target>
         <note/>
       </trans-unit>
+      <trans-unit id="aboutKit.contributors.category.i18n.previous.description" xml:space="preserve">
+        <source>Not all of these contributors are taking part into the localization work since v5.0+. We still credit them here for their contributions against the previous major releases.</source>
+        <target state="translated">上述翻譯貢獻者們並非都有參與對 v5.0+ 的翻譯工作，但我們仍在此感謝他們對以往主要版本的貢獻。</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="aboutKit.contributors.category.mainCrew" xml:space="preserve">
         <source>Main Developer Team</source>
         <target state="translated">開發團隊</target>
@@ -1848,6 +1853,56 @@ App 圖示繪師 (統一披薩小助手 v5.0)</target>
       <trans-unit id="aboutKit.ourApps.pzHelper4HSR.description" xml:space="preserve">
         <source>Deprecated and integrated into The Pizza Helper.</source>
         <target state="translated">已淘汰。相關功能被併入以統一披薩引擎加持的披薩小助手。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.backupYourData.detail" xml:space="preserve">
+        <source>FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup.</source>
+        <target state="translated">FOSS並不意味著可以一直安定地使用。請對自己的資料負責。您可以勤加備份自己的抽卡記錄（匯出為 UIGF 格式）。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.backupYourData.title" xml:space="preserve">
+        <source>Backup Proactively</source>
+        <target state="translated">請勤加備份</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.contactDevs.detail" xml:space="preserve">
+        <source>You may refer to “Settings -&gt; About” to know how to contact the devs for possible help.</source>
+        <target state="translated">您在「設定-&gt;關於」畫面可以找到開發者們的聯絡方式。這或許可以幫到您。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.contactDevs.title" xml:space="preserve">
+        <source>Contact Us</source>
+        <target state="translated">聯絡開發者</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.menuButton.detail" xml:space="preserve">
+        <source>It situates at top-trailing corner of the UI when it’s available. Tap it to call the feature menu.</source>
+        <target state="translated">該按鈕會在可用時坐落於畫面右上角。點一下就可以叫出功能選單。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.menuButton.title" xml:space="preserve">
+        <source>Menu Icon</source>
+        <target state="translated">選單按鈕</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.notification.detail" xml:space="preserve">
+        <source>Get noticed when your in-game player stamina is full. This is configurable through in-app settings.</source>
+        <target state="translated">當玩家體力回滿時，您可以收到通知。該功能可藉由 App 設定畫面來配置。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.notification.title" xml:space="preserve">
+        <source>Notifications</source>
+        <target state="translated">通知</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.widget.detail:%@" xml:space="preserve">
+        <source>This app supports Dynamic Island, Live Activities, and multiple kinds of widgets. Please tap [here](%@) to read Apple official articles to learn how to use widgets.</source>
+        <target state="translated">敝應用支援動態島、即時動態（Live Activity）、以及各種小工具。請點按[此處](%@)閱讀 Apple 官方的說明手冊來學習如何使用小工具。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.widget.title" xml:space="preserve">
+        <source>Widgets</source>
+        <target state="translated">小工具</target>
         <note/>
       </trans-unit>
     </body>
@@ -4128,7 +4183,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="sys.ok" xml:space="preserve">
         <source>Okay</source>
-        <target state="translated">嗯</target>
+        <target state="translated">OK</target>
         <note>This sounds casual comparing to the formal calling `sys.affirmative`.</note>
       </trans-unit>
       <trans-unit id="sys.proceed" xml:space="preserve">

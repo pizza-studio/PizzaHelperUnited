@@ -565,8 +565,8 @@ Tap anywhere to dismiss.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.DatabaseExpired" xml:space="preserve">
-        <source>Local GachaMetaDB cache expired.</source>
-        <target state="translated">로컬 GachaMetaDB 캐시가 만료되었습니다.</target>
+        <source>Local GachaMetaDB cache expired. A possible reason is the failure of fetching the latest remote database. If you are situated in Mainland China without solid access to GitHub, please contact the developer regarding the situation of the outdated mirrors.</source>
+        <target state="translated">로컬 GachaMetaDB 캐시가 만료되었습니다. 가능한 원인은 최신 원격 데이터베이스를 가져오지 못한 것입니다. 중국 본토에서 GitHub에 안정적으로 접근할 수 없다면, 개발자에게 연락하여 구버전 미러의 상황을 문의하세요.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.EmptyFetchResult" xml:space="preserve">
@@ -1215,9 +1215,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">쌓인 횟수 (이전 ★5 이후)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.standardItemHitRate" xml:space="preserve">
-        <source>Standard Hit Rate</source>
-        <target state="translated">표준 적중률</target>
+      <trans-unit id="gachaKit.stats.standardItemEvasionRate" xml:space="preserve">
+        <source>Standard Evasion Rate</source>
+        <target state="translated">표준 회피율</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.totalPulls" xml:space="preserve">
@@ -1702,6 +1702,11 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
         <target state="translated">이전 로컬라이제이션 기여자</target>
         <note/>
       </trans-unit>
+      <trans-unit id="aboutKit.contributors.category.i18n.previous.description" xml:space="preserve">
+        <source>Not all of these contributors are taking part into the localization work since v5.0+. We still credit them here for their contributions against the previous major releases.</source>
+        <target state="translated">이 기여자들 모두가 v5.0+ 이후 현지화 작업에 참여하고 있지는 않습니다. 이전 주요 릴리스에 대한 그들의 기여를 여기에서 계속 인정합니다.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="aboutKit.contributors.category.mainCrew" xml:space="preserve">
         <source>Main Developer Team</source>
         <target state="translated">주요 개발 팀</target>
@@ -1839,6 +1844,46 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
       <trans-unit id="aboutKit.ourApps.pzHelper4HSR.description" xml:space="preserve">
         <source>Deprecated and integrated into The Pizza Helper.</source>
         <target state="translated">피자 도우미에 통합되어 더 이상 사용되지 않습니다.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.backupYourData.detail" xml:space="preserve">
+        <source>FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup.</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.backupYourData.title" xml:space="preserve">
+        <source>Backup Proactively</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.contactDevs.detail" xml:space="preserve">
+        <source>You may refer to “Settings -&gt; About” to know how to contact the devs for possible help.</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.contactDevs.title" xml:space="preserve">
+        <source>Contact Us</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.menuButton.detail" xml:space="preserve">
+        <source>It situates at top-trailing corner of the UI when it’s available. Tap it to call the feature menu.</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.menuButton.title" xml:space="preserve">
+        <source>Menu Icon</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.notification.detail" xml:space="preserve">
+        <source>Get noticed when your in-game player stamina is full. This is configurable through in-app settings.</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.notification.title" xml:space="preserve">
+        <source>Notifications</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.widget.detail:%@" xml:space="preserve">
+        <source>This app supports Dynamic Island, Live Activities, and multiple kinds of widgets. Please tap [here](%@) to read Apple official articles to learn how to use widgets.</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.widget.title" xml:space="preserve">
+        <source>Widgets</source>
         <note/>
       </trans-unit>
     </body>
