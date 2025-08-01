@@ -75,13 +75,13 @@ extension GachaProfileView {
                     }
                     HStack {
                         Label {
-                            Text("gachaKit.stats.standardItemHitRate", bundle: .module)
+                            Text("gachaKit.stats.standardItemEvasionRate", bundle: .module)
                                 .fontWidth(.condensed)
                         } icon: {
-                            Image(systemSymbol: .trashCircleFill).foregroundStyle(.red)
+                            Image(systemSymbol: .trashSlashCircleFill).foregroundStyle(.red)
                         }
                         Spacer()
-                        Text(Self.fmtPerc.string(from: standardItemHitRate as NSNumber) ?? "N/A")
+                        Text(Self.fmtPerc.string(from: standardItemEvasionRate as NSNumber) ?? "N/A")
                             .fontWidth(.condensed)
                     }
                     guestEvaluatorView()
@@ -121,7 +121,7 @@ extension GachaProfileView {
             pentaStarEntries.map(\.drawCount).reduce(0, +) / max(pentaStarsNotSurinuked.count, 1)
         }
 
-        private var standardItemHitRate: Double {
+        private var standardItemEvasionRate: Double {
             let pentaStarEntries = pentaStarEntries
             guard !pentaStarEntries.isEmpty else { return 0.0 }
             var surinukableCases = [Bool]()
@@ -143,7 +143,7 @@ extension GachaProfileView {
             guard countOfAllCases > 0 else { return 0.0 }
             let countSurinuked = Double(surinukableCases.count(where: \.self))
             // 小保底次数 = 限定五星数量
-            return countSurinuked / Double(surinukableCases.count)
+            return 1 - (countSurinuked / Double(surinukableCases.count))
         }
 
         private var average5StarDraw: Int { pentaStarEntries.map { $0.drawCount }
