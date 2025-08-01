@@ -662,16 +662,18 @@ Tocca ovunque per chiudere.</target>
         <target state="translated">Torna indietro e seleziona un altro file</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.chooseProfiles.export.prompt" xml:space="preserve">
-        <source>Choose the gacha profiles to export.
-Empty selection indicates selecting all profiles.</source>
-        <target state="translated">Scegli i profili gacha da esportare Selezione vuota indica la selezione di tutti i profili</target>
+      <trans-unit id="gachaKit.exchange.chooseGachaPullers.export.prompt" xml:space="preserve">
+        <source>Choose the gacha pullers to export.
+Empty selection indicates selecting all gacha pullers.</source>
+        <target state="translated">Scegli i tiratori gacha da esportare.
+Nessuna selezione indica che verranno esportati tutti i tiratori gacha.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.chooseProfiles.import.prompt" xml:space="preserve">
-        <source>Choose the gacha profiles to import.
-Empty selection indicates selecting all profiles.</source>
-        <target state="translated">Scegli i profili gacha da importare Selezione vuota indica la selezione di tutti i profili</target>
+      <trans-unit id="gachaKit.exchange.chooseGachaPullers.import.prompt" xml:space="preserve">
+        <source>Choose the gacha pullers to import.
+Empty selection indicates selecting all gacha pullers.</source>
+        <target state="translated">Scegli i tiratori gacha da importare.
+Nessuna selezione indica che verranno importati tutti i tiratori gacha.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.export.clickHereToExport" xml:space="preserve">
@@ -753,8 +755,8 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeeded" xml:space="preserve">
-        <source>Successfully imported all entries from the specified profile(s) of the given file.</source>
-        <target state="translated">Importati con successo tutti gli elementi dal profilo specificato del file indicato</target>
+        <source>Successfully imported all entries from the specified gacha puller(s) of the given file.</source>
+        <target state="translated">Importati con successo tutti gli elementi dai tiratori gacha specificati del file indicato.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeededReport.sectionHeader" xml:space="preserve">
@@ -837,9 +839,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">⚠︎ Le lingue italiano e turco sono supportate solo da Genshin Impact</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.gachaProfileMenu.chooseProfile" xml:space="preserve">
-        <source>Choose Profile</source>
-        <target state="translated">Scegli profilo</target>
+      <trans-unit id="gachaKit.gachaPullerMenu.chooseGachaPuller" xml:space="preserve">
+        <source>Choose Gacha Puller</source>
+        <target state="translated">Scegli il tiratore Gacha</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.chart.count" xml:space="preserve">
@@ -1008,13 +1010,13 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID" xml:space="preserve">
-        <source>Click Here to Remove All Records Under This Gacha Profile</source>
-        <target state="translated">Fai clic qui per rimuovere tutti i record sotto questo profilo Gacha</target>
+        <source>Click Here to Remove All Records Under This Gacha Puller</source>
+        <target state="translated">Fai clic qui per rimuovere tutti i record sotto questo tiratore gacha</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.confirmingDeletingAllRecordsOfThisGPID" xml:space="preserve">
-        <source>Confirming removal of all records under this gacha profile. Proceed?</source>
-        <target state="translated">Confermi la rimozione di tutti i record sotto questo profilo gacha? Procedere?</target>
+        <source>Confirming removal of all records under this gacha puller. Proceed?</source>
+        <target state="translated">Confermi la rimozione di tutti i record sotto questo tiratore gacha. Procedere?</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.currentGame" xml:space="preserve">
@@ -1022,14 +1024,14 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Partita in corso</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.management.gachaPullerToPurge" xml:space="preserve">
+        <source>Gacha Puller (Game &amp; UID) to Delete</source>
+        <target state="translated">Tiratore Gacha (Gioco e UID) da Eliminare</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.management.navTitle" xml:space="preserve">
         <source>Managing Gacha Records</source>
         <target state="translated">Gestione dei record Gacha</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="gachaKit.management.uidAndGameToPurge" xml:space="preserve">
-        <source>Game &amp; UID to Delete</source>
-        <target state="translated">Gioco e UID da Eliminare</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.exchangeGachaRecords" xml:space="preserve">
@@ -1047,9 +1049,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Elenca iCloud Gacha Records dalle vecchie app Pizza</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.menu.rebuildGachaUIDList" xml:space="preserve">
-        <source>Rebuild Gacha UID List</source>
-        <target state="translated">Ricostruisci elenco UID Gacha</target>
+      <trans-unit id="gachaKit.menu.reloadData" xml:space="preserve">
+        <source>Reload Data</source>
+        <target state="translated">Ricarica dati</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolFilterLabel.byGame.GI" xml:space="preserve">
@@ -1172,14 +1174,14 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Nessun record gacha trovato</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.prompt.pleaseChooseGachaProfile" xml:space="preserve">
-        <source>Please choose a gacha profile. If you can’t see one, then please import some gacha records first.</source>
-        <target state="translated">Si prega di scegliere un profilo gacha. Se non ne vedi uno, importare prima alcuni record gacha.</target>
+      <trans-unit id="gachaKit.prompt.pleaseChooseGachaPuller" xml:space="preserve">
+        <source>Please choose a gacha puller. If you can't see one, then please import some gacha records first.</source>
+        <target state="translated">Si prega di scegliere un tiratore gacha. Se non ne vedi uno, importare prima alcuni record gacha.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.prompt.remoteChangesDetected.withRecommendedAction" xml:space="preserve">
-        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Rebuild Gacha UID List” or restart this app to let those changes visible to you.</source>
-        <target state="translated">Sono state rilevate modifiche remote di iCloud SwiftData già applicate nel backend. Controlla il menu a discesa in alto a destra per eseguire "Ricostruisci elenco UID Gacha" o riavvia questa app per rendere visibili tali modifiche.</target>
+        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Reload Data” or restart this app to let those changes visible to you.</source>
+        <target state="translated">Sono state rilevate modifiche remote di iCloud SwiftData già applicate nel backend. Controlla il menu a discesa in alto a destra per eseguire "Ricarica dati" o riavvia questa app per rendere visibili tali modifiche.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.reviewFromAppraiser.gi" xml:space="preserve">

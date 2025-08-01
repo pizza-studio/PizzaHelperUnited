@@ -662,17 +662,18 @@ Tapikin kahit saan upang isara.</target>
         <target state="translated">Bumalik at pumili ng ibang file</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.chooseProfiles.export.prompt" xml:space="preserve">
-        <source>Choose the gacha profiles to export.
-Empty selection indicates selecting all profiles.</source>
-        <target state="translated">Pumili ng mga gacha profile na ie-export.
-Walang piniling indikasyon ay nangangahulugang pinipili ang lahat ng profile.</target>
+      <trans-unit id="gachaKit.exchange.chooseGachaPullers.export.prompt" xml:space="preserve">
+        <source>Choose the gacha pullers to export.
+Empty selection indicates selecting all gacha pullers.</source>
+        <target state="translated">Piliin ang mga gacha puller na ie-export.
+Walang pinili ay nangangahulugang ie-export ang lahat ng gacha puller.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.chooseProfiles.import.prompt" xml:space="preserve">
-        <source>Choose the gacha profiles to import.
-Empty selection indicates selecting all profiles.</source>
-        <target state="translated">Piliin ang gacha profiles na i-import. Ang walang laman na pagpili ay nangangahulugang pagpili ng lahat ng profiles.</target>
+      <trans-unit id="gachaKit.exchange.chooseGachaPullers.import.prompt" xml:space="preserve">
+        <source>Choose the gacha pullers to import.
+Empty selection indicates selecting all gacha pullers.</source>
+        <target state="translated">Piliin ang mga gacha puller na i-import.
+Walang pinili ay nangangahulugang i-import ang lahat ng gacha puller.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.export.clickHereToExport" xml:space="preserve">
@@ -754,8 +755,8 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeeded" xml:space="preserve">
-        <source>Successfully imported all entries from the specified profile(s) of the given file.</source>
-        <target state="translated">Matagumpay na na-import ang lahat ng mga entry mula sa tinukoy na profile(s) ng ibinigay na file.</target>
+        <source>Successfully imported all entries from the specified gacha puller(s) of the given file.</source>
+        <target state="translated">Matagumpay na na-import ang lahat ng mga entry mula sa tinukoy na gacha puller(s) ng ibinigay na file.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeededReport.sectionHeader" xml:space="preserve">
@@ -838,9 +839,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">⚠︎ Ang Italian at Turkish na mga wika ay sinusuportahan lamang ng Genshin Impact.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.gachaProfileMenu.chooseProfile" xml:space="preserve">
-        <source>Choose Profile</source>
-        <target state="translated">Pumili ng Profile</target>
+      <trans-unit id="gachaKit.gachaPullerMenu.chooseGachaPuller" xml:space="preserve">
+        <source>Choose Gacha Puller</source>
+        <target state="translated">Pumili ng Gacha Puller</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.chart.count" xml:space="preserve">
@@ -1009,13 +1010,13 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID" xml:space="preserve">
-        <source>Click Here to Remove All Records Under This Gacha Profile</source>
-        <target state="translated">I-click Dito upang Alisin ang Lahat ng Rekord sa Ilalim ng Profile ng Gacha na Ito</target>
+        <source>Click Here to Remove All Records Under This Gacha Puller</source>
+        <target state="translated">I-click Dito upang Alisin ang Lahat ng Rekord sa Ilalim ng Gacha Puller na Ito</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.confirmingDeletingAllRecordsOfThisGPID" xml:space="preserve">
-        <source>Confirming removal of all records under this gacha profile. Proceed?</source>
-        <target state="translated">Kinukumpirma ang pagtanggal ng lahat ng rekord sa ilalim ng gacha profile na ito. Magpatuloy?</target>
+        <source>Confirming removal of all records under this gacha puller. Proceed?</source>
+        <target state="translated">Kinukumpirma ang pagtanggal ng lahat ng rekord sa ilalim ng gacha puller na ito. Magpatuloy?</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.currentGame" xml:space="preserve">
@@ -1023,14 +1024,14 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Kasalukuyang Laro</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.management.gachaPullerToPurge" xml:space="preserve">
+        <source>Gacha Puller (Game &amp; UID) to Delete</source>
+        <target state="translated">Gacha Puller (Laro &amp; UID) na Tatanggalin</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.management.navTitle" xml:space="preserve">
         <source>Managing Gacha Records</source>
         <target state="translated">Pamamahala ng mga Talaan ng Gacha</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="gachaKit.management.uidAndGameToPurge" xml:space="preserve">
-        <source>Game &amp; UID to Delete</source>
-        <target state="translated">Larong &amp; UID na Tatanggalin</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.exchangeGachaRecords" xml:space="preserve">
@@ -1048,9 +1049,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Ilista ang mga tala ng iCloud Gacha mula sa lumang Pizza Apps</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.menu.rebuildGachaUIDList" xml:space="preserve">
-        <source>Rebuild Gacha UID List</source>
-        <target state="translated">I-rebuild ang Listahan ng Gacha UID</target>
+      <trans-unit id="gachaKit.menu.reloadData" xml:space="preserve">
+        <source>Reload Data</source>
+        <target state="translated">I-reload ang Data</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolFilterLabel.byGame.GI" xml:space="preserve">
@@ -1173,14 +1174,14 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Walang natagpuang gacha records</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.prompt.pleaseChooseGachaProfile" xml:space="preserve">
-        <source>Please choose a gacha profile. If you can’t see one, then please import some gacha records first.</source>
-        <target state="translated">Pumili ng isang gacha profile. Kung walang makita, mangyaring mag-import muna ng ilang gacha records.</target>
+      <trans-unit id="gachaKit.prompt.pleaseChooseGachaPuller" xml:space="preserve">
+        <source>Please choose a gacha puller. If you can't see one, then please import some gacha records first.</source>
+        <target state="translated">Pumili ng isang gacha puller. Kung walang makita, mangyaring mag-import muna ng ilang gacha records.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.prompt.remoteChangesDetected.withRecommendedAction" xml:space="preserve">
-        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Rebuild Gacha UID List” or restart this app to let those changes visible to you.</source>
-        <target state="translated">May natukoy na remote iCloud SwiftData na mga pagbabago at naipatupad na sa backend. Pakisuri ang dropdown menu sa itaas-kanan upang patakbuhin ang “Rebuild Gacha UID List” o i-restart ang app na ito upang makita ang mga pagbabagong iyon.</target>
+        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Reload Data” or restart this app to let those changes visible to you.</source>
+        <target state="translated">May natukoy na remote iCloud SwiftData na mga pagbabago at naipatupad na sa backend. Pakisuri ang dropdown menu sa itaas-kanan upang patakbuhin ang “I-reload ang Data” o i-restart ang app na ito upang makita ang mga pagbabagong iyon.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.reviewFromAppraiser.gi" xml:space="preserve">

@@ -659,17 +659,18 @@ Tap anywhere to dismiss.</source>
         <target state="translated">뒤로 가서 다른 파일을 선택하세요</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.chooseProfiles.export.prompt" xml:space="preserve">
-        <source>Choose the gacha profiles to export.
-Empty selection indicates selecting all profiles.</source>
-        <target state="translated">내보낼 가챠 프로필을 선택하세요 
-선택을 비우면 모든 프로필을 선택하게 됩니다 </target>
+      <trans-unit id="gachaKit.exchange.chooseGachaPullers.export.prompt" xml:space="preserve">
+        <source>Choose the gacha pullers to export.
+Empty selection indicates selecting all gacha pullers.</source>
+        <target state="translated">내보낼 가챠 기록 소유자를 선택하세요.
+선택하지 않으면 모든 가챠 기록 소유자가 내보내집니다.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.chooseProfiles.import.prompt" xml:space="preserve">
-        <source>Choose the gacha profiles to import.
-Empty selection indicates selecting all profiles.</source>
-        <target state="translated">가챠 프로필을 가져올 것을 선택하세요. 선택을 비워두면 모든 프로필을 선택하게 됩니다.</target>
+      <trans-unit id="gachaKit.exchange.chooseGachaPullers.import.prompt" xml:space="preserve">
+        <source>Choose the gacha pullers to import.
+Empty selection indicates selecting all gacha pullers.</source>
+        <target state="translated">가챠 기록 소유자를 가져올 것을 선택하세요.
+선택하지 않으면 모든 가챠 기록 소유자가 가져와집니다.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.export.clickHereToExport" xml:space="preserve">
@@ -751,8 +752,8 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeeded" xml:space="preserve">
-        <source>Successfully imported all entries from the specified profile(s) of the given file.</source>
-        <target state="translated">주어진 파일의 지정된 프로필에서 모든 항목을 성공적으로 가져왔습니다.</target>
+        <source>Successfully imported all entries from the specified gacha puller(s) of the given file.</source>
+        <target state="translated">주어진 파일의 지정된 가챠 기록 소유자로부터 모든 항목을 성공적으로 가져왔습니다.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeededReport.sectionHeader" xml:space="preserve">
@@ -835,9 +836,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">⚠︎ 이탈리아어와 터키어는 Genshin Impact에서만 지원됩니다.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.gachaProfileMenu.chooseProfile" xml:space="preserve">
-        <source>Choose Profile</source>
-        <target state="translated">프로필 선택</target>
+      <trans-unit id="gachaKit.gachaPullerMenu.chooseGachaPuller" xml:space="preserve">
+        <source>Choose Gacha Puller</source>
+        <target state="translated">가챠 기록 소유자 선택</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.chart.count" xml:space="preserve">
@@ -1006,13 +1007,13 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID" xml:space="preserve">
-        <source>Click Here to Remove All Records Under This Gacha Profile</source>
-        <target state="translated">여기를 클릭하여 이 가챠 프로필의 모든 기록 제거</target>
+        <source>Click Here to Remove All Records Under This Gacha Puller</source>
+        <target state="translated">여기를 클릭하여 이 가챠 기록 소유자의 모든 기록 제거</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.confirmingDeletingAllRecordsOfThisGPID" xml:space="preserve">
-        <source>Confirming removal of all records under this gacha profile. Proceed?</source>
-        <target state="translated">이 가챠 프로필 아래의 모든 기록을 제거하시겠습니까? 진행하시겠습니까?</target>
+        <source>Confirming removal of all records under this gacha puller. Proceed?</source>
+        <target state="translated">이 가챠 기록 소유자 아래의 모든 기록을 제거하시겠습니까? 진행하시겠습니까?</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.currentGame" xml:space="preserve">
@@ -1020,14 +1021,14 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">현재 게임</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.management.gachaPullerToPurge" xml:space="preserve">
+        <source>Gacha Puller (Game &amp; UID) to Delete</source>
+        <target state="translated">삭제할 가챠 기록 소유자 (게임 및 UID)</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.management.navTitle" xml:space="preserve">
         <source>Managing Gacha Records</source>
         <target state="translated">가차 기록 관리</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="gachaKit.management.uidAndGameToPurge" xml:space="preserve">
-        <source>Game &amp; UID to Delete</source>
-        <target state="translated">삭제할 게임 및 UID</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.exchangeGachaRecords" xml:space="preserve">
@@ -1045,9 +1046,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">이전 피자 앱에서 iCloud 가챠 기록 나열</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.menu.rebuildGachaUIDList" xml:space="preserve">
-        <source>Rebuild Gacha UID List</source>
-        <target state="translated">가챠 UID 목록 재구성</target>
+      <trans-unit id="gachaKit.menu.reloadData" xml:space="preserve">
+        <source>Reload Data</source>
+        <target state="translated">데이터 다시 로드</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolFilterLabel.byGame.GI" xml:space="preserve">
@@ -1170,14 +1171,14 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">가챠 기록이 없습니다.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.prompt.pleaseChooseGachaProfile" xml:space="preserve">
-        <source>Please choose a gacha profile. If you can’t see one, then please import some gacha records first.</source>
-        <target state="translated">가챠 프로필을 선택하세요. 볼 수 없다면 가챠 기록을 먼저 가져오세요.</target>
+      <trans-unit id="gachaKit.prompt.pleaseChooseGachaPuller" xml:space="preserve">
+        <source>Please choose a gacha puller. If you can't see one, then please import some gacha records first.</source>
+        <target state="translated">가챠 기록 소유자를 선택하세요. 볼 수 없다면 가챠 기록을 먼저 가져오세요.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.prompt.remoteChangesDetected.withRecommendedAction" xml:space="preserve">
-        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Rebuild Gacha UID List” or restart this app to let those changes visible to you.</source>
-        <target state="translated">원격 iCloud SwiftData 변경 사항이 감지되어 백엔드에 이미 적용되었습니다. 오른쪽 상단 드롭다운 메뉴에서 '가챠 UID 목록 재구성'을 실행하거나 앱을 재시작하여 변경 사항을 확인하세요.</target>
+        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Reload Data” or restart this app to let those changes visible to you.</source>
+        <target state="translated">원격 iCloud SwiftData 변경 사항이 감지되어 백엔드에 이미 적용되었습니다. 오른쪽 상단 드롭다운 메뉴에서 '데이터 다시 로드'를 실행하거나 앱을 재시작하여 변경 사항을 확인하세요.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.reviewFromAppraiser.gi" xml:space="preserve">

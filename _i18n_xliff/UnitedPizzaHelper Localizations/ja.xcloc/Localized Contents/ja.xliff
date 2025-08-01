@@ -267,12 +267,12 @@
       </trans-unit>
       <trans-unit id="appEntity.localProfile" xml:space="preserve">
         <source>appEntity.localProfile</source>
-        <target>プロファイル</target>
+        <target state="translated">プロファイル</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEntity.widgetBackground" xml:space="preserve">
         <source>appEntity.widgetBackground</source>
-        <target>ウィジェットの背景画像</target>
+        <target state="translated">ウィジェットの背景画像</target>
         <note/>
       </trans-unit>
     </body>
@@ -663,18 +663,18 @@ Tap anywhere to dismiss.</source>
         <target state="translated">戻って別のファイルを読み込む</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.chooseProfiles.export.prompt" xml:space="preserve">
-        <source>Choose the gacha profiles to export.
-Empty selection indicates selecting all profiles.</source>
-        <target state="translated">書き出すガチャプロファイルを選択してください。
-未選択の場合、すべてのプロファイルが書き出されます。</target>
+      <trans-unit id="gachaKit.exchange.chooseGachaPullers.export.prompt" xml:space="preserve">
+        <source>Choose the gacha pullers to export.
+Empty selection indicates selecting all gacha pullers.</source>
+        <target state="translated">書き出すガチャ主を選択してください。
+未選択の場合、すべてのガチャ主が書き出されます。</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.chooseProfiles.import.prompt" xml:space="preserve">
-        <source>Choose the gacha profiles to import.
-Empty selection indicates selecting all profiles.</source>
-        <target state="translated">読み込むガチャプロファイルを選択してください。
-未選択の場合、すべてのプロファイルが読み込まれます。</target>
+      <trans-unit id="gachaKit.exchange.chooseGachaPullers.import.prompt" xml:space="preserve">
+        <source>Choose the gacha pullers to import.
+Empty selection indicates selecting all gacha pullers.</source>
+        <target state="translated">読み込むガチャ主を選択してください。
+未選択の場合、すべてのガチャ主が読み込まれます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.export.clickHereToExport" xml:space="preserve">
@@ -759,8 +759,8 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeeded" xml:space="preserve">
-        <source>Successfully imported all entries from the specified profile(s) of the given file.</source>
-        <target state="translated">指定されたファイルからすべてのガチャ記録の読み込みが完了しました。</target>
+        <source>Successfully imported all entries from the specified gacha puller(s) of the given file.</source>
+        <target state="translated">このファイルから指定されたガチャ主のすべての記録の読み込みが完了しました。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeededReport.sectionHeader" xml:space="preserve">
@@ -843,9 +843,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">⚠︎ イタリア語とトルコ語は原神以外のゲームには未だにサポート対象外です。</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.gachaProfileMenu.chooseProfile" xml:space="preserve">
-        <source>Choose Profile</source>
-        <target state="translated">プロファイルを選択</target>
+      <trans-unit id="gachaKit.gachaPullerMenu.chooseGachaPuller" xml:space="preserve">
+        <source>Choose Gacha Puller</source>
+        <target state="translated">ガチャ主を選択</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.chart.count" xml:space="preserve">
@@ -1014,13 +1014,13 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID" xml:space="preserve">
-        <source>Click Here to Remove All Records Under This Gacha Profile</source>
-        <target state="translated">タップしてこのガチャプロファイルの全ての記録を削除</target>
+        <source>Click Here to Remove All Records Under This Gacha Puller</source>
+        <target state="translated">タップしてこのガチャ主の全ての記録を削除</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.confirmingDeletingAllRecordsOfThisGPID" xml:space="preserve">
-        <source>Confirming removal of all records under this gacha profile. Proceed?</source>
-        <target state="translated">このガチャプロファイルの全ての記録を削除する。続行するかどうかのご確認を。</target>
+        <source>Confirming removal of all records under this gacha puller. Proceed?</source>
+        <target state="translated">このガチャ主の全ての記録を削除する。続行するかどうかのご確認を。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.currentGame" xml:space="preserve">
@@ -1028,14 +1028,14 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">このゲーム</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.management.gachaPullerToPurge" xml:space="preserve">
+        <source>Gacha Puller (Game &amp; UID) to Delete</source>
+        <target state="translated">削除するガチャ主（ゲーム＆UID）</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.management.navTitle" xml:space="preserve">
         <source>Managing Gacha Records</source>
         <target state="translated">ガチャ記録の管理</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="gachaKit.management.uidAndGameToPurge" xml:space="preserve">
-        <source>Game &amp; UID to Delete</source>
-        <target state="translated">削除する記録の所属ゲームとUID</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.exchangeGachaRecords" xml:space="preserve">
@@ -1053,9 +1053,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">古いピザアプリのiCloudデータからガチャ記録を点検</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.menu.rebuildGachaUIDList" xml:space="preserve">
-        <source>Rebuild Gacha UID List</source>
-        <target state="translated">ガチャUIDリストを再構築</target>
+      <trans-unit id="gachaKit.menu.reloadData" xml:space="preserve">
+        <source>Reload Data</source>
+        <target state="translated">データを再読込</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolFilterLabel.byGame.GI" xml:space="preserve">
@@ -1178,14 +1178,14 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">ガチャ記録は見つかりませんでした。</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.prompt.pleaseChooseGachaProfile" xml:space="preserve">
-        <source>Please choose a gacha profile. If you can’t see one, then please import some gacha records first.</source>
-        <target state="translated">ガチャUIDをご選択ください。それが表示していないのなら、まずガチャ記録を入れてください。</target>
+      <trans-unit id="gachaKit.prompt.pleaseChooseGachaPuller" xml:space="preserve">
+        <source>Please choose a gacha puller. If you can't see one, then please import some gacha records first.</source>
+        <target state="translated">ガチャ主を選択してください。それが表示していないのなら、まずガチャ記録を入れてください。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.prompt.remoteChangesDetected.withRecommendedAction" xml:space="preserve">
-        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Rebuild Gacha UID List” or restart this app to let those changes visible to you.</source>
-        <target state="translated">リモートの iCloud SwiftData の変更が検出され、すでにバックエンドに適用されています。右上のドロップダウンメニューから「ガチャUIDリストを再構築」を実行するか、このアプリを再起動して変更内容を反映させてください。</target>
+        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Reload Data” or restart this app to let those changes visible to you.</source>
+        <target state="translated">リモートの iCloud SwiftData の変更が検出され、すでにバックエンドに適用されています。右上のドロップダウンメニューから「データを再読込」を実行するか、このアプリを再起動して変更内容を反映させてください。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.reviewFromAppraiser.gi" xml:space="preserve">
@@ -5061,7 +5061,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="intent.name.selectLocalProfile4PeripheralsWithExtraConfig" xml:space="preserve">
         <source>Choose Local Profile with Extra Configuration</source>
-        <target>プロファイルを選択＆追加設定</target>
+        <target state="translated">プロファイルを選択＆追加設定</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.name.selectLocalProfileDuo" xml:space="preserve">
