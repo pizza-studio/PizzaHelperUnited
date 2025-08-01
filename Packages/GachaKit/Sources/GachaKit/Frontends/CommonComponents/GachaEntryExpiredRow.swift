@@ -7,7 +7,7 @@ import PZBaseKit
 import SwiftUI
 
 @available(iOS 17.0, macCatalyst 17.0, *)
-public struct GachaEntryExpiredRow: View {
+public struct GMDBExpiredRow: View {
     // MARK: Lifecycle
 
     public init(alwaysVisible: Bool, games: [Pizza.SupportedGame?]? = nil) {
