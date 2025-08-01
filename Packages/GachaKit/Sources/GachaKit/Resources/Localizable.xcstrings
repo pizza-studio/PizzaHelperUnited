@@ -10193,7 +10193,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "平均ガチャ回數（限定星５）"
+            "value" : "平均ガチャ回數(限定星5)"
           }
         },
         "ko" : {
@@ -10270,7 +10270,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "平均ガチャ回數（星５）"
+            "value" : "平均ガチャ回數(星5)"
           }
         },
         "ko" : {
@@ -10424,7 +10424,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "積んだ回数（前回の星5から）"
+            "value" : "積んだ回数(前回の星5から)"
           }
         },
         "ko" : {
