@@ -5707,6 +5707,7 @@
       }
     },
     "oobe.feature.widget.detail:%@" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
