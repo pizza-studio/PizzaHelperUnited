@@ -702,7 +702,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.exportedFromAppOrigin" xml:space="preserve">
         <source>Exported by</source>
-        <target state="translated">書出し元のアプリ</target>
+        <target state="translated">書き出し元のアプリ</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.fileFormat" xml:space="preserve">
@@ -1038,7 +1038,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.menu.exchangeGachaRecords" xml:space="preserve">
         <source>Import / Export Gacha Records from File</source>
-        <target state="translated">ガチャ記録をファイルから書出す・読込む</target>
+        <target state="translated">ガチャ記録をファイルから書き出す・読み込む</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.inheritCloudDataFromPreviousVersions" xml:space="preserve">
