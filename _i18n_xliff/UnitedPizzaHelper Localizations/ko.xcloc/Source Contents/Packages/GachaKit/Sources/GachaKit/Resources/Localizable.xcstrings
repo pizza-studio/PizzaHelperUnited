@@ -78,24 +78,24 @@
         }
       }
     },
-    "gachaKit.exchange.chooseProfiles.export.prompt" : {
+    "gachaKit.exchange.chooseGachaPullers.export.prompt" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose the gacha profiles to export.\nEmpty selection indicates selecting all profiles."
+            "value" : "Choose the gacha pullers to export.\nEmpty selection indicates selecting all gacha pullers."
           }
         }
       }
     },
-    "gachaKit.exchange.chooseProfiles.import.prompt" : {
+    "gachaKit.exchange.chooseGachaPullers.import.prompt" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose the gacha profiles to import.\nEmpty selection indicates selecting all profiles."
+            "value" : "Choose the gacha pullers to import.\nEmpty selection indicates selecting all gacha pullers."
           }
         }
       }
@@ -270,7 +270,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Successfully imported all entries from the specified profile(s) of the given file."
+            "value" : "Successfully imported all entries from the specified gacha puller(s) of the given file."
           }
         }
       }
@@ -538,13 +538,13 @@
         }
       }
     },
-    "gachaKit.gachaProfileMenu.chooseProfile" : {
+    "gachaKit.gachaPullerMenu.chooseGachaPuller" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose Profile"
+            "value" : "Choose Gacha Puller"
           }
         }
       }
@@ -951,7 +951,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Click Here to Remove All Records Under This Gacha Profile"
+            "value" : "Click Here to Remove All Records Under This Gacha Puller"
           }
         }
       }
@@ -962,7 +962,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Confirming removal of all records under this gacha profile. Proceed?"
+            "value" : "Confirming removal of all records under this gacha puller. Proceed?"
           }
         }
       }
@@ -978,6 +978,17 @@
         }
       }
     },
+    "gachaKit.management.gachaPullerToPurge" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gacha Puller (Game & UID) to Delete"
+          }
+        }
+      }
+    },
     "gachaKit.management.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -985,17 +996,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Managing Gacha Records"
-          }
-        }
-      }
-    },
-    "gachaKit.management.uidAndGameToPurge" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Game & UID to Delete"
           }
         }
       }
@@ -1033,13 +1033,13 @@
         }
       }
     },
-    "gachaKit.menu.rebuildGachaUIDList" : {
+    "gachaKit.menu.reloadData" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rebuild Gacha UID List"
+            "value" : "Reload Data"
           }
         }
       }
@@ -1385,23 +1385,24 @@
         }
       }
     },
-    "gachaKit.prompt.pleaseChooseGachaProfile" : {
+    "gachaKit.prompt.pleaseChooseGachaPuller" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please choose a gacha profile. If you can’t see one, then please import some gacha records first."
+            "value" : "Please choose a gacha puller. If you can't see one, then please import some gacha records first."
           }
         }
       }
     },
     "gachaKit.prompt.remoteChangesDetected.withRecommendedAction" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Rebuild Gacha UID List” or restart this app to let those changes visible to you."
+            "value" : "Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Reload Data” or restart this app to let those changes visible to you."
           }
         }
       }

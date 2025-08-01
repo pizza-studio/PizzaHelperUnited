@@ -662,17 +662,18 @@ Chạm bất kỳ đâu để đóng.</target>
         <target state="translated">Quay lại và chọn một tệp khác</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.chooseProfiles.export.prompt" xml:space="preserve">
-        <source>Choose the gacha profiles to export.
-Empty selection indicates selecting all profiles.</source>
-        <target state="translated">Chọn các hồ sơ gacha để xuất.  
-Không chọn đồng nghĩa với việc chọn tất cả các hồ sơ.</target>
+      <trans-unit id="gachaKit.exchange.chooseGachaPullers.export.prompt" xml:space="preserve">
+        <source>Choose the gacha pullers to export.
+Empty selection indicates selecting all gacha pullers.</source>
+        <target state="translated">Chọn người kéo gacha để xuất.
+Không chọn gì sẽ xuất tất cả người kéo gacha.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.chooseProfiles.import.prompt" xml:space="preserve">
-        <source>Choose the gacha profiles to import.
-Empty selection indicates selecting all profiles.</source>
-        <target state="translated">Chọn các hồ sơ gacha để nhập. Không chọn gì sẽ cho thấy rằng bạn đã chọn tất cả các hồ sơ.</target>
+      <trans-unit id="gachaKit.exchange.chooseGachaPullers.import.prompt" xml:space="preserve">
+        <source>Choose the gacha pullers to import.
+Empty selection indicates selecting all gacha pullers.</source>
+        <target state="translated">Chọn người kéo gacha để nhập.
+Không chọn gì sẽ nhập tất cả người kéo gacha.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.export.clickHereToExport" xml:space="preserve">
@@ -754,8 +755,8 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeeded" xml:space="preserve">
-        <source>Successfully imported all entries from the specified profile(s) of the given file.</source>
-        <target state="translated">Đã nhập thành công tất cả các mục từ hồ sơ được chỉ định của tệp đã cho.</target>
+        <source>Successfully imported all entries from the specified gacha puller(s) of the given file.</source>
+        <target state="translated">Đã nhập thành công tất cả các mục từ người kéo gacha được chỉ định của tệp đã cho.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeededReport.sectionHeader" xml:space="preserve">
@@ -838,9 +839,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">⚠︎ Chỉ có Genshin Impact hỗ trợ ngôn ngữ tiếng Ý và tiếng Thổ Nhĩ Kỳ</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.gachaProfileMenu.chooseProfile" xml:space="preserve">
-        <source>Choose Profile</source>
-        <target state="translated">Chọn Hồ sơ</target>
+      <trans-unit id="gachaKit.gachaPullerMenu.chooseGachaPuller" xml:space="preserve">
+        <source>Choose Gacha Puller</source>
+        <target state="translated">Chọn người kéo Gacha</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.chart.count" xml:space="preserve">
@@ -1009,13 +1010,13 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID" xml:space="preserve">
-        <source>Click Here to Remove All Records Under This Gacha Profile</source>
-        <target state="translated">Nhấn vào đây để xóa tất cả hồ sơ dưới hồ sơ Gacha này</target>
+        <source>Click Here to Remove All Records Under This Gacha Puller</source>
+        <target state="translated">Nhấn vào đây để xóa tất cả hồ sơ dưới người kéo gacha này</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.confirmingDeletingAllRecordsOfThisGPID" xml:space="preserve">
-        <source>Confirming removal of all records under this gacha profile. Proceed?</source>
-        <target state="translated">Xác nhận xóa tất cả các ghi chép dưới hồ sơ gacha này. Tiếp tục?</target>
+        <source>Confirming removal of all records under this gacha puller. Proceed?</source>
+        <target state="translated">Xác nhận xóa tất cả các ghi chép dưới người kéo gacha này. Tiếp tục?</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.currentGame" xml:space="preserve">
@@ -1023,14 +1024,14 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Trò Chơi Hiện Tại</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.management.gachaPullerToPurge" xml:space="preserve">
+        <source>Gacha Puller (Game &amp; UID) to Delete</source>
+        <target state="translated">Người kéo Gacha (Trò chơi &amp; UID) để xóa</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.management.navTitle" xml:space="preserve">
         <source>Managing Gacha Records</source>
         <target state="translated">Quản lý hồ sơ Gacha</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="gachaKit.management.uidAndGameToPurge" xml:space="preserve">
-        <source>Game &amp; UID to Delete</source>
-        <target state="translated">Trò chơi &amp; UID để xóa</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.exchangeGachaRecords" xml:space="preserve">
@@ -1048,9 +1049,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Liệt kê các bản ghi Gacha của iCloud từ các Ứng dụng Pizza cũ</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.menu.rebuildGachaUIDList" xml:space="preserve">
-        <source>Rebuild Gacha UID List</source>
-        <target state="translated">Xây dựng lại danh sách UID Gacha</target>
+      <trans-unit id="gachaKit.menu.reloadData" xml:space="preserve">
+        <source>Reload Data</source>
+        <target state="translated">Tải lại dữ liệu</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolFilterLabel.byGame.GI" xml:space="preserve">
@@ -1173,14 +1174,14 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Không tìm thấy bản ghi gacha.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.prompt.pleaseChooseGachaProfile" xml:space="preserve">
-        <source>Please choose a gacha profile. If you can’t see one, then please import some gacha records first.</source>
-        <target state="translated">Vui lòng chọn hồ sơ gacha. Nếu bạn không thấy, hãy nhập một số hồ sơ gacha trước.</target>
+      <trans-unit id="gachaKit.prompt.pleaseChooseGachaPuller" xml:space="preserve">
+        <source>Please choose a gacha puller. If you can't see one, then please import some gacha records first.</source>
+        <target state="translated">Vui lòng chọn người kéo gacha. Nếu bạn không thấy, hãy nhập một số hồ sơ gacha trước.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.prompt.remoteChangesDetected.withRecommendedAction" xml:space="preserve">
-        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Rebuild Gacha UID List” or restart this app to let those changes visible to you.</source>
-        <target state="translated">Đã phát hiện các thay đổi từ xa của iCloud SwiftData và đã được áp dụng ở backend. Vui lòng kiểm tra menu thả xuống ở góc trên bên phải để chạy “Xây dựng lại danh sách UID Gacha” hoặc khởi động lại ứng dụng này để các thay đổi đó hiển thị.</target>
+        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Reload Data” or restart this app to let those changes visible to you.</source>
+        <target state="translated">Đã phát hiện các thay đổi từ xa của iCloud SwiftData và đã được áp dụng ở backend. Vui lòng kiểm tra menu thả xuống ở góc trên bên phải để chạy “Tải lại dữ liệu” hoặc khởi động lại ứng dụng này để các thay đổi đó hiển thị.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.reviewFromAppraiser.gi" xml:space="preserve">

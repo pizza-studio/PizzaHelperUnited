@@ -661,18 +661,18 @@ Tap anywhere to dismiss.</source>
         <target state="translated">返回且選擇其他的檔案</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.chooseProfiles.export.prompt" xml:space="preserve">
-        <source>Choose the gacha profiles to export.
-Empty selection indicates selecting all profiles.</source>
-        <target state="translated">請指定要匯出的抽卡記錄檔案。
-若沒有選中的持有者的話，則會被視為匯出全部持有者的抽卡記錄檔案。</target>
+      <trans-unit id="gachaKit.exchange.chooseGachaPullers.export.prompt" xml:space="preserve">
+        <source>Choose the gacha pullers to export.
+Empty selection indicates selecting all gacha pullers.</source>
+        <target state="translated">請選擇要匯出的抽卡人。
+若未選中任何抽卡人，則會匯出全部抽卡人的抽卡記錄。</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.chooseProfiles.import.prompt" xml:space="preserve">
-        <source>Choose the gacha profiles to import.
-Empty selection indicates selecting all profiles.</source>
-        <target state="translated">請指定要匯入的抽卡記錄檔案。
-若沒有選中的持有者的話，則會被視為匯入全部持有者的抽卡記錄檔案。</target>
+      <trans-unit id="gachaKit.exchange.chooseGachaPullers.import.prompt" xml:space="preserve">
+        <source>Choose the gacha pullers to import.
+Empty selection indicates selecting all gacha pullers.</source>
+        <target state="translated">請選擇要匯入的抽卡人。
+若未選中任何抽卡人，則會匯入全部抽卡人的抽卡記錄。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.export.clickHereToExport" xml:space="preserve">
@@ -757,8 +757,8 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeeded" xml:space="preserve">
-        <source>Successfully imported all entries from the specified profile(s) of the given file.</source>
-        <target state="translated">已成功從指定的檔案匯入了指定的抽卡所有者的全部的抽卡記錄。</target>
+        <source>Successfully imported all entries from the specified gacha puller(s) of the given file.</source>
+        <target state="translated">已成功從指定的檔案匯入了指定的抽卡人的全部抽卡記錄。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeededReport.sectionHeader" xml:space="preserve">
@@ -841,9 +841,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">⚠︎ 義大利文與土耳其文的匯出暫不支援除了原神以外的遊戲。</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.gachaProfileMenu.chooseProfile" xml:space="preserve">
-        <source>Choose Profile</source>
-        <target state="translated">選擇抽卡 UID</target>
+      <trans-unit id="gachaKit.gachaPullerMenu.chooseGachaPuller" xml:space="preserve">
+        <source>Choose Gacha Puller</source>
+        <target state="translated">選擇抽卡人</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.chart.count" xml:space="preserve">
@@ -1012,12 +1012,12 @@ Empty selection indicates selecting all profiles.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID" xml:space="preserve">
-        <source>Click Here to Remove All Records Under This Gacha Profile</source>
+        <source>Click Here to Remove All Records Under This Gacha Puller</source>
         <target state="translated">點此清除該抽卡人的全部抽卡記錄</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.management.confirmingDeletingAllRecordsOfThisGPID" xml:space="preserve">
-        <source>Confirming removal of all records under this gacha profile. Proceed?</source>
+        <source>Confirming removal of all records under this gacha puller. Proceed?</source>
         <target state="translated">請再次確認是否真的要清除該抽卡人的全部抽卡記錄。</target>
         <note/>
       </trans-unit>
@@ -1026,14 +1026,14 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">當前遊戲</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.management.gachaPullerToPurge" xml:space="preserve">
+        <source>Gacha Puller (Game &amp; UID) to Delete</source>
+        <target state="translated">要刪除的抽卡人（遊戲與 UID）</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.management.navTitle" xml:space="preserve">
         <source>Managing Gacha Records</source>
         <target state="translated">管理抽卡記錄</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="gachaKit.management.uidAndGameToPurge" xml:space="preserve">
-        <source>Game &amp; UID to Delete</source>
-        <target state="translated">要刪除的記錄所屬的遊戲與 UID</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.exchangeGachaRecords" xml:space="preserve">
@@ -1051,9 +1051,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">檢視舊版披薩應用的雲端抽卡記錄</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.menu.rebuildGachaUIDList" xml:space="preserve">
-        <source>Rebuild Gacha UID List</source>
-        <target state="translated">重建抽卡記錄 UID 清單</target>
+      <trans-unit id="gachaKit.menu.reloadData" xml:space="preserve">
+        <source>Reload Data</source>
+        <target state="translated">重新載入資料</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolFilterLabel.byGame.GI" xml:space="preserve">
@@ -1176,14 +1176,14 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">尚無抽卡記錄在庫。</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.prompt.pleaseChooseGachaProfile" xml:space="preserve">
-        <source>Please choose a gacha profile. If you can’t see one, then please import some gacha records first.</source>
-        <target state="translated">請選擇一個抽卡 UID。如果看不到相關選項的話，請先匯入抽卡記錄。</target>
+      <trans-unit id="gachaKit.prompt.pleaseChooseGachaPuller" xml:space="preserve">
+        <source>Please choose a gacha puller. If you can't see one, then please import some gacha records first.</source>
+        <target state="translated">請選擇一個抽卡人。如果看不到相關選項的話，請先匯入抽卡記錄。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.prompt.remoteChangesDetected.withRecommendedAction" xml:space="preserve">
-        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Rebuild Gacha UID List” or restart this app to let those changes visible to you.</source>
-        <target state="translated">偵測到遠端 iCloud SwiftData 變更，且已在後台套用。請在右上角下拉選單中執行「重建抽卡記錄 UID 清單」，或重啟敝應用以使這些變更可見。</target>
+        <source>Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Reload Data” or restart this app to let those changes visible to you.</source>
+        <target state="translated">偵測到遠端 iCloud SwiftData 變更，且已在後台套用。請在右上角下拉選單中執行「重新載入資料」，或重啟敝應用以使這些變更可見。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.reviewFromAppraiser.gi" xml:space="preserve">
