@@ -1422,7 +1422,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "全て完了したの時"
+            "value" : "全部完了したの時"
           }
         },
         "ko" : {
@@ -1498,7 +1498,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%@」の派遣依頼はすべて成し遂げました。"
+            "value" : "「%@」の派遣依頼は全部完了しました。"
           }
         },
         "ko" : {
