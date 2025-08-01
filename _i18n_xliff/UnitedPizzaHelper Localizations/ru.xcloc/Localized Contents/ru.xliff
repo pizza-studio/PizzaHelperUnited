@@ -1197,9 +1197,9 @@ Empty selection indicates selecting all gacha pullers.</source>
         <target state="translated">Оценка Интеркнот</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.avaragePulls4LimitedPentaStars" xml:space="preserve">
-        <source>Avrg. Pulls (limited ★5)</source>
-        <target state="translated">Среднее кол-во призывов (ограниченные ★5)</target>
+      <trans-unit id="gachaKit.stats.avaragePulls4NonStandardPentaStars" xml:space="preserve">
+        <source>Avrg. Pulls (Non-Std. ★5)</source>
+        <target state="translated">Средн. Вытягивания (не-станд. ★5)</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.avaragePulls4PentaStars" xml:space="preserve">

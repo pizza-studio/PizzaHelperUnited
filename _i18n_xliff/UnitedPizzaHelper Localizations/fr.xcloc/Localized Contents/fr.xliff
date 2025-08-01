@@ -1202,9 +1202,9 @@ Aucune sélection indique que tous les tireurs gacha seront importés.</target>
         <target state="translated">Évaluation Interknot</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.avaragePulls4LimitedPentaStars" xml:space="preserve">
-        <source>Avrg. Pulls (limited ★5)</source>
-        <target state="translated">Moyenne des voeux (★5 limités)</target>
+      <trans-unit id="gachaKit.stats.avaragePulls4NonStandardPentaStars" xml:space="preserve">
+        <source>Avrg. Pulls (Non-Std. ★5)</source>
+        <target state="translated">Moyenne des voeux (★5 non-std)</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.avaragePulls4PentaStars" xml:space="preserve">

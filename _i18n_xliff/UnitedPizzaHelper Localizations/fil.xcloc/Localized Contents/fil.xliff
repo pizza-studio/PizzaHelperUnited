@@ -1199,9 +1199,9 @@ Walang pinili ay nangangahulugang i-import ang lahat ng gacha puller.</target>
         <target state="translated">Pagtatasa ng Interknot</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.avaragePulls4LimitedPentaStars" xml:space="preserve">
-        <source>Avrg. Pulls (limited ★5)</source>
-        <target state="translated">Avg. Hilahila (limitadong ★5)</target>
+      <trans-unit id="gachaKit.stats.avaragePulls4NonStandardPentaStars" xml:space="preserve">
+        <source>Avrg. Pulls (Non-Std. ★5)</source>
+        <target state="translated">Avg. Pag-hila (hindi-karaniwang ★5)</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.avaragePulls4PentaStars" xml:space="preserve">

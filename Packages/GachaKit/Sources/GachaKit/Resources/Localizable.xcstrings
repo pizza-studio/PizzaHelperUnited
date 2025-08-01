@@ -10152,79 +10152,79 @@
         }
       }
     },
-    "gachaKit.stats.avaragePulls4LimitedPentaStars" : {
+    "gachaKit.stats.avaragePulls4NonStandardPentaStars" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Durchschn. Züge (begrenzte ★5)"
+            "value" : "Durchschn. Ziehungen (nicht-std. ★5)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avrg. Pulls (limited ★5)"
+            "value" : "Avrg. Pulls (Non-Std. ★5)"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Extracciones prom. (limitadas ★5)"
+            "value" : "Prom. intentos (no est. ★5)"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avg. Hilahila (limitadong ★5)"
+            "value" : "Avg. Pag-hila (hindi-karaniwang ★5)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Moyenne des voeux (★5 limités)"
+            "value" : "Moyenne des voeux (★5 non-std)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Media Estrazioni (limitato ★5)"
+            "value" : "Media Prelievi (non-stand. ★5)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "平均ガチャ回數(限定星5)"
+            "value" : "平均ガチャ回數(非通常星5)"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "평균 뽑기 (한정 ★5)"
+            "value" : "평균 뽑기 (비표준 ★5)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Среднее кол-во призывов (ограниченные ★5)"
+            "value" : "Средн. Вытягивания (не-станд. ★5)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trung bình lượt rút thẻ (giới hạn ★5)"
+            "value" : "Số lần triệu hồi TB (không chuẩn ★5)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "限定五星平均抽数"
+            "value" : "非常驻五星平均抽数"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "限定五星平均抽數"
+            "value" : "非常駐五星平均抽數"
           }
         }
       }
