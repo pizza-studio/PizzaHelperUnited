@@ -568,8 +568,8 @@ Tocca ovunque per chiudere.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.DatabaseExpired" xml:space="preserve">
-        <source>Local GachaMetaDB cache expired.</source>
-        <target state="translated">Il cache locale di GachaMetaDB è scaduto.</target>
+        <source>Local GachaMetaDB cache expired. A possible reason is the failure of fetching the latest remote database. If you are situated in Mainland China without solid access to GitHub, please contact the developer regarding the situation of the outdated mirrors.</source>
+        <target state="translated">La cache locale di GachaMetaDB è scaduta. Una possibile ragione è il fallimento nel recuperare l'ultimo database remoto. Se ti trovi nella Cina continentale senza accesso stabile a GitHub, contatta lo sviluppatore riguardo la situazione dei mirror obsoleti.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.EmptyFetchResult" xml:space="preserve">
@@ -1217,9 +1217,9 @@ Empty selection indicates selecting all profiles.</source>
         <target state="translated">Tiri accumulati (dall'ultima ★5)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.standardItemHitRate" xml:space="preserve">
-        <source>Standard Hit Rate</source>
-        <target state="translated">Tasso di Successo Standard</target>
+      <trans-unit id="gachaKit.stats.standardItemEvasionRate" xml:space="preserve">
+        <source>Standard Evasion Rate</source>
+        <target state="translated">Tasso di Evasione Standard</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.totalPulls" xml:space="preserve">
@@ -1704,6 +1704,11 @@ Illustrazione Icona App, The Pizza Helper (v5.0)</target>
         <target state="translated">Alcuni Precedenti Collaboratori alla Localizzazione</target>
         <note/>
       </trans-unit>
+      <trans-unit id="aboutKit.contributors.category.i18n.previous.description" xml:space="preserve">
+        <source>Not all of these contributors are taking part into the localization work since v5.0+. We still credit them here for their contributions against the previous major releases.</source>
+        <target state="translated">Non tutti questi collaboratori partecipano al lavoro di localizzazione dalla versione 5.0+. Li ringraziamo comunque qui per i loro contributi alle precedenti versioni principali.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="aboutKit.contributors.category.mainCrew" xml:space="preserve">
         <source>Main Developer Team</source>
         <target state="translated">Team di Sviluppo Principale</target>
@@ -1841,6 +1846,46 @@ Illustrazione Icona App, The Pizza Helper (v5.0)</target>
       <trans-unit id="aboutKit.ourApps.pzHelper4HSR.description" xml:space="preserve">
         <source>Deprecated and integrated into The Pizza Helper.</source>
         <target state="translated">Obsoleto e integrato in The Pizza Helper.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.backupYourData.detail" xml:space="preserve">
+        <source>FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup.</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.backupYourData.title" xml:space="preserve">
+        <source>Backup Proactively</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.contactDevs.detail" xml:space="preserve">
+        <source>You may refer to “Settings -&gt; About” to know how to contact the devs for possible help.</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.contactDevs.title" xml:space="preserve">
+        <source>Contact Us</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.menuButton.detail" xml:space="preserve">
+        <source>It situates at top-trailing corner of the UI when it’s available. Tap it to call the feature menu.</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.menuButton.title" xml:space="preserve">
+        <source>Menu Icon</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.notification.detail" xml:space="preserve">
+        <source>Get noticed when your in-game player stamina is full. This is configurable through in-app settings.</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.notification.title" xml:space="preserve">
+        <source>Notifications</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.widget.detail:%@" xml:space="preserve">
+        <source>This app supports Dynamic Island, Live Activities, and multiple kinds of widgets. Please tap [here](%@) to read Apple official articles to learn how to use widgets.</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.widget.title" xml:space="preserve">
+        <source>Widgets</source>
         <note/>
       </trans-unit>
     </body>

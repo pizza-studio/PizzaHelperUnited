@@ -500,7 +500,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Local GachaMetaDB cache expired."
+            "value" : "Local GachaMetaDB cache expired. A possible reason is the failure of fetching the latest remote database. If you are situated in Mainland China without solid access to GitHub, please contact the developer regarding the situation of the outdated mirrors."
           }
         }
       }
@@ -1483,13 +1483,13 @@
         }
       }
     },
-    "gachaKit.stats.standardItemHitRate" : {
+    "gachaKit.stats.standardItemEvasionRate" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Standard Hit Rate"
+            "value" : "Standard Evasion Rate"
           }
         }
       }

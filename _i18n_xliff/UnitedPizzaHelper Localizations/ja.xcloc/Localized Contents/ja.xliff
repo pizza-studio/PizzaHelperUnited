@@ -567,8 +567,8 @@ Tap anywhere to dismiss.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.DatabaseExpired" xml:space="preserve">
-        <source>Local GachaMetaDB cache expired.</source>
-        <target state="translated">ローカルGachaMetaDBキャッシュは古すぎて失効だと判断しました。</target>
+        <source>Local GachaMetaDB cache expired. A possible reason is the failure of fetching the latest remote database. If you are situated in Mainland China without solid access to GitHub, please contact the developer regarding the situation of the outdated mirrors.</source>
+        <target state="translated">ローカルGachaMetaDBキャッシュは失効しました。主な原因は最新のリモートデータベースの取得失敗です。中国本土でGitHubへの安定したアクセスがない場合は、開発者に連絡してミラーの古い状況について確認してください。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.EmptyFetchResult" xml:space="preserve">
@@ -1203,12 +1203,12 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.stats.avaragePulls4LimitedPentaStars" xml:space="preserve">
         <source>Avrg. Pulls (limited ★5)</source>
-        <target state="translated">平均ガチャ回數（限定星５）</target>
+        <target state="translated">平均ガチャ回數(限定星5)</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.avaragePulls4PentaStars" xml:space="preserve">
         <source>Avrg. Pulls (all-type ★5)</source>
-        <target state="translated">平均ガチャ回數（星５）</target>
+        <target state="translated">平均ガチャ回數(星5)</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.pull:%lld" xml:space="preserve">
@@ -1218,12 +1218,12 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.stats.sincePreviousPentaStar" xml:space="preserve">
         <source>Pulls Stacked (since the prev. ★5)</source>
-        <target state="translated">積んだ回数（前回の星5から）</target>
+        <target state="translated">積んだ回数(前回の星5から)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.standardItemHitRate" xml:space="preserve">
-        <source>Standard Hit Rate</source>
-        <target state="translated">通常命中率</target>
+      <trans-unit id="gachaKit.stats.standardItemEvasionRate" xml:space="preserve">
+        <source>Standard Evasion Rate</source>
+        <target state="translated">通常回避率</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.totalPulls" xml:space="preserve">
@@ -1714,6 +1714,11 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
         <target state="translated">これ以前の一部のアプリ翻訳提供者</target>
         <note/>
       </trans-unit>
+      <trans-unit id="aboutKit.contributors.category.i18n.previous.description" xml:space="preserve">
+        <source>Not all of these contributors are taking part into the localization work since v5.0+. We still credit them here for their contributions against the previous major releases.</source>
+        <target state="translated">v5.0以降の翻訳（ローカリゼーション）には全員が参加したわけではありませんが、それ以前の主要リリースへの貢献に感謝し、引き続きここにその名を記載させていただきます。</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="aboutKit.contributors.category.mainCrew" xml:space="preserve">
         <source>Main Developer Team</source>
         <target state="translated">開発チーム</target>
@@ -1850,6 +1855,56 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
       <trans-unit id="aboutKit.ourApps.pzHelper4HSR.description" xml:space="preserve">
         <source>Deprecated and integrated into The Pizza Helper.</source>
         <target state="translated">淘汰済み。全ての機能はすでに「ピザ助手（無印）」に搭載されておる。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.backupYourData.detail" xml:space="preserve">
+        <source>FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup.</source>
+        <target state="translated">FOSSアプリは、ずっと安定して使えるとは限らないので、ガチャ履歴などはUIGF形式でこまめにバックアップしてデータを守って下さいね！</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.backupYourData.title" xml:space="preserve">
+        <source>Backup Proactively</source>
+        <target state="translated">こまめにバックアップ</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.contactDevs.detail" xml:space="preserve">
+        <source>You may refer to “Settings -&gt; About” to know how to contact the devs for possible help.</source>
+        <target state="translated">開発チームへの連絡先は、アプリ内の「アプリ設定→アプリについて」に記載されていますので、そちらをご覧下さい！</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.contactDevs.title" xml:space="preserve">
+        <source>Contact Us</source>
+        <target state="translated">開発チームへの連絡方法</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.menuButton.detail" xml:space="preserve">
+        <source>It situates at top-trailing corner of the UI when it’s available. Tap it to call the feature menu.</source>
+        <target state="translated">このアイコンが(UIの右上隅に)表示された時に、それをタップすれは、さまざまな機能が使えるメニューを呼び出すことが出来ます！</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.menuButton.title" xml:space="preserve">
+        <source>Menu Icon</source>
+        <target state="translated">メニューアイコン</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.notification.detail" xml:space="preserve">
+        <source>Get noticed when your in-game player stamina is full. This is configurable through in-app settings.</source>
+        <target state="translated">ゲーム内のスタミナが全回復した時に通知を受け取ることができます！この設定はアプリ内の設定で変更可能です！</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.notification.title" xml:space="preserve">
+        <source>Notifications</source>
+        <target state="translated">通知</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.widget.detail:%@" xml:space="preserve">
+        <source>This app supports Dynamic Island, Live Activities, and multiple kinds of widgets. Please tap [here](%@) to read Apple official articles to learn how to use widgets.</source>
+        <target state="translated">このアプリではDynamic Island、ライブアクティビティ、様々なウィジェットに対応しています。ウィジェットの使い方を学びたい場合は「[こ↑こ↓](%@)」←をタップしてAppleの公式記事をご覧下さい！</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.widget.title" xml:space="preserve">
+        <source>Widgets</source>
+        <target state="translated">ウィジェット</target>
         <note/>
       </trans-unit>
     </body>
