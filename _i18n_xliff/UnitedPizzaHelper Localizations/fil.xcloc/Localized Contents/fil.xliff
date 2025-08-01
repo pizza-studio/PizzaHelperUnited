@@ -1219,9 +1219,9 @@ Walang pinili ay nangangahulugang i-import ang lahat ng gacha puller.</target>
         <target state="translated">Mga Naiipon na Hila (mula noong huling ★5)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.standardItemEvasionRate" xml:space="preserve">
-        <source>Standard Evasion Rate</source>
-        <target state="translated">Standard Evasion Rate</target>
+      <trans-unit id="gachaKit.stats.standardItemHitRate" xml:space="preserve">
+        <source>Standard Hit Rate</source>
+        <target state="translated">Standard Hit Rate</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.totalPulls" xml:space="preserve">

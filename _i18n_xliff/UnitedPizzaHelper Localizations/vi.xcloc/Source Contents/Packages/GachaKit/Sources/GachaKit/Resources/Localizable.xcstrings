@@ -1484,13 +1484,13 @@
         }
       }
     },
-    "gachaKit.stats.standardItemEvasionRate" : {
+    "gachaKit.stats.standardItemHitRate" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Standard Evasion Rate"
+            "value" : "Standard Hit Rate"
           }
         }
       }

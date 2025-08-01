@@ -1216,9 +1216,9 @@ Empty selection indicates selecting all gacha pullers.</source>
         <target state="translated">쌓인 횟수 (이전 ★5 이후)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.standardItemEvasionRate" xml:space="preserve">
-        <source>Standard Evasion Rate</source>
-        <target state="translated">표준 회피율</target>
+      <trans-unit id="gachaKit.stats.standardItemHitRate" xml:space="preserve">
+        <source>Standard Hit Rate</source>
+        <target state="translated">표준 적중률</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.totalPulls" xml:space="preserve">

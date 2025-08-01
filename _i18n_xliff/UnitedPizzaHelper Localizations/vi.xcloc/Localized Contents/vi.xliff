@@ -1219,9 +1219,9 @@ Không chọn gì sẽ nhập tất cả người kéo gacha.</target>
         <target state="translated">Đã sửa xếp chồng (kể từ ★5 trước)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.standardItemEvasionRate" xml:space="preserve">
-        <source>Standard Evasion Rate</source>
-        <target state="translated">Tỷ lệ Né Chuẩn</target>
+      <trans-unit id="gachaKit.stats.standardItemHitRate" xml:space="preserve">
+        <source>Standard Hit Rate</source>
+        <target state="translated">Tỷ lệ Trúng Chuẩn</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.totalPulls" xml:space="preserve">

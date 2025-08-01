@@ -1222,9 +1222,9 @@ Aucune sélection indique que tous les tireurs gacha seront importés.</target>
         <target state="translated">Pity (voeux depuis le dernier ★5)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.standardItemEvasionRate" xml:space="preserve">
-        <source>Standard Evasion Rate</source>
-        <target state="translated">Taux d'Évasion Standard</target>
+      <trans-unit id="gachaKit.stats.standardItemHitRate" xml:space="preserve">
+        <source>Standard Hit Rate</source>
+        <target state="translated">Taux de Réussite Standard</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.totalPulls" xml:space="preserve">
