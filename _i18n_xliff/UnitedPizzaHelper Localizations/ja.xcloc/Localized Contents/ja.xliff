@@ -87,7 +87,7 @@
       </trans-unit>
       <trans-unit id="appEnum_WidgetSupportedGame_HSR" xml:space="preserve">
         <source>Star Rail</source>
-        <target>スターレイル</target>
+        <target>星鉄</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum_WidgetSupportedGame_ZZZ" xml:space="preserve">
@@ -323,7 +323,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="enka.CaseQuery.title.HSR" xml:space="preserve">
         <source>Query ShowCase (Star Rail)</source>
-        <target state="translated">ショーケースを調べる (スターレイル)</target>
+        <target state="translated">ショーケースを調べる (星鉄)</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.genshinStylePhotosForHSR.featureOption.disclaimer" xml:space="preserve">
@@ -333,12 +333,12 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.credit.genshin" xml:space="preserve">
         <source>The background totem assets used for ID Photos of Genshin Impact characters in this app are for representing both their life paths and their elemental powers by default. The element is represented by the color used for rendering the totem. If there's no matched lifepath available, then the totem pattern will be the elemental totem instead. The elemental totem assets used in such case are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. Nevertheless, these totems' visibility can be toggled in UI Settings.</source>
-        <target state="translated">本アプリで『原神』キャラクターのID写真に使われている背景紋様は、デフォルトでキャラクターの運命の途と元素能力属性の両方を表現します。元素属性は紋様の色で示されます。一致する運命の途がない場合、紋様は元素トーテムになります。この場合に使われる元素トーテム素材は『崩壊：スターレイル』（岩・草・水属性を除く）からのもので、各キャラクターのテイワット元素を表します。なお、これらの紋様の表示・非表示はUI設定で切り替え可能です。</target>
+        <target state="translated">本アプリで『原神』キャラクターのID写真に使われている背景紋様は、デフォルトでキャラクターの運命の途と元素能力属性の両方を表現します。元素属性は紋様の色で示されます。一致する運命の途がない場合、紋様は元素トーテムになります。この場合に使われる元素トーテム素材は『崩壊：星鉄』（岩・草・水属性を除く）からのもので、各キャラクターのテイワット元素を表します。なお、これらの紋様の表示・非表示はUI設定で切り替え可能です。</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.credit.starRail" xml:space="preserve">
         <source>The background totem assets used for ID Photos of Star Rail characters in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem.</source>
-        <target state="translated">当アプリ内の「崩壊：スターレイル」キャラクターの画像の背景紋様は、キャラクターの「運命の途」と「元素能力属性」両方を示します。「元素能力属性」は紋様の色彩で表現します。</target>
+        <target state="translated">当アプリ内の「崩壊：星鉄」キャラクターの画像の背景紋様は、キャラクターの「運命の途」と「元素能力属性」両方を示します。「元素能力属性」は紋様の色彩で表現します。</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.navTitle" xml:space="preserve">
@@ -408,7 +408,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="settings.display.artifactRating.considerHyperBloomElectroRoles.explanation" xml:space="preserve">
         <source>Genshin Only. E.g.: Raiden Shogun with over-900 elemental master (and related 4-piece artifact sets) can team up with Baizhu, Furina, and Nahida to be the strongest full-auto guided remote hyperbloom team. This disobeys the initial character design of Raiden Shogun but is an acceptable and effective choice with significantly-reduced workload of building-up the entire team with significantly larger firing range than Shinobu-Yukuaki-based close-combat hyperbloom teams. Similar situations may apply to other electro characters in Genshin Impact.</source>
-        <target state="translated">原神限定の聖遺物評判ルールです。900点以上の元素熟知を持って元素熟知系聖遺物セットを装備した雷電将軍は白朮＆フリーナ＆ナヒーダと組むと、最強の全自動超開花チームになり、そしてキャラクターの養成にかかる時間もめっちゃ少なくなり、さらに（忍＆行秋系超開花チームと比べると）射程距離はめっちゃ遠いです。雷電将軍の数値モデルと反する養成方法ですが、かなり強い超開花チームです。このようなことは他の雷系キャラにもある可能性があるので、このルールのオプションを用意しました。スターレイルのキャラクターにはこのルールが通用しません。</target>
+        <target state="translated">原神限定の聖遺物評判ルールです。900点以上の元素熟知を持って元素熟知系聖遺物セットを装備した雷電将軍は白朮＆フリーナ＆ナヒーダと組むと、最強の全自動超開花チームになり、そしてキャラクターの養成にかかる時間もめっちゃ少なくなり、さらに（忍＆行秋系超開花チームと比べると）射程距離はめっちゃ遠いです。雷電将軍の数値モデルと反する養成方法ですが、かなり強い超開花チームです。このようなことは他の雷系キャラにもある可能性があるので、このルールのオプションを用意しました。星鉄のキャラクターにはこのルールが通用しません。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.artifactRating.considerSwirls" xml:space="preserve">
@@ -418,7 +418,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="settings.display.artifactRating.considerSwirls.explanation" xml:space="preserve">
         <source>Genshin Only. E.g.: Kaedehara Kazuha with 4-piece Thundering Fury artifact suite is now considered as an acceptable choice to trigger dendro catalysis. Similar situations may apply to other anemo characters in Genshin Impact.</source>
-        <target state="translated">原神限定の聖遺物評判ルールです。「雷のような怒り」聖遺物の４セットを装備した楓原万葉は超激化反応にお役立てると今はそう認識されております。このようなことは他の風系キャラにもある可能性があるので、このルールのオプションを用意しました。スターレイルのキャラクターにはこのルールが通用しません。</target>
+        <target state="translated">原神限定の聖遺物評判ルールです。「雷のような怒り」聖遺物の４セットを装備した楓原万葉は超激化反応にお役立てると今はそう認識されております。このようなことは他の風系キャラにもある可能性があるので、このルールのオプションを用意しました。星鉄のキャラクターにはこのルールが通用しません。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.artifactRating.enabled" xml:space="preserve">
@@ -508,7 +508,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="settings.display.showCase.useGenshinStyleCharacterPhotos" xml:space="preserve">
         <source>Use Genshin-style character photos for Star Rail characters</source>
-        <target state="translated">スターレイルのキャラに対して原神スタイルのキャラ写真を起用</target>
+        <target state="translated">星鉄のキャラに対して原神スタイルのキャラ写真を起用</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.showCase.useNameCardBGWithGICharacters" xml:space="preserve">
@@ -1798,7 +1798,7 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
       </trans-unit>
       <trans-unit id="aboutKit.ourApps.miHoYoCopyrightNotice" xml:space="preserve">
         <source>Copyright (excl. the Swift program part of this app): (c) All rights reserved by miHoYo and its subsidiaries. Other properties and any right, title, and interest thereof and therein (intellectual property rights included) not derived from miHoYo's game titles ("Star Rail", "Genshin Impact", "Zenless Zone Zero", etc.) belong to their respective owners.</source>
-        <target state="translated">著作権（このアプリの Swift プログラム部分を除く）：(c) 株式会社米哈遊（上海本社）およびその子会社がすべての権利を保有します。米哈遊社のゲームタイトル（「星穹鉄道（スターレイル）」、「原神」、「絶区零（ゼンレスゾーンゼロ）」など）に由来しないその他の財産およびそれに関連するすべての権利、所有権、利益（知的財産権を含む）は、それぞれの所有者に帰属します。
+        <target state="translated">著作権（このアプリの Swift プログラム部分を除く）：(c) 株式会社米哈遊（上海本社）およびその子会社がすべての権利を保有します。米哈遊社のゲームタイトル（「星穹鉄道（星鉄）」、「原神」、「絶区零（ゼンレスゾーンゼロ）」など）に由来しないその他の財産およびそれに関連するすべての権利、所有権、利益（知的財産権を含む）は、それぞれの所有者に帰属します。
 </target>
         <note/>
       </trans-unit>
@@ -2728,7 +2728,7 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
       </trans-unit>
       <trans-unit id="settings.notification.dailyTask.footer" xml:space="preserve">
         <source>This includes Daily Task (Genshin Impact), Daily Training (Star Rail), and Vitality (Zenless Zone Zero).</source>
-        <target state="translated">原神のデイリー依頼、スターレイルのデイリー訓練、ゼンレスゾンゼロの活躍度を全部含む通知です。</target>
+        <target state="translated">原神のデイリー依頼、星鉄のデイリー訓練、ゼンレスゾンゼロの活躍度を全部含む通知です。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.dailyTask.header" xml:space="preserve">
@@ -2753,7 +2753,7 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
       </trans-unit>
       <trans-unit id="settings.notification.expedition.footer" xml:space="preserve">
         <source>* Genshin Impact and Star Rail only.</source>
-        <target state="translated">※ スターレイルと原神のみ。</target>
+        <target state="translated">※ 星鉄と原神のみ。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.expedition.header" xml:space="preserve">
@@ -2833,7 +2833,7 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
       </trans-unit>
       <trans-unit id="settings.notification.hsrEchoOfWar.footer" xml:space="preserve">
         <source>* Star Rail only.</source>
-        <target state="translated">※ スターレイルのみ。</target>
+        <target state="translated">※ 星鉄のみ。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.hsrEchoOfWar.header" xml:space="preserve">
@@ -2858,7 +2858,7 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
       </trans-unit>
       <trans-unit id="settings.notification.hsrSimulatedUniverse.footer" xml:space="preserve">
         <source>* Star Rail only.</source>
-        <target state="translated">※ スターレイルのみ。</target>
+        <target state="translated">※ 星鉄のみ。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.hsrSimulatedUniverse.header" xml:space="preserve">
@@ -2938,7 +2938,7 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
       </trans-unit>
       <trans-unit id="settings.notification.stamina.footer" xml:space="preserve">
         <source>This includes Original Resin (Genshin Impact), Trailblaze Power (Star Rail), and Vitality (Zenless Zone Zero). Despite the threshold settings, You will also be notified if the player stamina is fully charged.</source>
-        <target state="translated">原神の天然樹脂、スターレイルの開拓力、ゼンレスゾンゼロのエネルギーを全部含む通知です。ご設定済みの閾値に関する通知の他には、スタミナが全回復の時にも通知が来ます。</target>
+        <target state="translated">原神の天然樹脂、星鉄の開拓力、ゼンレスゾンゼロのエネルギーを全部含む通知です。ご設定済みの閾値に関する通知の他には、スタミナが全回復の時にも通知が来ます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.stamina.header" xml:space="preserve">
@@ -3791,12 +3791,12 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="notification.echoOfWar.body:%@%@" xml:space="preserve">
         <source>%1$@ has %2$@ rewards(s) left for Echo of War.</source>
-        <target state="translated">「%1$@」はスターレイルでの今週の歴戦余韻の奨励は %2$@ 回残っております。</target>
+        <target state="translated">「%1$@」は星鉄での今週の歴戦余韻の奨励は %2$@ 回残っております。</target>
         <note/>
       </trans-unit>
       <trans-unit id="notification.echoOfWar.title:%@" xml:space="preserve">
         <source>Reminder: HSR Echo of War Rewards Left for %@</source>
-        <target state="translated">「%@」のスターレイル歴戦余韻の残った奨励</target>
+        <target state="translated">「%@」の星鉄歴戦余韻の残った奨励</target>
         <note/>
       </trans-unit>
       <trans-unit id="notification.expedition.each.body:%@%@" xml:space="preserve">
@@ -4088,7 +4088,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="game.starRail.i18nName" xml:space="preserve">
         <source>Star Rail</source>
-        <target state="translated">崩壊：スターレイル</target>
+        <target state="translated">崩壊：星鉄</target>
         <note/>
       </trans-unit>
       <trans-unit id="game.starRail.i18nNameTrimmed" xml:space="preserve">
@@ -4103,7 +4103,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="game.starRail.titleMarkedName" xml:space="preserve">
         <source>Star Rail</source>
-        <target state="translated">『崩壊：スターレイル』</target>
+        <target state="translated">『崩壊：星鉄』</target>
         <note/>
       </trans-unit>
       <trans-unit id="game.zenlessZone.i18nName" xml:space="preserve">
@@ -4931,7 +4931,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="appEnum.WidgetSupportedGame.HSR" xml:space="preserve">
         <source>Star Rail</source>
-        <target state="translated">スターレイル</target>
+        <target state="translated">星鉄</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum.WidgetSupportedGame.ZZZ" xml:space="preserve">
