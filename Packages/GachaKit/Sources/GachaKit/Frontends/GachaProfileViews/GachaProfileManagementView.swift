@@ -21,7 +21,7 @@ public struct GachaProfileManagementView: View {
                                 .fixedSize()
                                 .environment(theVM)
                         } label: {
-                            Text("gachaKit.management.uidAndGameToPurge", bundle: .module)
+                            Text("gachaKit.management.gachaPullerToPurge", bundle: .module)
                         }
                         if theVM.taskState == .busy {
                             InfiniteProgressBar().id(UUID())

@@ -540,156 +540,156 @@
         }
       }
     },
-    "gachaKit.exchange.chooseProfiles.export.prompt" : {
+    "gachaKit.exchange.chooseGachaPullers.export.prompt" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wählen Sie die Gacha-Profile zum Exportieren. Eine leere Auswahl bedeutet, dass alle Profile ausgewählt werden."
+            "value" : "Wählen Sie die Gacha-Zieher zum Exportieren aus.\nKeine Auswahl bedeutet, dass alle Gacha-Zieher exportiert werden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose the gacha profiles to export.\nEmpty selection indicates selecting all profiles."
+            "value" : "Choose the gacha pullers to export.\nEmpty selection indicates selecting all gacha pullers."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elige los perfiles de gacha para exportar\nSeleccionar vacío indica seleccionar todos los perfiles"
+            "value" : "Elige los tiradores de gacha para exportar.\nNo seleccionar ninguno indica que se exportan todos los tiradores de gacha."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pumili ng mga gacha profile na ie-export.\nWalang piniling indikasyon ay nangangahulugang pinipili ang lahat ng profile."
+            "value" : "Piliin ang mga gacha puller na ie-export.\nWalang pinili ay nangangahulugang ie-export ang lahat ng gacha puller."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choisissez les profils gacha à exporter \nUne sélection vide indique que tous les profils seront sélectionnés"
+            "value" : "Choisissez les tireurs gacha à exporter.\nAucune sélection indique que tous les tireurs gacha seront exportés."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scegli i profili gacha da esportare Selezione vuota indica la selezione di tutti i profili"
+            "value" : "Scegli i tiratori gacha da esportare.\nNessuna selezione indica che verranno esportati tutti i tiratori gacha."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "書き出すガチャプロファイルを選択してください。\n未選択の場合、すべてのプロファイルが書き出されます。"
+            "value" : "書き出すガチャ主を選択してください。\n未選択の場合、すべてのガチャ主が書き出されます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "내보낼 가챠 프로필을 선택하세요 \n선택을 비우면 모든 프로필을 선택하게 됩니다 "
+            "value" : "내보낼 가챠 기록 소유자를 선택하세요.\n선택하지 않으면 모든 가챠 기록 소유자가 내보내집니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выберите профили гача для экспорта Пустой выбор означает выбор всех профилей"
+            "value" : "Выберите владельцев гача для экспорта.\nПустой выбор означает экспорт всех владельцев гача."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chọn các hồ sơ gacha để xuất.  \nKhông chọn đồng nghĩa với việc chọn tất cả các hồ sơ."
+            "value" : "Chọn người kéo gacha để xuất.\nKhông chọn gì sẽ xuất tất cả người kéo gacha."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请指定要导出的抽卡记录文件。\n在没有任何持有者被选中时，会导出全部持有者的抽卡记录文件。"
+            "value" : "请选择要导出的抽卡人。\n未选中任何抽卡人时，将导出全部抽卡人的抽卡记录。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請指定要匯出的抽卡記錄檔案。\n若沒有選中的持有者的話，則會被視為匯出全部持有者的抽卡記錄檔案。"
+            "value" : "請選擇要匯出的抽卡人。\n若未選中任何抽卡人，則會匯出全部抽卡人的抽卡記錄。"
           }
         }
       }
     },
-    "gachaKit.exchange.chooseProfiles.import.prompt" : {
+    "gachaKit.exchange.chooseGachaPullers.import.prompt" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wählen Sie die Gacha-Profile aus, die importiert werden sollen. Eine leere Auswahl bedeutet, dass alle Profile ausgewählt werden."
+            "value" : "Wählen Sie die Gacha-Zieher zum Importieren aus.\nKeine Auswahl bedeutet, dass alle Gacha-Zieher importiert werden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose the gacha profiles to import.\nEmpty selection indicates selecting all profiles."
+            "value" : "Choose the gacha pullers to import.\nEmpty selection indicates selecting all gacha pullers."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elija los perfiles de gacha para importar. La selección vacía indica seleccionar todos los perfiles."
+            "value" : "Elige los tiradores de gacha para importar.\nNo seleccionar ninguno indica que se importan todos los tiradores de gacha."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Piliin ang gacha profiles na i-import. Ang walang laman na pagpili ay nangangahulugang pagpili ng lahat ng profiles."
+            "value" : "Piliin ang mga gacha puller na i-import.\nWalang pinili ay nangangahulugang i-import ang lahat ng gacha puller."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choisissez les profils gacha à importer. Une sélection vide indique que tous les profils seront sélectionnés."
+            "value" : "Choisissez les tireurs gacha à importer.\nAucune sélection indique que tous les tireurs gacha seront importés."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scegli i profili gacha da importare Selezione vuota indica la selezione di tutti i profili"
+            "value" : "Scegli i tiratori gacha da importare.\nNessuna selezione indica che verranno importati tutti i tiratori gacha."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "読み込むガチャプロファイルを選択してください。\n未選択の場合、すべてのプロファイルが読み込まれます。"
+            "value" : "読み込むガチャ主を選択してください。\n未選択の場合、すべてのガチャ主が読み込まれます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "가챠 프로필을 가져올 것을 선택하세요. 선택을 비워두면 모든 프로필을 선택하게 됩니다."
+            "value" : "가챠 기록 소유자를 가져올 것을 선택하세요.\n선택하지 않으면 모든 가챠 기록 소유자가 가져와집니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выберите профили гача для импорта\nПустой выбор означает выбор всех профилей"
+            "value" : "Выберите владельцев гача для импорта.\nПустой выбор означает импорт всех владельцев гача."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chọn các hồ sơ gacha để nhập. Không chọn gì sẽ cho thấy rằng bạn đã chọn tất cả các hồ sơ."
+            "value" : "Chọn người kéo gacha để nhập.\nKhông chọn gì sẽ nhập tất cả người kéo gacha."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请指定要导入的抽卡记录文件。\n在没有任何持有者被选中时，会导入全部持有者的抽卡记录文件。"
+            "value" : "请选择要导入的抽卡人。\n未选中任何抽卡人时，将导入全部抽卡人的抽卡记录。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請指定要匯入的抽卡記錄檔案。\n若沒有選中的持有者的話，則會被視為匯入全部持有者的抽卡記錄檔案。"
+            "value" : "請選擇要匯入的抽卡人。\n若未選中任何抽卡人，則會匯入全部抽卡人的抽卡記錄。"
           }
         }
       }
@@ -1854,73 +1854,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Einträge aus dem angegebenen Profil/die angegebenen Profile der angegebenen Datei erfolgreich importiert."
+            "value" : "Alle Einträge aus dem/den angegebenen Gacha-Zieher(n) der angegebenen Datei erfolgreich importiert."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Successfully imported all entries from the specified profile(s) of the given file."
+            "value" : "Successfully imported all entries from the specified gacha puller(s) of the given file."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Se han importado correctamente todas las entradas de los perfiles especificados del archivo dado"
+            "value" : "Se han importado correctamente todas las entradas de los tiradores de gacha especificados del archivo dado."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matagumpay na na-import ang lahat ng mga entry mula sa tinukoy na profile(s) ng ibinigay na file."
+            "value" : "Matagumpay na na-import ang lahat ng mga entry mula sa tinukoy na gacha puller(s) ng ibinigay na file."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importation réussie de toutes les entrées des profils spécifiés du fichier donné."
+            "value" : "Importation réussie de toutes les entrées des tireurs gacha spécifiés du fichier donné."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importati con successo tutti gli elementi dal profilo specificato del file indicato"
+            "value" : "Importati con successo tutti gli elementi dai tiratori gacha specificati del file indicato."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "指定されたファイルからすべてのガチャ記録の読み込みが完了しました。"
+            "value" : "このファイルから指定されたガチャ主のすべての記録の読み込みが完了しました。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "주어진 파일의 지정된 프로필에서 모든 항목을 성공적으로 가져왔습니다."
+            "value" : "주어진 파일의 지정된 가챠 기록 소유자로부터 모든 항목을 성공적으로 가져왔습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Успешно импортированы все записи из указанных профилей указанного файла."
+            "value" : "Успешно импортированы все записи из указанных владельцев гача указанного файла."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đã nhập thành công tất cả các mục từ hồ sơ được chỉ định của tệp đã cho."
+            "value" : "Đã nhập thành công tất cả các mục từ người kéo gacha được chỉ định của tệp đã cho."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "已成功从指定的文件导入了指定的抽卡所有者的全部的抽卡记录。"
+            "value" : "已成功从指定的文件导入了指定的抽卡人的全部抽卡记录。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "已成功從指定的檔案匯入了指定的抽卡所有者的全部的抽卡記錄。"
+            "value" : "已成功從指定的檔案匯入了指定的抽卡人的全部抽卡記錄。"
           }
         }
       }
@@ -3772,79 +3772,79 @@
         }
       }
     },
-    "gachaKit.gachaProfileMenu.chooseProfile" : {
+    "gachaKit.gachaPullerMenu.chooseGachaPuller" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Profil auswählen"
+            "value" : "Gacha-Zieher auswählen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose Profile"
+            "value" : "Choose Gacha Puller"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elegir perfil"
+            "value" : "Elegir tirador de Gacha"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pumili ng Profile"
+            "value" : "Pumili ng Gacha Puller"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choisir le profil"
+            "value" : "Choisir le tireur Gacha"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scegli profilo"
+            "value" : "Scegli il tiratore Gacha"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "プロファイルを選択"
+            "value" : "ガチャ主を選択"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "프로필 선택"
+            "value" : "가챠 기록 소유자 선택"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выберите профиль"
+            "value" : "Выберите владельца гача"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chọn Hồ sơ"
+            "value" : "Chọn người kéo Gacha"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择抽卡 UID"
+            "value" : "选择抽卡人"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "選擇抽卡 UID"
+            "value" : "選擇抽卡人"
           }
         }
       }
@@ -6693,61 +6693,61 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hier klicken, um alle Einträge unter diesem Gacha-Profil zu entfernen"
+            "value" : "Hier klicken, um alle Einträge unter diesem Gacha-Zieher zu entfernen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Click Here to Remove All Records Under This Gacha Profile"
+            "value" : "Click Here to Remove All Records Under This Gacha Puller"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haz clic aquí para eliminar todos los registros bajo este perfil de Gacha"
+            "value" : "Haz clic aquí para eliminar todos los registros bajo este tirador de gacha"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-click Dito upang Alisin ang Lahat ng Rekord sa Ilalim ng Profile ng Gacha na Ito"
+            "value" : "I-click Dito upang Alisin ang Lahat ng Rekord sa Ilalim ng Gacha Puller na Ito"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cliquez ici pour supprimer tous les enregistrements sous ce profil"
+            "value" : "Cliquez ici pour supprimer tous les enregistrements sous ce tireur gacha"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fai clic qui per rimuovere tutti i record sotto questo profilo Gacha"
+            "value" : "Fai clic qui per rimuovere tutti i record sotto questo tiratore gacha"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "タップしてこのガチャプロファイルの全ての記録を削除"
+            "value" : "タップしてこのガチャ主の全ての記録を削除"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "여기를 클릭하여 이 가챠 프로필의 모든 기록 제거"
+            "value" : "여기를 클릭하여 이 가챠 기록 소유자의 모든 기록 제거"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нажмите здесь, чтобы удалить все записи под этим профилем гача"
+            "value" : "Нажмите здесь, чтобы удалить все записи под этим владельцем гача"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nhấn vào đây để xóa tất cả hồ sơ dưới hồ sơ Gacha này"
+            "value" : "Nhấn vào đây để xóa tất cả hồ sơ dưới người kéo gacha này"
           }
         },
         "zh-Hans" : {
@@ -6770,61 +6770,61 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bestätigung der Entfernung aller Datensätze unter diesem Gacha-Profil. Fortfahren?"
+            "value" : "Bestätigung der Entfernung aller Datensätze unter diesem Gacha-Zieher. Fortfahren?"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Confirming removal of all records under this gacha profile. Proceed?"
+            "value" : "Confirming removal of all records under this gacha puller. Proceed?"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Confirmando la eliminación de todos los registros bajo este perfil de gacha. ¿Proceder?"
+            "value" : "Confirmando la eliminación de todos los registros bajo este tirador de gacha. ¿Proceder?"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kinukumpirma ang pagtanggal ng lahat ng rekord sa ilalim ng gacha profile na ito. Magpatuloy?"
+            "value" : "Kinukumpirma ang pagtanggal ng lahat ng rekord sa ilalim ng gacha puller na ito. Magpatuloy?"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Confirmer la suppression de tous les enregistrements sous ce profil ?"
+            "value" : "Confirmer la suppression de tous les enregistrements sous ce tireur gacha. Continuer ?"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Confermi la rimozione di tutti i record sotto questo profilo gacha? Procedere?"
+            "value" : "Confermi la rimozione di tutti i record sotto questo tiratore gacha. Procedere?"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "このガチャプロファイルの全ての記録を削除する。続行するかどうかのご確認を。"
+            "value" : "このガチャ主の全ての記録を削除する。続行するかどうかのご確認を。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 가챠 프로필 아래의 모든 기록을 제거하시겠습니까? 진행하시겠습니까?"
+            "value" : "이 가챠 기록 소유자 아래의 모든 기록을 제거하시겠습니까? 진행하시겠습니까?"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Подтверждение удаления всех записей под этим профилем гача. Продолжить?"
+            "value" : "Подтверждение удаления всех записей под этим владельцем гача. Продолжить?"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Xác nhận xóa tất cả các ghi chép dưới hồ sơ gacha này. Tiếp tục?"
+            "value" : "Xác nhận xóa tất cả các ghi chép dưới người kéo gacha này. Tiếp tục?"
           }
         },
         "zh-Hans" : {
@@ -6918,6 +6918,83 @@
         }
       }
     },
+    "gachaKit.management.gachaPullerToPurge" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zu löschender Gacha-Zieher (Spiel & UID)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gacha Puller (Game & UID) to Delete"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tirador de Gacha (Juego y UID) a Eliminar"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gacha Puller (Laro & UID) na Tatanggalin"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tireur Gacha (Jeu et UID) à supprimer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiratore Gacha (Gioco e UID) da Eliminare"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除するガチャ主（ゲーム＆UID）"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "삭제할 가챠 기록 소유자 (게임 및 UID)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Владелец гача (игра и UID) для удаления"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Người kéo Gacha (Trò chơi & UID) để xóa"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "要删除的抽卡人（游戏与 UID）"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "要刪除的抽卡人（遊戲與 UID）"
+          }
+        }
+      }
+    },
     "gachaKit.management.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6991,83 +7068,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "管理抽卡記錄"
-          }
-        }
-      }
-    },
-    "gachaKit.management.uidAndGameToPurge" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spiel & UID zum Löschen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Game & UID to Delete"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Juego y UID a eliminar"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Larong & UID na Tatanggalin"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jeu et UID à supprimer"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gioco e UID da Eliminare"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "削除する記録の所属ゲームとUID"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "삭제할 게임 및 UID"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Игра и UID для удаления"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trò chơi & UID để xóa"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "要删除的记录所属的游戏与 UID"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "要刪除的記錄所屬的遊戲與 UID"
           }
         }
       }
@@ -7303,79 +7303,79 @@
         }
       }
     },
-    "gachaKit.menu.rebuildGachaUIDList" : {
+    "gachaKit.menu.reloadData" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gacha-UID-Liste neu erstellen"
+            "value" : "Daten neu laden"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rebuild Gacha UID List"
+            "value" : "Reload Data"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reconstruir lista de UID de Gacha"
+            "value" : "Recargar datos"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-rebuild ang Listahan ng Gacha UID"
+            "value" : "I-reload ang Data"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reconstruire la liste des UID Gacha"
+            "value" : "Recharger les données"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ricostruisci elenco UID Gacha"
+            "value" : "Ricarica dati"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ガチャUIDリストを再構築"
+            "value" : "データを再読込"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "가챠 UID 목록 재구성"
+            "value" : "데이터 다시 로드"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Перестроить список Gacha UID"
+            "value" : "Перезагрузить данные"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Xây dựng lại danh sách UID Gacha"
+            "value" : "Tải lại dữ liệu"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重建抽卡记录 UID 清单"
+            "value" : "重新载入数据"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重建抽卡記錄 UID 清單"
+            "value" : "重新載入資料"
           }
         }
       }
@@ -9767,155 +9767,156 @@
         }
       }
     },
-    "gachaKit.prompt.pleaseChooseGachaProfile" : {
+    "gachaKit.prompt.pleaseChooseGachaPuller" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bitte wählen Sie ein Gacha-Profil. Wenn Sie keins sehen, importieren Sie bitte zuerst einige Gacha-Daten."
+            "value" : "Bitte wählen Sie einen Gacha-Zieher. Wenn Sie keinen sehen, importieren Sie bitte zuerst einige Gacha-Aufzeichnungen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please choose a gacha profile. If you can’t see one, then please import some gacha records first."
+            "value" : "Please choose a gacha puller. If you can't see one, then please import some gacha records first."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Por favor, elige un perfil de gacha. Si no puedes ver uno, entonces importa algunos registros de gacha primero."
+            "value" : "Por favor, elige un tirador de gacha. Si no puedes ver uno, entonces importa algunos registros de gacha primero."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pumili ng isang gacha profile. Kung walang makita, mangyaring mag-import muna ng ilang gacha records."
+            "value" : "Pumili ng isang gacha puller. Kung walang makita, mangyaring mag-import muna ng ilang gacha records."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Veuillez choisir un profil gacha. Si vous ne pouvez pas en voir, importez d'abord un historique gacha."
+            "value" : "Veuillez choisir un tireur gacha. Si vous ne pouvez pas en voir, importez d'abord un historique gacha."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Si prega di scegliere un profilo gacha. Se non ne vedi uno, importare prima alcuni record gacha."
+            "value" : "Si prega di scegliere un tiratore gacha. Se non ne vedi uno, importare prima alcuni record gacha."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ガチャUIDをご選択ください。それが表示していないのなら、まずガチャ記録を入れてください。"
+            "value" : "ガチャ主を選択してください。それが表示していないのなら、まずガチャ記録を入れてください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "가챠 프로필을 선택하세요. 볼 수 없다면 가챠 기록을 먼저 가져오세요."
+            "value" : "가챠 기록 소유자를 선택하세요. 볼 수 없다면 가챠 기록을 먼저 가져오세요."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пожалуйста, выберите профиль гача. Если вы его не видите, пожалуйста, сначала импортируйте записи гача."
+            "value" : "Пожалуйста, выберите владельца гача. Если вы его не видите, пожалуйста, сначала импортируйте записи гача."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vui lòng chọn hồ sơ gacha. Nếu bạn không thấy, hãy nhập một số hồ sơ gacha trước."
+            "value" : "Vui lòng chọn người kéo gacha. Nếu bạn không thấy, hãy nhập một số hồ sơ gacha trước."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请选择一个抽卡 UID。倘若您看不到相关选项，则请先导入抽卡记录。"
+            "value" : "请选择一个抽卡人。倘若您看不到相关选项，则请先导入抽卡记录。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請選擇一個抽卡 UID。如果看不到相關選項的話，請先匯入抽卡記錄。"
+            "value" : "請選擇一個抽卡人。如果看不到相關選項的話，請先匯入抽卡記錄。"
           }
         }
       }
     },
     "gachaKit.prompt.remoteChangesDetected.withRecommendedAction" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Remote iCloud SwiftData-Änderungen wurden erkannt und bereits im Backend angewendet. Bitte überprüfen Sie das Dropdown-Menü oben rechts, um „Gacha-UID-Liste neu erstellen“ auszuführen, oder starten Sie diese App neu, damit die Änderungen sichtbar werden."
+            "value" : "Remote iCloud SwiftData-Änderungen wurden erkannt und bereits im Backend angewendet. Bitte überprüfen Sie das Dropdown-Menü oben rechts, um „Daten neu laden“ auszuführen, oder starten Sie diese App neu, damit die Änderungen sichtbar werden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Rebuild Gacha UID List” or restart this app to let those changes visible to you."
+            "value" : "Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Reload Data” or restart this app to let those changes visible to you."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Se detectaron cambios remotos de iCloud SwiftData y ya se aplicaron en el backend. Por favor, revisa el menú desplegable superior derecho para ejecutar “Reconstruir lista de UID de Gacha” o reinicia esta aplicación para que los cambios sean visibles."
+            "value" : "Se detectaron cambios remotos de iCloud SwiftData y ya se aplicaron en el backend. Por favor, revisa el menú desplegable superior derecho para ejecutar “Recargar datos” o reinicia esta aplicación para que los cambios sean visibles."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "May natukoy na remote iCloud SwiftData na mga pagbabago at naipatupad na sa backend. Pakisuri ang dropdown menu sa itaas-kanan upang patakbuhin ang “Rebuild Gacha UID List” o i-restart ang app na ito upang makita ang mga pagbabagong iyon."
+            "value" : "May natukoy na remote iCloud SwiftData na mga pagbabago at naipatupad na sa backend. Pakisuri ang dropdown menu sa itaas-kanan upang patakbuhin ang “I-reload ang Data” o i-restart ang app na ito upang makita ang mga pagbabagong iyon."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Des modifications distantes iCloud SwiftData ont été détectées et déjà appliquées en arrière-plan. Veuillez consulter le menu déroulant en haut à droite pour lancer « Reconstruire la liste des UID Gacha » ou redémarrer cette application pour rendre ces modifications visibles."
+            "value" : "Des modifications distantes iCloud SwiftData ont été détectées et déjà appliquées en arrière-plan. Veuillez consulter le menu déroulant en haut à droite pour lancer « Recharger les données » ou redémarrer cette application pour rendre ces modifications visibles."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sono state rilevate modifiche remote di iCloud SwiftData già applicate nel backend. Controlla il menu a discesa in alto a destra per eseguire \"Ricostruisci elenco UID Gacha\" o riavvia questa app per rendere visibili tali modifiche."
+            "value" : "Sono state rilevate modifiche remote di iCloud SwiftData già applicate nel backend. Controlla il menu a discesa in alto a destra per eseguire \"Ricarica dati\" o riavvia questa app per rendere visibili tali modifiche."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "リモートの iCloud SwiftData の変更が検出され、すでにバックエンドに適用されています。右上のドロップダウンメニューから「ガチャUIDリストを再構築」を実行するか、このアプリを再起動して変更内容を反映させてください。"
+            "value" : "リモートの iCloud SwiftData の変更が検出され、すでにバックエンドに適用されています。右上のドロップダウンメニューから「データを再読込」を実行するか、このアプリを再起動して変更内容を反映させてください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "원격 iCloud SwiftData 변경 사항이 감지되어 백엔드에 이미 적용되었습니다. 오른쪽 상단 드롭다운 메뉴에서 '가챠 UID 목록 재구성'을 실행하거나 앱을 재시작하여 변경 사항을 확인하세요."
+            "value" : "원격 iCloud SwiftData 변경 사항이 감지되어 백엔드에 이미 적용되었습니다. 오른쪽 상단 드롭다운 메뉴에서 '데이터 다시 로드'를 실행하거나 앱을 재시작하여 변경 사항을 확인하세요."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Обнаружены удалённые изменения iCloud SwiftData, которые уже применены на сервере. Проверьте выпадающее меню в правом верхнем углу, чтобы выполнить «Перестроить список Gacha UID», или перезапустите приложение, чтобы увидеть эти изменения."
+            "value" : "Обнаружены удалённые изменения iCloud SwiftData, которые уже применены на сервере. Проверьте выпадающее меню в правом верхнем углу, чтобы выполнить «Перезагрузить данные», или перезапустите приложение, чтобы увидеть эти изменения."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đã phát hiện các thay đổi từ xa của iCloud SwiftData và đã được áp dụng ở backend. Vui lòng kiểm tra menu thả xuống ở góc trên bên phải để chạy “Xây dựng lại danh sách UID Gacha” hoặc khởi động lại ứng dụng này để các thay đổi đó hiển thị."
+            "value" : "Đã phát hiện các thay đổi từ xa của iCloud SwiftData và đã được áp dụng ở backend. Vui lòng kiểm tra menu thả xuống ở góc trên bên phải để chạy “Tải lại dữ liệu” hoặc khởi động lại ứng dụng này để các thay đổi đó hiển thị."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "检测到远程 iCloud SwiftData 变更，且已在后台套用。请在右上角下拉选单中执行「重建抽卡记录 UID 清单」，或重启本应用以使这些变更可见。"
+            "value" : "检测到远程 iCloud SwiftData 变更，且已在后台套用。请在右上角下拉选单中执行「重新载入数据」，或重启本应用以使这些变更可见。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "偵測到遠端 iCloud SwiftData 變更，且已在後台套用。請在右上角下拉選單中執行「重建抽卡記錄 UID 清單」，或重啟敝應用以使這些變更可見。"
+            "value" : "偵測到遠端 iCloud SwiftData 變更，且已在後台套用。請在右上角下拉選單中執行「重新載入資料」，或重啟敝應用以使這些變更可見。"
           }
         }
       }
