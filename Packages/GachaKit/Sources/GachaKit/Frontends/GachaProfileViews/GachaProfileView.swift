@@ -19,7 +19,7 @@ public struct GachaProfileView: View {
     public var body: some View {
         poolPickerSection
         if let gpid = theVM.currentGPID {
-            GachaEntryExpiredRow(alwaysVisible: false, games: [gpid.game])
+            GMDBExpiredRow(alwaysVisible: false, games: [gpid.game])
         }
         Section {
             if theVM.taskState == .busy {

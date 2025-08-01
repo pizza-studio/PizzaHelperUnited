@@ -71,7 +71,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                     GotSomeItemView(page: page, gachaType: gachaType, newItemCount: newItemCount, cancel: cancel)
                 case let .failFetching(page: page, gachaType: gachaType, error: error, retry: retry):
                     if case let .databaseExpired(game) = error as? GachaMeta.GMDBError {
-                        GachaEntryExpiredRow(alwaysVisible: true, games: [game])
+                        GMDBExpiredRow(alwaysVisible: true, games: [game])
                     }
                     FailFetchingView(page: page, gachaType: gachaType, error: error, retry: retry)
                         .onAppear {

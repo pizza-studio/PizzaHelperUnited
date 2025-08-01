@@ -28,7 +28,7 @@ public struct GachaExportSections: View {
             }
 
             if case let .databaseExpired(game) = theVM.currentError as? GachaMeta.GMDBError {
-                GachaEntryExpiredRow(alwaysVisible: true, games: [game])
+                GMDBExpiredRow(alwaysVisible: true, games: [game])
             } else if theVM.taskState != .busy {
                 switch theVM.currentExportableDocument {
                 case let .failure(error):

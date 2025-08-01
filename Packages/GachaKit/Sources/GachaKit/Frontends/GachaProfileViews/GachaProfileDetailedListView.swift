@@ -103,7 +103,7 @@ public struct GachaProfileDetailedListView: View {
                     }
                 }
                 Toggle("gachaKit.filter.showDate".i18nGachaKit, isOn: $showDate.animation())
-                GachaEntryExpiredRow(alwaysVisible: false, games: [theProfile.game])
+                GMDBExpiredRow(alwaysVisible: false, games: [theProfile.game])
             } header: {
                 Text("gachaKit.filter.options", bundle: .module).textCase(.none)
             }
