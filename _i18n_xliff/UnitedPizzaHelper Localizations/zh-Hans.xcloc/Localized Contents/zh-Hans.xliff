@@ -1221,9 +1221,9 @@ Empty selection indicates selecting all gacha pullers.</source>
         <target state="translated">垫数（自前次五星起算）</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.standardItemEvasionRate" xml:space="preserve">
-        <source>Standard Evasion Rate</source>
-        <target state="translated">非常驻命中率</target>
+      <trans-unit id="gachaKit.stats.standardItemHitRate" xml:space="preserve">
+        <source>Standard Hit Rate</source>
+        <target state="translated">常驻命中率</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.totalPulls" xml:space="preserve">

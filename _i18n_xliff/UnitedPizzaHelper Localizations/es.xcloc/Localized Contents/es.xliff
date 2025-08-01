@@ -1215,9 +1215,9 @@ No seleccionar ninguno indica que se importan todos los tiradores de gacha.</tar
         <target state="translated">Tiradas Acumuladas (desde el último ★5)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.standardItemEvasionRate" xml:space="preserve">
-        <source>Standard Evasion Rate</source>
-        <target state="translated">Tasa de Evasión Estándar</target>
+      <trans-unit id="gachaKit.stats.standardItemHitRate" xml:space="preserve">
+        <source>Standard Hit Rate</source>
+        <target state="translated">Tasa de Acierto Estándar</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.totalPulls" xml:space="preserve">
