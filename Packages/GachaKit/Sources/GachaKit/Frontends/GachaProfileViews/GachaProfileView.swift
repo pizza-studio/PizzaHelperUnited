@@ -17,11 +17,11 @@ public struct GachaProfileView: View {
     // MARK: Public
 
     public var body: some View {
-        poolPickerSection
         if let gpid = theVM.currentGPID {
             GMDBExpiredRow(alwaysVisible: false, games: [gpid.game])
         }
         Section {
+            poolPicker
             if theVM.taskState == .busy {
                 InfiniteProgressBar().id(UUID())
             } else {
@@ -60,19 +60,25 @@ public struct GachaProfileView: View {
 
     @Environment(GachaVM.self) private var theVM
 
-    @ViewBuilder private var poolPickerSection: some View {
+    @ViewBuilder private var poolPicker: some View {
         if let theProfile = theVM.currentGPID {
-            Section {
-                let labelName = GachaPoolExpressible.getPoolFilterLabel(by: theProfile.game)
-                @Bindable var theVM = theVM
-                Picker(labelName, selection: $theVM.currentPoolType.animation()) {
+            let labelName = GachaPoolExpressible.getPoolFilterLabel(by: theProfile.game)
+            @Bindable var theVM = theVM
+            LabeledContent {
+                Picker("".description, selection: $theVM.currentPoolType.animation()) {
                     ForEach(availablePoolTypes) { poolType in
                         let taggableValue = poolType as GachaPoolExpressible?
                         Text(poolType.localizedTitle).tag(taggableValue)
                     }
                 }
-            } header: {
-                Text("gachaKit.filter.options", bundle: .module).textCase(.none)
+                .labelsHidden()
+            } label: {
+                LabeledContent {
+                    Text(verbatim: labelName)
+                } label: {
+                    Image(systemSymbol: .line3HorizontalDecreaseCircle)
+                }
+                .fixedSize()
             }
         }
     }
