@@ -500,7 +500,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "不起用"
+            "value" : "不使用"
           }
         },
         "ko" : {
@@ -1110,7 +1110,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "残念ながら、ユーザー壁紙は書き出しできませんでした。"
+            "value" : "残念ながら、ユーザー壁紙は書き出せませんでした。"
           }
         },
         "ko" : {

@@ -577,7 +577,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "減算時計"
+            "value" : "カウントダウン"
           }
         },
         "ko" : {
@@ -653,7 +653,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "任務完成の時点"
+            "value" : "完了予定時刻"
           }
         },
         "ko" : {
@@ -729,7 +729,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "デフォルト値"
+            "value" : "初期設定値"
           }
         },
         "ko" : {
@@ -805,7 +805,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "任意のスタミナ表示スタイルを用いる"
+            "value" : "スタミナ表示スタイルの自動切替"
           }
         },
         "ko" : {
@@ -1185,7 +1185,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "全てのゲーム"
+            "value" : "すべてのゲーム"
           }
         },
         "ko" : {
@@ -1565,7 +1565,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ゲームをご指定"
+            "value" : "ゲームを選択"
           }
         },
         "ko" : {
@@ -1641,7 +1641,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "このウィジェットに2つのプロファイルのご指定を"
+            "value" : "このウィジェット用に2つのプロファイルを選択"
           }
         },
         "ko" : {
@@ -1717,7 +1717,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "このウィジェットにプロファイルのご指定を"
+            "value" : "このウィジェット用のプロファイルを選択"
           }
         },
         "ko" : {
@@ -2401,7 +2401,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[原神] 毎日の材料情報を表示する (最大寸法のウィジェットのみ)"
+            "value" : "[原神] 毎日の材料情報を表示する (大型ウィジェットのみ)"
           }
         },
         "ko" : {
@@ -2781,7 +2781,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "任意の壁紙を用いる"
+            "value" : "ランダムな壁紙を使用"
           }
         },
         "ko" : {
@@ -3009,7 +3009,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ゲームのみをご指定"
+            "value" : "ゲームのみを選択"
           }
         },
         "ko" : {
@@ -3085,7 +3085,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "プロファイルをご指定"
+            "value" : "プロファイルを選択"
           }
         },
         "ko" : {
@@ -3161,7 +3161,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "プロファイルだけをご指定"
+            "value" : "プロファイルだけを選択"
           }
         },
         "ko" : {
@@ -3237,7 +3237,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "プロファイルのご指定且つ追加設定"
+            "value" : "プロファイルを選択＆追加設定"
           }
         },
         "ko" : {
@@ -3313,7 +3313,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "2つのプロファイルをご指定"
+            "value" : "2つのプロファイルを選択"
           }
         },
         "ko" : {
