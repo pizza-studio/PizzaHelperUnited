@@ -10460,79 +10460,79 @@
         }
       }
     },
-    "gachaKit.stats.standardItemEvasionRate" : {
+    "gachaKit.stats.standardItemHitRate" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Standard-Ausweichrate"
+            "value" : "Standardtrefferquote"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Standard Evasion Rate"
+            "value" : "Standard Hit Rate"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tasa de Evasión Estándar"
+            "value" : "Tasa de Acierto Estándar"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Standard Evasion Rate"
+            "value" : "Standard Hit Rate"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Taux d'Évasion Standard"
+            "value" : "Taux de Réussite Standard"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tasso di Evasione Standard"
+            "value" : "Tasso di Successo Standard"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "通常回避率"
+            "value" : "通常命中率"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "표준 회피율"
+            "value" : "표준 적중률"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Стандартный рейтинг уклонения"
+            "value" : "Стандартный рейтинг попадания"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tỷ lệ Né Chuẩn"
+            "value" : "Tỷ lệ Trúng Chuẩn"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "非常驻命中率"
+            "value" : "常驻命中率"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "非常駐命中率"
+            "value" : "常駐命中率"
           }
         }
       }
