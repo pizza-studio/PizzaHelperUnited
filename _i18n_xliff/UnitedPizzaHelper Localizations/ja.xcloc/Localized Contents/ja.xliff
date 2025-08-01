@@ -52,7 +52,7 @@
       </trans-unit>
       <trans-unit id="appEnum_StaminaContentRevolverStyle_byDefault" xml:space="preserve">
         <source>Default</source>
-        <target>標準</target>
+        <target>初期設定値</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum_StaminaContentRevolverStyle_title" xml:space="preserve">
@@ -1798,7 +1798,7 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
       </trans-unit>
       <trans-unit id="aboutKit.ourApps.miHoYoCopyrightNotice" xml:space="preserve">
         <source>Copyright (excl. the Swift program part of this app): (c) All rights reserved by miHoYo and its subsidiaries. Other properties and any right, title, and interest thereof and therein (intellectual property rights included) not derived from miHoYo's game titles ("Star Rail", "Genshin Impact", "Zenless Zone Zero", etc.) belong to their respective owners.</source>
-        <target state="translated">著作権（このアプリの Swift プログラム部分を除く）：(c) 株式会社米哈遊（上海本社）およびその子会社がすべての権利を保有します。米哈遊社のゲームタイトル（「星穹鉄道（星鉄）」、「原神」、「絶区零（ゼンレスゾーンゼロ）」など）に由来しないその他の財産およびそれに関連するすべての権利、所有権、利益（知的財産権を含む）は、それぞれの所有者に帰属します。
+        <target state="translated">著作権（このアプリの Swift プログラム部分を除く）：(c) 株式会社米哈遊（上海本社）およびその子会社がすべての権利を保有します。米哈遊社のゲームタイトル（「星穹鉄道（スターレイル）」、「原神」、「絶区零（ゼンレスゾーンゼロ）」など）に由来しないその他の財産およびそれに関連するすべての権利、所有権、利益（知的財産権を含む）は、それぞれの所有者に帰属します。
 </target>
         <note/>
       </trans-unit>
@@ -3791,12 +3791,12 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="notification.echoOfWar.body:%@%@" xml:space="preserve">
         <source>%1$@ has %2$@ rewards(s) left for Echo of War.</source>
-        <target state="translated">「%1$@」は星鉄での今週の歴戦余韻の奨励は %2$@ 回残っております。</target>
+        <target state="translated">「%1$@」はスターレイルでの今週の歴戦余韻の奨励は %2$@ 回残っております。</target>
         <note/>
       </trans-unit>
       <trans-unit id="notification.echoOfWar.title:%@" xml:space="preserve">
         <source>Reminder: HSR Echo of War Rewards Left for %@</source>
-        <target state="translated">「%@」の星鉄歴戦余韻の残った奨励</target>
+        <target state="translated">「%@」のスターレイル歴戦余韻の残った奨励</target>
         <note/>
       </trans-unit>
       <trans-unit id="notification.expedition.each.body:%@%@" xml:space="preserve">
@@ -4896,7 +4896,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="appEnum.StaminaContentRevolverStyle.byDefault" xml:space="preserve">
         <source>Default</source>
-        <target state="translated">標準</target>
+        <target state="translated">初期設定値</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum.StaminaContentRevolverStyle.title" xml:space="preserve">
