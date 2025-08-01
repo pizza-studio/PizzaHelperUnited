@@ -1199,9 +1199,9 @@ Không chọn gì sẽ nhập tất cả người kéo gacha.</target>
         <target state="translated">Đánh giá Liên kết</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.avaragePulls4LimitedPentaStars" xml:space="preserve">
-        <source>Avrg. Pulls (limited ★5)</source>
-        <target state="translated">Trung bình lượt rút thẻ (giới hạn ★5)</target>
+      <trans-unit id="gachaKit.stats.avaragePulls4NonStandardPentaStars" xml:space="preserve">
+        <source>Avrg. Pulls (Non-Std. ★5)</source>
+        <target state="translated">Số lần triệu hồi TB (không chuẩn ★5)</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.avaragePulls4PentaStars" xml:space="preserve">

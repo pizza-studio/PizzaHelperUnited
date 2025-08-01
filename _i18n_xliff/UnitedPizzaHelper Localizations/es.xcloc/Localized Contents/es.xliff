@@ -1195,9 +1195,9 @@ No seleccionar ninguno indica que se importan todos los tiradores de gacha.</tar
         <target state="translated">Tasar de Interknot</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.stats.avaragePulls4LimitedPentaStars" xml:space="preserve">
-        <source>Avrg. Pulls (limited ★5)</source>
-        <target state="translated">Extracciones prom. (limitadas ★5)</target>
+      <trans-unit id="gachaKit.stats.avaragePulls4NonStandardPentaStars" xml:space="preserve">
+        <source>Avrg. Pulls (Non-Std. ★5)</source>
+        <target state="translated">Prom. intentos (no est. ★5)</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.avaragePulls4PentaStars" xml:space="preserve">

@@ -1440,13 +1440,13 @@
         }
       }
     },
-    "gachaKit.stats.avaragePulls4LimitedPentaStars" : {
+    "gachaKit.stats.avaragePulls4NonStandardPentaStars" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avrg. Pulls (limited ★5)"
+            "value" : "Avrg. Pulls (Non-Std. ★5)"
           }
         }
       }

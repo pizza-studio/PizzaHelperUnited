@@ -64,7 +64,7 @@ extension GachaProfileView {
                 if poolType.isSurinukable, theVM.taskState != .busy {
                     HStack {
                         Label {
-                            Text("gachaKit.stats.avaragePulls4LimitedPentaStars", bundle: .module)
+                            Text("gachaKit.stats.avaragePulls4NonStandardPentaStars", bundle: .module)
                                 .fontWidth(.condensed)
                         } icon: {
                             Image(systemSymbol: .starFill).foregroundStyle(.indigo)
