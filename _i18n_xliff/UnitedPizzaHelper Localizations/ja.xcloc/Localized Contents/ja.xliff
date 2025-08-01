@@ -52,7 +52,7 @@
       </trans-unit>
       <trans-unit id="appEnum_StaminaContentRevolverStyle_byDefault" xml:space="preserve">
         <source>Default</source>
-        <target>デフォルト値</target>
+        <target>標準</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum_StaminaContentRevolverStyle_title" xml:space="preserve">
@@ -172,7 +172,7 @@
       </trans-unit>
       <trans-unit id="intent_field_showMaterialsInLargeSizeWidget" xml:space="preserve">
         <source>[GI] Show daily materials (large-sized widgets only)</source>
-        <target>[原神] 毎日の材料情報を表示する (最大寸法のウィジェットのみ)</target>
+        <target>[原神] 毎日の材料情報を表示する (大型ウィジェットのみ)</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent_field_showStaminaOnly" xml:space="preserve">
@@ -2571,7 +2571,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
         <target state="translated">
 米遊社は、ユーザーが米遊社アカウントの退会(削除)を完了するには、スマホまたは米遊社アプリのいずれかを使用してしまえと想定しています。
 
-macOS で米遊社アカウント削除リンクを表示するために、Safari ブラウザのユーザーエージェント(User-Agent, UA)を iPhone のUAと変更する必要でございます。macOS の Safari の開発者メニューを使用して UA を変更する方法については、Apple サポートにお問い合わせください。
+macOS で米遊社アカウント削除リンクを表示するために、Safari ブラウザのユーザーエージェント(User-Agent, UA)を iPhone のUAと変更する必要があります。macOS の Safari の開発者メニューを使用して UA を変更する方法については、Apple サポートにお問い合わせください。
 
 当アプリで直接に上記のリンクをクリックした場合、自動的に iPhone の UA を適用します。</target>
         <note/>
@@ -4896,7 +4896,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="appEnum.StaminaContentRevolverStyle.byDefault" xml:space="preserve">
         <source>Default</source>
-        <target state="translated">デフォルト値</target>
+        <target state="translated">標準</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEnum.StaminaContentRevolverStyle.title" xml:space="preserve">
@@ -5006,7 +5006,7 @@ available on Sunday</source>
       </trans-unit>
       <trans-unit id="intent.field.showMaterialsInLargeSizeWidget" xml:space="preserve">
         <source>[GI] Show daily materials (large-sized widgets only)</source>
-        <target state="translated">[原神] 毎日の材料情報を表示する (最大寸法のウィジェットのみ)</target>
+        <target state="translated">[原神] 毎日の材料情報を表示する (大型ウィジェットのみ)</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.field.showStaminaOnly" xml:space="preserve">
