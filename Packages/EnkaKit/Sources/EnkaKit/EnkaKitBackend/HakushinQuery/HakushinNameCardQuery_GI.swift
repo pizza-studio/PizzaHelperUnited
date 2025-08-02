@@ -1,6 +1,6 @@
-// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// (c) 2024 and onwards Pizza Studio (MIT License).
 // ====================
-// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
+// This code is released under the SPDX-License-Identifier: `MIT License`.
 
 // Hakushin 仅用来查询线上角色素材网址。
 // 由于用来查询的论据（角色 ID、道具 ID、服装 ID 等）并不出自内鬼泄漏的内容，
