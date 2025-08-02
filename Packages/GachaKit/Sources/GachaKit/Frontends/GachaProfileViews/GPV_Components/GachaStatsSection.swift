@@ -73,16 +73,31 @@ extension GachaProfileView {
                         Text(average5StarDrawLimited.description)
                             .fontWidth(.condensed)
                     }
-                    HStack {
-                        Label {
-                            Text("gachaKit.stats.standardItemHitRate", bundle: .module)
+                    VStack(alignment: .leading, spacing: 2) {
+                        HStack {
+                            Label {
+                                Text("gachaKit.stats.standardItemHitRate", bundle: .module)
+                                    .fontWidth(.condensed)
+                            } icon: {
+                                Image(systemSymbol: .trashCircleFill).foregroundStyle(.red)
+                            }
+                            Spacer()
+                            Text(Self.fmtPerc.string(from: standardItemHitRate as NSNumber) ?? "N/A")
                                 .fontWidth(.condensed)
-                        } icon: {
-                            Image(systemSymbol: .trashCircleFill).foregroundStyle(.red)
                         }
-                        Spacer()
-                        Text(Self.fmtPerc.string(from: standardItemHitRate as NSNumber) ?? "N/A")
-                            .fontWidth(.condensed)
+                        
+                        // Show confidence indicator for medium/low/insufficient confidence
+                        if standardItemHitRateConfidence != .high {
+                            HStack {
+                                Image(systemSymbol: confidenceIcon)
+                                    .foregroundStyle(confidenceColor)
+                                    .font(.caption2)
+                                Text(LocalizedStringKey(stringLiteral: standardItemHitRateConfidence.localizedDescription), bundle: .module)
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                            }
+                        }
                     }
                     guestEvaluatorView()
                 }
@@ -121,11 +136,47 @@ extension GachaProfileView {
             pentaStarEntries.map(\.drawCount).reduce(0, +) / max(pentaStarsNotSurinuked.count, 1)
         }
 
-        private var standardItemHitRate: Double {
+        /// Confidence level for the standard item hit rate calculation
+        public enum StandardHitRateConfidence: CaseIterable {
+            case high       // >= 10 relevant cases
+            case medium     // 5-9 relevant cases  
+            case low        // 3-4 relevant cases
+            case insufficient // < 3 relevant cases
+            
+            var localizedDescription: String {
+                switch self {
+                case .high: return "gachaKit.stats.confidence.high"
+                case .medium: return "gachaKit.stats.confidence.medium"
+                case .low: return "gachaKit.stats.confidence.low"
+                case .insufficient: return "gachaKit.stats.confidence.insufficient"
+                }
+            }
+        }
+
+        /// Confidence level of the standard item hit rate calculation
+        private var standardItemHitRateConfidence: StandardHitRateConfidence {
+            let relevantCases = standardItemHitRateCalculationCases
+            let caseCount = relevantCases.count
+            
+            if caseCount >= 10 {
+                return .high
+            } else if caseCount >= 5 {
+                return .medium
+            } else if caseCount >= 3 {
+                return .low
+            } else {
+                return .insufficient
+            }
+        }
+
+        /// Get the relevant cases for standard item hit rate calculation
+        private var standardItemHitRateCalculationCases: [Bool] {
             let pentaStarEntries = pentaStarEntries
-            guard !pentaStarEntries.isEmpty else { return 0.0 }
+            guard !pentaStarEntries.isEmpty else { return [] }
+            
             var surinukableCases = [Bool]()
             var previousPentaStarIsSurinuked = false
+            
             for theEntry in pentaStarEntries.reversed() {
                 let isCurrentItemSurinuked = theEntry.isSurinuked
                 defer {
@@ -139,11 +190,18 @@ extension GachaProfileView {
                     surinukableCases.append(false)
                 }
             }
-            let countOfAllCases = surinukableCases.count
-            guard countOfAllCases > 0 else { return 0.0 }
+            return surinukableCases
+        }
+
+        private var standardItemHitRate: Double {
+            let surinukableCases = standardItemHitRateCalculationCases
+            guard surinukableCases.count >= 3 else { return 0.0 } // Insufficient data
+            
             let countSurinuked = Double(surinukableCases.count(where: \.self))
-            // 小保底次数 = 限定五星数量
-            return countSurinuked / Double(surinukableCases.count)
+            let rate = countSurinuked / Double(surinukableCases.count)
+            
+            // Ensure rate stays within theoretical bounds (0-50%)
+            return min(rate, 0.5)
         }
 
         private var average5StarDraw: Int { pentaStarEntries.map { $0.drawCount }
@@ -153,6 +211,26 @@ extension GachaProfileView {
 
         private var drawCountableAmount: Int {
             entries.firstIndex(where: { $0.rarity == .rank5 }) ?? entries.count
+        }
+
+        /// Icon to display for confidence level
+        private var confidenceIcon: SFSymbol {
+            switch standardItemHitRateConfidence {
+            case .high: return .checkmarkCircleFill
+            case .medium: return .exclamationmarkTriangleFill
+            case .low: return .questionmarkCircleFill
+            case .insufficient: return .xmarkCircleFill
+            }
+        }
+
+        /// Color for confidence indicator
+        private var confidenceColor: Color {
+            switch standardItemHitRateConfidence {
+            case .high: return .green
+            case .medium: return .orange
+            case .low: return .yellow
+            case .insufficient: return .red
+            }
         }
 
         @ViewBuilder
