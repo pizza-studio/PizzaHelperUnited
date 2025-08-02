@@ -1213,6 +1213,56 @@ Empty selection indicates selecting all gacha pullers.</source>
         <target state="translated">平均ガチャ回數(星5)</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.alert.message" xml:space="preserve">
+        <source>The confidence of the standard item hit rate is based on the number of available 5-star pulls:
+
+• High confidence: ≥10 cases
+• Medium confidence: 5-9 cases
+• Low confidence: 3-4 cases
+• Insufficient data: &lt;3 cases
+
+Reasons for insufficient confidence:
+• Too few 5-star pulls
+• Incomplete gacha history
+• Recently started recording</source>
+        <target state="translated">通常アイテム命中率の信頼度は、利用可能な星5獲得回数に基づいています：
+
+• 信頼度高：≥10回
+• 信頼度中：5-9回
+• 信頼度低：3-4回
+• データ不足：&lt;3回
+
+信頼度不足の理由：
+• 星5獲得回数が少なすぎる
+• ガチャ履歴が不完全
+• 記録を始めたばかり</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.alert.title" xml:space="preserve">
+        <source>About Confidence Indicators</source>
+        <target state="translated">信頼度指標について</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.high" xml:space="preserve">
+        <source>High confidence</source>
+        <target state="translated">信頼度高</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.insufficient" xml:space="preserve">
+        <source>Insufficient data</source>
+        <target state="translated">データ不足</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.low" xml:space="preserve">
+        <source>Low confidence</source>
+        <target state="translated">信頼度低</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.medium" xml:space="preserve">
+        <source>Medium confidence</source>
+        <target state="translated">信頼度中</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.stats.pull:%lld" xml:space="preserve">
         <source>%lld</source>
         <target state="translated">%lld 回</target>

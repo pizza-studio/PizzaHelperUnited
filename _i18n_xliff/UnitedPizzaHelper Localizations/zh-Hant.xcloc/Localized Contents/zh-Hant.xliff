@@ -1211,6 +1211,56 @@ Empty selection indicates selecting all gacha pullers.</source>
         <target state="translated">五星平均抽數</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.alert.message" xml:space="preserve">
+        <source>The confidence of the standard item hit rate is based on the number of available 5-star pulls:
+
+• High confidence: ≥10 cases
+• Medium confidence: 5-9 cases
+• Low confidence: 3-4 cases
+• Insufficient data: &lt;3 cases
+
+Reasons for insufficient confidence:
+• Too few 5-star pulls
+• Incomplete gacha history
+• Recently started recording</source>
+        <target state="translated">常駐物品命中率的可信度基於可用的5星抽取次數：
+
+• 可信度高：≥10次
+• 可信度中等：5-9次
+• 可信度低：3-4次
+• 資料筆數不足：&lt;3次
+
+可信度不足的原因：
+• 5星抽取次數太少
+• 祈願記錄不完整
+• 最近才開始記錄</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.alert.title" xml:space="preserve">
+        <source>About Confidence Indicators</source>
+        <target state="translated">關於可信度指標</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.high" xml:space="preserve">
+        <source>High confidence</source>
+        <target state="translated">可信度高</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.insufficient" xml:space="preserve">
+        <source>Insufficient data</source>
+        <target state="translated">資料筆數不足</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.low" xml:space="preserve">
+        <source>Low confidence</source>
+        <target state="translated">可信度低</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.medium" xml:space="preserve">
+        <source>Medium confidence</source>
+        <target state="translated">可信度中等</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.stats.pull:%lld" xml:space="preserve">
         <source>%lld</source>
         <target state="translated">%lld抽</target>

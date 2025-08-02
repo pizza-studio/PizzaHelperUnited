@@ -1462,6 +1462,72 @@
         }
       }
     },
+    "gachaKit.stats.confidence.alert.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The confidence of the standard item hit rate is based on the number of available 5-star pulls:\n\n• High confidence: ≥10 cases\n• Medium confidence: 5-9 cases\n• Low confidence: 3-4 cases\n• Insufficient data: <3 cases\n\nReasons for insufficient confidence:\n• Too few 5-star pulls\n• Incomplete gacha history\n• Recently started recording"
+          }
+        }
+      }
+    },
+    "gachaKit.stats.confidence.alert.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About Confidence Indicators"
+          }
+        }
+      }
+    },
+    "gachaKit.stats.confidence.high" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "High confidence"
+          }
+        }
+      }
+    },
+    "gachaKit.stats.confidence.insufficient" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insufficient data"
+          }
+        }
+      }
+    },
+    "gachaKit.stats.confidence.low" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Low confidence"
+          }
+        }
+      }
+    },
+    "gachaKit.stats.confidence.medium" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medium confidence"
+          }
+        }
+      }
+    },
     "gachaKit.stats.pull:%lld" : {
       "extractionState" : "manual",
       "localizations" : {

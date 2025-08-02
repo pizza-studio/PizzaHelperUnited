@@ -1209,6 +1209,56 @@ Không chọn gì sẽ nhập tất cả người kéo gacha.</target>
         <target state="translated">Số lần triệu hồi trung bình (tất cả loại ★5)</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.alert.message" xml:space="preserve">
+        <source>The confidence of the standard item hit rate is based on the number of available 5-star pulls:
+
+• High confidence: ≥10 cases
+• Medium confidence: 5-9 cases
+• Low confidence: 3-4 cases
+• Insufficient data: &lt;3 cases
+
+Reasons for insufficient confidence:
+• Too few 5-star pulls
+• Incomplete gacha history
+• Recently started recording</source>
+        <target state="translated">Độ tin cậy của tỷ lệ trúng vật phẩm tiêu chuẩn dựa trên số lượt quay 5 sao có sẵn:
+
+• Độ tin cậy cao: ≥10 trường hợp
+• Độ tin cậy trung bình: 5-9 trường hợp
+• Độ tin cậy thấp: 3-4 trường hợp
+• Dữ liệu không đủ: &lt;3 trường hợp
+
+Lý do độ tin cậy không đủ:
+• Quá ít lượt quay 5 sao
+• Lịch sử gacha không đầy đủ
+• Mới bắt đầu ghi lại gần đây</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.alert.title" xml:space="preserve">
+        <source>About Confidence Indicators</source>
+        <target state="translated">Về các chỉ báo độ tin cậy</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.high" xml:space="preserve">
+        <source>High confidence</source>
+        <target state="translated">Độ tin cậy cao</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.insufficient" xml:space="preserve">
+        <source>Insufficient data</source>
+        <target state="translated">Dữ liệu không đủ</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.low" xml:space="preserve">
+        <source>Low confidence</source>
+        <target state="translated">Độ tin cậy thấp</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.medium" xml:space="preserve">
+        <source>Medium confidence</source>
+        <target state="translated">Độ tin cậy trung bình</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.stats.pull:%lld" xml:space="preserve">
         <source>%lld</source>
         <target state="translated">%lld</target>
