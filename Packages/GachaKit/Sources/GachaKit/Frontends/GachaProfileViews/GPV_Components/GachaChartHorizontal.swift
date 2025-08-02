@@ -117,7 +117,7 @@ extension GachaChartHorizontal {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             // 肖像。
-            Rectangle().fill(.clear).frame(width: entry == nil ? 30 : 49, height: 30)
+            Rectangle().fill(.clear).frame(width: entry == nil ? 30 : 40, height: 30)
                 .overlay(alignment: .bottom) {
                     if let entry {
                         entry.icon(30)
