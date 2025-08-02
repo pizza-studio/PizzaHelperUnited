@@ -9,9 +9,26 @@ import PZBaseKit
 // MARK: - BundledWallpaper
 
 public struct BundledWallpaper: Identifiable, AbleToCodeSendHash {
+    // MARK: Lifecycle
+
+    public init(
+        game: Pizza.SupportedGame?,
+        id: String,
+        bindedCharID: String?,
+        officialFileNameStem: String? = nil
+    ) {
+        self.game = game
+        self.id = id
+        self.bindedCharID = bindedCharID
+        self.officialFileNameStem = officialFileNameStem
+    }
+
+    // MARK: Public
+
     public let game: Pizza.SupportedGame?
     public let id: String
     public let bindedCharID: String? // 原神专用
+    public let officialFileNameStem: String? // 原神專用
 
     public var assetName: String {
         switch game {
@@ -20,6 +37,11 @@ public struct BundledWallpaper: Identifiable, AbleToCodeSendHash {
         case .zenlessZone: "ZZ\(id)"
         case .none: "PZWP\(id)"
         }
+    }
+
+    public var onlineAssetURL: URL? {
+        guard let officialFileNameStem else { return nil }
+        return URL(string: "https://enka.network/ui/\(officialFileNameStem).jpg")
     }
 
     public var assetName4LiveActivity: String {
@@ -211,10 +233,11 @@ extension BundledWallpaper {
 extension Locale {
     /// 以下内容从 EnkaKit 继承而来。
     fileprivate static var langCodeForEnkaAPI: String {
-        let languageCode = Locale.preferredLanguages.first
-            ?? Bundle.module.preferredLocalizations.first
-            ?? Bundle.main.preferredLocalizations.first
-            ?? "en"
+        let languageCode =
+            Locale.preferredLanguages.first
+                ?? Bundle.module.preferredLocalizations.first
+                ?? Bundle.main.preferredLocalizations.first
+                ?? "en"
         switch languageCode.prefix(7).lowercased() {
         case "zh-hans": return "zh-cn"
         case "zh-hant": return "zh-tw"
