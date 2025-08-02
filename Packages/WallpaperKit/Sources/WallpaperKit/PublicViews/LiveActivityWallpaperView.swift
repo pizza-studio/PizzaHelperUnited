@@ -117,10 +117,22 @@ public struct LiveActivityWallpaperView: View {
         return wallpapersReturnable.randomElement() ?? .bundled(BundledWallpaper.defaultValue(for: game))
     }
 
+    private func getCachedOnlineBundledImageAsset(_ bundledWallpaper: BundledWallpaper) -> Image? {
+        guard let url = bundledWallpaper.onlineAssetURL else { return nil }
+        guard let cgImage = OnlineImageFS.getCGImageFromFS(url.absoluteString.md5) else { return nil }
+        return Image(decorative: cgImage, scale: 1)
+    }
+
     private func getRawImage(_ targetWallpaper: Wallpaper) -> Image {
         switch targetWallpaper {
         case let .bundled(bundledWallpaper):
-            bundledWallpaper.image4LiveActivity
+            switch bundledWallpaper.game {
+            case .genshinImpact:
+                getCachedOnlineBundledImageAsset(bundledWallpaper)
+                    ?? bundledWallpaper.image4LiveActivity
+            default:
+                bundledWallpaper.image4LiveActivity
+            }
         case let .user(userWallpaper):
             if let cgImage = userWallpaper.imageHorizontal {
                 Image(decorative: cgImage, scale: 1, orientation: .up)
