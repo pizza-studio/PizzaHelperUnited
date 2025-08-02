@@ -10312,73 +10312,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Zuverlässigkeit der Standardgegenstand-Trefferrate basiert auf der Anzahl der verfügbaren 5-Sterne-Ziehungen:\\n\\n• Hohe Zuverlässigkeit: ≥10 Fälle\\n• Mittlere Zuverlässigkeit: 5-9 Fälle\\n• Niedrige Zuverlässigkeit: 3-4 Fälle\\n• Unzureichende Daten: <3 Fälle\\n\\nGründe für unzureichende Zuverlässigkeit:\\n• Zu wenige 5-Sterne-Ziehungen\\n• Unvollständige Gacha-Historie\\n• Erst kürzlich mit der Aufzeichnung begonnen"
+            "value" : "Die Zuverlässigkeit der Standardgegenstand-Trefferrate basiert auf der Anzahl der verfügbaren 5-Sterne-Ziehungen:\n\n• Hohe Zuverlässigkeit: ≥10 Fälle\n• Mittlere Zuverlässigkeit: 5-9 Fälle\n• Niedrige Zuverlässigkeit: 3-4 Fälle\n• Unzureichende Daten: <3 Fälle\n\nGründe für unzureichende Zuverlässigkeit:\n• Zu wenige 5-Sterne-Ziehungen\n• Unvollständige Gacha-Historie\n• Erst kürzlich mit der Aufzeichnung begonnen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The confidence of the standard item hit rate is based on the number of available 5-star pulls:\\n\\n• High confidence: ≥10 cases\\n• Medium confidence: 5-9 cases\\n• Low confidence: 3-4 cases\\n• Insufficient data: <3 cases\\n\\nReasons for insufficient confidence:\\n• Too few 5-star pulls\\n• Incomplete gacha history\\n• Recently started recording"
+            "value" : "The confidence of the standard item hit rate is based on the number of available 5-star pulls:\n\n• High confidence: ≥10 cases\n• Medium confidence: 5-9 cases\n• Low confidence: 3-4 cases\n• Insufficient data: <3 cases\n\nReasons for insufficient confidence:\n• Too few 5-star pulls\n• Incomplete gacha history\n• Recently started recording"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La confianza de la tasa de acierto de objetos estándar se basa en el número de extracciones de 5 estrellas disponibles:\\n\\n• Alta confianza: ≥10 casos\\n• Confianza media: 5-9 casos\\n• Baja confianza: 3-4 casos\\n• Datos insuficientes: <3 casos\\n\\nRazones para confianza insuficiente:\\n• Muy pocas extracciones de 5 estrellas\\n• Historial de gacha incompleto\\n• Comenzó a registrar recientemente"
+            "value" : "La confianza de la tasa de acierto de objetos estándar se basa en el número de extracciones de 5 estrellas disponibles:\n\n• Alta confianza: ≥10 casos\n• Confianza media: 5-9 casos\n• Baja confianza: 3-4 casos\n• Datos insuficientes: <3 casos\n\nRazones para confianza insuficiente:\n• Muy pocas extracciones de 5 estrellas\n• Historial de gacha incompleto\n• Comenzó a registrar recientemente"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang tiwala sa standard item hit rate ay nakabatay sa bilang ng mga available na 5-star pulls:\\n\\n• Mataas na tiwala: ≥10 kaso\\n• Katamtamang tiwala: 5-9 kaso\\n• Mababang tiwala: 3-4 kaso\\n• Hindi sapat na data: <3 kaso\\n\\nMga dahilan ng kulang na tiwala:\\n• Kakaunting 5-star pulls\\n• Hindi kumpleto ang gacha history\\n• Kakasimula pa lang mag-record"
+            "value" : "Ang tiwala sa standard item hit rate ay nakabatay sa bilang ng mga available na 5-star pulls:\n\n• Mataas na tiwala: ≥10 kaso\n• Katamtamang tiwala: 5-9 kaso\n• Mababang tiwala: 3-4 kaso\n• Hindi sapat na data: <3 kaso\n\nMga dahilan ng kulang na tiwala:\n• Kakaunting 5-star pulls\n• Hindi kumpleto ang gacha history\n• Kakasimula pa lang mag-record"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La confiance du taux de réussite des objets standard est basée sur le nombre de tirages 5 étoiles disponibles:\\n\\n• Confiance élevée: ≥10 cas\\n• Confiance moyenne: 5-9 cas\\n• Confiance faible: 3-4 cas\\n• Données insuffisantes: <3 cas\\n\\nRaisons d'une confiance insuffisante:\\n• Trop peu de tirages 5 étoiles\\n• Historique gacha incomplet\\n• Enregistrement récemment commencé"
+            "value" : "La confiance du taux de réussite des objets standard est basée sur le nombre de tirages 5 étoiles disponibles:\n\n• Confiance élevée: ≥10 cas\n• Confiance moyenne: 5-9 cas\n• Confiance faible: 3-4 cas\n• Données insuffisantes: <3 cas\n\nRaisons d'une confiance insuffisante:\n• Trop peu de tirages 5 étoiles\n• Historique gacha incomplet\n• Enregistrement récemment commencé"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L'affidabilità del tasso di successo degli oggetti standard si basa sul numero di pull a 5 stelle disponibili:\\n\\n• Alta affidabilità: ≥10 casi\\n• Affidabilità media: 5-9 casi\\n• Affidabilità bassa: 3-4 casi\\n• Dati insufficienti: <3 casi\\n\\nMotivi per affidabilità insufficiente:\\n• Troppo pochi pull a 5 stelle\\n• Cronologia gacha incompleta\\n• Registrazione iniziata di recente"
+            "value" : "L'affidabilità del tasso di successo degli oggetti standard si basa sul numero di pull a 5 stelle disponibili:\n\n• Alta affidabilità: ≥10 casi\n• Affidabilità media: 5-9 casi\n• Affidabilità bassa: 3-4 casi\n• Dati insufficienti: <3 casi\n\nMotivi per affidabilità insufficiente:\n• Troppo pochi pull a 5 stelle\n• Cronologia gacha incompleta\n• Registrazione iniziata di recente"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "通常アイテム命中率の信頼度は、利用可能な星5獲得回数に基づいています：\\n\\n• 信頼度高：≥10回\\n• 信頼度中：5-9回\\n• 信頼度低：3-4回\\n• データ不足：<3回\\n\\n信頼度不足の理由：\\n• 星5獲得回数が少なすぎる\\n• ガチャ履歴が不完全\\n• 記録を始めたばかり"
+            "value" : "通常アイテム命中率の信頼度は、利用可能な星5獲得回数に基づいています：\n\n• 信頼度高：≥10回\n• 信頼度中：5-9回\n• 信頼度低：3-4回\n• データ不足：<3回\n\n信頼度不足の理由：\n• 星5獲得回数が少なすぎる\n• ガチャ履歴が不完全\n• 記録を始めたばかり"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "일반 아이템 적중률의 신뢰도는 사용 가능한 5성 뽑기 수를 기반으로 합니다:\\n\\n• 높은 신뢰도: ≥10회\\n• 보통 신뢰도: 5-9회\\n• 낮은 신뢰도: 3-4회\\n• 데이터 부족: <3회\\n\\n신뢰도 부족 이유:\\n• 5성 뽑기가 너무 적음\\n• 불완전한 가챠 기록\\n• 최근에 기록 시작"
+            "value" : "일반 아이템 적중률의 신뢰도는 사용 가능한 5성 뽑기 수를 기반으로 합니다:\n\n• 높은 신뢰도: ≥10회\n• 보통 신뢰도: 5-9회\n• 낮은 신뢰도: 3-4회\n• 데이터 부족: <3회\n\n신뢰도 부족 이유:\n• 5성 뽑기가 너무 적음\n• 불완전한 가챠 기록\n• 최근에 기록 시작"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Достоверность показателя попадания стандартных предметов основана на количестве доступных выпадений 5-звёздочных предметов:\\n\\n• Высокая достоверность: ≥10 случаев\\n• Средняя достоверность: 5-9 случаев\\n• Низкая достоверность: 3-4 случая\\n• Недостаточно данных: <3 случаев\\n\\nПричины недостаточной достоверности:\\n• Слишком мало выпадений 5-звёздочных предметов\\n• Неполная история гача\\n• Недавно начали записывать данные"
+            "value" : "Достоверность показателя попадания стандартных предметов основана на количестве доступных выпадений 5-звёздочных предметов:\n\n• Высокая достоверность: ≥10 случаев\n• Средняя достоверность: 5-9 случаев\n• Низкая достоверность: 3-4 случая\n• Недостаточно данных: <3 случаев\n\nПричины недостаточной достоверности:\n• Слишком мало выпадений 5-звёздочных предметов\n• Неполная история гача\n• Недавно начали записывать данные"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Độ tin cậy của tỷ lệ trúng vật phẩm tiêu chuẩn dựa trên số lượt quay 5 sao có sẵn:\\n\\n• Độ tin cậy cao: ≥10 trường hợp\\n• Độ tin cậy trung bình: 5-9 trường hợp\\n• Độ tin cậy thấp: 3-4 trường hợp\\n• Dữ liệu không đủ: <3 trường hợp\\n\\nLý do độ tin cậy không đủ:\\n• Quá ít lượt quay 5 sao\\n• Lịch sử gacha không đầy đủ\\n• Mới bắt đầu ghi lại gần đây"
+            "value" : "Độ tin cậy của tỷ lệ trúng vật phẩm tiêu chuẩn dựa trên số lượt quay 5 sao có sẵn:\n\n• Độ tin cậy cao: ≥10 trường hợp\n• Độ tin cậy trung bình: 5-9 trường hợp\n• Độ tin cậy thấp: 3-4 trường hợp\n• Dữ liệu không đủ: <3 trường hợp\n\nLý do độ tin cậy không đủ:\n• Quá ít lượt quay 5 sao\n• Lịch sử gacha không đầy đủ\n• Mới bắt đầu ghi lại gần đây"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "常驻物品命中率的可信度基于可用的5星抽取次数：\\n\\n• 可信度高：≥10次\\n• 可信度中等：5-9次\\n• 可信度低：3-4次\\n• 数据不足：<3次\\n\\n可信度不足的原因：\\n• 5星抽取次数太少\\n• 祈愿记录不完整\\n• 最近才开始记录"
+            "value" : "常驻物品命中率的可信度基于可用的5星抽取次数：\n\n• 可信度高：≥10次\n• 可信度中等：5-9次\n• 可信度低：3-4次\n• 数据量不足：<3次\n\n可信度不足的原因：\n• 5星抽取次数太少\n• 祈愿记录不完整\n• 最近才开始记录"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "常駐物品命中率的可信度基於可用的5星抽取次數：\\n\\n• 可信度高：≥10次\\n• 可信度中等：5-9次\\n• 可信度低：3-4次\\n• 數據不足：<3次\\n\\n可信度不足的原因：\\n• 5星抽取次數太少\\n• 祈願記錄不完整\\n• 最近才開始記錄"
+            "value" : "常駐物品命中率的可信度基於可用的5星抽取次數：\n\n• 可信度高：≥10次\n• 可信度中等：5-9次\n• 可信度低：3-4次\n• 資料筆數不足：<3次\n\n可信度不足的原因：\n• 5星抽取次數太少\n• 祈願記錄不完整\n• 最近才開始記錄"
           }
         }
       }
@@ -10603,13 +10603,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "数据不足"
+            "value" : "数据量不足"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "數據不足"
+            "value" : "資料筆數不足"
           }
         }
       }

@@ -117,10 +117,10 @@ extension GachaProfileView {
                 }
             }
             .alert(
-                "gachaKit.stats.confidence.alert.title",
+                Text("gachaKit.stats.confidence.alert.title", bundle: .module),
                 isPresented: $isConfidenceExplanationAlertShown
             ) {
-                Button("sys.confirm".i18nBaseKit) {
+                Button("sys.ok".i18nBaseKit) {
                     isConfidenceExplanationAlertShown = false
                 }
             } message: {
@@ -279,7 +279,6 @@ extension GachaProfileView {
                             .font(.caption2)
                         standardItemHitRateConfidence.localizedSUIText
                             .font(.caption2)
-                            .foregroundColor(.red)
                     }
                 }
                 .buttonStyle(.borderless)
