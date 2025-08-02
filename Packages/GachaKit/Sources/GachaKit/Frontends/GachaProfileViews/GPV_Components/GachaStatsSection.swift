@@ -21,6 +21,25 @@ extension GachaProfileView {
 
         // MARK: Public
 
+        /// Confidence level for the standard item hit rate calculation
+        public enum StandardHitRateConfidence: CaseIterable {
+            case high // >= 10 relevant cases
+            case medium // 5-9 relevant cases
+            case low // 3-4 relevant cases
+            case insufficient // < 3 relevant cases
+
+            // MARK: Internal
+
+            var localizedDescription: String {
+                switch self {
+                case .high: return "gachaKit.stats.confidence.high"
+                case .medium: return "gachaKit.stats.confidence.medium"
+                case .low: return "gachaKit.stats.confidence.low"
+                case .insufficient: return "gachaKit.stats.confidence.insufficient"
+                }
+            }
+        }
+
         public var body: some View {
             Section {
                 HStack {
@@ -85,16 +104,22 @@ extension GachaProfileView {
                             Text(Self.fmtPerc.string(from: standardItemHitRate as NSNumber) ?? "N/A")
                                 .fontWidth(.condensed)
                         }
-                        
+
                         // Show confidence indicator for medium/low/insufficient confidence
                         if standardItemHitRateConfidence != .high {
                             HStack {
                                 Image(systemSymbol: confidenceIcon)
                                     .foregroundStyle(confidenceColor)
                                     .font(.caption2)
-                                Text(LocalizedStringKey(stringLiteral: standardItemHitRateConfidence.localizedDescription), bundle: .module)
-                                    .font(.caption2)
-                                    .foregroundStyle(.secondary)
+                                Text(
+                                    LocalizedStringKey(
+                                        stringLiteral: standardItemHitRateConfidence
+                                            .localizedDescription
+                                    ),
+                                    bundle: .module
+                                )
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
                                 Spacer()
                             }
                         }
@@ -136,28 +161,11 @@ extension GachaProfileView {
             pentaStarEntries.map(\.drawCount).reduce(0, +) / max(pentaStarsNotSurinuked.count, 1)
         }
 
-        /// Confidence level for the standard item hit rate calculation
-        public enum StandardHitRateConfidence: CaseIterable {
-            case high       // >= 10 relevant cases
-            case medium     // 5-9 relevant cases  
-            case low        // 3-4 relevant cases
-            case insufficient // < 3 relevant cases
-            
-            var localizedDescription: String {
-                switch self {
-                case .high: return "gachaKit.stats.confidence.high"
-                case .medium: return "gachaKit.stats.confidence.medium"
-                case .low: return "gachaKit.stats.confidence.low"
-                case .insufficient: return "gachaKit.stats.confidence.insufficient"
-                }
-            }
-        }
-
         /// Confidence level of the standard item hit rate calculation
         private var standardItemHitRateConfidence: StandardHitRateConfidence {
             let relevantCases = standardItemHitRateCalculationCases
             let caseCount = relevantCases.count
-            
+
             if caseCount >= 10 {
                 return .high
             } else if caseCount >= 5 {
@@ -173,10 +181,10 @@ extension GachaProfileView {
         private var standardItemHitRateCalculationCases: [Bool] {
             let pentaStarEntries = pentaStarEntries
             guard !pentaStarEntries.isEmpty else { return [] }
-            
+
             var surinukableCases = [Bool]()
             var previousPentaStarIsSurinuked = false
-            
+
             for theEntry in pentaStarEntries.reversed() {
                 let isCurrentItemSurinuked = theEntry.isSurinuked
                 defer {
@@ -196,10 +204,10 @@ extension GachaProfileView {
         private var standardItemHitRate: Double {
             let surinukableCases = standardItemHitRateCalculationCases
             guard surinukableCases.count >= 3 else { return 0.0 } // Insufficient data
-            
+
             let countSurinuked = Double(surinukableCases.count(where: \.self))
             let rate = countSurinuked / Double(surinukableCases.count)
-            
+
             // Ensure rate stays within theoretical bounds (0-50%)
             return min(rate, 0.5)
         }
