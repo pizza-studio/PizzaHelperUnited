@@ -87,6 +87,10 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
         return nil
     }
 
+    private var cachedOnlineBundledImageAsset: Image? {
+        background.cachedOnlineBundledImageAsset
+    }
+
     @ViewBuilder private var backgroundStackLayers: some View {
         if !background.colors.isEmpty {
             LinearGradient(
@@ -111,8 +115,11 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
         if let backgroundImageName = background.imageName {
             let wpMaybe = BundledWallpaper.allCases.first { $0.assetName4LiveActivity == backgroundImageName }
             let wallpaper = (wpMaybe ?? .defaultValue())
-            let backgroundImage = wallpaper.image4LiveActivity
             let isGenshinImpact = wallpaper.game == .genshinImpact
+            let backgroundImage: Image = {
+                if !isGenshinImpact { return wallpaper.image4LiveActivity }
+                return cachedOnlineBundledImageAsset ?? wallpaper.image4LiveActivity
+            }()
 
             switch widgetFamily {
             case .systemLarge, .systemSmall:

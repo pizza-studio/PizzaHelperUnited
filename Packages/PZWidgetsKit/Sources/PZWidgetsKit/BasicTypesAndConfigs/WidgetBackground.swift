@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Defaults
 import Foundation
 import PZBaseKit
@@ -84,6 +85,15 @@ extension WidgetBackground {
         let uuid = UUID(uuidString: id)
         guard uuid != nil else { return nil }
         return .init(defaultsValueID: id)
+    }
+
+    @MainActor public var cachedOnlineBundledImageAsset: Image? {
+        let matchedWP = Wallpaper(id: id)
+        guard let matchedWP else { return nil }
+        guard case let .bundled(bundledWPMatched) = matchedWP else { return nil }
+        guard let url = bundledWPMatched.onlineAssetURL else { return nil }
+        guard let cgImage = OnlineImageFS.getCGImageFromFS(url.absoluteString.md5) else { return nil }
+        return Image(decorative: cgImage, scale: 1)
     }
 
     public var imageName: String? {
@@ -311,5 +321,17 @@ extension Wallpaper {
         case let .bundled(bundledWallpaper): bundledWallpaper.asWidgetBackground
         case let .user(userWallpaper): userWallpaper.asWidgetBackground
         }
+    }
+}
+
+@available(iOS 16.2, macCatalyst 16.2, *)
+extension BundledWallpaper {
+    func saveOnlineBackgroundAsset() async {
+        guard let url = onlineAssetURL else { return }
+        let fileNameStem = url.absoluteString.md5
+        guard !OnlineImageFS.checkExistence(fileNameStem) else { return }
+        let data: Data = (try? await AF.request(url).serializingData().value) ?? .init([])
+        guard let cgImage = CGImage.instantiate(data: data) else { return }
+        try? OnlineImageFS.insertCGImageToFSIfMissing(fileNameStem, cgImage: cgImage)
     }
 }
