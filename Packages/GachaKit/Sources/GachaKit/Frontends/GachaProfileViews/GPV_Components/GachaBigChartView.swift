@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
 import SwiftUI
 
 // MARK: - GachaBigChartView
@@ -20,22 +21,24 @@ public struct GachaBigChartView: View {
         NavigationStack {
             Form {
                 contentFilterSection
-                    .disabled(theVM.taskState == .busy)
+                    .disabled(gachaVM.taskState == .busy)
                 GachaChartVertical(
-                    gpid: theVM.currentGPID,
-                    poolType: theVM.currentPoolType
-                )?.environment(theVM)
+                    gpid: gachaVM.currentGPID,
+                    poolType: gachaVM.currentPoolType
+                )?.frame(width: containerWidth)
             }
             .formStyle(.grouped).disableFocusable()
-            .saturation(theVM.taskState == .busy ? 0 : 1)
+            .environment(gachaVM)
+            .animation(.easeIn(duration: 0.2), value: screenVM.mainColumnCanvasSizeObserved.width)
+            .saturation(gachaVM.taskState == .busy ? 0 : 1)
             .navBarTitleDisplayMode(.large)
-            .navigationTitle(theVM.currentGPIDTitle ?? Self.navTitle)
+            .navigationTitle(gachaVM.currentGPIDTitle ?? Self.navTitle)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     GachaProfileSwitcherView()
-                        .environment(theVM)
+                        .environment(gachaVM)
                 }
-                if theVM.taskState == .busy {
+                if gachaVM.taskState == .busy {
                     ToolbarItem(placement: .confirmationAction) {
                         ProgressView()
                     }
@@ -47,20 +50,25 @@ public struct GachaBigChartView: View {
     // MARK: Internal
 
     var availablePoolTypes: [GachaPoolExpressible] {
-        guard let game = theVM.currentGPID?.game else { return [] }
+        guard let game = gachaVM.currentGPID?.game else { return [] }
         return GachaPoolExpressible.getKnownCases(by: game)
     }
 
     // MARK: Private
 
-    @Environment(GachaVM.self) private var theVM
+    @Environment(GachaVM.self) private var gachaVM
+    @State private var screenVM: ScreenVM = .shared
+
+    private var containerWidth: CGFloat {
+        screenVM.mainColumnCanvasSizeObserved.width - 64
+    }
 
     @ViewBuilder private var contentFilterSection: some View {
-        if let theProfile = theVM.currentGPID {
+        if let theProfile = gachaVM.currentGPID {
             Section {
                 let labelName = GachaPoolExpressible.getPoolFilterLabel(by: theProfile.game)
-                @Bindable var theVM = theVM
-                Picker(labelName, selection: $theVM.currentPoolType.animation()) {
+                @Bindable var gachaVM = gachaVM
+                Picker(labelName, selection: $gachaVM.currentPoolType.animation()) {
                     ForEach(availablePoolTypes) { poolType in
                         let taggableValue = poolType as GachaPoolExpressible?
                         Text(poolType.localizedTitle).tag(taggableValue)
