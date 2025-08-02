@@ -116,6 +116,16 @@ extension GachaProfileView {
                     guestEvaluatorView()
                 }
             }
+            .alert(
+                "gachaKit.stats.confidence.alert.title",
+                isPresented: $isConfidenceExplanationAlertShown
+            ) {
+                Button("sys.confirm".i18nBaseKit) {
+                    isConfidenceExplanationAlertShown = false
+                }
+            } message: {
+                Text("gachaKit.stats.confidence.alert.message", bundle: .module)
+            }
         }
 
         // MARK: Private
@@ -128,6 +138,7 @@ extension GachaProfileView {
         }()
 
         @Environment(GachaVM.self) private var theVM
+        @State private var isConfidenceExplanationAlertShown: Bool = false
 
         private let poolType: GachaPoolExpressible
         private let givenGPID: GachaProfileID
@@ -260,7 +271,7 @@ extension GachaProfileView {
         private func drawStandardHitRateConfidenceWarningButton() -> some View {
             if standardItemHitRateConfidence != .high {
                 Button {
-                    // TO COPILOT: 请在此实作一个 Alert 给用户解释可能导致可信度不足的原因。
+                    isConfidenceExplanationAlertShown = true
                 } label: {
                     HStack(spacing: 4) {
                         Image(systemSymbol: confidenceIcon)
