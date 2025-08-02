@@ -30,13 +30,17 @@ extension GachaProfileView {
 
             // MARK: Internal
 
-            var localizedDescription: String {
+            var i18nKeyStr: LocalizedStringKey {
                 switch self {
                 case .high: return "gachaKit.stats.confidence.high"
                 case .medium: return "gachaKit.stats.confidence.medium"
                 case .low: return "gachaKit.stats.confidence.low"
                 case .insufficient: return "gachaKit.stats.confidence.insufficient"
                 }
+            }
+
+            var localizedSUIText: Text {
+                Text(i18nKeyStr, bundle: .module)
             }
         }
 
@@ -101,26 +105,11 @@ extension GachaProfileView {
                                 Image(systemSymbol: .trashCircleFill).foregroundStyle(.red)
                             }
                             Spacer()
-                            Text(Self.fmtPerc.string(from: standardItemHitRate as NSNumber) ?? "N/A")
-                                .fontWidth(.condensed)
-                        }
-
-                        // Show confidence indicator for medium/low/insufficient confidence
-                        if standardItemHitRateConfidence != .high {
-                            HStack {
-                                Image(systemSymbol: confidenceIcon)
-                                    .foregroundStyle(confidenceColor)
-                                    .font(.caption2)
-                                Text(
-                                    LocalizedStringKey(
-                                        stringLiteral: standardItemHitRateConfidence
-                                            .localizedDescription
-                                    ),
-                                    bundle: .module
-                                )
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
-                                Spacer()
+                            VStack(alignment: .trailing) {
+                                Text(Self.fmtPerc.string(from: standardItemHitRate as NSNumber) ?? "N/A")
+                                    .fontWidth(.condensed)
+                                // Show confidence indicator for medium/low/insufficient confidence
+                                drawStandardHitRateConfidenceWarningButton()
                             }
                         }
                     }
@@ -264,6 +253,25 @@ extension GachaProfileView {
                         Spacer()
                     }
                 }
+            }
+        }
+
+        @ViewBuilder
+        private func drawStandardHitRateConfidenceWarningButton() -> some View {
+            if standardItemHitRateConfidence != .high {
+                Button {
+                    // TO COPILOT: 请在此实作一个 Alert 给用户解释可能导致可信度不足的原因。
+                } label: {
+                    HStack(spacing: 4) {
+                        Image(systemSymbol: confidenceIcon)
+                            .foregroundStyle(confidenceColor)
+                            .font(.caption2)
+                        standardItemHitRateConfidence.localizedSUIText
+                            .font(.caption2)
+                            .foregroundColor(.red)
+                    }
+                }
+                .buttonStyle(.borderless)
             }
         }
     }
