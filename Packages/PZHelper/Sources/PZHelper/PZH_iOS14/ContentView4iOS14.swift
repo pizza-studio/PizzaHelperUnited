@@ -181,7 +181,7 @@ public struct ContentView4iOS14: View {
                         theVM.fireTask(
                             givenTask: {
                                 let dailyNote = try await profile.getDailyNote(cached: true)
-                                try StaminaLiveActivityController.shared.createResinRecoveryTimerActivity(
+                                try await StaminaLiveActivityController.shared.createResinRecoveryTimerActivity(
                                     for: profile,
                                     data: dailyNote
                                 )
