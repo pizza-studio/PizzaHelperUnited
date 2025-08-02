@@ -31,14 +31,16 @@ public struct EnableLiveActivityButton: View {
 
     public var body: some View {
         Button {
-            do {
-                try StaminaLiveActivityController.shared.createResinRecoveryTimerActivity(
-                    for: profile,
-                    data: dailyNote
-                )
-            } catch {
-                self.error = .otherError(error)
-                showErrorAlert.toggle()
+            Task { @MainActor in
+                do {
+                    try await StaminaLiveActivityController.shared.createResinRecoveryTimerActivity(
+                        for: profile,
+                        data: dailyNote
+                    )
+                } catch {
+                    self.error = .otherError(error)
+                    showErrorAlert.toggle()
+                }
             }
         } label: {
             Text("app.dailynote.initiateLiveActivity", bundle: .module)
@@ -77,7 +79,7 @@ public struct LiveActivityAttributes: Sendable {
         public init(
             dailyNote: any DailyNoteProtocol,
             showExpedition: Bool
-        ) {
+        ) async {
             self.primaryStaminaRecoverySpeed = dailyNote.eachStaminaRecoveryTime
             self.staminaCompletionStatus = dailyNote.staminaIntel
             self.primaryStaminaRecoveryTime = dailyNote.staminaFullTimeOnFinish
@@ -169,7 +171,11 @@ public final class StaminaLiveActivityController: Sendable {
         #endif
     }
 
-    public func createResinRecoveryTimerActivity(for profile: PZProfileSendable, data: some DailyNoteProtocol) throws {
+    @MainActor
+    public func createResinRecoveryTimerActivity(
+        for profile: PZProfileSendable,
+        data: some DailyNoteProtocol
+    ) async throws {
         #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
         guard allowLiveActivity else {
             throw CreateLiveActivityError.notAllowed
@@ -186,7 +192,7 @@ public final class StaminaLiveActivityController: Sendable {
             profileName: profileName,
             profileUUID: profileUUID
         )
-        let status: LiveActivityAttributes.LiveActivityState = .init(
+        let status: LiveActivityAttributes.LiveActivityState = await .init(
             dailyNote: data,
             showExpedition: Defaults[.showExpeditionInLiveActivity]
         )
@@ -229,7 +235,7 @@ public final class StaminaLiveActivityController: Sendable {
                     endActivity(for: profile)
                     continue
                 }
-                let status: LiveActivityAttributes.LiveActivityState = .init(
+                let status: LiveActivityAttributes.LiveActivityState = await .init(
                     dailyNote: data,
                     showExpedition: Defaults[.showExpeditionInLiveActivity]
                 )
