@@ -1212,6 +1212,56 @@ Aucune sélection indique que tous les tireurs gacha seront importés.</target>
         <target state="translated">Moyenne des voeux (tous les ★5)</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.alert.message" xml:space="preserve">
+        <source>The confidence of the standard item hit rate is based on the number of available 5-star pulls:
+
+• High confidence: ≥10 cases
+• Medium confidence: 5-9 cases
+• Low confidence: 3-4 cases
+• Insufficient data: &lt;3 cases
+
+Reasons for insufficient confidence:
+• Too few 5-star pulls
+• Incomplete gacha history
+• Recently started recording</source>
+        <target state="translated">La confiance du taux de réussite des objets standard est basée sur le nombre de tirages 5 étoiles disponibles:
+
+• Confiance élevée: ≥10 cas
+• Confiance moyenne: 5-9 cas
+• Confiance faible: 3-4 cas
+• Données insuffisantes: &lt;3 cas
+
+Raisons d'une confiance insuffisante:
+• Trop peu de tirages 5 étoiles
+• Historique gacha incomplet
+• Enregistrement récemment commencé</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.alert.title" xml:space="preserve">
+        <source>About Confidence Indicators</source>
+        <target state="translated">À propos des indicateurs de confiance</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.high" xml:space="preserve">
+        <source>High confidence</source>
+        <target state="translated">Confiance élevée</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.insufficient" xml:space="preserve">
+        <source>Insufficient data</source>
+        <target state="translated">Données insuffisantes</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.low" xml:space="preserve">
+        <source>Low confidence</source>
+        <target state="translated">Confiance faible</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.stats.confidence.medium" xml:space="preserve">
+        <source>Medium confidence</source>
+        <target state="translated">Confiance moyenne</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.stats.pull:%lld" xml:space="preserve">
         <source>%lld</source>
         <target state="translated">%lld</target>
