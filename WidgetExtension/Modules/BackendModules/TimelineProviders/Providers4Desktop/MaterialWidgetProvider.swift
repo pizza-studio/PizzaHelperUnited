@@ -39,7 +39,8 @@ struct MaterialWidgetProvider: TimelineProvider {
             }
             let isEmpty = results?.isEmpty ?? true
             if isEmpty { results = nil }
-            let entry = Entry(events: results)
+            var entry = Entry(events: results)
+            await updateEntryViewConfig(&entry)
             completion(entry)
         }
     }
@@ -52,7 +53,8 @@ struct MaterialWidgetProvider: TimelineProvider {
             var results: [OfficialFeed.FeedEvent]? = await OfficialFeed.getAllFeedEventsOnline(game: .genshinImpact)
             let isEmpty = results?.isEmpty ?? true
             if isEmpty { results = nil }
-            let entry = Entry(events: results)
+            var entry = Entry(events: results)
+            await updateEntryViewConfig(&entry)
             let policyAfterTime = Calendar.gregorian.date(
                 byAdding: .hour, value: isEmpty ? 1 : 4, to: Date()
             )!
@@ -63,6 +65,16 @@ struct MaterialWidgetProvider: TimelineProvider {
                 )
             )
         }
+    }
+
+    func updateEntryViewConfig(_ entry: inout Entry) async {
+        entry.viewConfig.isDarkModeRespected = true
+        entry.viewConfig.randomBackground = false
+        entry.viewConfig.selectedBackgrounds = [
+            WidgetBackground.randomWallpaperBackground4Game(.genshinImpact),
+        ]
+        entry.viewConfig.updateBackgroundValue()
+        await entry.viewConfig.saveOnlineBackgroundAsset()
     }
 }
 

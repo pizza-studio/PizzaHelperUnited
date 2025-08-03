@@ -47,7 +47,8 @@ struct OfficialFeedWidgetProvider: CrossGenServiceableTimelineProvider {
         }
         let isEmpty = results?.isEmpty ?? true
         if isEmpty { results = nil }
-        let entry = Entry(games: .init(games), events: results)
+        var entry = Entry(games: .init(games), events: results)
+        await updateEntryViewConfig(&entry, games: games)
         return entry
     }
 
@@ -66,7 +67,8 @@ struct OfficialFeedWidgetProvider: CrossGenServiceableTimelineProvider {
         }.value
         let isEmpty = results?.isEmpty ?? true
         if isEmpty { results = nil }
-        let entry = Entry(games: .init(games), events: results)
+        var entry = Entry(games: .init(games), events: results)
+        await updateEntryViewConfig(&entry, games: games)
         let policyAfterTime = Calendar.gregorian.date(
             byAdding: .hour, value: isEmpty ? 1 : 4, to: Date()
         )!
@@ -75,6 +77,16 @@ struct OfficialFeedWidgetProvider: CrossGenServiceableTimelineProvider {
                 entries: [entry],
                 policy: .after(policyAfterTime)
             )
+    }
+
+    func updateEntryViewConfig(_ entry: inout Entry, games: [Pizza.SupportedGame]) async {
+        entry.viewConfig.isDarkModeRespected = true
+        entry.viewConfig.randomBackground = false
+        entry.viewConfig.selectedBackgrounds = [
+            WidgetBackground.randomWallpaperBackground4Games(Set(games)),
+        ]
+        entry.viewConfig.updateBackgroundValue()
+        await entry.viewConfig.saveOnlineBackgroundAsset()
     }
 }
 
