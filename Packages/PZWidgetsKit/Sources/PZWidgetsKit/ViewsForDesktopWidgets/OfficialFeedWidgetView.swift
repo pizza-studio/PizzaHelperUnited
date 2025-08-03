@@ -33,7 +33,7 @@ extension DesktopWidgets {
             )
             .padding()
             .environment(\.colorScheme, .dark)
-            .pzWidgetContainerBackground(viewConfig: viewConfig)
+            .pzWidgetContainerBackground(viewConfig: entry.viewConfig)
         }
 
         // MARK: Private
@@ -41,16 +41,6 @@ extension DesktopWidgets {
         private let entry: OfficialFeedWidgetEntry
         private let games: Set<Pizza.SupportedGame>
         private let showLeadingBorder: Bool
-
-        private var viewConfig: WidgetViewConfig {
-            var result = WidgetViewConfig()
-            result.randomBackground = false
-            result.selectedBackgrounds = [
-                WidgetBackground.randomWallpaperBackground4Games(entry.games),
-            ]
-            result.isDarkModeRespected = true
-            return result
-        }
     }
 }
 

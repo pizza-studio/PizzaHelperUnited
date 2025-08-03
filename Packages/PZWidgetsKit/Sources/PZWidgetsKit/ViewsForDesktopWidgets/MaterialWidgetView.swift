@@ -51,20 +51,8 @@ extension DesktopWidgets {
             }
             .padding()
             .environment(\.colorScheme, .dark)
-            .pzWidgetContainerBackground(viewConfig: viewConfig)
+            .pzWidgetContainerBackground(viewConfig: entry.viewConfig)
         }
-
-        // MARK: Private
-
-        private let viewConfig: WidgetViewConfig = {
-            var result = WidgetViewConfig()
-            result.randomBackground = false
-            result.selectedBackgrounds = [
-                WidgetBackground.randomWallpaperBackground4Game(.genshinImpact),
-            ]
-            result.isDarkModeRespected = true
-            return result
-        }()
     }
 }
 
