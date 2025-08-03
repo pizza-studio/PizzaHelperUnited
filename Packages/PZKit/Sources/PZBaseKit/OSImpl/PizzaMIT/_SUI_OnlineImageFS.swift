@@ -47,22 +47,22 @@ extension OnlineImageFS {
         case existingDataRemovalFailure(Error)
     }
 
-    public static func makeFileURL(fileNameStem: String) -> URL {
+    public static func makeFileURL(fileNameStem: String, useJPG: Bool) -> URL {
         onlineImageCacheFolderURL.appendingPathComponent(
-            "\(fileNameStem).png",
+            "\(fileNameStem).\(useJPG ? "jpg" : "png")",
             isDirectory: false
         )
     }
 
-    public static func getCGImageFromFS(_ fileNameStem: String) -> CGImage? {
+    public static func getCGImageFromFS(_ fileNameStem: String, useJPG: Bool) -> CGImage? {
         guard !fileNameStem.isEmpty else { return nil }
-        let url = makeFileURL(fileNameStem: fileNameStem)
+        let url = makeFileURL(fileNameStem: fileNameStem, useJPG: useJPG)
         return CGImage.instantiate(url: url)
     }
 
-    public static func checkExistence(_ fileNameStem: String) -> Bool {
+    public static func checkExistence(_ fileNameStem: String, useJPG: Bool) -> Bool {
         guard !fileNameStem.isEmpty else { return false }
-        let url = makeFileURL(fileNameStem: fileNameStem)
+        let url = makeFileURL(fileNameStem: fileNameStem, useJPG: useJPG)
         var isDirectory: ObjCBool = true
         let exists = FileManager.default.fileExists(atPath: url.path, isDirectory: &isDirectory)
         return exists && !isDirectory.boolValue
@@ -70,10 +70,11 @@ extension OnlineImageFS {
 
     public static func insertCGImageToFSIfMissing(
         _ fileNameStem: String,
-        cgImage: CGImage
+        cgImage: CGImage,
+        useJPG: Bool
     ) throws(OIFSException) {
         guard !fileNameStem.isEmpty else { throw .fileStemNameEmpty }
-        let url = makeFileURL(fileNameStem: fileNameStem)
+        let url = makeFileURL(fileNameStem: fileNameStem, useJPG: useJPG)
         var isDirectory: ObjCBool = true
         let exists = FileManager.default.fileExists(atPath: url.path(), isDirectory: &isDirectory)
         if exists {
@@ -84,7 +85,8 @@ extension OnlineImageFS {
                 throw .existingDataRemovalFailure(error)
             }
         }
-        guard let data = cgImage.encodeToFileData(as: .png) else { throw .dataEncodingFailure }
+        let data = cgImage.encodeToFileData(as: useJPG ? .jpeg(quality: 0.8) : .png)
+        guard let data else { throw .dataEncodingFailure }
         do {
             try data.write(to: url, options: .atomic)
         } catch {
