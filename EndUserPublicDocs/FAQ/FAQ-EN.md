@@ -165,4 +165,37 @@ The Pizza Helper uses Group Containers to storage local profiles by default (wit
 
 This is a proven workaround for this issue.
 
+#### Q: What is the Standard Hit Rate Confidence feature in gacha statistics?
+
+The Standard Hit Rate Confidence feature in The Pizza Helper provides a reliability indicator for the standard item hit rate calculation in gacha games. This feature helps users understand how trustworthy their gacha statistics are based on the amount of available data.
+
+**Confidence Levels and Thresholds:**
+
+The confidence is determined by the number of relevant 5-star pulls available for analysis:
+
+- **High confidence**: ≥10 cases - The calculated standard hit rate is highly reliable
+- **Medium confidence**: 5-9 cases - The calculated standard hit rate has moderate reliability
+- **Low confidence**: 3-4 cases - The calculated standard hit rate has limited reliability
+- **Insufficient data**: <3 cases - Not enough data to provide a meaningful calculation
+
+**How to Interpret Confidence Levels:**
+
+- **High confidence** results can be trusted for making gameplay decisions
+- **Medium confidence** results provide useful guidance but should be considered alongside other factors
+- **Low confidence** results should be interpreted cautiously as they may not be representative
+- **Insufficient data** indicates you need more gacha pulls before meaningful statistics can be calculated
+
+**Common Reasons for Insufficient Confidence:**
+
+- Too few 5-star pulls in your gacha history
+- Incomplete gacha record (missing historical data)
+- Recently started recording gacha pulls
+- Statistical result exceeds theoretical bounds (>50%)
+
+**Technical Details:**
+
+When you see a confidence indicator in the gacha statistics section, you can tap it to view a detailed explanation. This triggers a localized alert using the i18n key `gachaKit.stats.confidence.alert.message`, which provides comprehensive information about confidence indicators in your preferred language.
+
+The confidence calculation takes into account the complexity of gacha mechanics, including pity systems and the distinction between standard and limited items, ensuring that the reliability assessment reflects the actual statistical significance of your data.
+
 $ EOF.
