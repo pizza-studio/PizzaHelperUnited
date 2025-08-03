@@ -243,9 +243,9 @@ public struct CharacterIconView: View {
     }
 
     @ViewBuilder private var namecardBg4GI: some View {
-        let wallPaper = BundledWallpaper.findNullableNameCardForGenshinCharacter(charID: charID)
-        if let wallPaper {
-            wallPaper.image4CellphoneWallpaper
+        let wallpaper = BundledWallpaper.findNullableNameCardForGenshinCharacter(charID: charID)
+        if let wallpaper {
+            wallpaper.image4CellphoneWallpaper
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .offset(x: size / -3)
@@ -281,9 +281,9 @@ public struct CharacterIconView: View {
     }
 
     @ViewBuilder private var namecardBgBlurred4GI: some View {
-        let wallPaper = BundledWallpaper.findNullableNameCardForGenshinCharacter(charID: charID)
-        if let wallPaper {
-            wallPaper.image4CellphoneWallpaper
+        let wallpaper = BundledWallpaper.findNullableNameCardForGenshinCharacter(charID: charID)
+        if let wallpaper {
+            wallpaper.image4CellphoneWallpaper
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .offset(x: size / -3)
