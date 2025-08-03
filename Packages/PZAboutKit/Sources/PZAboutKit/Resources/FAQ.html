@@ -223,287 +223,897 @@
 	<main>
 		<div id="content-en-US" class="content" lang="en">
 			<h1>The Pizza Helper FAQ</h1>
-<p>This document only addresses questions not covered by <em>The Pizza Helper Privacy Policy</em> and <em>The Pizza Helper End-User License Agreement and Disclaimer</em>.</p>
-<h2>// Security Concerns and Usability of App Features</h2>
-<h4>Q: How to use widgets? Are widgets available for watchOS?</h4>
-<p>The Pizza Helper introduced watchOS widgets since v5.0.3. For information on how to use widgets on Apple devices, please consult Apple Support. Please note that widget functionalities may vary across different operating systems and their annual updates.</p>
-<h4>Q: Is there an Android version of The Pizza Helper?</h4>
-<p>Currently, there are no plans to develop an Android version.</p>
-<h4>Q: Will using this tool result in my game account being suspended?</h4>
-<p>Based on feedback received so far, there have been no reports of this happening. According to confirmation from enthusiastic players who contacted miHoYo's dedicated customer service, the response was that game accounts will not be suspended. (<em>The Pizza Helper End-User License Agreement and Disclaimer</em> mentions: <strong>The developer is not responsible for any damages caused by user actions</strong>.)</p>
-<h4>Q: Is it safe for me to login my Miyoushe / HoYoLAB account via The Pizza Helper?</h4>
-<p><strong>Miyoushe account logins in this app is through QRCode scan which does not need a password input</strong>; For HoYoLAB accounts, <strong>the process is protected by different methods supplied by Apple which varies by your device type</strong>: if iOS, the system-provided secure input keyboard on your screen is the one retrieving your password input; if macOS, the system-provided hardware-level SecureEventInput API directly retrieving your physical keyboard inputs. <strong>Both inputs will be directly passed through WKWebView to HoYoLAB login page</strong>. Then the server generates the device-specific Cookie which this app utilizes for servicing the user's information needs. <strong>This entire process is not interceptable by anyone else (nor The Pizza Helper app)</strong>. Thanks to Apple for making these security efforts.</p>
-<h4>Q: How does The Pizza Helper handle users' gacha records?</h4>
-<p>As mentioned in <em>The Pizza Helper Privacy Policy</em>, players' gacha records are stored only in these three locations:</p>
-<ul>
-<li>The Apple device you use for The Pizza Helper.</li>
-<li>The iCloud private cloud space of the Apple ID currently signed in to iCloud Drive on that device.</li>
-<li>Any other digital devices logged into that Apple ID with iCloud Drive enabled and The Pizza Helper installed.</li>
-</ul>
-<p>Although The Pizza Helper allows users to import and export gacha records, the development team does not recommend sharing these records to any third-party websites that may disclose statistical results without permission.</p>
-<h4>Q: Which online services of The Pizza Helper might be affected by external factors beyond our control?</h4>
-<p>At least the following types of services could be affected:</p>
-<ol>
-<li><strong>HoYoLAB or miHoYo Community:</strong> Real-time notes, personal battle reports, ledgers, gacha record retrieval, character inventory lists, in-game events.</li>
-<li><strong>Enka Networks:</strong> Character showcases.</li>
-</ol>
-<p>Each supported game, during its major version updates, often comes with temporary unavailability of the aforementioned services. Especially Enka Networks, each version maintenance typically takes one to two days.</p>
-<h4>Q: Why some features are removed?</h4>
-<p>Features have been removed for the following reasons:</p>
-<ul>
-<li>Features where user experience cannot compete with Miyoushe / HoYoLAB app implementations, such as game statistics.</li>
-<li>Features that can no longer be maintained due to developer time constraints, such as the Pizza Dictionary.</li>
-<li>Features with unresolvable user experience issues, such as the Spiral Abyss Top Lists.</li>
-</ul>
-<h4>Q: After upgrading this app from the App Store, why have many features disappeared? Now only the data export function remains?</h4>
-<p>Starting from v5.5.0 (v5.5.1 for watchOS app), this software has reintroduced its installability for OS21 ~ OS23 (i.e., iOS 14 ~ 16 and macOS 11 ~ 13) to replace deprecated legacy versions. This decision was made due to security concerns in older versions (v4.x and earlier) and our inability to address them through other means. Considering the unique needs of OS23 users, we have backported some core features to OS23 (iOS 16.2+, macOS 13.0+, watchOS 9.2+) and later. However, SwiftUI remains highly unstable on these OS versions, which may cause operational issues. If your usage requirements and budget permit, please switch to a device supporting at least OS24+.</p>
-<h2>// App and Development Team</h2>
-<h4>Q: I am a refugee of the Pizza Helper for HSR. What should I be aware of when migrating to this new app?</h4>
-<ol>
-<li>
-<p><strong>Data Sync</strong>: Although the new unified Pizza Helper engine can read cloud data from Pizza Helper for HSR on the same Apple ID via iCloud, the data synchronization may take time and can be affected by factors like connection status. For a more reliable migration, you can export your local accounts from Pizza Helper for HSR as a JSON file (profile package) and import it into the new version of The Pizza Helper. Gacha records can also be migrated using a similar method (via file exchange conforming to UIGF v4 format).</p>
-</li>
-<li>
-<p><strong>Widgets</strong>: All widgets in the new The Pizza Helper that seem to be designed for Genshin Impact can now also display Star Rail content (excluding Genshin-specific widgets like the Realm Currency). Simply select the local profile dedicated to Star Rail in the widget settings. The Stamina Timer, implemented using iOS's built-in Live Activity feature, can also be used to show the Trailblaze Power refill status in Star Rail. User-customizable wallpaper support for widgets has been reintroduced since 5.2.1 update but cannot inherit its previous settings data. Please refer to the related UI text instructions regarding its usage.</p>
-</li>
-</ol>
-<h4>Q: How does The Pizza Helper work?</h4>
-<p>The miHoYo / HoYoLAB client app requests game-related information from the miHoYo / Cognosphere server backend. This method can retrieve some game state information (such as stamina refill progress, etc.). The Pizza Helper uses your UID and Cookie information to replicate this query process and request this data from the corresponding server backend on your behalf, displaying it in The Pizza Helper's main interface and widgets. The Privacy Policy already explained how the Cookies will be used.</p>
-<h4>Q: Will there be any charges in the future?</h4>
-<p>miHoYo does not allow charging or embedding ads, so all features of The Pizza Helper are freely available. </p>
-<p>The Pizza Helper did accept voluntary donations from users for a while, and the development team does not have any obligations to the donors. These donations will be used for app development and maintenance of associated network infrastructure. Of course, the annual fee for the Apple Developer Program membership required to distribute software via the Apple App Store will be reimbursed from this donation fund. If large donations are received, the team may publicly acknowledge the contributors. The team may also consider donating any unused funds to charitable causes at an appropriate time.</p>
-<h4>Q: How do widgets automatically update a player's account status for Original Resin / Trailblaze Power / ZZZ Energy?</h4>
-<p>These are collectively referred to as "player stamina" in The Pizza Helper. Since version 5.0.4, The Pizza Helper's widgets will attempt to request real-time note data from the Miyoushe / HoYoLAB servers every certain minutes necessary for the recovery of a stamina point (which differs among supported game titles). The real-time note data includes the corresponding UID's Original Resin / Trailblaze Power / ZZZ Energy status. Desktop widgets also include a refresh button for reloading content. When you open The Pizza Helper app, all widgets will automatically request real-time data again. If you haven’t consumed stamina in-game, the stamina discrepancy shown in the widgets should not exceed 1.</p>
-<p>However, for iPhone models that are more than 3 years old, even if the battery has been replaced with a new one, the above widget operating mode will put a strain on battery life, so please try to minimize the number of widgets you use on such models.</p>
-<h4>Q: How can I learn more about the development team or discuss other topics?</h4>
-<p>You can find the development team's QQ channel and Discord channel in the "About" section of The Pizza Helper. Since April 2023, the development team has grown to three members (Lava; Bill Haku; Shiki Suen). You can click "Development Team" at the top-right corner of the "About" section to see their contact details. Due to personal career plans, only Shiki Suen is the current development maintainer since October 1, 2024.</p>
-<h4>Q: Any plan on implementing advanced features regarding Zenless Zone Zero? e.g. Gacha Record Management, etc.</h4>
-<p>These features won't be considered to implment in at least a year. There were too many reasons and concerns behind this decision, but one of them is that we are almost running out of our available time on this project.</p>
-<h2>// Technical Issues and Know-How</h2>
-<blockquote>This section discusses issues starting from The Pizza Helper version 5.2.1.</blockquote>
-<h4>Q: What's the differences among the character build information (CBI) provided by Enka and HoYoLAB / Miyoushe?</h4>
-<p>Thereotically, Enka Network supplies the most-accurate CBI but limited to those characters disclosed in the showcase of an UID. Meanwhile, HoYoLAB / Miyoushe supplies the CBI of all characters owned by a UID.</p>
-<p>CBI supplied by HoYoLAB / Miyoushe has the following limitations due to the nature of their provided backend data:</p>
-<ul>
-<li>Star Rail: When a weapon (light cone) has its level at 20 &amp; 30 &amp; 40 &amp; 50 &amp; 60 &amp; 70, it is impossible to identify whether its ascension is finished. The Pizza Helper assume that all weapons at these levels are not ascended. This affect its deducted weapon build information.</li>
-<li>Genshin Impact: The elemental damage boost (EDB) information  of certain characters are not calculated correctly on the HoYoLAB / Miyoushe server side, omitting the EDB gained from the character's own level ascension. In such case, please refer to his / her in-game character build information when he / she is not in the team. Characters in a team may affect each other's build information data due to members' skills and their combinations.</li>
-<li>Genshin Impact: All skill levels are calculated as final results, hence inability of identifying which skill has its level boosted by the character's constellations.</li>
-</ul>
-<h4>Q: The iOS lock screen widgets are not loading content. How can I fix this?</h4>
-<p>This is likely because the widget is stuck in the data retrieval state. You can enter the lock screen widgets' edit mode, modify the widget content, and reselect the local profile (even if it's the same as the previous one). This will trigger the content update process.</p>
-<h4>Q: Apple Watch is unable to sync accounts from iCloud?</h4>
-<p>For iOS 18: First, turn off The Pizza Helper's iCloud sync feature, then turn it back on. Open The Pizza Helper app and leave it idle for a minute, then try syncing through the Apple Watch app. Please consult Apple Support for further instructions.</p>
-<h4>Q: Can't find widgets when trying to add them?</h4>
-<p>Try restarting the system and wait 10 minutes. If that doesn’t work, try turning off and on The Pizza Helper's notifications. This has a high chance of resolving the issue. If you're on macOS and the problem persists, please contact Apple Support to ensure that the app is installed in the correct location or is not duplicated in multiple locations.</p>
-<h4>Q: Error codes -1 (data not retrieved) or 10102, 10103, 10104 (Cookie and UID mismatch)</h4>
-<p>Check whether the real-time notes feature in Miyoushe or HoYoLAB is enabled and retrieve a new Cookie. Also, make sure the logged-in account is correct.</p>
-<h4>Q: Error code 10001 (Cookie error or expired Cookie)</h4>
-<p>It is recommended to log in again with the corresponding local profile. This process will retrieve a new Cookie.</p>
-<h4>Q: Error code 1008 (UID error)</h4>
-<p>Check if the UID corresponds to the server you selected (note: this refers to the Genshin Impact / Star Rail / Zenless Zone Zero UID, not the miHoYo / HoYoVerse Passport ID Number of your Miyoushe / HoYoLAB account). If you can't resolve the issue, please report it to us. Since version 5.0, The Pizza Helper will automatically attempt to determine the server when entering the UID in the local profile management screen.</p>
-<h4>Q: How to prepare device fingerprints for UIDs governed by Miyoushe?</h4>
-<p>(This question is irrelevant to those UIDs governed by HoYoLAB.)</p>
-<p>This function requires traffic monitoring between the iOS version of the Miyoushe App and miHoYo server, specifically to obtain the <code>x-rpc-device_fp</code> field. Such tools will create a local virtual private network for the system to enable traffic monitoring.</p>
-<p>The only current solution is for the user to use specialized traffic monitoring tools to perform packet capturing. We recommend "Stream" by Stream Lab Inc., an iOS app specifically designed for packet capture.</p>
-<p>The captured contents are personal information. We suggest that the user captures &amp; users his / her own data by himself / herself.</p>
-<h4>Q: How to handle the Paimon.moe gacha record format?</h4>
-<p>Due to the lack of critical information fields in the Excel gacha record format provided by the website (which are all specified by UIGFv4), we have already completely abandoned support for the proprietary Excel format of Paimon.moe when implementing UIGFv4 support in (the previously) Genshin Pizza Helper. This feature is indeed not implemented in (currently) The Pizza Helper. If you need to import the data into applications that support the UIGFv4 standard, please send a feature request to Paimon.moe.</p>
-<h4>Q: How to obtain gacha records URL for "Star Rail UID" and "Genshin UID hosted by HoYoLAB"?</h4>
-<p>This function requires traffic monitoring between these game clients (including miHoYo's cloud games) and the miHoYo server, specifically to filter any URLs containing specific fields and domains. Such tool will create a local virtual private network to enable traffic monitoring.</p>
-<p>The only current solution is for the user to personally use specialized traffic monitoring tools to perform packet capturing.</p>
-<ul>
-<li>If you're using iOS, we recommend "Stream" by Stream Lab Inc., an iOS app specifically designed for packet capture.</li>
-<li>There are too many packet capture tools for Windows and macOS systems to list here.</li>
-</ul>
-<p>The packet capturing rule is to filter all URLs containing the path "<code>/api/getGachaLog</code>". The domains of gacha URLs for different game regions will all start with "<code>public-operation</code>":</p>
-<ul>
-<li>Gacha URLs for UIDs governed by Miyoushe will have domains ending with <code>mihoyo.com</code>.</li>
-<li>Gacha URLs for UIDs governed by HoYoLAB will have domains ending with <code>hoyoverse.com</code>.</li>
-</ul>
-<p>While capturing packets, the user needs to open the gacha record page (Wish / Warp history) in the game while traffic monitoring is active.</p>
-<p>The validity period of the URL you capture may only be one or two hours, so please use it as soon as possible.</p>
-<p>The URL &amp; data you capture is of your personal privacy; please carefully consider whether to share it with others.</p>
-<h4>Q: Why all of my local profiles are gone everytime I reboot my iOS device? They may come back after approximately 30 seconds, but it's still annoying.</h4>
-<p>The Pizza Helper uses Group Containers to storage local profiles by default (with a mirrored copy saved in UserDefaults for Widgets). If you have encountered this issue, you can do the following steps:</p>
-<ol>
-<li>Go to "Local Profile Manager -&gt; Menu (at the top-trailing of the UI)" to use the related menu option to export all of your local profiles as a backup file. After you finishes the Step 2, you will need to import your local profiles back using this backup file.</li>
-<li>In the same menu, you go to "Advanced Options" and switch the "Local Profile Storage Location" to "App Container" instead. The app will automatically quits after you toggling this option.</li>
-<li>Import the local profiles back to the app. The option is situated in the same menu mentioned in Step 1.</li>
-</ol>
-<p>This is a proven workaround for this issue.</p>
-<h4>Q: What is the Standard Hit Rate Confidence feature in gacha statistics?</h4>
-<p>The Standard Hit Rate Confidence feature in The Pizza Helper provides a reliability indicator for the standard item hit rate calculation in gacha games. This feature helps users understand how trustworthy their gacha statistics are based on the amount of available data.</p>
-<p><strong>Confidence Levels and Thresholds:</strong></p>
-<p>The confidence is determined by the number of relevant 5-star pulls available for analysis:</p>
-<ul>
-<li><strong>High confidence</strong>: ≥10 cases - The calculated standard hit rate is highly reliable</li>
-<li><strong>Medium confidence</strong>: 5-9 cases - The calculated standard hit rate has moderate reliability</li>
-<li><strong>Low confidence</strong>: 3-4 cases - The calculated standard hit rate has limited reliability</li>
-<li><strong>Insufficient data</strong>: &lt;3 cases - Not enough data to provide a meaningful calculation</li>
-</ul>
-<p><strong>How to Interpret Confidence Levels:</strong></p>
-<ul>
-<li><strong>High confidence</strong> results can be trusted for making gameplay decisions</li>
-<li><strong>Medium confidence</strong> results provide useful guidance but should be considered alongside other factors</li>
-<li><strong>Low confidence</strong> results should be interpreted cautiously as they may not be representative</li>
-<li><strong>Insufficient data</strong> indicates you need more gacha pulls before meaningful statistics can be calculated</li>
-</ul>
-<p><strong>Common Reasons for Insufficient Confidence:</strong></p>
-<ul>
-<li>Too few 5-star pulls in your gacha history</li>
-<li>Incomplete gacha record (missing historical data)</li>
-<li>Recently started recording gacha pulls</li>
-<li>Statistical result exceeds theoretical bounds (&gt;50%)</li>
-</ul>
-<p><strong>Technical Details:</strong></p>
-<p>When you see a confidence indicator in the gacha statistics section, you can tap it to view a detailed explanation. This will display a message window explaining the confidence indicator-related information.</p>
-<p>The confidence calculation takes into account the complexity of gacha mechanics, including pity systems and the distinction between standard and limited items, ensuring that the reliability assessment reflects the actual statistical significance of your data.</p>
-<p>Note: Even when "High confidence" comes out, the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override this app's calculation methods.</p>
-<p>$ EOF.</p>
+
+			<p>This document only addresses questions not covered by <em>The Pizza Helper Privacy Policy</em> and <em>The Pizza Helper End-User License Agreement and Disclaimer</em>.</p>
+
+			<h2>// Security Concerns and Usability of App Features</h2>
+
+			<h4>Q: How to use widgets? Are widgets available for watchOS?</h4>
+
+			<p>The Pizza Helper introduced watchOS widgets since v5.0.3. For information on how to use widgets on Apple devices, please consult Apple Support. Please note that widget functionalities may vary across different operating systems and their annual updates.</p>
+
+			<h4>Q: Is there an Android version of The Pizza Helper?</h4>
+
+			<p>Currently, there are no plans to develop an Android version.</p>
+
+			<h4>Q: Will using this tool result in my game account being suspended?</h4>
+
+			<p>Based on feedback received so far, there have been no reports of this happening. According to confirmation from enthusiastic players who contacted miHoYo's dedicated customer service, the response was that game accounts will not be suspended. (<em>The Pizza Helper End-User License Agreement and Disclaimer</em> mentions: <strong>The developer is not responsible for any damages caused by user actions</strong>.)</p>
+
+			<h4>Q: Is it safe for me to login my Miyoushe / HoYoLAB account via The Pizza Helper?</h4>
+
+			<p><strong>Miyoushe account logins in this app is through QRCode scan which does not need a password input</strong>; For HoYoLAB accounts, <strong>the process is protected by different methods supplied by Apple which varies by your device type</strong>: if iOS, the system-provided secure input keyboard on your screen is the one retrieving your password input; if macOS, the system-provided hardware-level SecureEventInput API directly retrieving your physical keyboard inputs. <strong>Both inputs will be directly passed through WKWebView to HoYoLAB login page</strong>. Then the server generates the device-specific Cookie which this app utilizes for servicing the user's information needs. <strong>This entire process is not interceptable by anyone else (nor The Pizza Helper app)</strong>. Thanks to Apple for making these security efforts.</p>
+
+			<h4>Q: How does The Pizza Helper handle users' gacha records?</h4>
+
+			<p>As mentioned in <em>The Pizza Helper Privacy Policy</em>, players' gacha records are stored only in these three locations:</p>
+
+			<ul>
+				<li>The Apple device you use for The Pizza Helper.</li>
+				<li>The iCloud private cloud space of the Apple ID currently signed in to iCloud Drive on that device.</li>
+				<li>Any other digital devices logged into that Apple ID with iCloud Drive enabled and The Pizza Helper installed.</li>
+			</ul>
+
+			<p>Although The Pizza Helper allows users to import and export gacha records, the development team does not recommend sharing these records to any third-party websites that may disclose statistical results without permission.</p>
+
+			<h4>Q: Which online services of The Pizza Helper might be affected by external factors beyond our control?</h4>
+
+			<p>At least the following types of services could be affected:</p>
+
+			<p>1. <strong>HoYoLAB or miHoYo Community:</strong> Real-time notes, personal battle reports, ledgers, gacha record retrieval, character inventory lists, in-game events.</p>
+			<p>2. <strong>Enka Networks:</strong> Character showcases.</p>
+
+			<p>Each supported game, during its major version updates, often comes with temporary unavailability of the aforementioned services. Especially Enka Networks, each version maintenance typically takes one to two days.</p>
+
+			<h4>Q: Why some features are removed?</h4>
+
+			<p>Features have been removed for the following reasons:</p>
+
+			<ul>
+				<li>Features where user experience cannot compete with Miyoushe / HoYoLAB app implementations, such as game statistics.</li>
+				<li>Features that can no longer be maintained due to developer time constraints, such as the Pizza Dictionary.</li>
+				<li>Features with unresolvable user experience issues, such as the Spiral Abyss Top Lists.</li>
+			</ul>
+
+			<h4>Q: After upgrading this app from the App Store, why have many features disappeared? Now only the data export function remains?</h4>
+
+			<p>Starting from v5.5.0 (v5.5.1 for watchOS app), this software has reintroduced its installability for OS21 ~ OS23 (i.e., iOS 14 ~ 16 and macOS 11 ~ 13) to replace deprecated legacy versions. This decision was made due to security concerns in older versions (v4.x and earlier) and our inability to address them through other means. Considering the unique needs of OS23 users, we have backported some core features to OS23 (iOS 16.2+, macOS 13.0+, watchOS 9.2+) and later. However, SwiftUI remains highly unstable on these OS versions, which may cause operational issues. If your usage requirements and budget permit, please switch to a device supporting at least OS24+.</p>
+
+			<h2>// App and Development Team</h2>
+
+			<h4>Q: I am a refugee of the Pizza Helper for HSR. What should I be aware of when migrating to this new app?</h4>
+
+			<p>1. <strong>Data Sync</strong>: Although the new unified Pizza Helper engine can read cloud data from Pizza Helper for HSR on the same Apple ID via iCloud, the data synchronization may take time and can be affected by factors like connection status. For a more reliable migration, you can export your local accounts from Pizza Helper for HSR as a JSON file (profile package) and import it into the new version of The Pizza Helper. Gacha records can also be migrated using a similar method (via file exchange conforming to UIGF v4 format).</p>
+
+			<p>2. <strong>Widgets</strong>: All widgets in the new The Pizza Helper that seem to be designed for Genshin Impact can now also display Star Rail content (excluding Genshin-specific widgets like the Realm Currency). Simply select the local profile dedicated to Star Rail in the widget settings. The Stamina Timer, implemented using iOS's built-in Live Activity feature, can also be used to show the Trailblaze Power refill status in Star Rail. User-customizable wallpaper support for widgets has been reintroduced since 5.2.1 update but cannot inherit its previous settings data. Please refer to the related UI text instructions regarding its usage.</p>
+
+			<h4>Q: How does The Pizza Helper work?</h4>
+
+			<p>The miHoYo / HoYoLAB client app requests game-related information from the miHoYo / Cognosphere server backend. This method can retrieve some game state information (such as stamina refill progress, etc.). The Pizza Helper uses your UID and Cookie information to replicate this query process and request this data from the corresponding server backend on your behalf, displaying it in The Pizza Helper's main interface and widgets. The Privacy Policy already explained how the Cookies will be used.</p>
+
+			<h4>Q: Will there be any charges in the future?</h4>
+
+			<p>miHoYo does not allow charging or embedding ads, so all features of The Pizza Helper are freely available. </p>
+
+			<p>The Pizza Helper did accept voluntary donations from users for a while, and the development team does not have any obligations to the donors. These donations will be used for app development and maintenance of associated network infrastructure. Of course, the annual fee for the Apple Developer Program membership required to distribute software via the Apple App Store will be reimbursed from this donation fund. If large donations are received, the team may publicly acknowledge the contributors. The team may also consider donating any unused funds to charitable causes at an appropriate time.</p>
+
+			<h4>Q: How do widgets automatically update a player's account status for Original Resin / Trailblaze Power / ZZZ Energy?</h4>
+
+			<p>These are collectively referred to as "player stamina" in The Pizza Helper. Since version 5.0.4, The Pizza Helper's widgets will attempt to request real-time note data from the Miyoushe / HoYoLAB servers every certain minutes necessary for the recovery of a stamina point (which differs among supported game titles). The real-time note data includes the corresponding UID's Original Resin / Trailblaze Power / ZZZ Energy status. Desktop widgets also include a refresh button for reloading content. When you open The Pizza Helper app, all widgets will automatically request real-time data again. If you haven’t consumed stamina in-game, the stamina discrepancy shown in the widgets should not exceed 1.</p>
+
+			<p>However, for iPhone models that are more than 3 years old, even if the battery has been replaced with a new one, the above widget operating mode will put a strain on battery life, so please try to minimize the number of widgets you use on such models.</p>
+
+			<h4>Q: How can I learn more about the development team or discuss other topics?</h4>
+
+			<p>You can find the development team's QQ channel and Discord channel in the "About" section of The Pizza Helper. Since April 2023, the development team has grown to three members (Lava; Bill Haku; Shiki Suen). You can click "Development Team" at the top-right corner of the "About" section to see their contact details. Due to personal career plans, only Shiki Suen is the current development maintainer since October 1, 2024.</p>
+
+			<h4>Q: Any plan on implementing advanced features regarding Zenless Zone Zero? e.g. Gacha Record Management, etc.</h4>
+
+			<p>These features won't be considered to implment in at least a year. There were too many reasons and concerns behind this decision, but one of them is that we are almost running out of our available time on this project.</p>
+
+			<h2>// Technical Issues and Know-How</h2>
+
+			<blockquote>
+				This section discusses issues starting from The Pizza Helper version 5.2.1.
+			</blockquote>
+
+			<h4>Q: What's the differences among the character build information (CBI) provided by Enka and HoYoLAB / Miyoushe?</h4>
+
+			<p>Thereotically, Enka Network supplies the most-accurate CBI but limited to those characters disclosed in the showcase of an UID. Meanwhile, HoYoLAB / Miyoushe supplies the CBI of all characters owned by a UID.</p>
+
+			<p>CBI supplied by HoYoLAB / Miyoushe has the following limitations due to the nature of their provided backend data:</p>
+
+			<ul>
+				<li>Star Rail: When a weapon (light cone) has its level at 20 & 30 & 40 & 50 & 60 & 70, it is impossible to identify whether its ascension is finished. The Pizza Helper assume that all weapons at these levels are not ascended. This affect its deducted weapon build information.</li>
+				<li>Genshin Impact: The elemental damage boost (EDB) information  of certain characters are not calculated correctly on the HoYoLAB / Miyoushe server side, omitting the EDB gained from the character's own level ascension. In such case, please refer to his / her in-game character build information when he / she is not in the team. Characters in a team may affect each other's build information data due to members' skills and their combinations.</li>
+				<li>Genshin Impact: All skill levels are calculated as final results, hence inability of identifying which skill has its level boosted by the character's constellations.</li>
+			</ul>
+
+			<h4>Q: The iOS lock screen widgets are not loading content. How can I fix this?</h4>
+
+			<p>This is likely because the widget is stuck in the data retrieval state. You can enter the lock screen widgets' edit mode, modify the widget content, and reselect the local profile (even if it's the same as the previous one). This will trigger the content update process.</p>
+
+			<h4>Q: Apple Watch is unable to sync accounts from iCloud?</h4>
+
+			<p>For iOS 18: First, turn off The Pizza Helper's iCloud sync feature, then turn it back on. Open The Pizza Helper app and leave it idle for a minute, then try syncing through the Apple Watch app. Please consult Apple Support for further instructions.</p>
+
+			<h4>Q: Can't find widgets when trying to add them?</h4>
+
+			<p>Try restarting the system and wait 10 minutes. If that doesn’t work, try turning off and on The Pizza Helper's notifications. This has a high chance of resolving the issue. If you're on macOS and the problem persists, please contact Apple Support to ensure that the app is installed in the correct location or is not duplicated in multiple locations.</p>
+
+			<h4>Q: Error codes -1 (data not retrieved) or 10102, 10103, 10104 (Cookie and UID mismatch)</h4>
+
+			<p>Check whether the real-time notes feature in Miyoushe or HoYoLAB is enabled and retrieve a new Cookie. Also, make sure the logged-in account is correct.</p>
+
+			<h4>Q: Error code 10001 (Cookie error or expired Cookie)</h4>
+
+			<p>It is recommended to log in again with the corresponding local profile. This process will retrieve a new Cookie.</p>
+
+			<h4>Q: Error code 1008 (UID error)</h4>
+
+			<p>Check if the UID corresponds to the server you selected (note: this refers to the Genshin Impact / Star Rail / Zenless Zone Zero UID, not the miHoYo / HoYoVerse Passport ID Number of your Miyoushe / HoYoLAB account). If you can't resolve the issue, please report it to us. Since version 5.0, The Pizza Helper will automatically attempt to determine the server when entering the UID in the local profile management screen.</p>
+
+			<h4>Q: How to prepare device fingerprints for UIDs governed by Miyoushe?</h4>
+
+			<p>(This question is irrelevant to those UIDs governed by HoYoLAB.)</p>
+
+			<p>This function requires traffic monitoring between the iOS version of the Miyoushe App and miHoYo server, specifically to obtain the <code>x-rpc-device_fp</code> field. Such tools will create a local virtual private network for the system to enable traffic monitoring.</p>
+
+			<p>The only current solution is for the user to use specialized traffic monitoring tools to perform packet capturing. We recommend "Stream" by Stream Lab Inc., an iOS app specifically designed for packet capture.</p>
+
+			<p>The captured contents are personal information. We suggest that the user captures & users his / her own data by himself / herself.</p>
+
+			<h4>Q: How to handle the Paimon.moe gacha record format?</h4>
+
+			<p>Due to the lack of critical information fields in the Excel gacha record format provided by the website (which are all specified by UIGFv4), we have already completely abandoned support for the proprietary Excel format of Paimon.moe when implementing UIGFv4 support in (the previously) Genshin Pizza Helper. This feature is indeed not implemented in (currently) The Pizza Helper. If you need to import the data into applications that support the UIGFv4 standard, please send a feature request to Paimon.moe.</p>
+
+			<h4>Q: How to obtain gacha records URL for "Star Rail UID" and "Genshin UID hosted by HoYoLAB"?</h4>
+
+			<p>This function requires traffic monitoring between these game clients (including miHoYo's cloud games) and the miHoYo server, specifically to filter any URLs containing specific fields and domains. Such tool will create a local virtual private network to enable traffic monitoring.</p>
+
+			<p>The only current solution is for the user to personally use specialized traffic monitoring tools to perform packet capturing.</p>
+
+			<ul>
+				<li>If you're using iOS, we recommend "Stream" by Stream Lab Inc., an iOS app specifically designed for packet capture.</li>
+				<li>There are too many packet capture tools for Windows and macOS systems to list here.</li>
+			</ul>
+
+			<p>The packet capturing rule is to filter all URLs containing the path "<code>/api/getGachaLog</code>". The domains of gacha URLs for different game regions will all start with "<code>public-operation</code>":</p>
+
+			<ul>
+				<li>Gacha URLs for UIDs governed by Miyoushe will have domains ending with `mihoyo.com`.</li>
+				<li>Gacha URLs for UIDs governed by HoYoLAB will have domains ending with `hoyoverse.com`.</li>
+			</ul>
+
+			<p>While capturing packets, the user needs to open the gacha record page (Wish / Warp history) in the game while traffic monitoring is active.</p>
+
+			<p>The validity period of the URL you capture may only be one or two hours, so please use it as soon as possible.</p>
+
+			<p>The URL & data you capture is of your personal privacy; please carefully consider whether to share it with others.</p>
+
+			<h4>Q: Why all of my local profiles are gone everytime I reboot my iOS device? They may come back after approximately 30 seconds, but it's still annoying.</h4>
+
+			<p>The Pizza Helper uses Group Containers to storage local profiles by default (with a mirrored copy saved in UserDefaults for Widgets). If you have encountered this issue, you can do the following steps:</p>
+
+			<p>1. Go to "Local Profile Manager -> Menu (at the top-trailing of the UI)" to use the related menu option to export all of your local profiles as a backup file. After you finishes the Step 2, you will need to import your local profiles back using this backup file.</p>
+			<p>2. In the same menu, you go to "Advanced Options" and switch the "Local Profile Storage Location" to "App Container" instead. The app will automatically quits after you toggling this option.</p>
+			<p>3. Import the local profiles back to the app. The option is situated in the same menu mentioned in Step 1.</p>
+
+			<p>This is a proven workaround for this issue.</p>
+
+			<h4>Q: What is the Standard Hit Rate Confidence feature in gacha statistics?</h4>
+
+			<p>The Standard Hit Rate Confidence feature in The Pizza Helper provides a reliability indicator for the standard item hit rate calculation in gacha games. This feature helps users understand how trustworthy their gacha statistics are based on the amount of available data.</p>
+
+			<p><strong>Confidence Levels and Thresholds:</strong></p>
+
+			<p>The confidence is determined by the number of relevant 5-star pulls available for analysis:</p>
+
+			<ul>
+				<li><strong>High confidence</strong>: ≥10 cases - The calculated standard hit rate is highly reliable</li>
+				<li><strong>Medium confidence</strong>: 5-9 cases - The calculated standard hit rate has moderate reliability</li>
+				<li><strong>Low confidence</strong>: 3-4 cases - The calculated standard hit rate has limited reliability</li>
+				<li><strong>Insufficient data</strong>: <3 cases - Not enough data to provide a meaningful calculation</li>
+			</ul>
+
+			<p><strong>How to Interpret Confidence Levels:</strong></p>
+
+			<ul>
+				<li><strong>High confidence</strong> results can be trusted for making gameplay decisions</li>
+				<li><strong>Medium confidence</strong> results provide useful guidance but should be considered alongside other factors</li>
+				<li><strong>Low confidence</strong> results should be interpreted cautiously as they may not be representative</li>
+				<li><strong>Insufficient data</strong> indicates you need more gacha pulls before meaningful statistics can be calculated</li>
+			</ul>
+
+			<p><strong>Common Reasons for Insufficient Confidence:</strong></p>
+
+			<ul>
+				<li>Too few 5-star pulls in your gacha history</li>
+				<li>Incomplete gacha record (missing historical data)</li>
+				<li>Recently started recording gacha pulls</li>
+				<li>Statistical result exceeds theoretical bounds (>50%)</li>
+			</ul>
+
+			<p><strong>Technical Details:</strong></p>
+
+			<p>When you see a confidence indicator in the gacha statistics section, you can tap it to view a detailed explanation. This will display a message window explaining the confidence indicator-related information.</p>
+
+			<p>The confidence calculation takes into account the complexity of gacha mechanics, including pity systems and the distinction between standard and limited items, ensuring that the reliability assessment reflects the actual statistical significance of your data.</p>
+
+			<p>Note: Even when "High confidence" comes out, the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override this app's calculation methods.</p>
+
+			<p>$ EOF.</p>
+
 		</div>
 		<div id="content-zh-Hant" class="content active" lang="zh-Hant">
+			<h1>披薩小助手常見問題解答（FAQ）</h1>
+
+			<p>本文僅解答那些無法由《披薩小助手隱私政策》與《披薩小助手使用者授權合約與免責聲明（EULA）》回答的問題。</p>
+
+			<h2>// 安全疑慮與軟體可靠性答疑</h2>
+
+			<h4>Q: 該怎麼使用小工具？有沒有 watchOS 小工具？</h4>
+
+			<p>披薩小助手從 v5.0.3 版開始對 watchOS 提供小工具。有關如何在 Apple 裝置上使用小工具的資訊，請諮詢 Apple 支援。請注意：小工具的功能可能會因不同的作業系統及其年度更新而有所不同。</p>
+
+			<h4>Q: 披薩小助手有沒有 Android 版本？</h4>
+
+			<p>暫無開發 Android 版本之計劃。</p>
+
+			<h4>Q: 使用該工具是否會導致遊戲帳號被停權？</h4>
+
+			<p>根據到目前為止的反饋來看，迄今為止尚無先例。根據熱心玩家向米哈遊專屬客服的求證，得到的答覆是遊戲帳號不會被停權。（《披薩小助手使用者授權合約與免責聲明（EULA）》有提及：<strong>開發者對於因使用者行為所導致之任何損害不承擔任何責任</strong>。）</p>
+
+			<h4>Q: 我藉由披薩小助手登入米遊社 / HoYoLAB 帳號的過程是安全的嗎？</h4>
+
+			<p>披薩小助手<strong>對米游社帳號是採取 QRCode 掃碼登入的、不會牽涉到帳號盜取的嫌疑</strong>；對 HoYoLAB 帳號雖然需要密碼登入，但使用者對自己帳號的密碼輸入是<strong>直接由 iOS 系統的安全鍵盤接管（macOS 平台則是 SecureEventInput 模式從硬體層面接管所有的鍵盤輸入訊號）、然後直接被 iOS / macOS 內建的 WKWebView 轉交給 HoYoLAB 完成登入</strong>、才產生了可以由披薩小助手在所處裝置賴以使用的 Cookie。<strong>整個登入過程當中，披薩小助手始終無權截獲使用者對密碼的鍵盤輸入</strong>。感謝 Apple 一直以來致力於對資訊安全環境的營造。</p>
+
+			<h4>Q: 披薩小助手會怎麼處理使用者的抽卡記錄？</h4>
+
+			<p>在《披薩小助手隱私政策》有提及：玩家的抽卡記錄只會被披薩小助手存放在這三個位置：</p>
+
+			<ul>
+				<li>閣下使用披薩小助手時之 Apple 數位裝置。</li>
+				<li>以及該數位裝置當時所已經登入使用 iCloud Drive 的 Apple ID 之自身的 iCloud 私有雲空間。</li>
+				<li>以及任何被登入該 Apple ID 使用 iCloud Drive 且有安裝披薩小助手之數位裝置。</li>
+			</ul>
+
+			<p>雖然披薩小助手允許使用者匯入、匯出抽卡記錄，但開發團隊不建議您將這些資料上交給任何可能會擅自公開統計結果的第三方網站。</p>
+
+			<h4>Q: 披薩小助手的哪些網路服務會受到外界不可抗力之影響？</h4>
+
+			<p>至少有這幾類服務會受到影響：</p>
+
+			<p>1. HoYoLAB 或米遊社：實時便箋、個人戰報、帳簿、抽卡記錄獲取、角色庫存清單、遊戲活動。</p>
+			<p>2. Enka Networks：角色展櫃。</p>
+
+			<p>所受支援的每款遊戲在各自的大版本更新時，往往伴隨著上述服務的暫時不可用。特別是 Enka Networks，每次版本維護大概需要一至兩天的時間。</p>
+
+			<h4>Q: 为什么有些功能被移除了？</h4>
+
+			<p>被移除的功能大致是這幾類：</p>
+
+			<ul>
+				<li>與米遊社 / HoYoLAB 既定功能重複、且無法在使用體驗上做得比米遊社 / HoYoLAB 更好的功能。例：遊戲統計。</li>
+				<li>開發團隊時間精力有限而無法維護的功能。例：披薩辭典。</li>
+				<li>有多種因素導致產品體驗永遠都無法做好、且沒有可維護性的功能。例：深境螺旋榜單。</li>
+			</ul>
+
+			<h4>問：為什麼我在商店升級這個軟體後，很多功能反而消失了？甚至只剩匯出資料的功能？</h4>
+
+			<p>自 5.5.0 版本起（watchOS App 則自 5.5.1 版本起），本軟體恢復了對 OS21 ~ OS23（即 iOS 14 ~ 16 與 macOS 11 ~ 13）的安裝支援，以取代已被棄用的舊版。此決策源於舊版（v4.x 及更早版本）存在資安疑慮，且我們無法透過其他手段介入處理。考量到 OS23 使用者群體的特殊性，我們仍為 OS23（iOS 16.2+/macOS 13.0+/watchOS 9.2+）以上使用者移植了部分基礎功能。但 SwiftUI 在這些系統版本中仍極不成熟，難免存在使用故障。若您的使用需求與經濟能力允許，請更換至少支援 OS24+ 的設備。</p>
+
+			<h2>// App 與開發團隊</h2>
+
+			<h4>Q: 我是星鐵披薩小助手的使用者，請問在遷移過來時需要注意什麼？</h4>
+
+			<p>一是資料同步：雖然基於統一披薩引擎的全新的披薩小助手可以藉由 iCloud 讀取到同一 Apple ID 下的星鐵披薩小助手的雲端資料，但同步讀取資料是需要時間的、且可能受到包括連線狀態等多方因素之影響。如希望能有更穩妥的遷移手段的話，您可以藉由星鐵披薩小助手將其本機帳號全部匯出為一個 JSON、再匯入到目前的新版披薩小助手內。抽卡記錄也可以用類似的手段遷移（使用 UIGF v4 格式）。</p>
+
+			<p>二是小工具（小組件）：全新的披薩小助手的所有看似給原神設計的小工具都是可以顯示星穹鐵道的內容的（洞天寶錢等原神專屬小工具除外），直接在小工具設定裡面選擇您創建的星穹鐵道專用的本機帳號即可。依賴 iOS 內建的即時動態（Live Activity）功能實作的玩家體力計時器也可以用來顯示星穹鐵道的開拓力回滿狀態。對於小工具的自訂壁紙的功能支持則是從 5.2.1 版更新開始支援，且無法繼承之前的設定。詳情請洽相關功能的介面文字說明。</p>
+
+			<h4>Q: 披薩小助手的工作原理是什麼？</h4>
+
+			<p>米游社 / HoYoLAB 客體應用（client app）會藉由向米哈遊 / Cognosphere 的伺服器的後端請求遊戲內的一些資訊。這個手段可以查詢到一些與此有關的遊戲狀態資訊（比如玩家體力的回滿進度，等）。披薩小助手使用您的 UID 與 Cookie 資訊可以重複這個查詢過程、代替您使用這兩款 App 向對應的伺服器的後端請求遊戲內的這些資訊、並展示於披薩小助手的主介面與小工具當中。《披薩小助手隱私政策》已經解釋了與這些 Cookies 的使用有關的內容。</p>
+
+			<h4>Q: 未來會收費嗎？</h4>
+
+			<p>米哈遊不允許收費或植入收費廣告，所以披薩小助手的所有功能都是免費提供開放使用的。</p>
+
+			<p>披薩小助手曾經接受過來自使用者的自發捐贈（目前不再接受捐贈），且敝團隊不會因此對捐贈者產生任何義務。這類捐贈內容會用於 App 開發、及其連帶網路設施的維護。當然，藉由 Apple App Store 發行軟體所必須的 Apple Developer Program 會員身分的年費也會從這筆捐贈金報銷。如有收到大宗捐贈的話，敝團隊可能會公示他們的貢獻。敝團隊也可能會考慮在適當的時間點將用不完的經費捐贈給社會公益之用途。</p>
+
+			<h4>Q: 小工具（小組件）是怎樣自動更新玩家的帳號的原粹樹脂 / 開拓力 / 絕區電量狀態的？</h4>
+
+			<p>這些在披薩小助手被統稱為「玩家體力（Stamina）」。從 5.0.4 版開始，披薩小助手的小工具每過一個玩家體力點恢復時間就會嘗試向米遊社 / HoYoLAB 伺服器請求一次最新的實時便箋資料（裡面包括了對應 UID 的原粹樹脂 / 開拓力 / 絕區電量狀態等資訊）。桌面小工具額外會有用於重載內容專用的刷新按鈕。開啟披薩小助手本體 App 時，所有小工具都會自動重新請求一次實時便箋資料。如果您未曾登入遊戲消耗過玩家體力的話，理論上藉由小工具顯示的玩家體力的誤差不會超過 1。</p>
+
+			<p>然而，對於3年以上的舊款iPhone機種來講，哪怕有更換過新的電池，上述的小工具運作規律也會增加電力的消耗。因此，請在使用這類機種時盡量控制小工具的數量。</p>
+
+			<h4>Q: 開發團隊的自我介紹呢？如何解決其他疑問和討論其他話題？</h4>
+
+			<p>各位可以在披薩小助手的「關於」畫面找到披薩小助手的 QQ 頻道和 Discord 頻道。從 2023 年四月開始，開發團隊變成了三個人（Lava; Bill Haku; Shiki Suen）。各位可以在「關於」畫面的右上角點一下「開發組」就能看到他們的聯絡資料。因成員生涯計劃各異的原因，從 2024 年 10 月 1 日起，該專案的程式開發由 Shiki Suen 單人維護。</p>
+
+			<h4>Q: 請問何時會實作與絕區零有關的進階功能？比如抽卡記錄管理之類的。</h4>
+
+			<p>至少一年內不會實作。原因有很多，但開發團隊分身乏術也是重要原因之一。</p>
+
+			<h2>// 技術故障與使用方法</h2>
+
+			<blockquote>
+				本章節內容以披薩小助手 5.2.1 版開始的版本為討論情形。
+			</blockquote>
+
+			<h4>Q: HoYoLAB / 米遊社面板相對於 Enka 面板而言有何差異？</h4>
+
+			<p>Enka 面板的結果理論上是最準確的結果，但只能顯示某個 UID 的公開展櫃內的角色；而 HoYoLAB / 米遊社面板則允許您以近乎相同的面板閱讀體驗來檢視自己全部的在庫角色。</p>
+
+			<p>由於後者可提供的後端資料有限，所以 HoYoLAB / 米遊社面板內容有下述限制：</p>
+
+			<ul>
+				<li>星穹鐵道的武器在 20 & 30 & 40 & 50 & 60 & 70 級時沒有任何辦法判斷是否有經過等級突破，只能以「尚未完成等級突破」為前提來推斷此時的武器面板資料。</li>
+				<li>原神的部分角色可能會有「忘記統計某些角色自身突破所帶來的特定元素的傷害增幅」的情況，屆時請以「在遊戲內將該角色移出隊伍之後、遊戲內顯示的該角色的面板」為基準、來決定是否向 HoYoLAB / 米遊社提報相關故障。</li>
+			</ul>
+			<p>  - 注意：不將該角色移出隊伍的話，隊伍內不同的角色組合、乃至個別角色的天賦都有可能影響到遊戲內顯示的隊員們的面板數值。</p>
+			<ul>
+				<li>原神的查詢結果無法將角色技能基礎等級與命座天賦等級加成分開統計，因為拿到的原始數值就是經過合算的最終技能等級。</li>
+			</ul>
+
+			<h4>Q: iOS 鎖屏小工具（小組件）無法加載出內容，怎麼解決？</h4>
+
+			<p>這有很大概率是小工具卡在資料獲取狀態了。可以進入鎖屏小工具編輯狀態，編輯對應的小工具的內容，重新選擇本機帳號（哪怕選擇的還是之前的本機帳號），這樣可以觸發鎖屏小工具的內容更新流程。</p>
+
+			<h4>Q: Apple Watch 無法從 iCloud 同步帳號？</h4>
+
+			<p>以 iOS 18 為例：先關閉披薩小助手的 iCloud 同步功能、再重新打開，並進入披薩小助手的本體應用、再靜置一分鐘，隨後打開 Apple Watch App 嘗試同步即可。具體操作方法為：在 iPhone 上點按「設定」-「你的 Apple 帳號」-「iCloud」-「儲存至 iCloud」，然後把頁面往下翻，找到披薩小助手的開關，關掉之後再重新點開就可以了。</p>
+
+			<h4>Q: 嘗試添加小工具（小組件）時，找不到小工具。</h4>
+
+			<p>請嘗試重新啟動系統後靜置十分鐘、不行的話再試試關閉再打開披薩小助手的通知，有較大概率解決。如果您在用 macOS 的且這樣做之後該問題仍舊存在的話，請洽 Apple Support 讓他們的專員引導您確認 App 是否被安裝到了正確的位置、或者在不同的位置有重複安裝。</p>
+
+			<h4>Q: 錯誤碼 -1（未獲取到資料）或 錯誤碼 10102、10103、10104（Cookie 與 UID 不對應）</h4>
+
+			<p>檢查是否開啟米遊社的實時便箋（或 HoYoLAB 的實時便箋）功能，並重新獲取 Cookie。另請注意登入的帳號本身是否正確。</p>
+
+			<h4>Q: 錯誤碼 10001 （Cookie 有誤或 Cookie 失效）</h4>
+
+			<p>建議將對應的本機帳號重新登入。這個過程會重新獲取 Cookie。</p>
+
+			<h4>Q: 錯誤碼 1008（UID 有誤）</h4>
+
+			<p>檢查 UID 是否與您選擇的伺服器彼此對應（注意：是原神/星穹鐵道/絕區零的UID，不是米遊社通行證帳號的 ID 數字）。如無法解決，請向我們反饋。另：披薩小助手自從 v5.0 版本開始，會在藉由本機帳號管理畫面輸入 UID 時自動嘗試判定所屬的伺服器。</p>
+
+			<h4>Q: 受米遊社管轄的 UID 該如何自備設備指紋？</h4>
+
+			<p>該功能需要對 iOS 版米遊社 App 與米哈遊伺服器之間的通訊進行流量監聽、獲取 <code>x-rpc-device_fp</code> 字段。這種工具會為系統新增本機虛擬專用網路、來完成流量監聽。</p>
+
+			<p>目前的唯一解決方案是由使用者自己使用專門的流量監聽工具來完成抓包工作。這裡推薦 Stream Lab Inc. 開發的「Stream」這款專門用來抓包的 iOS 應用。</p>
+
+			<p>因為抓到的內容屬於個人資訊，所以需要使用者親自完成。抓到的自己的設備的指紋也請僅供自己使用。</p>
+
+			<h4>Q: 該怎樣處理 Paimon.moe 的抽卡記錄格式？</h4>
+
+			<p>由於該網站提供的 Excel 抽卡記錄格式缺失了太多關鍵資訊欄位（都是 UIGFv4 規定的），我們在此前針對原神披薩小助手實裝 UIGFv4 支持的時候就已經徹底放棄了對 Paimon.moe 的私有 Excel 格式的支持。如果您有將資料讀入披薩小助手等 UIGFv4 標準的應用內的需求，請向 Paimon.moe 提出建議。</p>
+
+			<h4>Q: 該怎樣針對「星穹鐵道 UID」以及「受 HoYoLAB 管轄的原神 UID」獲取抽卡記錄 URL？</h4>
+
+			<p>該功能需要對這些遊戲客戶端（包括米哈遊的雲遊戲）與米哈遊伺服器之間的通訊進行流量監聽、篩檢任何包含特定字段與域名的網址。這種工具會為系統新增本機虛擬專用網路、來完成流量監聽。</p>
+
+			<p>目前的唯一解決方案是由使用者親自使用專門的流量監聽工具來完成抓包工作。</p>
+
+			<ul>
+				<li>如果您用的是 iOS 的話，這裡推薦 Stream Lab Inc. 開發的「Stream」這款專門用來抓包的 iOS 應用。</li>
+				<li>Windows 與 macOS 系統的抓包工具太多，不作贅述。</li>
+			</ul>
+
+			<p>抓包規則就是篩檢所有包含「<code>/api/getGachaLog</code>」路徑內容的 URL。不同遊戲的不同區服的抽卡網址的域名均以「<code>public-operation</code>」開頭：</p>
+
+			<ul>
+				<li>受米遊社管轄的 UID 的抽卡網址的域名均以 `mihoyo.com` 結尾。</li>
+				<li>受 HoYoLAB 管轄的 UID 的抽卡網址的域名均以 `hoyoverse.com` 結尾。</li>
+			</ul>
+
+			<p>抓包時需要使用者在開啟流量監聽狀態的情況下打開遊戲內的抽卡記錄（祈願/躍遷記錄）頁面。</p>
+
+			<p>您抓取的網址的有效期可能只有一到兩個小時，請儘快使用。</p>
+
+			<p>您抓取到的網址與資料屬於您的個人隱私，請慎重考慮是否將相關資料分享給其他人。</p>
+
+			<h4>Q: 為什麼每次重新啟動我的 iOS 裝置後，本機帳號都會消失？雖然大約 30 秒後可能會恢復，但仍然讓人感到困擾。</h4>
+
+			<p>披薩小助手預設使用「群組容器」來存儲本機帳號（且有專供小工具存取的 UserDefaults 鏡照副本）。如果您遇到此問題，可以按照以下步驟操作：</p>
+
+			<p>1. 前往「本機帳號管理器 -> 選單（位於介面右上角）」並使用相關選單選項將所有本機帳號匯出為備份檔案。在完成步驟 2 後，您需要使用此備份檔案將本機帳號重新匯入到披薩小助手內。</p>
+			<p>2. 在相同的選單中，進入「進階選項」並將「本機帳號存儲位置」切換為「應用程式容器」。切換此選項後，披薩小助手會自動退出。</p>
+			<p>3. 將本機帳號匯入到披薩小助手內。此選項位於步驟 1 所述的選單中。</p>
+
+			<p>這是針對此問題的一個經過驗證的解決方法。</p>
+
+			<h4>Q: 抽卡統計中的「常駐命中率可信度」功能是什麼？</h4>
+
+			<p>披薩小助手的「常駐命中率可信度」功能為抽卡遊戲中的常駐物品命中率計算提供可靠性指標。此功能幫助使用者根據可用資料量了解其抽卡統計的可信程度。</p>
+
+			<p><strong>可信度級別與閾值：</strong></p>
+
+			<p>可信度由可用於分析的相關五星抽取次數決定：</p>
+
+			<ul>
+				<li><strong>可信度高</strong>：≥10次 - 計算出的常駐命中率高度可靠</li>
+				<li><strong>可信度中等</strong>：5-9次 - 計算出的常駐命中率具有中等可靠性</li>
+				<li><strong>可信度低</strong>：3-4次 - 計算出的常駐命中率可靠性有限</li>
+				<li><strong>資料筆數不足</strong>：<3次 - 資料不足以提供有意義的計算</li>
+			</ul>
+
+			<p><strong>如何解讀可信度級別：</strong></p>
+
+			<ul>
+				<li><strong>可信度高</strong>的結果可放心用於制定遊戲決策</li>
+				<li><strong>可信度中等</strong>的結果提供有用指導，但應結合其他因素考慮</li>
+				<li><strong>可信度低</strong>的結果應謹慎解讀，因為可能不具代表性</li>
+				<li><strong>資料筆數不足</strong>表示您需要更多抽卡次數才能計算出有意義的統計資料</li>
+			</ul>
+
+			<p><strong>可信度不足的常見原因：</strong></p>
+
+			<ul>
+				<li>抽卡歷史中五星抽取次數太少</li>
+				<li>抽卡記錄不完整（缺少歷史資料）</li>
+				<li>最近才開始記錄抽卡次數</li>
+				<li>統計結果超出理論上限（>50%）</li>
+			</ul>
+
+			<p><strong>技術細節：</strong></p>
+
+			<p>當您在抽卡統計部分看到可信度指標時，可以點擊它檢視詳細說明。這會彈出一個訊息視窗來解釋與可信度指標有關的說明。</p>
+
+			<p>可信度計算考慮了抽卡機制的複雜性，包括保底系統以及常駐物品與限定物品的區別，確保可靠性評估反映您資料的實際統計意義。</p>
+
+			<p>注意：即便「可信度高」，最終解釋權仍舊在米哈遊，且米哈遊對概率的計算方法也擁有最終解釋權、凌駕在敝軟體的計算方法之上。</p>
+
+			<p>$ EOF.</p>
 
 		</div>
 		<div id="content-zh-Hans" class="content" lang="zh-Hans">
+			<h1>披萨小助手常见问题解答（FAQ）</h1>
+
+			<p>本文仅解答那些无法由《披萨小助手隐私政策》与《披萨小助手用户许可协议与免责声明（EULA）》回答的问题。</p>
+
+			<h2>// 安全疑虑与软件可靠性答疑</h2>
+
+			<h4>Q: 该怎么使用小工具（小组件）？有没有 watchOS 小工具？</h4>
+
+			<p>披萨小助手从 v5.0.3 版开始对 watchOS 提供小工具。有关如何在 Apple 设备上使用小工具的资讯，请咨询 Apple 支持。请注意：小工具的功能可能会因不同的操作系统及其年度更新而有所不同。</p>
+
+			<h4>Q: 披萨小助手有没有 Android 版本？</h4>
+
+			<p>暂无开发 Android 版本之计划。</p>
+
+			<h4>Q: 使用该工具是否会导致游戏账号被停权？</h4>
+
+			<p>根据到目前为止的反馈来看，迄今为止尚无先例。根据热心玩家向米哈游专属客服的求证，得到的答覆是游戏账号不会被停权。（《披萨小助手用户许可协议与免责声明（EULA）》有提及：<strong>开发者对于因用户行为所导致之任何损害不承担任何责任</strong>。）</p>
+
+			<h4>Q: 我通过披萨小助手登入米游社 / HoYoLAB 账号的过程是安全的吗？</h4>
+
+			<p>披萨小助手<strong>对米游社账号是采取 QRCode 扫码登入的、不会牵涉到账号盗取的嫌疑</strong>；对 HoYoLAB 账号虽然需要密码登入，但用户对自己账号的密码输入是<strong>直接由 iOS 系统的安全键盘接管（macOS 平台则是 SecureEventInput 模式从硬件层面接管所有的键盘输入讯号）、然后直接被 iOS / macOS 内建的 WKWebView 转交给 HoYoLAB 完成登入</strong>、才产生了可以由披萨小助手在所处设备赖以使用的 Cookie。<strong>整个登入过程当中，披萨小助手始终无权截获用户对密码的键盘输入</strong>。感谢 Apple 一直以来致力于对资讯安全环境的营造。</p>
+
+			<h4>Q: 披萨小助手会怎么处理用户的抽卡记录？</h4>
+
+			<p>在《披萨小助手隐私政策》有提及：玩家的抽卡记录只会被披萨小助手存放在这三个位置：</p>
+
+			<ul>
+				<li>阁下使用披萨小助手时之 Apple 数字设备。</li>
+				<li>以及该数字设备当时所已经登入使用 iCloud Drive 的 Apple ID 之自身的 iCloud 私有云空间。</li>
+				<li>以及任何被登入该 Apple ID 使用 iCloud Drive 且有安装披萨小助手之数字设备。</li>
+			</ul>
+
+			<p>虽然披萨小助手允许用户导入、导出抽卡记录，但开发团队不建议您将这些资料上交给任何可能会擅自公开统计结果的第三方网站。</p>
+
+			<h4>Q: 披萨小助手的哪些网络服务会受到外界不可抗力之影响？</h4>
+
+			<p>至少有这几类服务会受到影响：</p>
+
+			<p>1. HoYoLAB 或米游社：实时便笺、个人战报、账簿、抽卡记录获取、角色库存清单、游戏活动。</p>
+			<p>2. Enka Networks：角色展柜。</p>
+
+			<p>所受支持的每款游戏在各自的大版本更新时，往往伴随着上述服务的暂时不可用。特别是 Enka Networks，每次版本维护大概需要一至两天的时间。</p>
+
+			<h4>Q: 为什么有些功能被移除了？</h4>
+
+			<p>被移除的功能大致是这几类：</p>
+
+			<ul>
+				<li>与米游社 / HoYoLAB 既定功能重复、且无法在使用体验上做得比米游社 / HoYoLAB 更好的功能。例：游戏统计。</li>
+				<li>开发团队时间精力有限而无法维护的功能。例：披萨辞典。</li>
+				<li>有多种因素导致产品体验永远都无法做好、且没有可维护性的功能。例：深境螺旋榜单。</li>
+			</ul>
+
+			<h4>Q: 为什么我在商店升级了这个软件之后，很多功能反而不见了？甚至只有导出资料的功能？</h4>
+
+			<p>本软件从 5.5.0 开始（watchOS App 则自 5.5.1 版本开始）恢复了对 OS21 ~ OS23 (也就是 iOS 14 ~ 16 和 macOS 11 ~ 13) 的可安装性，借此替换掉那些被放弃维护的旧版。这个决定是因为旧版（v4.x 为止的版本）有一些与资讯安全有关的疑虑、且我们没有其他手段可以干预。考虑到 OS23 用户群体的特殊性，我们仍向下移植了一些基础功能给 OS23 (iOS 16.2+, macOS 13.0+, watchOS 9.2+) 开始的用户使用。但 SwiftUI 在这些版本的系统内仍旧非常不成熟，难免会有使用上的故障。如果您的使用需求情形与经济能力允许的话，请换用至少支持 OS24+ 的设备。</p>
+
+			<h2>// App 与开发团队</h2>
+
+			<h4>Q: 我是星铁披萨小助手的用户，请问在迁移过来时需要注意什么？</h4>
+
+			<p>一是资料同步：虽然基于统一披萨引擎的全新的披萨小助手可以通过 iCloud 读取到同一 Apple ID 下的星铁披萨小助手的云端资料，但同步读取资料是需要时间的、且可能受到包括网络连接状态等多方因素之影响。如希望能有更稳妥的迁移手段的话，您可以通过星铁披萨小助手将其本地账号全部导出为一个 JSON、再导入到目前的新版披萨小助手内。抽卡记录也可以用类似的手段迁移（使用 UIGF v4 格式）。</p>
+
+			<p>二是小工具（小组件）：全新的披萨小助手的所有看似给原神设计的小工具都是可以显示星穹铁道的内容的（洞天宝钱等原神专属小工具除外），直接在小工具设定里面选择您创建的星穹铁道专用的本地账号即可。依赖 iOS 内建的实时活动（Live Activity）功能实作的玩家体力计时器也可以用来显示星穹铁道的开拓力回满状态。对于小工具的自订壁纸的功能支持则是从 5.2.1 版更新开始支持，且无法继承之前的设定。详情请洽相关功能的介面文字说明。</p>
+
+			<h4>Q: 披萨小助手的工作原理是什么？</h4>
+
+			<p>米游社 / HoYoLAB 客户端应用（client app）会通过向米哈游 / Cognosphere 的服务器的后端请求游戏内的一些资讯。这个手段可以查询到一些与此有关的游戏状态资讯（比如玩家体力的回满进度，等）。披萨小助手使用您的 UID 与 Cookie 资讯可以重复这个查询过程、代替您使用这两款 App 向对应的服务器的后端请求游戏内的这些资讯、并展示于披萨小助手的主界面与小工具当中。《披萨小助手隐私政策》已经解释了与这些 Cookies 的使用有关的内容。</p>
+
+			<h4>Q: 未来会收费吗？</h4>
+
+			<p>米哈游不允许收费或植入收费广告，所以披萨小助手的所有功能都是免费提供开放使用的。</p>
+
+			<p>披萨小助手曾经接受过来自用户的自发捐赠（目前不再接受捐赠），且敝团队不会因此对捐赠者产生任何义务。这类捐赠内容会用于 App 开发、及其连带网络设施的维护。当然，通过 Apple App Store 发行软件所必须的 Apple Developer Program 会员身分的年费也会从这笔捐赠金报销。如有收到大宗捐赠的话，敝团队可能会公示他们的贡献。敝团队也可能会考虑在适当的时间点将用不完的经费捐赠给社会公益之用途。</p>
+
+			<h4>Q: 小工具（小组件）是怎样自动更新玩家的账号的原粹树脂 / 开拓力 / 绝区电量状态的？</h4>
+
+			<p>这些在披萨小助手被统称为「玩家体力（Stamina）」。从 5.0.4 版开始，披萨小助手的小工具每过一个玩家体力点恢复时间就会尝试向米游社 / HoYoLAB 服务器请求一次最新的实时便笺资料（里面包括了对应 UID 的原粹树脂 / 开拓力 / 绝区电量状态等资讯）。桌面小工具额外会有用于重载内容专用的刷新按钮。开启披萨小助手本体 App 时，所有小工具都会自动重新请求一次实时便笺资料。如果您未曾登入游戏消耗过玩家体力的话，理论上通过小工具显示的玩家体力的误差不会超过 1。</p>
+
+			<p>然而，对于3年以上的旧款iPhone机种来讲，哪怕有更换过新的电池，上述的小工具运作规律也会增加电力的消耗。因此，请在使用这类机种时尽量控制小工具的数量。</p>
+
+			<h4>Q: 开发团队的自我介绍呢？如何解决其他疑问和讨论其他话题？</h4>
+
+			<p>各位可以在披萨小助手的「关于」画面找到披萨小助手的 QQ 频道和 Discord 频道。从 2023 年四月开始，开发团队变成了三个人（Lava; Bill Haku; Shiki Suen），各位可以在「关于」画面的右上角点一下「开发组」就能看到他们的联络资料。因成员生涯计划各异的原因，从 2024 年 10 月 1 日起，该专案的程式开发由 Shiki Suen 单人维护。</p>
+
+			<h4>Q: 请问何时会实作与绝区零有关的进阶功能？比如抽卡记录管理之类的。</h4>
+
+			<p>至少一年内不会实作。原因有很多，但开发团队分身乏术也是重要原因之一。</p>
+
+			<h2>// 技术故障与使用方法</h2>
+
+			<blockquote>
+				本章节内容以披萨小助手 5.2.1 版开始的版本为讨论情形。
+			</blockquote>
+
+			<h4>Q: HoYoLAB / 米游社面板相对于 Enka 面板而言有何差异？</h4>
+
+			<p>Enka 面板的结果理论上是最准确的结果，但只能显示某个 UID 的公开展柜内的角色；而 HoYoLAB / 米游社面板则允许您以近乎相同的面板阅读体验来检视自己全部的在库角色。</p>
+
+			<p>由于后者可提供的后端资料有限，所以 HoYoLAB / 米游社面板内容有下述限制：</p>
+
+			<ul>
+				<li>星穹铁道的武器在 20 & 30 & 40 & 50 & 60 & 70 级时没有任何办法判断是否有经过等级突破，只能以「尚未完成等级突破」为前提来推断此时的武器面板数据。</li>
+				<li>原神的部分角色可能会有「忘记统计某些角色自身突破所带来的特定元素的伤害增幅」的情况，届时请以「在游戏内将该角色移出队伍之后、游戏内显示的该角色的面板」为基准、来决定是否向 HoYoLAB / 米游社提报相关故障。</li>
+			</ul>
+			<p>  - 注意：不将该角色移出队伍的话，队伍内不同的角色组合、乃至个别角色的天赋都有可能影响到游戏内显示的队员们的面板数值。</p>
+			<ul>
+				<li>原神的查询结果无法将角色技能基础等级与命座天赋等级加成分开统计，因为拿到的原始数值就是经过合算的最终技能等级。</li>
+			</ul>
+
+			<h4>Q: iOS 锁屏小工具（小组件）无法加载出内容，怎么解决？</h4>
+
+			<p>这有很大概率是小工具卡在资料获取状态了。可以进入锁屏小工具编辑状态，编辑对应的小工具的内容，重新选择本地账号（哪怕选择的还是之前的本地账号），这样可以触发锁屏小工具的内容更新流程。</p>
+
+			<h4>Q: Apple Watch 无法从 iCloud 同步账号？</h4>
+
+			<p>以 iOS 18 为例：先关闭披萨小助手的 iCloud 同步功能、再重新打开，并进入披萨小助手的本体应用、再静置一分钟，随后打开 Apple Watch App 尝试同步即可。具体操作方法为：在 iPhone 上点按「设定」-「你的 Apple 账号」-「iCloud」-「储存至 iCloud」，然后把页面往下翻，找到披萨小助手的开关，关掉之后再重新点开就可以了。</p>
+
+			<h4>Q: 尝试添加小工具（小组件）时，找不到小工具。</h4>
+
+			<p>请尝试重新启动系统后静置十分钟、不行的话再试试关闭再打开披萨小助手的通知，有较大概率解决。如果您在用 macOS 的且这样做之后该问题仍旧存在的话，请洽 Apple Support 让他们的专员引导您确认 App 是否被安装到了正确的位置、或者在不同的位置有重复安装。</p>
+
+			<h4>Q: 错误码 -1（未获取到数据）或 错误码 10102、10103、10104（Cookie 与 UID 不对应）</h4>
+
+			<p>检查是否开启米游社的实时便笺（或 HoYoLAB 的实时便笺）功能，并重新获取 Cookie。另请注意登入的账号本身是否正确。</p>
+
+			<h4>Q: 错误码 10001 （Cookie 有误或 Cookie 失效）</h4>
+
+			<p>建议将对应的本地账号重新登入。这个过程会重新获取 Cookie。</p>
+
+			<h4>Q: 错误码 1008（UID 有误）</h4>
+
+			<p>检查 UID 是否与您选择的服务器彼此对应（注意：是原神/星穹铁道/绝区零的UID，不是米游社通行证账号的 ID 数字）。如无法解决，请向我们反馈。另：披萨小助手自从 v5.0 版本开始，会在通过本地账号管理画面输入 UID 时自动尝试判定所属的服务器。</p>
+
+			<h4>Q: 受米游社管辖的 UID 该如何自备设备指纹？</h4>
+
+			<p>该功能需要对 iOS 版米游社 App 与米哈游服务器之间的通讯进行流量监听、获取 <code>x-rpc-device_fp</code> 字段。这种工具会为系统新增本地虚拟专用网络、来完成流量监听。</p>
+
+			<p>目前的唯一解决方案是由用户自己使用专门的流量监听工具来完成抓包工作。这里推荐 Stream Lab Inc. 开发的「Stream」这款专门用来抓包的 iOS 应用。</p>
+
+			<p>因为抓到的内容属于个人资讯，所以需要用户亲自完成。抓到的自己的设备的指纹也请仅供自己使用。</p>
+
+			<h4>Q: 该怎样处理 Paimon.moe 的抽卡记录格式？</h4>
+
+			<p>由于该网站提供的 Excel 抽卡记录格式缺失了太多关键资讯栏位（都是 UIGFv4 规定的），我们在此前针对原神披萨小助手实装 UIGFv4 支持的时候就已经彻底放弃了对 Paimon.moe 的私有 Excel 格式的支持。如果您有将资料读入披萨小助手等 UIGFv4 标准的应用内的需求，请向 Paimon.moe 提出建议。</p>
+
+			<h4>Q: 该怎样针对「星穹铁道 UID」以及「受 HoYoLAB 管辖的原神 UID」获取抽卡记录 URL？</h4>
+
+			<p>该功能需要对这些游戏客户端（包括米哈游的云游戏）与米哈游服务器之间的通讯进行流量监听、筛选任何包含特定字段与域名的网址。这种工具会为系统新增本地虚拟专用网络、来完成流量监听。</p>
+
+			<p>目前的唯一解决方案是由用户亲自使用专门的流量监听工具来完成抓包工作。</p>
+
+			<ul>
+				<li>如果您用的是 iOS 的话，这里推荐 Stream Lab Inc. 开发的「Stream」这款专门用来抓包的 iOS 应用。</li>
+				<li>Windows 与 macOS 系统的抓包工具太多，不作赘述。</li>
+			</ul>
+
+			<p>抓包规则就是筛选所有包含「<code>/api/getGachaLog</code>」路径内容的 URL。不同游戏的不同区服的抽卡网址的域名均以「<code>public-operation</code>」开头：</p>
+
+			<ul>
+				<li>受米游社管辖的 UID 的抽卡网址的域名均以 `mihoyo.com` 结尾。</li>
+				<li>受 HoYoLAB 管辖的 UID 的抽卡网址的域名均以 `hoyoverse.com` 结尾。</li>
+			</ul>
+
+			<p>抓包时需要用户在开启流量监听状态的情况下打开游戏内的抽卡记录（祈愿/跃迁记录）页面。</p>
+
+			<p>您抓取的网址的有效期可能只有一到两个小时，请尽快使用。</p>
+
+			<p>您抓取到的网址与资料属于您的个人隐私，请慎重考虑是否将相关数据分享给其他人。</p>
+
+			<h4>Q: 为什么每次重新启动我的 iOS 设备后，本地账号都会消失？虽然大约 30 秒后可能会恢复，但仍然让人感到困扰。</h4>
+
+			<p>披萨小助手预设使用「群组容器」来存储本地账号（且有专供小工具存取的 UserDefaults 镜照副本）。如果您遇到此问题，可以按照以下步骤操作：</p>
+
+			<p>1. 前往「本地账号管理器 -> 选单（位于界面右上角）」并使用相关选单选项将所有本地账号导出为备份文件。在完成步骤 2 后，您需要使用此备份文件将本地账号重新导入到披萨小助手内。</p>
+			<p>2. 在相同的选单中，进入「进阶选项」并将「本地账号存储位置」切换为「应用程序容器」。切换此选项后，披萨小助手会自动退出。</p>
+			<p>3. 将本地账号导入到披萨小助手内。此选项位于步骤 1 所述的选单中。</p>
+
+			<p>这是针对此问题的一个经过验证的解决方法。</p>
+
+			<h4>Q: 抽卡统计中的「常驻命中率可信度」功能是什么？</h4>
+
+			<p>披萨小助手的「常驻命中率可信度」功能为抽卡游戏中的常驻物品命中率计算提供可靠性指标。此功能帮助用户根据可用数据量了解其抽卡统计的可信程度。</p>
+
+			<p><strong>可信度级别与阈值：</strong></p>
+
+			<p>可信度由可用于分析的相关五星抽取次数决定：</p>
+
+			<ul>
+				<li><strong>可信度高</strong>：≥10次 - 计算出的常驻命中率高度可靠</li>
+				<li><strong>可信度中等</strong>：5-9次 - 计算出的常驻命中率具有中等可靠性</li>
+				<li><strong>可信度低</strong>：3-4次 - 计算出的常驻命中率可靠性有限</li>
+				<li><strong>数据量不足</strong>：<3次 - 数据不足以提供有意义的计算</li>
+			</ul>
+
+			<p><strong>如何解读可信度级别：</strong></p>
+
+			<ul>
+				<li><strong>可信度高</strong>的结果可放心用于制定游戏决策</li>
+				<li><strong>可信度中等</strong>的结果提供有用指导，但应结合其他因素考虑</li>
+				<li><strong>可信度低</strong>的结果应谨慎解读，因为可能不具代表性</li>
+				<li><strong>数据量不足</strong>表示您需要更多抽卡次数才能计算出有意义的统计数据</li>
+			</ul>
+
+			<p><strong>可信度不足的常见原因：</strong></p>
+
+			<ul>
+				<li>抽卡历史中五星抽取次数太少</li>
+				<li>抽卡记录不完整（缺少历史数据）</li>
+				<li>最近才开始记录抽卡次数</li>
+				<li>统计结果超出理论上限（>50%）</li>
+			</ul>
+
+			<p><strong>技术细节：</strong></p>
+
+			<p>当您在抽卡统计部分看到可信度指标时，可以点击它查看详细说明。这会弹出一个消息窗口来解释与可信度指标有关的说明。</p>
+
+			<p>可信度计算考虑了抽卡机制的复杂性，包括保底系统以及常驻物品与限定物品的区别，确保可靠性评估反映您数据的实际统计意义。</p>
+
+			<p>注意：即便「可信度高」，最终解释权仍旧在米哈游，且米哈游对概率的计算方法也拥有最终解释权、凌驾在本软件的计算方法之上。</p>
+
+			<p>$ EOF.</p>
 
 		</div>
 		<div id="content-ja-JP" class="content" lang="ja">
 			<h1>ピザ助手 FAQ</h1>
-<p>この文書は、「ピザ助手 プライバシーポリシー」および「ピザ助手アプリ使用者許諾契約及び免責声明」で言及されていない内容のみの質問に対応しています。</p>
-<h2>// セキュリティに関する懸念、且つアプリの機能の信頼性</h2>
-<h4>Q: ウィジェットはどうやって使いますか。watchOS でもウィジェットが利用できますか。</h4>
-<p>ピザ助手（無印）は v5.0.3 版にて watchOS のウィジェットを正式に提供し始めました。Apple デバイスでのウィジェットの使い方については、Apple サポートをご確認ください。ウィジェットの機能は、オペレーティングシステムやその年次アップデートによって異なる場合があります。</p>
-<h4>Q: ピザ助手のAndroid版はございますか？</h4>
-<p>現在、Android版の開発予定はございません。</p>
-<h4>Q: このツールを使用すると、ゲームアカウントが停止されることはございますか？</h4>
-<p>これまでそのような報告はございません。miHoYoの専用カスタマーサービスに連絡した熱心なプレイヤーからの確認によれば、ゲームアカウントが停止されることはないとのことです。(<em>ピザ助手アプリ使用者許諾契約及び免責声明</em> には次のように記載されています: <strong>開発者は使用者の行為による損害について一切責任を負わぬ</strong>。）</p>
-<h4>Q: ピザ助手を通じて、米遊社 / HoYoLABアカウントにログインしても安全ですか？</h4>
-<p><strong>米遊社アカウントへのログインはQRコードスキャンを通じて行われ、パスワードの入力は不要です</strong>。HoYoLABアカウントの場合、<strong>iOSデバイスではシステム提供のセキュアな入力キーボードがパスワードの入力を取得し、macOSではハードウェアレベルのSecureEventInput APIが直接物理キーボードの入力を取得します</strong>。<strong>両方の入力はWKWebViewを通じてHoYoLABのログインページに直接渡されます</strong>。その後、サーバーはデバイス固有のクッキーを生成し、このアプリは使用者の「情報のニーズ」に応じてそれを利用します。<strong>この過程は他の誰にも（ピザ助手アプリにも）傍受されません</strong>。Appleのセキュリティ対策に感謝します。</p>
-<h4>Q: ピザ助手は使用者のガチャ記録をどのように扱いますか？</h4>
-<p><em>ピザ助手 プライバシーポリシー</em> に記載されているように、プレイヤーのガチャ記録は以下の3つの場所にのみ保存されます（柔らかい日本語で言い直します）：</p>
-<ul>
-<li>使用者が当アプリを使用しているApple製のデジタルデバイス。</li>
-<li>使用者のApple IDに紐づけられているiCloud個人クラウド空間。</li>
-<li>同じApple IDにてiCloud Driveにログインし、当アプリがインストールされている他のデジタルデバイス。</li>
-</ul>
-<p>ピザ助手は使用者がガチャ記録をインポート（読み込み）およびエクスポート（書き出し）できるようにしていますが、開発チームはこれらの記録を「勝手に統計結果を公開する第三者とそのウェブサイト」に共有することを推奨していません。</p>
-<h4>Q: ピザ助手（無印）のネットワークサービスはどのような不可抗力に影響を受けますか。</h4>
-<p>少なくとも下記のサービス提供者に関わります：</p>
-<ol>
-<li>HoYoLAB と米游社：リアルタイム便箋、個人作戦報告、元帳、ガチャ記録の受け取り、「持っているキャラの一覧」、ゲームイベント。</li>
-<li>Enka Networks：キャラクターショーケース。</li>
-</ol>
-<p>このアプリがサポートしているゲームは大規模なアップデートの際に、上記の関連サービスが一時的に利用できなくなることがあります。特に Enka Networks では、アップデートに伴うメンテナンスに1～2日かかるのが一般的です。</p>
-<h4>Q: 一部の機能が削除された理由を教えてください。</h4>
-<p>以下の理由により、一部の機能を削除いたしました：</p>
-<ul>
-<li>ゲーム統計情報など、米游社 / HoYoLABアプリの実装と比べてユーザー体験が劣る機能。</li>
-<li>開発者の時間的制約により、メンテナンスが困難となった機能（例：ピザ辞典）。</li>
-<li>深境螺旋ランキングなど、ユーザー体験の課題が解決できない機能。</li>
-</ul>
-<h4>Q: App Store でこのソフトをアップグレードした後、なぜ多くの機能が消えたのですか？データのエクスポート機能しか残っていません。</h4>
-<p>バージョン5.5.0以降（watchOSアプリは5.5.1以降）、当アプリはOS21～OS23（iOS 14～16およびmacOS 11～13）へのインストールを再サポートし、メンテナンスが終了した旧版を置き換えます。この決定は、旧版（v4.x以前）に存在するセキュリティ上の懸念事項への介入手段が他にないためです。OS23ユーザー層の特殊性を考慮し、OS23（iOS 16.2+/macOS 13.0+/watchOS9.2+）以降のユーザー向けに一部基本機能を移植しました。ただしSwiftUIはこれらのシステムバージョンでは未成熟であり、動作障害が発生する可能性があります。使用ニーズと経済状況が許す場合は、OS24+以上をサポートするデバイスへの切り替えをお願いします。</p>
-<h2>// アプリと開発チーム</h2>
-<h4>Q: 『崩スタピザ助手』の使用者です。この新しい『ピザ助手（無印）』に移行する際に注意すべきことはございますか？</h4>
-<ol>
-<li>
-<p><strong>データ同期</strong>：新しい『統一ピザ助手エンジン』で稼働している『ピザ助手（無印）』は、同じApple IDでiCloudを通じて『崩スタピザ助手』のクラウドデータを読み取ることができますが、データ同期には時間がかかる場合があり、接続状態などの要因によって影響を受けることがございます。より確実な移行を行うためには、『崩スタピザ助手』からローカルアカウントをJSONファイル（プロファイル統括パッケージ）として書き出し、『ピザ助手（無印）』に読み込むすることをお勧めします。ガチャ記録も同様の方法で移行できます（UIGF v4形式に準拠したファイル交換を通じて）。</p>
-</li>
-<li>
-<p><strong>ウィジェット</strong>：『ピザ助手（無印）』では、『原神』専用のウィジェットも『スターレイル』のコンテンツを表示できるようになりました（洞天集宝盆などの『原神』固有のウィジェットは除く）。ウィジェット設定で『スターレイル』用のローカルプロファイルを選択してください。iOSの組み込みLive Activity機能を使って実装されたスタミナタイマーも、『スターレイル』での開拓力の補充状況を表示するために使用できます。ウィジェットのユーザーカスタム背景サポートはv5.2.1アップデートにて再びサポートし始めましたが、旧版のアプリのこの設定の引き継ぎは無理です。この機能についてのUI文字説明をご参考くださいませ。</p>
-</li>
-</ol>
-<h4>Q: ピザ助手はどのように動作しますか？</h4>
-<p>miHoYo / HoYoLABクライアントアプリは、miHoYo / Cognosphereサーバーバックエンドからゲーム関連の情報をリクエストします。この方法では、ゲームの状態情報（例えば、スタミナの補充進行状況など）を取得できます。ピザ助手は、あなたのUIDとクッキー情報を使用してこのクエリ過程を再現し、あなたの代わりに対応するサーバーバックエンドからデータをリクエストし、その情報をピザ助手のメインインターフェースやウィジェットに表示します。Cookies の取り扱いの安全配慮について、プライバシーポリシーで既に説明済みですので、その説明をご参考にしてください。</p>
-<h4>Q: 将来的に料金が発生することはございますか？</h4>
-<p>miHoYoは課金や広告の埋め込みを許可していないため、ピザ助手のすべての機能は無料で利用できます。</p>
-<p>ピザ助手は使用者からの任意の寄付を受け入れていましたが、開発チームは寄付者に対して義務を負いません。これらの寄付はアプリの開発や関連するネットワークインフラの維持に使用されます。もちろん、Apple Developer Programメンバーシップの年間費用もこの寄付金から支払われます。大きな寄付を受けた場合、チームは寄付者を公に認めることがございます。チームはまた、適切なタイミングで未使用の寄付金を慈善団体に寄付することを検討することがございます。</p>
-<h4>Q: ウィジェットはどのようにしてプレイヤーのアカウントステータス（天然樹脂、開拓力、ZZZエネルギー）を自動更新しますか？</h4>
-<p>これらはピザ助手内で「プレイヤースタミナ」として総称されます。バージョン5.0.4以降、ウィジェットは「1点ごとのスタミナの回復に要る時間」ごとに米遊社 / HoYoLABサーバーから2時間ごとにリアルタイムデータをリクエストしようと試みます（対応するUIDの天然樹脂、開拓力、ZZZエネルギーステータスを含む）。デスクトップウィジェットには、コンテンツを再読み込みするためのリフレッシュボタンも含まれています。ピザ助手アプリを開くと、すべてのウィジェットは自動的にリアルタイムデータを再リクエストします。ゲーム内でスタミナを消費していない場合、ウィジェットに表示されるスタミナの差異は1を超えることはございません。</p>
-<p>ところが、３年以上古い iPhone 機種には、たとえ電池が新品交換したとしても、上記のウィジェットの稼働パターンは電力の消耗の負担が掛かりますので、このような機種をお持ちしている方はできる限りウィジェットの数をお控えくださいませ。</p>
-<h4>Q: 開発チームについてもっと知りたい、または他のトピックについて話し合いたいですか？</h4>
-<p>開発チームのQQチャンネルやDiscordチャンネルは、ピザ助手の「設定」セクションにございます。2023年4月から、開発チームは3人のメンバー（Lava、Bill Haku、Shiki Suen）で構成されています。「設定」セクションの右上隅にある「開発チーム」をクリックすると、開発チームメンバーたちの連絡先情報を見ることができます。生涯の計画はみんなそれぞれであるため、2024年10月からメンテナンスをする開発者は Shiki Suen 一人になりました。</p>
-<h2>// 技術的な問題と使い方について</h2>
-<blockquote>このセクションでは、ピザ助手（無印）バージョン5.2.1以降の問題について説明します。</blockquote>
-<h4>Q: HoYoLAB / 米遊社のキャラビルド情報は Enka のキャラビルド情報と比べば？</h4>
-<p>Enka のキャラビルド情報は一番正しいとは言えますが、該当 UID のショーケースで公開済みのキャラクター情報には限られております。一方、HoYoLAB / 米遊社のキャラビルド情報には該当 UID の有する全てのキャラのビルド情報が含まれております。</p>
-<p>HoYoLAB / 米遊社のキャラビルド情報には下記の制限はございます：</p>
-<ul>
-<li>スターレイルでの武器（光円錐）のレベルは 20・30・40・50・60・70 の時に、該当武器はレベル突破済みかどうかとは判断できませんので、「レベル未突破」を仮りの前提として武器の推測ビルド情報を表示するようにしました。</li>
-<li>原神の一部のキャラの元素傷害増幅情報の合計結果には、キャラ自身のレベル突破による元素傷害増幅数値が含まれていないことは、一部のキャラには発生しております。従って、ゲーム内の該当キャラが「チームにはいない」状態での「ゲーム内で見えるビルド情報」をご準拠くださいませ。なお、「チーム内部のキャラたちはそれぞれの組み合わせ或いは天賦の影響のため、それぞれのビルド情報は変化している」とご注意くださいませ。</li>
-<li>原神でのキャラの天賦レベルはサーバーからの合計結果であり、「命の星座からどの天賦のレベルに影響を与えたか」とは判断できません。</li>
-</ul>
-<h4>Q: iOSのロック画面ウィジェットがコンテンツを読み込まない。どうすれば修正できますか？</h4>
-<p>これは、ウィジェットがデータ取得状態で固まっている可能性がございます。ロック画面ウィジェットの編集モードに入り、ウィジェットの内容を変更し、ローカルプロファイルを再選択してください（前のものと同じでも構いません）。これにより、コンテンツの更新過程がトリガーされます。</p>
-<h4>Q: Apple WatchがiCloudからアカウントを同期できません？</h4>
-<p>iOS 18の場合：まず、ピザ助手のiCloud同期機能をオフにし、再度オンにします。その後、ピザ助手アプリを開いて1分ほど放置し、Apple Watchアプリを通じて同期を試みてください。さらにサポートが必要な場合は、Apple Supportにお問い合わせください。</p>
-<h4>Q: ウィジェットを追加しようとすると見つからない？</h4>
-<p>システムを再起動し、10分ほど待ってください。それでも解決しない場合は、ピザ助手の通知をオフにした後、再度オンにしてみてください。これで問題が解決する可能性が高いです。macOSで問題が解決しない場合は、Apple Supportに連絡して、アプリが正しい場所にインストールされているか、重複してインストールされていないか確認してください。</p>
-<h4>Q: エラーコード-1（データが取得できない）または10102、10103、10104（クッキーとUIDの不一致）</h4>
-<p>米遊社またはHoYoLABでリアルタイム便箋機能が有効になっているか確認し、新しいクッキーを取得してください。また、ログインしているアカウントが正しいことを確認してください。</p>
-<h4>Q: エラーコード10001（クッキーエラーまたはクッキーの期限切れ）</h4>
-<p>対応するローカルプロファイルで再度ログインすることをお勧めします。この過程で新しいクッキーが取得されます。</p>
-<h4>Q: エラーコード1008（UIDエラー）</h4>
-<p>UIDが選択したサーバーに対応しているか確認してください（注意：これは『原神』 / 『スターレイル』 / 『ゼンレスゾンゼロ』のUIDであり、米遊社アカウント・HoYoLABアカウントのID番号ではございません）。問題が解決しない場合は、報告してください。バージョン5.0以降、ピザ助手はローカルプロファイル管理画面でUIDを入力する際にサーバーを自動的に判定しようとします。</p>
-<h4>Q: UID は米遊社在籍の場合、追加情報を受け取るための特殊なデバイス指紋をどのように準備すればよいか？</h4>
-<p>（この質問は、HoYoLAB在籍のUIDとは無関係です。）</p>
-<p>この機能は、iOS版米遊社アプリと株式会社米哈遊のサーバー間の通信を監視し、特に<code>x-rpc-device_fp</code>フィールドのデータ値を取得する必要があります。このようなツールは、通信監視を有効にするためにシステムにローカル仮想専用ネットワーク（VPN）を作成します。</p>
-<p>現在の唯一の解決策は、使用者自身が専門的な通信監視ツールを使用してパケットキャプチャを行うことです。ここでは、Stream Lab Inc.が開発したiOS専用のパケットキャプチャアプリ「Stream」を推奨します。</p>
-<p>キャプチャした内容は個人情報です。使用者ががご自身のデータをキャプチャし、ご自身だけで用いることを推奨します。</p>
-<h4>Q: Paimon.moeのガチャ記録フォーマットはどう処理すればよいか？</h4>
-<p>当該サイトが提供するExcel形式のガチャ記録フォーマットには、UIGFv4規定に従った重要な情報欄が不足しているため、この前「原神ピザ助手」にはUIGFv4対応を実装した際に、Paimon.moeの独自Excelフォーマットのサポート機能を完全に放棄しました。この機能は現在の「ピザ助手（無印）」にも実装されていません。当該サイトのガチャ記録データをUIGFv4標準に対応するアプリに読み込む必要がある場合は、Paimon.moeには「UIGFv4で記録を書き出す機能を実装なさる」よう、ご要求くださいませ。</p>
-<h4>Q: 「星穹鉄道 UID」および「HoYoLABがホストする原神UID」のガチャ記録 URL をどのように取得すればよいか？</h4>
-<p>この機能は、これらのゲームクライアント（米哈遊のクラウドゲームを含む）と米哈遊サーバー間の通信を監視し、特定のフィールドやドメインを含むURLを検出する必要があります。このツールは、通信監視を有効にするためにシステムにローカル仮想専用ネットワーク（VPN）を作成します。</p>
-<p>現在の唯一の解決策は、使用者が専門的な通信監視ツールを使用してパケットキャプチャを行うことです。</p>
-<ul>
-<li>iOSを使用している場合は、Stream Lab Inc.が開発した「Stream」というiOSアプリを推奨します。</li>
-<li>WindowsおよびmacOSのパケットキャプチャツールは多すぎるため、詳細は省略します。</li>
-</ul>
-<p>パケットキャプチャのルールは、「<code>/api/getGachaLog</code>」パスを含むすべてのURLを検出することです。異なるゲーム地域のガチャURLのドメインはすべて「<code>public-operation</code>」で始まります：</p>
-<ul>
-<li>米遊社在籍のUIDのガチャURLのドメインは、<code>mihoyo.com</code>で終わります。</li>
-<li>HoYoLAB在籍のUIDのガチャURLのドメインは、<code>hoyoverse.com</code>で終わります。</li>
-</ul>
-<p>パケットキャプチャ時には、使用者が通信監視を有効にした状態で、ゲーム内のガチャ記録ページ（祈願／跳躍記録）を開く必要があります。</p>
-<p>キャプチャしたURLの有効期限は1〜2時間しかない可能性があるため、できるだけお早めにご使用くださいませ。</p>
-<p>キャプチャしたURLなどのものは個人情報です。他者と共有するかどうかは慎重に検討してください。</p>
-<h4>Q: なぜ、iOS デバイスを再起動するたびにローカルプロファイルが消えてしまうのですか？約 30 秒後に戻る場合もありますが、それでも煩わしいです。</h4>
-<p>このアプリは、デフォルトでローカルプロファイルをグループコンテナに保存します（ウィジェットのためのUserDefaultsでの複写コピーも行っております）。この問題が発生した場合は、以下の手順を実行してください：</p>
-<ol>
-<li>「ローカルプロファイルマネージャー -&gt; メニュー（UI の右上）」で関連するメニューオプションを使用して、すべてのローカルプロファイルをバックアップファイルとして書き出してください。ステップ 2 を完了した後、このバックアップファイルを使用してローカルプロファイルをアプリに再び読み込む必要があります。</li>
-<li>同じメニュー内の「上級設定」-&gt;「ローカルプロファイルのストレージ場所」を「アプリコンテナ」に切り替えます。このオプションを切り替えると、アプリは自動的に終了します。</li>
-<li>ローカルプロファイルをアプリに再びお読み込みください。このオプションは、ステップ 1 で述べた同じメニューにあります。</li>
-</ol>
-<p>これは、この問題に対する実証済みの回避策です。</p>
-<h4>Q: ガチャ統計の「通常アイテム命中率信憑度」機能とは何ですか？</h4>
-<p>ピザヘルパーの「通常アイテム命中率信憑度」機能は、ガチャゲームにおける通常アイテム命中率計算の信頼性指標を提供します。この機能は、利用可能なデータ量に基づいて、ガチャ統計の信頼度をユーザーが理解するのに役立ちます。</p>
-<p><strong>信憑度レベルと閾値：</strong></p>
-<p>信憑度は、分析に利用可能な関連する5星獲得回数によって決定されます：</p>
-<ul>
-<li><strong>信憑度高</strong>：≥10回 - 計算された通常命中率は高度に信頼できる</li>
-<li><strong>信憑度中</strong>：5-9回 - 計算された通常命中率は中程度の信頼性を持つ</li>
-<li><strong>信憑度低</strong>：3-4回 - 計算された通常命中率の信頼性は限定的</li>
-<li><strong>データ不足</strong>：&lt;3回 - 意味のある計算を提供するには十分なデータがない</li>
-</ul>
-<p><strong>信憑度レベルの解釈方法：</strong></p>
-<ul>
-<li><strong>信憑度高</strong>の結果は、ゲームプレイの決定に信頼して使用できる</li>
-<li><strong>信憑度中</strong>の結果は有用なガイダンスを提供するが、他の要因と併せて考慮すべき</li>
-<li><strong>信憑度低</strong>の結果は、代表的でない可能性があるため慎重に解釈すべき</li>
-<li><strong>データ不足</strong>は、意味のある統計を計算する前により多くのガチャ回数が必要であることを示す</li>
-</ul>
-<p><strong>信憑度不足の一般的な理由：</strong></p>
-<ul>
-<li>ガチャ履歴の5星獲得回数が少なすぎる</li>
-<li>不完全なガチャ記録（履歴データの欠如）</li>
-<li>最近ガチャ記録を開始したばかり</li>
-<li>統計結果が理論上限値（50%）を超えている</li>
-</ul>
-<p><strong>技術詳細：</strong></p>
-<p>ガチャ統計セクションで信憑度指標を見る際、それをタップして詳細な説明を表示できます。これにより、信憑度指標に関する説明を示すメッセージウィンドウがポップアップします。</p>
-<p>信憑度計算は、天井システムや通常アイテムと限定アイテムの区別を含むガチャメカニクスの複雑性を考慮に入れ、信頼性評価がデータの実際の統計的意義を反映することを保証します。</p>
-<p>注意：「信憑度高」が出たとしても、最終的な解釈権は株式会社米哈遊にあり、米哈遊社は確率の計算方法についても最終的な解釈権を持ち、当アプリの計算方法よりも優先されます。</p>
-<p>$ EOF.</p>
+
+			<p>この文書は、「ピザ助手 プライバシーポリシー」および「ピザ助手アプリ使用者許諾契約及び免責声明」で言及されていない内容のみの質問に対応しています。</p>
+
+			<h2>// セキュリティに関する懸念、且つアプリの機能の信頼性</h2>
+
+			<h4>Q: ウィジェットはどうやって使いますか。watchOS でもウィジェットが利用できますか。</h4>
+
+			<p>ピザ助手（無印）は v5.0.3 版にて watchOS のウィジェットを正式に提供し始めました。Apple デバイスでのウィジェットの使い方については、Apple サポートをご確認ください。ウィジェットの機能は、オペレーティングシステムやその年次アップデートによって異なる場合があります。</p>
+
+			<h4>Q: ピザ助手のAndroid版はございますか？</h4>
+
+			<p>現在、Android版の開発予定はございません。</p>
+
+			<h4>Q: このツールを使用すると、ゲームアカウントが停止されることはございますか？</h4>
+
+			<p>これまでそのような報告はございません。miHoYoの専用カスタマーサービスに連絡した熱心なプレイヤーからの確認によれば、ゲームアカウントが停止されることはないとのことです。(<em>ピザ助手アプリ使用者許諾契約及び免責声明</em> には次のように記載されています: <strong>開発者は使用者の行為による損害について一切責任を負わぬ</strong>。）</p>
+
+			<h4>Q: ピザ助手を通じて、米遊社 / HoYoLABアカウントにログインしても安全ですか？</h4>
+
+			<p><strong>米遊社アカウントへのログインはQRコードスキャンを通じて行われ、パスワードの入力は不要です</strong>。HoYoLABアカウントの場合、<strong>iOSデバイスではシステム提供のセキュアな入力キーボードがパスワードの入力を取得し、macOSではハードウェアレベルのSecureEventInput APIが直接物理キーボードの入力を取得します</strong>。<strong>両方の入力はWKWebViewを通じてHoYoLABのログインページに直接渡されます</strong>。その後、サーバーはデバイス固有のクッキーを生成し、このアプリは使用者の「情報のニーズ」に応じてそれを利用します。<strong>この過程は他の誰にも（ピザ助手アプリにも）傍受されません</strong>。Appleのセキュリティ対策に感謝します。</p>
+
+			<h4>Q: ピザ助手は使用者のガチャ記録をどのように扱いますか？</h4>
+
+			<p><em>ピザ助手 プライバシーポリシー</em> に記載されているように、プレイヤーのガチャ記録は以下の3つの場所にのみ保存されます（柔らかい日本語で言い直します）：</p>
+
+			<ul>
+				<li>使用者が当アプリを使用しているApple製のデジタルデバイス。</li>
+				<li>使用者のApple IDに紐づけられているiCloud個人クラウド空間。</li>
+				<li>同じApple IDにてiCloud Driveにログインし、当アプリがインストールされている他のデジタルデバイス。</li>
+			</ul>
+
+			<p>ピザ助手は使用者がガチャ記録をインポート（読み込み）およびエクスポート（書き出し）できるようにしていますが、開発チームはこれらの記録を「勝手に統計結果を公開する第三者とそのウェブサイト」に共有することを推奨していません。</p>
+
+			<h4>Q: ピザ助手（無印）のネットワークサービスはどのような不可抗力に影響を受けますか。</h4>
+
+			<p>少なくとも下記のサービス提供者に関わります：</p>
+
+			<p>1. HoYoLAB と米游社：リアルタイム便箋、個人作戦報告、元帳、ガチャ記録の受け取り、「持っているキャラの一覧」、ゲームイベント。</p>
+			<p>2. Enka Networks：キャラクターショーケース。</p>
+
+			<p>このアプリがサポートしているゲームは大規模なアップデートの際に、上記の関連サービスが一時的に利用できなくなることがあります。特に Enka Networks では、アップデートに伴うメンテナンスに1～2日かかるのが一般的です。</p>
+
+			<h4>Q: 一部の機能が削除された理由を教えてください。</h4>
+
+			<p>以下の理由により、一部の機能を削除いたしました：</p>
+
+			<ul>
+				<li>ゲーム統計情報など、米游社 / HoYoLABアプリの実装と比べてユーザー体験が劣る機能。</li>
+				<li>開発者の時間的制約により、メンテナンスが困難となった機能（例：ピザ辞典）。</li>
+				<li>深境螺旋ランキングなど、ユーザー体験の課題が解決できない機能。</li>
+			</ul>
+
+			<h4>Q: App Store でこのソフトをアップグレードした後、なぜ多くの機能が消えたのですか？データのエクスポート機能しか残っていません。</h4>
+
+			<p>バージョン5.5.0以降（watchOSアプリは5.5.1以降）、当アプリはOS21～OS23（iOS 14～16およびmacOS 11～13）へのインストールを再サポートし、メンテナンスが終了した旧版を置き換えます。この決定は、旧版（v4.x以前）に存在するセキュリティ上の懸念事項への介入手段が他にないためです。OS23ユーザー層の特殊性を考慮し、OS23（iOS 16.2+/macOS 13.0+/watchOS9.2+）以降のユーザー向けに一部基本機能を移植しました。ただしSwiftUIはこれらのシステムバージョンでは未成熟であり、動作障害が発生する可能性があります。使用ニーズと経済状況が許す場合は、OS24+以上をサポートするデバイスへの切り替えをお願いします。</p>
+
+			<h2>// アプリと開発チーム</h2>
+
+			<h4>Q: 『崩スタピザ助手』の使用者です。この新しい『ピザ助手（無印）』に移行する際に注意すべきことはございますか？</h4>
+
+			<p>1. <strong>データ同期</strong>：新しい『統一ピザ助手エンジン』で稼働している『ピザ助手（無印）』は、同じApple IDでiCloudを通じて『崩スタピザ助手』のクラウドデータを読み取ることができますが、データ同期には時間がかかる場合があり、接続状態などの要因によって影響を受けることがございます。より確実な移行を行うためには、『崩スタピザ助手』からローカルアカウントをJSONファイル（プロファイル統括パッケージ）として書き出し、『ピザ助手（無印）』に読み込むすることをお勧めします。ガチャ記録も同様の方法で移行できます（UIGF v4形式に準拠したファイル交換を通じて）。</p>
+
+			<p>2. <strong>ウィジェット</strong>：『ピザ助手（無印）』では、『原神』専用のウィジェットも『スターレイル』のコンテンツを表示できるようになりました（洞天集宝盆などの『原神』固有のウィジェットは除く）。ウィジェット設定で『スターレイル』用のローカルプロファイルを選択してください。iOSの組み込みLive Activity機能を使って実装されたスタミナタイマーも、『スターレイル』での開拓力の補充状況を表示するために使用できます。ウィジェットのユーザーカスタム背景サポートはv5.2.1アップデートにて再びサポートし始めましたが、旧版のアプリのこの設定の引き継ぎは無理です。この機能についてのUI文字説明をご参考くださいませ。</p>
+
+			<h4>Q: ピザ助手はどのように動作しますか？</h4>
+
+			<p>miHoYo / HoYoLABクライアントアプリは、miHoYo / Cognosphereサーバーバックエンドからゲーム関連の情報をリクエストします。この方法では、ゲームの状態情報（例えば、スタミナの補充進行状況など）を取得できます。ピザ助手は、あなたのUIDとクッキー情報を使用してこのクエリ過程を再現し、あなたの代わりに対応するサーバーバックエンドからデータをリクエストし、その情報をピザ助手のメインインターフェースやウィジェットに表示します。Cookies の取り扱いの安全配慮について、プライバシーポリシーで既に説明済みですので、その説明をご参考にしてください。</p>
+
+			<h4>Q: 将来的に料金が発生することはございますか？</h4>
+
+			<p>miHoYoは課金や広告の埋め込みを許可していないため、ピザ助手のすべての機能は無料で利用できます。</p>
+
+			<p>ピザ助手は使用者からの任意の寄付を受け入れていましたが、開発チームは寄付者に対して義務を負いません。これらの寄付はアプリの開発や関連するネットワークインフラの維持に使用されます。もちろん、Apple Developer Programメンバーシップの年間費用もこの寄付金から支払われます。大きな寄付を受けた場合、チームは寄付者を公に認めることがございます。チームはまた、適切なタイミングで未使用の寄付金を慈善団体に寄付することを検討することがございます。</p>
+
+			<h4>Q: ウィジェットはどのようにしてプレイヤーのアカウントステータス（天然樹脂、開拓力、ZZZエネルギー）を自動更新しますか？</h4>
+
+			<p>これらはピザ助手内で「プレイヤースタミナ」として総称されます。バージョン5.0.4以降、ウィジェットは「1点ごとのスタミナの回復に要る時間」ごとに米遊社 / HoYoLABサーバーから2時間ごとにリアルタイムデータをリクエストしようと試みます（対応するUIDの天然樹脂、開拓力、ZZZエネルギーステータスを含む）。デスクトップウィジェットには、コンテンツを再読み込みするためのリフレッシュボタンも含まれています。ピザ助手アプリを開くと、すべてのウィジェットは自動的にリアルタイムデータを再リクエストします。ゲーム内でスタミナを消費していない場合、ウィジェットに表示されるスタミナの差異は1を超えることはございません。</p>
+
+			<p>ところが、３年以上古い iPhone 機種には、たとえ電池が新品交換したとしても、上記のウィジェットの稼働パターンは電力の消耗の負担が掛かりますので、このような機種をお持ちしている方はできる限りウィジェットの数をお控えくださいませ。</p>
+
+			<h4>Q: 開発チームについてもっと知りたい、または他のトピックについて話し合いたいですか？</h4>
+
+			<p>開発チームのQQチャンネルやDiscordチャンネルは、ピザ助手の「設定」セクションにございます。2023年4月から、開発チームは3人のメンバー（Lava、Bill Haku、Shiki Suen）で構成されています。「設定」セクションの右上隅にある「開発チーム」をクリックすると、開発チームメンバーたちの連絡先情報を見ることができます。生涯の計画はみんなそれぞれであるため、2024年10月からメンテナンスをする開発者は Shiki Suen 一人になりました。</p>
+
+			<h2>// 技術的な問題と使い方について</h2>
+
+			<blockquote>
+				このセクションでは、ピザ助手（無印）バージョン5.2.1以降の問題について説明します。
+			</blockquote>
+
+			<h4>Q: HoYoLAB / 米遊社のキャラビルド情報は Enka のキャラビルド情報と比べば？</h4>
+
+			<p>Enka のキャラビルド情報は一番正しいとは言えますが、該当 UID のショーケースで公開済みのキャラクター情報には限られております。一方、HoYoLAB / 米遊社のキャラビルド情報には該当 UID の有する全てのキャラのビルド情報が含まれております。</p>
+
+			<p>HoYoLAB / 米遊社のキャラビルド情報には下記の制限はございます：</p>
+
+			<ul>
+				<li>スターレイルでの武器（光円錐）のレベルは 20・30・40・50・60・70 の時に、該当武器はレベル突破済みかどうかとは判断できませんので、「レベル未突破」を仮りの前提として武器の推測ビルド情報を表示するようにしました。</li>
+				<li>原神の一部のキャラの元素傷害増幅情報の合計結果には、キャラ自身のレベル突破による元素傷害増幅数値が含まれていないことは、一部のキャラには発生しております。従って、ゲーム内の該当キャラが「チームにはいない」状態での「ゲーム内で見えるビルド情報」をご準拠くださいませ。なお、「チーム内部のキャラたちはそれぞれの組み合わせ或いは天賦の影響のため、それぞれのビルド情報は変化している」とご注意くださいませ。</li>
+				<li>原神でのキャラの天賦レベルはサーバーからの合計結果であり、「命の星座からどの天賦のレベルに影響を与えたか」とは判断できません。</li>
+			</ul>
+
+			<h4>Q: iOSのロック画面ウィジェットがコンテンツを読み込まない。どうすれば修正できますか？</h4>
+
+			<p>これは、ウィジェットがデータ取得状態で固まっている可能性がございます。ロック画面ウィジェットの編集モードに入り、ウィジェットの内容を変更し、ローカルプロファイルを再選択してください（前のものと同じでも構いません）。これにより、コンテンツの更新過程がトリガーされます。</p>
+
+			<h4>Q: Apple WatchがiCloudからアカウントを同期できません？</h4>
+
+			<p>iOS 18の場合：まず、ピザ助手のiCloud同期機能をオフにし、再度オンにします。その後、ピザ助手アプリを開いて1分ほど放置し、Apple Watchアプリを通じて同期を試みてください。さらにサポートが必要な場合は、Apple Supportにお問い合わせください。</p>
+
+			<h4>Q: ウィジェットを追加しようとすると見つからない？</h4>
+
+			<p>システムを再起動し、10分ほど待ってください。それでも解決しない場合は、ピザ助手の通知をオフにした後、再度オンにしてみてください。これで問題が解決する可能性が高いです。macOSで問題が解決しない場合は、Apple Supportに連絡して、アプリが正しい場所にインストールされているか、重複してインストールされていないか確認してください。</p>
+
+			<h4>Q: エラーコード-1（データが取得できない）または10102、10103、10104（クッキーとUIDの不一致）</h4>
+
+			<p>米遊社またはHoYoLABでリアルタイム便箋機能が有効になっているか確認し、新しいクッキーを取得してください。また、ログインしているアカウントが正しいことを確認してください。</p>
+
+			<h4>Q: エラーコード10001（クッキーエラーまたはクッキーの期限切れ）</h4>
+
+			<p>対応するローカルプロファイルで再度ログインすることをお勧めします。この過程で新しいクッキーが取得されます。</p>
+
+			<h4>Q: エラーコード1008（UIDエラー）</h4>
+
+			<p>UIDが選択したサーバーに対応しているか確認してください（注意：これは『原神』 / 『スターレイル』 / 『ゼンレスゾンゼロ』のUIDであり、米遊社アカウント・HoYoLABアカウントのID番号ではございません）。問題が解決しない場合は、報告してください。バージョン5.0以降、ピザ助手はローカルプロファイル管理画面でUIDを入力する際にサーバーを自動的に判定しようとします。</p>
+
+			<h4>Q: UID は米遊社在籍の場合、追加情報を受け取るための特殊なデバイス指紋をどのように準備すればよいか？</h4>
+
+			<p>（この質問は、HoYoLAB在籍のUIDとは無関係です。）</p>
+
+			<p>この機能は、iOS版米遊社アプリと株式会社米哈遊のサーバー間の通信を監視し、特に<code>x-rpc-device_fp</code>フィールドのデータ値を取得する必要があります。このようなツールは、通信監視を有効にするためにシステムにローカル仮想専用ネットワーク（VPN）を作成します。</p>
+
+			<p>現在の唯一の解決策は、使用者自身が専門的な通信監視ツールを使用してパケットキャプチャを行うことです。ここでは、Stream Lab Inc.が開発したiOS専用のパケットキャプチャアプリ「Stream」を推奨します。</p>
+
+			<p>キャプチャした内容は個人情報です。使用者ががご自身のデータをキャプチャし、ご自身だけで用いることを推奨します。</p>
+
+			<h4>Q: Paimon.moeのガチャ記録フォーマットはどう処理すればよいか？</h4>
+
+			<p>当該サイトが提供するExcel形式のガチャ記録フォーマットには、UIGFv4規定に従った重要な情報欄が不足しているため、この前「原神ピザ助手」にはUIGFv4対応を実装した際に、Paimon.moeの独自Excelフォーマットのサポート機能を完全に放棄しました。この機能は現在の「ピザ助手（無印）」にも実装されていません。当該サイトのガチャ記録データをUIGFv4標準に対応するアプリに読み込む必要がある場合は、Paimon.moeには「UIGFv4で記録を書き出す機能を実装なさる」よう、ご要求くださいませ。</p>
+
+			<h4>Q: 「星穹鉄道 UID」および「HoYoLABがホストする原神UID」のガチャ記録 URL をどのように取得すればよいか？</h4>
+
+			<p>この機能は、これらのゲームクライアント（米哈遊のクラウドゲームを含む）と米哈遊サーバー間の通信を監視し、特定のフィールドやドメインを含むURLを検出する必要があります。このツールは、通信監視を有効にするためにシステムにローカル仮想専用ネットワーク（VPN）を作成します。</p>
+
+			<p>現在の唯一の解決策は、使用者が専門的な通信監視ツールを使用してパケットキャプチャを行うことです。</p>
+
+			<ul>
+				<li>iOSを使用している場合は、Stream Lab Inc.が開発した「Stream」というiOSアプリを推奨します。</li>
+				<li>WindowsおよびmacOSのパケットキャプチャツールは多すぎるため、詳細は省略します。</li>
+			</ul>
+
+			<p>パケットキャプチャのルールは、「<code>/api/getGachaLog</code>」パスを含むすべてのURLを検出することです。異なるゲーム地域のガチャURLのドメインはすべて「<code>public-operation</code>」で始まります：</p>
+
+			<ul>
+				<li>米遊社在籍のUIDのガチャURLのドメインは、`mihoyo.com`で終わります。</li>
+				<li>HoYoLAB在籍のUIDのガチャURLのドメインは、`hoyoverse.com`で終わります。</li>
+			</ul>
+
+			<p>パケットキャプチャ時には、使用者が通信監視を有効にした状態で、ゲーム内のガチャ記録ページ（祈願／跳躍記録）を開く必要があります。</p>
+
+			<p>キャプチャしたURLの有効期限は1〜2時間しかない可能性があるため、できるだけお早めにご使用くださいませ。</p>
+
+			<p>キャプチャしたURLなどのものは個人情報です。他者と共有するかどうかは慎重に検討してください。</p>
+
+			<h4>Q: なぜ、iOS デバイスを再起動するたびにローカルプロファイルが消えてしまうのですか？約 30 秒後に戻る場合もありますが、それでも煩わしいです。</h4>
+
+			<p>このアプリは、デフォルトでローカルプロファイルをグループコンテナに保存します（ウィジェットのためのUserDefaultsでの複写コピーも行っております）。この問題が発生した場合は、以下の手順を実行してください：</p>
+
+			<p>1. 「ローカルプロファイルマネージャー -> メニュー（UI の右上）」で関連するメニューオプションを使用して、すべてのローカルプロファイルをバックアップファイルとして書き出してください。ステップ 2 を完了した後、このバックアップファイルを使用してローカルプロファイルをアプリに再び読み込む必要があります。</p>
+			<p>2. 同じメニュー内の「上級設定」->「ローカルプロファイルのストレージ場所」を「アプリコンテナ」に切り替えます。このオプションを切り替えると、アプリは自動的に終了します。</p>
+			<p>3. ローカルプロファイルをアプリに再びお読み込みください。このオプションは、ステップ 1 で述べた同じメニューにあります。</p>
+
+			<p>これは、この問題に対する実証済みの回避策です。</p>
+
+			<h4>Q: ガチャ統計の「通常アイテム命中率信憑度」機能とは何ですか？</h4>
+
+			<p>ピザヘルパーの「通常アイテム命中率信憑度」機能は、ガチャゲームにおける通常アイテム命中率計算の信頼性指標を提供します。この機能は、利用可能なデータ量に基づいて、ガチャ統計の信頼度をユーザーが理解するのに役立ちます。</p>
+
+			<p><strong>信憑度レベルと閾値：</strong></p>
+
+			<p>信憑度は、分析に利用可能な関連する5星獲得回数によって決定されます：</p>
+
+			<ul>
+				<li><strong>信憑度高</strong>：≥10回 - 計算された通常命中率は高度に信頼できる</li>
+				<li><strong>信憑度中</strong>：5-9回 - 計算された通常命中率は中程度の信頼性を持つ</li>
+				<li><strong>信憑度低</strong>：3-4回 - 計算された通常命中率の信頼性は限定的</li>
+				<li><strong>データ不足</strong>：<3回 - 意味のある計算を提供するには十分なデータがない</li>
+			</ul>
+
+			<p><strong>信憑度レベルの解釈方法：</strong></p>
+
+			<ul>
+				<li><strong>信憑度高</strong>の結果は、ゲームプレイの決定に信頼して使用できる</li>
+				<li><strong>信憑度中</strong>の結果は有用なガイダンスを提供するが、他の要因と併せて考慮すべき</li>
+				<li><strong>信憑度低</strong>の結果は、代表的でない可能性があるため慎重に解釈すべき</li>
+				<li><strong>データ不足</strong>は、意味のある統計を計算する前により多くのガチャ回数が必要であることを示す</li>
+			</ul>
+
+			<p><strong>信憑度不足の一般的な理由：</strong></p>
+
+			<ul>
+				<li>ガチャ履歴の5星獲得回数が少なすぎる</li>
+				<li>不完全なガチャ記録（履歴データの欠如）</li>
+				<li>最近ガチャ記録を開始したばかり</li>
+				<li>統計結果が理論上限値（50%）を超えている</li>
+			</ul>
+
+			<p><strong>技術詳細：</strong></p>
+
+			<p>ガチャ統計セクションで信憑度指標を見る際、それをタップして詳細な説明を表示できます。これにより、信憑度指標に関する説明を示すメッセージウィンドウがポップアップします。</p>
+
+			<p>信憑度計算は、天井システムや通常アイテムと限定アイテムの区別を含むガチャメカニクスの複雑性を考慮に入れ、信頼性評価がデータの実際の統計的意義を反映することを保証します。</p>
+
+			<p>注意：「信憑度高」が出たとしても、最終的な解釈権は株式会社米哈遊にあり、米哈遊社は確率の計算方法についても最終的な解釈権を持ち、当アプリの計算方法よりも優先されます。</p>
+
+			<p>$ EOF.</p>
+
 		</div>
 	</main>
 </body>
