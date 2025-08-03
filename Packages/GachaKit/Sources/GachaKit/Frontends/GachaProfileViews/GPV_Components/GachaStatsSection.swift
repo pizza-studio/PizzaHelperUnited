@@ -28,6 +28,17 @@ extension GachaProfileView {
             case low // 3-4 relevant cases
             case insufficient // < 3 relevant cases
 
+            // MARK: Lifecycle
+
+            public init(casesAmount: Int) {
+                self = switch casesAmount {
+                case 10...: .high
+                case 5 ..< 10: .medium
+                case 3 ..< 5: .low
+                default: .insufficient
+                }
+            }
+
             // MARK: Internal
 
             var i18nKeyStr: LocalizedStringKey {
@@ -165,16 +176,7 @@ extension GachaProfileView {
         private var standardItemHitRateConfidence: StandardHitRateConfidence {
             let relevantCases = standardItemHitRateCalculationCases
             let caseCount = relevantCases.count
-
-            if caseCount >= 10 {
-                return .high
-            } else if caseCount >= 5 {
-                return .medium
-            } else if caseCount >= 3 {
-                return .low
-            } else {
-                return .insufficient
-            }
+            return .init(casesAmount: caseCount)
         }
 
         /// Get the relevant cases for standard item hit rate calculation
@@ -203,18 +205,22 @@ extension GachaProfileView {
 
         private var standardItemHitRate: Double {
             let surinukableCases = standardItemHitRateCalculationCases
+            let confidence = StandardHitRateConfidence(casesAmount: surinukableCases.count)
             guard surinukableCases.count >= 3 else { return 0.0 } // Insufficient data
 
             let countSurinuked = Double(surinukableCases.count(where: \.self))
             let rate = countSurinuked / Double(surinukableCases.count)
 
-            // Ensure rate stays within theoretical bounds (0-50%)
-            return min(rate, 0.5)
+            // Ensure rate stays within theoretical bounds (0-50%) when confidence is high.
+            return confidence == .high ? Swift.min(0.5, rate) : rate
         }
 
-        private var average5StarDraw: Int { pentaStarEntries.map { $0.drawCount }
-            .reduce(0) { $0 + $1 } /
-            max(pentaStarEntries.count, 1)
+        private var average5StarDraw: Int {
+            pentaStarEntries.map {
+                $0.drawCount
+            }.reduce(0) {
+                $0 + $1
+            } / max(pentaStarEntries.count, 1)
         }
 
         private var drawCountableAmount: Int {
