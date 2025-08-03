@@ -7,6 +7,7 @@ import CoreGraphics
 import Defaults
 import Foundation
 import PZBaseKit
+import SwiftUI
 
 // MARK: - BundledWallpaper
 
@@ -288,10 +289,10 @@ private actor BackgroundSavingActor {
 
     public func saveOnlineBackgroundAsset(for bundledWP: BundledWallpaper) async {
         guard let url = bundledWP.onlineAssetURL else { return }
-        let fileNameStem = bundledWP.assetName4LiveActivity
-        guard !OnlineImageFS.checkExistence(fileNameStem, useJPG: true) else { return }
+        guard await ImageMap.shared.assetMap[url] == nil else { return }
         let data: Data = (try? await AF.request(url).serializingData().value) ?? .init([])
         guard let cgImage = CGImage.instantiate(data: data) else { return }
-        try? OnlineImageFS.insertCGImageToFSIfMissing(fileNameStem, cgImage: cgImage, useJPG: true)
+        let imagePtr = SendableImagePtr(img: Image(decorative: cgImage, scale: 1))
+        await ImageMap.shared.insertValue(url: url, image: imagePtr)
     }
 }

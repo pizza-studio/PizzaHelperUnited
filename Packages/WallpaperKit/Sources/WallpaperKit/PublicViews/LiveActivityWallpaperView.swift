@@ -68,10 +68,8 @@ public struct LiveActivityWallpaperView: View {
     }
 
     private func getCachedOnlineBundledImageAsset(_ bundledWallpaper: BundledWallpaper) -> Image? {
-        guard nil != bundledWallpaper.officialFileNameStem else { return nil }
-        let cgImage = OnlineImageFS.getCGImageFromFS(bundledWallpaper.assetName4LiveActivity, useJPG: true)
-        guard let cgImage else { return nil }
-        return Image(decorative: cgImage, scale: 1)
+        guard let url = bundledWallpaper.onlineAssetURL else { return nil }
+        return ImageMap.shared.assetMap[url]?.img
     }
 
     private func getRawImage(_ targetWallpaper: Wallpaper) -> Image {

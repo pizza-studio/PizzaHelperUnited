@@ -91,9 +91,8 @@ extension WidgetBackground {
         let matchedWP = Wallpaper(id: id)
         guard let matchedWP else { return nil }
         guard case let .bundled(bundledWPMatched) = matchedWP else { return nil }
-        let cgImage = OnlineImageFS.getCGImageFromFS(bundledWPMatched.assetName4LiveActivity, useJPG: true)
-        guard let cgImage else { return nil }
-        return Image(decorative: cgImage, scale: 1)
+        guard let url = bundledWPMatched.onlineAssetURL else { return nil }
+        return ImageMap.shared.assetMap[url]?.img
     }
 
     public var isValidGalleryWallpaper: Bool {
