@@ -34,14 +34,13 @@ struct MaterialWidgetProvider: TimelineProvider {
         completion: @escaping @Sendable (MaterialWidgetEntry) -> Void
     ) {
         Task {
-            let results = Defaults[.officialFeedCache].filter {
+            var results: [OfficialFeed.FeedEvent]? = Defaults[.officialFeedCache].filter {
                 $0.game == .genshinImpact
             }
-            if results.isEmpty {
-                completion(.init(events: nil))
-            } else {
-                completion(.init(events: results))
-            }
+            let isEmpty = results?.isEmpty ?? true
+            if isEmpty { results = nil }
+            let entry = Entry(events: results)
+            completion(entry)
         }
     }
 
@@ -50,26 +49,19 @@ struct MaterialWidgetProvider: TimelineProvider {
         completion: @escaping @Sendable (Timeline<MaterialWidgetEntry>) -> Void
     ) {
         Task {
-            let results = await OfficialFeed.getAllFeedEventsOnline(game: .genshinImpact)
-            if results.isEmpty {
-                completion(
-                    .init(
-                        entries: [.init(events: nil)],
-                        policy: .after(
-                            Calendar.gregorian
-                                .date(byAdding: .hour, value: 1, to: Date())!
-                        )
-                    )
+            var results: [OfficialFeed.FeedEvent]? = await OfficialFeed.getAllFeedEventsOnline(game: .genshinImpact)
+            let isEmpty = results?.isEmpty ?? true
+            if isEmpty { results = nil }
+            let entry = Entry(events: results)
+            let policyAfterTime = Calendar.gregorian.date(
+                byAdding: .hour, value: isEmpty ? 1 : 4, to: Date()
+            )!
+            completion(
+                .init(
+                    entries: [entry],
+                    policy: .after(policyAfterTime)
                 )
-            } else {
-                completion(.init(
-                    entries: [.init(events: .init(results))],
-                    policy: .after(
-                        Calendar.gregorian
-                            .date(byAdding: .hour, value: 4, to: Date())!
-                    )
-                ))
-            }
+            )
         }
     }
 }
