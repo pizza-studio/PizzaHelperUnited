@@ -247,20 +247,20 @@ extension WidgetBackground {
         )
     }
 
-    public static var randomNamecardBackground: Self {
+    public static var randomWallpaperBackground: Self {
         let pickedBackgroundId = Wallpaper.allCases.randomElement() ?? .finalFallbackValue
         return pickedBackgroundId.asWidgetBackground
     }
 
-    public static func randomNamecardBackground4Game(_ game: Pizza.SupportedGame? = nil) -> Self {
-        guard let game else { return randomNamecardBackground }
+    public static func randomWallpaperBackground4Game(_ game: Pizza.SupportedGame? = nil) -> Self {
+        guard let game else { return randomWallpaperBackground }
         let pickedBackgroundId = BundledWallpaper.allCases(for: game).randomElement() ?? .defaultValue(for: game)
         return pickedBackgroundId.asWidgetBackground
     }
 
-    public static func randomNamecardBackground4Games(_ games: Set<Pizza.SupportedGame> = []) -> Self {
-        guard !games.isEmpty else { return randomNamecardBackground }
-        guard let game = games.randomElement() else { return randomNamecardBackground }
+    public static func randomWallpaperBackground4Games(_ games: Set<Pizza.SupportedGame> = []) -> Self {
+        guard !games.isEmpty else { return randomWallpaperBackground }
+        guard let game = games.randomElement() else { return randomWallpaperBackground }
         let pickedBackgroundId = BundledWallpaper.allCases(for: game).randomElement() ?? .defaultValue(for: game)
         return pickedBackgroundId.asWidgetBackground
     }
@@ -273,7 +273,7 @@ extension WidgetBackground {
         )
     }
 
-    public static var randomElementOrNamecardBackground: Self {
+    public static var randomElementOrWallpaperBackground: Self {
         let pickedBackgroundId = WidgetBackground.allOptionsSansPureColors.randomElement()!
         return WidgetBackground(
             id: pickedBackgroundId.id,
