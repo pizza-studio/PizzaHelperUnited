@@ -15,6 +15,7 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
 
     public init(noticeMessage: String? = nil) {
         self.noticeMessage = noticeMessage
+        updateBackgroundValue()
     }
 
     // MARK: Public
@@ -31,20 +32,23 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
     public var showMaterialsInLargeSizeWidget: Bool = true
     public var randomBackground: Bool = false
     public var expeditionDisplayPolicy: PZWidgetsSPM.ExpeditionDisplayPolicy = .displayWhenAvailable
-    public var selectedBackgrounds: Set<WidgetBackground> = [.defaultBackground]
     public var staminaContentRevolverStyle: PZWidgetsSPM.StaminaContentRevolverStyle = .byDefault
+    public var background: WidgetBackground = .defaultBackground
+    public var selectedBackgrounds: Set<WidgetBackground> = [.defaultBackground]
 
     public var neverDisplayExpeditionList: Bool { expeditionDisplayPolicy == .neverDisplay }
 
-    public var background: WidgetBackground {
-        guard !randomBackground else {
-            return .randomElementOrWallpaperBackground
-        }
-        if selectedBackgrounds.isEmpty {
-            return .defaultBackground
-        } else {
-            return selectedBackgrounds.randomElement() ?? .defaultBackground
-        }
+    public mutating func updateBackgroundValue() {
+        background = {
+            guard !randomBackground else {
+                return .randomElementOrWallpaperBackground
+            }
+            if selectedBackgrounds.isEmpty {
+                return .defaultBackground
+            } else {
+                return selectedBackgrounds.randomElement() ?? .defaultBackground
+            }
+        }()
     }
 
     public mutating func addMessage(_ msg: String) {
