@@ -198,6 +198,6 @@ When you see a confidence indicator in the gacha statistics section, you can tap
 
 The confidence calculation takes into account the complexity of gacha mechanics, including pity systems and the distinction between standard and limited items, ensuring that the reliability assessment reflects the actual statistical significance of your data.
 
-Note: Even when "confidence is high," the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override our software's calculation methods.
+Note: Even when "High confidence" comes out, the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override this app's calculation methods.
 
 $ EOF.
