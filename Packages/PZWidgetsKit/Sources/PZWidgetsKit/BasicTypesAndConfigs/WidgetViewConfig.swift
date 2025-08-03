@@ -54,4 +54,11 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
     public mutating func addMessage(_ msg: String) {
         noticeMessage = msg
     }
+
+    public func saveOnlineBackgroundAsset() async {
+        switch Wallpaper(id: background.id) {
+        case let .bundled(bundledWP): await bundledWP.saveOnlineBackgroundAsset()
+        default: break
+        }
+    }
 }
