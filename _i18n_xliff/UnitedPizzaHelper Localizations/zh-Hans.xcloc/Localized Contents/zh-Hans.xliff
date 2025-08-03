@@ -732,13 +732,13 @@ Empty selection indicates selecting all gacha pullers.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.srgfv1" xml:space="preserve">
-        <source>SRGF v1.0, established by the UIGF committee, is an exchangeable format for gacha records of Star Rail, a game produced by Cognosphere and MiHoYo. Although this format is marked as a vintage format and is replaced by UIGF v4.0, there are some excellent apps on Windows which only conforms to SRGF v1.0, hence the option here for compatibility purposes.</source>
-        <target state="translated">SRGF v1.0 是由 UIGF 委员会制定的信息交换格式，用于 Cognosphere 和米哈游制作的《星穹铁道》游戏的抽卡记录。虽然该格式被标记为旧版本，并由 UIGF v4.0 取代，但两者之间可以进行无损的双向转换。此外，Windows 平台上有一些只支持 SRGF v1.0 的优秀 App，因此这里提供了兼容性选项。</target>
+        <source>SRGF v1.0, established by the UIGF committee, is an exchangeable format for gacha records of Star Rail, a game produced by Cognosphere and MiHoYo. This format is marked as a vintage format and is replaced by UIGF v4.1 and has no support of new gacha pool types introduced since January 2025. There are some excellent apps on Windows which only conforms to SRGF v1.0, hence the option here for possible compatibility needs.</source>
+        <target state="translated">SRGF v1.0 是由 UIGF 委员会制定的信息交换格式，用于 Cognosphere 和米哈游制作的《星穹铁道》游戏的抽卡记录。该格式被标记为旧版格式，已被 UIGF v4.1 取代，且不支持自 2025 年 1 月以来引入的新的卡池类型。Windows 平台上有一些仅支援 SRGF v1.0 的优秀应用，因此这里提供了兼容性选项以满足可能的需求。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.uigfv4" xml:space="preserve">
-        <source>UIGF v4.0, established by the UIGF committee, is a coalescent exchangeable format for gacha records of many games produced by Cognosphere and MiHoYo.</source>
-        <target state="translated">UIGF v4.0 是由 UIGF 委员会制定的聚合型信息交换格式，用于多款由 Cognosphere 和米哈游制作发行的的电玩们的抽卡记录的交换。</target>
+        <source>UIGF v4.1, established by the UIGF committee, is a coalescent exchangeable format for gacha records of many games produced by Cognosphere and MiHoYo.</source>
+        <target state="translated">UIGF v4.1 是由 UIGF 委员会制定的聚合型信息交换格式，用于多款由 Cognosphere 和米哈游制作发行的的电玩们的抽卡记录的交换。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.uigfv4.refugee" xml:space="preserve">

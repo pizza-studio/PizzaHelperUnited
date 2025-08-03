@@ -728,13 +728,13 @@ Empty selection indicates selecting all gacha pullers.</source>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.srgfv1" xml:space="preserve">
-        <source>SRGF v1.0, established by the UIGF committee, is an exchangeable format for gacha records of Star Rail, a game produced by Cognosphere and MiHoYo. Although this format is marked as a vintage format and is replaced by UIGF v4.0, there are some excellent apps on Windows which only conforms to SRGF v1.0, hence the option here for compatibility purposes.</source>
-        <target state="translated">SRGF v1.0, созданный комитетом UIGF, является обменным форматом для записи гача в Star Rail, игре, разработанной Cognosphere и MiHoYo. Хотя этот формат отмечен как устаревший и заменен на UIGF v4.0, существуют некоторые отличные приложения на Windows, которые поддерживают только SRGF v1.0, поэтому здесь есть опция для целей совместимости.</target>
+        <source>SRGF v1.0, established by the UIGF committee, is an exchangeable format for gacha records of Star Rail, a game produced by Cognosphere and MiHoYo. This format is marked as a vintage format and is replaced by UIGF v4.1 and has no support of new gacha pool types introduced since January 2025. There are some excellent apps on Windows which only conforms to SRGF v1.0, hence the option here for possible compatibility needs.</source>
+        <target state="translated">SRGF v1.0, созданный комитетом UIGF, является обменным форматом для записи гача в Star Rail, игре, разработанной Cognosphere и MiHoYo. Этот формат отмечен как винтажный формат и заменен на UIGF v4.1 и не поддерживает новые типы пулов гача, введенные с января 2025 года. Существуют некоторые отличные приложения на Windows, которые соответствуют только SRGF v1.0, поэтому здесь есть опция для возможных потребностей совместимости.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.uigfv4" xml:space="preserve">
-        <source>UIGF v4.0, established by the UIGF committee, is a coalescent exchangeable format for gacha records of many games produced by Cognosphere and MiHoYo.</source>
-        <target state="translated">UIGF v4.0, установленный комитетом UIGF, является объединенным обменным форматом для записи гача во многих играх, созданных Cognosphere и MiHoYo.</target>
+        <source>UIGF v4.1, established by the UIGF committee, is a coalescent exchangeable format for gacha records of many games produced by Cognosphere and MiHoYo.</source>
+        <target state="translated">UIGF v4.1, установленный комитетом UIGF, является объединенным обменным форматом для записи гача во многих играх, созданных Cognosphere и MiHoYo.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.uigfv4.refugee" xml:space="preserve">
