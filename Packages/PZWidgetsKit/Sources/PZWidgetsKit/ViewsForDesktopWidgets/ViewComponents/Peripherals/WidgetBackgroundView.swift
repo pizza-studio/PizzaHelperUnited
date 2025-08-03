@@ -112,8 +112,8 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
             }
         }
 
-        if let backgroundImageName = background.imageName {
-            let wpMaybe = BundledWallpaper.allCases.first { $0.assetName4LiveActivity == backgroundImageName }
+        if background.isValidGalleryWallpaper {
+            let wpMaybe = BundledWallpaper.allCases.first { $0.id == background.id }
             let wallpaper = (wpMaybe ?? .defaultValue())
             let isGenshinImpact = wallpaper.game == .genshinImpact
             let backgroundImage: Image = {
@@ -131,7 +131,7 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
                 }
                 .onAppear {
                     NSLog(
-                        "[PZHelper] Successfully initialized UIImage: " + backgroundImageName
+                        "[PZHelper] Successfully initialized UIImage: " + wallpaper.assetName4LiveActivity
                     )
                 }
             default:
@@ -141,7 +141,7 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
                     .scaledToFill()
                     .onAppear {
                         NSLog(
-                            "[PZHelper] Successfully initialized UIImage: " + backgroundImageName
+                            "[PZHelper] Successfully initialized UIImage: " + wallpaper.assetName4LiveActivity
                         )
                     }
             }

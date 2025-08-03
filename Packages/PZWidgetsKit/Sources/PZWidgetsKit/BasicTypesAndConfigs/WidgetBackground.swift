@@ -96,10 +96,8 @@ extension WidgetBackground {
         return Image(decorative: cgImage, scale: 1)
     }
 
-    public var imageName: String? {
-        if WidgetBackground.allStaticGalleryWallpaperOptions.map(\.id).contains(id) {
-            return id
-        } else { return nil }
+    public var isValidGalleryWallpaper: Bool {
+        WidgetBackground.allStaticGalleryWallpaperOptions.map(\.id).contains(id)
     }
 
     public var iconName: String? {
@@ -295,7 +293,7 @@ extension WidgetBackground {
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension BundledWallpaper {
     public var asWidgetBackground: WidgetBackground {
-        .init(id: assetName4LiveActivity, displayString: localizedNameForWidgets)
+        .init(id: id, displayString: localizedNameForWidgets)
     }
 
     private var localizedNameForWidgets: String {
