@@ -92,11 +92,27 @@ public struct LiveActivityAttributes: Sendable {
             } else {
                 self.expeditionAllCompleteTime = nil
             }
+            let wpConf = LiveActivityBackgroundValueParsed(Defaults[.liveActivityWallpaperIDs])
+            if wpConf.useEmptyBackground {
+                self.wallpaperID = nil
+            } else if wpConf.useRandomBackground {
+                self.wallpaperID = WidgetBackground.randomWallpaperBackground4Game(dailyNote.game).id
+                // 此时 realWPs 必为空。
+            } else {
+                let realWPs = wpConf.liveActivityWallpaperIDsReal // 必不为空。
+                self.wallpaperID = realWPs.randomElement() ?? realWPs[realWPs.startIndex]
+            }
+            wpCacheHandling: if let wpID = wallpaperID {
+                guard let wpMatched = Wallpaper(id: wpID) else { break wpCacheHandling }
+                guard case let .bundled(bundledWP) = wpMatched else { break wpCacheHandling }
+                await bundledWP.saveOnlineBackgroundAsset()
+            }
         }
 
         // MARK: Public
 
         public let game: Pizza.SupportedGame
+        public let wallpaperID: String?
         public let staminaCompletionStatus: FieldCompletionIntel<Int>
         public let primaryStaminaRecoverySpeed: TimeInterval
         public let primaryStaminaRecoveryTime: Date
