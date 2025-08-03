@@ -12,7 +12,7 @@ import Foundation
 /// 2. 拿着 NameTextMapHash 前往 Dimbreath 的仓库取得翻译资料。
 /// 3. 以上述 Enka 资料反查迫真资料库，取得所有角色 ID 对应的名片资料。
 /// 4. 将要下载的内容整理成 `[String: NSImage]` 辞典，然后下载且处理素材。
-/// 5. 处理过的名片素材尺寸为 420x200 的 JPEG、以确保 Live Activity 可以顺利载入之。
+/// 5. 处理过的名片素材尺寸为 210x100 的 JPEG。实际上的 Widget 会联网下载素材。
 
 let path4GILang = "./Packages/WallpaperKit/Sources/WallpaperKit/Resources/GIWallpapers_Lang.json"
 let path4GIMeta = "./Packages/WallpaperKit/Sources/WallpaperKit/Resources/GIWallpapers_Meta.json"
@@ -34,7 +34,7 @@ func resizeImageToJPEGData(from imageData: Data) throws -> Data {
     }
 
     // Create a new size for the image
-    let newSize = NSSize(width: 420, height: 200)
+    let newSize = NSSize(width: 210, height: 100)
 
     // Create a new bitmap representation for the resized image
     guard let bitmapRep = NSBitmapImageRep(
