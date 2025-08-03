@@ -93,7 +93,7 @@ extension UIGFv4 {
             self.exportAppVersion = exportAppVersion
             self.exportTimestamp = exportTimestamp
             self.version = version
-            self.previousFormat = previousFormat ?? "UIGF v4.0"
+            self.previousFormat = previousFormat ?? "UIGF v4.1"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -112,7 +112,7 @@ extension UIGFv4 {
             }
             self.previousFormat = try container.decodeIfPresent(
                 String.self, forKey: .previousFormat
-            ) ?? "UIGF v4.0"
+            ) ?? "UIGF v4.1"
         }
 
         // MARK: Public
@@ -195,7 +195,7 @@ extension UIGFv4.Info {
         self.exportAppVersion = shortVer ?? "1.14.514"
         self.exportTimestamp = Int(Date.now.timeIntervalSince1970).description
         self.version = "v4.0"
-        self.previousFormat = "UIGF v4.0"
+        self.previousFormat = "UIGF v4.1"
     }
 
     public var maybeDateExported: Date? {

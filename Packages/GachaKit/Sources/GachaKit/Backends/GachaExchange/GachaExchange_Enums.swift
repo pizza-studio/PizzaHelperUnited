@@ -16,7 +16,7 @@ public enum GachaExchange {
 
         public var name: String {
             switch self {
-            case .asUIGFv4: "UIGF-v4.0"
+            case .asUIGFv4: "UIGF-v4.1"
             case .asSRGFv1: "SRGF-v1.0"
             }
         }
@@ -82,7 +82,7 @@ public enum GachaExchange {
 
         public var longName: String {
             switch self {
-            case .asUIGFv4: "UIGF v4.0"
+            case .asUIGFv4: "UIGF v4.1"
             case .asSRGFv1: "SRGF v1.0"
             case .asGIGFJson: "GIGF (UIGF v2.2 … v3.0, JSON)"
             case .asGIGFExcel: "GIGF (UIGF v2.0 … v2.2, Excel XLSX)"
@@ -91,7 +91,7 @@ public enum GachaExchange {
 
         public var shortNameForPicker: String {
             switch self {
-            case .asUIGFv4: "UIGF-v4.0"
+            case .asUIGFv4: "UIGF-v4.1"
             case .asSRGFv1: "SRGF-v1.0"
             case .asGIGFJson: "GIGF-JSON"
             case .asGIGFExcel: "GIGF-XLSX"

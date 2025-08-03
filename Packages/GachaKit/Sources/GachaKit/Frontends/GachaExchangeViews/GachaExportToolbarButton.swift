@@ -31,7 +31,7 @@ public struct GachaExportToolbarButton: View {
                     }
                 }
             } label: {
-                Text(verbatim: "UIGFv4.0")
+                Text(verbatim: "UIGFv4.1")
             }
             if specifiedProfile.game == .starRail {
                 Menu {
