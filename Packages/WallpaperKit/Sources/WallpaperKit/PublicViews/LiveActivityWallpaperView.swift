@@ -84,10 +84,10 @@ public struct LiveActivityWallpaperView: View {
         ).hashValue
     }
 
-    private var labvParser: LiveActivityBackgroundValueParser { .init(wpIDs) }
+    private var labvParsed: LiveActivityBackgroundValueParsed { .init(wpIDs.wrappedValue) }
 
     private var currentSettings: BackgroundSettings {
-        if labvParser.useEmptyBackground.wrappedValue { return .noBackground }
+        if labvParsed.useEmptyBackground { return .noBackground }
         let ids = wpIDs.wrappedValue
         var idsToRemove: Set<String> = []
         let mapped: [Wallpaper] = ids.compactMap { idStr in
