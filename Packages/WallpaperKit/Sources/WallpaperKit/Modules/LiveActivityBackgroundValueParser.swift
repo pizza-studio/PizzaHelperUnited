@@ -66,3 +66,33 @@ public struct LiveActivityBackgroundValueParser: Sendable {
     private let ids: Binding<Set<String>>
     private let nullFlag = Wallpaper.nullLiveActivityWallpaperIdentifier
 }
+
+// MARK: - LiveActivityBackgroundValueParsed
+
+@available(iOS 16.2, macCatalyst 16.2, *)
+public struct LiveActivityBackgroundValueParsed: Sendable {
+    // MARK: Lifecycle
+
+    public init(_ liveActivityWallpaperIDs: Set<String>) {
+        self.ids = liveActivityWallpaperIDs
+    }
+
+    // MARK: Public
+
+    public var liveActivityWallpaperIDsReal: Set<String> {
+        ids.subtracting([nullFlag])
+    }
+
+    public var useRandomBackground: Bool {
+        liveActivityWallpaperIDsReal.isEmpty
+    }
+
+    public var useEmptyBackground: Bool {
+        ids.contains(Wallpaper.nullLiveActivityWallpaperIdentifier)
+    }
+
+    // MARK: Private
+
+    private let ids: Set<String>
+    private let nullFlag = Wallpaper.nullLiveActivityWallpaperIdentifier
+}
