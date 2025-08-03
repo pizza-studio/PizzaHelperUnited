@@ -194,8 +194,10 @@ The confidence is determined by the number of relevant 5-star pulls available fo
 
 **Technical Details:**
 
-When you see a confidence indicator in the gacha statistics section, you can tap it to view a detailed explanation. This triggers a localized alert using the i18n key `gachaKit.stats.confidence.alert.message`, which provides comprehensive information about confidence indicators in your preferred language.
+When you see a confidence indicator in the gacha statistics section, you can tap it to view a detailed explanation. This will display a message window explaining the confidence indicator-related information.
 
 The confidence calculation takes into account the complexity of gacha mechanics, including pity systems and the distinction between standard and limited items, ensuring that the reliability assessment reflects the actual statistical significance of your data.
+
+Note: Even when "confidence is high," the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override our software's calculation methods.
 
 $ EOF.
