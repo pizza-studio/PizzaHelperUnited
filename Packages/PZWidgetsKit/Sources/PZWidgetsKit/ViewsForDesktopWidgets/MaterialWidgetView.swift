@@ -60,7 +60,7 @@ extension DesktopWidgets {
             var result = WidgetViewConfig()
             result.randomBackground = false
             result.selectedBackgrounds = [
-                WidgetBackground.randomNamecardBackground4Game(.genshinImpact),
+                WidgetBackground.randomWallpaperBackground4Game(.genshinImpact),
             ]
             result.isDarkModeRespected = true
             return result

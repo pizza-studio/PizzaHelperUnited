@@ -38,7 +38,7 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
 
     public var background: WidgetBackground {
         guard !randomBackground else {
-            return .randomElementOrNamecardBackground
+            return .randomElementOrWallpaperBackground
         }
         if selectedBackgrounds.isEmpty {
             return .defaultBackground

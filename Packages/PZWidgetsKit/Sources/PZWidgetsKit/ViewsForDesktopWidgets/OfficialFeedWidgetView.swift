@@ -46,7 +46,7 @@ extension DesktopWidgets {
             var result = WidgetViewConfig()
             result.randomBackground = false
             result.selectedBackgrounds = [
-                WidgetBackground.randomNamecardBackground4Games(entry.games),
+                WidgetBackground.randomWallpaperBackground4Games(entry.games),
             ]
             result.isDarkModeRespected = true
             return result
