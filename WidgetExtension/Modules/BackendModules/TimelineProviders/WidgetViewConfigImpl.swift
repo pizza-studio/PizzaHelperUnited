@@ -30,5 +30,6 @@ extension WidgetViewConfig {
         self.showStaminaOnly = intent.showStaminaOnly
         self.useTinyGlassDisplayStyle = intent.useTinyGlassDisplayStyle
         self.expeditionDisplayPolicy = intent.expeditionDisplayPolicy.realValue
+        updateBackgroundValue()
     }
 }
