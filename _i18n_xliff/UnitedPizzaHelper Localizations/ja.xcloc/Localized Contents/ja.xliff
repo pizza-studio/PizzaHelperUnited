@@ -965,7 +965,7 @@ Empty selection indicates selecting all gacha pullers.</source>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents" xml:space="preserve">
         <source>We are not authorized to publicly state what actually happened on the server hosting official gacha records. The following descriptions are assumptions based on observations. Due to possible occasional server-side issues, the game server might return duplicated gacha entries with incorrect transaction IDs, potentially polluting the local database. If the bleaching mode is enabled, this app will use the latest fetch results as the trusted source for correct transaction IDs and remove possibly incorrect entries locally, but this could be affected by potentially polluted data from the game server. Nevertheless, once a game version deprecates, all gacha records during its operation period are likely to become static and trustworthy.</source>
-        <target state="translated">公式のガチャ記録を提供するサーバーで実際に何が起こったかは、当アプリの開発チームとして断言することではありませんので、以下の説明は、観察に基づく推測です。サーバー側の偶発的な問題が起こる可能性により、ゲームサーバーから送り返されるガチャ記録データが重複したり、取扱番号に誤りがあったりする可能性があります。この結果、端末内のデータベースが汚染される可能性があります。「異常なる既存データを掃除する」スイッチがONの場合、このアプリは最新のガチャ記録を基準として、端末内のデータベースの取扱番号が正しいかどうかを点検し、誤ったデータを排除しようとします。しかし、この汚染現象により、点検中の判断が誤る可能性があります。いずれにせよ、ゲームのサービスが終了する時点で、サービス期間中のすべてのガチャ記録は、おそらくサーバー側で確定し、信頼できる結果となるでしょう。</target>
+        <target state="translated">公式のガチャ記録を提供するサーバーで実際に何が起こったかは、当アプリの開発チームとして断言することではありませんので、以下の説明は、観察に基づく推測です。サーバー側の偶発的な問題が起こる可能性により、ゲームサーバーから送り返されるガチャ記録データが重複したり、取扱番号に誤りがあったりする可能性があります。この結果、端末内のデータベースが汚染される可能性があります。「異常なる既存データを掃除する」スイッチがONの場合、このアプリは最新のガチャ記録を基準として、端末内のデータベースの取扱番号が正しいかどうかを点検し、誤ったデータを排除しようとします。しかし、この汚染現象により、点検中の判断が誤る可能性があります。いずれにせよ、ゲームのサービスが終了する時点で、サービス期間中のすべてのガチャ記録は、おそらくサーバー側で確定し、信憑できる結果となるでしょう。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents.linkTitle" xml:space="preserve">
@@ -1225,14 +1225,14 @@ Reasons for insufficient confidence:
 • Too few 5-star pulls
 • Incomplete gacha history
 • Recently started recording</source>
-        <target state="translated">通常アイテム命中率の信頼度は、利用可能な星5獲得回数に基づいています：
+        <target state="translated">通常アイテム命中率の信憑度は、利用可能な星5獲得回数に基づいています：
 
-• 信頼度高：≥10回
-• 信頼度中：5-9回
-• 信頼度低：3-4回
+• 信憑度高：≥10回
+• 信憑度中：5-9回
+• 信憑度低：3-4回
 • データ不足：&lt;3回
 
-信頼度不足の理由：
+信憑度不足の理由：
 • 星5獲得回数が少なすぎる
 • ガチャ履歴が不完全
 • 記録を始めたばかり</target>
@@ -1240,12 +1240,12 @@ Reasons for insufficient confidence:
       </trans-unit>
       <trans-unit id="gachaKit.stats.confidence.alert.title" xml:space="preserve">
         <source>About Confidence Indicators</source>
-        <target state="translated">信頼度指標について</target>
+        <target state="translated">信憑度指標について</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.confidence.high" xml:space="preserve">
         <source>High confidence</source>
-        <target state="translated">信頼度高</target>
+        <target state="translated">信憑度高</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.confidence.insufficient" xml:space="preserve">
@@ -1255,12 +1255,12 @@ Reasons for insufficient confidence:
       </trans-unit>
       <trans-unit id="gachaKit.stats.confidence.low" xml:space="preserve">
         <source>Low confidence</source>
-        <target state="translated">信頼度低</target>
+        <target state="translated">信憑度低</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.confidence.medium" xml:space="preserve">
         <source>Medium confidence</source>
-        <target state="translated">信頼度中</target>
+        <target state="translated">信憑度中</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.pull:%lld" xml:space="preserve">
