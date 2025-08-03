@@ -174,7 +174,12 @@ extension GachaProfileView {
 
         /// Confidence level of the standard item hit rate calculation
         private var standardItemHitRateConfidence: StandardHitRateConfidence {
-            .init(casesAmount: pentaStarEntries.count)
+            var result = StandardHitRateConfidence(casesAmount: pentaStarEntries.count)
+            // Cap the confidence to `medium` if the rate runs out of theoretical bounds (0-50%).
+            if result == .high, standardItemHitRate > 0.515 {
+                result = .medium
+            }
+            return result
         }
 
         /// Get the relevant cases for standard item hit rate calculation
@@ -203,14 +208,10 @@ extension GachaProfileView {
 
         private var standardItemHitRate: Double {
             let surinukableCases = standardItemHitRateCalculationCases
-            let confidence = StandardHitRateConfidence(casesAmount: pentaStarEntries.count)
             guard surinukableCases.count >= 3 else { return 0.0 } // Insufficient data
-
             let countSurinuked = Double(surinukableCases.count(where: \.self))
             let rate = countSurinuked / Double(surinukableCases.count)
-
-            // Ensure rate stays within theoretical bounds (0-50%) when confidence is high.
-            return confidence == .high ? Swift.min(0.5, rate) : rate
+            return rate
         }
 
         private var average5StarDraw: Int {
