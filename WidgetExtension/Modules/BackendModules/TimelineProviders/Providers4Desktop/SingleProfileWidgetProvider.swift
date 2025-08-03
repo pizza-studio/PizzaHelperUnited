@@ -49,12 +49,15 @@ struct SingleProfileWidgetProvider: CrossGenServiceableTimelineProvider {
         let assetMap = await Task(priority: .userInitiated) {
             await sampleData.getExpeditionAssetMap()
         }.value
+        let viewConfig = WidgetViewConfig(configuration, nil)
+        await viewConfig.saveOnlineBackgroundAsset()
+
         return Entry(
             date: Date(),
             result: .success(
                 (Pizza.SupportedGame(intentConfig: configuration) ?? .genshinImpact).exampleDailyNoteData
             ),
-            viewConfig: .defaultConfig,
+            viewConfig: viewConfig,
             profile: .getDummyInstance(for: .genshinImpact),
             pilotAssetMap: assetMap,
             events: eventResults
@@ -80,6 +83,8 @@ struct SingleProfileWidgetProvider: CrossGenServiceableTimelineProvider {
 
     private static func getEntries(configuration: Intent, refreshTime: inout Date) async -> [Entry] {
         let findProfileResult = findProfile(for: configuration)
+        let viewConfig = WidgetViewConfig(configuration, nil)
+        await viewConfig.saveOnlineBackgroundAsset()
         switch findProfileResult {
         case let .success(profile):
             let dailyNoteResult = await fetchDailyNote(for: profile)
@@ -94,7 +99,7 @@ struct SingleProfileWidgetProvider: CrossGenServiceableTimelineProvider {
                     Entry(
                         date: refreshTime,
                         result: dailyNoteResult,
-                        viewConfig: .init(configuration, nil),
+                        viewConfig: viewConfig,
                         profile: profile,
                         pilotAssetMap: assetMap,
                         events: eventResults
@@ -107,7 +112,7 @@ struct SingleProfileWidgetProvider: CrossGenServiceableTimelineProvider {
                     Entry(
                         date: Date(),
                         result: .failure(error),
-                        viewConfig: .init(configuration, nil),
+                        viewConfig: viewConfig,
                         profile: profile,
                         events: eventResults
                     ),
@@ -118,7 +123,7 @@ struct SingleProfileWidgetProvider: CrossGenServiceableTimelineProvider {
                 Entry(
                     date: Date(),
                     result: .failure(exception),
-                    viewConfig: .init(configuration, nil),
+                    viewConfig: viewConfig,
                     profile: nil,
                     events: []
                 ),
