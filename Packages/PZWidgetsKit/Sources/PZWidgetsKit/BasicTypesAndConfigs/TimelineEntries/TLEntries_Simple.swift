@@ -31,6 +31,7 @@ public struct MaterialWidgetEntry: TimelineEntry, AbleToCodeSendHash {
     public let materialWeekday: GITodayMaterial.AvailableWeekDay?
     public let talentMaterials: [GITodayMaterial]
     public let weaponMaterials: [GITodayMaterial]
+    public var viewConfig: WidgetViewConfig = .defaultConfig
     public let events: [OfficialFeed.FeedEvent]?
 }
 
@@ -52,6 +53,7 @@ public struct OfficialFeedWidgetEntry: TimelineEntry, AbleToCodeSendHash {
     public let date: Date
     public let events: [OfficialFeed.FeedEvent]?
     public let games: Set<Pizza.SupportedGame>
+    public var viewConfig: WidgetViewConfig = .defaultConfig
 }
 
 #endif
