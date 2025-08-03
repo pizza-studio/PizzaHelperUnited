@@ -119,7 +119,8 @@ public struct LiveActivityWallpaperView: View {
 
     private func getCachedOnlineBundledImageAsset(_ bundledWallpaper: BundledWallpaper) -> Image? {
         guard let url = bundledWallpaper.onlineAssetURL else { return nil }
-        guard let cgImage = OnlineImageFS.getCGImageFromFS(url.absoluteString.md5) else { return nil }
+        let cgImage = OnlineImageFS.getCGImageFromFS(url.absoluteString.md5, useJPG: true)
+        guard let cgImage else { return nil }
         return Image(decorative: cgImage, scale: 1)
     }
 
