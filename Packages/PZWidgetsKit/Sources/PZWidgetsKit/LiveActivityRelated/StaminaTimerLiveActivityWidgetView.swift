@@ -40,11 +40,8 @@ public struct StaminaTimerLiveActivityWidgetView<
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         #if !os(watchOS)
             .background {
-                LiveActivityWallpaperView(
-                    game: context.state.game,
-                    wpIDOverride: Set([context.state.wallpaperID].compactMap(\.self))
-                )
-                .scaleEffect(context.state.game == .starRail ? 1.05 : 1) // HSR 的名片有光边。
+                LiveActivityWallpaperView(wallpaperID: context.state.wallpaperID)
+                    .scaleEffect(context.state.game == .starRail ? 1.05 : 1) // HSR 的名片有光边。
             }
             .overlay(alignment: .bottomTrailing) {
                 let label = HStack(alignment: .lastTextBaseline, spacing: 2) {

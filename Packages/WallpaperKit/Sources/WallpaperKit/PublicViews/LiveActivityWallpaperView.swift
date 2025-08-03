@@ -20,25 +20,23 @@ extension BundledWallpaper {
 public struct LiveActivityWallpaperView: View {
     // MARK: Lifecycle
 
-    public init(game: Pizza.SupportedGame? = nil, wpIDOverride: Set<String> = []) {
-        self.game = game
-        self.wpIDOverride = wpIDOverride.isEmpty ? nil : wpIDOverride
+    public init(wallpaperID: String?) {
+        if let wallpaperID {
+            self.wallpaper = Wallpaper(id: wallpaperID)
+        } else {
+            self.wallpaper = nil
+        }
+        self.game = wallpaper?.game
     }
 
     // MARK: Public
 
-    public enum BackgroundSettings: AbleToCodeSendHash, Equatable {
-        case noBackground
-        case multiple(Set<Wallpaper>)
-    }
-
     public var body: some View {
         ZStack {
-            switch currentSettings {
-            case .noBackground: EmptyView()
-            case let .multiple(wallpapers):
-                let finalWallpaper = getRandomWallpaper(wallpapers)
-                let image = getRawImage(finalWallpaper)
+            switch wallpaper {
+            case .none: EmptyView()
+            case let .some(wpGuarded):
+                let image = getRawImage(wpGuarded)
                 image
                     .resizable()
                     .scaledToFill()
@@ -56,65 +54,17 @@ public struct LiveActivityWallpaperView: View {
 
     @StateObject private var broadcaster = Broadcaster.shared
     @StateObject private var folderMonitor = UserWallpaperFileHandler.folderMonitor
-    @State private var wpIDOverride: Set<String>?
-
-    @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
 
     private let game: Pizza.SupportedGame?
-
-    private var wpIDs: Binding<Set<String>> {
-        .init {
-            wpIDOverride ?? liveActivityWallpaperIDs
-        } set: { newValue in
-            if wpIDOverride != nil {
-                wpIDOverride = newValue
-            } else {
-                liveActivityWallpaperIDs = newValue
-            }
-        }
-    }
+    private let wallpaper: Wallpaper?
 
     private var viewRefreshHash: Int {
         Set(
             [
                 broadcaster.eventForUserWallpaperDidSave.hashValue,
-                wpIDs.wrappedValue.hashValue,
                 folderMonitor.stateHash.hashValue,
             ]
         ).hashValue
-    }
-
-    private var labvParsed: LiveActivityBackgroundValueParsed { .init(wpIDs.wrappedValue) }
-
-    private var currentSettings: BackgroundSettings {
-        if labvParsed.useEmptyBackground { return .noBackground }
-        let ids = wpIDs.wrappedValue
-        var idsToRemove: Set<String> = []
-        let mapped: [Wallpaper] = ids.compactMap { idStr in
-            Wallpaper(id: idStr) {
-                idsToRemove.insert(idStr)
-            }
-        }
-        if !idsToRemove.isEmpty {
-            wpIDs.wrappedValue = ids.subtracting(idsToRemove)
-        }
-        return .multiple(.init(mapped))
-    }
-
-    private func getRandomWallpaper(_ rawSet: Set<Wallpaper>) -> Wallpaper {
-        var wallpapersReturnable = rawSet
-        if rawSet.isEmpty {
-            wallpapersReturnable = .init(Wallpaper.allCases)
-        }
-        if rawSet.isEmpty, let game {
-            wallpapersReturnable = wallpapersReturnable.filter { currentWallpaper in
-                switch currentWallpaper {
-                case .user: return true
-                case let .bundled(bundledOne): return bundledOne.game == game
-                }
-            }
-        }
-        return wallpapersReturnable.randomElement() ?? .bundled(BundledWallpaper.defaultValue(for: game))
     }
 
     private func getCachedOnlineBundledImageAsset(_ bundledWallpaper: BundledWallpaper) -> Image? {
