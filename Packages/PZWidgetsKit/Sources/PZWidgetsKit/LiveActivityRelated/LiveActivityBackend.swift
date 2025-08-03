@@ -78,8 +78,9 @@ public struct LiveActivityAttributes: Sendable {
 
         public init(
             dailyNote: any DailyNoteProtocol,
-            showExpedition: Bool
-        ) async {
+            showExpedition: Bool,
+            wallpaperID: String?
+        ) {
             self.primaryStaminaRecoverySpeed = dailyNote.eachStaminaRecoveryTime
             self.staminaCompletionStatus = dailyNote.staminaIntel
             self.primaryStaminaRecoveryTime = dailyNote.staminaFullTimeOnFinish
@@ -92,21 +93,7 @@ public struct LiveActivityAttributes: Sendable {
             } else {
                 self.expeditionAllCompleteTime = nil
             }
-            let wpConf = LiveActivityBackgroundValueParsed(Defaults[.liveActivityWallpaperIDs])
-            if wpConf.useEmptyBackground {
-                self.wallpaperID = nil
-            } else if wpConf.useRandomBackground {
-                self.wallpaperID = WidgetBackground.randomWallpaperBackground4Game(dailyNote.game).id
-                // 此时 realWPs 必为空。
-            } else {
-                let realWPs = wpConf.liveActivityWallpaperIDsReal // 必不为空。
-                self.wallpaperID = realWPs.randomElement() ?? realWPs[realWPs.startIndex]
-            }
-            wpCacheHandling: if let wpID = wallpaperID {
-                guard let wpMatched = Wallpaper(id: wpID) else { break wpCacheHandling }
-                guard case let .bundled(bundledWP) = wpMatched else { break wpCacheHandling }
-                await bundledWP.saveOnlineBackgroundAsset()
-            }
+            self.wallpaperID = wallpaperID
         }
 
         // MARK: Public
@@ -208,9 +195,30 @@ public final class StaminaLiveActivityController: Sendable {
             profileName: profileName,
             profileUUID: profileUUID
         )
-        let status: LiveActivityAttributes.LiveActivityState = await .init(
+
+        let wallpaperID: String? = {
+            let wpConf = LiveActivityBackgroundValueParsed(Defaults[.liveActivityWallpaperIDs])
+            if wpConf.useEmptyBackground {
+                return nil
+            } else if wpConf.useRandomBackground {
+                return WidgetBackground.randomWallpaperBackground4Game(profile.game).id
+                // 此时 realWPs 必为空。
+            } else {
+                let realWPs = wpConf.liveActivityWallpaperIDsReal // 必不为空。
+                return realWPs.randomElement() ?? realWPs[realWPs.startIndex]
+            }
+        }()
+
+        wpCacheHandling: if let wpID = wallpaperID {
+            guard let wpMatched = Wallpaper(id: wpID) else { break wpCacheHandling }
+            guard case let .bundled(bundledWP) = wpMatched else { break wpCacheHandling }
+            await bundledWP.saveOnlineBackgroundAsset()
+        }
+
+        let status: LiveActivityAttributes.LiveActivityState = .init(
             dailyNote: data,
-            showExpedition: Defaults[.showExpeditionInLiveActivity]
+            showExpedition: Defaults[.showExpeditionInLiveActivity],
+            wallpaperID: wallpaperID
         )
 
         print(status.currentPrimaryStamina)
@@ -251,9 +259,10 @@ public final class StaminaLiveActivityController: Sendable {
                     endActivity(for: profile)
                     continue
                 }
-                let status: LiveActivityAttributes.LiveActivityState = await .init(
+                let status: LiveActivityAttributes.LiveActivityState = .init(
                     dailyNote: data,
-                    showExpedition: Defaults[.showExpeditionInLiveActivity]
+                    showExpedition: Defaults[.showExpeditionInLiveActivity],
+                    wallpaperID: activity.content.state.wallpaperID
                 )
 
                 await activity.update(
