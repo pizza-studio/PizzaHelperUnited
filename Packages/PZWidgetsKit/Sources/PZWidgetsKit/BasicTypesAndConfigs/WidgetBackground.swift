@@ -321,15 +321,3 @@ extension Wallpaper {
         }
     }
 }
-
-@available(iOS 16.2, macCatalyst 16.2, *)
-extension BundledWallpaper {
-    func saveOnlineBackgroundAsset() async {
-        guard let url = onlineAssetURL else { return }
-        let fileNameStem = assetName4LiveActivity
-        guard !OnlineImageFS.checkExistence(fileNameStem, useJPG: true) else { return }
-        let data: Data = (try? await AF.request(url).serializingData().value) ?? .init([])
-        guard let cgImage = CGImage.instantiate(data: data) else { return }
-        try? OnlineImageFS.insertCGImageToFSIfMissing(fileNameStem, cgImage: cgImage, useJPG: true)
-    }
-}

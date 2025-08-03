@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
+import CoreGraphics
 import Defaults
 import Foundation
 import PZBaseKit
@@ -263,4 +265,33 @@ extension Locale {
         "en", "ru", "vi", "th", "pt", "ko",
         "ja", "id", "fr", "es", "de", "zh-tw", "zh-cn",
     ]
+}
+
+@available(iOS 16.2, macCatalyst 16.2, *)
+extension BundledWallpaper {
+    public func saveOnlineBackgroundAsset() async {
+        await BackgroundSavingActor.shared.saveOnlineBackgroundAsset(for: self)
+    }
+}
+
+// MARK: - BackgroundSavingActor
+
+@available(iOS 16.2, macCatalyst 16.2, *)
+private actor BackgroundSavingActor {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
+
+    public static let shared = BackgroundSavingActor()
+
+    public func saveOnlineBackgroundAsset(for bundledWP: BundledWallpaper) async {
+        guard let url = bundledWP.onlineAssetURL else { return }
+        let fileNameStem = bundledWP.assetName4LiveActivity
+        guard !OnlineImageFS.checkExistence(fileNameStem, useJPG: true) else { return }
+        let data: Data = (try? await AF.request(url).serializingData().value) ?? .init([])
+        guard let cgImage = CGImage.instantiate(data: data) else { return }
+        try? OnlineImageFS.insertCGImageToFSIfMissing(fileNameStem, cgImage: cgImage, useJPG: true)
+    }
 }
