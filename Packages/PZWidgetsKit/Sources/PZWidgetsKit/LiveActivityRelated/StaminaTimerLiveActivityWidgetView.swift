@@ -37,7 +37,7 @@ public struct StaminaTimerLiveActivityWidgetView<
             }
         }
         mainContent
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         #if !os(watchOS)
             .background {
                 LiveActivityWallpaperView(game: context.state.game)
