@@ -39,17 +39,16 @@ struct OfficialFeedWidgetProvider: CrossGenServiceableTimelineProvider {
         let games = configuration.inverseSelectMode
             ? configuration.game.inverseSelectedValues
             : [game].compactMap { $0 }
-        let results = Defaults[.officialFeedCache].filter {
+        var results: [OfficialFeed.FeedEvent]? = Defaults[.officialFeedCache].filter {
             switch game {
             case .none: true
             default: games.contains($0.game)
             }
         }
-        if results.isEmpty {
-            return .init(games: .init(games), events: nil)
-        } else {
-            return .init(games: .init(games), events: results)
-        }
+        let isEmpty = results?.isEmpty ?? true
+        if isEmpty { results = nil }
+        let entry = Entry(games: .init(games), events: results)
+        return entry
     }
 
     func timeline(for configuration: Intent) async -> Timeline<Entry> {
@@ -57,7 +56,7 @@ struct OfficialFeedWidgetProvider: CrossGenServiceableTimelineProvider {
         let games = configuration.inverseSelectMode
             ? configuration.game.inverseSelectedValues
             : [game].compactMap { $0 }
-        let results = await Task(priority: .userInitiated) {
+        var results: [OfficialFeed.FeedEvent]? = await Task(priority: .userInitiated) {
             await OfficialFeed.getAllFeedEventsOnline().filter {
                 switch game {
                 case .none: true
@@ -65,23 +64,17 @@ struct OfficialFeedWidgetProvider: CrossGenServiceableTimelineProvider {
                 }
             }
         }.value
-        if results.isEmpty {
-            return .init(
-                entries: [.init(games: .init(games), events: nil)],
-                policy: .after(
-                    Calendar.gregorian
-                        .date(byAdding: .hour, value: 1, to: Date())!
-                )
+        let isEmpty = results?.isEmpty ?? true
+        if isEmpty { results = nil }
+        let entry = Entry(games: .init(games), events: results)
+        let policyAfterTime = Calendar.gregorian.date(
+            byAdding: .hour, value: isEmpty ? 1 : 4, to: Date()
+        )!
+        return
+            .init(
+                entries: [entry],
+                policy: .after(policyAfterTime)
             )
-        } else {
-            return .init(
-                entries: [.init(games: .init(games), events: .init(results))],
-                policy: .after(
-                    Calendar.gregorian
-                        .date(byAdding: .hour, value: 4, to: Date())!
-                )
-            )
-        }
     }
 }
 
