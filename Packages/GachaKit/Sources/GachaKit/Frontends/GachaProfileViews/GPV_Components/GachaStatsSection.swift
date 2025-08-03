@@ -174,9 +174,7 @@ extension GachaProfileView {
 
         /// Confidence level of the standard item hit rate calculation
         private var standardItemHitRateConfidence: StandardHitRateConfidence {
-            let relevantCases = standardItemHitRateCalculationCases
-            let caseCount = relevantCases.count
-            return .init(casesAmount: caseCount)
+            .init(casesAmount: pentaStarEntries.count)
         }
 
         /// Get the relevant cases for standard item hit rate calculation
@@ -205,7 +203,7 @@ extension GachaProfileView {
 
         private var standardItemHitRate: Double {
             let surinukableCases = standardItemHitRateCalculationCases
-            let confidence = StandardHitRateConfidence(casesAmount: surinukableCases.count)
+            let confidence = StandardHitRateConfidence(casesAmount: pentaStarEntries.count)
             guard surinukableCases.count >= 3 else { return 0.0 } // Insufficient data
 
             let countSurinuked = Double(surinukableCases.count(where: \.self))
