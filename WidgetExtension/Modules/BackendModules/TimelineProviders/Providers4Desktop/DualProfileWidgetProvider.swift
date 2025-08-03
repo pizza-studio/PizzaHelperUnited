@@ -57,11 +57,13 @@ struct DualProfileWidgetProvider: CrossGenServiceableTimelineProvider {
         let sampleData1 = game1.exampleDailyNoteData
         let sampleData2 = game2.exampleDailyNoteData
         let assetMap = await [sampleData1, sampleData2].prepareAssetMap()
+        let viewConfig = WidgetViewConfig(configuration, nil)
+        await viewConfig.saveOnlineBackgroundAsset()
         return Entry(
             date: Date(),
             resultSlot1: .success(sampleData1),
             resultSlot2: .success(sampleData2),
-            viewConfig: .defaultConfig,
+            viewConfig: viewConfig,
             profileSlot1: .getDummyInstance(for: .genshinImpact),
             profileSlot2: .getDummyInstance(for: .starRail),
             pilotAssetMap: assetMap,
@@ -88,6 +90,7 @@ struct DualProfileWidgetProvider: CrossGenServiceableTimelineProvider {
 
     private static func getEntries(configuration: Intent, refreshTime: inout Date) async -> [Entry] {
         let viewConfig = WidgetViewConfig(configuration, nil)
+        await viewConfig.saveOnlineBackgroundAsset()
         let intentEntity1 = configuration.profileSlot1
         let intentEntity2 = configuration.profileSlot2
 
