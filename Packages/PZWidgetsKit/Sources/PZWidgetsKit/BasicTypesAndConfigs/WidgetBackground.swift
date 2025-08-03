@@ -91,8 +91,7 @@ extension WidgetBackground {
         let matchedWP = Wallpaper(id: id)
         guard let matchedWP else { return nil }
         guard case let .bundled(bundledWPMatched) = matchedWP else { return nil }
-        guard let url = bundledWPMatched.onlineAssetURL else { return nil }
-        let cgImage = OnlineImageFS.getCGImageFromFS(url.absoluteString.md5, useJPG: true)
+        let cgImage = OnlineImageFS.getCGImageFromFS(bundledWPMatched.assetName4LiveActivity, useJPG: true)
         guard let cgImage else { return nil }
         return Image(decorative: cgImage, scale: 1)
     }
@@ -327,7 +326,7 @@ extension Wallpaper {
 extension BundledWallpaper {
     func saveOnlineBackgroundAsset() async {
         guard let url = onlineAssetURL else { return }
-        let fileNameStem = url.absoluteString.md5
+        let fileNameStem = assetName4LiveActivity
         guard !OnlineImageFS.checkExistence(fileNameStem, useJPG: true) else { return }
         let data: Data = (try? await AF.request(url).serializingData().value) ?? .init([])
         guard let cgImage = CGImage.instantiate(data: data) else { return }
