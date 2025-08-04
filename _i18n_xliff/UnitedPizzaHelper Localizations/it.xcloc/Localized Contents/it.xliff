@@ -1220,7 +1220,10 @@ Nessuna selezione indica che verranno importati tutti i tiratori gacha.</target>
 Reasons for insufficient confidence:
 • Too few 5-star pulls
 • Incomplete gacha history
-• Recently started recording</source>
+• Recently started recording
+• Result is higher than theoretical bounds (50%).
+
+Note: Even when "High confidence" comes out, the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override this app's calculation methods.</source>
         <target state="translated">L'affidabilità del tasso di successo degli oggetti standard si basa sul numero di pull a 5 stelle disponibili:
 
 • Alta affidabilità: ≥10 casi
@@ -1231,7 +1234,10 @@ Reasons for insufficient confidence:
 Motivi per affidabilità insufficiente:
 • Troppo pochi pull a 5 stelle
 • Cronologia gacha incompleta
-• Registrazione iniziata di recente</target>
+• Registrazione iniziata di recente
+• Il risultato supera i limiti teorici (50%)
+
+Nota: Anche quando viene visualizzata "Alta affidabilità", i diritti di interpretazione finale appartengono ancora a miHoYo, e miHoYo ha anche i diritti di interpretazione finale per i metodi di calcolo delle probabilità, che prevalgono sui metodi di calcolo di questa app.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.confidence.alert.title" xml:space="preserve">

@@ -1220,7 +1220,10 @@ Không chọn gì sẽ nhập tất cả người kéo gacha.</target>
 Reasons for insufficient confidence:
 • Too few 5-star pulls
 • Incomplete gacha history
-• Recently started recording</source>
+• Recently started recording
+• Result is higher than theoretical bounds (50%).
+
+Note: Even when "High confidence" comes out, the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override this app's calculation methods.</source>
         <target state="translated">Độ tin cậy của tỷ lệ trúng vật phẩm tiêu chuẩn dựa trên số lượt quay 5 sao có sẵn:
 
 • Độ tin cậy cao: ≥10 trường hợp
@@ -1231,7 +1234,10 @@ Reasons for insufficient confidence:
 Lý do độ tin cậy không đủ:
 • Quá ít lượt quay 5 sao
 • Lịch sử gacha không đầy đủ
-• Mới bắt đầu ghi lại gần đây</target>
+• Mới bắt đầu ghi lại gần đây
+• Kết quả cao hơn giới hạn lý thuyết (50%)
+
+Lưu ý: Ngay cả khi xuất hiện "Độ tin cậy cao", quyền giải thích cuối cùng vẫn thuộc về miHoYo, và miHoYo cũng có quyền giải thích cuối cùng đối với các phương pháp tính toán xác suất, điều này ghi đè lên các phương pháp tính toán của ứng dụng này.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.confidence.alert.title" xml:space="preserve">

@@ -1468,7 +1468,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The confidence of the standard item hit rate is based on the number of available 5-star pulls:\n\n• High confidence: ≥10 cases\n• Medium confidence: 5-9 cases\n• Low confidence: 3-4 cases\n• Insufficient data: <3 cases\n\nReasons for insufficient confidence:\n• Too few 5-star pulls\n• Incomplete gacha history\n• Recently started recording"
+            "value" : "The confidence of the standard item hit rate is based on the number of available 5-star pulls:\n\n• High confidence: ≥10 cases\n• Medium confidence: 5-9 cases\n• Low confidence: 3-4 cases\n• Insufficient data: <3 cases\n\nReasons for insufficient confidence:\n• Too few 5-star pulls\n• Incomplete gacha history\n• Recently started recording\n• Result is higher than theoretical bounds (50%).\n\nNote: Even when \"High confidence\" comes out, the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override this app's calculation methods."
           }
         }
       }

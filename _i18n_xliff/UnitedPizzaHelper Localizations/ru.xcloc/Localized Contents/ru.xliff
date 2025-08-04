@@ -1218,7 +1218,10 @@ Empty selection indicates selecting all gacha pullers.</source>
 Reasons for insufficient confidence:
 • Too few 5-star pulls
 • Incomplete gacha history
-• Recently started recording</source>
+• Recently started recording
+• Result is higher than theoretical bounds (50%).
+
+Note: Even when "High confidence" comes out, the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override this app's calculation methods.</source>
         <target state="translated">Достоверность показателя попадания стандартных предметов основана на количестве доступных выпадений 5-звёздочных предметов:
 
 • Высокая достоверность: ≥10 случаев
@@ -1229,7 +1232,10 @@ Reasons for insufficient confidence:
 Причины недостаточной достоверности:
 • Слишком мало выпадений 5-звёздочных предметов
 • Неполная история гача
-• Недавно начали записывать данные</target>
+• Недавно начали записывать данные
+• Результат превышает теоретические границы (50%)
+
+Примечание: Даже когда появляется "Высокая достоверность", окончательные права на интерпретацию по-прежнему принадлежат miHoYo, и miHoYo также имеет окончательные права на интерпретацию методов расчёта вероятности, которые превосходят методы расчёта этого приложения.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.confidence.alert.title" xml:space="preserve">

@@ -1216,7 +1216,10 @@ No seleccionar ninguno indica que se importan todos los tiradores de gacha.</tar
 Reasons for insufficient confidence:
 • Too few 5-star pulls
 • Incomplete gacha history
-• Recently started recording</source>
+• Recently started recording
+• Result is higher than theoretical bounds (50%).
+
+Note: Even when "High confidence" comes out, the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override this app's calculation methods.</source>
         <target state="translated">La confianza de la tasa de acierto de objetos estándar se basa en el número de extracciones de 5 estrellas disponibles:
 
 • Alta confianza: ≥10 casos
@@ -1227,7 +1230,10 @@ Reasons for insufficient confidence:
 Razones para confianza insuficiente:
 • Muy pocas extracciones de 5 estrellas
 • Historial de gacha incompleto
-• Comenzó a registrar recientemente</target>
+• Comenzó a registrar recientemente
+• El resultado es mayor que los límites teóricos (50%)
+
+Nota: Incluso cuando aparece "Alta confianza", los derechos de interpretación final siguen perteneciendo a miHoYo, y miHoYo también tiene los derechos de interpretación final para los métodos de cálculo de probabilidad, que anulan los métodos de cálculo de esta aplicación.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.confidence.alert.title" xml:space="preserve">
