@@ -1220,7 +1220,10 @@ Walang pinili ay nangangahulugang i-import ang lahat ng gacha puller.</target>
 Reasons for insufficient confidence:
 • Too few 5-star pulls
 • Incomplete gacha history
-• Recently started recording</source>
+• Recently started recording
+• Result is higher than theoretical bounds (50%).
+
+Note: Even when "High confidence" comes out, the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override this app's calculation methods.</source>
         <target state="translated">Ang tiwala sa standard item hit rate ay nakabatay sa bilang ng mga available na 5-star pulls:
 
 • Mataas na tiwala: ≥10 kaso
@@ -1231,7 +1234,10 @@ Reasons for insufficient confidence:
 Mga dahilan ng kulang na tiwala:
 • Kakaunting 5-star pulls
 • Hindi kumpleto ang gacha history
-• Kakasimula pa lang mag-record</target>
+• Kakasimula pa lang mag-record
+• Ang resulta ay mas mataas sa theoretical bounds (50%)
+
+Tandaan: Kahit na lumabas ang "Mataas na tiwala", ang huling karapatan sa pagbibigay-kahulugan ay nasa miHoYo pa rin, at may huling karapatan din ang miHoYo sa mga paraan ng pagkalkula ng probability, na nagiging mas mataas sa mga paraan ng pagkalkula ng app na ito.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.confidence.alert.title" xml:space="preserve">

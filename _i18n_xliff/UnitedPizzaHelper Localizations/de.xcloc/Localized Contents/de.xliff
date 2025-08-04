@@ -1220,7 +1220,10 @@ Keine Auswahl bedeutet, dass alle Gacha-Zieher importiert werden.</target>
 Reasons for insufficient confidence:
 • Too few 5-star pulls
 • Incomplete gacha history
-• Recently started recording</source>
+• Recently started recording
+• Result is higher than theoretical bounds (50%).
+
+Note: Even when "High confidence" comes out, the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override this app's calculation methods.</source>
         <target state="translated">Die Zuverlässigkeit der Standardgegenstand-Trefferrate basiert auf der Anzahl der verfügbaren 5-Sterne-Ziehungen:
 
 • Hohe Zuverlässigkeit: ≥10 Fälle
@@ -1231,7 +1234,10 @@ Reasons for insufficient confidence:
 Gründe für unzureichende Zuverlässigkeit:
 • Zu wenige 5-Sterne-Ziehungen
 • Unvollständige Gacha-Historie
-• Erst kürzlich mit der Aufzeichnung begonnen</target>
+• Erst kürzlich mit der Aufzeichnung begonnen
+• Ergebnis liegt über den theoretischen Grenzen (50%)
+
+Hinweis: Auch wenn "Hohe Zuverlässigkeit" angezeigt wird, liegen die endgültigen Auslegungsrechte weiterhin bei miHoYo, und miHoYo hat auch die endgültigen Auslegungsrechte für Wahrscheinlichkeitsberechnungsmethoden, die die Berechnungsmethoden dieser App überschreiben.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.confidence.alert.title" xml:space="preserve">

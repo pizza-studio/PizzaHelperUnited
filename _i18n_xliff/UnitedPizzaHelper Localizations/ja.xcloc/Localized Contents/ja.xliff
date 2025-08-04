@@ -1224,7 +1224,10 @@ Empty selection indicates selecting all gacha pullers.</source>
 Reasons for insufficient confidence:
 • Too few 5-star pulls
 • Incomplete gacha history
-• Recently started recording</source>
+• Recently started recording
+• Result is higher than theoretical bounds (50%).
+
+Note: Even when "High confidence" comes out, the final interpretation rights still belong to miHoYo, and miHoYo also has the final interpretation rights for probability calculation methods, which override this app's calculation methods.</source>
         <target state="translated">通常アイテム命中率の信憑度は、利用可能な星5獲得回数に基づいています：
 
 • 信憑度高：≥10回
@@ -1235,7 +1238,10 @@ Reasons for insufficient confidence:
 信憑度不足の理由：
 • 星5獲得回数が少なすぎる
 • ガチャ履歴が不完全
-• 記録を始めたばかり</target>
+• 記録を始めたばかり
+• 結果が理論上限値（50%）を超えている
+
+注意：「信憑度高」と表示されても、最終的な解釈権は株式会社米哈遊に帰属し、確率計算方法についても米哈遊社が最終的な解釈権を持ち、このアプリの計算方法を上回ります。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.stats.confidence.alert.title" xml:space="preserve">
