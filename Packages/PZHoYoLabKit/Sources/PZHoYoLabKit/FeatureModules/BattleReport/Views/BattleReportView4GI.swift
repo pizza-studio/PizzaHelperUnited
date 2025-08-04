@@ -6,6 +6,7 @@ import Defaults
 import EnkaKit
 import PZAccountKit
 import PZBaseKit
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - BattleReportView4GI.TreasuresStarwardType
@@ -46,6 +47,20 @@ public struct BattleReportView4GI: BattleReportView {
 
     public var body: some View {
         Form {
+            Picker(selection: $contentType.animation()) {
+                ForEach(TreasuresStarwardType.allCases) { contentTypeCase in
+                    Text(verbatim: contentTypeCase.localizedTitle).tag(contentTypeCase)
+                }
+            } label: {
+                LabeledContent {
+                    Text("hylKit.battleReportView.challengeType", bundle: .module)
+                } label: {
+                    Image(systemSymbol: .line3HorizontalDecreaseCircle)
+                }
+                .fixedSize()
+            }
+            .pickerStyle(.menu)
+            .listRowMaterialBackground()
             if data4SA.hasData || (data4SO?.single.hasData ?? false) {
                 contents
                     .animation(.default, value: screenVM.mainColumnCanvasSizeObserved)
@@ -55,26 +70,7 @@ public struct BattleReportView4GI: BattleReportView {
         }
         .formStyle(.grouped).disableFocusable()
         .scrollContentBackground(.hidden)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                let picker = Picker("".description, selection: $contentType.animation()) {
-                    ForEach(TreasuresStarwardType.allCases) { contentTypeCase in
-                        Text(verbatim: contentTypeCase.localizedTitle).tag(contentTypeCase)
-                    }
-                }
-                .labelsHidden()
-                ViewThatFits(in: .horizontal) {
-                    picker
-                        .pickerStyle(.segmented)
-                        .fixedSize()
-                    picker
-                        .pickerStyle(.menu)
-                        .fixedSize()
-                        .blurMaterialBackground(enabled: true) // 在正中心位置时，不是玻璃按钮，所以始终启用。
-                        .clipShape(.capsule)
-                }
-            }
-        }
+        .navigationTitle(contentType.localizedTitle)
         .react(to: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {
             Task { @MainActor in
                 withAnimation {
