@@ -105,4 +105,4 @@ Package.resolved
 *.xcodeproj/xcshareddata/xcschemes/*.xcscheme
 
 # Generated documentation concatenation files
-EndUserPublicDocs/*/new.txt
+EndUserPublicDocs/*/_concatResult.md
