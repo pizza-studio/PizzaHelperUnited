@@ -10,7 +10,7 @@ Upon acceptance of this Agreement, the User is bound by all its terms, including
 
 ---
 
-### **Article 1: Usage Rules**
+#### Article 1: Usage Rules
 
 1. The User acknowledges and agrees that this application serves solely as a platform for sharing, transmitting, and accessing information. The User is responsible for their actions, including the content they transmit and the consequences thereof. The User must evaluate the accuracy, completeness, and usefulness of the content and bear any risks arising from its use. The Developer is not responsible for any damages caused by User actions.
 
@@ -36,7 +36,7 @@ Upon acceptance of this Agreement, the User is bound by all its terms, including
 
 ---
 
-### **Article 2: Privacy Protection**
+#### Article 2: Privacy Protection
 
 This application requires submitting the UID number to query the in-game character showcase information through Enka Networks' public query service. The UID number itself can only be used to locate the corresponding player within the Mihoyo game and cannot be used by anyone outside of Mihoyo, Inc. to reverse-engineer the player's true identity. However, the UID may reveal the country or region of the game server the player is located on. It is important to note that, as Enka Networks is a public query service, the character nickname and signature obtained through the given UID might expose the player's personal privacy, depending on the information they have included in their nickname and signature. Since this information is voluntarily made public by the player in the game, the Developer of this application do not bear any responsibility in this regard.
 
@@ -62,13 +62,13 @@ This application does not transmit User data to the Developer's servers, except 
 
 ---
 
-### **Article 3: Trademarks and Intellectual Property**
+#### Article 3: Trademarks and Intellectual Property
 
 1. Except for specially indicated content, image materials used in this application are owned by MiHoYo Co., Ltd. (in Shanghai, the People's Republic of China), who retain full rights to these assets. Other trademarks, service names, or developer logos are owned by the Developer. The User shall not use or reproduce any trademarks, logos, or materials belonging to the Developer without prior written consent.
 
 ---
 
-### **Article 4: Legal Liability and Disclaimer**
+#### Article 4: Legal Liability and Disclaimer
 
 1. The User agrees to indemnify the Developer and its partners against claims, damages, and expenses, including legal fees, arising from the User’s violation of this Agreement. This indemnification obligation includes, but is not limited to, violations specified in Article 5 regarding data authenticity and the display of fraudulent data.
 
@@ -82,7 +82,7 @@ This application does not transmit User data to the Developer's servers, except 
 
 ---
 
-### **Article 5: Data Authenticity and Liability**
+#### Article 5: Data Authenticity and Liability
 
 1. **Authenticity Declaration**: The User acknowledges and agrees that all data, information, and content displayed by this application originates from the User's own actions. The Developer makes no representation or warranty regarding the accuracy, completeness, authenticity, or reliability of such user display data. The Developer bears no responsibility for the authenticity of any data displayed within the application.
 
@@ -92,7 +92,7 @@ This application does not transmit User data to the Developer's servers, except 
 
 ---
 
-### **Article 6: Miscellaneous**
+#### Article 6: Miscellaneous
 
 1. The Developer reminds the User of the liability exemptions contained herein and encourages minors to review this Agreement with their guardians. This Agreement is governed by the laws of the People's Republic of China. Any disputes arising under this Agreement shall be resolved in the Developer's local court.
 
