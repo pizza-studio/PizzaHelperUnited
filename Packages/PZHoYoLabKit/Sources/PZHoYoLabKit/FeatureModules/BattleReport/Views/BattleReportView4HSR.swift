@@ -5,6 +5,7 @@
 import EnkaKit
 import PZAccountKit
 import PZBaseKit
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - BattleReportView4HSR.TreasuresLightwardType
@@ -43,6 +44,20 @@ public struct BattleReportView4HSR: BattleReportView {
 
     public var body: some View {
         Form {
+            Picker(selection: $contentType.animation()) {
+                ForEach(TreasuresLightwardType.allCases) { contentTypeCase in
+                    Text(verbatim: contentTypeCase.localizedTitle).tag(contentTypeCase)
+                }
+            } label: {
+                LabeledContent {
+                    Text("hylKit.battleReportView.challengeType", bundle: .module)
+                } label: {
+                    Image(systemSymbol: .line3HorizontalDecreaseCircle)
+                }
+                .fixedSize()
+            }
+            .pickerStyle(.menu)
+            .listRowMaterialBackground()
             if data4FH.hasData || data4AS.hasData || data4PF.hasData {
                 contents
                     .frame(width: containerWidth)
@@ -53,26 +68,7 @@ public struct BattleReportView4HSR: BattleReportView {
         }
         .formStyle(.grouped).disableFocusable()
         .scrollContentBackground(.hidden)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                let picker = Picker("".description, selection: $contentType.animation()) {
-                    ForEach(TreasuresLightwardType.allCases) { contentTypeCase in
-                        Text(verbatim: contentTypeCase.localizedTitle).tag(contentTypeCase)
-                    }
-                }
-                .labelsHidden()
-                ViewThatFits(in: .horizontal) {
-                    picker
-                        .pickerStyle(.segmented)
-                        .fixedSize()
-                    picker
-                        .pickerStyle(.menu)
-                        .fixedSize()
-                        .blurMaterialBackground(enabled: true) // 在正中心位置时，不是玻璃按钮，所以始终启用。
-                        .clipShape(.capsule)
-                }
-            }
-        }
+        .navigationTitle(contentType.localizedTitle)
     }
 
     // MARK: Internal
