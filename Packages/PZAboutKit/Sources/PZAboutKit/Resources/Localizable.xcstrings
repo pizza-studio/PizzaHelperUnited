@@ -5484,16 +5484,64 @@
     },
     "oobe.feature.backupYourData.detail" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS bedeutet nicht ewige Verfügbarkeit oder Zuverlässigkeit. Seien Sie verantwortlich für Ihre Daten, indem Sie proaktiv Ihre Gacha-Aufzeichnungen als UIGF-Dateien zur Sicherung exportieren."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS nunca significa disponibilidad / confiabilidad eterna. Sea responsable con sus datos exportando proactivamente sus registros gacha como archivos UIGF para respaldo."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang FOSS ay hindi nangangahulugang walang hanggang availability / reliability. Maging responsable sa inyong data sa pamamagitan ng proactive na pag-export ng inyong gacha records bilang UIGF files para sa backup."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS ne signifie jamais une disponibilité / fiabilité éternelle. Soyez responsable de vos données en exportant de manière proactive vos enregistrements gacha sous forme de fichiers UIGF pour la sauvegarde."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS non significa mai disponibilità / affidabilità eterna. Siate responsabili dei vostri dati esportando proattivamente i vostri record gacha come file UIGF per il backup."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "FOSSアプリは、ずっと安定して使えるとは限らないので、ガチャ履歴などはUIGF形式でこまめにバックアップしてデータを守って下さいね！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS는 영원한 가용성 / 신뢰성을 의미하지 않습니다. 가챠 기록을 UIGF 파일로 백업용으로 미리 내보내어 데이터에 대한 책임을 지십시오."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS никогда не означает вечную доступность / надежность. Будьте ответственны за свои данные, проактивно экспортируя записи гачи в виде файлов UIGF для резервного копирования."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS không bao giờ có nghĩa là khả năng truy cập / độ tin cậy vĩnh viễn. Hãy chịu trách nhiệm với dữ liệu của bạn bằng cách chủ động xuất các bản ghi gacha dưới dạng tệp UIGF để sao lưu."
           }
         },
         "zh-Hans" : {
@@ -5512,16 +5560,64 @@
     },
     "oobe.feature.backupYourData.title" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proaktiv sichern"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Backup Proactively"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hacer copia de seguridad proactivamente"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mag-backup nang Proactive"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sauvegardez de manière proactive"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backup proattivo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "こまめにバックアップ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사전 백업"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проактивное резервное копирование"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sao lưu chủ động"
           }
         },
         "zh-Hans" : {
@@ -5540,16 +5636,64 @@
     },
     "oobe.feature.contactDevs.detail" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie können unter “Einstellungen -> Info” nachsehen, wie Sie die Entwickler für mögliche Hilfe kontaktieren können."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "You may refer to “Settings -> About” to know how to contact the devs for possible help."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puede consultar “Configuración -> Acerca de” para saber cómo contactar a los desarrolladores para posible ayuda."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maaari kayong mag-refer sa “Settings -> About” para malaman kung paano makipag-ugnayan sa mga dev para sa posibleng tulong."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pouvez consulter “Paramètres -> À propos” pour savoir comment contacter les développeurs pour obtenir de l'aide."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potete consultare “Impostazioni -> Informazioni” per sapere come contattare gli sviluppatori per possibile aiuto."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "開発チームへの連絡先は、アプリ内の「アプリ設定→アプリについて」に記載されていますので、そちらをご覧下さい！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "도움이 필요할 때 개발자에게 연락하는 방법을 알려면 “설정 -> 정보”를 참조하십시오."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы можете обратиться к “Настройки -> О программе”, чтобы узнать, как связаться с разработчиками для возможной помощи."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn có thể tham khảo “Cài đặt -> Thông tin” để biết cách liên hệ với các nhà phát triển để được hỗ trợ."
           }
         },
         "zh-Hans" : {
@@ -5568,16 +5712,64 @@
     },
     "oobe.feature.contactDevs.title" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontaktieren Sie uns"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contact Us"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contáctanos"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Makipag-ugnayan sa Amin"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous contacter"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contattaci"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "開発チームへの連絡方法"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "문의하기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Свяжитесь с нами"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liên hệ với chúng tôi"
           }
         },
         "zh-Hans" : {
@@ -5596,16 +5788,64 @@
     },
     "oobe.feature.menuButton.detail" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es befindet sich in der oberen rechten Ecke der Benutzeroberfläche, wenn es verfügbar ist. Tippen Sie darauf, um das Funktionsmenü aufzurufen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "It situates at top-trailing corner of the UI when it’s available. Tap it to call the feature menu."
+            "value" : "It situates at top-trailing corner of the UI when it's available. Tap it to call the feature menu."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se sitúa en la esquina superior derecha de la interfaz cuando está disponible. Tócalo para abrir el menú de funciones."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nasa tuktok-trailing corner ng UI kapag available. I-tap ito para tawagan ang feature menu."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il se situe dans le coin supérieur droit de l'interface utilisateur lorsqu'il est disponible. Appuyez dessus pour ouvrir le menu des fonctionnalités."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si trova nell'angolo superiore destro dell'interfaccia utente quando è disponibile. Toccatelo per richiamare il menu delle funzioni."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "このアイコンが(UIの右上隅に)表示された時に、それをタップすれは、さまざまな機能が使えるメニューを呼び出すことが出来ます！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용 가능할 때 UI의 오른쪽 상단에 위치합니다. 기능 메뉴를 호출하려면 탭하세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Он располагается в правом верхнем углу интерфейса, когда доступен. Нажмите на него, чтобы вызвать меню функций."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nó nằm ở góc trên bên phải của giao diện khi có sẵn. Nhấn vào nó để gọi menu tính năng."
           }
         },
         "zh-Hans" : {
@@ -5624,16 +5864,64 @@
     },
     "oobe.feature.menuButton.title" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menü-Symbol"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Menu Icon"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icono de Menú"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu Icon"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icône de menu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icona del Menu"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "メニューアイコン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메뉴 아이콘"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Значок меню"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biểu tượng Menu"
           }
         },
         "zh-Hans" : {
@@ -5652,16 +5940,64 @@
     },
     "oobe.feature.notification.detail" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Werden Sie benachrichtigt, wenn Ihre Spieler-Stamina im Spiel voll ist. Dies kann über die App-Einstellungen konfiguriert werden."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Get noticed when your in-game player stamina is full. This is configurable through in-app settings."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recibe una notificación cuando tu resistencia de jugador en el juego esté llena. Esto se puede configurar a través de la configuración de la aplicación."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Makakakuha ng notice kapag puno na ang inyong in-game player stamina. Ito ay configurable sa pamamagitan ng in-app settings."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recevez une notification lorsque votre endurance de joueur en jeu est pleine. Ceci est configurable via les paramètres de l'application."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ricevete una notifica quando la vostra stamina del giocatore nel gioco è piena. Questo è configurabile attraverso le impostazioni dell'app."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ゲーム内のスタミナが全回復した時に通知を受け取ることができます！この設定はアプリ内の設定で変更可能です！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "게임 내 플레이어 스태미나가 가득 찰 때 알림을 받습니다. 이는 앱 내 설정을 통해 구성할 수 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Получайте уведомления, когда выносливость вашего игрока в игре полна. Это настраивается через настройки приложения."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhận thông báo khi sức chịu đựng của người chơi trong game đã đầy. Điều này có thể được cấu hình thông qua cài đặt trong ứng dụng."
           }
         },
         "zh-Hans" : {
@@ -5680,16 +6016,64 @@
     },
     "oobe.feature.notification.title" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benachrichtigungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notifications"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Notification"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifiche"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "通知"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "알림"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уведомления"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thông báo"
           }
         },
         "zh-Hans" : {
@@ -5709,16 +6093,64 @@
     "oobe.feature.widget.detail:%@" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese App unterstützt Dynamic Island, Live Activities und mehrere Arten von Widgets. Bitte tippen Sie [hier](%@), um offizielle Apple-Artikel zu lesen und zu lernen, wie man Widgets verwendet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "This app supports Dynamic Island, Live Activities, and multiple kinds of widgets. Please tap [here](%@) to read Apple official articles to learn how to use widgets."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta aplicación admite Dynamic Island, Live Activities y múltiples tipos de widgets. Por favor, toque [aquí](%@) para leer artículos oficiales de Apple y aprender cómo usar widgets."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sinusuportahan ng app na ito ang Dynamic Island, Live Activities, at maraming uri ng mga widget. Mangyaring mag-tap [dito](%@) para magbasa ng mga opisyal na artikulo ng Apple para matuto kung paano gamitin ang mga widget."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette application prend en charge Dynamic Island, Live Activities et plusieurs types de widgets. Veuillez appuyer [ici](%@) pour lire les articles officiels d'Apple et apprendre à utiliser les widgets."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa app supporta Dynamic Island, Live Activities e diversi tipi di widget. Si prega di toccare [qui](%@) per leggere gli articoli ufficiali di Apple e imparare come utilizzare i widget."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "このアプリではDynamic Island、ライブアクティビティ、様々なウィジェットに対応しています。ウィジェットの使い方を学びたい場合は「[こ↑こ↓](%@)」←をタップしてAppleの公式記事をご覧下さい！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 앱은 Dynamic Island, Live Activities 및 여러 종류의 위젯을 지원합니다. 위젯 사용법을 배우려면 [여기](%@)를 눌러 Apple 공식 기사를 읽어보세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это приложение поддерживает Dynamic Island, Live Activities и несколько типов виджетов. Пожалуйста, нажмите [здесь](%@), чтобы прочитать официальные статьи Apple и узнать, как использовать виджеты."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ứng dụng này hỗ trợ Dynamic Island, Live Activities và nhiều loại widget khác nhau. Vui lòng nhấn [ở đây](%@) để đọc các bài viết chính thức của Apple để tìm hiểu cách sử dụng widget."
           }
         },
         "zh-Hans" : {
@@ -5737,16 +6169,64 @@
     },
     "oobe.feature.widget.title" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Widgets"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Widget"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ウィジェット"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위젯"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виджеты"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
           }
         },
         "zh-Hans" : {
