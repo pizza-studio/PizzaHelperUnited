@@ -197,11 +197,9 @@ extension PZProfileActor {
         uuidsToDelete: Set<UUID>
     ) throws {
         try modelContext.transaction {
-            try uuidsToDelete.forEach { uuid in
-                try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
-                    guard uuidsToDelete.contains(currentMO.uuid) else { return }
-                    modelContext.delete(currentMO)
-                }
+            try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
+                guard uuidsToDelete.contains(currentMO.uuid) else { return }
+                modelContext.delete(currentMO)
             }
             try profileSendableSet.sorted {
                 $0.priority < $1.priority
