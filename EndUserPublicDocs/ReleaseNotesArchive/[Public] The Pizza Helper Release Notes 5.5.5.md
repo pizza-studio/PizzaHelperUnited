@@ -56,7 +56,7 @@ $EOF.
 - GRM: Its Standard Hit Rate (SHR) display is now equipped with automatic reliability detection, warning text for insufficient sample sizes, and a Medium confidence ceiling for SHR above 51% to mitigate legal risks.
 - GRM: Implemented debounce handling for the screen-adaptive behavior of the width of vertically arranged bar charts. This improves UI rendering performance.
 - GRM: Reduced the spacing between entries in horizontally arranged bar charts, making the layout more compact.
-- GRM: Change the term `Avrg. Pulls (limited 5-star)` to `Avrg. Pulls (Non-Std. 5-star)`. The previous term may confuse certain users in some cases.
+- GRM: Changed the term `Avrg. Pulls (limited 5-star)` to `Avrg. Pulls (Non-Std. 5-star)`. The previous term could confuse certain users in some cases.
 - GRM: Made some UI layout adjustments to the main Gacha Puller view to reduce its vertical screen space usage.
 - GRM: Introduced a new term "Gacha Puller (ガチャ主)." This prevents confusion with similarly named terms in other modules of the software under certain language interfaces.
 - GRM: It now attempts to use bundled GachaMetaDB data first if the current device's GachaMetaDB cache is outdated. Online updates are only attempted if both are outdated. Also adjusted error message content related to GachaMetaDB expiration.
@@ -64,10 +64,10 @@ $EOF.
 - Added missing translations (of secondary languages) for the OOBE view.
 - Tweaked the layout and design of the challenge type picker in the Battle Report view. This is a preparation for new challenge types in the future.
 - Amended the EULA to add disclaimer contents regarding user-displayed statistic results made by external forged data.
-- Fixed a layout alignment issue plagued in the Stamina Timer. It happens in some cases.
-- Due to the urgent needs of reducing the file size footprint of the app bundle, all bundled Genshin namecard assets are having their dimension metrics shrinked to 210x100. If the background image of Stamina Timer or any desktop widget is set using Genshin namecard, online assets (hosted by Enka Networks) will be used prior to using the bundled low-resolution fallback assets.
+- Fixed a layout alignment issue in the Stamina Timer that occurs in some cases.
+- Due to urgent needs to reduce the app bundle file size, all bundled Genshin namecard assets have had their dimensions reduced to 210x100. If the background image of the Stamina Timer or any desktop widget is set to use a Genshin namecard, online assets (hosted by Enka Networks) will be prioritized over the bundled low-resolution fallback assets.
 - Used GitHub Copilot (Claude Sonnet 4 & GPT-4o) to make language adjustments to the Japanese localized interface for improved reading comfort.
-- Changed the release method of some reusable source code to MIT License, incl. EnkaKit (Query Module & Artifact Rating Module).
+- Changed the release method of some reusable source code to MIT License, including EnkaKit (Query Module & Artifact Rating Module).
 
 $EOF.
 
@@ -107,8 +107,8 @@ $EOF.
 - GRM: Реализована обработка устранения дребезга для адаптивного поведения ширины вертикально расположенных столбчатых диаграмм к экрану. Это улучшает производительность рендеринга UI.
 - GRM: Уменьшено расстояние между записями в горизонтально расположенных столбчатых диаграммах, делая макет более компактным.
 - GRM: Изменён термин «Средн. попыток (лимитированная 5-звёздочная)» на «Средн. попыток (не-стандартная 5-звёздочная)». Предыдущий термин мог запутать некоторых пользователей в определённых случаях.
-- GRM: Внесены некоторые корректировки в макет UI основного представления профиля для уменьшения использования вертикального пространства экрана.
-- GRM: Введён новый термин «Пуллер Gacha (ガチャ主)». Это предотвращает путаницу с аналогично названными терминами в других модулях программного обеспечения в определённых языковых интерфейсах.
+- GRM: Внесены некоторые корректировки в макет UI основного представления владельца гача для уменьшения использования вертикального пространства экрана.
+- GRM: Введён новый термин «владелец гача (ガチャ主)». Это предотвращает путаницу с аналогично названными терминами в других модулях программного обеспечения в определённых языковых интерфейсах.
 - GRM: Теперь сначала пытается использовать встроенные данные GachaMetaDB, если кэш GachaMetaDB текущего устройства устарел. Онлайн-обновления пытаются выполнить только если оба устарели. Также скорректировано содержимое сообщений об ошибках, связанных с истечением срока действия GachaMetaDB.
 - Портирован переключатель языка приложения на OS 21 (iOS 14 / macOS 11), плюс разрешено пользователям отменять действие переключения языка приложения.
 - Добавлены отсутствующие переводы (вторичных языков) для представления OOBE.
