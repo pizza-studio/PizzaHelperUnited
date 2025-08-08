@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - AppLanguageSwitcher
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 struct AppLanguageSwitcher: View {
     // MARK: Lifecycle
 
@@ -31,7 +31,7 @@ struct AppLanguageSwitcher: View {
                         }
                     }
                     .labelsHidden()
-                    .onChange(of: selectedLanguageTag) { oldValue, newValue in
+                    .react(to: selectedLanguageTag) { oldValue, newValue in
                         if oldValue != newValue, newValue != savedLanguageTag {
                             // Only show alert if the new selection differs from saved value
                             alertPresented = true
@@ -47,7 +47,7 @@ struct AppLanguageSwitcher: View {
         .onAppear {
             loadCurrentLanguageSetting()
         }
-        .onChange(of: appLanguage) { oldValue, newValue in
+        .react(to: appLanguage) {
             // When the @Default(.appLanguage) property changes externally,
             // refresh our local state and dismiss any open alert
             let currentSetting = getCurrentLanguageFromDefaults()
