@@ -68,7 +68,8 @@ struct AppLanguageSwitcher: View {
             previousLanguageTag = appleLanguageTag
         }
         .react(to: appLanguage) {
-            guard !isReverting else { return }
+            // Don't show alert if we're currently reverting or if alert is already presented
+            guard !isReverting && !alertPresented else { return }
             alertPresented = true
         }
         .alert(
@@ -77,15 +78,20 @@ struct AppLanguageSwitcher: View {
         ) {
             Button("sys.ok".i18nBaseKit) { exit(0) }
             Button("sys.cancel".i18nBaseKit) {
-                // Revert to previous language without triggering another alert
+                // Prevent additional alerts during revert
                 isReverting = true
-                appleLanguageTag = previousLanguageTag
+                
+                // Simply revert the UserDefaults to the previous state
                 if previousLanguageTag == "auto" || previousLanguageTag.isEmpty {
                     UserDefaults.standard.removeObject(forKey: AppLanguage.defaultsKeyName)
                 } else {
-                    Defaults[.appLanguage] = [previousLanguageTag]
+                    UserDefaults.standard.set([previousLanguageTag], forKey: AppLanguage.defaultsKeyName)
                 }
-                isReverting = false
+                
+                // Force the UI to refresh by triggering a state change
+                DispatchQueue.main.async {
+                    isReverting = false
+                }
             }
         } message: {
             Text("app.language.restartRequired.description".i18nPZHelper)
