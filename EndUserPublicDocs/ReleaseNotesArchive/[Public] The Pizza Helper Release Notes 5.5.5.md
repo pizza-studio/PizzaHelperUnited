@@ -7,7 +7,7 @@
 - GRM：对纵向陈列的棒状图表的宽度的荧幕自适应行为做了防抖处理，借此改善了 UI 渲染效能。
 - GRM：缩短了横向陈列的棒状图表的条目间隔，使排版更紧凑。
 - GRM：将「限定五星平均抽数」改称为「非常驻五星平均抽数」。之前的称谓可能会在特定的情况下让部分用户感到困惑。
-- GRM：用户资料主画面做了一些 UI 排版风格调整，使其占用的纵向荧幕空间更少。
+- GRM：抽卡人数据主画面做了一些 UI 排版风格调整，使其占用的纵向荧幕空间更少。
 - GRM：引入了新的术语：「抽卡人（ガチャ主, Gacha Puller）」。这可以在部分语言介面下防止与本软件的其他模组的同名术语彼此混淆。
 - GRM：现在会在发现当前设备的 GachaMetaDB 资料库过期时先尝试使用 App 同捆的资料。仅当两者均过期时，才会尝试线上更新。另对与 GachaMetaDB 过期有关的错误讯息内容做了一些调整。
 - 将 App 语言切换器向下开放至 OS 21 (iOS 14 / macOS 11)，且允许用户取消对 App 语言的切换操作。
@@ -32,7 +32,7 @@ $EOF.
 - GRM：對縱向陳列的棒狀圖表的寬度的熒幕自適應行為做了防抖處理，藉此改善了 UI 渲染效能。
 - GRM：縮短了橫向陳列的棒狀圖表的條目間隔，使排版更緊湊。
 - GRM：將「限定五星平均抽數」改稱為「非常駐五星平均抽數」。之前的稱謂可能會在特定的情況下讓部分使用者感到困惑。
-- GRM：使用者資料主畫面做了一些 UI 排版風格調整，使其佔用的縱向熒幕空間更少。
+- GRM：抽卡人資料主畫面做了一些 UI 排版風格調整，使其佔用的縱向熒幕空間更少。
 - GRM：引入了新的術語：「抽卡人（ガチャ主, Gacha Puller）」。這可以在部分語言介面下防止與敝軟體的其他模組的同名術語彼此混淆。
 - GRM：現在會在發現當前設備的 GachaMetaDB 資料庫過期時先嚐試使用 App 同捆的資料。僅當兩者均過期時，才會嘗試線上更新。另對與 GachaMetaDB 過期有關的錯誤訊息內容做了一些調整。
 - 將 App 語言切換器向下開放至 OS 21 (iOS 14 / macOS 11)，且允許使用者取消對 App 語言的切換操作。
@@ -57,7 +57,7 @@ $EOF.
 - GRM: Implemented debounce handling for the screen-adaptive behavior of the width of vertically arranged bar charts. This improves UI rendering performance.
 - GRM: Reduced the spacing between entries in horizontally arranged bar charts, making the layout more compact.
 - GRM: Change the term `Avrg. Pulls (limited 5-star)` to `Avrg. Pulls (Non-Std. 5-star)`. The previous term may confuse certain users in some cases.
-- GRM: Made some UI layout adjustments to the main profile view to reduce its vertical screen space usage.
+- GRM: Made some UI layout adjustments to the main Gacha Puller view to reduce its vertical screen space usage.
 - GRM: Introduced a new term "Gacha Puller (ガチャ主)." This prevents confusion with similarly named terms in other modules of the software under certain language interfaces.
 - GRM: It now attempts to use bundled GachaMetaDB data first if the current device's GachaMetaDB cache is outdated. Online updates are only attempted if both are outdated. Also adjusted error message content related to GachaMetaDB expiration.
 - Backported the app language switcher to OS 21 (iOS 14 / macOS 11), plus allowing users to cancel their app language switching action.
@@ -82,7 +82,7 @@ $EOF.
 - GRM：縦向きに配置された棒グラフの幅に対するスクリーン適応動作にデバウンス処理を実装。UIレンダリング性能が向上。
 - GRM：横向きに配置された棒グラフのエントリー間隔を縮小し、レイアウトをよりコンパクトに。
 - GRM：「限定星5平均回数」を「非常駐星5平均回数」に変更。以前の用語は特定の場合に一部のユーザーを混乱させる可能性がありました。
-- GRM：ユーザープロファイルのメイン画面でUIレイアウトを調整し、縦方向の画面使用量を削減。
+- GRM：ガチャ主のメインデータ画面でUIレイアウトを調整し、縦方向の画面使用量を削減。
 - GRM：新しい用語「ガチャ主（Gacha Puller）」を導入。特定の言語インターフェースにおいて、ソフトウェアの他のモジュールの類似用語との混乱を防止。
 - GRM：現在のデバイスのGachaMetaDBキャッシュが古い場合、まずバンドルされたGachaMetaDBデータの使用を試行。両方が古い場合のみオンライン更新を試行。また、GachaMetaDB期限切れに関連するエラーメッセージの内容を調整。
 - アプリ言語切り替え機能をOS 21（iOS 14 / macOS 11）まで下位対応し、ユーザーがアプリ言語の切り替え操作をキャンセルできるように。
