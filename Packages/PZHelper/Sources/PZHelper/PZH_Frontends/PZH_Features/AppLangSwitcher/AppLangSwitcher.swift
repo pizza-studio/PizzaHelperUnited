@@ -47,6 +47,15 @@ struct AppLanguageSwitcher: View {
         .onAppear {
             loadCurrentLanguageSetting()
         }
+        .onChange(of: appLanguage) { oldValue, newValue in
+            // When the @Default(.appLanguage) property changes externally,
+            // refresh our local state and dismiss any open alert
+            let currentSetting = getCurrentLanguageFromDefaults()
+            if currentSetting != savedLanguageTag {
+                loadCurrentLanguageSetting()
+                alertPresented = false // Make the sheet disappear
+            }
+        }
         .alert(
             "settings.disclaimer.requiringAppRebootToApplySettings".i18nPZHelper,
             isPresented: $alertPresented
@@ -75,7 +84,7 @@ struct AppLanguageSwitcher: View {
 
     @Default(.appLanguage) private var appLanguage: [String]?
 
-    private func loadCurrentLanguageSetting() {
+    private func getCurrentLanguageFromDefaults() -> String {
         let loadedValue = (
             UserDefaults.standard.array(forKey: AppLanguage.defaultsKeyName) as? [String] ?? ["auto"]
         ).joined()
@@ -84,8 +93,11 @@ struct AppLanguageSwitcher: View {
         )
         let targetToCheck = (plistValueNotExist || loadedValue.isEmpty) ? "auto" : loadedValue
         let targetContained = AppLanguage.allCases.map(\.rawValue).contains(targetToCheck)
-        let currentLanguage = targetContained ? (plistValueNotExist ? "auto" : loadedValue) : "auto"
+        return targetContained ? (plistValueNotExist ? "auto" : loadedValue) : "auto"
+    }
 
+    private func loadCurrentLanguageSetting() {
+        let currentLanguage = getCurrentLanguageFromDefaults()
         selectedLanguageTag = currentLanguage
         savedLanguageTag = currentLanguage
     }
