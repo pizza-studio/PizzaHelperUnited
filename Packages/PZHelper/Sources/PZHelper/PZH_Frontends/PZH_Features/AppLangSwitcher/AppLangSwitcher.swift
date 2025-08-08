@@ -52,6 +52,11 @@ struct AppLanguageSwitcher: View {
                             Text(appLang.localizedDescription).tag(appLang.rawValue)
                         }
                     }.labelsHidden()
+                    .onChange(of: appleLanguageTag) { oldValue, newValue in
+                        if oldValue != newValue {
+                            previousLanguageTag = oldValue
+                        }
+                    }
                 }
                 Text("settings.disclaimer.requiringAppRebootToApplySettings".i18nPZHelper)
                     .asInlineTextDescription()
@@ -59,7 +64,11 @@ struct AppLanguageSwitcher: View {
         } icon: {
             Image(systemSymbol: .globe)
         }
+        .onAppear {
+            previousLanguageTag = appleLanguageTag
+        }
         .react(to: appLanguage) {
+            guard !isReverting else { return }
             alertPresented = true
         }
         .alert(
@@ -67,6 +76,17 @@ struct AppLanguageSwitcher: View {
             isPresented: $alertPresented
         ) {
             Button("sys.ok".i18nBaseKit) { exit(0) }
+            Button("sys.cancel".i18nBaseKit) {
+                // Revert to previous language without triggering another alert
+                isReverting = true
+                appleLanguageTag = previousLanguageTag
+                if previousLanguageTag == "auto" || previousLanguageTag.isEmpty {
+                    UserDefaults.standard.removeObject(forKey: AppLanguage.defaultsKeyName)
+                } else {
+                    Defaults[.appLanguage] = [previousLanguageTag]
+                }
+                isReverting = false
+            }
         } message: {
             Text("app.language.restartRequired.description".i18nPZHelper)
                 + Text(verbatim: "\n\n⚠️ ")
@@ -77,6 +97,8 @@ struct AppLanguageSwitcher: View {
     // MARK: Private
 
     @State private var alertPresented: Bool = false
+    @State private var previousLanguageTag: String = ""
+    @State private var isReverting: Bool = false
     @Binding private var appleLanguageTag: String
 
     @Default(.appLanguage) private var appLanguage: [String]?
