@@ -1786,6 +1786,11 @@ Illustrateur d'icônes de l'application, The Pizza Helper (v5.0)</target>
         <target state="translated">Escartem</target>
         <note>Localization Contributor (FR)</note>
       </trans-unit>
+      <trans-unit id="aboutKit.contributors.name.hacchitao" xml:space="preserve">
+        <source>はっちー(たお👻🍑)</source>
+        <target state="translated">はっちー(たお👻🍑)</target>
+        <note>Localization Contributor (JA)</note>
+      </trans-unit>
       <trans-unit id="aboutKit.contributors.name.hakubill" xml:space="preserve">
         <source>Haku Bill (水里的碳酸钙)</source>
         <target state="translated">Haku Bill (水里的碳酸钙)</target>
@@ -1820,11 +1825,6 @@ Illustrateur d'icônes de l'application, The Pizza Helper (v5.0)</target>
         <source>Shiki Suen (孙志贵)</source>
         <target state="translated">Shiki Suen (孙志贵)</target>
         <note>Crew Member</note>
-      </trans-unit>
-      <trans-unit id="aboutKit.contributors.name.tao" xml:space="preserve">
-        <source>たお👻🍑</source>
-        <target state="translated">たお👻🍑</target>
-        <note>Localization Contributor (JA)</note>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.name.xinzoruo" xml:space="preserve">
         <source>Xinzoruo (心臓弱眞君)</source>
@@ -1912,42 +1912,52 @@ Illustrateur d'icônes de l'application, The Pizza Helper (v5.0)</target>
       </trans-unit>
       <trans-unit id="oobe.feature.backupYourData.detail" xml:space="preserve">
         <source>FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup.</source>
+        <target state="translated">FOSS ne signifie jamais une disponibilité / fiabilité éternelle. Soyez responsable de vos données en exportant de manière proactive vos enregistrements gacha sous forme de fichiers UIGF pour la sauvegarde.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.backupYourData.title" xml:space="preserve">
         <source>Backup Proactively</source>
+        <target state="translated">Sauvegardez de manière proactive</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.contactDevs.detail" xml:space="preserve">
         <source>You may refer to “Settings -&gt; About” to know how to contact the devs for possible help.</source>
+        <target state="translated">Vous pouvez consulter “Paramètres -&gt; À propos” pour savoir comment contacter les développeurs pour obtenir de l'aide.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.contactDevs.title" xml:space="preserve">
         <source>Contact Us</source>
+        <target state="translated">Nous contacter</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.menuButton.detail" xml:space="preserve">
-        <source>It situates at top-trailing corner of the UI when it’s available. Tap it to call the feature menu.</source>
+        <source>It situates at top-trailing corner of the UI when it's available. Tap it to call the feature menu.</source>
+        <target state="translated">Il se situe dans le coin supérieur droit de l'interface utilisateur lorsqu'il est disponible. Appuyez dessus pour ouvrir le menu des fonctionnalités.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.menuButton.title" xml:space="preserve">
         <source>Menu Icon</source>
+        <target state="translated">Icône de menu</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.notification.detail" xml:space="preserve">
         <source>Get noticed when your in-game player stamina is full. This is configurable through in-app settings.</source>
+        <target state="translated">Recevez une notification lorsque votre endurance de joueur en jeu est pleine. Ceci est configurable via les paramètres de l'application.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.notification.title" xml:space="preserve">
         <source>Notifications</source>
+        <target state="translated">Notifications</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.widget.detail:%@" xml:space="preserve">
         <source>This app supports Dynamic Island, Live Activities, and multiple kinds of widgets. Please tap [here](%@) to read Apple official articles to learn how to use widgets.</source>
+        <target state="translated">Cette application prend en charge Dynamic Island, Live Activities et plusieurs types de widgets. Veuillez appuyer [ici](%@) pour lire les articles officiels d'Apple et apprendre à utiliser les widgets.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.widget.title" xml:space="preserve">
         <source>Widgets</source>
+        <target state="translated">Widgets</target>
         <note/>
       </trans-unit>
     </body>
@@ -2719,9 +2729,9 @@ The Pizza Helper v5 ne peut pas risquer de perte de données en rétrogradant Sw
         <note/>
       </trans-unit>
       <trans-unit id="settings.appLanguage.title" xml:space="preserve">
-        <source>App UI Language</source>
-        <target state="translated">Langue d'affichage</target>
-        <note/>
+        <source>Language</source>
+        <target state="translated">Langue</target>
+        <note>App UI Language</note>
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push" xml:space="preserve">
         <source>Force-push your local profiles to paired Apple Watch</source>
@@ -3178,9 +3188,9 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <note/>
       </trans-unit>
       <trans-unit id="settings.uiSettings.title" xml:space="preserve">
-        <source>UI Settings</source>
-        <target state="translated">Paramètres de l'interface</target>
-        <note/>
+        <source>Display Settings</source>
+        <target state="translated">Paramètres d'affichage</target>
+        <note>Display Settings (UI Settings)</note>
       </trans-unit>
       <trans-unit id="sys.server.cn" xml:space="preserve">
         <source>China Mainland Servers</source>
@@ -3392,6 +3402,11 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       <trans-unit id="hylKit.battleReport.stat.seasonID" xml:space="preserve">
         <source>Season ID</source>
         <target state="translated">ID de la saison</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView.challengeType" xml:space="preserve">
+        <source>Challenge Type</source>
+        <target state="translated">Type de Défi</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.battleReportView4GI.navTitle.spiralAbyss" xml:space="preserve">
@@ -4008,9 +4023,9 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <note/>
       </trans-unit>
       <trans-unit id="app.language.followSystemDefault" xml:space="preserve">
-        <source>OS Default</source>
-        <target state="translated">Système</target>
-        <note/>
+        <source>OS Automatic</source>
+        <target state="translated">Automatique système</target>
+        <note>Follow OS Default Settings</note>
       </trans-unit>
       <trans-unit id="app.language.fr" xml:space="preserve">
         <source>French</source>

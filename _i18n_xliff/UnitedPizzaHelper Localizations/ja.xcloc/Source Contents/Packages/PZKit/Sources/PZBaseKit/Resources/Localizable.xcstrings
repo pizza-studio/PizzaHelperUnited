@@ -46,12 +46,13 @@
       }
     },
     "app.language.followSystemDefault" : {
+      "comment" : "Follow OS Default Settings",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "OS Default"
+            "value" : "OS Automatic"
           }
         }
       }
