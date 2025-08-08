@@ -407,7 +407,7 @@ public enum DataType: String, CaseIterable {
                 }
             }
         } catch {
-            print(String(data: data, encoding: .utf8)!)
+            print(String(data: data, encoding: .utf8) ?? "NOT_A_STRING")
             throw error
         }
 
@@ -477,7 +477,7 @@ let urlDict = try await withThrowingTaskGroup(
 
 let encoder = JSONEncoder()
 encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
-print(String(data: try! encoder.encode(urlDict), encoding: .utf8)!)
+print(String(data: try! encoder.encode(urlDict), encoding: .utf8) ?? "NOT_A_STRING")
 
 // MARK: - Image Data Download
 
