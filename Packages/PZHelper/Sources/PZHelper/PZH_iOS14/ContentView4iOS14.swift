@@ -55,6 +55,7 @@ public struct ContentView4iOS14: View {
                     if !pzProfilesMap.isEmpty {
                         drawLiveActivityCallerRow()
                     }
+                    AppLanguageSwitcher()
                     NavigationLink(
                         destination: AboutView.init,
                         label: {
