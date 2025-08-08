@@ -95,7 +95,7 @@ public struct AvatarStatCollectionTabView: View {
                 presentationMode.wrappedValue.dismiss()
             }
         }
-        .react(to: showingCharacterIdentifier, initial: true) { _, newValue in
+        .react(to: showingCharacterIdentifier, initial: true) {
             simpleTaptic(type: .selection)
             withAnimation(.easeIn(duration: 0.1)) {
                 showTabViewIndex = true
