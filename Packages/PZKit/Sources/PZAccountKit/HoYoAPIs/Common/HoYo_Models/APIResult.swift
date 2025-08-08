@@ -28,7 +28,7 @@ extension DecodableFromMiHoYoAPIJSONResult {
                 throw MiHoYoAPIError(retcode: extractedServerMsg.error, message: extractedServerMsg.message)
             } else {
                 let errorMessage = """
-                [DEBUG TAG: \(debugTag)] DECODE ITEM: \(String(data: data, encoding: .utf8)!)
+                [DEBUG TAG: \(debugTag)] DECODE ITEM: \(String(data: data, encoding: .utf8) ?? "NOT_A_STRING")
                 --------------
                 rawError:
                 \(error)

@@ -91,7 +91,7 @@ struct AssetFile: Codable, CustomStringConvertible {
         encoder.outputFormatting = [.prettyPrinted, .withoutEscapingSlashes, .sortedKeys]
         // swiftlint:disable:next force_try
         let data = try! encoder.encode(self)
-        return String(data: data, encoding: .utf8)!
+        return String(data: data, encoding: .utf8) ?? "NOT_A_STRING"
     }
 
     func deploy() throws {

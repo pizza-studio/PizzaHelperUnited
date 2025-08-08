@@ -88,7 +88,7 @@ extension HoYo {
 
         // #if DEBUG
         // print("-----------------------------------")
-        // print(String(data: data1, encoding: .utf8)!)
+        // print(String(data: data1, encoding: .utf8) ?? "NOT_A_STRING")
         // print("-----------------------------------")
         // #endif
         var decodedResult = try CharInventory4GI
@@ -119,7 +119,7 @@ extension HoYo {
 
         // #if DEBUG
         // print("-----------------------------------")
-        // print(String(data: data2, encoding: .utf8)!)
+        // print(String(data: data2, encoding: .utf8) ?? "NOT_A_STRING")
         // print("-----------------------------------")
         // #endif
         let decodedDetails = try CharInventory4GI.AvatarDetailPackage4GI

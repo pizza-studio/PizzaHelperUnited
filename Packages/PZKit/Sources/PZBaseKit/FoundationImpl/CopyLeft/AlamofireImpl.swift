@@ -19,7 +19,7 @@ extension URLRequest {
         if let headerEX = allHTTPHeaderFields {
             let encoder = JSONEncoder()
             encoder.outputFormatting = [.sortedKeys, .prettyPrinted, .withoutEscapingSlashes]
-            print(String(data: try! encoder.encode(headerEX), encoding: .utf8)!)
+            print(String(data: try! encoder.encode(headerEX), encoding: .utf8) ?? "NOT_A_STRING")
         }
         print("---------------------------------------------")
         #endif

@@ -27,7 +27,7 @@ public enum QueryQRCodeStatus: Decodable, Sendable {
             let decoder = JSONDecoder()
             let decodedConfirmedData = try decoder.decode(
                 ConfirmedDataDecodeHelper.self,
-                from: jsonString.data(using: .utf8)!
+                from: jsonString.data(using: .utf8) ?? .init([])
             )
             self = .confirmed(accountId: decodedConfirmedData.uid, token: decodedConfirmedData.token)
         }
