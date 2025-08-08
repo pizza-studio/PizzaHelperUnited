@@ -310,78 +310,79 @@
       }
     },
     "app.language.followSystemDefault" : {
+      "comment" : "Follow OS Default Settings",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Betriebssystem-Standard"
+            "value" : "System-Standard"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "OS Default"
+            "value" : "OS Automatic"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Predeterminado del SO"
+            "value" : "Automático del SO"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Default ng OS"
+            "value" : "Awtomatiko ng OS"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Système"
+            "value" : "Automatique système"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Impostazione predefinita OS"
+            "value" : "Automatico OS"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "システム設定に準ず"
+            "value" : "自動"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "OS 기본값"
+            "value" : "OS 자동"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "По умолчанию ОС"
+            "value" : "Автоматически ОС"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mặc định hệ điều hành"
+            "value" : "Tự động hệ điều hành"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "依系统语言"
+            "value" : "系统自动设定"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "依系統語言"
+            "value" : "系統自動設定"
           }
         }
       }
