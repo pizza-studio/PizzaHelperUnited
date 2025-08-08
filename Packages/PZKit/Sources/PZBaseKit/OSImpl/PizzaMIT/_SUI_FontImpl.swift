@@ -39,13 +39,18 @@ extension Font {
 
 // MARK: - InlineTextDescription
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 extension View {
     @ViewBuilder
     public func asInlineTextDescription() -> some View {
-        font(.footnote).foregroundStyle(.secondary)
-            .multilineTextAlignment(.leading)
-            .frame(maxWidth: .infinity, alignment: .leading)
+        if #available(macCatalyst 15.0, iOS 15.0, macOS 12.0, *, *) {
+            font(.footnote).foregroundStyle(.secondary)
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        } else {
+            font(.footnote).foregroundColor(.primary.opacity(0.8))
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
     }
 }
 

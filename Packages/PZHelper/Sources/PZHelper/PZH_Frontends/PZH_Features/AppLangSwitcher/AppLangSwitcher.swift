@@ -8,7 +8,6 @@ import SwiftUI
 
 // MARK: - AppLanguageSwitcher
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 struct AppLanguageSwitcher: View {
     // MARK: Lifecycle
 
@@ -56,24 +55,7 @@ struct AppLanguageSwitcher: View {
                 alertPresented = false // Make the sheet disappear
             }
         }
-        .alert(
-            "settings.disclaimer.requiringAppRebootToApplySettings".i18nPZHelper,
-            isPresented: $alertPresented
-        ) {
-            Button("sys.ok".i18nBaseKit) {
-                // Commit the change to UserDefaults and exit
-                saveLanguageSetting(selectedLanguageTag)
-                exit(0)
-            }
-            Button("sys.cancel".i18nBaseKit) {
-                // Simply revert the picker to the saved value
-                selectedLanguageTag = savedLanguageTag
-            }
-        } message: {
-            Text("app.language.restartRequired.description".i18nPZHelper)
-                + Text(verbatim: "\n\n⚠️ ")
-                + Text("app.language.restartRequired.widgets.description".i18nPZHelper)
-        }
+        .apply(hookAlert)
     }
 
     // MARK: Private
@@ -83,6 +65,47 @@ struct AppLanguageSwitcher: View {
     @State private var savedLanguageTag: String = "auto"
 
     @Default(.appLanguage) private var appLanguage: [String]?
+
+    @ViewBuilder
+    private func hookAlert<T: View>(_ target: T) -> some View {
+        let title = Text("settings.disclaimer.requiringAppRebootToApplySettings", bundle: .module)
+        let message = Text("app.language.restartRequired.description".i18nPZHelper)
+            + Text(verbatim: "\n\n⚠️ ")
+            + Text("app.language.restartRequired.widgets.description".i18nPZHelper)
+        if #available(macCatalyst 15.0, iOS 15.0, macOS 12.0, *) {
+            target
+                .alert(title, isPresented: $alertPresented) {
+                    Button("sys.ok".i18nBaseKit) {
+                        // Commit the change to UserDefaults and exit
+                        saveLanguageSetting(selectedLanguageTag)
+                        exit(0)
+                    }
+                    Button("sys.cancel".i18nBaseKit) {
+                        // Simply revert the picker to the saved value
+                        selectedLanguageTag = savedLanguageTag
+                    }
+                } message: {
+                    message
+                }
+        } else {
+            target
+                .alert(isPresented: $alertPresented) {
+                    Alert(
+                        title: title,
+                        message: message,
+                        primaryButton: .default(Text("sys.ok".i18nBaseKit), action: {
+                            // Commit the change to UserDefaults and exit
+                            saveLanguageSetting(selectedLanguageTag)
+                            exit(0)
+                        }),
+                        secondaryButton: .cancel(Text("sys.cancel".i18nBaseKit), action: {
+                            // Simply revert the picker to the saved value
+                            selectedLanguageTag = savedLanguageTag
+                        })
+                    )
+                }
+        }
+    }
 
     private func getCurrentLanguageFromDefaults() -> String {
         let loadedValue = (
