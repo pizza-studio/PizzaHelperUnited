@@ -306,6 +306,17 @@
         }
       }
     },
+    "hylKit.battleReportView.challengeType" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Challenge Type"
+          }
+        }
+      }
+    },
     "hylKit.battleReportView4GI.navTitle.spiralAbyss" : {
       "extractionState" : "manual",
       "localizations" : {

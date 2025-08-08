@@ -1783,6 +1783,11 @@ Illustrator ng App Icon, The Pizza Helper (v5.0)</target>
         <target state="translated">Escartem</target>
         <note>Localization Contributor (FR)</note>
       </trans-unit>
+      <trans-unit id="aboutKit.contributors.name.hacchitao" xml:space="preserve">
+        <source>はっちー(たお👻🍑)</source>
+        <target state="translated">はっちー(たお👻🍑)</target>
+        <note>Localization Contributor (JA)</note>
+      </trans-unit>
       <trans-unit id="aboutKit.contributors.name.hakubill" xml:space="preserve">
         <source>Haku Bill (水里的碳酸钙)</source>
         <target state="translated">Haku Bill (水里的碳酸钙)</target>
@@ -1817,11 +1822,6 @@ Illustrator ng App Icon, The Pizza Helper (v5.0)</target>
         <source>Shiki Suen (孙志贵)</source>
         <target state="translated">Shiki Suen (孙志贵)</target>
         <note>Crew Member</note>
-      </trans-unit>
-      <trans-unit id="aboutKit.contributors.name.tao" xml:space="preserve">
-        <source>たお👻🍑</source>
-        <target state="translated">たお👻🍑</target>
-        <note>Localization Contributor (JA)</note>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.name.xinzoruo" xml:space="preserve">
         <source>Xinzoruo (心臓弱眞君)</source>
@@ -1908,42 +1908,52 @@ Illustrator ng App Icon, The Pizza Helper (v5.0)</target>
       </trans-unit>
       <trans-unit id="oobe.feature.backupYourData.detail" xml:space="preserve">
         <source>FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup.</source>
+        <target state="translated">Ang FOSS ay hindi nangangahulugang walang hanggang availability / reliability. Maging responsable sa inyong data sa pamamagitan ng proactive na pag-export ng inyong gacha records bilang UIGF files para sa backup.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.backupYourData.title" xml:space="preserve">
         <source>Backup Proactively</source>
+        <target state="translated">Mag-backup nang Proactive</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.contactDevs.detail" xml:space="preserve">
         <source>You may refer to “Settings -&gt; About” to know how to contact the devs for possible help.</source>
+        <target state="translated">Maaari kayong mag-refer sa “Settings -&gt; About” para malaman kung paano makipag-ugnayan sa mga dev para sa posibleng tulong.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.contactDevs.title" xml:space="preserve">
         <source>Contact Us</source>
+        <target state="translated">Makipag-ugnayan sa Amin</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.menuButton.detail" xml:space="preserve">
-        <source>It situates at top-trailing corner of the UI when it’s available. Tap it to call the feature menu.</source>
+        <source>It situates at top-trailing corner of the UI when it's available. Tap it to call the feature menu.</source>
+        <target state="translated">Nasa tuktok-trailing corner ng UI kapag available. I-tap ito para tawagan ang feature menu.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.menuButton.title" xml:space="preserve">
         <source>Menu Icon</source>
+        <target state="translated">Menu Icon</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.notification.detail" xml:space="preserve">
         <source>Get noticed when your in-game player stamina is full. This is configurable through in-app settings.</source>
+        <target state="translated">Makakakuha ng notice kapag puno na ang inyong in-game player stamina. Ito ay configurable sa pamamagitan ng in-app settings.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.notification.title" xml:space="preserve">
         <source>Notifications</source>
+        <target state="translated">Mga Notification</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.widget.detail:%@" xml:space="preserve">
         <source>This app supports Dynamic Island, Live Activities, and multiple kinds of widgets. Please tap [here](%@) to read Apple official articles to learn how to use widgets.</source>
+        <target state="translated">Sinusuportahan ng app na ito ang Dynamic Island, Live Activities, at maraming uri ng mga widget. Mangyaring mag-tap [dito](%@) para magbasa ng mga opisyal na artikulo ng Apple para matuto kung paano gamitin ang mga widget.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.widget.title" xml:space="preserve">
         <source>Widgets</source>
+        <target state="translated">Mga Widget</target>
         <note/>
       </trans-unit>
     </body>
@@ -2715,9 +2725,9 @@ Hindi maaaring i-downgrade ang SwiftData papuntang CoreData dahil sa panganib ng
         <note/>
       </trans-unit>
       <trans-unit id="settings.appLanguage.title" xml:space="preserve">
-        <source>App UI Language</source>
-        <target state="translated">Wika ng UI ng App</target>
-        <note/>
+        <source>Language</source>
+        <target state="translated">Wika</target>
+        <note>App UI Language</note>
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push" xml:space="preserve">
         <source>Force-push your local profiles to paired Apple Watch</source>
@@ -3175,9 +3185,9 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <note/>
       </trans-unit>
       <trans-unit id="settings.uiSettings.title" xml:space="preserve">
-        <source>UI Settings</source>
-        <target state="translated">Mga Setting ng UI</target>
-        <note/>
+        <source>Display Settings</source>
+        <target state="translated">Mga Setting ng Pagpapakita</target>
+        <note>Display Settings (UI Settings)</note>
       </trans-unit>
       <trans-unit id="sys.server.cn" xml:space="preserve">
         <source>China Mainland Servers</source>
@@ -3389,6 +3399,11 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
       <trans-unit id="hylKit.battleReport.stat.seasonID" xml:space="preserve">
         <source>Season ID</source>
         <target state="translated">ID ng Season</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView.challengeType" xml:space="preserve">
+        <source>Challenge Type</source>
+        <target state="translated">Uri ng Hamon</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.battleReportView4GI.navTitle.spiralAbyss" xml:space="preserve">
@@ -4005,9 +4020,9 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <note/>
       </trans-unit>
       <trans-unit id="app.language.followSystemDefault" xml:space="preserve">
-        <source>OS Default</source>
-        <target state="translated">Default ng OS</target>
-        <note/>
+        <source>OS Automatic</source>
+        <target state="translated">Awtomatiko ng OS</target>
+        <note>Follow OS Default Settings</note>
       </trans-unit>
       <trans-unit id="app.language.fr" xml:space="preserve">
         <source>French</source>

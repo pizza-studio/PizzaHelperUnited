@@ -1792,6 +1792,11 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
         <target state="translated">Escartem</target>
         <note>Localization Contributor (FR)</note>
       </trans-unit>
+      <trans-unit id="aboutKit.contributors.name.hacchitao" xml:space="preserve">
+        <source>はっちー(たお👻🍑)</source>
+        <target state="translated">はっちー(たお👻🍑)</target>
+        <note>Localization Contributor (JA)</note>
+      </trans-unit>
       <trans-unit id="aboutKit.contributors.name.hakubill" xml:space="preserve">
         <source>Haku Bill (水里的碳酸钙)</source>
         <target state="translated">Haku Bill (水中炭酸ｶﾙｼｳﾑ)</target>
@@ -1826,11 +1831,6 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
         <source>Shiki Suen (孙志贵)</source>
         <target state="translated">孫 志貴（ｺﾉｲﾄ ｼｷ; Shiki Suen）</target>
         <note>Crew Member</note>
-      </trans-unit>
-      <trans-unit id="aboutKit.contributors.name.tao" xml:space="preserve">
-        <source>たお👻🍑</source>
-        <target state="translated">たお👻🍑</target>
-        <note>Localization Contributor (JA)</note>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.name.xinzoruo" xml:space="preserve">
         <source>Xinzoruo (心臓弱眞君)</source>
@@ -1936,7 +1936,7 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.menuButton.detail" xml:space="preserve">
-        <source>It situates at top-trailing corner of the UI when it’s available. Tap it to call the feature menu.</source>
+        <source>It situates at top-trailing corner of the UI when it's available. Tap it to call the feature menu.</source>
         <target state="translated">このアイコンが(UIの右上隅に)表示された時に、それをタップすれは、さまざまな機能が使えるメニューを呼び出すことが出来ます！</target>
         <note/>
       </trans-unit>
@@ -2240,12 +2240,14 @@ Retrieved</source>
 We make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.
 
 This app will quit after you confirm this message.</source>
-        <target state="translated">アプリのUI言語設定をmacOS/iOSで変更する場合、アプリを再起動する必要があります。これにより、新しい言語設定が有効になります。たとえユーザーがシステム設定から手動で変更した場合でも、アプリの再起動が必要である旨のメッセージが表示され、そしてそのメッセージを出すのは macOS /
-iOS 側です。
+        <target state="translated">macOSやiOSにおいて、アプリの言語設定を変更した場合、新しい設定を有効にするにはアプリの再起動が必要です。
 
-このアプリ内の言語切り替え機能は、ユーザーの時間を数秒節約するために設けられています。このデザインはADHD（注意力欠陥障害）のユーザーに非常にフレンドリーです。ADHDの方々は、iOS/macOSのシステム設定の複雑なページを行き来している間に、やろうとしていたことを徹底的に忘れてしまうことがよくあります。
+これは、ユーザーがOSのシステム設定から手動で変更した場合も同様で、その際には **OS側** から再起動を促すメッセージが表示されます。
 
-このメッセージを確認した時点で、アプリは終了します。</target>
+アプリ内に言語切り替え機能を設けたのは、数秒でもユーザーの時間を節約するためです。特にADHD（注意力欠陥障害）の特性を持つ方にとって、このデザインは非常に利便性が高いと考えています。複雑なOSのシステム設定画面を行き来する間に、本来の目的を忘れてしまうことが少なくないからです。
+
+このメッセージを確認した時点で、アプリは終了します。
+</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.language.restartRequired.widgets.description" xml:space="preserve">
@@ -2738,9 +2740,9 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
         <note/>
       </trans-unit>
       <trans-unit id="settings.appLanguage.title" xml:space="preserve">
-        <source>App UI Language</source>
-        <target state="translated">UI言語</target>
-        <note/>
+        <source>Language</source>
+        <target state="translated">言語</target>
+        <note>App UI Language</note>
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push" xml:space="preserve">
         <source>Force-push your local profiles to paired Apple Watch</source>
@@ -3198,9 +3200,9 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <note/>
       </trans-unit>
       <trans-unit id="settings.uiSettings.title" xml:space="preserve">
-        <source>UI Settings</source>
-        <target state="translated">UI 設定</target>
-        <note/>
+        <source>Display Settings</source>
+        <target state="translated">表示設定</target>
+        <note>Display Settings (UI Settings)</note>
       </trans-unit>
       <trans-unit id="sys.server.cn" xml:space="preserve">
         <source>China Mainland Servers</source>
@@ -3412,6 +3414,11 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       <trans-unit id="hylKit.battleReport.stat.seasonID" xml:space="preserve">
         <source>Season ID</source>
         <target state="translated">開催シーズン番号</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView.challengeType" xml:space="preserve">
+        <source>Challenge Type</source>
+        <target state="translated">挑戦タイプ</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.battleReportView4GI.navTitle.spiralAbyss" xml:space="preserve">
@@ -4028,9 +4035,9 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <note/>
       </trans-unit>
       <trans-unit id="app.language.followSystemDefault" xml:space="preserve">
-        <source>OS Default</source>
-        <target state="translated">システム設定に準ず</target>
-        <note/>
+        <source>OS Automatic</source>
+        <target state="translated">自動</target>
+        <note>Follow OS Default Settings</note>
       </trans-unit>
       <trans-unit id="app.language.fr" xml:space="preserve">
         <source>French</source>
@@ -4209,7 +4216,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="sys.cancel" xml:space="preserve">
         <source>Cancel</source>
-        <target state="translated">取り消す</target>
+        <target state="translated">やめる</target>
         <note/>
       </trans-unit>
       <trans-unit id="sys.close" xml:space="preserve">

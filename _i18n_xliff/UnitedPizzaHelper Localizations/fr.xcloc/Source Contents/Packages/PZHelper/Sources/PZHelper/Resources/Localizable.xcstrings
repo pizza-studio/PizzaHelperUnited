@@ -1276,12 +1276,13 @@
       }
     },
     "settings.appLanguage.title" : {
+      "comment" : "App UI Language",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App UI Language"
+            "value" : "Language"
           }
         }
       }
@@ -2200,12 +2201,13 @@
       }
     },
     "settings.uiSettings.title" : {
+      "comment" : "Display Settings (UI Settings)",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UI Settings"
+            "value" : "Display Settings"
           }
         }
       }
