@@ -29,9 +29,10 @@ struct AppLanguageSwitcher: View {
                         ForEach(AppLanguage.allCases) { appLang in
                             Text(appLang.localizedDescription).tag(appLang.rawValue)
                         }
-                    }.labelsHidden()
+                    }
+                    .labelsHidden()
                     .onChange(of: selectedLanguageTag) { oldValue, newValue in
-                        if oldValue != newValue && newValue != savedLanguageTag {
+                        if oldValue != newValue, newValue != savedLanguageTag {
                             // Only show alert if the new selection differs from saved value
                             alertPresented = true
                         }
@@ -71,7 +72,9 @@ struct AppLanguageSwitcher: View {
     @State private var alertPresented: Bool = false
     @State private var selectedLanguageTag: String = "auto"
     @State private var savedLanguageTag: String = "auto"
-    
+
+    @Default(.appLanguage) private var appLanguage: [String]?
+
     private func loadCurrentLanguageSetting() {
         let loadedValue = (
             UserDefaults.standard.array(forKey: AppLanguage.defaultsKeyName) as? [String] ?? ["auto"]
@@ -82,24 +85,22 @@ struct AppLanguageSwitcher: View {
         let targetToCheck = (plistValueNotExist || loadedValue.isEmpty) ? "auto" : loadedValue
         let targetContained = AppLanguage.allCases.map(\.rawValue).contains(targetToCheck)
         let currentLanguage = targetContained ? (plistValueNotExist ? "auto" : loadedValue) : "auto"
-        
+
         selectedLanguageTag = currentLanguage
         savedLanguageTag = currentLanguage
     }
-    
+
     private func saveLanguageSetting(_ languageTag: String) {
         var newValue = languageTag
         if newValue.isEmpty || newValue == "auto" {
             UserDefaults.standard.removeObject(forKey: AppLanguage.defaultsKeyName)
         }
         if newValue == "auto" { newValue = "" }
-        if !newValue.isEmpty { 
+        if !newValue.isEmpty {
             Defaults[.appLanguage] = [newValue]
         } else {
             Defaults[.appLanguage] = nil
         }
         savedLanguageTag = languageTag
     }
-
-    @Default(.appLanguage) private var appLanguage: [String]?
 }
