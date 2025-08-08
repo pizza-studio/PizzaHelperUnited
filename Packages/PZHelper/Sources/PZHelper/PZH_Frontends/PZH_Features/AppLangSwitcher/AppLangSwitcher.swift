@@ -78,18 +78,14 @@ struct AppLanguageSwitcher: View {
         ) {
             Button("sys.ok".i18nBaseKit) { exit(0) }
             Button("sys.cancel".i18nBaseKit) {
-                // Prevent additional alerts during revert
+                // Set the reverting flag to prevent alert loops
                 isReverting = true
                 
-                // Simply revert the UserDefaults to the previous state
-                if previousLanguageTag == "auto" || previousLanguageTag.isEmpty {
-                    UserDefaults.standard.removeObject(forKey: AppLanguage.defaultsKeyName)
-                } else {
-                    UserDefaults.standard.set([previousLanguageTag], forKey: AppLanguage.defaultsKeyName)
-                }
+                // Revert by updating the picker binding, let the binding handle the rest
+                appleLanguageTag = previousLanguageTag
                 
-                // Force the UI to refresh by triggering a state change
-                DispatchQueue.main.async {
+                // Keep the flag set longer to ensure all async updates complete
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     isReverting = false
                 }
             }
