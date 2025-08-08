@@ -8998,78 +8998,79 @@
       }
     },
     "settings.appLanguage.title" : {
+      "comment" : "App UI Language",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App-Oberflächensprache"
+            "value" : "Sprache"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App UI Language"
+            "value" : "Language"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Idioma de la interfaz de la aplicación"
+            "value" : "Idioma"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wika ng UI ng App"
+            "value" : "Wika"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Langue d'affichage"
+            "value" : "Langue"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lingua dell'interfaccia utente dell'app"
+            "value" : "Lingua"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UI言語"
+            "value" : "言語"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "앱 UI 언어"
+            "value" : "언어"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Язык пользовательского интерфейса приложения"
+            "value" : "Язык"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ngôn ngữ giao diện ứng dụng"
+            "value" : "Ngôn ngữ"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "界面语言"
+            "value" : "语言"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UI 語言"
+            "value" : "語言"
           }
         }
       }
@@ -15862,78 +15863,79 @@
       }
     },
     "settings.uiSettings.title" : {
+      "comment" : "Display Settings (UI Settings)",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UI-Einstellungen"
+            "value" : "Anzeige-Einstellungen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UI Settings"
+            "value" : "Display Settings"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configuración de interfaz"
+            "value" : "Configuración de pantalla"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mga Setting ng UI"
+            "value" : "Mga Setting ng Pagpapakita"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Paramètres de l'interface"
+            "value" : "Paramètres d'affichage"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Impostazioni UI"
+            "value" : "Impostazioni display"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UI 設定"
+            "value" : "表示設定"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UI 설정"
+            "value" : "화면 설정"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Настройки интерфейса"
+            "value" : "Настройки отображения"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cài đặt giao diện người dùng"
+            "value" : "Cài đặt hiển thị"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "界面设定"
+            "value" : "显示设定"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UI 設定"
+            "value" : "顯示設定"
           }
         }
       }
