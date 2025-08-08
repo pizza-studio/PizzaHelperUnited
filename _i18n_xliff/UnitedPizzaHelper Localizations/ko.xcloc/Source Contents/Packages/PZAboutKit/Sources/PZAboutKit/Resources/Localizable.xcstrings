@@ -490,6 +490,17 @@
         }
       }
     },
+    "aboutKit.contributors.name.hacchitao" : {
+      "comment" : "Localization Contributor (JA)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "はっちー(たお👻🍑)"
+          }
+        }
+      }
+    },
     "aboutKit.contributors.name.hakubill" : {
       "comment" : "Crew Member",
       "localizations" : {
@@ -562,17 +573,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Shiki Suen (孙志贵)"
-          }
-        }
-      }
-    },
-    "aboutKit.contributors.name.tao" : {
-      "comment" : "Localization Contributor (JA)",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "たお👻🍑"
           }
         }
       }
@@ -805,7 +805,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "It situates at top-trailing corner of the UI when it’s available. Tap it to call the feature menu."
+            "value" : "It situates at top-trailing corner of the UI when it's available. Tap it to call the feature menu."
           }
         }
       }

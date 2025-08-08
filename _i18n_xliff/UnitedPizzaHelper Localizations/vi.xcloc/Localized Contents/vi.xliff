@@ -1783,6 +1783,11 @@ Trình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5.0)</target>
         <target state="translated">Escartem</target>
         <note>Localization Contributor (FR)</note>
       </trans-unit>
+      <trans-unit id="aboutKit.contributors.name.hacchitao" xml:space="preserve">
+        <source>はっちー(たお👻🍑)</source>
+        <target state="translated">はっちー(たお👻🍑)</target>
+        <note>Localization Contributor (JA)</note>
+      </trans-unit>
       <trans-unit id="aboutKit.contributors.name.hakubill" xml:space="preserve">
         <source>Haku Bill (水里的碳酸钙)</source>
         <target state="translated">Haku Bill (水里的碳酸钙)</target>
@@ -1817,11 +1822,6 @@ Trình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5.0)</target>
         <source>Shiki Suen (孙志贵)</source>
         <target state="translated">Shiki Suen (孙志贵)</target>
         <note>Crew Member</note>
-      </trans-unit>
-      <trans-unit id="aboutKit.contributors.name.tao" xml:space="preserve">
-        <source>たお👻🍑</source>
-        <target state="translated">たお👻🍑</target>
-        <note>Localization Contributor (JA)</note>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.name.xinzoruo" xml:space="preserve">
         <source>Xinzoruo (心臓弱眞君)</source>
@@ -1909,42 +1909,52 @@ Trình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5.0)</target>
       </trans-unit>
       <trans-unit id="oobe.feature.backupYourData.detail" xml:space="preserve">
         <source>FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup.</source>
+        <target state="translated">FOSS không bao giờ có nghĩa là khả năng truy cập / độ tin cậy vĩnh viễn. Hãy chịu trách nhiệm với dữ liệu của bạn bằng cách chủ động xuất các bản ghi gacha dưới dạng tệp UIGF để sao lưu.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.backupYourData.title" xml:space="preserve">
         <source>Backup Proactively</source>
+        <target state="translated">Sao lưu chủ động</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.contactDevs.detail" xml:space="preserve">
         <source>You may refer to “Settings -&gt; About” to know how to contact the devs for possible help.</source>
+        <target state="translated">Bạn có thể tham khảo “Cài đặt -&gt; Thông tin” để biết cách liên hệ với các nhà phát triển để được hỗ trợ.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.contactDevs.title" xml:space="preserve">
         <source>Contact Us</source>
+        <target state="translated">Liên hệ với chúng tôi</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.menuButton.detail" xml:space="preserve">
-        <source>It situates at top-trailing corner of the UI when it’s available. Tap it to call the feature menu.</source>
+        <source>It situates at top-trailing corner of the UI when it's available. Tap it to call the feature menu.</source>
+        <target state="translated">Nó nằm ở góc trên bên phải của giao diện khi có sẵn. Nhấn vào nó để gọi menu tính năng.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.menuButton.title" xml:space="preserve">
         <source>Menu Icon</source>
+        <target state="translated">Biểu tượng Menu</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.notification.detail" xml:space="preserve">
         <source>Get noticed when your in-game player stamina is full. This is configurable through in-app settings.</source>
+        <target state="translated">Nhận thông báo khi sức chịu đựng của người chơi trong game đã đầy. Điều này có thể được cấu hình thông qua cài đặt trong ứng dụng.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.notification.title" xml:space="preserve">
         <source>Notifications</source>
+        <target state="translated">Thông báo</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.widget.detail:%@" xml:space="preserve">
         <source>This app supports Dynamic Island, Live Activities, and multiple kinds of widgets. Please tap [here](%@) to read Apple official articles to learn how to use widgets.</source>
+        <target state="translated">Ứng dụng này hỗ trợ Dynamic Island, Live Activities và nhiều loại widget khác nhau. Vui lòng nhấn [ở đây](%@) để đọc các bài viết chính thức của Apple để tìm hiểu cách sử dụng widget.</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.widget.title" xml:space="preserve">
         <source>Widgets</source>
+        <target state="translated">Widget</target>
         <note/>
       </trans-unit>
     </body>
@@ -2716,9 +2726,9 @@ The Pizza Helper v5 không thể hạ cấp SwiftData xuống CoreData do rủi 
         <note/>
       </trans-unit>
       <trans-unit id="settings.appLanguage.title" xml:space="preserve">
-        <source>App UI Language</source>
-        <target state="translated">Ngôn ngữ giao diện ứng dụng</target>
-        <note/>
+        <source>Language</source>
+        <target state="translated">Ngôn ngữ</target>
+        <note>App UI Language</note>
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push" xml:space="preserve">
         <source>Force-push your local profiles to paired Apple Watch</source>
@@ -3175,9 +3185,9 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <note/>
       </trans-unit>
       <trans-unit id="settings.uiSettings.title" xml:space="preserve">
-        <source>UI Settings</source>
-        <target state="translated">Cài đặt giao diện người dùng</target>
-        <note/>
+        <source>Display Settings</source>
+        <target state="translated">Cài đặt hiển thị</target>
+        <note>Display Settings (UI Settings)</note>
       </trans-unit>
       <trans-unit id="sys.server.cn" xml:space="preserve">
         <source>China Mainland Servers</source>
@@ -3389,6 +3399,11 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       <trans-unit id="hylKit.battleReport.stat.seasonID" xml:space="preserve">
         <source>Season ID</source>
         <target state="translated">ID Mùa</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.battleReportView.challengeType" xml:space="preserve">
+        <source>Challenge Type</source>
+        <target state="translated">Loại Thử Thách</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.battleReportView4GI.navTitle.spiralAbyss" xml:space="preserve">
@@ -4005,9 +4020,9 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <note/>
       </trans-unit>
       <trans-unit id="app.language.followSystemDefault" xml:space="preserve">
-        <source>OS Default</source>
-        <target state="translated">Mặc định hệ điều hành</target>
-        <note/>
+        <source>OS Automatic</source>
+        <target state="translated">Tự động hệ điều hành</target>
+        <note>Follow OS Default Settings</note>
       </trans-unit>
       <trans-unit id="app.language.fr" xml:space="preserve">
         <source>French</source>
