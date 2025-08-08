@@ -19,26 +19,22 @@ struct AppLanguageSwitcher: View {
         // 禁用 iOSSystemAppSettingsPageLink()，因為該功能至少在 Simulator 下無法正常使用。
         // Simulator 可能會找不到披薩小助手。
         Label {
-            VStack {
-                HStack {
-                    Text("settings.appLanguage.title".i18nPZHelper)
-                    Spacer()
-                    Picker("".description, selection: $selectedLanguageTag) {
-                        Text("app.language.followSystemDefault".i18nBaseKit).tag("auto")
-                        ForEach(AppLanguage.allCases) { appLang in
-                            Text(appLang.localizedDescription).tag(appLang.rawValue)
-                        }
-                    }
-                    .labelsHidden()
-                    .react(to: selectedLanguageTag) { oldValue, newValue in
-                        if oldValue != newValue, newValue != savedLanguageTag {
-                            // Only show alert if the new selection differs from saved value
-                            alertPresented = true
-                        }
+            HStack {
+                Text("settings.appLanguage.title".i18nPZHelper)
+                Spacer()
+                Picker("".description, selection: $selectedLanguageTag) {
+                    Text("app.language.followSystemDefault".i18nBaseKit).tag("auto")
+                    ForEach(AppLanguage.allCases) { appLang in
+                        Text(appLang.localizedDescription).tag(appLang.rawValue)
                     }
                 }
-                Text("settings.disclaimer.requiringAppRebootToApplySettings".i18nPZHelper)
-                    .asInlineTextDescription()
+                .labelsHidden()
+                .react(to: selectedLanguageTag) { oldValue, newValue in
+                    if oldValue != newValue, newValue != savedLanguageTag {
+                        // Only show alert if the new selection differs from saved value
+                        alertPresented = true
+                    }
+                }
             }
         } icon: {
             Image(systemSymbol: .globe)
