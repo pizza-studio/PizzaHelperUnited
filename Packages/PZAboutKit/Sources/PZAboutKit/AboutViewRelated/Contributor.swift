@@ -16,7 +16,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
     case koni
     case yulijushi
     case panbystar
-    case taotao
+    case hacchitao
     case art34222
     case ngo
     case qiFrench
@@ -49,7 +49,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .ngo: "avatar.ngo"
         case .qiFrench: "avatar.qi"
         case .escartem: "avatar.escartem"
-        case .taotao: "avatar.tao"
+        case .hacchitao: "avatar.hacchitao"
         case .xinzoruo: "avatar.xinzoruo"
         }
     }
@@ -66,7 +66,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .ngo: "aboutKit.contributors.name.ngo"
         case .qiFrench: "aboutKit.contributors.name.qi"
         case .escartem: "aboutKit.contributors.name.escartem"
-        case .taotao: "aboutKit.contributors.name.tao"
+        case .hacchitao: "aboutKit.contributors.name.hacchitao"
         case .xinzoruo: "aboutKit.contributors.name.xinzoruo"
         }
         return String(localized: rawNameKey, bundle: .module)
@@ -108,10 +108,9 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .escartem:
             LinkType.homePagePersonal(urlStr: "https://escartem.moe")
             LinkType.github(userID: "Escartem")
-        case .taotao:
+        case .hacchitao:
             LinkType.twitter(id: "taotao_hoyo")
             LinkType.youtube(urlStr: "https://youtube.com/c/hutao_taotao")
-            LinkType.tiktokGlobal(id: "taotao_hoyo")
         case .xinzoruo:
             LinkType.twitter(id: "xinzoruo")
         }
@@ -171,7 +170,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .hakubill: "ja-JP"
         case .shikisuen: "zh-Hant: en-US: ja-JP"
         case .qiFrench: "fr-FR"
-        case .taotao: "ja-JP"
+        case .hacchitao: "ja-JP"
         case .ngo: "vi-VI"
         case .art34222: "ru-RU"
         default: nil
