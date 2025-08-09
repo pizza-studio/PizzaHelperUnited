@@ -2246,8 +2246,7 @@ This app will quit after you confirm this message.</source>
 
 アプリ内に言語切り替え機能を設けたのは、数秒でもユーザーの時間を節約するためです。特にADHD（注意力欠陥障害）の特性を持つ方にとって、このデザインは非常に利便性が高いと考えています。複雑なOSのシステム設定画面を行き来する間に、本来の目的を忘れてしまうことが少なくないからです。
 
-このメッセージを確認した時点で、アプリは終了します。
-</target>
+このメッセージを確認した時点で、アプリは終了します。</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.language.restartRequired.widgets.description" xml:space="preserve">
