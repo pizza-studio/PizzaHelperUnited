@@ -2010,37 +2010,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Neue UI-Spracheinstellungen einer App auf macOS / iOS erfordern immer einen Neustart der App, um sicherzustellen, dass die neue Spracheinstellung wirksam wird. Selbst wenn der Benutzer dies manuell über die Systemeinstellungen ändert, wird dem Benutzer die Notwendigkeit angezeigt, die App neu zu starten, und es ist nicht diese App, sondern macOS / iOS, die dies anzeigt.\n\nWir haben diesen Sprachumschalter hier erstellt, um den Benutzern einige Sekunden zu sparen. Dieses Design ist äußerst ADHS-freundlich, da ADHS-Patienten wahrscheinlich vergessen, was sie tun wollten, während sie zwischen verschachtelten Seiten in den Systemeinstellungen von iOS / macOS blättern.\n\nDiese App wird beendet, nachdem Sie diese Nachricht bestätigt haben."
+            "value" : "Die Änderung der Einstellungen erfordert einen Neustart der App.\n\nWidgets und geplante Benachrichtigungen werden separat behandelt. Weitere Details finden Sie in den FAQ."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "New UI language settings of an app on macOS / iOS always require the app to restart to make sure the new language setting becomes effective to it. Even if the user manually change this through System Settings, user will still be prompted the necessity of restarting the app, and it will be not this app but the macOS / iOS who prompts it.\n\nWe make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.\n\nThis app will quit after you confirm this message."
+            "value" : "To apply these changes, the app needs to restart.\n\nWidget and scheduled notification languages are handled separately. See FAQ for details."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La configuración de idioma de la nueva interfaz de usuario de una aplicación en macOS / iOS siempre requiere que la aplicación se reinicie para asegurarse de que la nueva configuración de idioma se haga efectiva. Incluso si el usuario cambia esto manualmente a través de la Configuración del Sistema, se le notificará la necesidad de reiniciar la aplicación, y será macOS / iOS quien lo solicite, no esta aplicación.\n\nHemos creado este cambiador de idioma para ahorrar a los usuarios algunos segundos. Este diseño es extremadamente amigable para personas con TDAH, ya que es probable que los pacientes con TDAH olviden lo que iban a hacer mientras navegan entre páginas anidadas en la Configuración del Sistema de iOS / macOS.\n\nEsta aplicación se cerrará después de que confirmes este mensaje."
+            "value" : "Para aplicar estos cambios, la aplicación necesita reiniciarse.\n\nLos idiomas de widgets y notificaciones programadas se gestionan por separado. Consulta las FAQ para más detalles."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang mga bagong setting ng wika para sa UI ng isang app sa macOS / iOS ay palaging nangangailangan na i-restart ang app upang matiyak na magiging epektibo ang bagong setting ng wika. Kahit na mano-mano itong baguhin ng gumagamit sa pamamagitan ng System Settings, ipapaalala pa rin sa gumagamit ang pangangailangan ng pag-restart ng app, at hindi ang app na ito kundi ang macOS / iOS ang magpo-prompt nito.\n\nGinawa namin ang language switcher na ito upang makatipid ng ilang segundo para sa mga gumagamit. Ang disenyo na ito ay napaka-ADHD-friendly sapagkat ang mga may ADHD ay madalas nakakalimutan ang gagawin habang naglilipat-lipat sa mga naka-nest na pahina sa System Settings ng iOS / macOS.\n\nAng app na ito ay magsasara pagkatapos mong kumpirmahin ang mensaheng ito."
+            "value" : "Upang maipatupad ang mga pagbabagong ito, kailangan mag-restart ang app.\n\nAng mga wika ng widget at naka-iskedyul na notification ay hiwalay na ginagamit. Tingnan ang FAQ para sa mga detalye."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le changement de la langue d'une application sur macOS / iOS nécessite toujours le redémarrage de cette dernière pour garantir que le changement soit pris en compte. Même si l'utilisateur fait manuellement la modification via les Réglages Système, il sera toujours invité à redémarrer l'application, et ce sera macOS / iOS qui le lui demandera, et non cette application.\n\nNous créons cette fonction de changement de langue ici pour faire gagner quelques secondes aux utilisateurs. Ce design est extrêmement adapté aux personnes souffrant de TDAH car elles sont susceptibles d'oublier ce qu'elles étaient sur le point de faire en naviguant entre les pages des Réglages Système iOS / macOS.\n\nCette application se fermera après confirmation de ce message."
+            "value" : "Pour appliquer ces changements, l'application doit redémarrer.\n\nLes langues des widgets et notifications programmées sont gérées séparément. Consultez la FAQ pour plus de détails."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le nuove impostazioni della lingua dell'interfaccia utente di un'app su macOS / iOS richiedono sempre il riavvio dell'applicazione per garantire che la nuova impostazione della lingua diventi effettiva. Anche se l'utente modifica manualmente le impostazioni tramite le Impostazioni di Sistema, verrà comunque richiesto di riavviare l'app, e sarà macOS / iOS a fare questa richiesta, non questa app.\n\nAbbiamo creato questo selettore di lingua qui per risparmiare qualche secondo agli utenti. Questo design è estremamente adatto per chi soffre di ADHD poiché i pazienti ADHD sono propensi a dimenticare ciò che stavano per fare mentre navigano tra le pagine annidate nelle Impostazioni di Sistema di iOS / macOS.\n\nQuesta app si chiuderà dopo che hai confermato questo messaggio."
+            "value" : "Per applicare queste modifiche, l'app deve riavviarsi.\n\nLe lingue dei widget e delle notifiche programmate sono gestite separatamente. Consulta le FAQ per i dettagli."
           }
         },
         "ja" : {
@@ -2052,31 +2052,31 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS / iOS의 앱의 새로운 UI 언어 설정은 새로운 언어 설정이 유효해지도록 항상 앱을 다시 시작해야 합니다. 사용자가 시스템 설정을 통해 수동으로 변경하더라도 앱을 다시 시작해야 한다는 알림을 받게 되며, 이 알림은 이 앱이 아닌 macOS / iOS에서 뜹니다.\n\n우리는 사용자가 몇 초를 절약할 수 있도록 이 언어 전환기를 만듭니다. 이 디자인은 iOS / macOS 시스템 설정에서 여러 페이지를 넘기다가 하려던 일을 잊기 쉬운 ADHD 환자들에게 매우 친화적입니다.\n\n이 메시지를 확인한 후 이 앱은 종료됩니다."
+            "value" : "설정 변경 사항을 적용하려면 앱을 재시작해야 합니다.\n\n위젯 및 예약된 알림의 언어는 별도로 처리됩니다. 자세한 내용은 FAQ를 확인하세요."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Новые настройки языка интерфейса приложения на macOS / iOS всегда требуют перезапуска приложения, чтобы убедиться, что новый языковой параметр вступит в силу. Даже если пользователь вручную изменит это через Системные настройки, пользователю все равно будет предложено перезапустить приложение, и это будет не это приложение, а macOS / iOS, которое выдаст это сообщение.\n\nМы сделали этот переключатель языка, чтобы сэкономить пользователям несколько секунд. Этот дизайн особенно удобен для людей с СДВГ, так как они могут забыть, что собирались сделать, переходя между вложенными страницами в системных настройках iOS / macOS.\n\nЭто приложение завершит работу после того, как вы подтвердите это сообщение."
+            "value" : "Для применения этих изменений приложение необходимо перезапустить.\n\nЯзыки виджетов и запланированных уведомлений обрабатываются отдельно. Подробности смотрите в FAQ."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Các cài đặt ngôn ngữ giao diện mới của một ứng dụng trên macOS / iOS luôn yêu cầu ứng dụng khởi động lại để đảm bảo cài đặt ngôn ngữ mới có hiệu lực. Ngay cả khi người dùng thay đổi thủ công qua Cài đặt Hệ thống, người dùng vẫn sẽ được nhắc về sự cần thiết khởi động lại ứng dụng, và không phải ứng dụng này mà chính macOS / iOS sẽ nhắc nhở về điều đó. \n\nChúng tôi tạo công tắc ngôn ngữ này để tiết kiệm một vài giây cho người dùng. Thiết kế này đặc biệt thân thiện với người bị ADHD vì họ có khả năng quên những gì họ định làm khi chuyển đổi giữa các trang lồng ghép trong Cài đặt Hệ thống iOS / macOS.\n\nỨng dụng này sẽ thoát sau khi bạn xác nhận thông điệp này."
+            "value" : "Để áp dụng các thay đổi này, ứng dụng cần khởi động lại.\n\nNgôn ngữ của widget và thông báo đã lên lịch được xử lý riêng biệt. Xem FAQ để biết chi tiết."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在 macOS/iOS 上更改 App 的 UI 语言设定时，App 需要重新启动，以确保新的语言设定生效。即使用户通过系统设定手动更改语言设定，仍然会提示需要重新启动 App，且届时这个提示将由 macOS/iOS 系统来发出，而非本 App。\n\n我们在这里设定了语言切换器，以帮助用户节省几秒钟的时间。这种设计对注意力缺陷涣散障碍（ADHD）患者非常友好，因为 ADHD 患者在翻阅 iOS/macOS 系统设定中的多层页面时，往往容易彻底忘记他们原本要做的事情。\n\n确认此消息后，App 将会退出。"
+            "value" : "设定的变更需要重新启动应用程序才能生效。\n\n小组件和预定通知的语言单独处理。详细信息请查看FAQ。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在 macOS/iOS 上更改應用程式的 UI 語言設定時，應用程式需要重新啟動，以確保新的語言設定生效。即使使用者藉由系統設定手動更改語言設定，仍然會提示需要重新啟動應用程式，且屆時這個提示將由 macOS/iOS 系統來發出，而非敝應用程式。\n\n我們在這裡設置了語言切換器，以幫助使用者節省幾秒鐘的時間。這種設計對於有注意力缺陷渙散障礙（ADHD）患者非常友善，因為 ADHD 患者在翻閱 iOS/macOS 系統設定中的多層頁面時，往往容易徹底忘記他們原本要做的事情。\n\n確認此訊息後，應用程式將會退出。"
+            "value" : "設定的變更需要重新啟動應用程式才能生效。\n\n小工具和預定通知的語言單獨處理。詳細資訊請查看FAQ。"
           }
         }
       }

@@ -89,8 +89,6 @@ New UI language settings of an app on macOS / iOS always require the app to rest
 
 We make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.
 
-This app will quit after you confirm this message.
-
 ## // Technical Issues and Know-How
 
 > This section discusses issues starting from The Pizza Helper version 5.2.1.
