@@ -66,8 +66,6 @@ struct AppLanguageSwitcher: View {
     private func hookAlert<T: View>(_ target: T) -> some View {
         let title = Text("settings.disclaimer.requiringAppRebootToApplySettings", bundle: .module)
         let message = Text("app.language.restartRequired.description".i18nPZHelper)
-            + Text(verbatim: "\n\n⚠️ ")
-            + Text("app.language.restartRequired.widgets.description".i18nPZHelper)
         if #available(macCatalyst 15.0, iOS 15.0, macOS 12.0, *) {
             target
                 .alert(title, isPresented: $alertPresented) {
