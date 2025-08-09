@@ -2222,21 +2222,12 @@ Retrieved</source>
         <note/>
       </trans-unit>
       <trans-unit id="app.language.restartRequired.description" xml:space="preserve">
-        <source>New UI language settings of an app on macOS / iOS always require the app to restart to make sure the new language setting becomes effective to it. Even if the user manually change this through System Settings, user will still be prompted the necessity of restarting the app, and it will be not this app but the macOS / iOS who prompts it.
+        <source>To apply these changes, the app needs to restart.
 
-We make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.
+This does not apply to Widget and scheduled notifications. See FAQ for details.</source>
+        <target state="translated">Para aplicar estos cambios, la aplicación necesita reiniciarse.
 
-This app will quit after you confirm this message.</source>
-        <target state="translated">La configuración de idioma de la nueva interfaz de usuario de una aplicación en macOS / iOS siempre requiere que la aplicación se reinicie para asegurarse de que la nueva configuración de idioma se haga efectiva. Incluso si el usuario cambia esto manualmente a través de la Configuración del Sistema, se le notificará la necesidad de reiniciar la aplicación, y será macOS / iOS quien lo solicite, no esta aplicación.
-
-Hemos creado este cambiador de idioma para ahorrar a los usuarios algunos segundos. Este diseño es extremadamente amigable para personas con TDAH, ya que es probable que los pacientes con TDAH olviden lo que iban a hacer mientras navegan entre páginas anidadas en la Configuración del Sistema de iOS / macOS.
-
-Esta aplicación se cerrará después de que confirmes este mensaje.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.language.restartRequired.widgets.description" xml:space="preserve">
-        <source>Some features, such as System Notifications, Widgets, etc., require restarting Springboard (on iOS) or logging out and back in (on macOS) to apply changes to this setting. If this feels complex, you may simply reboot your device instead. Note that already-scheduled system notifications may not reflect the latest app language change.</source>
-        <target state="translated">Algunas funciones, como las notificaciones del sistema, los widgets, etc., requieren reiniciar Springboard (en iOS) o cerrar sesión y volver a iniciarla (en macOS) para aplicar los cambios de esta configuración. Si esto parece complicado, puedes en su lugar simplemente reiniciar tu dispositivo. Ten en cuenta que las notificaciones del sistema ya programadas podrían no reflejar el último cambio de idioma de la aplicación.</target>
+Esto no se aplica a los widgets y notificaciones programadas. Consulta las FAQ para más detalles.</target>
         <note/>
       </trans-unit>
       <trans-unit id="dpv.characterInventory.navTitle" xml:space="preserve">

@@ -2226,21 +2226,12 @@ Retrieved</source>
         <note/>
       </trans-unit>
       <trans-unit id="app.language.restartRequired.description" xml:space="preserve">
-        <source>New UI language settings of an app on macOS / iOS always require the app to restart to make sure the new language setting becomes effective to it. Even if the user manually change this through System Settings, user will still be prompted the necessity of restarting the app, and it will be not this app but the macOS / iOS who prompts it.
+        <source>To apply these changes, the app needs to restart.
 
-We make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.
+This does not apply to Widget and scheduled notifications. See FAQ for details.</source>
+        <target state="translated">Để áp dụng các thay đổi này, ứng dụng cần khởi động lại.
 
-This app will quit after you confirm this message.</source>
-        <target state="translated">Các cài đặt ngôn ngữ giao diện mới của một ứng dụng trên macOS / iOS luôn yêu cầu ứng dụng khởi động lại để đảm bảo cài đặt ngôn ngữ mới có hiệu lực. Ngay cả khi người dùng thay đổi thủ công qua Cài đặt Hệ thống, người dùng vẫn sẽ được nhắc về sự cần thiết khởi động lại ứng dụng, và không phải ứng dụng này mà chính macOS / iOS sẽ nhắc nhở về điều đó. 
-
-Chúng tôi tạo công tắc ngôn ngữ này để tiết kiệm một vài giây cho người dùng. Thiết kế này đặc biệt thân thiện với người bị ADHD vì họ có khả năng quên những gì họ định làm khi chuyển đổi giữa các trang lồng ghép trong Cài đặt Hệ thống iOS / macOS.
-
-Ứng dụng này sẽ thoát sau khi bạn xác nhận thông điệp này.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.language.restartRequired.widgets.description" xml:space="preserve">
-        <source>Some features, such as System Notifications, Widgets, etc., require restarting Springboard (on iOS) or logging out and back in (on macOS) to apply changes to this setting. If this feels complex, you may simply reboot your device instead. Note that already-scheduled system notifications may not reflect the latest app language change.</source>
-        <target state="translated">Một số tính năng, chẳng hạn như Thông báo Hệ thống, Widget, v.v., yêu cầu khởi động lại Springboard (trên iOS) hoặc đăng xuất và đăng nhập lại (trên macOS) để áp dụng các thay đổi cho cài đặt này. Nếu cảm thấy phức tạp, bạn có thể thay vì thế chỉ cần khởi động lại thiết bị. Lưu ý rằng các thông báo hệ thống đã được lên lịch có thể không phản ánh thay đổi ngôn ngữ mới nhất của ứng dụng。</target>
+Điều này không áp dụng cho Widget và thông báo đã lên lịch. Xem FAQ để biết chi tiết.</target>
         <note/>
       </trans-unit>
       <trans-unit id="dpv.characterInventory.navTitle" xml:space="preserve">

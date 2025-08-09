@@ -294,18 +294,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "New UI language settings of an app on macOS / iOS always require the app to restart to make sure the new language setting becomes effective to it. Even if the user manually change this through System Settings, user will still be prompted the necessity of restarting the app, and it will be not this app but the macOS / iOS who prompts it.\n\nWe make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.\n\nThis app will quit after you confirm this message."
-          }
-        }
-      }
-    },
-    "app.language.restartRequired.widgets.description" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Some features, such as System Notifications, Widgets, etc., require restarting Springboard (on iOS) or logging out and back in (on macOS) to apply changes to this setting. If this feels complex, you may simply reboot your device instead. Note that already-scheduled system notifications may not reflect the latest app language change."
+            "value" : "To apply these changes, the app needs to restart.\n\nThis does not apply to Widget and scheduled notifications. See FAQ for details."
           }
         }
       }

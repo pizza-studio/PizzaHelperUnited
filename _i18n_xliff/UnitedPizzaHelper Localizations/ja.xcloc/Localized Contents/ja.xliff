@@ -2235,23 +2235,12 @@ Retrieved</source>
         <note/>
       </trans-unit>
       <trans-unit id="app.language.restartRequired.description" xml:space="preserve">
-        <source>New UI language settings of an app on macOS / iOS always require the app to restart to make sure the new language setting becomes effective to it. Even if the user manually change this through System Settings, user will still be prompted the necessity of restarting the app, and it will be not this app but the macOS / iOS who prompts it.
+        <source>To apply these changes, the app needs to restart.
 
-We make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.
+This does not apply to Widget and scheduled notifications. See FAQ for details.</source>
+        <target state="translated">設定の変更を反映させるためには、アプリを再起動する必要があります。
 
-This app will quit after you confirm this message.</source>
-        <target state="translated">macOSやiOSにおいて、アプリの言語設定を変更した場合、新しい設定を有効にするにはアプリの再起動が必要です。
-
-これは、ユーザーがOSのシステム設定から手動で変更した場合も同様で、その際には **OS側** から再起動を促すメッセージが表示されます。
-
-アプリ内に言語切り替え機能を設けたのは、数秒でもユーザーの時間を節約するためです。特にADHD（注意力欠陥障害）の特性を持つ方にとって、このデザインは非常に利便性が高いと考えています。複雑なOSのシステム設定画面を行き来する間に、本来の目的を忘れてしまうことが少なくないからです。
-
-このメッセージを確認した時点で、アプリは終了します。</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.language.restartRequired.widgets.description" xml:space="preserve">
-        <source>Some features, such as System Notifications, Widgets, etc., require restarting Springboard (on iOS) or logging out and back in (on macOS) to apply changes to this setting. If this feels complex, you may simply reboot your device instead. Note that already-scheduled system notifications may not reflect the latest app language change.</source>
-        <target state="translated">システム通知、ウィジェットなど一部の機能では、この設定の変更を適用するために、Springboardの再起動（iOSの場合）またはログアウトして再度ログイン（macOSの場合）が必要です。これが複雑に感じる場合は、代わりに端末を簡単に再起動することもできます。なお、すでにスケジュールされているシステム通知は、アプリの言語の最新の変更を反映しない場合があります。</target>
+ウィジェットや予定済みの通知の言語は別件となります。詳細はFAQをご確認ください。</target>
         <note/>
       </trans-unit>
       <trans-unit id="dpv.characterInventory.navTitle" xml:space="preserve">
@@ -2311,7 +2300,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profile.label.fp.extraNotice.deviceFP" xml:space="preserve">
         <source>⚠︎ UIDs governed by Miyoushe might need the user to manually fill in his / her device fingerprint by himself / herself in order to show some extra information.</source>
-        <target state="translated">⚠︎ このプロファイルのUIDは米遊社在籍の場合、追加情報を表示するために、ご自分で備えた端末指紋のご記入が要する場合はございます。</target>
+        <target state="translated">⚠︎ このプロファイルのUIDは米遊社在籍の場合、追加情報を表示するために、ご自分で備えたデバイス指紋のご記入が要する場合はございます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profile.label.game" xml:space="preserve">
@@ -2553,7 +2542,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.regenerateDeviceFingerPrint.label" xml:space="preserve">
         <source>Regenerate Device Fingerprint</source>
-        <target state="translated">端末の指紋を再作成</target>
+        <target state="translated">デバイスの指紋を再作成</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.syncAllProfilesToUserDefaults.title" xml:space="preserve">
@@ -2563,7 +2552,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.test.footer.recommend_device_fp" xml:space="preserve">
         <source>To avoid consistently being requested for verification, please set up device finger print according to [this tutorial](https://hsr.pizzastudio.org/static/fp_tutorial).</source>
-        <target state="translated">人間認証要求が何度も出まくっている場合、[この説明文章](https://hsr.pizzastudio.org/static/fp_tutorial)の方法に沿って、ご自分で端末指紋を取ってご記入ください。そうすれば、この支障を避けることはできます。</target>
+        <target state="translated">人間認証要求が何度も出まくっている場合、[この説明文章](https://hsr.pizzastudio.org/static/fp_tutorial)の方法に沿って、ご自分でデバイス指紋を取ってご記入ください。そうすれば、この支障を避けることはできます。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.test.verify.button" xml:space="preserve">
@@ -2695,7 +2684,7 @@ Starting from v2.5.0, "Pizza Helper for Genshin" supported the "Spiral Abyss Top
 To address this, the three developers reached a consensus: allow The Pizza Helper v5 to be built and executable for OS21 (iOS 14, etc.) with a limitation for systems below OS24: The Pizza Helper v5 will no longer provide any features on OS21 ~ OS23 except allowing users to export their old account data (i.e. the current saying "local profile") and draw history for import on a new device running OS24 and above.
 
 The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, so it can no longer provide service to users on systems below OS24. As always, FOSS (Free and Open Source Software) does not mean unlimited availability or unlimited responsibility. We hope for the understanding of all affected users.</source>
-        <target state="translated">現在ご利用中の端末のシステムバージョンは OS24（iOS 17 / macOS 14 / watchOS 10）未満のため、『ピザ助手(無印)』の現行サービス対象外となります。
+        <target state="translated">現在ご利用中のデバイスのシステムバージョンは OS24（iOS 17 / macOS 14 / watchOS 10）未満のため、『ピザ助手(無印)』の現行サービス対象外となります。
 
 『原神ピザ助手』v4 までの二人の主要開発者は、それぞれのキャリアプランの都合で 2024 年に開発から離脱し、『崩スタピザ助手』の開発も中止されました。残った開発者が二つのアプリの保守を一人で担うのは過重であったため、両者を統合する「統一ピザエンジン」の開発を開始しました。これが 2024 年 11 月中旬から実装された『ピザ助手(無印)』v5 です。
 
@@ -2703,7 +2692,7 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
 
 『原神ピザ助手』は v2.5.0 から「深境螺旋ランキング」（および関連する個人作戦報告アップロード機能）を OS21（iOS 14、macOS 11、watchOS 8）でサポートしていました。2024 年末に『ピザ助手(無印)』v5 が実装された後、様々な配慮により、「データ不収集」方針が採用され、2025 年夏には原神向け「深境螺旋ランキング」機能と個人作戦報告アップロード機能が削除されました。しかし、OS24 へアップグレードできない既存ユーザーにとっては重大な情報セキュリティリスクが残ります。ランキング専用サーバーの契約終了後も、旧バージョンのアプリがデータをアップロードし続ける可能性があり、そのサーバーの IP が新たな所有者の手に渡った場合、制御不能な情報流出リスクとなります。
 
-この状況に対応するため、三人の開発者は『ピザ助手(無印)』v5 を OS21（iOS 14 など）向けにもビルドすることで合意しましたが、OS24 未満のシステムでは旧バージョンのプロファイル（旧称「ローカルアカウント」）データやガチャ履歴の書き出しのみを提供し、ユーザーが新しい端末（OS24 以降）で読み込めるようにします。
+この状況に対応するため、三人の開発者は『ピザ助手(無印)』v5 を OS21（iOS 14 など）向けにもビルドすることで合意しましたが、OS24 未満のシステムでは旧バージョンのプロファイル（旧称「ローカルアカウント」）データやガチャ履歴の書き出しのみを提供し、ユーザーが新しいデバイス（OS24 以降）で読み込めるようにします。
 
 『ピザ助手(無印)』v5 はデータ損失のリスクを冒してまで SwiftData を CoreData へダウングレードできないため、OS24 未満のシステムへのサポートは継続できません。FOSS（フリー・オープンソース・ソフトウェア）は無限の利用可能性や責任を意味しません。ご理解のほど、よろしくお願いいたします。</target>
         <note/>
@@ -3108,7 +3097,7 @@ The app will restart after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="settings.profile.importAllUIDs.explanation" xml:space="preserve">
         <source>This option is extremely helpful to let the server know that you are really using your HoYoLAB / Miyoushe account on your own devices. Individual logins per UID for each game and each game-server may let the HoYoLAB / Miyoushe account server misunderstood how many device this HoYoLAB / Miyoushe account gets logged into, leading to earlier expiration of your cookies. If profile duplication happens during this process, then the existing profile will be updated instead with new cookie, the latest device fingerprint, and the latest device ID instead.</source>
-        <target state="translated">このオプションは、サーバーに対して貴殿が本当に自分の端末でこの 米遊社 / HoYoLAB アカウントを使用していることを知らせるのに非常に役立ちます。UID・ゲーム・ゲームサーバーごとの個別のログインは、この 米遊社 / HoYoLAB アカウントがどれだけの端末にログインしているかを米遊社 / HoYoLAB アカウントサーバーが誤解し、クッキーの有効期限が早まる恐れがあります。読み込む途中で重複のプロファイルが発見した場合、新規プロファイルを添付せず、代わりに既存プロファイルのクッキーと端末指紋情報と端末識別子を最新にします。</target>
+        <target state="translated">このオプションは、サーバーに対して貴殿が本当に自分のデバイスでこの 米遊社 / HoYoLAB アカウントを使用していることを知らせるのに非常に役立ちます。UID・ゲーム・ゲームサーバーごとの個別のログインは、この 米遊社 / HoYoLAB アカウントがどれだけのデバイスにログインしているかを米遊社 / HoYoLAB アカウントサーバーが誤解し、クッキーの有効期限が早まる恐れがあります。読み込む途中で重複のプロファイルが発見した場合、新規プロファイルを添付せず、代わりに既存プロファイルのクッキーと端末指紋情報と端末識別子を最新にします。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.pleaseSelectGame" xml:space="preserve">
