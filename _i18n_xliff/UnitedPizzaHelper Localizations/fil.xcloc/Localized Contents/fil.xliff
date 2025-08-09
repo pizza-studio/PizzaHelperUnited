@@ -2225,21 +2225,12 @@ Retrieved</source>
         <note/>
       </trans-unit>
       <trans-unit id="app.language.restartRequired.description" xml:space="preserve">
-        <source>New UI language settings of an app on macOS / iOS always require the app to restart to make sure the new language setting becomes effective to it. Even if the user manually change this through System Settings, user will still be prompted the necessity of restarting the app, and it will be not this app but the macOS / iOS who prompts it.
+        <source>To apply these changes, the app needs to restart.
 
-We make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.
+This does not apply to Widget and scheduled notifications. See FAQ for details.</source>
+        <target state="translated">Upang maipatupad ang mga pagbabagong ito, kailangan mag-restart ang app.
 
-This app will quit after you confirm this message.</source>
-        <target state="translated">Ang mga bagong setting ng wika para sa UI ng isang app sa macOS / iOS ay palaging nangangailangan na i-restart ang app upang matiyak na magiging epektibo ang bagong setting ng wika. Kahit na mano-mano itong baguhin ng gumagamit sa pamamagitan ng System Settings, ipapaalala pa rin sa gumagamit ang pangangailangan ng pag-restart ng app, at hindi ang app na ito kundi ang macOS / iOS ang magpo-prompt nito.
-
-Ginawa namin ang language switcher na ito upang makatipid ng ilang segundo para sa mga gumagamit. Ang disenyo na ito ay napaka-ADHD-friendly sapagkat ang mga may ADHD ay madalas nakakalimutan ang gagawin habang naglilipat-lipat sa mga naka-nest na pahina sa System Settings ng iOS / macOS.
-
-Ang app na ito ay magsasara pagkatapos mong kumpirmahin ang mensaheng ito.</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.language.restartRequired.widgets.description" xml:space="preserve">
-        <source>Some features, such as System Notifications, Widgets, etc., require restarting Springboard (on iOS) or logging out and back in (on macOS) to apply changes to this setting. If this feels complex, you may simply reboot your device instead. Note that already-scheduled system notifications may not reflect the latest app language change.</source>
-        <target state="translated">Ang ilang feature, tulad ng System Notifications, Widgets, atbp., ay nangangailangan ng pag-restart ng Springboard (sa iOS) o pag-log out at muling pag-login (sa macOS) upang maipatupad ang mga pagbabago sa setting na ito. Kung pakiramdam mo ay kumplikado ito, maaari kang mag-reboot na lang ng iyong device. Tandaan na ang mga naka-iskedyul nang system notification ay maaaring hindi sumasalamin sa pinakabagong pagbabago sa wika ng app.</target>
+Hindi ito nalalapat sa Widget at naka-iskedyul na notification. Tingnan ang FAQ para sa mga detalye.</target>
         <note/>
       </trans-unit>
       <trans-unit id="dpv.characterInventory.navTitle" xml:space="preserve">
