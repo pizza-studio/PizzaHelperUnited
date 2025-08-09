@@ -83,6 +83,16 @@ You can find the development team's QQ channel and Discord channel in the "About
 
 These features won't be considered to implment in at least a year. There were too many reasons and concerns behind this decision, but one of them is that we are almost running out of our available time on this project.
 
+#### Q: Why does the app require restart after changing language settings?
+
+New UI language settings of an app on macOS / iOS always require the app to restart to make sure the new language setting becomes effective to it. Even if the user manually change this through System Settings, user will still be prompted the necessity of restarting the app, and it will be not this app but the macOS / iOS who prompts it.
+
+We make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.
+
+The app will automatically terminate once you confirm the language switch action, and you will need to manually launch it again.
+
+Some features, such as System Notifications, Widgets, etc., require restarting Springboard (on iOS) or logging out and back in (on macOS) to apply changes to this setting. If this feels complex, you may simply reboot your device instead. Note that already-scheduled system notifications may not reflect the latest app language change.
+
 ## // Technical Issues and Know-How
 
 > This section discusses issues starting from The Pizza Helper version 5.2.1.

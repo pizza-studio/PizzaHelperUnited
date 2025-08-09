@@ -2231,21 +2231,12 @@ Retrieved</source>
         <note/>
       </trans-unit>
       <trans-unit id="app.language.restartRequired.description" xml:space="preserve">
-        <source>New UI language settings of an app on macOS / iOS always require the app to restart to make sure the new language setting becomes effective to it. Even if the user manually change this through System Settings, user will still be prompted the necessity of restarting the app, and it will be not this app but the macOS / iOS who prompts it.
+        <source>To apply these changes, the app needs to restart.
 
-We make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.
+This does not apply to Widget and scheduled notifications. See FAQ for details.</source>
+        <target state="translated">要套用這些變更，應用程式需要重新啟動。
 
-This app will quit after you confirm this message.</source>
-        <target state="translated">在 macOS/iOS 上更改應用程式的 UI 語言設定時，應用程式需要重新啟動，以確保新的語言設定生效。即使使用者藉由系統設定手動更改語言設定，仍然會提示需要重新啟動應用程式，且屆時這個提示將由 macOS/iOS 系統來發出，而非敝應用程式。
-
-我們在這裡設置了語言切換器，以幫助使用者節省幾秒鐘的時間。這種設計對於有注意力缺陷渙散障礙（ADHD）患者非常友善，因為 ADHD 患者在翻閱 iOS/macOS 系統設定中的多層頁面時，往往容易徹底忘記他們原本要做的事情。
-
-確認此訊息後，應用程式將會退出。</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="app.language.restartRequired.widgets.description" xml:space="preserve">
-        <source>Some features, such as System Notifications, Widgets, etc., require restarting Springboard (on iOS) or logging out and back in (on macOS) to apply changes to this setting. If this feels complex, you may simply reboot your device instead. Note that already-scheduled system notifications may not reflect the latest app language change.</source>
-        <target state="translated">某些功能（如系統通知、小工具等）需要重新啟動 Springboard（在 iOS 上）或登出後重新登入（在 macOS 上）以套用此設定的變更。如果您覺得麻煩的話，您也可以選擇直接重新啟動系統。請注意，已排定的系統通知可能無法反映最新的 App 介面語言設定。</target>
+這不適用於小工具和已排定的通知。詳細資訊請查看FAQ。</target>
         <note/>
       </trans-unit>
       <trans-unit id="dpv.characterInventory.navTitle" xml:space="preserve">
