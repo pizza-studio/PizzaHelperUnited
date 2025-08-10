@@ -86,7 +86,7 @@ extension UIGFv4 {
             exportApp: String,
             exportAppVersion: String,
             exportTimestamp: String,
-            version: String = "v4.0",
+            version: String = "v4.1",
             previousFormat: String? = nil
         ) {
             self.exportApp = exportApp
@@ -194,7 +194,7 @@ extension UIGFv4.Info {
         let shortVer = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         self.exportAppVersion = shortVer ?? "1.14.514"
         self.exportTimestamp = Int(Date.now.timeIntervalSince1970).description
-        self.version = "v4.0"
+        self.version = "v4.1"
         self.previousFormat = "UIGF v4.1"
     }
 
