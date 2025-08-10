@@ -60,16 +60,7 @@ public final class ScreenVM {
         self.splitViewVisibility = .all // macOS 默认显示侧边栏
         #endif
         updateHash4Tracking() // 初始化 hashForTracking
-        withObservationTracking {
-            // _ = orientation <- 无须重複观测 orientation。
-            _ = isHorizontallyCompact
-            _ = actualSidebarWidthObserved
-            _ = windowSizeObserved.hashValue
-        } onChange: {
-            Task { @MainActor in
-                self.updateHash4Tracking()
-            }
-        }
+        registerObservation()
     }
 
     deinit {
@@ -180,6 +171,21 @@ public final class ScreenVM {
         hasher.combine(windowSizeObserved.width)
         hasher.combine(windowSizeObserved.height)
         hashForTracking = hasher.finalize()
+    }
+
+    private func registerObservation() {
+        withObservationTracking {
+            // _ = orientation <- 无须重複观测 orientation。
+            _ = isHorizontallyCompact
+            _ = actualSidebarWidthObserved
+            _ = windowSizeObserved.hashValue
+        } onChange: {
+            Task { @MainActor [weak self] in
+                guard let this = self else { return }
+                this.updateHash4Tracking()
+                this.registerObservation()
+            }
+        }
     }
 }
 
