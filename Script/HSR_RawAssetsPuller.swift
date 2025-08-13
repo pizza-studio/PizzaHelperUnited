@@ -77,7 +77,7 @@ struct BasicSRSStruct: Codable {
         case icon
     }
 
-    var icon: String
+    var icon: String?
     var id: String
 }
 
@@ -224,8 +224,9 @@ public enum DataType: String, CaseIterable {
                 let buffer = try JSONDecoder().decode(BasicSRSStruct.Dict.self, from: data).values
                 buffer.forEach { obj in
                     guard obj.id.count >= 4, obj.id != "8000" else { return }
-                    guard !obj.icon.isEmpty else { return }
-                    let sourceFileName = obj.icon.extractFileNameStem()
+                    guard let objIcon = obj.icon, !objIcon.isEmpty else { return }
+                    let sourceFileName = obj.icon?.extractFileNameStem()
+                    guard let sourceFileName else { return }
                     writeKeyValuePair(id: sourceFileName, dict: &dict, sourceFileName: sourceFileName)
                 }
             case .skillTree:
