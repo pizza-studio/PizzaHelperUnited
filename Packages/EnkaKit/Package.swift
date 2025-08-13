@@ -24,10 +24,10 @@ let package = Package(
             url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")
         ),
         .package(
-            url: "https://github.com/pizza-studio/EnkaDBGenerator", .upToNextMajor(from: "1.8.6")
+            url: "https://github.com/pizza-studio/EnkaDBGenerator", .upToNextMajor(from: "1.8.7")
         ),
         .package(
-            url: "https://github.com/pizza-studio/ArtifactRatingDB", .upToNextMajor(from: "1.1.8")
+            url: "https://github.com/pizza-studio/ArtifactRatingDB", .upToNextMajor(from: "1.1.9")
         ),
         .package(
             url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.2")
