@@ -289,12 +289,13 @@
       }
     },
     "app.language.restartRequired.description" : {
+      "comment" : "Something is already mentioned in `settings.disclaimer.requiringAppRebootToApplySettings`.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To apply these changes, the app needs to restart.\n\nThis does not apply to Widget and scheduled notifications. See FAQ for details."
+            "value" : "This does not apply to Widget and scheduled notifications. See FAQ for details."
           }
         }
       }

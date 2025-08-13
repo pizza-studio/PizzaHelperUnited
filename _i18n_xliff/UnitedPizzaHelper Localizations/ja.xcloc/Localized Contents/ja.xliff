@@ -2235,13 +2235,9 @@ Retrieved</source>
         <note/>
       </trans-unit>
       <trans-unit id="app.language.restartRequired.description" xml:space="preserve">
-        <source>To apply these changes, the app needs to restart.
-
-This does not apply to Widget and scheduled notifications. See FAQ for details.</source>
-        <target state="translated">設定の変更を反映させるためには、アプリを再起動する必要があります。
-
-ウィジェットや予定済みの通知の言語は別件となります。詳細はFAQをご確認ください。</target>
-        <note/>
+        <source>This does not apply to Widget and scheduled notifications. See FAQ for details.</source>
+        <target state="translated">ウィジェットや予定済みの通知の言語は別件となります。詳細はFAQをご確認ください。</target>
+        <note>Something is already mentioned in `settings.disclaimer.requiringAppRebootToApplySettings`.</note>
       </trans-unit>
       <trans-unit id="dpv.characterInventory.navTitle" xml:space="preserve">
         <source>Character Inventory List</source>
@@ -4204,7 +4200,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="sys.cancel" xml:space="preserve">
         <source>Cancel</source>
-        <target state="translated">やめる</target>
+        <target state="translated">取り消す</target>
         <note/>
       </trans-unit>
       <trans-unit id="sys.close" xml:space="preserve">

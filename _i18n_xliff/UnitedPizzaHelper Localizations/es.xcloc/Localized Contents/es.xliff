@@ -2222,13 +2222,9 @@ Retrieved</source>
         <note/>
       </trans-unit>
       <trans-unit id="app.language.restartRequired.description" xml:space="preserve">
-        <source>To apply these changes, the app needs to restart.
-
-This does not apply to Widget and scheduled notifications. See FAQ for details.</source>
-        <target state="translated">Para aplicar estos cambios, la aplicación necesita reiniciarse.
-
-Esto no se aplica a los widgets y notificaciones programadas. Consulta las FAQ para más detalles.</target>
-        <note/>
+        <source>This does not apply to Widget and scheduled notifications. See FAQ for details.</source>
+        <target state="translated">Esto no se aplica a los widgets y notificaciones programadas. Consulta las FAQ para más detalles.</target>
+        <note>Something is already mentioned in `settings.disclaimer.requiringAppRebootToApplySettings`.</note>
       </trans-unit>
       <trans-unit id="dpv.characterInventory.navTitle" xml:space="preserve">
         <source>Character Inventory List</source>
