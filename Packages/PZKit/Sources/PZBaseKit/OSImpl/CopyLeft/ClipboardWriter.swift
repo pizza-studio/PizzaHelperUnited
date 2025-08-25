@@ -27,6 +27,7 @@ public enum Clipboard {
             UIPasteboard.general.string = newValue
             #endif
             #if canImport(AppKit) && !targetEnvironment(macCatalyst)
+            NSPasteboard.general.declareTypes([.string], owner: nil)
             NSPasteboard.general.setString(newValue, forType: .string)
             #endif
         }
