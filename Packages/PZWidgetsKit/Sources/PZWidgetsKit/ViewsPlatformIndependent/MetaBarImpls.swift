@@ -347,7 +347,9 @@ public struct MetaBar4HSRSimulUniv: View, MetaBar {
     }
 
     public var statusTextUnits4SUI: [Text] {
+        guard intel.currentScore < intel.maxScore else { return [Text(verbatim: "100%")] }
         let ratio = (Double(intel.currentScore) / Double(intel.maxScore) * 100).rounded(.down)
+        guard ratio <= 1, ratio >= 0 else { return [Text(verbatim: "100%")] }
         return [Text(verbatim: "\(Int(ratio))%")]
     }
 
