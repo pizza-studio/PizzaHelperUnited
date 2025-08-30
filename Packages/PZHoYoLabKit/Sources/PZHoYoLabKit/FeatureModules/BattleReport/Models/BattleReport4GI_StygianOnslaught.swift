@@ -229,12 +229,11 @@ extension HoYo.BattleReport4GI {
         public let schedule: Schedule
         public let single: ModeData
         public let mp: ModeData
-        public let blings: [String]
 
         // MARK: Internal
 
         enum CodingKeys: String, CodingKey {
-            case schedule, single, mp, blings
+            case schedule, single, mp
         }
     }
 }
