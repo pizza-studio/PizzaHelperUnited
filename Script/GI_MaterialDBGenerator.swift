@@ -27,6 +27,9 @@ private let materialNameTags: [String] = [
     "talentContention",
     "talentKindling",
     "talentConflict",
+    "talentMoonlight",
+    "talentElysium",
+    "talentVagrancy",
     // 此处插入原神今后大版本的新的天赋突破材料的命名。
     "weaponDecarabian",
     "weaponBorealWolf",
@@ -46,6 +49,9 @@ private let materialNameTags: [String] = [
     "weaponSacrificialHeart",
     "weaponSacredLord",
     "weaponNightWind",
+    "weaponArtfulDevice",
+    "weaponLongNightFlint",
+    "weaponFarNorthScions",
     // 此处插入原神今后大版本的新的武器突破材料的命名。
 ]
 
