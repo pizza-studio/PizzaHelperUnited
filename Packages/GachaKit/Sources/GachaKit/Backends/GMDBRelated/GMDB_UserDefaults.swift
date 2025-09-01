@@ -18,27 +18,6 @@ extension Defaults.Keys {
         default: .init(timeIntervalSince1970: 0),
         suite: .gmdbSuite
     )
-    /// 原神的抽卡专用中继资料库。
-    public static let localGachaMetaDB4GI = Key<GachaMeta.MetaDB>(
-        "localGachaMetaDB4GI",
-        default: try! GachaMeta.MetaDB.getBundledDefault(for: .genshinImpact)!,
-        suite: .gmdbSuite
-    )
-    /// 原神的抽卡专用中继资料库。
-    public static let localGachaMetaDB4HSR = Key<GachaMeta.MetaDB>(
-        "localGachaMetaDB4HSR",
-        default: try! GachaMeta.MetaDB.getBundledDefault(for: .starRail)!,
-        suite: .gmdbSuite
-    )
-    /// 反向查询专用资料库，供原神抽卡记录的 ItemID 复原工作所特需。必须是简体中文。
-    public static let localGachaMetaDBReversed4GI = Key<[String: Int]>(
-        "localGachaMetaDBReversed4GI",
-        default: {
-            try! GachaMeta.MetaDB.getBundledDefault(for: .genshinImpact)!
-                .generateHotReverseQueryDict(for: "zh-cn")!
-        }(),
-        suite: .gmdbSuite
-    )
     /// 针对 UIGF v2.3 及之前版本的文件导入时所使用的垫底时区，预设值为 nil。
     public static let fallbackTimeForGIGFFileImport = Key<TimeZone?>(
         "fallbackTimeForGIGFFileImport",
