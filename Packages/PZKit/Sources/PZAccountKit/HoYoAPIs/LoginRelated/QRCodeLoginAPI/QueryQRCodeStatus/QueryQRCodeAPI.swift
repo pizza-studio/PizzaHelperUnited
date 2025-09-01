@@ -4,7 +4,6 @@
 
 #if !os(watchOS)
 
-import Alamofire
 import Foundation
 import PZBaseKit
 #if canImport(UIKit)

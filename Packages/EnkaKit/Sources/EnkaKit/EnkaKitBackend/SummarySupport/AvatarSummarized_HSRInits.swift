@@ -2,8 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MIT License`.
 
-import Defaults
 import EnkaDBModels
+import PZBaseKit
 
 // MARK: - Constructors for summarizing Enka query results.
 

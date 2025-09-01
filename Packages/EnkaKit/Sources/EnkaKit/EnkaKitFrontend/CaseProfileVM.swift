@@ -2,11 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MIT License`.
 
-import Defaults
 import Foundation
 import Observation
 import PZBaseKit
-
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension CaseProfileVM where CoordinatedDB == Enka.EnkaDB4GI {
     static var singletonForPublicQuery: CaseProfileVM<CoordinatedDB> = .init()

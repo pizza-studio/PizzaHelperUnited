@@ -2,11 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Alamofire
 import Foundation
 import PZAccountKit
 import PZBaseKit
-
 extension Pizza.SupportedGame {
     public func getOfficialFeedPackageOnline(
         _ server: HoYo.Server,

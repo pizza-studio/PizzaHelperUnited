@@ -2,10 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Defaults
 import Foundation
 import PZBaseKit
-
 @available(iOS 16.0, macCatalyst 16.0, *)
 extension Defaults.Keys {
     public static let officialFeedCache = Key<[OfficialFeed.FeedEvent]>(

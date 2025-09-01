@@ -5,7 +5,6 @@
 import EnkaKit
 import PZAccountKit
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 
 // MARK: - BattleReportView4HSR.TreasuresLightwardType

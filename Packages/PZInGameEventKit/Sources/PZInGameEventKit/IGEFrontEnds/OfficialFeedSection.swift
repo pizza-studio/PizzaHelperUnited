@@ -4,10 +4,8 @@
 
 #if !os(watchOS)
 
-import Defaults
 import PZAccountKit
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 
 // MARK: - OfficialFeed.OfficialFeedSection

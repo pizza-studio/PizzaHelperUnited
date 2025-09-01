@@ -2,12 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MIT License`.
 
-import Defaults
 import PZBaseKit
 
 // MARK: - ArtifactRating
-
-// swiftlint:disable cyclomatic_complexity
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 public enum ArtifactRating {}

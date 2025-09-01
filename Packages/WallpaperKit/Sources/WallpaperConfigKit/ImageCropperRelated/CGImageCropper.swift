@@ -5,7 +5,6 @@
 #if !os(watchOS)
 
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 
 // MARK: - CGImageCropperView

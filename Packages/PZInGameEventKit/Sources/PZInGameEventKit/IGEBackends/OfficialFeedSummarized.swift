@@ -2,13 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Defaults
 import Foundation
 import PZAccountKit
 import PZBaseKit
-
-// MARK: OfficialFeed.FeedEvent
-
 @available(iOS 16.0, macCatalyst 16.0, *)
 extension OfficialFeed {
     public struct FeedEvent: AbleToCodeSendHash, Identifiable, Defaults.Serializable {

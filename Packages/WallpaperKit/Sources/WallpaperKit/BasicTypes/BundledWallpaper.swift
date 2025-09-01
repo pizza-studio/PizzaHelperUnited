@@ -2,9 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Alamofire
 import CoreGraphics
-import Defaults
 import Foundation
 import PZBaseKit
 import SwiftUI

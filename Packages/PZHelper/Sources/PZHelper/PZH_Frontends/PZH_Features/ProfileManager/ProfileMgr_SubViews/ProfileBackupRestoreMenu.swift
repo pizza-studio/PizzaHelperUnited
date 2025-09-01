@@ -6,7 +6,6 @@ import Foundation
 import Observation
 import PZAccountKit
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 import UniformTypeIdentifiers
 

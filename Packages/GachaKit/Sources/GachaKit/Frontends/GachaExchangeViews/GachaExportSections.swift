@@ -4,7 +4,6 @@
 
 import GachaMetaDB
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 import UniformTypeIdentifiers
 

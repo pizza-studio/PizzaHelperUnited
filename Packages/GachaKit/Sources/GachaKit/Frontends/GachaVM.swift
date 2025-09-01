@@ -4,7 +4,6 @@
 
 import CoreData
 import CoreXLSX
-import Defaults
 import EnkaKit
 import GachaMetaDB
 import Observation

@@ -4,7 +4,6 @@
 
 import PZAccountKit
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 
 // MARK: - LedgerView4GI

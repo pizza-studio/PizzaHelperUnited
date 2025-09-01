@@ -4,7 +4,6 @@
 
 import PZAccountKit
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 
 /// Gacha Profile 对用户而言的称谓是 Gacha Puller / 抽卡人 / ガチャ主。
