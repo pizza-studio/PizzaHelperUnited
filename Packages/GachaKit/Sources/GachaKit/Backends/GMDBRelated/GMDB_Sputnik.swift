@@ -8,6 +8,7 @@ import GachaMetaDB
 import GachaMetaGeneratorModule
 import PZAccountKit
 import PZBaseKit
+
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaMeta {
     public enum Sputnik {}
@@ -31,30 +32,89 @@ extension GachaMeta {
         // MARK: Lifecycle
 
         public init() {
-            /// These domestic properties are `@ObservationTracked` by the `@Observable` macro
-            /// applied to this class, hence no worries.
+            // Cleanup old useless UserDefaults keys.
+            UserDefaults.baseSuite.removeObject(forKey: "localGachaMetaDB4GI")
+            UserDefaults.baseSuite.removeObject(forKey: "localGachaMetaDB4HSR")
+            UserDefaults.baseSuite.removeObject(forKey: "localGachaMetaDBReversed4GI")
             Task {
-                for await newDB in Defaults.updates(.localGachaMetaDBReversed4GI) {
-                    self.reversedDB4GI = newDB
-                }
-            }
-            Task {
-                for await newDB in Defaults.updates(.localGachaMetaDB4GI) {
-                    self.mainDB4GI = newDB
-                }
-            }
-            Task {
-                for await newDB in Defaults.updates(.localGachaMetaDB4HSR) {
-                    self.mainDB4HSR = newDB
+                do {
+                    await self.mainDBSputnik4HSR.saveData()
+                    await self.mainDBSputnik4GI.saveData()
+                    await self.reversedDBSputnik4GI.saveData()
+                    try await self.mainDBSputnik4HSR.startMonitoring()
+                    try await self.mainDBSputnik4GI.startMonitoring()
+                    try await self.reversedDBSputnik4GI.startMonitoring()
+                } catch {
+                    print("[GachaMeta.sharedDB] Init error: \(error)")
                 }
             }
         }
 
         // MARK: Public
 
-        public var reversedDB4GI = Defaults[.localGachaMetaDBReversed4GI]
-        public var mainDB4GI = Defaults[.localGachaMetaDB4GI]
-        public var mainDB4HSR = Defaults[.localGachaMetaDB4HSR]
+        /// 星穹铁道的抽卡专用中继资料库。
+        public let mainDBSputnik4HSR = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "GMDBCache")
+                .appending(component: "mainDBSputnik4HSR.plist"),
+            defaultValue: try! GachaMeta.MetaDB.getBundledDefault(for: .starRail)!
+        )
+
+        /// 原神的抽卡专用中继资料库。
+        public let mainDBSputnik4GI = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "GMDBCache")
+                .appending(component: "mainDBSputnik4GI.plist"),
+            defaultValue: try! GachaMeta.MetaDB.getBundledDefault(for: .genshinImpact)!
+        )
+
+        /// 反向查询专用资料库，供原神抽卡记录的 ItemID 复原工作所特需。必须是简体中文。
+        public let reversedDBSputnik4GI = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "GMDBCache")
+                .appending(component: "reversedDBSputnik4GI.plist"),
+            defaultValue: try! GachaMeta.MetaDB.getBundledDefault(for: .genshinImpact)!
+                .generateHotReverseQueryDict(for: "zh-cn")!
+        )
+
+        public fileprivate(set) var mainDB4GI: GachaMeta.MetaDB {
+            get {
+                mainDBSputnik4GI.data
+            }
+            set {
+                mainDBSputnik4GI.data = newValue
+            }
+        }
+
+        public fileprivate(set) var mainDB4HSR: GachaMeta.MetaDB {
+            get {
+                mainDBSputnik4HSR.data
+            }
+            set {
+                mainDBSputnik4HSR.data = newValue
+            }
+        }
+
+        public fileprivate(set) var reversedDB4GI: [String: Int] {
+            get {
+                reversedDBSputnik4GI.data
+            }
+            set {
+                reversedDBSputnik4GI.data = newValue
+            }
+        }
 
         public func reverseQuery4GI(for name: String) -> Int? {
             reversedDB4GI[name]
@@ -68,12 +128,10 @@ extension GachaMeta.Sputnik {
         /// 此处重复了 observation API 的异步反应动作，因为此处要求必须立刻重置完毕。
         switch game {
         case .genshinImpact:
-            Defaults.reset(.localGachaMetaDB4GI, .localGachaMetaDBReversed4GI)
-            GachaMeta.sharedDB.mainDB4GI = Defaults[.localGachaMetaDB4GI]
-            GachaMeta.sharedDB.reversedDB4GI = Defaults[.localGachaMetaDBReversed4GI]
+            GachaMeta.sharedDB.mainDB4GI = GachaMeta.sharedDB.mainDBSputnik4GI.defaultValue
+            GachaMeta.sharedDB.reversedDB4GI = GachaMeta.sharedDB.reversedDBSputnik4GI.defaultValue
         case .starRail:
-            Defaults.reset(.localGachaMetaDB4HSR)
-            GachaMeta.sharedDB.mainDB4HSR = Defaults[.localGachaMetaDB4HSR]
+            GachaMeta.sharedDB.mainDB4HSR = GachaMeta.sharedDB.mainDBSputnik4HSR.defaultValue
         case .zenlessZone: return // 暂不支持。
         }
     }
@@ -84,11 +142,11 @@ extension GachaMeta.Sputnik {
             switch game {
             case .genshinImpact:
                 let newDB = try await fetchPreCompiledData(from: .miyoushe(game))
-                Defaults[.localGachaMetaDB4GI] = newDB
-                Defaults[.localGachaMetaDBReversed4GI] = newDB.generateHotReverseQueryDict(for: "zh-cn") ?? [:]
+                GachaMeta.sharedDB.mainDB4GI = newDB
+                GachaMeta.sharedDB.reversedDB4GI = newDB.generateHotReverseQueryDict(for: "zh-cn") ?? [:]
             case .starRail:
                 let newDB = try await fetchPreCompiledData(from: .miyoushe(game))
-                Defaults[.localGachaMetaDB4HSR] = newDB
+                GachaMeta.sharedDB.mainDB4HSR = newDB
             case .zenlessZone: return // 暂不支持。
             }
         } catch {
@@ -303,22 +361,24 @@ extension HoYo.AccountRegion {
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.HostType {
     fileprivate func getRemoteGMDBFileURL(game: Pizza.SupportedGame) -> URL {
-        let baseStr: String = switch game {
-        case .genshinImpact:
-            gmDBSourceURLPrefix + "OUTPUT-GI.json"
-        case .starRail:
-            gmDBSourceURLPrefix + "OUTPUT-HSR.json"
-        case .zenlessZone:
-            "/dev/null"
-        }
+        let baseStr: String =
+            switch game {
+            case .genshinImpact:
+                gmDBSourceURLPrefix + "OUTPUT-GI.json"
+            case .starRail:
+                gmDBSourceURLPrefix + "OUTPUT-HSR.json"
+            case .zenlessZone:
+                "/dev/null"
+            }
         return baseStr.asURL
     }
 
     fileprivate var gmDBSourceURLPrefix: String {
-        let prefix = switch self {
-        case .mainlandChina: "https://raw.gitcode.com/SHIKISUEN/GachaMetaGenerator/raw/main/"
-        case .enkaGlobal: "https://raw.githubusercontent.com/pizza-studio/GachaMetaGenerator/main/"
-        }
+        let prefix =
+            switch self {
+            case .mainlandChina: "https://raw.gitcode.com/SHIKISUEN/GachaMetaGenerator/raw/main/"
+            case .enkaGlobal: "https://raw.githubusercontent.com/pizza-studio/GachaMetaGenerator/main/"
+            }
         return prefix + "Sources/GachaMetaDB/Resources/"
     }
 }
