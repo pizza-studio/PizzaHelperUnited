@@ -136,18 +136,18 @@ extension Enka {
 
         // MARK: Private
 
-        private enum CodingKeys: CodingKey {
-            case _locTag
-            case _locTable
-            case _profileAvatars
-            case _characters
-            case _meta
-            case _skillRanks
-            case _artifacts
-            case _skills
-            case _skillTrees
-            case _weapons
-            case _isExpired
+        private enum CodingKeys: String, CodingKey {
+            case _locTag = "locTag"
+            case _locTable = "locTable"
+            case _profileAvatars = "profileAvatars"
+            case _characters = "characters"
+            case _meta = "meta"
+            case _skillRanks = "skillRanks"
+            case _artifacts = "artifacts"
+            case _skills = "skills"
+            case _skillTrees = "skillTrees"
+            case _weapons = "weapons"
+            case _isExpired = "isExpired"
         }
     }
 }

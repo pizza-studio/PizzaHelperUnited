@@ -91,13 +91,13 @@ extension Enka {
 
         // MARK: Private
 
-        private enum CodingKeys: CodingKey {
-            case _locTag
-            case _locTable
-            case _characters
-            case _namecards
-            case _profilePictures
-            case _isExpired
+        private enum CodingKeys: String, CodingKey {
+            case _locTag = "locTag"
+            case _locTable = "locTable"
+            case _characters = "characters"
+            case _namecards = "namecards"
+            case _profilePictures = "profilePictures"
+            case _isExpired = "isExpired"
         }
     }
 }
