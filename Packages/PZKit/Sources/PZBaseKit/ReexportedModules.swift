@@ -2,4 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MIT License`.
 
+@_exported import Alamofire
 @_exported import CodableFileMonitor
+@_exported import Defaults
