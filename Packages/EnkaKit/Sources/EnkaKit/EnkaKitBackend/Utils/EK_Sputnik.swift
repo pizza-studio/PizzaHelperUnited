@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MIT License`.
 
+import ArtifactRatingDB
 import EnkaDBModels
 import Foundation
 import Observation
@@ -12,40 +13,51 @@ import PZBaseKit
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
     @Observable
-    public final class Sputnik: @unchecked Sendable {
+    public final class Sputnik: Sendable {
         // MARK: Lifecycle
 
         private init() {
+            self.arSputnik = .shared
+
+            // Cleanup old UserDefaults keys that have been moved to filesystem
+            UserDefaults.enkaSuite.removeObject(forKey: "enkaDBData4GI")
+            UserDefaults.enkaSuite.removeObject(forKey: "enkaDBData4HSR")
+
             /// Both db4GI and db4HSR are `@ObservationTracked` by the `@Observable` macro
             /// applied to this class, hence no worries.
             Task {
-                for await newDB in Defaults.updates(.enkaDBData4GI) {
-                    await self.db4GI.update(new: newDB)
-                }
-            }
-            Task {
-                for await newDB in Defaults.updates(.enkaDBData4HSR) {
-                    await self.db4HSR.update(new: newDB)
+                do {
+                    await self.enkaDBMonitor4GI.saveData()
+                    await self.enkaDBMonitor4HSR.saveData()
+                    try await self.enkaDBMonitor4GI.startMonitoring()
+                    try await self.enkaDBMonitor4HSR.startMonitoring()
+                } catch {
+                    print("[Enka.Sputnik] Init error: \(error)")
                 }
             }
             Task {
                 for await _ in Defaults.updates(.artifactRatingRules) {
-                    self.tellViewsToResummarizeEnkaProfiles() // 选项有变更时，给圣遗物重新评分。
+                    // 选项有变更时，给圣遗物重新评分。
+                    self.tellViewsToResummarizeEnkaProfiles()
+                    self.tellViewsToResummarizeHoYoLABProfiles()
                 }
             }
             Task {
                 for await _ in Defaults.updates(.useRealCharacterNames) {
                     self.tellViewsToResummarizeEnkaProfiles()
+                    self.tellViewsToResummarizeHoYoLABProfiles()
                 }
             }
             Task {
                 for await _ in Defaults.updates(.forceCharacterWeaponNameFixed) {
                     self.tellViewsToResummarizeEnkaProfiles()
+                    self.tellViewsToResummarizeHoYoLABProfiles()
                 }
             }
             Task {
                 for await _ in Defaults.updates(.customizedNameForWanderer) {
                     self.tellViewsToResummarizeEnkaProfiles()
+                    self.tellViewsToResummarizeHoYoLABProfiles()
                 }
             }
         }
@@ -55,10 +67,18 @@ extension Enka {
         public static let shared = Sputnik()
         public static let commonActor = DBActor()
 
-        public private(set) var db4GI: Enka.EnkaDB4GI = Defaults[.enkaDBData4GI]
-        public private(set) var db4HSR: Enka.EnkaDB4HSR = Defaults[.enkaDBData4HSR]
-        public private(set) var eventForResummarizingEnkaProfiles: UUID = .init()
-        public private(set) var eventForResummarizingHoYoLABProfiles: UUID = .init()
+        @MainActor public private(set) var eventForResummarizingEnkaProfiles: UUID = .init()
+        @MainActor public private(set) var eventForResummarizingHoYoLABProfiles: UUID = .init()
+
+        public var db4GI: Enka.EnkaDB4GI {
+            get { enkaDBMonitor4GI.data }
+            set { enkaDBMonitor4GI.data = newValue }
+        }
+
+        public var db4HSR: Enka.EnkaDB4HSR {
+            get { enkaDBMonitor4HSR.data }
+            set { enkaDBMonitor4HSR.data = newValue }
+        }
 
         public func tellViewsToResummarizeEnkaProfiles() {
             Task { @MainActor in
@@ -71,6 +91,34 @@ extension Enka {
                 eventForResummarizingHoYoLABProfiles = .init()
             }
         }
+
+        // MARK: Private
+
+        /// Genshin Impact EnkaDB data stored in filesystem instead of UserDefaults
+        private let enkaDBMonitor4GI = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "EnkaDBCache")
+                .appending(component: "enkaDB4GI.plist"),
+            defaultValue: try! Enka.EnkaDB4GI(locTag: Enka.currentLangTag)
+        )
+
+        /// Star Rail EnkaDB data stored in filesystem instead of UserDefaults
+        private let enkaDBMonitor4HSR = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "EnkaDBCache")
+                .appending(component: "enkaDB4HSR.plist"),
+            defaultValue: try! Enka.EnkaDB4HSR(locTag: Enka.currentLangTag)
+        )
+
+        private let arSputnik: ArtifactRating.ARSputnik
     }
 }
 
@@ -207,7 +255,8 @@ extension Enka.Sputnik {
         do {
             let requestURL = server.enkaProfileQueryURL(uid: uid, game: T.game)
             var resultObj = try await AF.request(
-                requestURL, method: .get
+                requestURL,
+                method: .get
             ).serializingDecodable(T.self).value
             // MicroGG Genshin Results might have lack of the UID.
             if T.game == .genshinImpact, resultObj.uid == nil {

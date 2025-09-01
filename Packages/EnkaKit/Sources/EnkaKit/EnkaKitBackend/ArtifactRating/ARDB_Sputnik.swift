@@ -11,21 +11,22 @@ import PZBaseKit
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating {
-    @Observable @MainActor
-    public final class ARSputnik {
+    @Observable
+    public final class ARSputnik: Sendable {
         // MARK: Lifecycle
 
         private init() {
-            /// Both db4GI and db4HSR are `@ObservationTracked` by the `@Observable` macro
-            /// applied to this class, hence no worries.
+            // Cleanup old UserDefaults keys that have been moved to filesystem
+            UserDefaults.enkaSuite.removeObject(forKey: "artifactRatingDB")
+            UserDefaults.enkaSuite.removeObject(forKey: "artifactCountDB4GI")
             Task {
-                for await newDB in Defaults.updates(.artifactRatingDB) {
-                    self.arDB = newDB
-                }
-            }
-            Task {
-                for await newDB in Defaults.updates(.artifactCountDB4GI) {
-                    self.countDB4GI = newDB
+                do {
+                    await self.artifactRatingDBMonitor.saveData()
+                    await self.artifactCountDBMonitor4GI.saveData()
+                    try await self.artifactRatingDBMonitor.startMonitoring()
+                    try await self.artifactCountDBMonitor4GI.startMonitoring()
+                } catch {
+                    print("[ArtifactRating.ARSputnik] Init error: \(error)")
                 }
             }
         }
@@ -34,15 +35,56 @@ extension ArtifactRating {
 
         public static let shared = ARSputnik()
 
-        public var arDB: ArtifactRating.ModelDB = Defaults[.artifactRatingDB]
-        public var countDB4GI: [String: Enka.PropertyType] = Defaults[.artifactCountDB4GI]
+        public fileprivate(set) var arDB: ArtifactRating.ModelDB {
+            get { artifactRatingDBMonitor.data }
+            set {
+                artifactRatingDBMonitor.data = newValue
+                Enka.Sputnik.shared.tellViewsToResummarizeEnkaProfiles()
+                Enka.Sputnik.shared.tellViewsToResummarizeHoYoLABProfiles()
+            }
+        }
+
+        public fileprivate(set) var countDB4GI: [String: Enka.PropertyType] {
+            get { artifactCountDBMonitor4GI.data }
+            set {
+                artifactCountDBMonitor4GI.data = newValue
+                Enka.Sputnik.shared.tellViewsToResummarizeEnkaProfiles()
+                Enka.Sputnik.shared.tellViewsToResummarizeHoYoLABProfiles()
+            }
+        }
+
+        // MARK: Private
+
+        /// Artifact rating database stored in filesystem instead of UserDefaults
+        private let artifactRatingDBMonitor = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "ARDBCache")
+                .appending(component: "artifactRatingDB.plist"),
+            defaultValue: ArtifactRating.ModelDB.makeBundledDB()
+        )
+
+        /// Artifact count database for Genshin Impact stored in filesystem instead of UserDefaults
+        private let artifactCountDBMonitor4GI = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "ARDBCache")
+                .appending(component: "artifactCountDB4GI.plist"),
+            defaultValue: ArtifactRating.initBundledCountDB()
+        )
     }
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating.ARSputnik {
     public func resetFactoryScoreModel() {
-        Defaults.reset(.artifactRatingDB)
+        arDB = ArtifactRating.ModelDB.makeBundledDB()
     }
 
     @MainActor
@@ -53,7 +95,6 @@ extension ArtifactRating.ARSputnik {
             newDB[key] = value
         }
         arDB = newDB
-        Defaults[.artifactRatingDB] = newDB
         countDB4GI = try await Self.fetchARDBData(type: .countDB4GI, decodingTo: [String: Enka.PropertyType].self)
     }
 
@@ -118,10 +159,11 @@ extension Enka.HostType {
     }
 
     fileprivate var arDBSourceURLPrefix: String {
-        let prefix = switch self {
-        case .mainlandChina: "https://raw.gitcode.com/SHIKISUEN/ArtifactRatingDB/raw/main/"
-        case .enkaGlobal: "https://raw.githubusercontent.com/pizza-studio/ArtifactRatingDB/main/"
-        }
+        let prefix =
+            switch self {
+            case .mainlandChina: "https://raw.gitcode.com/SHIKISUEN/ArtifactRatingDB/raw/main/"
+            case .enkaGlobal: "https://raw.githubusercontent.com/pizza-studio/ArtifactRatingDB/main/"
+            }
         return prefix + "Sources/ArtifactRatingDB/Resources/"
     }
 }

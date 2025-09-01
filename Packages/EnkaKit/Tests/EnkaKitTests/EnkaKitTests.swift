@@ -17,7 +17,7 @@ struct ArtifactRatingTests {
         #expect(!dictA.isEmpty)
         #expect(!dictB.isEmpty)
         try await ArtifactRating.ARSputnik.shared.onlineUpdate()
-        let c = await ArtifactRating.ARSputnik.shared.countDB4GI
+        let c = ArtifactRating.ARSputnik.shared.countDB4GI
         print(c)
     }
 
