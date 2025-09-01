@@ -22,19 +22,10 @@ let package = Package(
             url: "https://github.com/pizza-studio/GachaMetaGenerator", .upToNextMajor(from: "2.5.6")
         ),
         .package(
-            url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")
-        ),
-        .package(
-            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")
-        ),
-        .package(
             url: "https://github.com/CoreOffice/CoreXLSX", .upToNextMajor(from: "0.14.2")
         ),
         .package(
             url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")
-        ),
-        .package(
-            url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.2")
         ),
     ],
     targets: [
@@ -50,11 +41,8 @@ let package = Package(
                 .product(name: "PZCoreDataKit4GachaEntries", package: "PZCoreDataKit"),
                 .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "GachaMetaDB", package: "GachaMetaGenerator"),
-                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
-                .product(name: "Defaults", package: "Defaults"),
                 .product(name: "CoreXLSX", package: "CoreXLSX"),
                 .product(name: "AlertToast", package: "AlertToast"),
-                .product(name: "Alamofire", package: "Alamofire"),
             ],
             resources: [
                 .process("Resources/"),

@@ -6,7 +6,6 @@
 // 由于用来查询的论据（角色 ID、道具 ID、服装 ID 等）并不出自内鬼泄漏的内容，
 // 所以 App 据此在 Hakushin 只能拿到公开正式版游戏的结果。
 
-import Alamofire
 import Foundation
 import PZBaseKit
 

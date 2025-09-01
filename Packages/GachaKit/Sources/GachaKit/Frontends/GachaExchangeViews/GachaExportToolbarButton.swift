@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import SFSafeSymbols
+import PZBaseKit
 import SwiftUI
 
 @available(iOS 17.0, macCatalyst 17.0, *)

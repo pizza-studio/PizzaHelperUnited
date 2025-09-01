@@ -2,17 +2,12 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Alamofire
-import Defaults
 import EnkaKit
 import Foundation
 import GachaMetaDB
 import GachaMetaGeneratorModule
 import PZAccountKit
 import PZBaseKit
-
-// MARK: - GachaMeta.Sputnik
-
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaMeta {
     public enum Sputnik {}

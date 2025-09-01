@@ -18,19 +18,10 @@ let package = Package(
         .package(path: "../PZKit"),
         .package(path: "../WallpaperKit"),
         .package(
-            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")
-        ),
-        .package(
-            url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")
-        ),
-        .package(
             url: "https://github.com/pizza-studio/EnkaDBGenerator", .upToNextMajor(from: "1.8.7")
         ),
         .package(
             url: "https://github.com/pizza-studio/ArtifactRatingDB", .upToNextMajor(from: "1.1.9")
-        ),
-        .package(
-            url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.2")
         ),
     ],
     targets: [
@@ -45,9 +36,6 @@ let package = Package(
                 .product(name: "EnkaDBFiles", package: "EnkaDBGenerator"),
                 .product(name: "EnkaDBModels", package: "EnkaDBGenerator"),
                 .product(name: "ArtifactRatingDB", package: "ArtifactRatingDB"),
-                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
-                .product(name: "Defaults", package: "Defaults"),
-                .product(name: "Alamofire", package: "Alamofire"),
             ],
             resources: [
                 .process("Assets/"),

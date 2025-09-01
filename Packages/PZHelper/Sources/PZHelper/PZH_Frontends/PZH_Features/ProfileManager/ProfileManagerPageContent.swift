@@ -3,13 +3,11 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import AlertToast
-import Defaults
 import EnkaKit
 import GachaKit
 import Observation
 import PZAccountKit
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 
 // MARK: - ProfileManagerPageContent

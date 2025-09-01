@@ -7,7 +7,6 @@
 import PZAccountKit
 import PZBaseKit
 import PZInGameEventKit
-import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 

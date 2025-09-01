@@ -4,10 +4,8 @@
 
 #if !os(macOS)
 
-import Defaults
 import PZAccountKit
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 

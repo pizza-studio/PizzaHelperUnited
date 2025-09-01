@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MIT License`.
 
-import Defaults
 import Foundation
 import PZBaseKit
 import SwiftUI
