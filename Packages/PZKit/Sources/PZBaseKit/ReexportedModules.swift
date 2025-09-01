@@ -5,3 +5,4 @@
 @_exported import Alamofire
 @_exported import CodableFileMonitor
 @_exported import Defaults
+@_exported import SFSafeSymbols
