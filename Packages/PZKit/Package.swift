@@ -40,6 +40,12 @@ let package = Package(
         Package.Dependency.package(
             url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.2")
         )
+        Package.Dependency.package(
+            url: "https://github.com/ShikiSuen/CodableFileMonitor.git", .upToNextMajor(from: "1.0.4")
+        )
+        Package.Dependency.package(
+            url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")
+        )
         Package.Dependency.package(path: "../PZCoreDataKit")
     },
     targets: buildTargets {
@@ -55,6 +61,14 @@ let package = Package(
                 Target.Dependency.product(
                     name: "Alamofire",
                     package: "Alamofire"
+                )
+                Target.Dependency.product(
+                    name: "SFSafeSymbols",
+                    package: "SFSafeSymbols"
+                )
+                Target.Dependency.product(
+                    name: "CodableFileMonitor",
+                    package: "CodableFileMonitor"
                 )
             },
             swiftSettings: sharedSwiftSettings
