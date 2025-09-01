@@ -86,7 +86,7 @@ extension Enka {
 
         @MainActor
         public func saveSelfToUserDefaults() {
-            Defaults[.enkaDBData4GI] = self
+            Enka.Sputnik.shared.db4GI = self
         }
 
         // MARK: Private
