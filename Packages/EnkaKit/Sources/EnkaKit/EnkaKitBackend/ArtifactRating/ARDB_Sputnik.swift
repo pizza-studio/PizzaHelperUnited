@@ -16,33 +16,30 @@ extension ArtifactRating {
         // MARK: Lifecycle
 
         private init() {
-            /// Both db4GI and db4HSR are `@ObservationTracked` by the `@Observable` macro
-            /// applied to this class, hence no worries.
-            Task {
-                for await newDB in Defaults.updates(.artifactRatingDB) {
-                    self.arDB = newDB
-                }
-            }
-            Task {
-                for await newDB in Defaults.updates(.artifactCountDB4GI) {
-                    self.countDB4GI = newDB
-                }
-            }
+            // Use Enka.Sputnik's PlistCodableFileMonitor instances instead of UserDefaults
+            // No need for separate Task blocks since the PlistCodableFileMonitor handles updates automatically
         }
 
         // MARK: Public
 
         public static let shared = ARSputnik()
 
-        public var arDB: ArtifactRating.ModelDB = Defaults[.artifactRatingDB]
-        public var countDB4GI: [String: Enka.PropertyType] = Defaults[.artifactCountDB4GI]
+        public var arDB: ArtifactRating.ModelDB {
+            get { Enka.Sputnik.shared.artifactRatingDB }
+            set { Enka.Sputnik.shared.artifactRatingDB = newValue }
+        }
+
+        public var countDB4GI: [String: Enka.PropertyType] {
+            get { Enka.Sputnik.shared.artifactCountDB4GI }
+            set { Enka.Sputnik.shared.artifactCountDB4GI = newValue }
+        }
     }
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating.ARSputnik {
     public func resetFactoryScoreModel() {
-        Defaults.reset(.artifactRatingDB)
+        arDB = ArtifactRating.ModelDB.makeBundledDB()
     }
 
     @MainActor
@@ -53,7 +50,6 @@ extension ArtifactRating.ARSputnik {
             newDB[key] = value
         }
         arDB = newDB
-        Defaults[.artifactRatingDB] = newDB
         countDB4GI = try await Self.fetchARDBData(type: .countDB4GI, decodingTo: [String: Enka.PropertyType].self)
     }
 

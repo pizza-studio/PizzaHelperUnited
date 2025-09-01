@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MIT License`.
 
+import ArtifactRatingDB
 import EnkaDBModels
 import Foundation
 import Observation
@@ -16,16 +17,26 @@ extension Enka {
         // MARK: Lifecycle
 
         private init() {
+            // Cleanup old UserDefaults keys that have been moved to filesystem
+            UserDefaults.enkaSuite.removeObject(forKey: "artifactRatingDB")
+            UserDefaults.enkaSuite.removeObject(forKey: "artifactCountDB4GI")
+            UserDefaults.enkaSuite.removeObject(forKey: "enkaDBData4GI")
+            UserDefaults.enkaSuite.removeObject(forKey: "enkaDBData4HSR")
+            
             /// Both db4GI and db4HSR are `@ObservationTracked` by the `@Observable` macro
             /// applied to this class, hence no worries.
             Task {
-                for await newDB in Defaults.updates(.enkaDBData4GI) {
-                    await self.db4GI.update(new: newDB)
-                }
-            }
-            Task {
-                for await newDB in Defaults.updates(.enkaDBData4HSR) {
-                    await self.db4HSR.update(new: newDB)
+                do {
+                    await self.enkaDBSputnik4GI.saveData()
+                    await self.enkaDBSputnik4HSR.saveData()
+                    await self.artifactRatingSputnik.saveData()
+                    await self.artifactCountSputnik4GI.saveData()
+                    try await self.enkaDBSputnik4GI.startMonitoring()
+                    try await self.enkaDBSputnik4HSR.startMonitoring()
+                    try await self.artifactRatingSputnik.startMonitoring()
+                    try await self.artifactCountSputnik4GI.startMonitoring()
+                } catch {
+                    print("[Enka.Sputnik] Init error: \(error)")
                 }
             }
             Task {
@@ -55,8 +66,74 @@ extension Enka {
         public static let shared = Sputnik()
         public static let commonActor = DBActor()
 
-        public private(set) var db4GI: Enka.EnkaDB4GI = Defaults[.enkaDBData4GI]
-        public private(set) var db4HSR: Enka.EnkaDB4HSR = Defaults[.enkaDBData4HSR]
+        /// Genshin Impact EnkaDB data stored in filesystem instead of UserDefaults
+        public let enkaDBSputnik4GI = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "EnkaCache")
+                .appending(component: "enkaDBSputnik4GI.plist"),
+            defaultValue: try! Enka.EnkaDB4GI(locTag: Enka.currentLangTag)
+        )
+
+        /// Star Rail EnkaDB data stored in filesystem instead of UserDefaults
+        public let enkaDBSputnik4HSR = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "EnkaCache")
+                .appending(component: "enkaDBSputnik4HSR.plist"),
+            defaultValue: try! Enka.EnkaDB4HSR(locTag: Enka.currentLangTag)
+        )
+
+        /// Artifact rating database stored in filesystem instead of UserDefaults
+        public let artifactRatingSputnik = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "EnkaCache")
+                .appending(component: "artifactRatingSputnik.plist"),
+            defaultValue: ArtifactRating.ModelDB.makeBundledDB()
+        )
+
+        /// Artifact count database for Genshin Impact stored in filesystem instead of UserDefaults
+        public let artifactCountSputnik4GI = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "EnkaCache")
+                .appending(component: "artifactCountSputnik4GI.plist"),
+            defaultValue: ArtifactRating.initBundledCountDB()
+        )
+
+        public var db4GI: Enka.EnkaDB4GI {
+            get { enkaDBSputnik4GI.data }
+            set { enkaDBSputnik4GI.data = newValue }
+        }
+
+        public var db4HSR: Enka.EnkaDB4HSR {
+            get { enkaDBSputnik4HSR.data }
+            set { enkaDBSputnik4HSR.data = newValue }
+        }
+
+        public var artifactRatingDB: ArtifactRating.ModelDB {
+            get { artifactRatingSputnik.data }
+            set { artifactRatingSputnik.data = newValue }
+        }
+
+        public var artifactCountDB4GI: [String: Enka.PropertyType] {
+            get { artifactCountSputnik4GI.data }
+            set { artifactCountSputnik4GI.data = newValue }
+        }
+
         public private(set) var eventForResummarizingEnkaProfiles: UUID = .init()
         public private(set) var eventForResummarizingHoYoLABProfiles: UUID = .init()
 

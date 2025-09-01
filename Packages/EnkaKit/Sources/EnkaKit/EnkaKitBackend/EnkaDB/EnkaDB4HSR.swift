@@ -131,7 +131,7 @@ extension Enka {
 
         @MainActor
         public func saveSelfToUserDefaults() {
-            Defaults[.enkaDBData4HSR] = self
+            Enka.Sputnik.shared.db4HSR = self
         }
 
         // MARK: Private
