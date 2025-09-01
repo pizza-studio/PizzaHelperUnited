@@ -4,7 +4,6 @@
 
 #if !os(watchOS)
 
-import Defaults
 import Foundation
 import GITodayMaterialsKit
 import PZAccountKit

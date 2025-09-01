@@ -7,7 +7,6 @@ import Charts
 import GachaMetaDB
 import PZAccountKit
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 
 // MARK: - GachaFetchView

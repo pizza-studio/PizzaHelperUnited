@@ -4,9 +4,7 @@
 
 #if !os(watchOS)
 
-import Defaults
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 import WallpaperKit
 

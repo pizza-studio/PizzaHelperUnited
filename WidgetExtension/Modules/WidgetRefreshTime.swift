@@ -2,10 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Defaults
 import Foundation
 import PZBaseKit
-
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension PZWidgets {
     private static let refreshWhenSucceedAfterHour: Double = 2.0

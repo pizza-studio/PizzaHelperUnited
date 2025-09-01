@@ -2,11 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MIT License`.
 
-import Defaults
 import Foundation
 import PZAccountKit
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 
 // MARK: - ProfileShowCaseSections

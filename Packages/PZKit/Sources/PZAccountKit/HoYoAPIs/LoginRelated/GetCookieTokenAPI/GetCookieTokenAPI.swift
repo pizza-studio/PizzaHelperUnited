@@ -2,10 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Alamofire
 import Foundation
 import PZBaseKit
-
 extension HoYo {
     /// 返回CookieToken，需要验证SToken。
     public static func cookieToken(

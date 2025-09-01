@@ -2,9 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MIT License`.
 
-import Alamofire
 import ArtifactRatingDB
-import Defaults
 import Foundation
 import Observation
 import PZBaseKit

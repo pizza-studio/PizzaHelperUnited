@@ -3,9 +3,9 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 #if !os(watchOS)
-import Alamofire
 import CoreImage
 import Foundation
+import PZBaseKit
 
 extension HoYo {
     public static func generateQRCodeURL(deviceId: UUID) async throws -> (url: URL, ticket: String) {

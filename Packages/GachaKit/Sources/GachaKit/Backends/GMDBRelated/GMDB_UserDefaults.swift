@@ -2,11 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Defaults
 import Foundation
 import GachaMetaDB
 import PZBaseKit
-
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension UserDefaults {
     public static let gmdbSuite = UserDefaults(suiteName: appGroupID + ".storageForGMDB") ??

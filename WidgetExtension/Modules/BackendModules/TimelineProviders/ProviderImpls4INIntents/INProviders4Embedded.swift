@@ -4,7 +4,6 @@
 
 #if !os(macOS)
 
-import Defaults
 import Foundation
 import PZAccountKit
 import PZBaseKit

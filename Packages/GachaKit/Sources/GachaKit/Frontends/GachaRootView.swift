@@ -6,7 +6,6 @@ import AlertToast
 import EnkaKit
 import PZAccountKit
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 
 // MARK: - GachaRootView

@@ -2,9 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Defaults
 import PZBaseKit
-
 extension Defaults.Keys {
     /// Background wallpaper identifiers for live activity view.
     /// 空阵列代指随机原厂背景图，有内容的话根据内容是否是 UUIDString 来判定是否是用户背景。

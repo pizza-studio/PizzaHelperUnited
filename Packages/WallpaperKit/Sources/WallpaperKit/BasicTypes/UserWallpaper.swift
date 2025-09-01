@@ -3,10 +3,8 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import CoreGraphics
-import Defaults
 import Foundation
 import PZBaseKit
-
 extension Defaults.Keys {
     /// User-supplied Wallpapers. API deprecated. Left for data migration purposes.
     /// This API is intentionally marked as non-public.

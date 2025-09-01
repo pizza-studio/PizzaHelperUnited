@@ -25,10 +25,6 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../PZKit"),
-        .package(
-            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")
-        ),
-        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")),
     ],
     targets: [
         .target(
@@ -36,8 +32,6 @@ let package = Package(
             dependencies: [
                 .product(name: "PZAccountKit", package: "PZKit"),
                 .product(name: "PZBaseKit", package: "PZKit"),
-                .product(name: "Defaults", package: "Defaults"),
-                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
             ],
             swiftSettings: sharedSwiftSettings
         ),

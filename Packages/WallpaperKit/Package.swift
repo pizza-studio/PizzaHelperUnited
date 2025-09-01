@@ -20,8 +20,6 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../PZKit"),
-        .package(url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")),
-        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")),
         .package(url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")),
     ],
     targets: [
@@ -30,8 +28,6 @@ let package = Package(
         .target(
             name: "WallpaperKit",
             dependencies: [
-                .product(name: "Defaults", package: "Defaults"),
-                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "PZBaseKit", package: "PZKit"),
             ],
             resources: [
@@ -43,8 +39,6 @@ let package = Package(
             dependencies: [
                 "WallpaperKit",
                 .product(name: "AlertToast", package: "AlertToast"),
-                .product(name: "Defaults", package: "Defaults"),
-                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "PZBaseKit", package: "PZKit"),
             ],
             resources: [

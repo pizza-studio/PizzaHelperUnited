@@ -5,10 +5,9 @@
 #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
 import ActivityKit
 import AppIntents
-import Defaults
 import Foundation
+import PZBaseKit
 import PZWidgetsKit
-import SFSafeSymbols
 import SwiftUI
 import WallpaperKit
 import WidgetKit

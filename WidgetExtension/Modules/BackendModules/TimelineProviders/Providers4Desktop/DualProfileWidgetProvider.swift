@@ -5,7 +5,6 @@
 #if !os(watchOS)
 
 import CoreGraphics
-import Defaults
 import PZAccountKit
 import PZBaseKit
 import PZInGameEventKit

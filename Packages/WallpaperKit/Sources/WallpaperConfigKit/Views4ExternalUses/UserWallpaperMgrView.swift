@@ -5,9 +5,7 @@
 #if !os(watchOS)
 
 import AlertToast
-import Defaults
 import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 import WallpaperKit
 
