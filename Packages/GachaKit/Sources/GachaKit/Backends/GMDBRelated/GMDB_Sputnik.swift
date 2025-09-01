@@ -8,6 +8,7 @@ import GachaMetaDB
 import GachaMetaGeneratorModule
 import PZAccountKit
 import PZBaseKit
+
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaMeta {
     public enum Sputnik {}
@@ -31,51 +32,114 @@ extension GachaMeta {
         // MARK: Lifecycle
 
         public init() {
-            /// These domestic properties are `@ObservationTracked` by the `@Observable` macro
-            /// applied to this class, hence no worries.
+            // Cleanup old useless UserDefaults keys.
+            UserDefaults.baseSuite.removeObject(forKey: "localGachaMetaDB4GI")
+            UserDefaults.baseSuite.removeObject(forKey: "localGachaMetaDB4HSR")
+            UserDefaults.baseSuite.removeObject(forKey: "localGachaMetaDBReversed4GI")
             Task {
-                for await newDB in Defaults.updates(.localGachaMetaDBReversed4GI) {
-                    self.reversedDB4GI = newDB
-                }
-            }
-            Task {
-                for await newDB in Defaults.updates(.localGachaMetaDB4GI) {
-                    self.mainDB4GI = newDB
-                }
-            }
-            Task {
-                for await newDB in Defaults.updates(.localGachaMetaDB4HSR) {
-                    self.mainDB4HSR = newDB
+                do {
+                    await self.mainDBMonitor4HSR.saveData()
+                    await self.mainDBMonitor4GI.saveData()
+                    await self.reversedDBMonitor4GI.saveData()
+                    try await self.mainDBMonitor4HSR.startMonitoring()
+                    try await self.mainDBMonitor4GI.startMonitoring()
+                    try await self.reversedDBMonitor4GI.startMonitoring()
+                } catch {
+                    print("[GachaMeta.sharedDB] Init error: \(error)")
                 }
             }
         }
 
         // MARK: Public
 
-        public var reversedDB4GI = Defaults[.localGachaMetaDBReversed4GI]
-        public var mainDB4GI = Defaults[.localGachaMetaDB4GI]
-        public var mainDB4HSR = Defaults[.localGachaMetaDB4HSR]
+        public fileprivate(set) var mainDB4GI: GachaMeta.MetaDB {
+            get {
+                mainDBMonitor4GI.data
+            }
+            set {
+                mainDBMonitor4GI.data = newValue
+            }
+        }
+
+        public fileprivate(set) var mainDB4HSR: GachaMeta.MetaDB {
+            get {
+                mainDBMonitor4HSR.data
+            }
+            set {
+                mainDBMonitor4HSR.data = newValue
+            }
+        }
+
+        public fileprivate(set) var reversedDB4GI: [String: Int] {
+            get {
+                reversedDBMonitor4GI.data
+            }
+            set {
+                reversedDBMonitor4GI.data = newValue
+            }
+        }
 
         public func reverseQuery4GI(for name: String) -> Int? {
             reversedDB4GI[name]
         }
+
+        public func reset(for game: Pizza.SupportedGame) {
+            /// 此处重复了 observation API 的异步反应动作，因为此处要求必须立刻重置完毕。
+            switch game {
+            case .genshinImpact:
+                mainDB4GI = mainDBMonitor4GI.defaultValue
+                reversedDB4GI = reversedDBMonitor4GI.defaultValue
+            case .starRail:
+                mainDB4HSR = mainDBMonitor4HSR.defaultValue
+            case .zenlessZone: return // 暂不支持。
+            }
+        }
+
+        // MARK: Private
+
+        /// 星穹铁道的抽卡专用中继资料库。
+        private let mainDBMonitor4HSR = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "GMDBCache")
+                .appending(component: "mainDB4HSR.plist"),
+            defaultValue: try! GachaMeta.MetaDB.getBundledDefault(for: .starRail)!
+        )
+
+        /// 原神的抽卡专用中继资料库。
+        private let mainDBMonitor4GI = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "GMDBCache")
+                .appending(component: "mainDB4GI.plist"),
+            defaultValue: try! GachaMeta.MetaDB.getBundledDefault(for: .genshinImpact)!
+        )
+
+        /// 反向查询专用资料库，供原神抽卡记录的 ItemID 复原工作所特需。必须是简体中文。
+        private let reversedDBMonitor4GI = PlistCodableFileMonitor(
+            fileURL: FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            )[0]
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appending(component: "GMDBCache")
+                .appending(component: "reversedDB4GI.plist"),
+            defaultValue: try! GachaMeta.MetaDB.getBundledDefault(for: .genshinImpact)!
+                .generateHotReverseQueryDict(for: "zh-cn")!
+        )
     }
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaMeta.Sputnik {
     public static func resetLocalGachaMetaDB(for game: Pizza.SupportedGame) {
-        /// 此处重复了 observation API 的异步反应动作，因为此处要求必须立刻重置完毕。
-        switch game {
-        case .genshinImpact:
-            Defaults.reset(.localGachaMetaDB4GI, .localGachaMetaDBReversed4GI)
-            GachaMeta.sharedDB.mainDB4GI = Defaults[.localGachaMetaDB4GI]
-            GachaMeta.sharedDB.reversedDB4GI = Defaults[.localGachaMetaDBReversed4GI]
-        case .starRail:
-            Defaults.reset(.localGachaMetaDB4HSR)
-            GachaMeta.sharedDB.mainDB4HSR = Defaults[.localGachaMetaDB4HSR]
-        case .zenlessZone: return // 暂不支持。
-        }
+        GachaMeta.sharedDB.reset(for: game)
     }
 
     @MainActor
@@ -84,11 +148,11 @@ extension GachaMeta.Sputnik {
             switch game {
             case .genshinImpact:
                 let newDB = try await fetchPreCompiledData(from: .miyoushe(game))
-                Defaults[.localGachaMetaDB4GI] = newDB
-                Defaults[.localGachaMetaDBReversed4GI] = newDB.generateHotReverseQueryDict(for: "zh-cn") ?? [:]
+                GachaMeta.sharedDB.mainDB4GI = newDB
+                GachaMeta.sharedDB.reversedDB4GI = newDB.generateHotReverseQueryDict(for: "zh-cn") ?? [:]
             case .starRail:
                 let newDB = try await fetchPreCompiledData(from: .miyoushe(game))
-                Defaults[.localGachaMetaDB4HSR] = newDB
+                GachaMeta.sharedDB.mainDB4HSR = newDB
             case .zenlessZone: return // 暂不支持。
             }
         } catch {
@@ -303,22 +367,24 @@ extension HoYo.AccountRegion {
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.HostType {
     fileprivate func getRemoteGMDBFileURL(game: Pizza.SupportedGame) -> URL {
-        let baseStr: String = switch game {
-        case .genshinImpact:
-            gmDBSourceURLPrefix + "OUTPUT-GI.json"
-        case .starRail:
-            gmDBSourceURLPrefix + "OUTPUT-HSR.json"
-        case .zenlessZone:
-            "/dev/null"
-        }
+        let baseStr: String =
+            switch game {
+            case .genshinImpact:
+                gmDBSourceURLPrefix + "OUTPUT-GI.json"
+            case .starRail:
+                gmDBSourceURLPrefix + "OUTPUT-HSR.json"
+            case .zenlessZone:
+                "/dev/null"
+            }
         return baseStr.asURL
     }
 
     fileprivate var gmDBSourceURLPrefix: String {
-        let prefix = switch self {
-        case .mainlandChina: "https://raw.gitcode.com/SHIKISUEN/GachaMetaGenerator/raw/main/"
-        case .enkaGlobal: "https://raw.githubusercontent.com/pizza-studio/GachaMetaGenerator/main/"
-        }
+        let prefix =
+            switch self {
+            case .mainlandChina: "https://raw.gitcode.com/SHIKISUEN/GachaMetaGenerator/raw/main/"
+            case .enkaGlobal: "https://raw.githubusercontent.com/pizza-studio/GachaMetaGenerator/main/"
+            }
         return prefix + "Sources/GachaMetaDB/Resources/"
     }
 }
