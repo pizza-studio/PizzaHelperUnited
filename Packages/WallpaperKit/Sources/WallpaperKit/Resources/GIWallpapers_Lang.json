@@ -247,7 +247,15 @@
     "210249" : "Natlan – Flammenrad",
     "210250" : "Natlan – Jagd nach dem Wind",
     "210251" : "Erlebnispass – Leichtbrise",
-    "210252" : "Feierlichkeit – Thunfisch-Reis"
+    "210252" : "Feierlichkeit – Thunfisch-Reis",
+    "210253" : "Lauma – Astgeweih",
+    "210254" : "Flins – Schwurlaterne",
+    "210255" : "Aino – Entenschnattern",
+    "210256" : "Nod-Krai – Mondschein",
+    "210257" : "Nod-Krai – Heiligtum",
+    "210258" : "Errungenschaft – Lange Trennung",
+    "210259" : "Erlebnispass – Frostmond",
+    "210260" : "Feierlichkeit – Höchster Geschmack"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -497,7 +505,15 @@
     "210249" : "Natlan: Wheel of Flame",
     "210250" : "Natlan: Chasing the Wind",
     "210251" : "Travel Notes: Easy Breezy",
-    "210252" : "Celebration: Tuna On Rice"
+    "210252" : "Celebration: Tuna On Rice",
+    "210253" : "Lauma: Branched Antlers",
+    "210254" : "Flins: Oathkeeper's Lantern",
+    "210255" : "Aino: Whoopsie Ducksie",
+    "210256" : "Nod-Krai: Moonlight",
+    "210257" : "Nod-Krai: Sacred Realm",
+    "210258" : "Achievement: Time Apart",
+    "210259" : "Travel Notes: Glacial Moon",
+    "210260" : "Celebration: Sublime Flavors"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -747,7 +763,15 @@
     "210249" : "Natlan - Rueda flamígera",
     "210250" : "Natlan - Siguiendo al viento",
     "210251" : "PB - Brisapacible",
-    "210252" : "Celebración - Atún con arroz"
+    "210252" : "Celebración - Atún con arroz",
+    "210253" : "Lauma - Astas enramadas",
+    "210254" : "Flins - Lámpara del juramento",
+    "210255" : "Aino - Metiendo “el pato”",
+    "210256" : "Nod Krai - Luz lunar",
+    "210257" : "Nod Krai - Reino sagrado",
+    "210258" : "Logro - Una larga separación",
+    "210259" : "PB - Luna helada",
+    "210260" : "Celebración - Sabores sublimes"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -997,7 +1021,15 @@
     "210249" : "Natlan - Roue des flammes",
     "210250" : "Natlan - Air",
     "210251" : "PB - Brisedouce",
-    "210252" : "Célébration - Thon sur riz"
+    "210252" : "Célébration - Thon sur riz",
+    "210253" : "Lauma - Bois ramifiés",
+    "210254" : "Flins - Lanterne de serment",
+    "210255" : "Aino - Aïe aïe canard",
+    "210256" : "Nod-Krai - Clair de lune",
+    "210257" : "Nod-Krai - Terre sacrée",
+    "210258" : "Succès - Séparation",
+    "210259" : "PB - Frigilune",
+    "210260" : "Célébration - Saveurs suprêmes"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1247,7 +1279,15 @@
     "210249" : "Natlan: Roda Api",
     "210250" : "Natlan: Mengejar Angin",
     "210251" : "Catatan Perjalanan: Santai Saja",
-    "210252" : "Perayaan: Tuna Sashimi"
+    "210252" : "Perayaan: Tuna Sashimi",
+    "210253" : "Lauma: Branched Antlers",
+    "210254" : "Flins: Oathkeeper's Lantern",
+    "210255" : "Aino: Whoopsie Ducksie",
+    "210256" : "Nod-Krai: Sinar Rembulan",
+    "210257" : "Nod-Krai: Alam Suci",
+    "210258" : "Achievement: Terpisah Lama",
+    "210259" : "Catatan Perjalanan: Bulan Beku",
+    "210260" : "Perayaan: Rasa Sempurna"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1497,7 +1537,15 @@
     "210249" : "Natlan: Ruota della Fiamma",
     "210250" : "Natlan: Inseguendo il vento",
     "210251" : "Appunti di viaggio: Dolce brezza",
-    "210252" : "Celebrazione: Tonno su riso"
+    "210252" : "Celebrazione: Tonno su riso",
+    "210253" : "Lauma: Corna ramificate",
+    "210254" : "Flins: Lanterna del custode del giuramento",
+    "210255" : "Aino: Che papera!",
+    "210256" : "Nod-Krai: Chiaro di luna",
+    "210257" : "Nod-Krai: Regno sacro",
+    "210258" : "Obiettivo: Separati dal tempo",
+    "210259" : "Appunti di viaggio: Luna glaciale",
+    "210260" : "Celebrazione: Sapori sublimi"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1747,7 +1795,15 @@
     "210249" : "ナタ・灼輪",
     "210250" : "ナタ・風乗り",
     "210251" : "紀行・のびのび",
-    "210252" : "祭典・マグロとシャリ"
+    "210252" : "祭典・マグロとシャリ",
+    "210253" : "ラウマ・枝角",
+    "210254" : "フリンズ・誓灯",
+    "210255" : "アイノ・ぐわーっ！",
+    "210256" : "ナド・クライ・月光",
+    "210257" : "ナド・クライ・聖域",
+    "210258" : "アチーブメント・久しき別れ",
+    "210259" : "紀行・氷月",
+    "210260" : "祭典・至高の味"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -1997,7 +2053,15 @@
     "210249" : "나타·불벼림",
     "210250" : "나타·둥실",
     "210251" : "기행·느긋",
-    "210252" : "축제·초밥"
+    "210252" : "축제·초밥",
+    "210253" : "라우마·사슴뿔",
+    "210254" : "플린스·등불",
+    "210255" : "아이노·오리",
+    "210256" : "노드크라이·달빛",
+    "210257" : "노드크라이·성역",
+    "210258" : "업적·기나긴 이별",
+    "210259" : "기행·빙월",
+    "210260" : "축제·미식"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2246,8 +2310,16 @@
     "210248" : "Ineffa: Comando",
     "210249" : "Natlan: Roda das Chamas",
     "210250" : "Natlan: Perseguindo o Vento",
-    "210251" : "Passe de Batalha: Uma Brisa de Fácil",
-    "210252" : "Celebração: Arroz e Atum"
+    "210251" : "Passe de Batalha: Feriado Tranquilo",
+    "210252" : "Celebração: Arroz e Atum",
+    "210253" : "Lauma: Galhada Ramificada",
+    "210254" : "Flins: Lâmpada do Guardião do Juramento",
+    "210255" : "Aino: Opa, Patinho",
+    "210256" : "Nod-Krai: Luz do Luar",
+    "210257" : "Nod-Krai: Reino Sagrado",
+    "210258" : "Conquista: Tempo Separado",
+    "210259" : "Passe de Batalha: Lua Glacial",
+    "210260" : "Celebração: Sabor Supremo"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2497,7 +2569,15 @@
     "210249" : "Колесо пламени",
     "210250" : "В погоне за ветром",
     "210251" : "Безмятежность",
-    "210252" : "Тунец с рисом"
+    "210252" : "Тунец с рисом",
+    "210253" : "Ветвистые рога",
+    "210254" : "Фонарь Хранителя клятвы",
+    "210255" : "Ой-утя",
+    "210256" : "Лунный свет",
+    "210257" : "Священное царство",
+    "210258" : "Долгая разлука",
+    "210259" : "Ледяная луна",
+    "210260" : "Изысканное лакомство"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -2747,7 +2827,15 @@
     "210249" : "Natlan - กงล้อเปลวเพลิง",
     "210250" : "Natlan - ล่าวายุ",
     "210251" : "บันทึก - แสนสบาย",
-    "210252" : "การฉลอง - ข้าวทูน่า"
+    "210252" : "การฉลอง - ข้าวทูน่า",
+    "210253" : "Lauma - กิ่งเขา",
+    "210254" : "Flins - ตะเกียงแห่งคำปฏิญาณ",
+    "210255" : "Aino - หนูช่วยเย็นก่อนจิ",
+    "210256" : "Nod-Krai - แสงจันทร์",
+    "210257" : "Nod-Krai - แดนศักดิ์สิทธิ์",
+    "210258" : "ความสำเร็จ - พรากจาก",
+    "210259" : "บันทึก - จันทราน้ำแข็ง",
+    "210260" : "การฉลอง - เลิศรส"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -2997,7 +3085,15 @@
     "210249" : "Natlan: Alev Çarkı",
     "210250" : "Natlan: Rüzgarın Peşinde",
     "210251" : "Gezi Notları: Sefa Yeli",
-    "210252" : "Kutlama: Ton Balığı Nigiri"
+    "210252" : "Kutlama: Ton Balığı Nigiri",
+    "210253" : "Lauma: Dallanan Boynuzlar",
+    "210254" : "Flins: Söz Erinin Feneri",
+    "210255" : "Aino: Portakal Ördekal",
+    "210256" : "Nod-Krai: Ay Işığı",
+    "210257" : "Nod-Krai: Kutsal Diyar",
+    "210258" : "Başarım: Ayrı Geçen Zaman",
+    "210259" : "Gezi Notları: Buzul Ay",
+    "210260" : "Kutlama: Ulaşılmaz Lezzetler"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3247,7 +3343,15 @@
     "210249" : "Natlan - Bánh Xe Lửa",
     "210250" : "Natlan - Đuổi Theo Gió",
     "210251" : "Nhật Ký Hành Trình - Nhàn Nhã",
-    "210252" : "Lễ Hội - Cơm Cá Ngừ"
+    "210252" : "Lễ Hội - Cơm Cá Ngừ",
+    "210253" : "Lauma - Sừng Hươu",
+    "210254" : "Flins - Đèn Thề",
+    "210255" : "Aino - Ai Da",
+    "210256" : "Nod-Krai - Sắc Trăng",
+    "210257" : "Nod-Krai - Thánh Vực",
+    "210258" : "Thành Tựu - Trùng Phùng",
+    "210259" : "Nhật Ký Hành Trình - Băng Nguyệt",
+    "210260" : "Lễ Hội - Vị Ngon"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3497,7 +3601,15 @@
     "210249" : "纳塔·煅轮",
     "210250" : "纳塔·巡风",
     "210251" : "纪行·悠悠",
-    "210252" : "庆典·鲔米"
+    "210252" : "庆典·鲔米",
+    "210253" : "菈乌玛·枝角",
+    "210254" : "菲林斯·誓灯",
+    "210255" : "爱诺·哎鸭",
+    "210256" : "挪德卡莱·月色",
+    "210257" : "挪德卡莱·圣域",
+    "210258" : "成就·久别",
+    "210259" : "纪行·冰月",
+    "210260" : "庆典·至味"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -3747,6 +3859,14 @@
     "210249" : "納塔·煅輪",
     "210250" : "納塔·巡風",
     "210251" : "紀行·悠悠",
-    "210252" : "慶典·鮪米"
+    "210252" : "慶典·鮪米",
+    "210253" : "菈烏瑪·枝角",
+    "210254" : "菲林斯·誓燈",
+    "210255" : "愛諾·哎鴨",
+    "210256" : "挪德卡萊·月色",
+    "210257" : "挪德卡萊·聖域",
+    "210258" : "成就·久別",
+    "210259" : "紀行·冰月",
+    "210260" : "慶典·至味"
   }
 }
