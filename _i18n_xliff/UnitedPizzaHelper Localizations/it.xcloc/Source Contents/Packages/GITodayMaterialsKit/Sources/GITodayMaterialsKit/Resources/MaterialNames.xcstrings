@@ -67,6 +67,17 @@
         }
       }
     },
+    "asset.dailyMaterial:talentElysium" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elysium"
+          }
+        }
+      }
+    },
     "asset.dailyMaterial:talentEquity" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -144,6 +155,17 @@
         }
       }
     },
+    "asset.dailyMaterial:talentMoonlight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moonlight"
+          }
+        }
+      }
+    },
     "asset.dailyMaterial:talentOrder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -199,6 +221,17 @@
         }
       }
     },
+    "asset.dailyMaterial:talentVagrancy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vagrancy"
+          }
+        }
+      }
+    },
     "asset.dailyMaterial:weaponAerosiderite" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -217,6 +250,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ancient Chord"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponArtfulDevice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artful Device"
           }
         }
       }
@@ -276,6 +320,17 @@
         }
       }
     },
+    "asset.dailyMaterial:weaponFarNorthScions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Far-North Scions"
+          }
+        }
+      }
+    },
     "asset.dailyMaterial:weaponGladiator" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -305,6 +360,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mask"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponLongNightFlint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Long Night Flint"
           }
         }
       }
