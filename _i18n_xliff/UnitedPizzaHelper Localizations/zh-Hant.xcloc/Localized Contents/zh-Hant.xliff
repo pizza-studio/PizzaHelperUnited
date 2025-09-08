@@ -3899,7 +3899,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="notification.simulatedUniverse.body:%@%@%@" xml:space="preserve">
         <source>The simulated universe score for %1$@ is not yet full. The current progress is %2$@/%3$@.</source>
-        <target state="translated">「%1$@」的模擬宇宙積分未滿，當前進度為 %1$@/%2$@。</target>
+        <target state="translated">「%1$@」的模擬宇宙積分未滿，當前進度為 %2$@/%3$@。</target>
         <note/>
       </trans-unit>
       <trans-unit id="notification.simulatedUniverse.title:%@" xml:space="preserve">
