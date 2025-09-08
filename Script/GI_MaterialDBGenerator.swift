@@ -1,3 +1,5 @@
+#!/usr/bin/env swift
+
 // (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
@@ -153,12 +155,17 @@ public enum GIMaterialMetaQueried {
         guard let url = URL(string: urlString) else { return [] }
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoded: any GIMaterialMetaProtocol
-        switch isWeapon {
-        case false:
-            decoded = try JSONDecoder().decode(GICharMaterialMeta.self, from: data)
-
-        case true:
-            decoded = try JSONDecoder().decode(GIWeaponMaterialMeta.self, from: data)
+        do {
+            switch isWeapon {
+            case false:
+                decoded = try JSONDecoder().decode(GICharMaterialMeta.self, from: data)
+            case true:
+                decoded = try JSONDecoder().decode(GIWeaponMaterialMeta.self, from: data)
+            }
+        } catch {
+            print("❌ JSON Decoding Error for URL: \(urlString)")
+            print("Error details: \(error)")
+            throw error
         }
         return decoded.allUnits
     }
@@ -234,9 +241,9 @@ public enum DimbreathMaterialRAW {
 
         public enum CodingKeysAlt: String, CodingKey {
             case id
-            case monday = "BEAGFJKPPFP"
-            case tuesday = "JKFMKKBLCGP"
-            case wednesday = "GCFOIINPCMI"
+            case monday = "CIJFCPIOPBH"
+            case tuesday = "MDOGMKAAPAL"
+            case wednesday = "ENCOOANDINC"
         }
 
         public var id: Int
@@ -263,9 +270,26 @@ extension DimbreathMaterialRAW {
         let urlAllDungeons = URL(string: urlPrefix + DailyDungeonConfigData.urlSuffix)!
         let (data4Materials, _) = try await URLSession.shared.data(from: urlAllMaterials)
         let (data4Dungeons, _) = try await URLSession.shared.data(from: urlAllDungeons)
-        let obj4Materials = try JSONDecoder().decode(MaterialSourceDataExcelConfigData.self, from: data4Materials)
-            .compactMap(\.validSelf)
-        let obj4Dungeons = try JSONDecoder().decode(DailyDungeonConfigData.self, from: data4Dungeons)
+
+        let obj4Materials: MaterialSourceDataExcelConfigData
+        do {
+            obj4Materials = try JSONDecoder().decode(MaterialSourceDataExcelConfigData.self, from: data4Materials)
+                .compactMap(\.validSelf)
+        } catch {
+            print("❌ JSON Decoding Error for URL: \(urlAllMaterials.absoluteString)")
+            print("Error details: \(error)")
+            throw error
+        }
+
+        let obj4Dungeons: DailyDungeonConfigData
+        do {
+            obj4Dungeons = try JSONDecoder().decode(DailyDungeonConfigData.self, from: data4Dungeons)
+        } catch {
+            print("❌ JSON Decoding Error for URL: \(urlAllDungeons.absoluteString)")
+            print("Error details: \(error)")
+            throw error
+        }
+
         assert(!obj4Dungeons.isEmpty)
         // ---------------------
         var itemIDtoDungeonID = [Int: Int]()
@@ -340,14 +364,28 @@ extension GIMaterialDBGenerator {
     public static func getAllCharIDsExceptProtagonists() async throws -> [Int] {
         let url = URL(string: "https://api.hakush.in/gi/data/character.json")!
         let (data, _) = try await URLSession.shared.data(from: url)
-        let decoded = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+        let decoded: [String: Any]
+        do {
+            decoded = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+        } catch {
+            print("❌ JSON Decoding Error for URL: \(url.absoluteString)")
+            print("Error details: \(error)")
+            throw error
+        }
         return decoded.keys.compactMap { Int($0) }.sorted()
     }
 
     public static func getAllWeaponIDs() async throws -> [Int] {
         let url = URL(string: "https://api.hakush.in/gi/data/weapon.json")!
         let (data, _) = try await URLSession.shared.data(from: url)
-        let decoded = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+        let decoded: [String: Any]
+        do {
+            decoded = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+        } catch {
+            print("❌ JSON Decoding Error for URL: \(url.absoluteString)")
+            print("Error details: \(error)")
+            throw error
+        }
         return decoded.keys.compactMap { Int($0) }.sorted()
     }
 
@@ -358,8 +396,15 @@ extension GIMaterialDBGenerator {
         var userMaterialMap = [String: Set<Int>]()
 
         for userID in allWeaponIDs + allCharIDs {
-            let queried = try await GIMaterialMetaQueried.queryMaterials(for: userID.description).map(\.id)
-            userMaterialMap[userID.description] = Set(queried)
+            do {
+                let queried = try await GIMaterialMetaQueried.queryMaterials(for: userID.description).map(\.id)
+                userMaterialMap[userID.description] = Set(queried)
+            } catch {
+                print("⚠️ Failed to query materials for ID: \(userID)")
+                print("Continuing with next item...")
+                // Continue processing other items instead of failing completely
+                continue
+            }
         }
 
         func findUsers(itemID: Int) -> [String] {
