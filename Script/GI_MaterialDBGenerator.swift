@@ -386,7 +386,8 @@ extension GIMaterialDBGenerator {
             print("Error details: \(error)")
             throw error
         }
-        return decoded.keys.compactMap { Int($0) }.sorted()
+        // Filter out weapon skins (6-digit IDs) and only return actual weapons (5-digit IDs)
+        return decoded.keys.compactMap { Int($0) }.filter { $0 < 100000 }.sorted()
     }
 
     public static func compileMaterialDB() async throws -> [GITodayMaterialEncoded] {
