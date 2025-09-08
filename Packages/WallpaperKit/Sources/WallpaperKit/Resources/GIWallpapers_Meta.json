@@ -1358,5 +1358,48 @@
     "game" : "GI",
     "id" : "210252",
     "officialFileNameStem" : "UI_NameCardPic_Event58_P"
+  },
+  {
+    "bindedCharID" : "10000119",
+    "game" : "GI",
+    "id" : "210253",
+    "officialFileNameStem" : "UI_NameCardPic_Lauma_P"
+  },
+  {
+    "bindedCharID" : "10000120",
+    "game" : "GI",
+    "id" : "210254",
+    "officialFileNameStem" : "UI_NameCardPic_Flins_P"
+  },
+  {
+    "bindedCharID" : "10000121",
+    "game" : "GI",
+    "id" : "210255",
+    "officialFileNameStem" : "UI_NameCardPic_Aino_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210256",
+    "officialFileNameStem" : "UI_NameCardPic_NodKraiOffering1_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210257",
+    "officialFileNameStem" : "UI_NameCardPic_NodKrai1_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210258",
+    "officialFileNameStem" : "UI_NameCardPic_Ysxf6_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210259",
+    "officialFileNameStem" : "UI_NameCardPic_Bp44_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210260",
+    "officialFileNameStem" : "UI_NameCardPic_YellowV2_P"
   }
 ]
