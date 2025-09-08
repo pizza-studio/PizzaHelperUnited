@@ -1365,6 +1365,11 @@ Nota: Incluso cuando aparece "Alta confianza", los derechos de interpretación f
         <target state="translated">Elegancia</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:talentElysium" xml:space="preserve">
+        <source>Elysium</source>
+        <target state="translated">Paraíso</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:talentEquity" xml:space="preserve">
         <source>Equity</source>
         <target state="translated">Acciones</target>
@@ -1400,6 +1405,11 @@ Nota: Incluso cuando aparece "Alta confianza", los derechos de interpretación f
         <target state="translated">Luz</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:talentMoonlight" xml:space="preserve">
+        <source>Moonlight</source>
+        <target state="translated">Luz Lunar</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:talentOrder" xml:space="preserve">
         <source>Order</source>
         <target state="translated">Ordenar</target>
@@ -1425,6 +1435,11 @@ Nota: Incluso cuando aparece "Alta confianza", los derechos de interpretación f
         <target state="translated">Transitoriedad</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:talentVagrancy" xml:space="preserve">
+        <source>Vagrancy</source>
+        <target state="translated">Errancia</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponAerosiderite" xml:space="preserve">
         <source>Aerosiderite</source>
         <target state="translated">Aerosiderita</target>
@@ -1433,6 +1448,11 @@ Nota: Incluso cuando aparece "Alta confianza", los derechos de interpretación f
       <trans-unit id="asset.dailyMaterial:weaponAncientChord" xml:space="preserve">
         <source>Ancient Chord</source>
         <target state="translated">Acorde Antiguo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="asset.dailyMaterial:weaponArtfulDevice" xml:space="preserve">
+        <source>Artful Device</source>
+        <target state="translated">Instrumento Misterioso</target>
         <note/>
       </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponBorealWolf" xml:space="preserve">
@@ -1460,6 +1480,11 @@ Nota: Incluso cuando aparece "Alta confianza", los derechos de interpretación f
         <target state="translated">Niebla Velada</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:weaponFarNorthScions" xml:space="preserve">
+        <source>Far-North Scions</source>
+        <target state="translated">Hijos Del Lejano Norte</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponGladiator" xml:space="preserve">
         <source>Gladiator</source>
         <target state="translated">Gladiador</target>
@@ -1473,6 +1498,11 @@ Nota: Incluso cuando aparece "Alta confianza", los derechos de interpretación f
       <trans-unit id="asset.dailyMaterial:weaponKijinMask" xml:space="preserve">
         <source>Mask</source>
         <target state="translated">Máscara</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="asset.dailyMaterial:weaponLongNightFlint" xml:space="preserve">
+        <source>Long Night Flint</source>
+        <target state="translated">Fuego De La Larga Noche</target>
         <note/>
       </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponNarukami" xml:space="preserve">

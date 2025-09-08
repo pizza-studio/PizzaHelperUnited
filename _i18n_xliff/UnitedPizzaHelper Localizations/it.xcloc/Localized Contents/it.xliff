@@ -1369,6 +1369,11 @@ Nota: Anche quando viene visualizzata "Alta affidabilità", i diritti di interpr
         <target state="translated">Eleganza</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:talentElysium" xml:space="preserve">
+        <source>Elysium</source>
+        <target state="translated">Elisio</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:talentEquity" xml:space="preserve">
         <source>Equity</source>
         <target state="translated">Filosofie Di Equità</target>
@@ -1404,6 +1409,11 @@ Nota: Anche quando viene visualizzata "Alta affidabilità", i diritti di interpr
         <target state="translated">Luce</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:talentMoonlight" xml:space="preserve">
+        <source>Moonlight</source>
+        <target state="translated">Chiaro di Luna</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:talentOrder" xml:space="preserve">
         <source>Order</source>
         <target state="translated">Ordine</target>
@@ -1429,6 +1439,11 @@ Nota: Anche quando viene visualizzata "Alta affidabilità", i diritti di interpr
         <target state="translated">Fugacità</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:talentVagrancy" xml:space="preserve">
+        <source>Vagrancy</source>
+        <target state="translated">Erranza</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponAerosiderite" xml:space="preserve">
         <source>Aerosiderite</source>
         <target state="translated">Aerosiderite</target>
@@ -1437,6 +1452,11 @@ Nota: Anche quando viene visualizzata "Alta affidabilità", i diritti di interpr
       <trans-unit id="asset.dailyMaterial:weaponAncientChord" xml:space="preserve">
         <source>Ancient Chord</source>
         <target state="translated">Un Antico Accordo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="asset.dailyMaterial:weaponArtfulDevice" xml:space="preserve">
+        <source>Artful Device</source>
+        <target state="translated">Dispositivo Ingegnoso</target>
         <note/>
       </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponBorealWolf" xml:space="preserve">
@@ -1464,6 +1484,11 @@ Nota: Anche quando viene visualizzata "Alta affidabilità", i diritti di interpr
         <target state="translated">Nebbia</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:weaponFarNorthScions" xml:space="preserve">
+        <source>Far-North Scions</source>
+        <target state="translated">Erede dell'Estremo Nord</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponGladiator" xml:space="preserve">
         <source>Gladiator</source>
         <target state="translated">Gladiatore</target>
@@ -1477,6 +1502,11 @@ Nota: Anche quando viene visualizzata "Alta affidabilità", i diritti di interpr
       <trans-unit id="asset.dailyMaterial:weaponKijinMask" xml:space="preserve">
         <source>Mask</source>
         <target state="translated">Maschera</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="asset.dailyMaterial:weaponLongNightFlint" xml:space="preserve">
+        <source>Long Night Flint</source>
+        <target state="translated">Selce della Lunga notte</target>
         <note/>
       </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponNarukami" xml:space="preserve">

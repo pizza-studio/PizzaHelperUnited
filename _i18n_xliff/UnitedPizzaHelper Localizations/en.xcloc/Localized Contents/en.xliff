@@ -1378,6 +1378,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
         <target state="translated">Elegance</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:talentElysium" xml:space="preserve">
+        <source>Elysium</source>
+        <target state="translated">Elysium</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:talentEquity" xml:space="preserve">
         <source>Equity</source>
         <target state="translated">Equity</target>
@@ -1413,6 +1418,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
         <target state="translated">Light</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:talentMoonlight" xml:space="preserve">
+        <source>Moonlight</source>
+        <target state="translated">Moonlight</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:talentOrder" xml:space="preserve">
         <source>Order</source>
         <target state="translated">Order</target>
@@ -1438,6 +1448,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
         <target state="translated">Transience</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:talentVagrancy" xml:space="preserve">
+        <source>Vagrancy</source>
+        <target state="translated">Vagrancy</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponAerosiderite" xml:space="preserve">
         <source>Aerosiderite</source>
         <target state="translated">Aerosiderite</target>
@@ -1446,6 +1461,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
       <trans-unit id="asset.dailyMaterial:weaponAncientChord" xml:space="preserve">
         <source>Ancient Chord</source>
         <target state="translated">Ancient Chord</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="asset.dailyMaterial:weaponArtfulDevice" xml:space="preserve">
+        <source>Artful Device</source>
+        <target state="translated">Artful Device</target>
         <note/>
       </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponBorealWolf" xml:space="preserve">
@@ -1473,6 +1493,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
         <target state="translated">Mist Veiled</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:weaponFarNorthScions" xml:space="preserve">
+        <source>Far-North Scions</source>
+        <target state="translated">Far-North Scions</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponGladiator" xml:space="preserve">
         <source>Gladiator</source>
         <target state="translated">Gladiator</target>
@@ -1486,6 +1511,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
       <trans-unit id="asset.dailyMaterial:weaponKijinMask" xml:space="preserve">
         <source>Mask</source>
         <target state="translated">Mask</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="asset.dailyMaterial:weaponLongNightFlint" xml:space="preserve">
+        <source>Long Night Flint</source>
+        <target state="translated">Long Night Flint</target>
         <note/>
       </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponNarukami" xml:space="preserve">

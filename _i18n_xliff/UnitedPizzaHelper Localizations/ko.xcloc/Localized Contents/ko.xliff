@@ -1366,6 +1366,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
         <target state="translated">「풍아」</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:talentElysium" xml:space="preserve">
+        <source>Elysium</source>
+        <target state="translated">「낙원」</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:talentEquity" xml:space="preserve">
         <source>Equity</source>
         <target state="translated">「공평」</target>
@@ -1401,6 +1406,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
         <target state="translated">「천광」</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:talentMoonlight" xml:space="preserve">
+        <source>Moonlight</source>
+        <target state="translated">「달빛」</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:talentOrder" xml:space="preserve">
         <source>Order</source>
         <target state="translated">「질서」</target>
@@ -1426,6 +1436,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
         <target state="translated">「부세」</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:talentVagrancy" xml:space="preserve">
+        <source>Vagrancy</source>
+        <target state="translated">「유랑」</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponAerosiderite" xml:space="preserve">
         <source>Aerosiderite</source>
         <target state="translated">흑운철 덩이</target>
@@ -1434,6 +1449,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
       <trans-unit id="asset.dailyMaterial:weaponAncientChord" xml:space="preserve">
         <source>Ancient Chord</source>
         <target state="translated">오래된 현악의 울림</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="asset.dailyMaterial:weaponArtfulDevice" xml:space="preserve">
+        <source>Artful Device</source>
+        <target state="translated">비밀 도구의</target>
         <note/>
       </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponBorealWolf" xml:space="preserve">
@@ -1461,6 +1481,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
         <target state="translated">안개구름 속의 전환</target>
         <note/>
       </trans-unit>
+      <trans-unit id="asset.dailyMaterial:weaponFarNorthScions" xml:space="preserve">
+        <source>Far-North Scions</source>
+        <target state="translated">극북 유민의</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponGladiator" xml:space="preserve">
         <source>Gladiator</source>
         <target state="translated">라이언 투사의 이념</target>
@@ -1474,6 +1499,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
       <trans-unit id="asset.dailyMaterial:weaponKijinMask" xml:space="preserve">
         <source>Mask</source>
         <target state="translated">금석극화의 귀인(鬼人)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="asset.dailyMaterial:weaponLongNightFlint" xml:space="preserve">
+        <source>Long Night Flint</source>
+        <target state="translated">긴 밤을 밝히는</target>
         <note/>
       </trans-unit>
       <trans-unit id="asset.dailyMaterial:weaponNarukami" xml:space="preserve">
