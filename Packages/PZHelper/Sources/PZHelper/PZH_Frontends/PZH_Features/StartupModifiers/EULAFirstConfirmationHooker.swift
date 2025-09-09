@@ -27,8 +27,14 @@ private struct EULAFirstConfirmationHooker: ViewModifier {
         } else {
             content
                 .sheet(isPresented: $isSheetShown) {
-                    EULAView(isOOBE: true)
+                    EULAView(isVisible: $isSheetShown)
                         .interactiveDismissDisabled()
+                }
+                .react(to: isSheetShown) { _, newValue in
+                    guard !isEULAConfirmed else { return }
+                    if !newValue {
+                        isEULAConfirmed = true
+                    }
                 }
         }
     }
