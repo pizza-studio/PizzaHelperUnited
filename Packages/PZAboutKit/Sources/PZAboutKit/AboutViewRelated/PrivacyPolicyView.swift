@@ -12,8 +12,14 @@ import SwiftUI
 public struct PrivacyPolicyView: View {
     // MARK: Lifecycle
 
-    public init(isOOBE: Bool = false) {
-        self.isOOBE = isOOBE
+    public init(isVisible: Binding<Bool>? = nil) {
+        if let isVisibleGuarded = isVisible {
+            self.isOOBE = true
+            self._isVisible = isVisibleGuarded
+        } else {
+            self.isOOBE = false
+            self._isVisible = .init(get: { true }, set: { _ in })
+        }
     }
 
     // MARK: Public
@@ -42,9 +48,7 @@ public struct PrivacyPolicyView: View {
                                 }
                                 ToolbarItem(placement: .confirmationAction) {
                                     Button("sys.agree".i18nBaseKit) {
-                                        Defaults[.isPrivacyPolicyConfirmed] = true
-                                        UserDefaults.baseSuite.synchronize()
-                                        presentationMode.wrappedValue.dismiss()
+                                        isVisible.toggle()
                                     }
                                 }
                             }
@@ -70,7 +74,7 @@ public struct PrivacyPolicyView: View {
         return fileURL?.absoluteString ?? url
     }()
 
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @Binding private var isVisible: Bool
 
     private let isOOBE: Bool
 }

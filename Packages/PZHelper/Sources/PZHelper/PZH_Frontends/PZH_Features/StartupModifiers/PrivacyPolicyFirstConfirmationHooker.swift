@@ -27,8 +27,14 @@ private struct PrivacyPolicyFirstConfirmationHooker: ViewModifier {
         } else {
             content
                 .sheet(isPresented: $isSheetShown) {
-                    PrivacyPolicyView(isOOBE: true)
+                    PrivacyPolicyView(isVisible: $isSheetShown)
                         .interactiveDismissDisabled()
+                }
+                .react(to: isSheetShown) { _, newValue in
+                    guard !isPrivacyPolicyConfirmed else { return }
+                    if !newValue {
+                        isPrivacyPolicyConfirmed = true
+                    }
                 }
         }
     }
