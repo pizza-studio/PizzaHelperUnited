@@ -11,8 +11,8 @@ import SwiftUI
 public struct OOBEView: View {
     // MARK: Lifecycle
 
-    public init(isVisible: Binding<Bool>) {
-        self._isVisible = isVisible
+    public init(completionHandler: (() -> Void)? = nil) {
+        self.completionHandler = completionHandler
     }
 
     // MARK: Public
@@ -91,7 +91,7 @@ public struct OOBEView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 Spacer()
                 Button {
-                    isVisible.toggle()
+                    completionHandler?()
                 } label: {
                     Text(verbatim: "sys.ok".i18nBaseKit)
                         .padding(.horizontal)
@@ -116,13 +116,11 @@ public struct OOBEView: View {
         }
     }
 
-    // MARK: Internal
-
-    @Binding var isVisible: Bool
-
     // MARK: Private
 
     @Environment(\.dismiss) private var dismiss
+
+    private let completionHandler: (() -> Void)?
 
     private var widgetDescription: Text {
         let urlStr = switch OS.type {
@@ -229,6 +227,6 @@ extension Defaults.Keys {
 
 @available(iOS 16.0, macCatalyst 16.0, *)
 #Preview {
-    OOBEView(isVisible: .init(get: { true }, set: { _ in }))
+    OOBEView()
         .environment(\.locale, .init(identifier: "zh-Hans"))
 }
