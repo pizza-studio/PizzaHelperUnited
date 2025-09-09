@@ -12,14 +12,8 @@ import SwiftUI
 public struct EULAView: View {
     // MARK: Lifecycle
 
-    public init(isVisible: Binding<Bool>? = nil) {
-        if let isVisibleGuarded = isVisible {
-            self.isOOBE = true
-            self._isVisible = isVisibleGuarded
-        } else {
-            self.isOOBE = false
-            self._isVisible = .init(get: { true }, set: { _ in })
-        }
+    public init(completionHandler: (() -> Void)? = nil) {
+        self.completionHandler = completionHandler
     }
 
     // MARK: Public
@@ -35,9 +29,7 @@ public struct EULAView: View {
                 .navigationTitle(Self.navTitle)
                 .navBarTitleDisplayMode(.inline)
                 .apply { content in
-                    if !isOOBE {
-                        content
-                    } else {
+                    if let completionHandler {
                         content
                             .navigationBarBackButtonHidden()
                             .toolbar {
@@ -48,10 +40,12 @@ public struct EULAView: View {
                                 }
                                 ToolbarItem(placement: .confirmationAction) {
                                     Button("sys.agree".i18nBaseKit) {
-                                        isVisible.toggle()
+                                        completionHandler()
                                     }
                                 }
                             }
+                    } else {
+                        content
                     }
                 }
         }
@@ -74,9 +68,7 @@ public struct EULAView: View {
         return fileURL?.absoluteString ?? url
     }()
 
-    @Binding private var isVisible: Bool
-
-    private let isOOBE: Bool
+    private let completionHandler: (() -> Void)?
 }
 
 extension Defaults.Keys {

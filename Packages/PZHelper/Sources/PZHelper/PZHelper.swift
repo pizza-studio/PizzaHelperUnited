@@ -112,9 +112,7 @@ private struct AppInitializer: ViewModifier {
             .syncProfilesToUserDefaults()
             .cleanApplicationIconBadgeNumber()
             .checkAndReloadWidgetTimeline()
-            .hookEULACheckerOnOOBE()
-            .hookPrivacyPolicyCheckerOnOOBE()
-            .hookOOBEView()
+            .hookOOBESheet()
             .handleHoYoBackgroundSessions()
             .performEnkaDBSanityCheck()
     }
