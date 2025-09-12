@@ -41,7 +41,7 @@ let package = Package(
             url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.2")
         )
         Package.Dependency.package(
-            url: "https://github.com/ShikiSuen/CodableFileMonitor.git", .upToNextMajor(from: "1.0.4")
+            url: "https://github.com/ShikiSuen/CodableFileMonitor.git", .upToNextMajor(from: "1.0.6")
         )
         Package.Dependency.package(
             url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")
