@@ -434,8 +434,7 @@ do {
 
     print("\n// RAW Name Cards Pulled Succesfully.\n")
 } catch {
-    assertionFailure(error.localizedDescription)
-    exit(1)
+    preconditionFailure(error.localizedDescription)
 }
 
 // MARK: - Handle translation table.
@@ -587,7 +586,7 @@ func initNewWorkspace() {
         let contentsJSONURL = URL(fileURLWithPath: workSpaceDirPath + "/Contents.json")
         try folderJSONContents.write(to: contentsJSONURL, atomically: true, encoding: .utf8)
     } catch {
-        assertionFailure(error.localizedDescription)
+        preconditionFailure(error.localizedDescription)
     }
 }
 
@@ -595,7 +594,7 @@ func cleanWorkspace() {
     do {
         try FileManager.default.removeItem(atPath: "./Assets/AssetTemp")
     } catch {
-        assertionFailure(error.localizedDescription)
+        preconditionFailure(error.localizedDescription)
     }
 }
 
@@ -611,7 +610,7 @@ func handleAllFiles() {
         do {
             try $0.deploy()
         } catch {
-            assertionFailure(error.localizedDescription)
+            preconditionFailure(error.localizedDescription)
         }
     }
 }
