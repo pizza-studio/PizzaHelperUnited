@@ -70,8 +70,7 @@ struct EnkaKitTests {
               let data4 = jsonStr4.data(using: .utf8),
               let data5 = jsonStr5.data(using: .utf8)
         else {
-            assertionFailure("Data Failure.")
-            return
+            preconditionFailure("Data Failure.")
         }
         let decoded1 = try JSONDecoder().decode([String: Enka.PropertyType].self, from: data1)
         let decoded2 = try JSONDecoder().decode([String: Enka.GameElement].self, from: data2)

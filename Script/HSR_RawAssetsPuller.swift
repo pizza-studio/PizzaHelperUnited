@@ -429,8 +429,7 @@ do {
 
     print("\n// RAW Images Pulled Succesfully.\n")
 } catch {
-    assertionFailure(error.localizedDescription)
-    exit(1)
+    preconditionFailure(error.localizedDescription)
 }
 
 // MARK: - URLAsyncTaskStack
