@@ -69,21 +69,17 @@ public struct AvatarStatCollectionTabView: View {
 
     @ViewBuilder
     public func coreBody() -> some View {
-        TabView(selection: $showingCharacterIdentifier.animation()) {
+        TabView(selection: $showingCharacterIdentifier) {
             // TabView 以 EnkaID 为依据。
             ForEach(summarizedAvatars) { avatar in
                 framedCoreView(avatar)
             }
         }
-        #if !os(macOS)
+        #if os(iOS) || targetEnvironment(macCatalyst)
         .tabViewStyle(
             .page(indexDisplayMode: showTabViewIndex ? .automatic : .never)
         )
         #endif
-        .background {
-            // 此处设计仅为了扩大点击范围。
-            Color.clear
-        }
         .contextMenu { contextMenuContents }
         .onTapGesture {
             if let onClose {
@@ -105,7 +101,7 @@ public struct AvatarStatCollectionTabView: View {
                 }
             }
         }
-        .ignoresSafeArea(.all, edges: .vertical)
+        .ignoresSafeArea(OS.type == .macOS ? [] : .all, edges: .vertical)
         .onAppear {
             showTabViewIndex = true
         }
@@ -117,11 +113,14 @@ public struct AvatarStatCollectionTabView: View {
                     .scaledToFill()
                     .scaleEffect(1.2)
                     .clipped()
+                    .frame(width: screenVM.windowSizeObserved.width)
+                    .animation(.easeIn(duration: 0.2), value: screenVM.mainColumnCanvasSizeObserved)
             }
             .drawingGroup()
             .ignoresSafeArea(.all, edges: .all)
+            .animation(.default, value: showingCharacterIdentifier)
         }
-        #if !os(macOS)
+        #if os(iOS) || targetEnvironment(macCatalyst)
         .statusBarHidden(true)
         #endif
     }
@@ -174,19 +173,14 @@ public struct AvatarStatCollectionTabView: View {
 
     @ViewBuilder
     func framedCoreView(_ avatar: Enka.AvatarSummarized) -> some View {
-        VStack {
-            if !isAppKit {
-                Spacer().frame(width: 25, height: 10)
-            }
-            /// Width is locked inside the EachAvatarStatView.
-            EachAvatarStatView(data: avatar, background: false)
-                .fixedSize()
-                .scaleEffect(scaleRatioCompatible)
-                .animation(.easeIn(duration: 0.2), value: screenVM.mainColumnCanvasSizeObserved)
-            if !isAppKit {
-                Spacer().frame(width: 25, height: bottomSpacerHeight)
-            }
-        }
+        /// Width is locked inside the EachAvatarStatView.
+        EachAvatarStatView(data: avatar, background: false)
+            .fixedSize()
+            .scaleEffect(scaleRatioCompatible)
+            .animation(.easeIn(duration: 0.2), value: screenVM.mainColumnCanvasSizeObserved)
+            .padding(.top, isAppKit ? 0 : 10)
+            .padding(.bottom, isAppKit ? 0 : bottomSpacerHeight)
+            .contentShape(.rect)
     }
 
     // MARK: Private
