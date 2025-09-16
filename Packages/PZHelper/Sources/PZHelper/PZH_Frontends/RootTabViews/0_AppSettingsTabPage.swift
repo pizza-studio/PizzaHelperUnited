@@ -5,6 +5,7 @@
 import EnkaKit
 import PZAboutKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 
 // MARK: - AppSettingsTabPage
@@ -41,6 +42,12 @@ struct AppSettingsTabPage: View {
                     AppLanguageSwitcher()
                     NavigationLink(destination: UISettingsPageContent.init) {
                         Label("settings.uiSettings.title".i18nPZHelper, systemSymbol: .pc)
+                    }
+                    NavigationLink(destination: PZWidgetsSPM.WidgetSharedSettingsView.init) {
+                        Label(
+                            PZWidgetsSPM.WidgetSharedSettingsView.navTitle,
+                            systemSymbol: .platter2FilledIphone
+                        )
                     }
                 } header: {
                     Text("settings.section.visualSettings.header".i18nPZHelper)
