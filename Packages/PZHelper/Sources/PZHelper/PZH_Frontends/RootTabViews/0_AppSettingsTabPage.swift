@@ -5,6 +5,7 @@
 import EnkaKit
 import PZAboutKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 
 // MARK: - AppSettingsTabPage
@@ -52,6 +53,12 @@ struct AppSettingsTabPage: View {
                         Label(NotificationSettingsPageContent.navTitle, systemSymbol: .bellBadge)
                     }
                     LiveActivitySettingNavigator()
+                    NavigationLink(destination: PZWidgetsSPM.WidgetSharedSettingsView.init) {
+                        Label(
+                            PZWidgetsSPM.WidgetSharedSettingsView.navTitle,
+                            systemSymbol: .platter2FilledIphone
+                        )
+                    }
                 } header: {
                     Text(NotificationSettingsPageContent.navTitleShortened)
                         .textCase(.none)
