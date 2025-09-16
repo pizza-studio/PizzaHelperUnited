@@ -125,11 +125,11 @@ struct TodayTabPage: View {
         }
         .toolbar {
             if wrappedByNavStack {
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing4AllOS) {
                     Button("sys.refresh".i18nBaseKit, systemImage: "arrow.clockwise") { refresh() }
                 }
                 if !games.isEmpty {
-                    ToolbarItem(placement: .confirmationAction) {
+                    ToolbarItem(placement: .topBarTrailing4AllOS) {
                         gamePicker
                             .pickerStyle(.segmented)
                         // ViewThatFits 不适用于此种场景。

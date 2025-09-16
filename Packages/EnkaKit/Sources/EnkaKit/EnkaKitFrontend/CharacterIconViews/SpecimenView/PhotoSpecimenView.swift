@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MIT License`.
 
+import PZBaseKit
 import SwiftUI
 
 @available(iOS 17.0, macCatalyst 17.0, *)
@@ -39,7 +40,7 @@ struct PhotoSpecimenView: View {
             }
             .formStyle(.grouped).disableFocusable()
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing4AllOS) {
                     Picker("".description, selection: $game.animation()) {
                         Text("game.genshin.shortNameEX".i18nBaseKit)
                             .tag(Enka.GameType.genshinImpact)

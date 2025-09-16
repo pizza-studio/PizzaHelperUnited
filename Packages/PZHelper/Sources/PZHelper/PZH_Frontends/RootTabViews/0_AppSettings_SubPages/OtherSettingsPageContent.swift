@@ -34,7 +34,7 @@ struct OtherSettingsPageContent: View {
             .navigationTitle("Developer Settings".description)
             .navBarTitleDisplayMode(.large)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing4AllOS) {
                     Menu {
                         Button {
                             let profiles = Defaults[.pzProfiles]

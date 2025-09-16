@@ -45,12 +45,12 @@ public struct GachaExchangeView: View {
             .navigationTitle(currentPage.localizedTitleForNav)
             .toolbar {
                 if theVM.taskState == .busy {
-                    ToolbarItem(placement: .confirmationAction) {
+                    ToolbarItem(placement: .topBarTrailing4AllOS) {
                         ProgressView()
                     }
                 }
                 if !theVM.allGPIDs.isEmpty {
-                    ToolbarItem(placement: .confirmationAction) {
+                    ToolbarItem(placement: .topBarTrailing4AllOS) {
                         Picker("".description, selection: $currentPage.animation()) {
                             ForEach(Page.allCases) { currentCase in
                                 Text(currentCase.localizedTitleForTabs).tag(currentCase)

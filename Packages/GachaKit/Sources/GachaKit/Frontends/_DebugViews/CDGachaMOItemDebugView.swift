@@ -54,7 +54,7 @@ public struct CDGachaMODebugView: View {
         }
         .formStyle(.grouped).disableFocusable()
         .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
+            ToolbarItem(placement: .topBarTrailing4AllOS) {
                 Picker("".description, selection: $delegate.game.animation()) {
                     ForEach(Self.oldGachaGames) { enumeratedGame in
                         Text(enumeratedGame.uidPrefix)

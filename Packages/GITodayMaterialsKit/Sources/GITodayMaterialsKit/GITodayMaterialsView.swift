@@ -36,7 +36,7 @@ public struct GITodayMaterialsView<T: View>: View {
             .formStyle(.grouped).disableFocusable()
             .scrollContentBackground(.hidden)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing4AllOS) {
                     Picker("".description, selection: $isWeapon.animation()) {
                         Text("todayMaterialsKit.character.short".i18nTodayMaterials).tag(false)
                         Text("todayMaterialsKit.weapon.short".i18nTodayMaterials).tag(true)

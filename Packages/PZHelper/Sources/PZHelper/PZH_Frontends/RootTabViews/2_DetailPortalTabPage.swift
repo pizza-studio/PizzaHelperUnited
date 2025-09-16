@@ -130,14 +130,14 @@ struct DetailPortalTabPage: View {
         if !sortedProfiles.isEmpty {
             content.toolbar {
                 if vmDPV.currentProfile != nil {
-                    ToolbarItem(placement: .confirmationAction) {
+                    ToolbarItem(placement: .topBarTrailing4AllOS) {
                         Button("".description, systemImage: "arrow.clockwise") {
                             refreshAction()
                         }
                     }
                 }
                 if showProfileSwitcher {
-                    ToolbarItem(placement: .confirmationAction) {
+                    ToolbarItem(placement: .topBarTrailing4AllOS) {
                         profileSwitcherMenu()
                     }
                 }

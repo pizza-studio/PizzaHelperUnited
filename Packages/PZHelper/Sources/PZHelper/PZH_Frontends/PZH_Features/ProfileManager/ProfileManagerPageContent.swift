@@ -127,7 +127,7 @@ struct ProfileManagerPageContent: View {
             content
                 .toolbar {
                     #if os(iOS) || targetEnvironment(macCatalyst)
-                    ToolbarItem(placement: .confirmationAction) {
+                    ToolbarItem(placement: .topBarTrailing4AllOS) {
                         Button(isEditMode.isEditing ? "sys.done".i18nBaseKit : "sys.edit".i18nBaseKit) {
                             withAnimation {
                                 isEditMode = (isEditMode.isEditing) ? .inactive : .active
@@ -135,7 +135,7 @@ struct ProfileManagerPageContent: View {
                         }
                     }
                     #endif
-                    ToolbarItem(placement: .confirmationAction) {
+                    ToolbarItem(placement: .topBarTrailing4AllOS) {
                         ProfileBackupRestoreMenu(
                             importCompletionHandler: handleImportProfilePackResult,
                             extraItem: extraMenuItems

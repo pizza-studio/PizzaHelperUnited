@@ -47,11 +47,11 @@ public struct GachaProfileDetailedListView: View {
                         .environment(theVM)
                 }
                 if theVM.taskState == .busy {
-                    ToolbarItem(placement: .confirmationAction) {
+                    ToolbarItem(placement: .topBarTrailing4AllOS) {
                         ProgressView()
                     }
                 }
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing4AllOS) {
                     GachaExportToolbarButton(gpid: theVM.currentGPID)?
                         .environment(theVM)
                 }

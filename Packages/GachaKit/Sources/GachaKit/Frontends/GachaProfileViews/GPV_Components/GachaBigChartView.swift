@@ -39,7 +39,7 @@ public struct GachaBigChartView: View {
                         .environment(gachaVM)
                 }
                 if gachaVM.taskState == .busy {
-                    ToolbarItem(placement: .confirmationAction) {
+                    ToolbarItem(placement: .topBarTrailing4AllOS) {
                         ProgressView()
                     }
                 }
