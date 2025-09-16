@@ -3375,40 +3375,292 @@
     },
     "settings.widgets.fetchGenshinNamecardBGOnline" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Namenskarten-Hintergründe online abrufen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fetch Namecard Backgrounds Online"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtener fondos de tarjetas de presentación en línea"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kunin ang mga Background ng Namecard Online"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Récupérer les arrière-plans de carte d'identité en ligne"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recupera sfondi targhette online"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名刺背景をオンラインで取得"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "온라인으로 명함 배경 가져오기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загружать фоны визиток онлайн"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tải nền thẻ tên trực tuyến"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在线获取名片背景"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "線上獲取名片背景"
           }
         }
       }
     },
     "settings.widgets.fetchGenshinNamecardBGOnline.explain" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um die Dateigröße der App klein zu halten, sind die Genshin Impact-Namenskarten-Assets absichtlich in niedriger Auflösung. Wenn diese Option aktiviert ist, versucht ein Desktop-Widget, das Bild in voller Auflösung von EnkaNetwork abzurufen. Bitte beachten Sie, dass Netzwerklatenz manchmal dazu führen kann, dass das gesamte Widget einfriert. Falls Sie dieses Problem haben, deaktivieren Sie einfach die Option."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "To keep the app's file size small, the Genshin Impact namecard assets are intentionally in a lower resolution. When this option is enabled, a desktop widget will try to fetch the full-resolution image from EnkaNetwork. Please note that network latency can sometimes cause the entire widget to freeze. If you experience this issue, simply disable the option."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para mantener pequeño el tamaño del archivo de la aplicación, los recursos de tarjetas de presentación de Genshin Impact están intencionalmente en baja resolución. Cuando esta opción está habilitada, un widget de escritorio intentará obtener la imagen de resolución completa de EnkaNetwork. Ten en cuenta que la latencia de red a veces puede hacer que todo el widget se congele. Si experimentas este problema, simplemente desactiva la opción."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para mapanatiling maliit ang laki ng file ng app, ang mga Genshin Impact namecard assets ay sinadyang nasa mababang resolution. Kapag pinagana ang opsyong ito, susubukan ng desktop widget na kunin ang full-resolution na larawan mula sa EnkaNetwork. Pakitandaan na ang network latency ay maaaring maging dahilan ng pag-freeze ng buong widget. Kung maranasan mo ang problemang ito, i-disable lang ang opsyon."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour garder la taille du fichier de l'application petite, les ressources de cartes d'identité Genshin Impact sont intentionnellement en basse résolution. Lorsque cette option est activée, un widget de bureau essaiera de récupérer l'image en pleine résolution depuis EnkaNetwork. Veuillez noter que la latence réseau peut parfois causer le gel complet du widget. Si vous rencontrez ce problème, désactivez simplement l'option."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per mantenere piccole le dimensioni del file dell'app, le risorse delle targhette di Genshin Impact sono intenzionalmente a bassa risoluzione. Quando questa opzione è abilitata, un widget desktop proverà a recuperare l'immagine a risoluzione completa da EnkaNetwork. Si prega di notare che la latenza di rete può talvolta causare il blocco dell'intero widget. Se riscontri questo problema, disabilita semplicemente l'opzione."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリのファイルサイズを小さく保つため、原神の名刺アセットは意図的に低解像度になっています。このオプションを有効にすると、デスクトップウィジェットはEnkaNetworkからフル解像度の画像を取得しようとします。ネットワークの遅延により、ウィジェット全体がフリーズすることがあることにご注意ください。この問題が発生した場合は、単にオプションを無効にしてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱의 파일 크기를 작게 유지하기 위해 원신 명함 에셋은 의도적으로 낮은 해상도로 되어 있습니다. 이 옵션을 활성화하면 데스크톱 위젯이 EnkaNetwork에서 전체 해상도 이미지를 가져오려고 시도합니다. 네트워크 지연으로 인해 때때로 전체 위젯이 멈출 수 있음을 참고하세요. 이 문제가 발생하면 옵션을 비활성화하세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чтобы сохранить размер файла приложения небольшим, ресурсы визиток Genshin Impact намеренно имеют низкое разрешение. Когда эта опция включена, настольный виджет попытается загрузить изображение полного разрешения с EnkaNetwork. Обратите внимание, что задержка сети иногда может привести к зависанию всего виджета. Если вы столкнетесь с этой проблемой, просто отключите опцию."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Để giữ cho kích thước tệp ứng dụng nhỏ, các tài sản thẻ tên Genshin Impact được cố ý ở độ phân giải thấp. Khi tùy chọn này được bật, widget trên màn hình nền sẽ cố gắng tải hình ảnh độ phân giải đầy đủ từ EnkaNetwork. Lưu ý rằng độ trễ mạng đôi khi có thể khiến toàn bộ widget bị đóng băng. Nếu bạn gặp vấn đề này, chỉ cần tắt tùy chọn."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "为了保持应用文件大小较小，原神名片资源故意使用较低分辨率。启用此选项后，桌面小组件将尝试从EnkaNetwork获取全分辨率图像。请注意，网络延迟有时可能导致整个小组件冻结。如果遇到此问题，只需禁用该选项即可。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "為了保持應用程式檔案大小較小，原神名片資源故意使用較低解析度。啟用此選項後，桌面小工具將嘗試從EnkaNetwork獲取全解析度圖像。請注意，網路延遲有時可能導致整個小工具凍結。如果遇到此問題，只需停用該選項即可。"
           }
         }
       }
     },
     "settings.widgets.howToUse.explanation" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für Informationen zur Verwendung von Widgets auf Apple-Geräten wenden Sie sich bitte an den Apple Support. Bitte beachten Sie, dass Widget-Funktionen je nach Betriebssystem und deren jährlichen Updates variieren können. Die auf der aktuellen Seite angezeigten Optionen betreffen nur Desktop-Widgets."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "For information on how to use widgets on Apple devices, please consult Apple Support. Please note that widget functionalities may vary across different operating systems and their annual updates. The options shown in the current page only affects desktop widets."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para información sobre cómo usar widgets en dispositivos Apple, consulta el Soporte de Apple. Ten en cuenta que las funcionalidades de widgets pueden variar entre diferentes sistemas operativos y sus actualizaciones anuales. Las opciones mostradas en la página actual solo afectan a los widgets de escritorio."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para sa impormasyon kung paano gamitin ang mga widget sa mga Apple device, makipag-ugnayan sa Apple Support. Pakitandaan na ang mga functionality ng widget ay maaaring mag-iba sa iba't ibang operating system at sa kanilang taunang mga update. Ang mga opsyong ipinakita sa kasalukuyang pahina ay nakakaapekto lamang sa mga desktop widget."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour des informations sur l'utilisation des widgets sur les appareils Apple, veuillez consulter le Support Apple. Veuillez noter que les fonctionnalités des widgets peuvent varier selon les différents systèmes d'exploitation et leurs mises à jour annuelles. Les options affichées sur la page actuelle n'affectent que les widgets de bureau."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per informazioni su come utilizzare i widget sui dispositivi Apple, consulta il Supporto Apple. Si prega di notare che le funzionalità dei widget possono variare tra diversi sistemi operativi e i loro aggiornamenti annuali. Le opzioni mostrate nella pagina corrente influiscono solo sui widget del desktop."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple デバイスでウィジェットを使用する方法については、Apple サポートにお問い合わせください。ウィジェットの機能は、異なるオペレーティングシステムやその年次アップデートによって異なる場合があることにご注意ください。現在のページに表示されるオプションは、デスクトップウィジェットにのみ影響します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 기기에서 위젯을 사용하는 방법에 대한 정보는 Apple 지원에 문의하세요. 위젯 기능은 다른 운영 체제와 연간 업데이트에 따라 달라질 수 있음을 참고하세요. 현재 페이지에 표시된 옵션은 데스크톱 위젯에만 영향을 줍니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для получения информации о том, как использовать виджеты на устройствах Apple, обратитесь в службу поддержки Apple. Обратите внимание, что функциональность виджетов может различаться в зависимости от операционных систем и их ежегодных обновлений. Параметры, показанные на текущей странице, влияют только на настольные виджеты."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Để biết thông tin về cách sử dụng widget trên thiết bị Apple, vui lòng tham khảo Hỗ trợ Apple. Lưu ý rằng các chức năng widget có thể khác nhau giữa các hệ điều hành khác nhau và các bản cập nhật hàng năm của chúng. Các tùy chọn hiển thị trong trang hiện tại chỉ ảnh hưởng đến widget trên màn hình nền."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有关如何在Apple设备上使用小组件的信息，请咨询Apple支持。请注意，小组件功能可能因不同的操作系统及其年度更新而有所不同。当前页面显示的选项仅影响桌面小组件。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有關如何在Apple裝置上使用小工具的資訊，請諮詢Apple支援。請注意，小工具功能可能因不同的作業系統及其年度更新而有所不同。目前頁面顯示的選項僅影響桌面小工具。"
           }
         }
       }
     },
     "settings.widgets.navTitle" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget-Einstellungen (Gemeinsam)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Widget Shared Settings"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración Compartida de Widgets"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Shared na Setting ng Widget"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres Partagés des Widgets"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni Condivise Widget"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウィジェット共通設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위젯 공유 설정"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Общие настройки виджетов"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cài Đặt Chia Sẻ Widget"
           }
         },
         "zh-Hans" : {
@@ -3427,10 +3679,64 @@
     },
     "settings.widgets.navTitle.shortened" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Widgets"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Widget"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウィジェット"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위젯"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виджеты"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
           }
         },
         "zh-Hans" : {
@@ -3449,10 +3755,64 @@
     },
     "settings.widgets.staminaFontPref.custom" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzerdefiniert"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Custom"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizado"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personnalisé"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizzato"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタム"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용자 정의"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пользовательский"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tùy chỉnh"
           }
         },
         "zh-Hans" : {
@@ -3471,10 +3831,64 @@
     },
     "settings.widgets.staminaFontPref.fieldName" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausdauer-Schriftart"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stamina Font"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuente de Resistencia"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Font ng Stamina"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Police de Résine"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Font Resistenza"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタミナフォント"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "체력 글꼴"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шрифт выносливости"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Font Thể Lực"
           }
         },
         "zh-Hans" : {
@@ -3494,10 +3908,64 @@
     "settings.widgets.staminaFontPref.fontFamilyName" : {
       "comment" : "Font Family Name",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Familienname"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Family Name"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de Familia"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pangalan ng Pamilya"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom de Famille"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome Famiglia"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファミリー名"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "패밀리 이름"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя семейства"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tên Họ Font"
           }
         },
         "zh-Hans" : {
@@ -3516,10 +3984,64 @@
     },
     "settings.widgets.staminaFontPref.fontFamilyName.prompt" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte geben Sie den Namen der Schriftfamilie ein."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Please enter the font family name."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, introduce el nombre de la familia de fuentes."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pakitype ang pangalan ng font family."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez saisir le nom de la famille de polices."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserire il nome della famiglia di font."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォントファミリー名を入力してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "글꼴 패밀리 이름을 입력하세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста, введите имя семейства шрифтов."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vui lòng nhập tên họ font."
           }
         },
         "zh-Hans" : {
@@ -3538,10 +4060,64 @@
     },
     "settings.widgets.staminaFontPref.systemRounded" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerundet"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rounded"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redondeado"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rounded"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrondi"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrotondato"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "角丸"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "둥근체"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Закругленный"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bo tròn"
           }
         },
         "zh-Hans" : {
@@ -3560,10 +4136,64 @@
     },
     "settings.widgets.staminaFontPref.systemSansSerif" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sans-Serif"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sans-Serif"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sans-Serif"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sans-Serif"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sans-Serif"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sans-Serif"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ゴシック体"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "고딕체"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Без засечек"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không chân"
           }
         },
         "zh-Hans" : {
@@ -3582,10 +4212,64 @@
     },
     "settings.widgets.staminaFontPref.systemSerif" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serif"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Serif"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serif"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serif"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serif"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serif"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "明朝体"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "명조체"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "С засечками"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Có chân"
           }
         },
         "zh-Hans" : {
