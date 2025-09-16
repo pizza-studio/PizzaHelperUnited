@@ -38,6 +38,8 @@ public struct CharacterInventoryView: View {
                         currentAvatarSummaryID = ""
                         simpleTaptic(type: .medium)
                     }
+                    // 似乎下一行在这里并不是刚需，暂时先不套用。
+                    // .id(currentAvatarSummaryID)
                 }
         }
         .react(to: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {
