@@ -85,7 +85,7 @@ public struct CharacterIconView: View {
                 .background { turnImageAsBlurredBackground4GI(fetched) }
                 .clipShape(RoundedRectangle(cornerRadius: size / 10))
                 .contentShape(RoundedRectangle(cornerRadius: size / 10))
-                .compositingGroup()
+                .drawingGroup()
         } else {
             blankQuestionedView
         }
@@ -117,7 +117,7 @@ public struct CharacterIconView: View {
                         .contentShape(RoundedRectangle(cornerRadius: roundRectCornerRadius))
                 }
             }
-            .compositingGroup()
+            .drawingGroup()
         } else {
             blankQuestionedView
         }
@@ -144,7 +144,7 @@ public struct CharacterIconView: View {
                 }
                 .clipShape(RoundedRectangle(cornerRadius: size / 10))
                 .contentShape(RoundedRectangle(cornerRadius: size / 10))
-                .compositingGroup()
+                .drawingGroup()
         } else {
             blankQuestionedView
         }
@@ -183,7 +183,7 @@ public struct CharacterIconView: View {
                         .contentShape(RoundedRectangle(cornerRadius: roundRectCornerRadius))
                 }
             }
-            .compositingGroup()
+            .drawingGroup()
         } else {
             blankQuestionedView
         }
@@ -239,7 +239,7 @@ public struct CharacterIconView: View {
         }.frame(width: size, height: size)
             .clipShape(RoundedRectangle(cornerRadius: size / 10))
             .contentShape(RoundedRectangle(cornerRadius: size / 10))
-            .compositingGroup()
+            .drawingGroup()
     }
 
     @ViewBuilder private var namecardBg4GI: some View {
@@ -326,7 +326,7 @@ public struct CharacterIconView: View {
                     drawPathTotemWhenShould()
                 }
             }
-            .compositingGroup()
+            .drawingGroup()
     }
 
     @ViewBuilder

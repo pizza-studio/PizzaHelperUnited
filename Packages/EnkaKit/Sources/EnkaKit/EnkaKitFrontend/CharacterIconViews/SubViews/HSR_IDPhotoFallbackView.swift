@@ -34,7 +34,7 @@ struct IDPhotoFallbackView4HSR: View {
     // MARK: Public
 
     public var body: some View {
-        coreBody.compositingGroup()
+        coreBody.drawingGroup()
     }
 
     // MARK: Internal

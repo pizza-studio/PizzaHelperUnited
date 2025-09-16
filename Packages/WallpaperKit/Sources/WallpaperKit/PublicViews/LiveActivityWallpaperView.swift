@@ -42,7 +42,7 @@ public struct LiveActivityWallpaperView: View {
                     .opacity(0.3)
             }
         }
-        .compositingGroup()
+        .drawingGroup()
         .id(viewRefreshHash)
     }
 
