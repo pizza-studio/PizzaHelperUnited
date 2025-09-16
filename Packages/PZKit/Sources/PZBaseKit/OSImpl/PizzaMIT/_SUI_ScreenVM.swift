@@ -96,6 +96,9 @@ public final class ScreenVM {
         var newResult = windowSizeObserved
         guard splitViewVisibility != .detailOnly else { return newResult }
         newResult.width -= actualSidebarWidthObserved
+        if OS.liquidGlassThemeSuspected {
+            newResult.width -= 10
+        }
         guard newResult.width > 0 else { return windowSizeObserved }
         return newResult
     }
