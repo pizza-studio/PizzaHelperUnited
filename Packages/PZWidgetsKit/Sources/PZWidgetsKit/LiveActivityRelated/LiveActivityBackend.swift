@@ -211,7 +211,9 @@ public final class StaminaLiveActivityController: Sendable {
         wpCacheHandling: if let wpID = wallpaperID {
             guard let wpMatched = Wallpaper(id: wpID) else { break wpCacheHandling }
             guard case let .bundled(bundledWP) = wpMatched else { break wpCacheHandling }
-            await bundledWP.saveOnlineBackgroundAsset()
+            await bundledWP.saveOnlineBackgroundAsset(
+                skip: !Defaults[.fetchGenshinNamecardBGOnline]
+            )
         }
 
         let status: LiveActivityAttributes.LiveActivityState = .init(

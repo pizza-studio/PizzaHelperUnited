@@ -55,9 +55,16 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
     }
 
     public func saveOnlineBackgroundAsset() async {
+        #if !os(watchOS)
         switch Wallpaper(id: background.id) {
-        case let .bundled(bundledWP): await bundledWP.saveOnlineBackgroundAsset()
+        case let .bundled(bundledWP):
+            await bundledWP.saveOnlineBackgroundAsset(
+                skip: !Defaults[.fetchGenshinNamecardBGOnline]
+            )
         default: break
         }
+        #else
+        return
+        #endif
     }
 }

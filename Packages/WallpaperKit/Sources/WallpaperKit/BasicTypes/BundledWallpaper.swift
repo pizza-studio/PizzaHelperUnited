@@ -268,8 +268,10 @@ extension Locale {
 
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension BundledWallpaper {
-    public func saveOnlineBackgroundAsset() async {
-        await BackgroundSavingActor.shared.saveOnlineBackgroundAsset(for: self)
+    public func saveOnlineBackgroundAsset(skip: Bool = false) async {
+        await BackgroundSavingActor.shared.saveOnlineBackgroundAsset(
+            for: self, skip: skip
+        )
     }
 }
 
@@ -285,8 +287,10 @@ private actor BackgroundSavingActor {
 
     public static let shared = BackgroundSavingActor()
 
-    public func saveOnlineBackgroundAsset(for bundledWP: BundledWallpaper) async {
-        guard let url = bundledWP.onlineAssetURL else { return }
+    public func saveOnlineBackgroundAsset(
+        for bundledWP: BundledWallpaper, skip: Bool = false
+    ) async {
+        guard !skip, let url = bundledWP.onlineAssetURL else { return }
         guard await ImageMap.shared.assetMap[url] == nil else { return }
         let data: Data = (try? await AF.request(url).serializingData().value) ?? .init([])
         guard let cgImage = CGImage.instantiate(data: data) else { return }
