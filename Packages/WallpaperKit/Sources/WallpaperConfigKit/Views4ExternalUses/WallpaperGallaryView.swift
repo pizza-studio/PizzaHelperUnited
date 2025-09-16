@@ -26,7 +26,7 @@ public struct WallpaperGalleryViewContent: View {
                 coreBodyView
             }
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing4AllOS) {
                     Picker("".description, selection: $game.animation()) {
                         Text("game.genshin.shortNameEX".i18nBaseKit)
                             .tag(Pizza.SupportedGame.genshinImpact as Pizza.SupportedGame?)

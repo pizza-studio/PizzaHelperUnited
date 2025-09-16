@@ -74,7 +74,7 @@ public struct CharacterInventoryView: View {
         .listContainerBackground()
         .navigationTitle("hylKit.inventoryView.characters.title".i18nHYLKit)
         .toolbar {
-            ToolbarItemGroup(placement: .confirmationAction) {
+            ToolbarItemGroup(placement: .topBarTrailing4AllOS) {
                 Picker("".description, selection: $expanded.animation()) {
                     Text("hylKit.inventoryView.expand.tabText".i18nHYLKit).tag(true)
                     Text("hylKit.inventoryView.collapse.tabText".i18nHYLKit).tag(false)

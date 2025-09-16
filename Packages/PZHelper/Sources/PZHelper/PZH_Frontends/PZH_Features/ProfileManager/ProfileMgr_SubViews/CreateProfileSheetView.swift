@@ -51,7 +51,7 @@ extension ProfileManagerPageContent {
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
                     if status != .pending {
-                        ToolbarItem(placement: .confirmationAction) {
+                        ToolbarItem(placement: .topBarTrailing4AllOS) {
                             Button("sys.done".i18nBaseKit) {
                                 saveProfile()
                                 // globalDailyNoteCardRefreshSubject.send(())
@@ -60,7 +60,7 @@ extension ProfileManagerPageContent {
                             .disabled(status != .gotProfile)
                         }
                     } else {
-                        ToolbarItem(placement: .confirmationAction) {
+                        ToolbarItem(placement: .topBarTrailing4AllOS) {
                             menuForManagingHoYoLabProfiles()
                         }
                     }

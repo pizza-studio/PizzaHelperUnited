@@ -69,7 +69,7 @@ public struct GachaProfileManagementView: View {
             }
             .toolbar {
                 if theVM.taskState == .busy {
-                    ToolbarItem(placement: .confirmationAction) {
+                    ToolbarItem(placement: .topBarTrailing4AllOS) {
                         ProgressView()
                     }
                 }

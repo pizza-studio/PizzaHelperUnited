@@ -132,12 +132,12 @@ public struct ContentView4iOS14: View {
         .navigationTitle(Text("app.appName.full", bundle: .module))
         .navBarTitleDisplayMode(.large)
         .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
+            ToolbarItem(placement: .topBarTrailing4AllOS) {
                 if theVM.taskState == .busy {
                     ProgressView()
                 }
             }
-            ToolbarItem(placement: .confirmationAction) {
+            ToolbarItem(placement: .topBarTrailing4AllOS) {
                 Button {
                     theVM.startDocumentationPreparationTask(forced: false)
                 } label: {

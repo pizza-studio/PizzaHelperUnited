@@ -88,7 +88,7 @@ public struct AccountMODebugView: View {
         }
         .formStyle(.grouped).disableFocusable()
         .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
+            ToolbarItem(placement: .topBarTrailing4AllOS) {
                 Picker("".description, selection: $game.animation()) {
                     ForEach(casesOfGames) { enumeratedGame in
                         Text(enumeratedGame.uidPrefix)

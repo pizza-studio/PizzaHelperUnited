@@ -31,7 +31,7 @@ public struct UserWallpaperMgrViewContent: View {
                 .toolbar {
                     #if os(iOS) || targetEnvironment(macCatalyst)
                     if !userWallpapers.isEmpty {
-                        ToolbarItem(placement: .confirmationAction) {
+                        ToolbarItem(placement: .topBarTrailing4AllOS) {
                             Button(isEditMode.isEditing ? "sys.done".i18nBaseKit : "sys.edit".i18nBaseKit) {
                                 withAnimation {
                                     isEditMode = (isEditMode.isEditing) ? .inactive : .active
@@ -41,7 +41,7 @@ public struct UserWallpaperMgrViewContent: View {
                     }
                     #endif
 
-                    ToolbarItem(placement: .confirmationAction) {
+                    ToolbarItem(placement: .topBarTrailing4AllOS) {
                         UserWallpaperExchangeMenu { importFileResult in
                             switch importFileResult {
                             case .failure:
