@@ -145,7 +145,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "小组件背景"
+            "value" : "小工具背景"
           }
         },
         "zh-Hant" : {
@@ -1665,7 +1665,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "替该小组件选择两个本地账号"
+            "value" : "替该小工具选择两个本地账号"
           }
         },
         "zh-Hant" : {
@@ -1741,7 +1741,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "替该小组件选择一个本地账号"
+            "value" : "替该小工具选择一个本地账号"
           }
         },
         "zh-Hant" : {
@@ -2425,7 +2425,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[原神] 在大尺寸小组件显示每日材料"
+            "value" : "[原神] 在大尺寸小工具显示每日材料"
           }
         },
         "zh-Hant" : {
@@ -5670,13 +5670,13 @@
               "mac" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "请右键编辑小组件选择本地账号"
+                  "value" : "请右键编辑小工具选择本地账号"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "请长按小组件选择本地账号"
+                  "value" : "请长按小工具选择本地账号"
                 }
               }
             }
@@ -5767,7 +5767,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重新载入该小组件"
+            "value" : "重新载入该小工具"
           }
         },
         "zh-Hant" : {
