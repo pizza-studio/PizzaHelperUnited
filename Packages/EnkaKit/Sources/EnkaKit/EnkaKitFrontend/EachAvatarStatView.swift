@@ -399,7 +399,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
                                 height: fontSize * 0.95
                             )
                             .background {
-                                Color.black.clipShape(.circle).blurMaterialBackground().opacity(0.3)
+                                Color.black.blurMaterialBackground(shape: .circle).opacity(0.3)
                             }
                         }
                     }

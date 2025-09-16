@@ -74,7 +74,7 @@ final class RootNavVM: Sendable {
             .width <= 440
         if OS.isBuggyOS25Build, isOverCompact {
             bottomTabBarForCompactLayout(allCases: !screenVM.isSidebarVisible)
-                .blurMaterialBackground()
+                .blurMaterialBackground(shape: .capsule)
                 .shadow(radius: 4)
         }
         #endif
@@ -145,8 +145,7 @@ final class RootNavVM: Sendable {
             case true:
                 currentContent
                     .pickerStyle(.menu)
-                    .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected)
-                    .clipShape(.capsule)
+                    .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected, shape: .capsule)
             case false:
                 currentContent
                     .pickerStyle(.segmented)

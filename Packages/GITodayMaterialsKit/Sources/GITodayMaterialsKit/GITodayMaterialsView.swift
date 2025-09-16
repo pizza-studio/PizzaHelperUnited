@@ -56,8 +56,8 @@ public struct GITodayMaterialsView<T: View>: View {
                         .pickerStyle(.menu)
                         .labelsHidden()
                         .fixedSize()
-                        .blurMaterialBackground(enabled: true) // 在正中心位置时，不是玻璃按钮，所以始终启用。
-                        .clipShape(.capsule)
+                        // 在正中心位置时，不是玻璃按钮，所以始终启用。
+                        .blurMaterialBackground(enabled: true, shape: .capsule)
                     }
                 }
             }

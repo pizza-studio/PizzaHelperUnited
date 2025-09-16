@@ -117,7 +117,6 @@ extension ProfileManagerVM {
             }
         }
         .padding(4).padding(.leading, 12)
-        .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected)
-        .clipShape(.capsule)
+        .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected, shape: .capsule)
     }
 }
