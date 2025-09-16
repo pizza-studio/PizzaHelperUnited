@@ -206,7 +206,7 @@ public struct CharacterInventoryView: View {
     private let game: Pizza.SupportedGame
 
     private var containerWidth: CGFloat {
-        screenVM.mainColumnCanvasSizeObserved.width - 48
+        screenVM.mainColumnCanvasSizeObserved.width - 64
     }
 
     private var lineCapacity: Int {
