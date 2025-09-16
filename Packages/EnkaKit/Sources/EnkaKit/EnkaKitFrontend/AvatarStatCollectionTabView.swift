@@ -80,7 +80,6 @@ public struct AvatarStatCollectionTabView: View {
             .page(indexDisplayMode: showTabViewIndex ? .automatic : .never)
         )
         #endif
-        .compositingGroup()
         .background {
             // 此处设计仅为了扩大点击范围。
             Color.clear
@@ -119,7 +118,7 @@ public struct AvatarStatCollectionTabView: View {
                     .scaleEffect(1.2)
                     .clipped()
             }
-            .compositingGroup()
+            .drawingGroup()
             .ignoresSafeArea(.all, edges: .all)
         }
         #if !os(macOS)

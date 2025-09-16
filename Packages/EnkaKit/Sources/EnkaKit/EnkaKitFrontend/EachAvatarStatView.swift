@@ -55,7 +55,7 @@ public struct EachAvatarStatView: View {
                         .scaleEffect(1.2)
                         .clipped()
                 }
-                .compositingGroup()
+                .drawingGroup()
                 .ignoresSafeArea(.all)
             }
         }
@@ -225,7 +225,7 @@ extension Enka.AvatarSummarized.CharacterID {
                     .opacity(0.05)
                 bgPath
                     // .frame(maxHeight: 63).clipped()
-                    .compositingGroup()
+                    .drawingGroup()
             }
         case .genshinImpact:
             let wallpaper = BundledWallpaper.findNameCardForGenshinCharacter(charID: id)
@@ -248,7 +248,7 @@ extension Enka.AvatarSummarized.CharacterID {
                     }
                     .opacity(0.6)
                     // .frame(maxHeight: 63).clipped()
-                    .compositingGroup()
+                    .drawingGroup()
                 }
         case .zenlessZone: EmptyView() // 临时设定。
         }
@@ -278,7 +278,7 @@ extension Enka.AvatarSummarized.CharacterID {
                             content
                         }
                     }
-                    .compositingGroup()
+                    .drawingGroup()
                 }
         } else {
             localIcon4SUI

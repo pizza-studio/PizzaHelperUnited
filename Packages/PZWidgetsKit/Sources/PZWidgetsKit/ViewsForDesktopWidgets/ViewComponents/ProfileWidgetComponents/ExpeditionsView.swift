@@ -209,7 +209,7 @@ extension DesktopWidgets {
                             .clipShape(.capsule)
                     }
                     .aspectRatio(30 / 1, contentMode: .fit)
-                    .compositingGroup()
+                    .drawingGroup()
                     .clipShape(.capsule)
                     .environment(\.colorScheme, .dark)
                     .legibilityShadow(isText: false)

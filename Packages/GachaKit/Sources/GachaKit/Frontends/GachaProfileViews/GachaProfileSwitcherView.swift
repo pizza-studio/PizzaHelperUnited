@@ -55,7 +55,7 @@ public struct GachaProfileSwitcherView: View {
             }
             .frame(width: dimension, height: dimension)
             .clipShape(.circle)
-            .compositingGroup()
+            .drawingGroup()
         } label: {
             if let profile = theVM.currentGPID {
                 Text(profile.uidWithGame).fontWidth(.condensed)

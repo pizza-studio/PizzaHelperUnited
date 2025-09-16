@@ -61,7 +61,7 @@ public struct IDPhotoView4HSR: View {
     }
 
     public var body: some View {
-        coreBody.compositingGroup()
+        coreBody.drawingGroup()
     }
 
     // MARK: Internal

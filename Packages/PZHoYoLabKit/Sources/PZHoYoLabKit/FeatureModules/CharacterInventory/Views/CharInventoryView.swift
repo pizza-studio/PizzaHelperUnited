@@ -118,7 +118,7 @@ public struct CharacterInventoryView: View {
                                     let idObj = avatar.wrappedValue.mainInfo.idExpressable
                                     idObj.asRowBG(element: avatar.wrappedValue.mainInfo.element)
                                 }
-                                .compositingGroup()
+                                .drawingGroup()
                                 .onTapGesture {
                                     currentAvatarSummaryID = avatar.id
                                     simpleTaptic(type: .medium)
@@ -158,7 +158,7 @@ public struct CharacterInventoryView: View {
                             .task {
                                 let avatarListItem = AvatarListItem(game: game, avatar: avatar, condensed: true)
                                     .padding(.vertical, 4)
-                                    .compositingGroup()
+                                    .drawingGroup()
                                 let renderer = ImageRenderer(
                                     content: avatarListItem
                                 )

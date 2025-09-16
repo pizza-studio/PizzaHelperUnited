@@ -108,7 +108,7 @@ extension ProfileManagerVM {
             }
             .frame(width: dimension, height: dimension)
             .clipShape(.circle)
-            .compositingGroup()
+            .drawingGroup()
         } label: {
             if let profile: PZProfileSendable = target.wrappedValue {
                 Text(profile.uidWithGame).fontWidth(.condensed)
