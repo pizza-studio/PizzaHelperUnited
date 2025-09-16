@@ -19,9 +19,9 @@ extension View {
     }
 
     @ViewBuilder
-    public func adjustedBlurMaterialBackground(enabled: Bool = true) -> some View {
+    public func corneredTagMaterialBackground(enabled: Bool = true) -> some View {
         if #available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *), enabled {
-            modifier(AdjustedBlurMaterialBackground())
+            modifier(CorneredTagMaterialBackground())
         } else {
             self
         }
@@ -51,38 +51,16 @@ extension View {
 struct BlurMaterialBackground: ViewModifier {
     @ViewBuilder
     public func body(content: Content) -> some View {
-        content.background(
-            .regularMaterial,
-            in: .rect
-        )
-        .contentShape(.rect)
+        if #available(iOS 26.0, macCatalyst 26.0, watchOS 26.0, *) {
+            content
+                .glassEffect(.regular, in: .rect)
+                .contentShape(.rect)
+        } else {
+            content.background(
+                .regularMaterial,
+                in: .rect
+            )
+            .contentShape(.rect)
+        }
     }
-}
-
-// MARK: - AdjustedBlurMaterialBackground
-
-@available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *)
-struct AdjustedBlurMaterialBackground: ViewModifier {
-    // MARK: Public
-
-    @ViewBuilder
-    public func body(content: Content) -> some View {
-        Group {
-            if colorScheme == .dark {
-                content.background(
-                    .thinMaterial,
-                    in: .rect
-                )
-            } else {
-                content.background(
-                    .regularMaterial,
-                    in: .rect
-                )
-            }
-        }.contentShape(.rect)
-    }
-
-    // MARK: Internal
-
-    @Environment(\.colorScheme) var colorScheme
 }
