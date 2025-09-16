@@ -34,3 +34,13 @@ extension View {
         }
     }
 }
+
+extension Font {
+    public static func customWidgetFont(size: CGFloat) -> Font? {
+        guard let url = Bundle.module.url(forResource: "HMVF", withExtension: "ttf") else {
+            return nil
+        }
+        CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
+        return Font.custom("Hitmarker VF", size: size)
+    }
+}
