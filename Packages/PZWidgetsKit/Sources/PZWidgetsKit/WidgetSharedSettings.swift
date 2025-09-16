@@ -8,6 +8,25 @@ import WidgetKit
 
 #if !os(watchOS)
 @available(iOS 16.2, macCatalyst 16.2, *)
+extension Font {
+    public static func customWidgetFont(size: CGFloat) -> Font? {
+        switch Defaults[.widgetStaminaFontPref] {
+        case .systemRounded: return nil
+        case .systemSansSerif: return Font.system(size: size, design: .default)
+        case .systemSerif: return Font.system(size: size, design: .serif)
+        case .custom:
+            let familyName = Defaults[.widgetStaminaFontFamilyName]
+            if familyName == "Hitmarker VF" {
+                let url = Bundle.module.url(forResource: "HMVF", withExtension: "ttf")
+                guard let url else { return nil }
+                CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
+            }
+            return Font.custom(familyName, size: size)
+        }
+    }
+}
+
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension Defaults.Keys {
     public static let widgetStaminaFontPref = Key<WidgetStaminaFontStyle>(
         "widgetStaminaFontPref",
