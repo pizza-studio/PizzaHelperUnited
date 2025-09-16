@@ -59,6 +59,7 @@ public struct EachAvatarStatView: View {
                 .ignoresSafeArea(.all)
             }
         }
+        .contentShape(.rect)
     }
 
     // MARK: Internal
