@@ -128,21 +128,11 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
                         .scaledToFill()
                         .offset(x: isGenshinImpact ? -g.size.width : g.size.width * -0.5)
                 }
-                .onAppear {
-                    NSLog(
-                        "[PZHelper] Successfully initialized UIImage: " + wallpaper.assetName4LiveActivity
-                    )
-                }
             default:
                 // 包括 .systemMedium
                 backgroundImage
                     .resizable()
                     .scaledToFill()
-                    .onAppear {
-                        NSLog(
-                            "[PZHelper] Successfully initialized UIImage: " + wallpaper.assetName4LiveActivity
-                        )
-                    }
             }
         }
     }
