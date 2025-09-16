@@ -30,9 +30,15 @@ extension View {
     @ViewBuilder
     public func listRowMaterialBackground(enabled: Bool = true) -> some View {
         if #available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *), enabled {
-            listRowBackground(
-                Color.clear.background(.thinMaterial, in: Rectangle())
-            )
+            if #available(iOS 26.0, macCatalyst 26.0, watchOS 26.0, *) {
+                listRowBackground(
+                    Color.clear.glassEffect(.regular, in: .rect)
+                )
+            } else {
+                listRowBackground(
+                    Color.clear.background(.thinMaterial, in: .rect)
+                )
+            }
         } else {
             self
         }
