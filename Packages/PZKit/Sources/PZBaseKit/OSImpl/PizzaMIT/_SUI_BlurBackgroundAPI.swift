@@ -10,9 +10,18 @@ import SwiftUI
 
 extension View {
     @ViewBuilder
-    public func blurMaterialBackground(enabled: Bool = true) -> some View {
+    public func blurMaterialBackground<T: Shape>(enabled: Bool = true, shape: T) -> some View {
         if #available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *), enabled {
-            modifier(BlurMaterialBackground())
+            modifier(BlurMaterialBackground(shape: shape))
+        } else {
+            self
+        }
+    }
+
+    @ViewBuilder
+    public func blurMaterialBackground(enabled: Bool = true,) -> some View {
+        if #available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *), enabled {
+            modifier(BlurMaterialBackground(shape: .rect))
         } else {
             self
         }
@@ -48,19 +57,31 @@ extension View {
 // MARK: - BlurMaterialBackground
 
 @available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *)
-struct BlurMaterialBackground: ViewModifier {
+struct BlurMaterialBackground<T: Shape>: ViewModifier {
+    // MARK: Lifecycle
+
+    public init(shape: T) {
+        self.shape = shape
+    }
+
+    // MARK: Public
+
     @ViewBuilder
     public func body(content: Content) -> some View {
         if #available(iOS 26.0, macCatalyst 26.0, watchOS 26.0, *) {
             content
-                .glassEffect(.regular, in: .rect)
-                .contentShape(.rect)
+                .glassEffect(.regular, in: shape)
+                .contentShape(shape)
         } else {
             content.background(
                 .regularMaterial,
-                in: .rect
+                in: shape
             )
-            .contentShape(.rect)
+            .contentShape(shape)
         }
     }
+
+    // MARK: Private
+
+    private let shape: T
 }

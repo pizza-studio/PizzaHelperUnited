@@ -69,8 +69,8 @@ public struct GachaProfileSwitcherView: View {
                 Color.gray.blendMode(.colorDodge)
             }
         }
-        .blurMaterialBackground(enabled: true) // 在正中心位置时，不是玻璃按钮，所以始终启用。
-        .clipShape(.capsule)
+        // 在正中心位置时，不是玻璃按钮，所以始终启用。
+        .blurMaterialBackground(enabled: true, shape: .capsule)
     }
 
     @ViewBuilder
