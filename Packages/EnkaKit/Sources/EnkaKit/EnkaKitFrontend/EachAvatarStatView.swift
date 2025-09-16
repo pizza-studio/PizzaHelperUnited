@@ -101,22 +101,27 @@ public struct EachAvatarStatView: View {
     }
 
     @ViewBuilder var propsPanelBackground: some View {
-        Color.black.opacity(0.2)
-            .clipShape(
-                .rect(
-                    cornerSize: CGSize(
-                        width: fontSize * 0.5,
-                        height: fontSize * 0.5
-                    )
-                )
+        let clipShape: some Shape = .rect(
+            cornerSize: CGSize(
+                width: fontSize * 0.5,
+                height: fontSize * 0.5
             )
-            .overlay {
-                Image(data.isEnka ? "EnkanomiyaAsBG" : "HoYoLABIconAsBG", bundle: .module)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .opacity(0.05)
-                    .padding()
+        )
+        Group {
+            if #available(iOS 26.0, macCatalyst 26.0, watchOS 26.0, *) {
+                Color.clear.clipShape(clipShape)
+                    .glassEffect(.regular, in: clipShape)
+            } else {
+                Color.black.opacity(0.2).clipShape(clipShape)
             }
+        }
+        .overlay {
+            Image(data.isEnka ? "EnkanomiyaAsBG" : "HoYoLABIconAsBG", bundle: .module)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .opacity(0.05)
+                .padding()
+        }
     }
 
     @ViewBuilder
@@ -620,8 +625,12 @@ private struct ArtifactView: View {
             .padding(.vertical, fontSize * 0.13)
             .padding(.horizontal, fontSize * 0.3)
             .background {
-                Color.black.opacity(0.2)
-                    .clipShape(.rect(cornerSize: .init(width: fontSize * 0.5, height: fontSize * 0.5)))
+                if #available(iOS 26.0, macCatalyst 26.0, watchOS 26.0, *) {
+                    Color.clear.clipShape(backgroundClipShape)
+                        .glassEffect(.regular, in: backgroundClipShape)
+                } else {
+                    Color.black.opacity(0.2).clipShape(backgroundClipShape)
+                }
             }
     }
 
@@ -633,6 +642,10 @@ private struct ArtifactView: View {
 
     @Default(.colorizeArtifactSubPropCounts) private var colorizeArtifactSubPropCounts: Bool
     @Default(.artifactRatingRules) private var artifactRatingRules: ArtifactRating.Rules
+
+    private var backgroundClipShape: some Shape {
+        .rect(cornerSize: .init(width: fontSize * 0.5, height: fontSize * 0.5))
+    }
 
     @ViewBuilder
     private func coreBody(fontSize: CGFloat, langTag: String) -> some View {
