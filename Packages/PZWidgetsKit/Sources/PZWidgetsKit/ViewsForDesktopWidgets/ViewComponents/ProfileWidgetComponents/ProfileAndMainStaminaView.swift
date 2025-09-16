@@ -46,8 +46,7 @@ extension DesktopWidgets {
                 case false:
                     HStack(alignment: .firstTextBaseline, spacing: 2) {
                         Text(dailyNote.staminaIntel.finished.description)
-                            .font(.system(size: 50, design: .rounded))
-                            .fontWeight(.medium)
+                            .font(.customWidgetFont(size: 50) ?? .system(size: 50, design: .rounded))
                             .minimumScaleFactor(0.1)
                             .legibilityShadow()
                         dailyNote.game.primaryStaminaAssetIcon
@@ -66,7 +65,9 @@ extension DesktopWidgets {
                             .clipShape(.circle)
                             .legibilityShadow()
                         if #available(iOS 17.0, macCatalyst 17.0, *) {
-                            Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: profile?.uidWithGame)) {
+                            Button(
+                                intent: WidgetRefreshIntent(dailyNoteUIDWithGame: profile?.uidWithGame)
+                            ) {
                                 labelImage
                             }
                             .buttonStyle(.plain)
@@ -120,10 +121,10 @@ extension DesktopWidgets {
                     .legibilityShadow(isText: false)
                 HStack(alignment: .lastTextBaseline, spacing: 3) {
                     Text(dailyNote.staminaIntel.finished.description)
-                        .minimumScaleFactor(0.5)
                         .font(staminaFont4TinyGlassMode)
-                        .legibilityShadow(isText: false)
                         .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                        .legibilityShadow(isText: false)
                     StaminaRecoveryTimeText(data: dailyNote, tiny: true)
                         .lineLimit(2).lineSpacing(1)
                         .minimumScaleFactor(0.5)
@@ -157,11 +158,11 @@ extension DesktopWidgets {
         private var staminaFont4TinyGlassMode: Font {
             switch widgetFamily {
             case .systemSmall:
-                return .title3
+                return .customWidgetFont(size: 25) ?? .title3
             case .systemExtraLarge, .systemLarge, .systemMedium:
-                return .title
+                return .customWidgetFont(size: 25) ?? .title
             default:
-                return .title
+                return .customWidgetFont(size: 25) ?? .title
             }
         }
     }
