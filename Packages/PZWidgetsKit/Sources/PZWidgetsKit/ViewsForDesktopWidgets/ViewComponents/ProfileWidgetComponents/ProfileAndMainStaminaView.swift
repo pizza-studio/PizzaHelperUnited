@@ -46,7 +46,9 @@ extension DesktopWidgets {
                 case false:
                     HStack(alignment: .firstTextBaseline, spacing: 2) {
                         Text(dailyNote.staminaIntel.finished.description)
-                            .font(.customWidgetFont(size: 50) ?? .system(size: 50, design: .rounded))
+                            .font(
+                                .customWidgetFont(size: 50) ?? .system(size: 50, weight: .medium, design: .rounded)
+                            )
                             .minimumScaleFactor(0.1)
                             .legibilityShadow()
                         dailyNote.game.primaryStaminaAssetIcon
