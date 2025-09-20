@@ -254,21 +254,39 @@ extension NotificationSputnik {
             format: NSLocalizedString("notification.stamina.title:%@", bundle: .module, comment: ""),
             profile.name
         )
-        content.body = String(
-            format: NSLocalizedString("notification.stamina.customize.body:%@%@%@", bundle: .module, comment: ""),
-            "\(profile.name) (\(profile.uidWithGame))",
-            threshold.description,
-            dateFormatter.string(from: timeOnFinish)
-        )
-        if Locale.isUILanguageJapanese {
-            content.body = content.body.replacingOccurrences(of: "今日", with: "本日")
-        }
-        content.badge = 1
+        // 计算阈值到达的具体时间
         let timeInterval = remainingSecs - Double(information.all - threshold) * dailyNote.eachStaminaRecoveryTime
         guard timeInterval > 0 else {
             await deleteNotification(.staminaPerThreshold)
             return nil
         }
+        let thresholdTime = Date().addingTimeInterval(timeInterval)
+
+        // 创建周日期时间格式化器
+        let weekdayTimeFormatter = DateFormatter.CurrentLocale()
+        if Locale.isUILanguageJapanese {
+            // 日语使用两个汉字：日曜、月曜等
+            weekdayTimeFormatter.dateFormat = "EEEE HH:mm"
+        } else {
+            weekdayTimeFormatter.dateFormat = "E HH:mm"
+        }
+
+        func formatTimeString(from date: Date) -> String {
+            let timeString = weekdayTimeFormatter.string(from: date)
+            if Locale.isUILanguageJapanese {
+                return timeString.replacingOccurrences(of: "曜日", with: "曜")
+            } else {
+                return timeString
+            }
+        }
+
+        content.body = String(
+            format: NSLocalizedString("notification.stamina.customize.body:%@%@%@", bundle: .module, comment: ""),
+            "\(profile.name) (\(profile.uidWithGame))",
+            threshold.description,
+            formatTimeString(from: thresholdTime)
+        )
+        content.badge = 1
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
         let id = getID(for: .staminaPerThreshold, extraID: threshold.description)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
