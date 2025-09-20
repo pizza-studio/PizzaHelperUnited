@@ -115,6 +115,7 @@ extension PZWidgetsSPM {
                             ) {
                                 Text("settings.widgets.staminaFontPref.fontFamilyName", bundle: .module)
                             }
+                            .autocorrectionDisabled(true)
                             Button {
                                 isWidgetStaminaFontFamilyNameAlertVisible.toggle()
                                 WidgetCenter.shared.reloadAllTimelines()

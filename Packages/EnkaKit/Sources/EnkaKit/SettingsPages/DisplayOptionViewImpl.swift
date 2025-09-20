@@ -29,6 +29,7 @@ extension Enka {
                             guard oldValue != newValue else { return }
                             limitText(20)
                         }
+                        .autocorrectionDisabled(true)
                         Button {
                             isCustomizedNameForWandererAlertVisible.toggle()
                         } label: {

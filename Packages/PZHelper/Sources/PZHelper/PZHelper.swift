@@ -30,6 +30,9 @@ extension PZHelper {
             .initializeApp()
             // .environment(\.horizontalSizeClass, .compact)
             .defaultAppStorage(.baseSuite)
+            // Auto-Correction must be disabled to prevent a memory leak issue on OS24+.
+            // Refs: https://kyleye.top/posts/swiftui-textfield-memory-leak/
+            .autocorrectionDisabled(true)
             #if targetEnvironment(macCatalyst)
                 .frame(
                     minWidth: OS.liquidGlassThemeSuspected ? 832 : 800,

@@ -34,7 +34,9 @@ struct ProfileConfigViewContents: View {
                 TextField(
                     "profile.label.nickname".i18nPZHelper,
                     text: $profile.name
-                ).multilineTextAlignment(.trailing)
+                )
+                .multilineTextAlignment(.trailing)
+                .autocorrectionDisabled(true)
             }
             Toggle(
                 "profile.label.allowNotification".i18nPZHelper,

@@ -412,10 +412,12 @@ extension UserWallpaperMgrViewContent {
                         text: nameEditingBuffer
                     ) {
                         Text("userWallpaperMgr.editingWallpaperName.fieldLabel", bundle: .module)
-                    }.react(to: currentEditingWallpaper) { oldValue, newValue in
+                    }
+                    .react(to: currentEditingWallpaper) { oldValue, newValue in
                         guard oldValue != newValue else { return }
                         textLimiter(30)
                     }
+                    .autocorrectionDisabled(true)
                     if var currentEditingWallpaper {
                         Button {
                             currentEditingWallpaper.name = nameEditingBuffer.wrappedValue

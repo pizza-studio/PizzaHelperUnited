@@ -79,12 +79,13 @@ struct GetCookieWebView: View {
                     dataStore: dataStore,
                     httpHeaderFields: getHTTPHeaderFields(region: region)
                 )
+                .autocorrectionDisabled(true)
                 #if os(iOS) && !targetEnvironment(macCatalyst)
-                .onReceive(keyboardPublisher) { keyboardComesOut in
-                    withAnimation {
-                        isKeyboardVisible = keyboardComesOut
+                    .onReceive(keyboardPublisher) { keyboardComesOut in
+                        withAnimation {
+                            isKeyboardVisible = keyboardComesOut
+                        }
                     }
-                }
                 #endif
                 if !isKeyboardVisible {
                     VStack(alignment: .leading) {

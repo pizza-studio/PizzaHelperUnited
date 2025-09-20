@@ -92,6 +92,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
 
     @ViewBuilder var textFieldView: some View {
         TextField("UID".description, text: $delegate.uid)
+            .autocorrectionDisabled(true)
             .focused(focused ?? $backupFocus)
         #if !os(macOS) && !targetEnvironment(macCatalyst)
             .keyboardType(.numberPad)
