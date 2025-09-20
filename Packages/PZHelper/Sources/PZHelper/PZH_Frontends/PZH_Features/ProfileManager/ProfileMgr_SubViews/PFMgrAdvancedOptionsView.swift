@@ -72,6 +72,7 @@ struct PFMgrAdvancedOptionsView: View {
                         .textCase(nil)
                         .fontDesign(.monospaced)
                 }
+                .autocorrectionDisabled()
                 .react(to: recentlyPropagatedDeviceFingerprint) { oldValue, newValue in
                     guard oldValue != newValue else { return }
                     formatDeviceFingerprint()
