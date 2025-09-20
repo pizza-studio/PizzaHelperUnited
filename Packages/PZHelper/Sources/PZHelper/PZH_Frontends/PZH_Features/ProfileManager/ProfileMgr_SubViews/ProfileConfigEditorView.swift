@@ -29,6 +29,7 @@ struct ProfileConfigEditorView: View {
                         text: $unsavedProfile.name,
                         prompt: Text("profile.label.nickname".i18nPZHelper)
                     )
+                    .autocorrectionDisabled(true)
                     .multilineTextAlignment(.trailing)
                 } label: { Text("profile.label.nickname".i18nPZHelper) }
                 LabeledContent("profile.label.game".i18nPZHelper) {
@@ -50,6 +51,7 @@ struct ProfileConfigEditorView: View {
                     #if os(iOS) || targetEnvironment(macCatalyst)
                         .keyboardType(.numberPad)
                     #endif
+                        .autocorrectionDisabled(true)
                         .multilineTextAlignment(.trailing)
                 } label: { Text(verbatim: "UID") }
                     .react(to: unsavedProfile.uid, initial: true) { _, _ in
@@ -85,6 +87,7 @@ struct ProfileConfigEditorView: View {
             }
             Section {
                 TextField("profile.label.fp".i18nPZHelper, text: $unsavedProfile.deviceFingerPrint)
+                    .autocorrectionDisabled(true)
                     .multilineTextAlignment(.leading)
                 RegenerateDeviceFingerPrintButton(profile: unsavedProfile)
             } header: {
