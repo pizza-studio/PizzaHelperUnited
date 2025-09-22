@@ -19,7 +19,7 @@ extension View {
     }
 
     @ViewBuilder
-    public func blurMaterialBackground(enabled: Bool = true,) -> some View {
+    public func blurMaterialBackground(enabled: Bool = true) -> some View {
         if #available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *), enabled {
             modifier(BlurMaterialBackground(shape: .rect))
         } else {
@@ -70,14 +70,17 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
     public func body(content: Content) -> some View {
         if #available(iOS 26.0, macCatalyst 26.0, watchOS 26.0, *) {
             content
+                .clipShape(shape) // 必需
                 .glassEffect(.regular, in: shape)
                 .contentShape(shape)
         } else {
-            content.background(
-                .regularMaterial,
-                in: shape
-            )
-            .contentShape(shape)
+            content
+                .clipShape(shape) // 必需
+                .background(
+                    .regularMaterial,
+                    in: shape
+                )
+                .contentShape(shape)
         }
     }
 
