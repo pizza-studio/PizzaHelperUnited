@@ -161,7 +161,7 @@ public enum OS: Int {
 
     /// iOS 18.0 ~ 18.3 有关于画面底部的 Bottom Toolbar 的故障，需要单独应对。
     public static let isBuggyOS25Build: Bool = {
-        #if os(iOS)
+        #if os(iOS) && !targetEnvironment(macCatalyst)
         guard #unavailable(iOS 18.4) else { return false }
         guard #available(iOS 18.0, *)
         else { return false }
