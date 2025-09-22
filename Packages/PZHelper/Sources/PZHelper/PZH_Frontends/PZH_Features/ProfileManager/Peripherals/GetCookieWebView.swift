@@ -247,25 +247,16 @@ struct CookieGetterWebView {
 
     func makeViewWithoutLoad() -> OPWebView {
         if cleanCookies {
-            dataStore
-                .fetchDataRecords(
-                    ofTypes:
-                    WKWebsiteDataStore
-                        .allWebsiteDataTypes()
-                ) { records in
-                    records.forEach { record in
-                        WKWebsiteDataStore.default()
-                            .removeData(
-                                ofTypes: record.dataTypes,
-                                for: [record],
-                                completionHandler: {}
-                            )
-                        #if DEBUG
-                        print("WKWebsiteDataStore record deleted:", record)
-                        #endif
-                    }
-                }
-            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+            let typesOfCookies = WKWebsiteDataStore.allWebsiteDataTypes()
+            dataStore.removeData(
+                ofTypes: typesOfCookies,
+                modifiedSince: .distantPast
+            ) {}
+
+            // 在非 MainActor 環境中清除系統級 cookies
+            Task.detached {
+                HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+            }
         }
         let webview = OPWebView()
         webview.configuration.websiteDataStore = dataStore
