@@ -227,11 +227,19 @@ extension DesktopWidgets {
             switch limit {
             case expeditions.count...: return expeditions
             default:
-                let filtered = expeditions.sorted { lhs, rhs in
-                    (lhs.timeOnFinish ?? Date()) > (rhs.timeOnFinish ?? Date())
-                }.prefix(limit)
-                return Array(filtered)
+                let filtered = expeditions.enumerated().sorted(by: expeditionSortingCriteria)
+                return Array(filtered.map(\.element).prefix(limit))
             }
+        }
+
+        private func expeditionSortingCriteria(
+            lhs: EnumeratedSequence<[any ExpeditionTask]>.Element,
+            rhs: EnumeratedSequence<[any ExpeditionTask]>.Element
+        )
+            -> Bool {
+            let lhsTime = lhs.element.timeOnFinish ?? Date()
+            let rhsTime = rhs.element.timeOnFinish ?? Date()
+            return lhsTime > rhsTime && lhs.offset < rhs.offset
         }
 
         private func getPilotImage(_ url: URL?) -> Image? {
