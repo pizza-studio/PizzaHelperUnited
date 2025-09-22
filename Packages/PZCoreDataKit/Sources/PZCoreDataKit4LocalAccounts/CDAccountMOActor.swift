@@ -109,6 +109,15 @@ public actor CDAccountMOActor {
         try countAllAccountData(for: .genshinImpact) + countAllAccountData(for: .starRail)
     }
 
+    public func purgeAllDataEntries(for game: PZCoreDataKit.CDStoredGame) async throws {
+        switch game {
+        case .genshinImpact:
+            try db4HSR.perform { try $0.fetch(AccountMO4GI.all).forEach($0.delete) }
+        case .starRail:
+            try db4HSR.perform { try $0.fetch(AccountMO4HSR.all).forEach($0.delete) }
+        }
+    }
+
     // MARK: Internal
 
     func theDB(for game: PZCoreDataKit.CDStoredGame) -> PersistentContainer? {
