@@ -61,6 +61,15 @@ public actor CDGachaMOActor: Sendable {
         return intGI + intHSR
     }
 
+    public func purgeAllDataEntries(for game: PZCoreDataKit.CDStoredGame) async throws {
+        switch game {
+        case .genshinImpact:
+            try db4HSR.perform { try $0.fetch(CDGachaMO4GI.all).forEach($0.delete) }
+        case .starRail:
+            try db4HSR.perform { try $0.fetch(CDGachaMO4HSR.all).forEach($0.delete) }
+        }
+    }
+
     /// Refugee API.
     ///
     /// WARNING: This does not fix Genshin Gacha Entry ItemIDs.
