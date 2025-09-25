@@ -22,31 +22,45 @@ public final class Broadcaster: ObservableObject {
     @Published public private(set) var eventForStoppingRootTabTasks: UUID = .init()
 
     public func userWallpaperEntryChangesDidSave() {
-        eventForUserWallpaperDidSave = .init()
+        Task { @MainActor in
+            eventForUserWallpaperDidSave = .init()
+        }
     }
 
     public func localEnkaAvatarCacheDidUpdate(uidWithGame: String) {
-        eventForUpdatingLocalEnkaAvatarCache[uidWithGame] = .init()
+        Task { @MainActor in
+            eventForUpdatingLocalEnkaAvatarCache[uidWithGame] = .init()
+        }
     }
 
     public func localHoYoLABAvatarCacheDidUpdate() {
-        eventForUpdatingLocalHoYoLABAvatarCache = .init()
+        Task { @MainActor in
+            eventForUpdatingLocalHoYoLABAvatarCache = .init()
+        }
     }
 
     public func todayTabDidSwitchTo() {
-        eventForJustSwitchedToTodayTab = .init()
+        Task { @MainActor in
+            eventForJustSwitchedToTodayTab = .init()
+        }
     }
 
     public func refreshPage() {
-        eventForRefreshingCurrentPage = .init()
+        Task { @MainActor in
+            eventForRefreshingCurrentPage = .init()
+        }
     }
 
     public func refreshTodayTab() {
-        eventForRefreshingTodayTab = .init()
+        Task { @MainActor in
+            eventForRefreshingTodayTab = .init()
+        }
     }
 
     public func stopRootTabTasks() {
-        eventForStoppingRootTabTasks = .init()
+        Task { @MainActor in
+            eventForStoppingRootTabTasks = .init()
+        }
     }
 }
 
