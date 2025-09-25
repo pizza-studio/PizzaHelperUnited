@@ -37,16 +37,16 @@ public struct GachaRootView: View {
                         .environment(theVM)
                 }
                 if theVM.taskState == .busy {
-                    ToolbarItem(placement: .topBarTrailing4AllOS) {
+                    ToolbarItem(placement: .primaryAction) {
                         ProgressView()
                     }
                 }
-                ToolbarItem(placement: .topBarTrailing4AllOS) {
+                ToolbarItem(placement: .primaryAction) {
                     GachaExportToolbarButton(gpid: theVM.currentGPID)?
                         .environment(theVM)
                         .disabled(theVM.taskState == .busy)
                 }
-                ToolbarItem(placement: .topBarTrailing4AllOS) {
+                ToolbarItem(placement: .primaryAction) {
                     Menu {
                         Menu {
                             ForEach(Pizza.SupportedGame.allCases) { game in

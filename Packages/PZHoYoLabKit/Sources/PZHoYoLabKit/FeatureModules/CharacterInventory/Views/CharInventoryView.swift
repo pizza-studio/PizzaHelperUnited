@@ -76,7 +76,7 @@ public struct CharacterInventoryView: View {
         .listContainerBackground()
         .navigationTitle("hylKit.inventoryView.characters.title".i18nHYLKit)
         .toolbar {
-            ToolbarItemGroup(placement: .topBarTrailing4AllOS) {
+            ToolbarItemGroup(placement: .primaryAction) {
                 Picker("".description, selection: $expanded.animation()) {
                     Text("hylKit.inventoryView.expand.tabText".i18nHYLKit).tag(true)
                     Text("hylKit.inventoryView.collapse.tabText".i18nHYLKit).tag(false)
@@ -86,9 +86,9 @@ public struct CharacterInventoryView: View {
                 .fixedSize()
             }
             if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, *) {
-                ToolbarSpacer(.flexible, placement: .topBarTrailing4AllOS)
+                ToolbarSpacer(.flexible, placement: .primaryAction)
             }
-            ToolbarItemGroup(placement: .topBarTrailing4AllOS) {
+            ToolbarItemGroup(placement: .primaryAction) {
                 Menu {
                     ForEach(
                         InventoryViewFilterType.allCases,

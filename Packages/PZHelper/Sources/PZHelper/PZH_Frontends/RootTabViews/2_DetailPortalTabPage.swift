@@ -130,17 +130,17 @@ struct DetailPortalTabPage: View {
         if !sortedProfiles.isEmpty {
             content.toolbar {
                 if vmDPV.currentProfile != nil {
-                    ToolbarItem(placement: .topBarTrailing4AllOS) {
+                    ToolbarItem(placement: .primaryAction) {
                         Button("".description, systemImage: "arrow.clockwise") {
                             refreshAction()
                         }
                     }
                 }
                 if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, *) {
-                    ToolbarSpacer(.flexible, placement: .topBarTrailing4AllOS)
+                    ToolbarSpacer(.flexible, placement: .primaryAction)
                 }
                 if showProfileSwitcher {
-                    ToolbarItem(placement: .topBarTrailing4AllOS) {
+                    ToolbarItem(placement: .primaryAction) {
                         profileSwitcherMenu()
                     }
                 }

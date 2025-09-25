@@ -38,7 +38,7 @@ public struct PrivacyPolicyView: View {
                                         exit(1)
                                     }
                                 }
-                                ToolbarItem(placement: .topBarTrailing4AllOS) {
+                                ToolbarItem(placement: .primaryAction) {
                                     Button("sys.agree".i18nBaseKit) {
                                         completionHandler()
                                     }

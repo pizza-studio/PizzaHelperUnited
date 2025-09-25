@@ -43,7 +43,7 @@ extension ProfileManagerPageContent {
                 .navigationBarBackButtonHidden(true)
                 .navBarTitleDisplayMode(.large)
                 .toolbar {
-                    ToolbarItem(placement: .topBarTrailing4AllOS) {
+                    ToolbarItem(placement: .primaryAction) {
                         Button("sys.done".i18nBaseKit) {
                             saveButtonDidTap()
                         }

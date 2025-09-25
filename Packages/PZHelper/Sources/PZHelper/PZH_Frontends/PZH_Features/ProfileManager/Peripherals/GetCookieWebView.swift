@@ -103,7 +103,7 @@ struct GetCookieWebView: View {
             .navigationTitle("profileMgr.accountLogin.pleaseFinish.title".i18nPZHelper)
             .navBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing4AllOS) {
+                ToolbarItem(placement: .primaryAction) {
                     Button("sys.done".i18nBaseKit) {
                         Task(priority: .userInitiated) {
                             await getCookieFromDataStore()

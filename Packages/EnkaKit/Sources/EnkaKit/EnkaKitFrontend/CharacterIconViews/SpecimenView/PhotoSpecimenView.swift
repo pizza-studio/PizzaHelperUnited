@@ -40,7 +40,7 @@ struct PhotoSpecimenView: View {
             }
             .formStyle(.grouped).disableFocusable()
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing4AllOS) {
+                ToolbarItem(placement: .primaryAction) {
                     Picker("".description, selection: $game.animation()) {
                         Text("game.genshin.shortNameEX".i18nBaseKit)
                             .tag(Enka.GameType.genshinImpact)

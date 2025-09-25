@@ -43,7 +43,7 @@ public struct BattleReportSetView<Report: BattleReport>: View {
         .toolbar {
             if hasPreviousSeasonContent {
                 ToolbarItem(
-                    placement: .topBarTrailing4AllOS
+                    placement: .primaryAction
                 ) {
                     Picker("".description, selection: $showPreviousSeason.animation()) {
                         Text("hylKit.battleReport.seasonPicker.current".i18nHYLKit).tag(false)

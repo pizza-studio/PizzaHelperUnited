@@ -41,7 +41,7 @@ public struct AboutView: View {
             .navigationTitle(internalNavTitle)
             .navBarTitleDisplayMode(.large)
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing4AllOS) {
+                ToolbarItem(placement: .primaryAction) {
                     Picker(selection: $isShowingCrew.animation()) {
                         Text("aboutKit.aboutView.tab.app", bundle: .module).tag(false)
                         Text("aboutKit.aboutView.tab.crew", bundle: .module).tag(true)
