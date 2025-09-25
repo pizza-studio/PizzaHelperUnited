@@ -109,7 +109,7 @@ public struct EachAvatarStatView: View {
             )
         )
         Group {
-            if #available(iOS 26.0, macCatalyst 26.0, watchOS 26.0, *) {
+            if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
                 Color.clear.clipShape(clipShape)
                     .glassEffect(.regular, in: clipShape)
             } else {
@@ -626,7 +626,7 @@ private struct ArtifactView: View {
             .padding(.vertical, fontSize * 0.13)
             .padding(.horizontal, fontSize * 0.3)
             .background {
-                if #available(iOS 26.0, macCatalyst 26.0, watchOS 26.0, *) {
+                if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
                     Color.clear.clipShape(backgroundClipShape)
                         .glassEffect(.regular, in: backgroundClipShape)
                 } else {
