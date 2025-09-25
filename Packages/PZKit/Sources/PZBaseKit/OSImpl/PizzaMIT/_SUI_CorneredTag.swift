@@ -138,29 +138,33 @@ extension View {
 
 // MARK: - CorneredTagMaterialBackground
 
-@available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *)
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 10.0, *)
 struct CorneredTagMaterialBackground: ViewModifier {
     // MARK: Public
 
     @ViewBuilder
     public func body(content: Content) -> some View {
         Group {
-            if #available(iOS 26.0, macCatalyst 26.0, watchOS 26.0, *) {
-                content.glassEffect(.regular, in: .capsule)
+            if colorScheme == .dark {
+                content.background(
+                    .thinMaterial,
+                    in: .capsule
+                )
             } else {
-                if colorScheme == .dark {
-                    content.background(
-                        .thinMaterial,
-                        in: .capsule
-                    )
-                } else {
-                    content.background(
-                        .regularMaterial,
-                        in: .capsule
-                    )
-                }
+                content.background(
+                    .regularMaterial,
+                    in: .capsule
+                )
             }
-        }.contentShape(.rect)
+        }
+        .apply { neta in
+            if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
+                neta.glassEffect(.regular, in: .capsule)
+            } else {
+                neta
+            }
+        }
+        .contentShape(.capsule)
     }
 
     // MARK: Internal
