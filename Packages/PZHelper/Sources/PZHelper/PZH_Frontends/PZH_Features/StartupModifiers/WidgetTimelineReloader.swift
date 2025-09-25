@@ -21,7 +21,7 @@ extension View {
 private struct WidgetTimelineReloader: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .onAppBecomeActive {
+            .onAppBecomeActive(debounceOnMac: false) {
                 Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
             }
     }

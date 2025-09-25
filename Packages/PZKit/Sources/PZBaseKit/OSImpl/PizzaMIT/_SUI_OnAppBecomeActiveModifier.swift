@@ -10,7 +10,7 @@ import SwiftUI
 // MARK: - OnAppBecomeActiveModifier
 
 /// A ViewModifier that adds an action to be performed whenever an app comes to active state.
-@available(iOS 16.0, macCatalyst 16.0, *)
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
 private struct OnAppBecomeActiveModifier: ViewModifier {
     @Environment(\.scenePhase) private var scenePhase: ScenePhase
 
@@ -36,9 +36,20 @@ private struct OnAppBecomeActiveModifier: ViewModifier {
 
 // MARK: - OnAppBecomeActiveModifierMac
 
-@available(iOS 18.0, macCatalyst 18.0, watchOS 11.0, *)
+@available(iOS 18.0, macCatalyst 18.0, macOS 15.0, watchOS 11.0, *)
 private struct OnAppBecomeActiveModifierMac: ViewModifier {
+    // MARK: Lifecycle
+
+    public init(forced: Bool = true, action: @escaping () -> Void) {
+        self.forced = forced
+        self.action = action
+    }
+
+    // MARK: Internal
+
     @Environment(\.appearsActive) var appearsActive
+
+    let forced: Bool
 
     /// A closure that holds the action to be performed on becoming active.
     let action: () -> Void
@@ -48,16 +59,28 @@ private struct OnAppBecomeActiveModifierMac: ViewModifier {
         content
             .react(to: appearsActive) { oldValue, newValue in
                 if newValue, oldValue != newValue {
-                    action()
+                    if forced {
+                        action()
+                    } else {
+                        Task {
+                            await debouncer.debounce {
+                                action()
+                            }
+                        }
+                    }
                 }
             }
     }
+
+    // MARK: Private
+
+    private let debouncer: Debouncer = .init(delay: 60) // 60 秒。
 }
 
 // MARK: - OnAppEnterBackgroundModifier
 
 /// A ViewModifier that adds an action to be performed whenever an app enters background state.
-@available(iOS 16.0, macCatalyst 16.0, *)
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
 private struct OnAppEnterBackgroundModifier: ViewModifier {
     @Environment(\.scenePhase) private var scenePhase: ScenePhase
 
@@ -102,17 +125,21 @@ private struct OnAppBecomeInactiveModifier: ViewModifier {
     }
 }
 
-@available(iOS 16.0, macCatalyst 16.0, *)
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
 extension View {
     /// Add an action to be performed whenever an app comes to active state.
     ///
     /// - Parameter action: A closure that holds the action to be performed on becoming active.
     /// - Returns: A View with the added action.
     @ViewBuilder
-    public func onAppBecomeActive(perform action: @escaping () -> Void) -> some View {
-        if #available(macCatalyst 18.0, *) {
-            #if targetEnvironment(macCatalyst)
-            modifier(OnAppBecomeActiveModifierMac(action: action))
+    public func onAppBecomeActive(
+        debounceOnMac: Bool = true,
+        perform action: @escaping () -> Void
+    )
+        -> some View {
+        if #available(macCatalyst 18.0, macOS 15.0, *) {
+            #if targetEnvironment(macCatalyst) || os(macOS)
+            modifier(OnAppBecomeActiveModifierMac(forced: debounceOnMac, action: action))
             #else
             modifier(OnAppBecomeActiveModifier(action: action))
             #endif
