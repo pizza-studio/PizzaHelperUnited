@@ -101,7 +101,6 @@ public struct AvatarStatCollectionTabView: View {
                 }
             }
         }
-        .ignoresSafeArea(OS.type == .macOS ? [] : .all, edges: .vertical)
         .onAppear {
             showTabViewIndex = true
         }
