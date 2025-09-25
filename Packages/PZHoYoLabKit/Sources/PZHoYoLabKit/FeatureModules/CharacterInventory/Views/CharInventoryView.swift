@@ -84,6 +84,11 @@ public struct CharacterInventoryView: View {
                 .pickerStyle(.menu)
                 .labelsHidden()
                 .fixedSize()
+            }
+            if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, *) {
+                ToolbarSpacer(.flexible, placement: .topBarTrailing4AllOS)
+            }
+            ToolbarItemGroup(placement: .topBarTrailing4AllOS) {
                 Menu {
                     ForEach(
                         InventoryViewFilterType.allCases,
