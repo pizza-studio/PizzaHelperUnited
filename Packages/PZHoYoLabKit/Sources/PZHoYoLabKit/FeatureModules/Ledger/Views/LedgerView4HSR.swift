@@ -100,7 +100,7 @@ public struct LedgerView4HSR: LedgerView {
         .navigationTitle(Self.navTitle)
         .toolbar {
             #if DEBUG
-            ToolbarItem(placement: .topBarTrailing4AllOS) {
+            ToolbarItem(placement: .primaryAction) {
                 Button {
                     Clipboard.currentString = dataText
                 } label: {

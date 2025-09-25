@@ -224,7 +224,7 @@ private struct StaminaNotificationThresholdConfigView: View {
         .formStyle(.grouped).disableFocusable()
         .toolbar {
             #if os(iOS) || targetEnvironment(macCatalyst)
-            ToolbarItem(placement: .topBarTrailing4AllOS) {
+            ToolbarItem(placement: .primaryAction) {
                 Button(isEditMode.isEditing ? "sys.done".i18nBaseKit : "sys.edit".i18nBaseKit) {
                     withAnimation {
                         isEditMode = (isEditMode.isEditing) ? .inactive : .active
@@ -232,7 +232,7 @@ private struct StaminaNotificationThresholdConfigView: View {
                 }
             }
             #endif
-            ToolbarItem(placement: .topBarTrailing4AllOS) {
+            ToolbarItem(placement: .primaryAction) {
                 gamePicker
                     .pickerStyle(.segmented)
                     .fixedSize()

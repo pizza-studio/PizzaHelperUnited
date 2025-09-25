@@ -118,7 +118,7 @@ struct LiveActivitySettingsPageContent: View {
         }
         .formStyle(.grouped).disableFocusable()
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing4AllOS) {
+            ToolbarItem(placement: .primaryAction) {
                 let link = "https://gi.pizzastudio.org/static/resin_timer_help.html"
 
                 Link(destination: link.asURL) {
