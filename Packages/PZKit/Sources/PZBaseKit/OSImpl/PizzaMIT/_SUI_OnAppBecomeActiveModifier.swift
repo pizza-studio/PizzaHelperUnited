@@ -14,6 +14,9 @@ import SwiftUI
 private struct OnAppBecomeActiveModifier: ViewModifier {
     @Environment(\.scenePhase) private var scenePhase: ScenePhase
 
+    /// When `true`, execute immediately; otherwise debounce the action with a 60-second window.
+    let forced: Bool
+
     /// A closure that holds the action to be performed on becoming active.
     let action: () -> Void
 
@@ -22,16 +25,32 @@ private struct OnAppBecomeActiveModifier: ViewModifier {
         content
         #if os(macOS) || targetEnvironment(macCatalyst)
         .onAppear {
-            action()
+            triggerAction()
         }
         #else
         .react(to: scenePhase) { _, scenePhase in
                 if scenePhase == .active {
-                    action()
+                    triggerAction()
                 }
             }
         #endif
     }
+
+    private func triggerAction() {
+        if forced {
+            action()
+        } else {
+            Task {
+                await debouncer.debounce {
+                    action()
+                }
+            }
+        }
+    }
+
+    // MARK: Private
+
+    private let debouncer: Debouncer = .init(delay: 60) // 60 秒。
 }
 
 // MARK: - OnAppBecomeActiveModifierMac
@@ -133,18 +152,18 @@ extension View {
     /// - Returns: A View with the added action.
     @ViewBuilder
     public func onAppBecomeActive(
-        debounceOnMac: Bool = true,
+        debounced: Bool = true,
         perform action: @escaping () -> Void
     )
         -> some View {
         if #available(macCatalyst 18.0, macOS 15.0, *) {
             #if targetEnvironment(macCatalyst) || os(macOS)
-            modifier(OnAppBecomeActiveModifierMac(forced: debounceOnMac, action: action))
+            modifier(OnAppBecomeActiveModifierMac(forced: debounced, action: action))
             #else
-            modifier(OnAppBecomeActiveModifier(action: action))
+            modifier(OnAppBecomeActiveModifier(forced: debounced, action: action))
             #endif
         } else {
-            modifier(OnAppBecomeActiveModifier(action: action))
+            modifier(OnAppBecomeActiveModifier(forced: debounced, action: action))
         }
     }
 
