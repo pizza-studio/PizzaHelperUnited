@@ -65,7 +65,7 @@ struct InAppDailyNoteCardView: View {
         .react(to: broadcaster.eventForRefreshingTodayTab) {
             theVM.getDailyNoteUncheck()
         }
-        .onAppBecomeActive(debounceOnMac: false) {
+        .onAppBecomeActive(debounced: false) {
             theVM.getDailyNote()
         }
     }

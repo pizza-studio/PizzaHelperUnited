@@ -15,7 +15,7 @@ import UserNotifications
 private struct EnkaDBSanityChecker: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .onAppBecomeActive(debounceOnMac: false) {
+            .onAppBecomeActive(debounced: false) {
                 Task { @MainActor in
                     if #available(iOS 17.0, *) {
                         try? await Enka.Sputnik.shared.db4HSR.reinitIfLocMismatches()

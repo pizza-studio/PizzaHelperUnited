@@ -14,7 +14,7 @@ import UserNotifications
 private struct UserDefaultsProfileSynchronizer: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .onAppBecomeActive(debounceOnMac: false) {
+            .onAppBecomeActive(debounced: false) {
                 Task { @MainActor in
                     await ProfileManagerVM.shared
                         .profileActor?

@@ -50,7 +50,7 @@ extension PZHelper {
                             .onAppear {
                                 startupTasks()
                             }
-                            .onAppBecomeActive(debounceOnMac: false) {
+                            .onAppBecomeActive(debounced: false) {
                                 Task {
                                     await ASMetaSputnik.shared.updateMeta()
                                 }
