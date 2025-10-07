@@ -46,7 +46,7 @@ public struct ASUpdateNoticeView: View {
 // MARK: - ASMetaSputnik
 
 @available(iOS 15.0, macCatalyst 15.0, *)
-public actor ASMetaSputnik: Sendable {
+public actor ASMetaSputnik {
     // MARK: Lifecycle
 
     public init() {}
