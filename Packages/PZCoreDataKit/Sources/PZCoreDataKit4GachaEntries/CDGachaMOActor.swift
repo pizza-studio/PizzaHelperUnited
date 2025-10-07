@@ -9,7 +9,7 @@ import PZCoreDataKitShared
 // MARK: - CDGachaMOActor
 
 /// 警告：请务必不要直接初始化这个 class。请使用 .shared。
-public actor CDGachaMOActor: Sendable {
+public actor CDGachaMOActor {
     // MARK: Lifecycle
 
     public init(persistence: DBPersistenceMethod, backgroundContext: Bool) throws {
