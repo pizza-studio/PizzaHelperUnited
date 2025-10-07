@@ -1401,5 +1401,10 @@
     "game" : "GI",
     "id" : "210260",
     "officialFileNameStem" : "UI_NameCardPic_YellowV2_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210261",
+    "officialFileNameStem" : "UI_NameCardPic_Nefer_P"
   }
 ]
