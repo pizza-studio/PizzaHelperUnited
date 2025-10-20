@@ -255,7 +255,9 @@
     "210257" : "Nod-Krai – Heiligtum",
     "210258" : "Errungenschaft – Lange Trennung",
     "210259" : "Erlebnispass – Frostmond",
-    "210260" : "Feierlichkeit – Höchster Geschmack"
+    "210260" : "Feierlichkeit – Höchster Geschmack",
+    "210261" : "Nefer – Geheimnisse",
+    "210262" : "Erlebnispass – Ruinen"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -514,7 +516,8 @@
     "210258" : "Achievement: Time Apart",
     "210259" : "Travel Notes: Glacial Moon",
     "210260" : "Celebration: Sublime Flavors",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "Nefer: Secrets",
+    "210262" : "Travel Notes: Bygone Ruins"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -773,7 +776,8 @@
     "210258" : "Logro - Una larga separación",
     "210259" : "PB - Luna helada",
     "210260" : "Celebración - Sabores sublimes",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "Néfer - Secretos",
+    "210262" : "PB - Ruinas del pasado"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -1032,7 +1036,8 @@
     "210258" : "Succès - Séparation",
     "210259" : "PB - Frigilune",
     "210260" : "Célébration - Saveurs suprêmes",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "Nefer - Secrets",
+    "210262" : "PB - Ruines d'antan"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1291,7 +1296,8 @@
     "210258" : "Achievement: Terpisah Lama",
     "210259" : "Catatan Perjalanan: Bulan Beku",
     "210260" : "Perayaan: Rasa Sempurna",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "Nefer: Rahasia",
+    "210262" : "Catatan Perjalanan: Reruntuhan Kuno"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1550,7 +1556,8 @@
     "210258" : "Obiettivo: Separati dal tempo",
     "210259" : "Appunti di viaggio: Luna glaciale",
     "210260" : "Celebrazione: Sapori sublimi",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "Nefer: Segreti",
+    "210262" : "Appunti di viaggio: Rovine del passato"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1809,7 +1816,8 @@
     "210258" : "アチーブメント・久しき別れ",
     "210259" : "紀行・氷月",
     "210260" : "祭典・至高の味",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "ネフェル・秘話",
+    "210262" : "紀行・遺跡"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -2068,7 +2076,8 @@
     "210258" : "업적·기나긴 이별",
     "210259" : "기행·빙월",
     "210260" : "축제·미식",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "네페르·비밀",
+    "210262" : "기행·유적"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2327,7 +2336,8 @@
     "210258" : "Conquista: Tempo Separado",
     "210259" : "Passe de Batalha: Lua Glacial",
     "210260" : "Celebração: Sabor Supremo",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "Nefer: Segredos",
+    "210262" : "Passe de Batalha: Ruínas Antigas"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2586,7 +2596,8 @@
     "210258" : "Долгая разлука",
     "210259" : "Ледяная луна",
     "210260" : "Изысканное лакомство",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "Секреты",
+    "210262" : "Руины"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -2845,7 +2856,8 @@
     "210258" : "ความสำเร็จ - พรากจาก",
     "210259" : "บันทึก - จันทราน้ำแข็ง",
     "210260" : "การฉลอง - เลิศรส",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "Nefer - ความลับ",
+    "210262" : "บันทึก - ซากอดีตกาล"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -3104,7 +3116,8 @@
     "210258" : "Başarım: Ayrı Geçen Zaman",
     "210259" : "Gezi Notları: Buzul Ay",
     "210260" : "Kutlama: Ulaşılmaz Lezzetler",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "Nefer: Sırlar",
+    "210262" : "Gezi Notları: Kadim Harabeler"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3363,7 +3376,8 @@
     "210258" : "Thành Tựu - Trùng Phùng",
     "210259" : "Nhật Ký Hành Trình - Băng Nguyệt",
     "210260" : "Lễ Hội - Vị Ngon",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "Nefer - Bí Mật",
+    "210262" : "Nhật Ký Hành Trình - Phế Tích"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3622,7 +3636,8 @@
     "210258" : "成就·久别",
     "210259" : "纪行·冰月",
     "210260" : "庆典·至味",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "奈芙尔·秘闻",
+    "210262" : "纪行·故墟"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -3881,6 +3896,7 @@
     "210258" : "成就·久別",
     "210259" : "紀行·冰月",
     "210260" : "慶典·至味",
-    "210261" : "Nefer (Temporary Placeholder)"
+    "210261" : "奈芙爾·秘聞",
+    "210262" : "紀行·故墟"
   }
 }

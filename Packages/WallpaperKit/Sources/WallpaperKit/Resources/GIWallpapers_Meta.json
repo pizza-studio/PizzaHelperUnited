@@ -1403,8 +1403,14 @@
     "officialFileNameStem" : "UI_NameCardPic_YellowV2_P"
   },
   {
+    "bindedCharID" : "10000122",
     "game" : "GI",
     "id" : "210261",
     "officialFileNameStem" : "UI_NameCardPic_Nefer_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210262",
+    "officialFileNameStem" : "UI_NameCardPic_Bp45_P"
   }
 ]
