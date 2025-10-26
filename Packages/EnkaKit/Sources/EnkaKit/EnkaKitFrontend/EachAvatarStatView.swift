@@ -236,7 +236,7 @@ extension Enka.AvatarSummarized.CharacterID {
                 .overlay(Color(Color.colorSystemGray6).opacity(0.5))
                 .apply { content in
                     ZStack {
-                        if self.isProtagonist, let element {
+                        if self.isProtagonist || self.isManekin, let element {
                             content
                                 .saturation(0)
                                 .colorMultiply(element.themeColor.suiColor)
@@ -268,7 +268,7 @@ extension Enka.AvatarSummarized.CharacterID {
                 .overlay(Color(Color.colorSystemGray6).opacity(0.5))
                 .apply { content in
                     ZStack {
-                        if self.isProtagonist, let element {
+                        if self.isProtagonist || self.isManekin, let element {
                             content
                                 .saturation(0)
                                 .colorMultiply(element.themeColor.suiColor)
