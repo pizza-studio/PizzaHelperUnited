@@ -128,11 +128,13 @@ struct EnkaKitTests {
     @available(iOS 17.0, macCatalyst 17.0, *)
     @Test
     func testEnkaHSRProfileSummaryAsText() async throws {
+        let englishDB = try Enka.EnkaDB4HSR(locTag: "en")
+        Enka.Sputnik.shared.db4HSR = englishDB
+        ArtifactRating.ARSputnik.shared.resetFactoryScoreModel()
         let hsrDecoded = try Enka.QueriedResultHSR.exampleData()
         guard let profile = hsrDecoded.detailInfo, let firstAvatar = profile.avatarDetailList.first else {
             throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
         }
-        let englishDB = try Enka.EnkaDB4HSR(locTag: "en")
         guard let summarized = await firstAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
             throw TestError.error(msg: "Failed in summarizing Raiden Mei's character build.")
         }
@@ -153,25 +155,47 @@ struct EnkaKitTests {
     @available(iOS 17.0, macCatalyst 17.0, *)
     @Test
     func testEnkaGIProfileSummaryAsText() async throws {
-        let giDecoded = try Enka.QueriedResultGI.exampleData()
-        guard let profile = giDecoded.detailInfo, let firstAvatar = profile.avatarDetailList.first else {
-            throw TestError.error(msg: "First avatar (Keqing, with costume) missing.")
-        }
         let englishDB = try Enka.EnkaDB4GI(locTag: "en")
-        guard let summarized = await firstAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
-            throw TestError.error(msg: "Failed in summarizing Keqing's character build.")
+        Enka.Sputnik.shared.db4GI = englishDB
+        ArtifactRating.ARSputnik.shared.resetFactoryScoreModel()
+        let giDecoded = try Enka.QueriedResultGI.exampleData()
+        guard let profile = giDecoded.detailInfo, profile.avatarDetailList.count == 12 else {
+            throw TestError.error(msg: "Avatar detail list not completely decoded. Expecting 12 avatars.")
         }
-        print(summarized.asText)
-        print(summarized.mainInfo.idExpressable.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
-        if let weapon = summarized.equippedWeapon { print(weapon.onlineAssetURLStr) }
-        summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
+        // Test Manekina.
+        let manekinaRAW = profile.avatarDetailList[9]
+        guard let manekina = await manekinaRAW.summarize(theDB: englishDB)?.artifactsRated() else {
+            throw TestError.error(msg: "Failed in summarizing Manekina.")
+        }
+        #expect(manekina.mainInfo.element == .pyro)
+        print(manekina.asText)
+        print(manekina.asText)
+        print(manekina.mainInfo.idExpressable.onlineAssetURLStr)
+        print(manekina.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
+        print(manekina.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
+        print(manekina.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
+        if let weapon = manekina.equippedWeapon { print(weapon.onlineAssetURLStr) }
+        manekina.artifacts.forEach { print($0.onlineAssetURLStr) }
         print(profile.iconAssetName)
         print(profile.onlineAssetURLStr)
-        let x = summarized.artifactRatingResult
-        print(x ?? "Result Rating Failed.")
+        let x4Manekina = manekina.artifactRatingResult
+        print(x4Manekina ?? "Result Rating Failed for Manekina.")
+        // Test Hutao with costume.
+        let ninthAvatar = profile.avatarDetailList[8]
+        guard let hutao = await ninthAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
+            throw TestError.error(msg: "Failed in summarizing Hutao character build (with costume).")
+        }
+        print(hutao.asText)
+        print(hutao.mainInfo.idExpressable.onlineAssetURLStr)
+        print(hutao.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
+        print(hutao.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
+        print(hutao.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
+        if let weapon = hutao.equippedWeapon { print(weapon.onlineAssetURLStr) }
+        hutao.artifacts.forEach { print($0.onlineAssetURLStr) }
+        print(profile.iconAssetName)
+        print(profile.onlineAssetURLStr)
+        let x4Hutao = hutao.artifactRatingResult
+        print(x4Hutao ?? "Result Rating Failed for Hutao.")
     }
 }
 
