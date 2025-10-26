@@ -3,6 +3,7 @@
 import AppKit
 import AVFoundation
 import Foundation
+import ImageIO
 
 // 该脚本为原神专用。
 
@@ -139,55 +140,71 @@ let bannedFinalFileNames: [String] = [
 // MARK: - ImageProcessingError
 
 enum ImageProcessingError: Error {
-    case imageInitializationFailed
-    case bitmapCreationFailed
-    case jpegConversionFailed
+    case imageSourceCreationFailed
+    case cgImageCreationFailed
+    case bitmapContextCreationFailed
+    case outputImageCreationFailed
+    case pngConversionFailed
 }
 
 func reencodePNG(from imageData: Data) throws -> Data {
-    guard let image = NSImage(data: imageData) else {
-        throw ImageProcessingError.imageInitializationFailed
+    guard let imageSource = CGImageSourceCreateWithData(imageData as CFData, nil) else {
+        throw ImageProcessingError.imageSourceCreationFailed
     }
 
-    // Create a new size for the image
-    let newSize = image.size
+    guard let cgImage = CGImageSourceCreateImageAtIndex(imageSource, 0, nil) else {
+        throw ImageProcessingError.cgImageCreationFailed
+    }
 
-    // Create a new bitmap representation for the resized image
-    guard let bitmapRep = NSBitmapImageRep(
-        bitmapDataPlanes: nil,
-        pixelsWide: Int(newSize.width),
-        pixelsHigh: Int(newSize.height),
-        bitsPerSample: 8,
-        samplesPerPixel: 4,
-        hasAlpha: true,
-        isPlanar: false,
-        colorSpaceName: .deviceRGB,
+    let width = cgImage.width
+    let height = cgImage.height
+
+    let bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue
+
+    guard let context = CGContext(
+        data: nil,
+        width: width,
+        height: height,
+        bitsPerComponent: 8,
         bytesPerRow: 0,
-        bitsPerPixel: 0
+        space: CGColorSpaceCreateDeviceRGB(),
+        bitmapInfo: bitmapInfo
     ) else {
-        throw ImageProcessingError.bitmapCreationFailed
+        throw ImageProcessingError.bitmapContextCreationFailed
     }
 
-    // Draw the image into the new size
-    NSGraphicsContext.saveGraphicsState()
-    NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: bitmapRep)
-    image.draw(
-        in: NSRect(origin: .zero, size: newSize),
-        from: NSRect(origin: .zero, size: image.size),
-        operation: .sourceOver,
-        fraction: 1.0,
-        respectFlipped: false,
-        hints: [.interpolation: NSImageInterpolation.high]
-    )
-    NSGraphicsContext.restoreGraphicsState()
+    let rect = CGRect(x: 0, y: 0, width: width, height: height)
+    context.draw(cgImage, in: rect)
 
-    // Convert the resized image to JPEG data with 82% quality
-    guard let jpegData = bitmapRep.representation(using: .png, properties: [.compressionFactor: 0.82]) else {
-        throw ImageProcessingError.jpegConversionFailed
+    guard let outputCGImage = context.makeImage() else {
+        throw ImageProcessingError.outputImageCreationFailed
     }
 
-    return jpegData
+    let bitmapRep = NSBitmapImageRep(cgImage: outputCGImage)
+    bitmapRep.size = NSSize(width: width, height: height)
+
+    let pngProperties: [NSBitmapImageRep.PropertyKey: Any] = [
+        .compressionFactor: 0.82,
+    ]
+
+    guard let pngData = bitmapRep.representation(using: .png, properties: pngProperties) else {
+        throw ImageProcessingError.pngConversionFailed
+    }
+
+    return pngData
 }
+
+private let assetDownloadSession: URLSession = {
+    let config = URLSessionConfiguration.ephemeral
+    config.httpAdditionalHeaders = [
+        "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    ]
+    config.timeoutIntervalForRequest = 60
+    config.timeoutIntervalForResource = 120
+    return URLSession(configuration: config)
+}()
 
 // MARK: - Decoding Strategy for Decoding UpperCamelCases
 
@@ -488,8 +505,10 @@ let dataDict = try await withThrowingTaskGroup(
         taskGroup.addTask {
             await URLAsyncTaskStack.waitFor200ms()
             guard let url = URL(string: urlString) else { return nil }
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
             do {
-                let (data, response) = try await URLSession.shared.data(from: url)
+                let (data, response) = try await assetDownloadSession.data(for: request)
                 if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                     if httpResponse.statusCode == 404 {
                         print("[FETCH FAILURE] 404 Not Found: \(fileNameStem) @ \(urlString)")
