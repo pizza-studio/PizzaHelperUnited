@@ -98,6 +98,6 @@ extension Enka.GenshinLifePathRecord {
 
     /// Only works with Genshin Character IDs.
     public static func guessPath(for charID: String) -> Enka.LifePath? {
-        allMap["\(charID.prefix(12))"] ?? allMap["\(charID.prefix(8))"]
+        allMap["\(charID.prefix(14))"] ?? allMap["\(charID.prefix(12))"] ?? allMap["\(charID.prefix(8))"]
     }
 }
