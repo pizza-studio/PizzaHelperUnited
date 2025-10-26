@@ -75,12 +75,44 @@ extension Enka.AvatarSummarized {
         // MARK: Lifecycle
 
         /// 通用建构子。
-        public init?(id: String, costumeID: String? = nil) {
+        public init?(id givenID: String, costumeID: String? = nil, skillDepotID: Int? = nil) {
+            let giDB = Enka.Sputnik.shared.db4GI
+            let resolvedGICharacter = giDB.resolveCharacterEntry(
+                baseID: givenID,
+                skillDepotID: skillDepotID
+            )
+
             let keys1 = Array(Enka.Sputnik.shared.db4HSR.characters.keys)
-            let keys2 = Enka.Sputnik.shared.db4GI.characters.keys
-            guard (keys1 + keys2).contains(id) else { return nil }
-            self.idSansCostume = id
-            var newIdStr = id
+            let keys2 = giDB.characters.keys
+            let allKeys = keys1 + keys2
+
+            var matchedGICharacter = resolvedGICharacter?.value
+            let matchedFirstCharacterKey: String? = {
+                if let resolved = resolvedGICharacter {
+                    return resolved.key
+                }
+                if givenID.count != 8 {
+                    guard allKeys.contains(givenID) else { return nil }
+                    return givenID
+                }
+                let candidate = keys2.filter { key in
+                    key.hasPrefix(givenID)
+                }.sorted { lhs, rhs in
+                    if lhs.count != rhs.count { return lhs.count < rhs.count }
+                    return lhs < rhs
+                }.first
+                if let candidate, matchedGICharacter == nil {
+                    matchedGICharacter = giDB.characters[candidate]
+                }
+                return candidate
+            }()
+
+            guard let charID = matchedFirstCharacterKey else {
+                return nil
+            }
+
+            self.idSansCostume = charID
+            var newIdStr = charID
             if let costumeID {
                 newIdStr += "_\(costumeID)"
             }
@@ -88,7 +120,7 @@ extension Enka.AvatarSummarized {
             self.nameObj = .init(pidStr: newIdStr)
             switch nameObj.game {
             case .genshinImpact:
-                guard let matched = Enka.Sputnik.shared.db4GI.characters[id] else { return nil }
+                guard let matched = matchedGICharacter ?? giDB.characters[charID] else { return nil }
                 var onlineFileNameStem = Self.convertIconName(from: matched.sideIconName)
                 if let costumeID, let costume = matched.costumes?[costumeID] {
                     onlineFileNameStem = Self.convertIconName(from: costume.sideIconName)
@@ -96,16 +128,16 @@ extension Enka.AvatarSummarized {
                 self.iconOnlineFileNameStem = onlineFileNameStem
                 switch nameObj {
                 case .someoneElse:
-                    self.iconAssetName = "gi_character_\(self.id)"
+                    self.iconAssetName = "gi_character_\(id)"
                 case .protagonist:
                     self.iconAssetName = "gi_character_\(idSansCostume.prefix(8))"
                 }
             case .starRail:
-                self.iconAssetName = "hsr_character_\(id)"
-                self.iconOnlineFileNameStem = "\(id)"
+                self.iconAssetName = "hsr_character_\(charID)"
+                self.iconOnlineFileNameStem = "\(charID)"
             case .zenlessZone:
-                self.iconAssetName = "zzz_character_\(id)" // 临时设定。
-                self.iconOnlineFileNameStem = "\(id)" // 临时设定。
+                self.iconAssetName = "zzz_character_\(charID)" // 临时设定。
+                self.iconOnlineFileNameStem = "\(charID)" // 临时设定。
             }
         }
 
@@ -121,6 +153,18 @@ extension Enka.AvatarSummarized {
             switch nameObj {
             case .protagonist: true
             case .someoneElse: false
+            }
+        }
+
+        public var isManekin: Bool {
+            switch nameObj {
+            case .protagonist: false
+            case let .someoneElse(pid):
+                switch pid.prefix(8) {
+                case "10000117": true
+                case "10000118": true
+                default: false
+                }
             }
         }
 
