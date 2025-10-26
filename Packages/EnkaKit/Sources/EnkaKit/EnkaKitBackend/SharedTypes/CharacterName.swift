@@ -43,23 +43,32 @@ extension Enka {
             return switch self {
             case .protagonist(.ofLumine): trailingNumber + 700
             case .protagonist(.ofAether): trailingNumber + 500
+            case let .someoneElse(name):
+                switch name.prefix(8) {
+                case "10000117": trailingNumber + 11700
+                case "10000118": trailingNumber + 11800
+                default: nil
+                }
             default: nil
             }
         }
 
         /// Used for Hakush.in APIs.
         public func getGenshinProtagonistSharedSkillDepotID(element: Enka.GameElement) -> Int? {
-            if case let .protagonist(name) = self {
+            switch self {
+            case let .protagonist(name):
                 guard [.ofLumine, .ofAether].contains(name) else { return nil }
+            case let .someoneElse(pid):
+                guard ["10000117", "10000118"].contains(pid.prefix(8)) else { return nil }
             }
-            return switch (element, self) {
-            case (.anemo, .protagonist): 4
-            case (.geo, .protagonist): 6
-            case (.electro, .protagonist): 7
-            case (.dendro, .protagonist): 8
-            case (.hydro, .protagonist): 3
-            case (.pyro, .protagonist): 2
-            case (.cryo, .protagonist): 5 // Deducted, might need fix in the future.
+            return switch element {
+            case .anemo: 4
+            case .geo: 6
+            case .electro: 7
+            case .dendro: 8
+            case .hydro: 3
+            case .pyro: 2
+            case .cryo: 5
             default: nil
             }
         }
