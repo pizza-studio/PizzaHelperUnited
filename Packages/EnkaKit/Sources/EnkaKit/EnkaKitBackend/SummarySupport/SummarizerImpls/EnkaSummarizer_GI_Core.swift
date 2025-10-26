@@ -18,6 +18,7 @@ extension Enka.QueriedProfileGI.QueriedAvatar {
         let mainInfo = Enka.AvatarSummarized.AvatarMainInfo(
             giDB: theDB,
             charID: id,
+            skillDepotID: skillDepotId,
             avatarLevel: Int(propMap.level.val) ?? 0,
             constellation: talentIdList?.count ?? 0,
             baseSkills: baseSkillSet,

@@ -5,6 +5,54 @@
 import EnkaDBModels
 import PZBaseKit
 
+@available(iOS 17.0, macCatalyst 17.0, *)
+extension Enka.EnkaDB4GI {
+    func resolveCharacterEntry(
+        baseID: String,
+        skillDepotID: Int?
+    )
+        -> EnkaDBModelsGI.CharacterDict.Element? {
+        let normalizedBaseID: String
+        let existingSuffix: Int?
+        if let hyphenRange = baseID.firstIndex(of: "-") {
+            normalizedBaseID = String(baseID[..<hyphenRange])
+            let suffixStr = String(baseID[baseID.index(after: hyphenRange)...])
+            existingSuffix = Int(suffixStr)
+        } else {
+            normalizedBaseID = baseID
+            existingSuffix = nil
+        }
+
+        var directKeys: [String] = []
+        directKeys.append(baseID)
+        if let skillDepotID {
+            directKeys.append("\(normalizedBaseID)-\(skillDepotID)")
+        }
+        if let existingSuffix {
+            directKeys.append("\(normalizedBaseID)-\(existingSuffix)")
+        }
+        if normalizedBaseID != baseID {
+            directKeys.append(normalizedBaseID)
+        }
+
+        var visited = Set<String>()
+        for key in directKeys where visited.insert(key).inserted {
+            if let value = characters[key] {
+                return (key: key, value: value)
+            }
+        }
+
+        let candidates = characters
+            .filter { $0.key.hasPrefix(normalizedBaseID) }
+            .sorted { lhs, rhs in
+                if lhs.key.count != rhs.key.count { return lhs.key.count < rhs.key.count }
+                return lhs.key < rhs.key
+            }
+
+        return candidates.first
+    }
+}
+
 // MARK: - Constructors for summarizing Enka query results.
 
 @available(iOS 17.0, macCatalyst 17.0, *)
@@ -15,17 +63,23 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
     public init?(
         giDB: Enka.EnkaDB4GI,
         charID: String,
+        skillDepotID: Int? = nil,
         avatarLevel avatarLv: Int,
         constellation constellationLevel: Int,
         baseSkills baseSkillSet: BaseSkillSet,
         fetter: Int?,
         costumeID: String? = nil
     ) {
-        guard let theCommonInfo = giDB.characters[charID] else {
+        let matchedCharacter = giDB.resolveCharacterEntry(baseID: charID, skillDepotID: skillDepotID)
+        guard let theCommonInfo = matchedCharacter?.value else {
             print("theCommonInfo nulled")
             return nil
         }
-        guard let idExpressible = Enka.AvatarSummarized.CharacterID(id: charID, costumeID: costumeID) else {
+        guard let idExpressible = Enka.AvatarSummarized.CharacterID(
+            id: charID,
+            costumeID: costumeID,
+            skillDepotID: skillDepotID
+        ) else {
             print("idExpressible nulled")
             return nil
         }
@@ -38,7 +92,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         self.baseSkills = baseSkillSet
         self.uniqueCharId = charID
         self.element = theElement
-        let maybeLifepath = Enka.GenshinLifePathRecord.guessPath(for: charID)
+        let maybeLifepath = Enka.GenshinLifePathRecord.guessPath(for: idExpressible.id)
         self.lifePath = maybeLifepath ?? .none // 原神角色没有命途的概念。
         let nameTyped = Enka.CharacterName(pidStr: charID)
         self.localizedName = nameTyped.i18n(theDB: giDB, officialNameOnly: true)
@@ -87,7 +141,11 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
         giDB: Enka.EnkaDB4GI,
         avatar avatarInfo: Enka.QueriedProfileGI.QueriedAvatar
     ) {
-        guard let character = giDB.characters[avatarInfo.id] else { return nil }
+        let characterEntry = giDB.resolveCharacterEntry(
+            baseID: avatarInfo.id,
+            skillDepotID: avatarInfo.skillDepotId
+        )
+        guard let character = characterEntry?.value else { return nil }
         guard character.skillOrder.count == 3 else { return nil } // 原神的角色只有三个可以升级的技能。
 
         let concatenated: [GenshinSkillRawDataPair] = character.skillOrder.map { skillID in
@@ -283,7 +341,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         self.baseSkills = baseSkillSet
         self.uniqueCharId = charID
         self.element = theElement
-        let maybeLifepath = Enka.GenshinLifePathRecord.guessPath(for: charID)
+        let maybeLifepath = Enka.GenshinLifePathRecord.guessPath(for: idExpressible.id)
         self.lifePath = maybeLifepath ?? .none // 原神角色没有命途的概念。
         let nameTyped = Enka.CharacterName(pidStr: charID)
         self.localizedName = nameTyped.i18n(theDB: giDB, officialNameOnly: true)
