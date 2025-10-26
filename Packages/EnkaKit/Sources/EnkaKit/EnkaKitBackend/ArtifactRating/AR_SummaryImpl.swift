@@ -41,7 +41,11 @@ extension Enka.AvatarSummarized {
             case .protagonist:
                 "\(mainInfo.uniqueCharId.prefix(8))_\(mainInfo.element.rawValueForHSR)"
             case let .someoneElse(pid: pid):
-                pid.prefix(8).description
+                if pid.hasPrefix("10000117") || pid.hasPrefix("10000118") {
+                    "\(mainInfo.uniqueCharId.prefix(8))_\(mainInfo.element.rawValueForHSR)"
+                } else {
+                    pid.prefix(8).description
+                }
             }
             return ArtifactRating.RatingRequest(
                 game: .genshinImpact,
