@@ -92,6 +92,14 @@ extension Enka {
             }
         }
 
+        public func resetLocalEnkaDBCache(for game: Pizza.SupportedGame) {
+            switch game {
+            case .genshinImpact: db4GI = enkaDBMonitor4GI.defaultValue
+            case .starRail: db4HSR = enkaDBMonitor4HSR.defaultValue
+            case .zenlessZone: return
+            }
+        }
+
         // MARK: Private
 
         /// Genshin Impact EnkaDB data stored in filesystem instead of UserDefaults
