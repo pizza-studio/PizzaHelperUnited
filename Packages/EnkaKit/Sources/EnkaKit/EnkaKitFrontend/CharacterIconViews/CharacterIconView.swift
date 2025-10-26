@@ -22,7 +22,7 @@ public struct CharacterIconView: View {
     ) {
         /// 原神主角双子的 charID 是十二位，需要去掉后四位。
         var newCharID = charID
-        if charID.count == 12 {
+        if charID.count == 12 || charID.count == 14 {
             newCharID = charID.prefix(8).description
         }
         self.charIDTruncated = newCharID
@@ -45,7 +45,7 @@ public struct CharacterIconView: View {
     ) {
         /// 原神主角双子的 charID 是十二位，需要去掉后四位。
         var newCharID = charID
-        if charID.count == 12 {
+        if charID.count == 12 || charID.count == 14 {
             newCharID = charID.prefix(8).description
         }
         self.charIDTruncated = newCharID
@@ -250,8 +250,9 @@ public struct CharacterIconView: View {
                 .aspectRatio(contentMode: .fill)
                 .offset(x: size / -3)
                 .apply { content in
-                    let isProtagonist: Bool = ["10000005", "10000007"].contains(charID.prefix(8))
-                    if isProtagonist, let element = guessGenshinCharacterElement(id: charID) {
+                    let specialIDs: [String] = ["10000005", "10000007", "10000117", "10000118"]
+                    let isProtagonistOrManekin = specialIDs.contains(charID.prefix(8).description)
+                    if isProtagonistOrManekin, let element = guessGenshinCharacterElement(id: charID) {
                         content
                             .saturation(0)
                             .colorMultiply(element.themeColor.suiColor)
@@ -375,7 +376,8 @@ public struct CharacterIconView: View {
         let str: String?
         switch id.count {
         case 8...:
-            str = Enka.Sputnik.shared.db4GI.characters["\(id.prefix(12))"]?.element
+            str = Enka.Sputnik.shared.db4GI.characters["\(id.prefix(14))"]?.element
+                ?? Enka.Sputnik.shared.db4GI.characters["\(id.prefix(12))"]?.element
                 ?? Enka.Sputnik.shared.db4GI.characters["\(id.prefix(8))"]?.element
         default:
             str = Enka.Sputnik.shared.db4HSR.characters[id]?.element
@@ -406,6 +408,20 @@ extension Enka.GameElement {
 @available(iOS 17.0, macCatalyst 17.0, *)
 struct IDPhotoView_Previews: PreviewProvider {
     static var previews: some View {
+        VStack(spacing: 0) {
+            HStack(spacing: 14) {
+                CharacterIconView(charID: "10000117_11703", size: 128, circleClipped: true, clipToHead: false)
+                    .background(.red)
+                CharacterIconView(charID: "10000117_11703", cardSize: 128)
+                    .background(.blue)
+            }
+            HStack(spacing: 14) {
+                CharacterIconView(charID: "10000118_11702", size: 128, circleClipped: true, clipToHead: false)
+                    .background(.red)
+                CharacterIconView(charID: "10000118_11702", cardSize: 128)
+                    .background(.blue)
+            }
+        }
         VStack(spacing: 0) {
             HStack(spacing: 14) {
                 VStack {
