@@ -53,11 +53,6 @@ struct DetailPortalTabPage: View {
                 : Text("tab.details.fullTitle".i18nPZHelper)
         )
         .apply(hookToolbar)
-        .safeAreaInset(edge: .bottom) {
-            if !isKeyboardVisible {
-                rootNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn
-            }
-        }
         .onAppear {
             if let profile = vmDPV.currentProfile, !sortedProfiles.contains(profile) {
                 vmDPV.currentProfile = nil

@@ -112,9 +112,6 @@ struct AppSettingsTabPage: View {
             .formStyle(.grouped).disableFocusable()
             .navigationTitle("tab.settings.fullTitle".i18nPZHelper)
             .navBarTitleDisplayMode(.large)
-            .safeAreaInset(edge: .bottom) {
-                rootNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn
-            }
         }
     }
 
