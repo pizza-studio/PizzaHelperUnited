@@ -109,12 +109,8 @@ public struct EachAvatarStatView: View {
             )
         )
         Group {
-            if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
-                Color.clear.clipShape(clipShape)
-                    .glassEffect(.regular, in: clipShape)
-            } else {
-                Color.black.opacity(0.2).clipShape(clipShape)
-            }
+            Color.black.opacity(0.2)
+                .blurMaterialBackground(shape: clipShape)
         }
         .overlay {
             Image(data.isEnka ? "EnkanomiyaAsBG" : "HoYoLABIconAsBG", bundle: .module)
@@ -405,7 +401,9 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
                                 height: fontSize * 0.95
                             )
                             .background {
-                                Color.black.blurMaterialBackground(shape: .circle).opacity(0.3)
+                                Color.black
+                                    .opacity(0.3)
+                                    .blurMaterialBackground(shape: .circle)
                             }
                         }
                     }
@@ -626,12 +624,8 @@ private struct ArtifactView: View {
             .padding(.vertical, fontSize * 0.13)
             .padding(.horizontal, fontSize * 0.3)
             .background {
-                if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
-                    Color.clear.clipShape(backgroundClipShape)
-                        .glassEffect(.regular, in: backgroundClipShape)
-                } else {
-                    Color.black.opacity(0.2).clipShape(backgroundClipShape)
-                }
+                Color.black.opacity(0.2)
+                    .blurMaterialBackground(shape: backgroundClipShape)
             }
     }
 
