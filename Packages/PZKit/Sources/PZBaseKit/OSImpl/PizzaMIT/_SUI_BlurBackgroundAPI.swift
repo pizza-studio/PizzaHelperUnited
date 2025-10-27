@@ -43,7 +43,7 @@ extension View {
                 Color.clear.background(.thinMaterial, in: .rect)
                     .apply { neta in
                         if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
-                            neta.glassEffect(.regular, in: .rect)
+                            neta.glassEffect(.identity, in: .rect)
                         } else {
                             neta
                         }
@@ -77,7 +77,7 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
             )
             .apply { neta in
                 if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
-                    neta.glassEffect(.regular, in: shape)
+                    neta.glassEffect(.identity, in: shape)
                 } else {
                     neta
                 }
