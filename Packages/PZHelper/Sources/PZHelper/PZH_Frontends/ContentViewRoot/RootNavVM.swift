@@ -68,18 +68,6 @@ final class RootNavVM {
         }
     }
 
-    @ViewBuilder public var iOSBottomTabBarForBuggyOS25ReleasesOn: some View {
-        #if !(os(macOS) && !targetEnvironment(macCatalyst))
-        let isOverCompact = screenVM.isHorizontallyCompact && screenVM.windowSizeObserved
-            .width <= 440
-        if OS.isBuggyOS25Build, isOverCompact {
-            bottomTabBarForCompactLayout(allCases: !screenVM.isSidebarVisible)
-                .blurMaterialBackground(shape: .capsule)
-                .shadow(radius: 4)
-        }
-        #endif
-    }
-
     @ToolbarContentBuilder
     public func sharedRootPageSwitcherAsToolbarContent() -> some ToolbarContent {
         #if os(macOS) && !targetEnvironment(macCatalyst)
@@ -93,7 +81,7 @@ final class RootNavVM {
         /// 440 是 iPhone 16 Pro Max 的荧幕画布尺寸。
         let isOverCompact = screenVM.isHorizontallyCompact && screenVM.windowSizeObserved
             .width <= 440
-        let placeAtTop = !(isOverCompact && !OS.isBuggyOS25Build)
+        let placeAtTop = OS.isBuggyOS25Build || !isOverCompact
         ToolbarItem(placement: !placeAtTop ? .bottomBar : .cancellationAction) {
             if !isOverCompact {
                 sharedToolbarNavPicker(
@@ -101,8 +89,10 @@ final class RootNavVM {
                     isMenu: false
                 )
             } else if OS.isBuggyOS25Build {
-                // NOTHING. We use non-toolbar approaches for such case.
-                // This new approach calls `bottomTabBarForCompactLayout` elsewhere.
+                sharedToolbarNavPicker(
+                    allCases: !screenVM.isSidebarVisible,
+                    isMenu: true
+                )
             } else {
                 bottomTabBarForCompactLayout(allCases: !screenVM.isSidebarVisible)
             }
@@ -119,8 +109,21 @@ final class RootNavVM {
         Picker("".description, selection: $this.rootPageNav) {
             ForEach(effectiveCases) { navCase in
                 if navCase.isExposed {
-                    navCase.label
+                    let isChosen: Bool = navCase == self.rootPageNav
+                    switch isMenu {
+                    case true:
+                        VStack(alignment: .center) {
+                            navCase.icon
+                            navCase.labelNameText
+                                .fontWidth(.compressed)
+                                .fontWeight(isChosen ? .bold : .regular)
+                                .textCase(.uppercase)
+                        }
                         .tag(navCase)
+                    case false:
+                        navCase.label
+                            .tag(navCase)
+                    }
                 }
             }
         }
