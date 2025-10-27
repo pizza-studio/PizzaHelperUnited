@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MIT License`.
 
-// Author: Bill Haku
+// Author: Bill Haku & Shiki Suen
 
 import SwiftUI
 
@@ -39,10 +39,7 @@ extension View {
     @ViewBuilder
     public func listRowMaterialBackground(enabled: Bool = true) -> some View {
         if #available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 10.0, *), enabled {
-            listRowBackground(
-                Color.clear.background(.thinMaterial, in: .rect)
-                // LiquidGlassEffect is not applied here because it causes visual glitches.
-            )
+            listRowBackground(ListRowMaterialBackgroundView())
         } else {
             self
         }
@@ -65,12 +62,21 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .clipShape(shape) // 必需
-            .background(
-                .regularMaterial,
-                in: shape
-            )
+            .background(alignment: .center) {
+                if reduceTransparency {
+                    shape
+                        .fill(Color.primary.opacity(0.3))
+                        .colorInvert()
+                        .blendMode(.colorBurn)
+                } else {
+                    shape
+                        .fill(.regularMaterial)
+                }
+            }
             .apply { neta in
-                if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
+                if reduceTransparency {
+                    neta
+                } else if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
                     neta.glassEffect(.identity, in: shape)
                 } else {
                     neta
@@ -81,5 +87,35 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
 
     // MARK: Private
 
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+
     private let shape: T
+}
+
+// MARK: - ListRowMaterialBackgroundView
+
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 10.0, *)
+private struct ListRowMaterialBackgroundView: View {
+    // MARK: Internal
+
+    // MARK: View
+
+    var body: some View {
+        Group {
+            if reduceTransparency {
+                Rectangle()
+                    .fill(Color.primary.opacity(0.3))
+                    .colorInvert()
+                    .blendMode(.colorBurn)
+            } else {
+                Color.clear
+                    .background(.thinMaterial, in: .rect)
+                // LiquidGlassEffect is not applied here because it causes visual glitches.
+            }
+        }
+    }
+
+    // MARK: Private
+
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 }

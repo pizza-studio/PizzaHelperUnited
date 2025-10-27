@@ -144,30 +144,55 @@ struct CorneredTagMaterialBackground: ViewModifier {
 
     @ViewBuilder
     public func body(content: Content) -> some View {
-        Group {
-            if colorScheme == .dark {
-                content.background(
-                    .thinMaterial,
-                    in: .capsule
-                )
-            } else {
-                content.background(
-                    .regularMaterial,
-                    in: .capsule
-                )
+        content
+            .apply { neta in
+                if reduceTransparency {
+                    neta
+                        .background(alignment: .center) {
+                            capsuleBackground
+                        }
+                } else if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
+                    neta
+                        .background(alignment: .center) {
+                            capsuleBackground
+                        }
+                        .glassEffect(.regular, in: .capsule)
+                } else {
+                    neta
+                        .background(alignment: .center) {
+                            capsuleBackground
+                        }
+                }
             }
-        }
-        .apply { neta in
-            if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
-                neta.glassEffect(.regular, in: .capsule)
-            } else {
-                neta
-            }
-        }
-        .contentShape(.capsule)
+            .contentShape(.capsule)
     }
 
     // MARK: Internal
 
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.accessibilityReduceTransparency) var reduceTransparency
+
+    // MARK: Private
+
+    @ViewBuilder private var capsuleBackground: some View {
+        Group {
+            switch (reduceTransparency, colorScheme) {
+            case (true, .dark):
+                Capsule()
+                    .fill(.gray.opacity(0.8)).brightness(-0.4)
+            case (true, .light):
+                Capsule()
+                    .fill(.gray.opacity(0.8)).brightness(0.4)
+            case (false, .dark):
+                Capsule()
+                    .fill(.thinMaterial)
+            case (false, .light):
+                Capsule()
+                    .fill(.regularMaterial)
+            case (_, _):
+                Capsule()
+                    .fill(.clear)
+            }
+        }
+    }
 }
