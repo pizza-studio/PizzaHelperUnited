@@ -116,10 +116,7 @@ final class RootNavVM {
     private func sharedToolbarNavPicker(allCases: Bool, isMenu: Bool = true) -> some View {
         @Bindable var this = self
         let effectiveCases = !allCases ? AppRootPage.enabledSubCases : AppRootPage.allCases
-        Picker(
-            "".description,
-            selection: $this.rootPageNav.animation(.easeInOut(duration: 0.2))
-        ) {
+        Picker("".description, selection: $this.rootPageNav) {
             ForEach(effectiveCases) { navCase in
                 if navCase.isExposed {
                     navCase.label
@@ -151,8 +148,8 @@ final class RootNavVM {
                 let isChosen: Bool = navCase == self.rootPageNav
                 if navCase.isExposed {
                     Button {
-                        withAnimation(.easeInOut(duration: 0.2)) {
-                            self.rootPageNav = navCase
+                        Task { @MainActor [weak self] in
+                            self?.rootPageNav = navCase
                         }
                     } label: {
                         VStack(spacing: 0) {
