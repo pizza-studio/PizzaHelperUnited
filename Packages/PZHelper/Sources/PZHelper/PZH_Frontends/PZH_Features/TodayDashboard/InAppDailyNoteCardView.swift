@@ -205,9 +205,8 @@ private struct DailyNoteCardView4GI: View {
                         }
                     }
                     .padding(.horizontal, 6)
-                    .background(
-                        .regularMaterial,
-                        in: RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    .blurMaterialBackground(
+                        shape: RoundedRectangle(cornerRadius: 6, style: .continuous)
                     )
                 }
             }
@@ -318,9 +317,8 @@ private struct DailyNoteCardView4GI: View {
                     }
                     .help(Text("app.dailynote.card.parametricTransformer.label".i18nPZHelper))
                     .padding(.horizontal, 6)
-                    .background(
-                        .regularMaterial,
-                        in: RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    .blurMaterialBackground(
+                        shape: RoundedRectangle(cornerRadius: 6, style: .continuous)
                     )
                 }
             }
@@ -454,9 +452,8 @@ private struct DailyNoteCardView4HSR: View {
                     }
                     .fixedSize(horizontal: true, vertical: false)
                     .padding(.horizontal, 6)
-                    .background(
-                        .regularMaterial,
-                        in: RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    .blurMaterialBackground(
+                        shape: RoundedRectangle(cornerRadius: 6, style: .continuous)
                     )
                 }
             }
