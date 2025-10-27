@@ -280,12 +280,15 @@ extension NotificationSputnik {
             }
         }
 
-        content.body = String(
+        let baseBody = String(
             format: NSLocalizedString("notification.stamina.customize.body:%@%@%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             threshold.description,
             formatTimeString(from: thresholdTime)
         )
+        let issuedAtFootnote = formatTimeString(from: Date())
+        let extraNotice = "notification.stamina.customize.body.extra:".i18nAK
+        content.body = "\(baseBody) // \(extraNotice)\(issuedAtFootnote)"
         content.badge = 1
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
         let id = getID(for: .staminaPerThreshold, extraID: threshold.description)
