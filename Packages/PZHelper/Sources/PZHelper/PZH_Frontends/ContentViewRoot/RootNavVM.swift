@@ -102,6 +102,7 @@ final class RootNavVM {
                 )
             } else if OS.isBuggyOS25Build {
                 // NOTHING. We use non-toolbar approaches for such case.
+                // This new approach calls `bottomTabBarForCompactLayout` elsewhere.
             } else {
                 bottomTabBarForCompactLayout(allCases: !screenVM.isSidebarVisible)
             }
@@ -121,21 +122,8 @@ final class RootNavVM {
         ) {
             ForEach(effectiveCases) { navCase in
                 if navCase.isExposed {
-                    let isChosen: Bool = navCase == self.rootPageNav
-                    switch isMenu {
-                    case true:
-                        VStack(alignment: .center) {
-                            navCase.icon
-                            navCase.labelNameText
-                                .fontWidth(.compressed)
-                                .fontWeight(isChosen ? .bold : .regular)
-                                .textCase(.uppercase)
-                        }
+                    navCase.label
                         .tag(navCase)
-                    case false:
-                        navCase.label
-                            .tag(navCase)
-                    }
                 }
             }
         }
@@ -178,7 +166,13 @@ final class RootNavVM {
                         .labelStyle(.titleAndIcon)
                         .fontWidth(.compressed)
                         .fontWeight(isChosen ? .bold : .regular)
-                        .foregroundStyle(isChosen ? Color.accentColor : .secondary)
+                        .foregroundStyle(!isChosen ? Color.secondary : {
+                            if OS.liquidGlassThemeSuspected {
+                                Color.blue
+                            } else {
+                                Color.accentColor
+                            }
+                        }())
                         .padding()
                         .contentShape(.rect)
                         .frame(maxWidth: OS.liquidGlassThemeSuspected ? nil : .infinity)
@@ -189,5 +183,6 @@ final class RootNavVM {
             }
         }
         .frame(minHeight: 50, maxHeight: 54)
+        .shadow(radius: 4)
     }
 }
