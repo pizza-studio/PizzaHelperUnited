@@ -41,13 +41,7 @@ extension View {
         if #available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 10.0, *), enabled {
             listRowBackground(
                 Color.clear.background(.thinMaterial, in: .rect)
-                    .apply { neta in
-                        if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
-                            neta.glassEffect(.identity, in: .rect)
-                        } else {
-                            neta
-                        }
-                    }
+                // LiquidGlassEffect is not applied here because it causes visual glitches.
             )
         } else {
             self
