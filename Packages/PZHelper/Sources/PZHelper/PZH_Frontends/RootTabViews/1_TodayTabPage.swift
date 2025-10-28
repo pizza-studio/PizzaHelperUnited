@@ -125,6 +125,9 @@ struct TodayTabPage: View {
                 ToolbarItem(placement: .primaryAction) {
                     Button("sys.refresh".i18nBaseKit, systemImage: "arrow.clockwise") { refresh() }
                 }
+                if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, *) {
+                    ToolbarSpacer(.flexible, placement: .primaryAction)
+                }
                 if !games.isEmpty {
                     ToolbarItem(placement: .primaryAction) {
                         // ViewThatFits 不适用于此种场景。
