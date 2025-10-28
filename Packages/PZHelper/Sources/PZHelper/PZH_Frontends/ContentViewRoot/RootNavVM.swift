@@ -78,9 +78,7 @@ final class RootNavVM {
             )
         }
         #else
-        /// 440 是 iPhone 16 Pro Max 的荧幕画布尺寸。
-        let isOverCompact = screenVM.isHorizontallyCompact && screenVM.windowSizeObserved
-            .width <= 440
+        let isOverCompact = screenVM.isPhonePortraitSituation
         let placeAtTop = OS.isBuggyOS25Build || !isOverCompact
         ToolbarItem(placement: !placeAtTop ? .bottomBar : .cancellationAction) {
             if !isOverCompact {
