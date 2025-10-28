@@ -127,9 +127,14 @@ struct TodayTabPage: View {
                 }
                 if !games.isEmpty {
                     ToolbarItem(placement: .primaryAction) {
-                        gamePicker
-                            .pickerStyle(.segmented)
                         // ViewThatFits 不适用于此种场景。
+                        if screenVM.isPhonePortraitSituation, OS.isBuggyOS25Build {
+                            gamePicker
+                                .pickerStyle(.menu)
+                        } else {
+                            gamePicker
+                                .pickerStyle(.segmented)
+                        }
                     }
                 }
             }
