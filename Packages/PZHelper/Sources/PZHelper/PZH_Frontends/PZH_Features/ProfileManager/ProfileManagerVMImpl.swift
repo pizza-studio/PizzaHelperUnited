@@ -19,13 +19,14 @@ extension ProfileManagerVM {
     @ViewBuilder
     func profileSwitcherMenu4DPV(
         _ target: Binding<PZProfileSendable?>,
-        games: Set<Pizza.SupportedGame>
+        games: Set<Pizza.SupportedGame>,
+        showAvatarInLabel: Bool = true
     )
         -> some View {
         Menu {
             profileSwitcherMenuContents4DPV(target, games: games)
         } label: {
-            profileSwitcherMenuLabel4DPV(target)
+            profileSwitcherMenuLabel4DPV(target, showAvatar: showAvatarInLabel)
         }
         .menuStyle(.button)
     }
@@ -75,40 +76,43 @@ extension ProfileManagerVM {
 
     @ViewBuilder
     func profileSwitcherMenuLabel4DPV(
-        _ target: Binding<PZProfileSendable?>
+        _ target: Binding<PZProfileSendable?>,
+        showAvatar: Bool = true
     )
         -> some View {
         LabeledContent {
-            let dimension: CGFloat = 30
-            Group {
-                if let profile: PZProfileSendable = target.wrappedValue {
-                    if #available(iOS 17.0, *) {
-                        Enka.ProfileIconView(uid: profile.uid, game: profile.game)
-                            .frame(width: dimension)
+            if showAvatar {
+                let dimension: CGFloat = 30
+                Group {
+                    if let profile: PZProfileSendable = target.wrappedValue {
+                        if #available(iOS 17.0, *) {
+                            Enka.ProfileIconView(uid: profile.uid, game: profile.game)
+                                .frame(width: dimension)
+                        } else {
+                            profile.asIcon4SUI()
+                        }
                     } else {
-                        profile.asIcon4SUI()
+                        Image(systemSymbol: .personCircleFill)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: dimension - 8)
+                            .foregroundStyle(Color.accentColor)
                     }
-                } else {
-                    Image(systemSymbol: .personCircleFill)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: dimension - 8)
-                        .foregroundStyle(Color.accentColor)
                 }
+                .background {
+                    // Compiler optimization.
+                    AnyView(
+                        erasing: {
+                            Circle()
+                                .strokeBorder(Color.accentColor, lineWidth: 8)
+                                .frame(width: dimension, height: dimension)
+                        }()
+                    )
+                }
+                .frame(width: dimension, height: dimension)
+                .clipShape(.circle)
+                .drawingGroup()
             }
-            .background {
-                // Compiler optimization.
-                AnyView(
-                    erasing: {
-                        Circle()
-                            .strokeBorder(Color.accentColor, lineWidth: 8)
-                            .frame(width: dimension, height: dimension)
-                    }()
-                )
-            }
-            .frame(width: dimension, height: dimension)
-            .clipShape(.circle)
-            .drawingGroup()
         } label: {
             if let profile: PZProfileSendable = target.wrappedValue {
                 Text(profile.uidWithGame).fontWidth(.condensed)
@@ -116,7 +120,7 @@ extension ProfileManagerVM {
                 Text("dpv.query.menuCommandTitle".i18nPZHelper)
             }
         }
-        .padding(4).padding(.leading, 12)
+        .padding(OS.liquidGlassThemeSuspected ? 0 : 4).padding(.leading, 12)
         .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected, shape: .capsule)
     }
 }

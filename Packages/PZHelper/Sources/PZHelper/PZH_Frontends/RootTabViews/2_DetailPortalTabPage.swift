@@ -116,7 +116,8 @@ struct DetailPortalTabPage: View {
     func profileSwitcherMenu() -> some View {
         pfMgrVM.profileSwitcherMenu4DPV(
             $vmDPV.currentProfile,
-            games: [.genshinImpact, .starRail]
+            games: [.genshinImpact, .starRail],
+            showAvatarInLabel: !(screenVM.isPhonePortraitSituation && OS.isBuggyOS25Build)
         )
     }
 
