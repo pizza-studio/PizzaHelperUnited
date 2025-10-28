@@ -103,8 +103,15 @@ public final class ScreenVM {
         return newResult
     }
 
+    // iPhone Portrait Display mode or similar canvas size.
+    // 440 是 iPhone 16 Pro Max 的荧幕画布尺寸。
+    public var isPhonePortraitSituation: Bool {
+        isHorizontallyCompact && windowSizeObserved.width <= 440
+    }
+
+    // iPhone SE3 ZOOMED mode.
     public var isExtremeCompact: Bool {
-        mainColumnCanvasSizeObserved.width < 375 // iPhone SE3 ZOOMED mode.
+        mainColumnCanvasSizeObserved.width < 375
     }
 
     public var isSidebarVisible: Bool {
