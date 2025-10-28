@@ -64,10 +64,9 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
             .clipShape(shape) // 必需
             .background(alignment: .center) {
                 if reduceTransparency {
-                    shape
-                        .fill(Color.primary.opacity(0.3))
-                        .colorInvert()
-                        .blendMode(.colorBurn)
+                    fillColor4ReducedTransparency
+                        .clipShape(shape)
+                        .blendMode(colorScheme == .dark ? .difference : .normal)
                 } else {
                     shape
                         .fill(.regularMaterial)
@@ -87,9 +86,17 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
 
     // MARK: Private
 
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     private let shape: T
+
+    @ViewBuilder private var fillColor4ReducedTransparency: some View {
+        switch colorScheme {
+        case .dark: Color.gray.opacity(0.2).brightness(-0.1)
+        default: Color.white.opacity(0.3)
+        }
+    }
 }
 
 // MARK: - ListRowMaterialBackgroundView
@@ -103,10 +110,9 @@ private struct ListRowMaterialBackgroundView: View {
     var body: some View {
         Group {
             if reduceTransparency {
-                Rectangle()
-                    .fill(Color.primary.opacity(0.3))
-                    .colorInvert()
-                    .blendMode(.colorBurn)
+                fillColor4ReducedTransparency
+                    .clipShape(.rect)
+                    .blendMode(colorScheme == .dark ? .difference : .normal)
             } else {
                 Color.clear
                     .background(.thinMaterial, in: .rect)
@@ -117,5 +123,13 @@ private struct ListRowMaterialBackgroundView: View {
 
     // MARK: Private
 
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+
+    @ViewBuilder private var fillColor4ReducedTransparency: some View {
+        switch colorScheme {
+        case .dark: Color.gray.opacity(0.2).brightness(-0.1)
+        default: Color.white.opacity(0.3)
+        }
+    }
 }
