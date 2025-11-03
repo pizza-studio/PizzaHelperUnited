@@ -260,7 +260,6 @@ extension NotificationSputnik {
             await deleteNotification(.staminaPerThreshold)
             return nil
         }
-        let thresholdTime = Date().addingTimeInterval(timeInterval)
 
         // 创建周日期时间格式化器
         let weekdayTimeFormatter = DateFormatter.CurrentLocale()
@@ -284,7 +283,7 @@ extension NotificationSputnik {
             format: NSLocalizedString("notification.stamina.customize.body:%@%@%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             threshold.description,
-            formatTimeString(from: thresholdTime)
+            formatTimeString(from: timeOnFinish)
         )
         let issuedAtFootnote = formatTimeString(from: Date())
         let extraNotice = "notification.stamina.customize.body.extra:".i18nAK
