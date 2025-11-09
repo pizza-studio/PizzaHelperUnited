@@ -75,7 +75,8 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
             .apply { neta in
                 if reduceTransparency {
                     neta
-                } else if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *) {
+                } else if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *),
+                          OS.liquidGlassThemeSuspected {
                     neta.glassEffect(.identity, in: shape)
                 } else {
                     neta
