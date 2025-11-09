@@ -48,7 +48,7 @@
 		<string>fetch</string>
 	</array>
 	<key>UIDesignRequiresCompatibility</key>
-	<false/>
+	<true/>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIImageName</key>
