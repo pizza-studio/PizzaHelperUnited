@@ -5,6 +5,21 @@
 import PZBaseKit
 import SwiftUI
 
+// On watchOS 26+ we disable SVG for better compatibility.
+private let disableSVG: Bool = {
+    #if os(watchOS)
+    if #unavailable(watchOS 10.0) {
+        return true
+    } else if #available(watchOS 26.0, *) {
+        return true
+    } else {
+        return false
+    }
+    #else
+    return false
+    #endif
+}()
+
 // MARK: - Asset Icons (SVG)
 
 @available(iOS 16.2, macCatalyst 16.2, *)
@@ -31,7 +46,7 @@ extension Pizza.SupportedGame? {
 extension Pizza.SupportedGame {
     /// 主要玩家体力。
     public var primaryStaminaAssetSVG: Image {
-        if #unavailable(watchOS 10.0) {
+        if disableSVG {
             let sfSymbol: SFSymbol = switch self {
             case .genshinImpact: .moonFill
             case .starRail: .line3CrossedSwirlCircleFill
@@ -48,7 +63,7 @@ extension Pizza.SupportedGame {
     }
 
     public var dailyTaskAssetSVG: Image {
-        if #unavailable(watchOS 10.0) {
+        if disableSVG {
             return Image(systemSymbol: .listStar)
         }
         let assetName = switch self {
@@ -60,7 +75,7 @@ extension Pizza.SupportedGame {
     }
 
     public var expeditionAssetSVG: Image {
-        if #unavailable(watchOS 10.0) {
+        if disableSVG {
             return Image(systemSymbol: .flag)
         }
         let assetName = switch self {
@@ -84,21 +99,21 @@ extension Pizza.SupportedGame {
     }
 
     public var hsrEchoOfWarAssetSVG: Image {
-        if #unavailable(watchOS 10.0) {
+        if disableSVG {
             return Image(systemSymbol: .headphones)
         }
         return Image("icon.echoOfWar", bundle: .module)
     }
 
     public var hsrSimulatedUniverseAssetSVG: Image {
-        if #unavailable(watchOS 10.0) {
+        if disableSVG {
             return Image(systemSymbol: .pc)
         }
         return Image("icon.simulatedUniverse", bundle: .module)
     }
 
     public var zzzVHSStoreAssetSVG: Image {
-        if #unavailable(watchOS 10.0) {
+        if disableSVG {
             return Image(systemSymbol: .film)
         }
         return
@@ -106,21 +121,21 @@ extension Pizza.SupportedGame {
     }
 
     public var zzzScratchCardAssetSVG: Image {
-        if #unavailable(watchOS 10.0) {
+        if disableSVG {
             return Image(systemSymbol: .giftcard)
         }
         return Image("icon.zzzScratch", bundle: .module)
     }
 
     public var zzzBountyAssetSVG: Image {
-        if #unavailable(watchOS 10.0) {
+        if disableSVG {
             return Image(systemSymbol: .scope)
         }
         return Image("icon.zzzBounty", bundle: .module)
     }
 
     public var zzzInvestigationPointsAssetSVG: Image {
-        if #unavailable(watchOS 10.0) {
+        if disableSVG {
             return Image(systemSymbol: .magnifyingglass)
         }
         return Image("icon.zzzInvestigation", bundle: .module)
