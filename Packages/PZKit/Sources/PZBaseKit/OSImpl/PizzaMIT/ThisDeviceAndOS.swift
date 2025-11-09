@@ -172,11 +172,10 @@ public enum OS: Int {
     }()
 
     public static let liquidGlassThemeSuspected: Bool = {
-        checkInfoPlist: if let infoDict = Bundle.main.infoDictionary {
+        if let infoDict = Bundle.main.infoDictionary {
             let verStr = (infoDict["DTPlatformVersion"] as? String)?.prefix(4) ?? "_"
             if let verDouble = Double(verStr) {
                 if verDouble < 26 { return false }
-                if verDouble >= 26.1 { break checkInfoPlist }
                 let uiCompat = infoDict["UIDesignRequiresCompatibility"] as? Bool
                 if uiCompat == true { return false }
             }
