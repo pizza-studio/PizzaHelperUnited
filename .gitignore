@@ -94,8 +94,6 @@ iOSInjectionProject/
 BuildTools/.swiftpm
 BuildTools/.build
 
-.vscode
-
 **/.swiftpm
 Package.resolved
 */.index-build
