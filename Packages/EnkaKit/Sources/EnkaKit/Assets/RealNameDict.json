@@ -14,7 +14,12 @@
     "1308": "Raiden Mei",
     "1312": "Mikhail",
     "1317": "Ranha",
-    "1413": "Nagayoduki"
+    "1404": "Moedis",
+    "1406": "Saphere",
+    "1410": "Hyusilens",
+    "1412": "Keryudra",
+    "1413": "Nagayoduki",
+    "1415": "Kyurene"
   },
   "id": {
     "10000049": "Naganohara Yoimiya",
@@ -31,7 +36,12 @@
     "1308": "Raiden Mei",
     "1312": "Mikhail",
     "1317": "Ranha",
-    "1413": "Nagayoduki"
+    "1404": "Moedis",
+    "1406": "Saphere",
+    "1410": "Hyusilens",
+    "1412": "Keryudra",
+    "1413": "Nagayoduki",
+    "1415": "Kyurene"
   },
   "tr": {
     "10000049": "Naganohara Yoimiya",
@@ -48,7 +58,12 @@
     "1308": "Raiden Mei",
     "1312": "Mikhail",
     "1317": "Ranha",
-    "1413": "Nagayoduki"
+    "1404": "Moedis",
+    "1406": "Saphere",
+    "1410": "Hyusilens",
+    "1412": "Keryudra",
+    "1413": "Nagayoduki",
+    "1415": "Kyurene"
   },
   "it": {
     "10000049": "Naganohara Yoimiya",
@@ -65,7 +80,12 @@
     "1308": "Raiden Mei",
     "1312": "Mikhail",
     "1317": "Ranha",
-    "1413": "Nagayoduki"
+    "1404": "Moedis",
+    "1406": "Saphere",
+    "1410": "Hyusilens",
+    "1412": "Keryudra",
+    "1413": "Nagayoduki",
+    "1415": "Kyurene"
   },
   "ko": {
     "10000049": "나가노하라 요이미야",
@@ -82,6 +102,8 @@
     "1308": "라이덴 메이",
     "1312": "할아버지",
     "1317": "란하",
+    "1404": "모디스",
+    "1406": "사페르",
     "1413": "나가요즈키"
   },
   "ja": {
@@ -141,7 +163,12 @@
     "1308": "Raiden Mei",
     "1312": "Mikhail",
     "1317": "Ranha",
-    "1413": "Nagayoduki"
+    "1404": "Moedis",
+    "1406": "Saphere",
+    "1410": "Hyusilens",
+    "1412": "Keryudra",
+    "1413": "Nagayoduki",
+    "1415": "Kyurene"
   },
   "fr": {
     "10000049": "Naganohara Yoimiya",
@@ -158,7 +185,12 @@
     "1308": "Raiden Mei",
     "1312": "Mikhail",
     "1317": "Ranha",
-    "1413": "Nagayoduki"
+    "1404": "Moedis",
+    "1406": "Saphere",
+    "1410": "Hyusilens",
+    "1412": "Keryudra",
+    "1413": "Nagayoduki",
+    "1415": "Kyurene"
   },
   "th": {
     "10000049": "Naganohara Yoimiya",
@@ -175,7 +207,12 @@
     "1308": "Raiden Mei",
     "1312": "Mikhail",
     "1317": "Ranha",
-    "1413": "Nagayoduki"
+    "1404": "Moedis",
+    "1406": "Saphere",
+    "1410": "Hyusilens",
+    "1412": "Keryudra",
+    "1413": "Nagayoduki",
+    "1415": "Kyurene"
   },
   "ru": {
     "10000049": "Наганохара Ёимия",
@@ -192,7 +229,12 @@
     "1308": "Райдэн Мэй",
     "1312": "Дедушка",
     "1317": "Ранха",
-    "1413": "Нагаёдзуки"
+    "1404": "Моэдис",
+    "1406": "Сафере",
+    "1410": "Хюсиленс",
+    "1412": "Керюдра",
+    "1413": "Нагаёдзуки",
+    "1415": "Кюрене"
   },
   "pt": {
     "10000049": "Naganohara Yoimiya",
@@ -209,7 +251,12 @@
     "1308": "Raiden Mei",
     "1312": "Mikhail",
     "1317": "Ranha",
-    "1413": "Nagayoduki"
+    "1404": "Moedis",
+    "1406": "Saphere",
+    "1410": "Hyusilens",
+    "1412": "Keryudra",
+    "1413": "Nagayoduki",
+    "1415": "Kyurene"
   },
   "en": {
     "10000049": "Naganohara Yoimiya",
@@ -226,7 +273,12 @@
     "1308": "Raiden Mei",
     "1312": "Mikhail",
     "1317": "Ranha",
-    "1413": "Nagayoduki"
+    "1404": "Moedis",
+    "1406": "Saphere",
+    "1410": "Hyusilens",
+    "1412": "Keryudra",
+    "1413": "Nagayoduki",
+    "1415": "Kyurene"
   },
   "es": {
     "10000049": "Naganohara Yoimiya",
@@ -243,7 +295,12 @@
     "1308": "Raiden Mei",
     "1312": "Mikhail",
     "1317": "Ranha",
-    "1413": "Nagayoduki"
+    "1404": "Moedis",
+    "1406": "Saphere",
+    "1410": "Hyusilens",
+    "1412": "Keryudra",
+    "1413": "Nagayoduki",
+    "1415": "Kyurene"
   },
   "de": {
     "10000049": "Naganohara Yoimiya",
@@ -260,6 +317,11 @@
     "1308": "Raiden Mei",
     "1312": "Mikhail",
     "1317": "Ranha",
-    "1413": "Nagayoduki"
+    "1404": "Moedis",
+    "1406": "Saphere",
+    "1410": "Hyusilens",
+    "1412": "Keryudra",
+    "1413": "Nagayoduki",
+    "1415": "Kyurene"
   }
 }
