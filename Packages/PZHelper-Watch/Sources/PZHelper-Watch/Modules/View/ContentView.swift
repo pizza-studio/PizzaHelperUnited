@@ -42,10 +42,21 @@ public struct ContentView: View {
                                 .environmentObject(dailyNoteVM)
                         }
                     }
-                    NavigationLink {
-                        WatchWidgetSettingView()
-                    } label: {
-                        Text("watch.settings.navTitle", bundle: .module)
+                    Section {
+                        NavigationLink {
+                            WatchWidgetSettingView()
+                        } label: {
+                            Text("watch.settings.navTitle", bundle: .module)
+                        }
+                    } footer: {
+                        if let versionIntel = try? Bundle.getAppVersionAndBuild() {
+                            let versionStr = "\(versionIntel.version) Build \(versionIntel.build)"
+                            Text(verbatim: versionStr)
+                                .textCase(.none)
+                                .lineLimit(1)
+                                .fixedSize()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                     }
                 }
                 .listStyle(.carousel)
