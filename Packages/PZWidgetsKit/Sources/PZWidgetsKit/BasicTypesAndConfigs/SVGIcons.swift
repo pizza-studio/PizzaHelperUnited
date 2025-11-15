@@ -87,15 +87,24 @@ extension Pizza.SupportedGame {
     }
 
     public var giTransformerAssetSVG: Image {
-        Image("icon.transformer", bundle: .module)
+        if disableSVG {
+            return Image(systemSymbol: .arrowLeftArrowRightSquare)
+        }
+        return Image("icon.transformer", bundle: .module)
     }
 
     public var giRealmCurrencyAssetSVG: Image {
-        Image("icon.homeCoin", bundle: .module)
+        if disableSVG {
+            return Image(systemSymbol: .dollarsignCircle)
+        }
+        return Image("icon.homeCoin", bundle: .module)
     }
 
     public var giTrounceBlossomAssetSVG: Image {
-        Image("icon.trounceBlossom", bundle: .module)
+        if disableSVG {
+            return Image(systemSymbol: .leaf)
+        }
+        return Image("icon.trounceBlossom", bundle: .module)
     }
 
     public var hsrEchoOfWarAssetSVG: Image {
