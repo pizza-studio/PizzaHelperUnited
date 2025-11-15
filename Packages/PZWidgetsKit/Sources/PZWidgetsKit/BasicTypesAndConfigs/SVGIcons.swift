@@ -10,8 +10,6 @@ private let disableSVG: Bool = {
     #if os(watchOS)
     if #unavailable(watchOS 10.0) {
         return true
-    } else if #available(watchOS 26.0, *) {
-        return true
     } else {
         return false
     }
