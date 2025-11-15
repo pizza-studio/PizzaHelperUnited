@@ -68,8 +68,8 @@ struct AlternativeLockScreenHomeCoinWidget: Widget {
                 .AlternativeLockScreenHomeCoinWidgetView(entry: entry)
                 .smartStackWidgetContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("pzWidgetsKit.homeCoin".i18nWidgets)
-        .description("pzWidgetsKit.cfgName.homeCoin.2".i18nWidgets)
+        .configurationDisplayName("pzWidgetsKit.cfgName.homeCoin".i18nWidgets)
+        .description("pzWidgetsKit.cfgName.homeCoin.detail.2".i18nWidgets)
         .supportedFamilies([.accessoryCircular])
     }
 }
@@ -142,8 +142,8 @@ struct LockScreenDailyTaskWidget: Widget {
                 .LockScreenDailyTaskWidgetView(entry: entry)
                 .smartStackWidgetContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("pzWidgetsKit.dailyTask".i18nWidgets)
-        .description("pzWidgetsKit.cfgName.dailyCommission".i18nWidgets)
+        .configurationDisplayName("pzWidgetsKit.cfgName.dailyCommission".i18nWidgets)
+        .description("pzWidgetsKit.cfgName.dailyCommission.detail".i18nWidgets)
         #if os(watchOS)
             .supportedFamilies([.accessoryCircular, .accessoryCorner])
         #else
@@ -204,8 +204,8 @@ struct LockScreenHomeCoinWidget: Widget {
                 .LockScreenHomeCoinWidgetView(entry: entry)
                 .smartStackWidgetContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("pzWidgetsKit.homeCoin".i18nWidgets)
-        .description("pzWidgetsKit.cfgName.homeCoin".i18nWidgets)
+        .configurationDisplayName("pzWidgetsKit.cfgName.homeCoin".i18nWidgets)
+        .description("pzWidgetsKit.cfgName.homeCoin.detail".i18nWidgets)
         #if os(watchOS)
             .supportedFamilies([
                 .accessoryCircular,
