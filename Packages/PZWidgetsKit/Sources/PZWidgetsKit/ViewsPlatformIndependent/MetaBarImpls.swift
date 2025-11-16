@@ -50,6 +50,7 @@ public struct MetaBar4DailyTask: View, MetaBar {
 
     public var completionStatusRatio: Double {
         let sitrep = note.dailyTaskCompletionStatus
+        guard sitrep.all > 0 else { return 0 }
         return Double(sitrep.finished) / Double(sitrep.all)
     }
 
@@ -153,6 +154,7 @@ public struct MetaBar4WeeklyBosses: View, MetaBar {
         } else if let info = note.echoOfWarIntel {
             let current = info.weeklyEOWMaxRewards - info.weeklyEOWRewardsLeft
             let max = info.weeklyEOWMaxRewards
+            guard max > 0 else { return 0 }
             return Double(current) / Double(max)
         }
         return 0

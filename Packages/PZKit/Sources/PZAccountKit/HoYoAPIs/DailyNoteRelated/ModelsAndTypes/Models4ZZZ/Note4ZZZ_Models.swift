@@ -168,7 +168,8 @@ extension Note4ZZZ {
             public let current: Int
 
             public var percent: Int {
-                Int(Double(current) / Double(max) * 100)
+                guard max > 0 else { return 0 }
+                return Int(Double(current) / Double(max) * 100)
             }
         }
 

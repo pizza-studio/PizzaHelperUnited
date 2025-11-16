@@ -215,7 +215,7 @@ extension EmbeddedWidgets {
                     Label {
                         let currentScore = data.simulatedUniverseInfo.currentScore
                         let maxScore = data.simulatedUniverseInfo.maxScore
-                        let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
+                        let ratio = maxScore > 0 ? (Double(currentScore) / Double(maxScore) * 100).rounded(.down) : 0.0
                         Text(verbatim: "\(ratio)%")
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: .infinity, alignment: .leading)

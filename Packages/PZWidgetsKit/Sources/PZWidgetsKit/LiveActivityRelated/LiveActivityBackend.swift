@@ -117,18 +117,20 @@ extension LiveActivityAttributes.LiveActivityState {
     public var currentPrimaryStamina: Int {
         let secondRemaining = primaryStaminaRecoveryTime.timeIntervalSinceReferenceDate - Date()
             .timeIntervalSinceReferenceDate
-        let minuteRemaining = Double(secondRemaining) / 60
+        guard secondRemaining > 0 else { return maxPrimaryStamina }
+        let minuteRemaining = Double(secondRemaining) / 60.0
         let currentResin: Int
         if minuteRemaining <= 0 {
             currentResin = maxPrimaryStamina
         } else {
-            currentResin = maxPrimaryStamina - Int(ceil(minuteRemaining / 8))
+            currentResin = maxPrimaryStamina - Int(ceil(minuteRemaining / 8.0))
         }
         return currentResin
     }
 
     /// 下一20倍数树脂
     public var next20PrimaryStamina: Int {
+        guard currentPrimaryStamina > 0 else { return 20 }
         Int(ceil((Double(currentPrimaryStamina) + 0.01) / 20.0)) * 20
     }
 
