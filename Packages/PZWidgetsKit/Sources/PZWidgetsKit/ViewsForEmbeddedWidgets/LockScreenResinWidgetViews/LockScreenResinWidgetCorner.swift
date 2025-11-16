@@ -56,7 +56,8 @@ extension EmbeddedWidgets {
                             bundle: .module
                         )
                 } else {
-                    return "\(staminaIntel.finished), \(PZWidgetsSPM.intervalFormatter.string(from: TimeInterval.sinceNow(to: timeOnFinish))!)"
+                    let remaining = PZWidgetsSPM.formattedInterval(until: timeOnFinish)
+                    return "\(staminaIntel.finished), \(remaining)"
                 }
             case .failure:
                 return String(

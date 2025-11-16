@@ -50,9 +50,13 @@ extension EmbeddedWidgets {
                     .padding(4)
                     .widgetLabel {
                         let resinInfo = data.resinInfo
+                        let gaugeInputs = WidgetSafeMath.sanitizedGaugeInputs(
+                            current: Double(resinInfo.currentResinDynamic),
+                            maxValue: Double(resinInfo.maxResin)
+                        )
                         Gauge(
-                            value: Double(resinInfo.currentResinDynamic),
-                            in: 0 ... Double(resinInfo.maxResin)
+                            value: gaugeInputs.value,
+                            in: gaugeInputs.range
                         ) {
                             Text("pzWidgetsKit.stamina", bundle: .module)
                         } currentValueLabel: {
@@ -70,9 +74,13 @@ extension EmbeddedWidgets {
                     .scaledToFit()
                     .padding(4)
                     .widgetLabel {
+                        let gaugeInputs = WidgetSafeMath.sanitizedGaugeInputs(
+                            current: Double(staminaInfo.currentStamina),
+                            maxValue: Double(staminaInfo.maxStamina)
+                        )
                         Gauge(
-                            value: Double(staminaInfo.currentStamina),
-                            in: 0 ... Double(staminaInfo.maxStamina)
+                            value: gaugeInputs.value,
+                            in: gaugeInputs.range
                         ) {
                             Text("pzWidgetsKit.stamina", bundle: .module)
                         } currentValueLabel: {
@@ -90,9 +98,13 @@ extension EmbeddedWidgets {
                     .scaledToFit()
                     .padding(4)
                     .widgetLabel {
+                        let gaugeInputs = WidgetSafeMath.sanitizedGaugeInputs(
+                            current: Double(energyInfo.currentEnergyAmountDynamic),
+                            maxValue: Double(energyInfo.progress.max)
+                        )
                         Gauge(
-                            value: Double(energyInfo.currentEnergyAmountDynamic),
-                            in: 0 ... Double(energyInfo.progress.max)
+                            value: gaugeInputs.value,
+                            in: gaugeInputs.range
                         ) {
                             Text("pzWidgetsKit.stamina", bundle: .module)
                         } currentValueLabel: {

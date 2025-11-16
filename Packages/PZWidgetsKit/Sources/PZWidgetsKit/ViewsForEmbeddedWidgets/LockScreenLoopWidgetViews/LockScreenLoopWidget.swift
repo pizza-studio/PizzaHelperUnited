@@ -108,10 +108,12 @@ extension EmbeddedWidgets {
                 }()
                 switch data {
                 case let data as any Note4GI:
-                    let homeCoinInfoScore = Double(data.homeCoinInfo.currentHomeCoin) /
-                        Double(data.homeCoinInfo.maxHomeCoin)
-                    let resinInfoScore = 1.1 * Double(data.resinInfo.currentResinDynamic) /
-                        Double(data.resinInfo.maxResin)
+                    let homeCoinInfoScore = data.homeCoinInfo.maxHomeCoin > 0
+                        ? Double(data.homeCoinInfo.currentHomeCoin) / Double(data.homeCoinInfo.maxHomeCoin)
+                        : 0.0
+                    let resinInfoScore = data.resinInfo.maxResin > 0
+                        ? 1.1 * Double(data.resinInfo.currentResinDynamic) / Double(data.resinInfo.maxResin)
+                        : 0.0
                     let expeditionInfoScore = if data.allExpeditionsAccomplished { 0.75 } else { 0.0 }
                     if homeCoinInfoScore > 0.8, homeCoinInfoScore > resinInfoScore {
                         return .homeCoin
@@ -123,8 +125,9 @@ extension EmbeddedWidgets {
                         return .resin
                     }
                 case let data as any Note4HSR:
-                    let resinInfoScore = 1.1 * Double(data.staminaInfo.currentStamina) /
-                        Double(data.staminaInfo.maxStamina)
+                    let resinInfoScore = data.staminaInfo.maxStamina > 0
+                        ? 1.1 * Double(data.staminaInfo.currentStamina) / Double(data.staminaInfo.maxStamina)
+                        : 0.0
                     let expeditionInfoScore = if data.allExpeditionsAccomplished { 0.75 } else { 0.0 }
                     if expeditionInfoScore > resinInfoScore {
                         return .expedition

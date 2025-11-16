@@ -30,7 +30,11 @@ extension EmbeddedWidgets {
                     switch data {
                     case let data as any Note4GI:
                         let coinIntel = data.homeCoinInfo
-                        Gauge(value: Double(coinIntel.currentHomeCoin) / Double(coinIntel.maxHomeCoin)) {
+                        let gaugeValue = WidgetSafeMath.normalizedRatio(
+                            numerator: Double(coinIntel.currentHomeCoin),
+                            denominator: Double(coinIntel.maxHomeCoin)
+                        )
+                        Gauge(value: gaugeValue) {
                             LinearGradient(
                                 colors: [
                                     PZWidgetsSPM.Colors.IconColor.HomeCoin.darkBlue.suiColor,
@@ -98,7 +102,11 @@ extension EmbeddedWidgets {
                     switch data {
                     case let data as any Note4GI:
                         let coinIntel = data.homeCoinInfo
-                        Gauge(value: Double(coinIntel.currentHomeCoin) / Double(coinIntel.maxHomeCoin)) {
+                        let gaugeValue = WidgetSafeMath.normalizedRatio(
+                            numerator: Double(coinIntel.currentHomeCoin),
+                            denominator: Double(coinIntel.maxHomeCoin)
+                        )
+                        Gauge(value: gaugeValue) {
                             Image(homeCoinMonochromeIconAssetName, bundle: .module)
                                 .resizable()
                                 .scaledToFit()
