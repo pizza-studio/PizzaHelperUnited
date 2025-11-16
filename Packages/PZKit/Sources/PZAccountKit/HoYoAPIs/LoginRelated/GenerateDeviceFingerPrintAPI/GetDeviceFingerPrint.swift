@@ -37,7 +37,8 @@ extension HoYo {
         let initialDeviceID = await ThisDevice.getDeviceID4Vendor(deviceID)
         let deviceId = (initialDeviceID + refreshDate.timeIntervalSince1970.description).md5
         let seedID = generateSeed()
-        let seedTime = "\(String(Int(Date().timeIntervalSince1970)))000"
+        let epochSeconds = Date().timeIntervalSince1970.asIntIfFinite() ?? 0
+        let seedTime = "\(epochSeconds)000"
         let initialRandomFp = String(deviceId.md5.shuffled().prefix(13)) // 根据 deviceId 生成初始指纹。
         let body: [String: String] = [
             "seed_id": seedID,

@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - FullNote4GI.ExpeditionInfo4GI + Decodable
 
@@ -74,7 +75,8 @@ extension FullNote4GI.ExpeditionInfo4GI.Expedition {
         var container = encoder.container(keyedBy: CodingKeys.self)
         let remainedTime = finishTime.timeIntervalSinceNow
         let adjustedRemainedTime = remainedTime < 0 ? 0 : remainedTime
-        try container.encode(String(Int(adjustedRemainedTime)), forKey: .finishTime)
+        let encodedTime = adjustedRemainedTime.asIntIfFinite() ?? 0
+        try container.encode(String(encodedTime), forKey: .finishTime)
         try container.encode(iconURL, forKey: .iconURL)
     }
 }

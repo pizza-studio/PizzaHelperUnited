@@ -2,6 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Foundation
+import PZBaseKit
+
 // MARK: - DailyTaskInfo4GI
 
 // MARK: Decodable
@@ -82,7 +85,8 @@ extension FullNote4GI.DailyTaskInfo4GI {
             var attendanceRewardContainer = attendanceRewardsContainer
                 .nestedContainer(keyedBy: AttendanceRewardCodingKeys.self)
             try attendanceRewardContainer.encode("SomeStatus", forKey: .status) // 若有 status 字段请替换
-            try attendanceRewardContainer.encode(Int(progress * 2000.0), forKey: .progress)
+            let calculatedProgress = (progress * 2000.0).asIntIfFinite() ?? 0
+            try attendanceRewardContainer.encode(calculatedProgress, forKey: .progress)
         }
     }
 }

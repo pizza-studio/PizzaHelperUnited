@@ -18,7 +18,8 @@ enum URLRequestHelper {
     public static func getDS(region: HoYo.AccountRegion, query: String, body: Data? = nil) -> String {
         let salt: String = URLRequestConfig.salt(region: region)
 
-        let time = String(Int(Date().timeIntervalSince1970))
+        let epochSeconds = Date().timeIntervalSince1970.asIntIfFinite() ?? 0
+        let time = String(epochSeconds)
         let randomNumber = String(Int.random(in: 100_000 ..< 200_000))
 
         let bodyString: String

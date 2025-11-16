@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - WidgetNote4GI.ResinInfo4GI + Decodable
 
@@ -39,6 +40,7 @@ extension WidgetNote4GI.ResinInfo4GI: Encodable {
         try container.encode(maxResin, forKey: .maxResin)
         try container.encode(currentResin, forKey: .currentResin)
         let interval = resinRecoveryTime.timeIntervalSinceNow
-        try container.encode(String(Int(interval)), forKey: .resinRecoveryTime)
+        let encodedInterval = interval.asIntIfFinite() ?? 0
+        try container.encode(String(encodedInterval), forKey: .resinRecoveryTime)
     }
 }

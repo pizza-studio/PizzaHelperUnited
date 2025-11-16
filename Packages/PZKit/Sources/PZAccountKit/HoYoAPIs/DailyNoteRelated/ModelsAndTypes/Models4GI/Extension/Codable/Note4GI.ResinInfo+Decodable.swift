@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - ResinInfo4GI
 
@@ -41,6 +42,7 @@ extension FullNote4GI.ResinInfo4GI {
         try container.encode(maxResin, forKey: .maxResin)
         try container.encode(currentResin, forKey: .currentResin)
         let interval = resinRecoveryTime.timeIntervalSinceNow
-        try container.encode(String(Int(interval)), forKey: .resinRecoveryTime)
+        let encodedInterval = interval.asIntIfFinite() ?? 0
+        try container.encode(String(encodedInterval), forKey: .resinRecoveryTime)
     }
 }

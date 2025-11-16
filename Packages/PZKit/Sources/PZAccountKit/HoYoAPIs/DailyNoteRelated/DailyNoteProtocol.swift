@@ -211,17 +211,23 @@ extension DailyNoteProtocol {
             )
         case let dailyNote as any Note4HSR:
             let intel = dailyNote.dailyTrainingInfo
+            let pendingRaw = (Double(intel.maxScore - intel.currentScore) / 100).rounded(.down)
+            let finishedRaw = (Double(intel.currentScore) / 100).rounded(.down)
+            let allRaw = (Double(intel.maxScore) / 100).rounded(.down)
             return .init(
-                pending: Int((Double(intel.maxScore - intel.currentScore) / 100).rounded(.down)),
-                finished: Int((Double(intel.currentScore) / 100).rounded(.down)),
-                all: Int((Double(intel.maxScore) / 100).rounded(.down))
+                pending: pendingRaw.asIntIfFinite() ?? 0,
+                finished: finishedRaw.asIntIfFinite() ?? 0,
+                all: allRaw.asIntIfFinite() ?? 0
             )
         case let dailyNote as Note4ZZZ:
             let intel = dailyNote.vitality
+            let pendingRaw = (Double(intel.max - intel.current) / 100).rounded(.down)
+            let finishedRaw = (Double(intel.current) / 100).rounded(.down)
+            let allRaw = (Double(intel.max) / 100).rounded(.down)
             return .init(
-                pending: Int((Double(intel.max - intel.current) / 100).rounded(.down)),
-                finished: Int((Double(intel.current) / 100).rounded(.down)),
-                all: Int((Double(intel.max) / 100).rounded(.down))
+                pending: pendingRaw.asIntIfFinite() ?? 0,
+                finished: finishedRaw.asIntIfFinite() ?? 0,
+                all: allRaw.asIntIfFinite() ?? 0
             )
         default:
             return .init(pending: 0, finished: 0, all: 0)
