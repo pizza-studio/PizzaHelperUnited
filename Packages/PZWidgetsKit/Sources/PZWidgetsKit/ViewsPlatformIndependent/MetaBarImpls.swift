@@ -350,9 +350,13 @@ public struct MetaBar4HSRSimulUniv: View, MetaBar {
 
     public var statusTextUnits4SUI: [Text] {
         guard intel.currentScore < intel.maxScore else { return [Text(verbatim: "100%")] }
-        let ratio = (Double(intel.currentScore) / Double(intel.maxScore) * 100).rounded(.down)
-        guard ratio <= 100, ratio >= 0 else { return [Text(verbatim: "100%")] }
-        return [Text(verbatim: "\(Int(ratio))%")]
+        let denominator = Double(intel.maxScore)
+        guard denominator > 0 else { return [Text(verbatim: "100%")] }
+        let ratio = (Double(intel.currentScore) / denominator * 100).rounded(.down)
+        guard ratio.isFinite, ratio <= 100, ratio >= 0 else { return [Text(verbatim: "100%")] }
+        /// Double value cannot be converted to int because it is either infiniteor NaN.
+        guard let percentage = ratio.asIntIfFinite() else { return [Text(verbatim: "100%")] }
+        return [Text(verbatim: "\(percentage)%")]
     }
 
     public var completionStatusRatio: Double {

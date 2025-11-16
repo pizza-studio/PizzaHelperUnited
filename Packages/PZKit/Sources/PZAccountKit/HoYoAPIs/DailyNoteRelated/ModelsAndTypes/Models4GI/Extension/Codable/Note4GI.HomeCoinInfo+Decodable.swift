@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - HomeCoinInfo4GI
 
@@ -41,6 +42,7 @@ extension FullNote4GI.HomeCoinInfo4GI {
         try container.encode(maxHomeCoin, forKey: .maxHomeCoin)
         try container.encode(currentHomeCoin, forKey: .currentHomeCoin)
         let interval = fullTime.timeIntervalSinceNow
-        try container.encode(String(Int(interval)), forKey: .homeCoinRecoveryTime)
+        let encodedInterval = interval.asIntIfFinite() ?? 0
+        try container.encode(String(encodedInterval), forKey: .homeCoinRecoveryTime)
     }
 }

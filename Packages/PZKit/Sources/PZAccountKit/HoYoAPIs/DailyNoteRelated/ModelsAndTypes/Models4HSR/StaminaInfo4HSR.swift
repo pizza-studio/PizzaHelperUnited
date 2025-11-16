@@ -83,7 +83,8 @@ public struct StaminaInfo4HSR: AbleToCodeSendHash {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(maxStamina, forKey: .maxStamina)
         try container.encode(_currentStamina, forKey: .currentStamina)
-        try container.encode(Int(_staminaRecoverTime), forKey: .staminaRecoverTime)
+        let recoverInterval = _staminaRecoverTime.asIntIfFinite() ?? 0
+        try container.encode(recoverInterval, forKey: .staminaRecoverTime)
         try container.encode(currentReserveStamina, forKey: .currentReserveStamina)
         try container.encode(isReserveStaminaFull, forKey: .isReserveStaminaFull)
         try container.encodeIfPresent(staminaFullTimestamp, forKey: .staminaFullTimestamp)
@@ -111,6 +112,7 @@ public struct StaminaInfo4HSR: AbleToCodeSendHash {
     private let fetchTime: Date = .init()
 
     private var restOfStamina: Int {
-        Int(ceil(remainingTime / Self.eachStaminaRecoveryTime))
+        let amount = ceil(remainingTime / Self.eachStaminaRecoveryTime)
+        return amount.asIntIfFinite() ?? 0
     }
 }

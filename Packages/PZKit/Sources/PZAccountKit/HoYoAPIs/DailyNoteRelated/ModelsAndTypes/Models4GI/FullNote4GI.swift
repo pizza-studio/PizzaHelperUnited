@@ -98,6 +98,7 @@ extension FullNote4GI.TransformerInfo4GI {
 
     public var remainingDays: Int {
         let seconds = recoveryTime.timeIntervalSince1970 - Date().timeIntervalSince1970
-        return Swift.max(Int((seconds / 86400.0).rounded(.down)), 0)
+        let days = (seconds / 86400.0).rounded(.down)
+        return Swift.max(days.asIntIfFinite() ?? 0, 0)
     }
 }

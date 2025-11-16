@@ -169,7 +169,8 @@ extension Note4ZZZ {
 
             public var percent: Int {
                 guard max > 0 else { return 0 }
-                return Int(Double(current) / Double(max) * 100)
+                let ratio = Double(current) / Double(max) * 100
+                return ratio.asIntIfFinite() ?? 0
             }
         }
 
@@ -241,7 +242,8 @@ extension Note4ZZZ.Energy {
     public var currentEnergyAmountDynamic: Int {
         let baseValue = progress.current
         let timePassedSinceLastFetch = Date().timeIntervalSince1970 - fetchedTime.timeIntervalSince1970
-        return baseValue + Int((timePassedSinceLastFetch / Self.eachStaminaRecoveryTime).rounded(.down))
+        let delta = (timePassedSinceLastFetch / Self.eachStaminaRecoveryTime).rounded(.down)
+        return baseValue + (delta.asIntIfFinite() ?? 0)
     }
 
     public var timeOnFinish: Date {

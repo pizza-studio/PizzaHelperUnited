@@ -12,6 +12,8 @@ extension ResinInfo4GI {
     public func calculatedCurrentResin(referTo date: Date) -> Int {
         let secondToFull = resinRecoveryTime.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate
         guard secondToFull > 0 else { return maxResin }
-        return maxResin - Int(ceil(secondToFull / 8 / 60))
+        let resinDelta = ceil(secondToFull / 8 / 60)
+        guard let delta = resinDelta.asIntIfFinite() else { return maxResin }
+        return maxResin - delta
     }
 }

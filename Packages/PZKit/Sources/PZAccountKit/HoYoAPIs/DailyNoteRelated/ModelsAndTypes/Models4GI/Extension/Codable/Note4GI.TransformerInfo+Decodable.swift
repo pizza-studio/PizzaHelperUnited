@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - TransformerInfo4GI
 
@@ -71,8 +72,15 @@ extension FullNote4GI.TransformerInfo4GI {
             try recoveryTimeContainer.encode(0, forKey: .minute)
             try recoveryTimeContainer.encode(0, forKey: .second)
         } else {
+            guard let totalSeconds = interval.asIntIfFinite() else {
+                try recoveryTimeContainer.encode(true, forKey: .reached)
+                try recoveryTimeContainer.encode(0, forKey: .day)
+                try recoveryTimeContainer.encode(0, forKey: .hour)
+                try recoveryTimeContainer.encode(0, forKey: .minute)
+                try recoveryTimeContainer.encode(0, forKey: .second)
+                return
+            }
             try recoveryTimeContainer.encode(false, forKey: .reached)
-            let totalSeconds = Int(interval)
             let day = totalSeconds / (24 * 3600)
             let hour = (totalSeconds % (24 * 3600)) / 3600
             let minute = (totalSeconds % 3600) / 60
