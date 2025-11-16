@@ -85,7 +85,7 @@ extension DesktopWidgets {
                             let rawRemaining = TimeInterval.sinceNow(to: finishTime)
                             let timeRemaining = WidgetSafeMath.nonNegativeInterval(rawRemaining)
                             let cappedRemaining = Swift.min(timeRemaining, totalSecond)
-                            let percentage = totalSecond > 0
+                            let percentage = (totalSecond - cappedRemaining) > 0
                                 ? (totalSecond - cappedRemaining) / totalSecond
                                 : 0.0
                             percentageBar(WidgetSafeMath.clamp(percentage, to: 0 ... 1))
