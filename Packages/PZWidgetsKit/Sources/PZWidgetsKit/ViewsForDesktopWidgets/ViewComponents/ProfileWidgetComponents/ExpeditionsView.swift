@@ -82,9 +82,14 @@ extension DesktopWidgets {
                     VStack(alignment: .leading) {
                         if !expedition.isFinished, let finishTime = expedition.timeOnFinish {
                             let totalSecond = 20.0 * 60.0 * 60.0
-                            let percentage = 1.0 - (TimeInterval.sinceNow(to: finishTime) / totalSecond)
-                            percentageBar(percentage)
-                            Text(PZWidgetsSPM.intervalFormatter.string(from: TimeInterval.sinceNow(to: finishTime))!)
+                            let rawRemaining = TimeInterval.sinceNow(to: finishTime)
+                            let timeRemaining = WidgetSafeMath.nonNegativeInterval(rawRemaining)
+                            let cappedRemaining = Swift.min(timeRemaining, totalSecond)
+                            let percentage = totalSecond > 0
+                                ? (totalSecond - cappedRemaining) / totalSecond
+                                : 0.0
+                            percentageBar(WidgetSafeMath.clamp(percentage, to: 0 ... 1))
+                            Text(PZWidgetsSPM.formattedInterval(for: timeRemaining))
                                 .lineLimit(1)
                                 .font(.caption2)
                                 .minimumScaleFactor(0.4)

@@ -50,6 +50,7 @@ public struct MetaBar4DailyTask: View, MetaBar {
 
     public var completionStatusRatio: Double {
         let sitrep = note.dailyTaskCompletionStatus
+        guard sitrep.all > 0 else { return 0 }
         return Double(sitrep.finished) / Double(sitrep.all)
     }
 
@@ -153,6 +154,7 @@ public struct MetaBar4WeeklyBosses: View, MetaBar {
         } else if let info = note.echoOfWarIntel {
             let current = info.weeklyEOWMaxRewards - info.weeklyEOWRewardsLeft
             let max = info.weeklyEOWMaxRewards
+            guard max > 0 else { return 0 }
             return Double(current) / Double(max)
         }
         return 0
@@ -349,7 +351,7 @@ public struct MetaBar4HSRSimulUniv: View, MetaBar {
     public var statusTextUnits4SUI: [Text] {
         guard intel.currentScore < intel.maxScore else { return [Text(verbatim: "100%")] }
         let ratio = (Double(intel.currentScore) / Double(intel.maxScore) * 100).rounded(.down)
-        guard ratio <= 1, ratio >= 0 else { return [Text(verbatim: "100%")] }
+        guard ratio <= 100, ratio >= 0 else { return [Text(verbatim: "100%")] }
         return [Text(verbatim: "\(Int(ratio))%")]
     }
 

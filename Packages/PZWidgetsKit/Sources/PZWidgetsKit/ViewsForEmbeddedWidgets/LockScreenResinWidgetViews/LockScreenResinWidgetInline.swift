@@ -30,9 +30,7 @@ extension EmbeddedWidgets {
             switch result {
             case let .success(data):
                 let staminaStatus = data.staminaIntel
-                let trailingTextStr = PZWidgetsSPM.intervalFormatter.string(
-                    from: TimeInterval.sinceNow(to: data.staminaFullTimeOnFinish)
-                )!
+                let trailingTextStr = PZWidgetsSPM.formattedInterval(until: data.staminaFullTimeOnFinish)
                 let textDisplay = if staminaStatus.isAccomplished {
                     Text(verbatim: " \(staminaStatus.all) @ 100%")
                 } else {

@@ -32,7 +32,11 @@ extension EmbeddedWidgets {
                             let sitrep = data.dailyTaskCompletionStatus
                             let valNow = sitrep.finished
                             let valMax = sitrep.all
-                            Gauge(value: Double(valNow), in: 0 ... Double(valMax)) {
+                            let gaugeInputs = WidgetSafeMath.sanitizedGaugeInputs(
+                                current: Double(valNow),
+                                maxValue: Double(valMax)
+                            )
+                            Gauge(value: gaugeInputs.value, in: gaugeInputs.range) {
                                 Text("pzWidgetsKit.dailyTask", bundle: .module)
                             } currentValueLabel: {
                                 Text(verbatim: "\(valNow) / \(valMax)")

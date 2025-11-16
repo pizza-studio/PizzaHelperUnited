@@ -29,7 +29,11 @@ extension EmbeddedWidgets {
                 switch result {
                 case let .success(data):
                     let staminaIntel = data.staminaIntel
-                    Gauge(value: Double(staminaIntel.finished) / Double(staminaIntel.all)) {
+                    let gaugeValue = WidgetSafeMath.normalizedRatio(
+                        numerator: Double(staminaIntel.finished),
+                        denominator: Double(staminaIntel.all)
+                    )
+                    Gauge(value: gaugeValue) {
                         LinearGradient(
                             colors: [
                                 PZWidgetsSPM.Colors.IconColor.Resin.dark.suiColor,
@@ -85,7 +89,11 @@ extension EmbeddedWidgets {
                 switch result {
                 case let .success(data):
                     let staminaIntel = data.staminaIntel
-                    Gauge(value: Double(staminaIntel.finished) / Double(staminaIntel.all)) {
+                    let gaugeValue = WidgetSafeMath.normalizedRatio(
+                        numerator: Double(staminaIntel.finished),
+                        denominator: Double(staminaIntel.all)
+                    )
+                    Gauge(value: gaugeValue) {
                         Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
                             .resizable()
                             .scaledToFit()
