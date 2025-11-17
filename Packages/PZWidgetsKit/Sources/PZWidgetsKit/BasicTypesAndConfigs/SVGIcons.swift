@@ -187,6 +187,37 @@ public actor SVGIconsCompiler {
     }
 }
 
+// MARK: - SVGIconPrewarmCoordinator
+
+@available(iOS 16.2, macCatalyst 16.2, *)
+public actor SVGIconPrewarmCoordinator {
+    // MARK: Public
+
+    public static let shared = SVGIconPrewarmCoordinator()
+
+    public func ensurePrecompiled() async {
+        if hasCompletedPrewarm {
+            return
+        }
+        if let task = inFlightTask {
+            await task.value
+            return
+        }
+        let task = Task(priority: .utility) {
+            await SVGIconsCompiler.shared.precompileAllIfNeeded()
+        }
+        inFlightTask = task
+        await task.value
+        hasCompletedPrewarm = true
+        inFlightTask = nil
+    }
+
+    // MARK: Private
+
+    private var inFlightTask: Task<Void, Never>?
+    private var hasCompletedPrewarm = false
+}
+
 // MARK: - Syntax Sugar for Asset Icons (SVG)
 
 @available(iOS 16.2, macCatalyst 16.2, *)
