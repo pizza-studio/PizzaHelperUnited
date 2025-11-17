@@ -68,6 +68,11 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
         return image
     }
 
+    @MainActor
+    public func inlineText() -> Text {
+        Text(Image(rawValue, bundle: .module).renderingMode(.template))
+    }
+
     // MARK: Internal
 
     @MainActor
@@ -202,72 +207,145 @@ extension Pizza.SupportedGame? {
         guard let this = self, this != .zenlessZone else { return unavailableAssetSVG }
         return this.expeditionAssetSVG
     }
+
+    @MainActor public var primaryStaminaSVGAsInlineText: Text {
+        self?.primaryStaminaSVGAsInlineText ?? SVGIconAsset.infoUnavailable.inlineText()
+    }
+
+    @MainActor public var dailyTaskSVGAsInlineText: Text {
+        self?.dailyTaskSVGAsInlineText ?? SVGIconAsset.infoUnavailable.inlineText()
+    }
+
+    @MainActor public var expeditionSVGAsInlineText: Text {
+        guard let this = self, this != .zenlessZone else {
+            return SVGIconAsset.infoUnavailable.inlineText()
+        }
+        return this.expeditionSVGAsInlineText
+    }
 }
 
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension Pizza.SupportedGame {
     /// 主要玩家体力。
     @MainActor public var primaryStaminaAssetSVG: Image {
-        switch self {
-        case .genshinImpact:
-            return SVGIconAsset.resin.resolvedImage()
-        case .starRail:
-            return SVGIconAsset.trailblazePower.resolvedImage()
-        case .zenlessZone:
-            return SVGIconAsset.zzzBattery.resolvedImage()
-        }
+        primaryStaminaIcon.resolvedImage()
+    }
+
+    @MainActor public var primaryStaminaSVGAsInlineText: Text {
+        primaryStaminaIcon.inlineText()
     }
 
     @MainActor public var dailyTaskAssetSVG: Image {
-        let icon: SVGIconAsset = switch self {
-        case .genshinImpact: .dailyTaskGI
-        case .starRail: .dailyTaskHSR
-        case .zenlessZone: .dailyTaskZZZ
-        }
-        return icon.resolvedImage()
+        dailyTaskIcon.resolvedImage()
+    }
+
+    @MainActor public var dailyTaskSVGAsInlineText: Text {
+        dailyTaskIcon.inlineText()
     }
 
     @MainActor public var expeditionAssetSVG: Image {
-        let icon: SVGIconAsset = switch self {
-        case .genshinImpact, .zenlessZone: .expeditionGI
-        case .starRail: .expeditionHSR
-        }
-        return icon.resolvedImage()
+        expeditionIcon.resolvedImage()
+    }
+
+    @MainActor public var expeditionSVGAsInlineText: Text {
+        expeditionIcon.inlineText()
     }
 
     @MainActor public var giTransformerAssetSVG: Image {
         SVGIconAsset.transformer.resolvedImage()
     }
 
+    @MainActor public var giTransformerSVGAsInlineText: Text {
+        SVGIconAsset.transformer.inlineText()
+    }
+
     @MainActor public var giRealmCurrencyAssetSVG: Image {
         SVGIconAsset.homeCoin.resolvedImage()
+    }
+
+    @MainActor public var giRealmCurrencySVGAsInlineText: Text {
+        SVGIconAsset.homeCoin.inlineText()
     }
 
     @MainActor public var giTrounceBlossomAssetSVG: Image {
         SVGIconAsset.trounceBlossom.resolvedImage()
     }
 
+    @MainActor public var giTrounceBlossomSVGAsInlineText: Text {
+        SVGIconAsset.trounceBlossom.inlineText()
+    }
+
     @MainActor public var hsrEchoOfWarAssetSVG: Image {
         SVGIconAsset.echoOfWar.resolvedImage()
+    }
+
+    @MainActor public var hsrEchoOfWarSVGAsInlineText: Text {
+        SVGIconAsset.echoOfWar.inlineText()
     }
 
     @MainActor public var hsrSimulatedUniverseAssetSVG: Image {
         SVGIconAsset.simulatedUniverse.resolvedImage()
     }
 
+    @MainActor public var hsrSimulatedUniverseSVGAsInlineText: Text {
+        SVGIconAsset.simulatedUniverse.inlineText()
+    }
+
     @MainActor public var zzzVHSStoreAssetSVG: Image {
         SVGIconAsset.zzzVHSStore.resolvedImage()
+    }
+
+    @MainActor public var zzzVHSStoreSVGAsInlineText: Text {
+        SVGIconAsset.zzzVHSStore.inlineText()
     }
 
     @MainActor public var zzzScratchCardAssetSVG: Image {
         SVGIconAsset.zzzScratch.resolvedImage()
     }
 
+    @MainActor public var zzzScratchCardSVGAsInlineText: Text {
+        SVGIconAsset.zzzScratch.inlineText()
+    }
+
     @MainActor public var zzzBountyAssetSVG: Image {
         SVGIconAsset.zzzBounty.resolvedImage()
     }
 
+    @MainActor public var zzzBountySVGAsInlineText: Text {
+        SVGIconAsset.zzzBounty.inlineText()
+    }
+
     @MainActor public var zzzInvestigationPointsAssetSVG: Image {
         SVGIconAsset.zzzInvestigation.resolvedImage()
+    }
+
+    @MainActor public var zzzInvestigationPointsSVGAsInlineText: Text {
+        SVGIconAsset.zzzInvestigation.inlineText()
+    }
+}
+
+@available(iOS 16.2, macCatalyst 16.2, *)
+extension Pizza.SupportedGame {
+    fileprivate var primaryStaminaIcon: SVGIconAsset {
+        switch self {
+        case .genshinImpact: .resin
+        case .starRail: .trailblazePower
+        case .zenlessZone: .zzzBattery
+        }
+    }
+
+    fileprivate var dailyTaskIcon: SVGIconAsset {
+        switch self {
+        case .genshinImpact: .dailyTaskGI
+        case .starRail: .dailyTaskHSR
+        case .zenlessZone: .dailyTaskZZZ
+        }
+    }
+
+    fileprivate var expeditionIcon: SVGIconAsset {
+        switch self {
+        case .genshinImpact, .zenlessZone: .expeditionGI
+        case .starRail: .expeditionHSR
+        }
     }
 }

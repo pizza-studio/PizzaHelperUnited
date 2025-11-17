@@ -39,7 +39,7 @@ extension EmbeddedWidgets {
                                 Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(size: size, design: .rounded))
                                     .minimumScaleFactor(0.5)
-                                Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
                                     .font(.system(size: size * 1 / 2))
                                     .minimumScaleFactor(0.5)
                             }
@@ -70,13 +70,13 @@ extension EmbeddedWidgets {
                                 Text(Image(systemSymbol: .ellipsis))
                                     .font(.system(size: size, design: .rounded))
                                     .minimumScaleFactor(0.5)
-                                Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
                                     .font(.system(size: size * 1 / 2))
                                     .minimumScaleFactor(0.5)
                             }
                             .widgetAccentable()
                             .foregroundColor(.cyan)
-                            Text(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)
+                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
@@ -94,7 +94,7 @@ extension EmbeddedWidgets {
                                 Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(size: size, design: .rounded))
                                     .minimumScaleFactor(0.5)
-                                Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
                                     .font(.system(size: size * 1 / 2))
                                     .minimumScaleFactor(0.5)
                             }
@@ -126,12 +126,12 @@ extension EmbeddedWidgets {
                                 Text(Image(systemSymbol: .ellipsis))
                                     .font(.system(size: size, design: .rounded))
                                     .minimumScaleFactor(0.5)
-                                Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
                                     .font(.system(size: size * 1 / 2))
                                     .minimumScaleFactor(0.5)
                             }
                             .widgetAccentable()
-                            Text(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)
+                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .foregroundColor(.gray)
