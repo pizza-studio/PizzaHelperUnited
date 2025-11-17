@@ -137,19 +137,16 @@ public actor SVGIconsCompiler {
     public static let shared = SVGIconsCompiler()
 
     public func precompileAllIfNeeded() async {
-        await withTaskGroup(of: Void.self) { group in
-            for icon in SVGIconAsset.allCases {
-                group.addTask { await self.precompile(icon: icon) }
-            }
-            await group.waitForAll()
+        // 這些任務得逐一完成。
+        for icon in SVGIconAsset.allCases {
+            await precompile(icon: icon)
         }
     }
 
     public func precompile(icon: SVGIconAsset) async {
         _ = await Task { @MainActor in
             let cache = SVGIconImageCache.shared
-            let alreadyCached = await MainActor.run { cache.hasImage(for: icon) }
-            if alreadyCached {
+            if cache.hasImage(for: icon) {
                 return
             }
             guard let rendered = Self.renderImage(for: icon) else {
@@ -173,7 +170,7 @@ public actor SVGIconsCompiler {
         let renderer = ImageRenderer(content: content)
         renderer.scale = 1
         renderer.isOpaque = false
-        renderer.proposedSize = ProposedViewSize(width: 96, height: 96)
+        renderer.proposedSize = ProposedViewSize(width: 48, height: 48)
         #if canImport(UIKit)
         guard let platformImage = renderer.uiImage else { return nil }
         let templated = Image(uiImage: platformImage).renderingMode(.template)
@@ -203,7 +200,7 @@ public actor SVGIconPrewarmCoordinator {
             await task.value
             return
         }
-        let task = Task(priority: .utility) {
+        let task = Task(priority: .userInitiated) {
             await SVGIconsCompiler.shared.precompileAllIfNeeded()
         }
         inFlightTask = task
