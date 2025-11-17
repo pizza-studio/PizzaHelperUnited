@@ -98,7 +98,7 @@ extension EmbeddedWidgets {
                         .minimumScaleFactor(0.2)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } icon: {
-                    Text("\(data.game.primaryStaminaAssetSVG)")
+                    data.game.primaryStaminaSVGAsInlineText
                         .minimumScaleFactor(0.2)
                         .frame(maxWidth: 18, maxHeight: 18)
                         .widgetAccentable(isFullColor)
@@ -124,7 +124,7 @@ extension EmbeddedWidgets {
                                 .minimumScaleFactor(0.2)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         } icon: {
-                            Text("\(data.game.zzzScratchCardAssetSVG)")
+                            data.game.zzzScratchCardSVGAsInlineText
                                 .minimumScaleFactor(0.2)
                                 .frame(maxWidth: 18, maxHeight: 18)
                                 .widgetAccentable(isFullColor)
@@ -148,7 +148,7 @@ extension EmbeddedWidgets {
                         }
                         .minimumScaleFactor(0.2)
                     } icon: {
-                        Text("\(data.game.expeditionAssetSVG)")
+                        data.game.expeditionSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -176,7 +176,7 @@ extension EmbeddedWidgets {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     } icon: {
-                        Text("\(data.game.dailyTaskAssetSVG)")
+                        data.game.dailyTaskSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -201,7 +201,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } icon: {
-                        Text("\(data.game.giRealmCurrencyAssetSVG)")
+                        data.game.giRealmCurrencySVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -220,7 +220,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } icon: {
-                        Text("\(data.game.hsrSimulatedUniverseAssetSVG)")
+                        data.game.hsrSimulatedUniverseSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -239,7 +239,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } icon: {
-                        Text("\(data.game.zzzVHSStoreAssetSVG)")
+                        data.game.zzzVHSStoreSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .foregroundColor(
@@ -275,7 +275,7 @@ extension EmbeddedWidgets {
                                 }
                             }
                         } icon: {
-                            Text("\(data.game.hsrEchoOfWarAssetSVG)")
+                            data.game.hsrEchoOfWarSVGAsInlineText
                                 .minimumScaleFactor(0.2)
                                 .frame(maxWidth: 18, maxHeight: 18)
                                 .widgetAccentable(isFullColor)
@@ -317,7 +317,7 @@ extension EmbeddedWidgets {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     } icon: {
-                        Text("\(data.game.giTransformerAssetSVG)")
+                        data.game.giTransformerSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -345,7 +345,7 @@ extension EmbeddedWidgets {
                             }
                         }
                     } icon: {
-                        Text("\(data.game.giTrounceBlossomAssetSVG)")
+                        data.game.giTrounceBlossomSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -371,7 +371,7 @@ extension EmbeddedWidgets {
                             }
                         }
                     } icon: {
-                        Text("\(data.game.zzzBountyAssetSVG)")
+                        data.game.zzzBountySVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -394,7 +394,7 @@ extension EmbeddedWidgets {
                             }
                         }
                     } icon: {
-                        Text("\(data.game.zzzInvestigationPointsAssetSVG)")
+                        data.game.zzzInvestigationPointsSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
