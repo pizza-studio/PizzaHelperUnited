@@ -93,6 +93,19 @@ public final class GachaVM: TaskManagedVM {
         }
     }
 
+    private func refreshGPIDsAfterBackendMutation(
+        postUpdate: (@MainActor () -> Void)? = nil
+    ) {
+        Task {
+            await self.updateAllCachedGPIDs()
+            if let postUpdate {
+                await MainActor.run {
+                    postUpdate()
+                }
+            }
+        }
+    }
+
     private func configurePublisherObservations() {
         guard !subscribed else { return }
         defer { subscribed = true }
@@ -190,7 +203,9 @@ extension GachaVM {
                 return nil
             },
             completionHandler: { _ in
-                self.showSucceededAlertToast = true
+                self.refreshGPIDsAfterBackendMutation {
+                    self.showSucceededAlertToast = true
+                }
             }
         )
     }
@@ -212,11 +227,13 @@ extension GachaVM {
                 return nil
             },
             completionHandler: { _ in
-                if self.currentGPID == nil {
-                    self.resetDefaultProfile()
+                self.refreshGPIDsAfterBackendMutation {
+                    if self.currentGPID == nil {
+                        self.resetDefaultProfile()
+                    }
+                    self.backendChangesAvailable = false
+                    self.showSucceededAlertToast = true
                 }
-                self.backendChangesAvailable = false
-                self.showSucceededAlertToast = true
             }
         )
     }
@@ -253,10 +270,12 @@ extension GachaVM {
                 return nil
             },
             completionHandler: { _ in
-                if self.currentGPID == nil {
-                    self.resetDefaultProfile()
+                self.refreshGPIDsAfterBackendMutation {
+                    if self.currentGPID == nil {
+                        self.resetDefaultProfile()
+                    }
+                    self.showSucceededAlertToast = true
                 }
-                self.showSucceededAlertToast = true
             }
         )
     }
@@ -527,10 +546,12 @@ extension GachaVM {
                 return nil
             },
             completionHandler: { resultMap in
-                if let resultMap {
-                    self.currentSceneStep4Import = .importSucceeded(resultMap)
+                self.refreshGPIDsAfterBackendMutation {
+                    if let resultMap {
+                        self.currentSceneStep4Import = .importSucceeded(resultMap)
+                    }
+                    self.showSucceededAlertToast = true
                 }
-                self.showSucceededAlertToast = true
             },
             errorHandler: { error in
                 withAnimation {
