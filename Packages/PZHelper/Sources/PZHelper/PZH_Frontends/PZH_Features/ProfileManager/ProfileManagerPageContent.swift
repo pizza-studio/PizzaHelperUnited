@@ -468,7 +468,7 @@ struct ProfileManagerPageContent: View {
                     let data: Data = try Data(contentsOf: url)
                     do {
                         // 此时可以假设要处理的档案是披萨难民资料包，里面只有原神的本机帐号资料。
-                        let decoded = try PropertyListDecoder().decode(RefugeeFile.self, from: data)
+                        let decoded = try PropertyListDecoder().decode(PZRefugeeFile.self, from: data)
                         var insertedUUIDs = Set<UUID>()
                         for newProfileSendable in decoded.newProfiles {
                             decodedProfiles.append(newProfileSendable)
