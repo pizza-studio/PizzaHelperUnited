@@ -101,9 +101,9 @@ public struct GachaRootView: View {
                         }
                         Divider()
                         Button {
-                            let remoteChangesAvailable = theVM.remoteChangesAvailable
+                            let backendChangesAvailable = theVM.backendChangesAvailable
                             theVM.rebuildGachaUIDList()
-                            if remoteChangesAvailable {
+                            if backendChangesAvailable {
                                 theVM.updateMappedEntriesByPools(immediately: false)
                             }
                         } label: {
@@ -115,7 +115,7 @@ public struct GachaRootView: View {
                     } label: {
                         Image(systemSymbol: .filemenuAndSelection)
                             .overlay(alignment: .topLeading) {
-                                if theVM.remoteChangesAvailable {
+                                if theVM.backendChangesAvailable {
                                     Circle().fill(.red).frame(width: 4, height: 4)
                                 }
                             }
@@ -152,7 +152,7 @@ public struct GachaRootView: View {
 extension GachaRootView {
     @ViewBuilder public var coreBody: some View {
         Form {
-            if theVM.remoteChangesAvailable {
+            if theVM.backendChangesAvailable {
                 Text(
                     "gachaKit.prompt.remoteChangesDetected.withRecommendedAction",
                     bundle: .module
