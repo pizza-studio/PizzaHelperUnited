@@ -1618,7 +1618,7 @@
         }
       }
     },
-    "gachaKit.exchange.formatExplain.uigfv4.refugee" : {
+    "gachaKit.exchange.formatExplain.uigfv4.refugee.pzHelper4GenshinV4" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1629,7 +1629,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into a UIGFv4 format to import instead. This process is automatic."
+            "value" : "If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into UIGFv4 format to import instead. This process is automatic."
           }
         },
         "es" : {
@@ -1690,6 +1690,83 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "如果您有舊披薩難民資料需要匯入的話，請選擇 UIGFv4 格式。App 會自動對該檔案的所有抽卡記錄修正 itemID 等欄位內容、再轉為 UIGFv4 格式後匯入。此過程全自動完成。"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.formatExplain.uigfv4.refugee.snapHutao" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn du eine Snap-Hutao-Refugee-Datei importieren möchtest, wähle das UIGFv4-Format und lade die Snap-Hutao-Datenbank `Userdata.db` (eine mit Entity Framework Core erzeugte SQLite-Datenbank). Die App liest diese Datenbank anschließend ein und wandelt alle Ziehungsdatensätze zum Import in das UIGFv4-Format um."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you have Snap Hutao Refugee Data file to import, please choose UIGFv4 format and load the Snap Hutao `Userdata.db` database file (which is an SQLite database generated using Entity Framework Core). The app will start reading this database file and parse all gacha entries into UIGFv4 format to import instead."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si tienes un archivo Snap Hutao Refugee Data para importar, elige el formato UIGFv4 y carga la base de datos `Userdata.db` de Snap Hutao (una base de datos SQLite generada con Entity Framework Core). La aplicación leerá esa base de datos y convertirá todas las entradas de gacha al formato UIGFv4 para importarlas."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kung mayroon kang Snap Hutao Refugee Data file na i-aangkat, piliin ang UIGFv4 na format at i-load ang Snap Hutao na `Userdata.db` database file (isang SQLite database na gawa sa Entity Framework Core). Babasahin ng app ang database na ito at iko-convert ang lahat ng gacha entries sa UIGFv4 para ma-import."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous devez importer un fichier Snap Hutao Refugee Data, choisissez le format UIGFv4 et chargez la base de données Snap Hutao `Userdata.db` (une base SQLite générée avec Entity Framework Core). L’app lira ensuite cette base et convertira toutes les entrées de vœux au format UIGFv4 pour l’import."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se devi importare un file Snap Hutao Refugee Data, scegli il formato UIGFv4 e carica il database `Userdata.db` di Snap Hutao (un database SQLite generato con Entity Framework Core). L’app leggerà tale database e convertirà tutte le estrazioni gacha nel formato UIGFv4 per l’importazione."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao 難民データを取り込む場合は UIGFv4 形式を選び、Snap Hutao の `Userdata.db`（Entity Framework Core で生成された SQLite データベース）を読み込んでください。アプリがこのデータベースを解析し、全祈願記録を UIGFv4 形式に変換して取り込みます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao Refugee Data 파일을 가져오려면 UIGFv4 형식을 선택하고 Snap Hutao의 `Userdata.db` 데이터베이스(Entity Framework Core 로 생성된 SQLite DB)를 불러오세요. 앱이 해당 DB를 읽어 모든 가챠 기록을 UIGFv4 형식으로 변환해 가져옵니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если вы хотите импортировать файл Snap Hutao Refugee Data, выберите формат UIGFv4 и загрузите базу данных Snap Hutao `Userdata.db` (это база SQLite, созданная через Entity Framework Core). Приложение прочитает эту базу и преобразует все записи гача в формат UIGFv4 для импорта."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nếu bạn có tập tin Snap Hutao Refugee Data cần nhập, hãy chọn định dạng UIGFv4 và tải tệp cơ sở dữ liệu `Userdata.db` của Snap Hutao (một cơ sở dữ liệu SQLite được tạo bằng Entity Framework Core). Ứng dụng sẽ đọc cơ sở dữ liệu này và chuyển mọi bản ghi gacha sang định dạng UIGFv4 để nhập."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "若要导入 Snap Hutao 难民档案，请选择 UIGFv4 格式并载入 Snap Hutao 的 `Userdata.db` 数据库（由 Entity Framework Core 生成的 SQLite 数据库）。App 会读取此数据库并将全部抽卡记录转换成 UIGFv4 格式后导入。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "若要匯入 Snap Hutao 難民檔案，請選擇 UIGFv4 格式並載入 Snap Hutao 的 `Userdata.db` 資料庫（由 Entity Framework Core 生成的 SQLite 資料庫）。App 會讀取此資料庫並將全部抽卡記錄轉為 UIGFv4 格式後匯入。"
           }
         }
       }
