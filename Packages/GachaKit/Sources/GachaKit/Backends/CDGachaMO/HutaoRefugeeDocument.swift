@@ -320,20 +320,21 @@ extension HutaoRefugeeFile {
     /// Map Snap.Hutao gacha type to GachaTypeGI
     private func mapGachaType(_ typeString: String) -> GachaTypeGI? {
         // Snap.Hutao uses UIGF gacha types:
-        // 100: Novice Wish
+        // 100: Novice Wish (Beginner's Wish)
         // 200: Standard Wish
         // 301: Character Event Wish
         // 302: Weapon Event Wish
-        // 500: Character Event Wish-2 (newer format)
+        // 400: Character Event Wish-2 (newer format, treated same as 301)
+        // 500: Chronicled Wish
 
         guard let typeValue = Int(typeString) else { return nil }
 
         switch typeValue {
-        case 100: return .giNoviceWish
-        case 200: return .giStandardWish
-        case 301, 400: return .giCharacterEventWish
-        case 302: return .giWeaponEventWish
-        case 500: return .giCharacterEventWish2
+        case 100: return .beginnersWish
+        case 200: return .standardWish
+        case 301, 400: return .characterEventWish1
+        case 302: return .weaponEventWish
+        case 500: return .chronicledWish
         default: return nil
         }
     }
