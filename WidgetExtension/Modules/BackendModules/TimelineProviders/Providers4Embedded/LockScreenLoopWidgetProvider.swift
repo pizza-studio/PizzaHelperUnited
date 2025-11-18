@@ -79,8 +79,7 @@ struct LockScreenLoopWidgetProvider: CrossGenServiceableTimelineProvider {
         for configuration: Intent
     ) async
         -> Entry {
-        await SVGIconPrewarmCoordinator.shared.ensurePrecompiled()
-        return Entry(
+        Entry(
             date: Date(),
             result: .success(
                 (Pizza.SupportedGame(intentConfig: configuration) ?? .genshinImpact).exampleDailyNoteData
@@ -94,7 +93,6 @@ struct LockScreenLoopWidgetProvider: CrossGenServiceableTimelineProvider {
         for configuration: Intent
     ) async
         -> Timeline<Entry> {
-        await SVGIconPrewarmCoordinator.shared.ensurePrecompiled()
         let result: (entries: [Entry], refreshTime: Date) = await Task(priority: .userInitiated) {
             var refreshTime = PZWidgets.getRefreshDateByGameStamina(game: nil)
             let entries = await Self.getEntries(configuration: configuration, refreshTime: &refreshTime)
