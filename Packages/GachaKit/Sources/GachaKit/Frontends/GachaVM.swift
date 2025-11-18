@@ -379,7 +379,7 @@ extension GachaVM {
                     var isRefugee = false
                     refugeeTask: do {
                         let refugeeData = try PropertyListDecoder().decode(
-                            RefugeeFile.self, from: data
+                            PZRefugeeFile.self, from: data
                         )
                         isRefugee = true
                         var genshinDataRAW = refugeeData.oldGachaEntries4GI

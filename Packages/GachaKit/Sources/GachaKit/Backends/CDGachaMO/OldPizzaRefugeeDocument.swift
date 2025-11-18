@@ -8,9 +8,9 @@ import PZCoreDataKit4LocalAccounts
 import SwiftUI
 import UniformTypeIdentifiers
 
-// MARK: - RefugeeFile
+// MARK: - PZRefugeeFile
 
-public struct RefugeeFile: Codable, Hashable, Sendable {
+public struct PZRefugeeFile: Codable, Hashable, Sendable {
     // MARK: Lifecycle
 
     public init(
@@ -30,20 +30,20 @@ public struct RefugeeFile: Codable, Hashable, Sendable {
     public var oldGachaEntries4GI: [CDGachaMO4GI]
 }
 
-// MARK: - RefugeeDocument
+// MARK: - PZRefugeeDocument
 
-public struct RefugeeDocument: FileDocument {
+public struct PZRefugeeDocument: FileDocument {
     // MARK: Lifecycle
 
     public init(configuration: ReadConfiguration) throws {
         let srgfModel = try PropertyListDecoder().decode(
-            RefugeeFile.self,
+            PZRefugeeFile.self,
             from: configuration.file.regularFileContents ?? .init([])
         )
         self.model = srgfModel
     }
 
-    public init(file: RefugeeFile) {
+    public init(file: PZRefugeeFile) {
         self.model = file
     }
 
@@ -51,7 +51,7 @@ public struct RefugeeDocument: FileDocument {
 
     public static var readableContentTypes: [UTType] { [.propertyList] }
 
-    public let model: RefugeeFile
+    public let model: PZRefugeeFile
 
     public func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
         let data = try PropertyListEncoder().encode(model)

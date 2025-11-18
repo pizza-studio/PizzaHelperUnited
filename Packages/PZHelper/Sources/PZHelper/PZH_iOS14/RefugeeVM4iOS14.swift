@@ -26,7 +26,7 @@ public final class RefugeeVM4iOS14: TaskManagedVMBackported {
 
     public static let shared = RefugeeVM4iOS14()
 
-    @Published public var currentExportableDocument: RefugeeDocument?
+    @Published public var currentExportableDocument: PZRefugeeDocument?
     @Published public var gachaEntriesCount: Int = 0
     @Published public var localProfileEntriesCount: Int = 0
 
@@ -82,7 +82,7 @@ extension RefugeeVM4iOS14 {
     public func startDocumentationPreparationTask(forced: Bool) {
         fireTask(
             cancelPreviousTask: forced, givenTask: {
-                var result = RefugeeFile()
+                var result = PZRefugeeFile()
                 result.oldGachaEntries4GI = try await CDGachaMOActor.shared?.getAllGenshinDataEntriesVanilla() ?? []
                 if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) {
                     result.newProfiles = ProfileManagerVM.shared.profiles
