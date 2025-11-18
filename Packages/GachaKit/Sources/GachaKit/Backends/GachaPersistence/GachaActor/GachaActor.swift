@@ -127,7 +127,7 @@ extension GachaActor {
             )
         }
         Task { @MainActor in
-            GachaVM.shared.remoteChangesAvailable = false
+            GachaVM.shared.backendChangesAvailable = false
         }
     }
 
@@ -172,7 +172,7 @@ extension GachaActor {
             }
         }
         Task { @MainActor in
-            GachaVM.shared.remoteChangesAvailable = false
+            GachaVM.shared.backendChangesAvailable = false
         }
         // try lazyRefreshProfiles(newProfiles: profiles)
         if refreshGachaProfiles {
@@ -193,7 +193,7 @@ extension GachaActor {
             arrProfiles.forEach { modelContext.insert($0.asMO) }
         }
         Task { @MainActor in
-            GachaVM.shared.remoteChangesAvailable = false
+            GachaVM.shared.backendChangesAvailable = false
         }
     }
 
@@ -261,7 +261,7 @@ extension GachaActor {
                 }
                 if modelContext.hasChanges {
                     Task { @MainActor in
-                        GachaVM.shared.remoteChangesAvailable = false
+                        GachaVM.shared.backendChangesAvailable = false
                     }
                 }
             }
@@ -405,7 +405,7 @@ extension GachaActor {
             print("ERROR BLEACHING CONTENTS. \(error.localizedDescription)")
         }
         Task { @MainActor in
-            GachaVM.shared.remoteChangesAvailable = false
+            GachaVM.shared.backendChangesAvailable = false
         }
         return bleachCounter
     }

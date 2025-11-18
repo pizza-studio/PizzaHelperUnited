@@ -43,7 +43,7 @@ public final class GachaVM: TaskManagedVM {
     public static var shared = GachaVM()
 
     @ObservationIgnored public var isDoingBatchInsertionAction = false
-    public var remoteChangesAvailable = false
+    public var backendChangesAvailable = false
     public var hasInheritableGachaEntries: Bool = false
     public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
     public private(set) var currentPentaStars: [GachaEntryExpressible] = []
@@ -140,8 +140,8 @@ public final class GachaVM: TaskManagedVM {
 
     nonisolated private func didObserveChangesFromSwiftData(changesInvolveGPID: Bool) {
         Task { @MainActor in
-            if !self.remoteChangesAvailable {
-                self.remoteChangesAvailable = true
+            if !self.backendChangesAvailable {
+                self.backendChangesAvailable = true
             }
         }
         if changesInvolveGPID {
@@ -215,7 +215,7 @@ extension GachaVM {
                 if self.currentGPID == nil {
                     self.resetDefaultProfile()
                 }
-                self.remoteChangesAvailable = false
+                self.backendChangesAvailable = false
                 self.showSucceededAlertToast = true
             }
         )
