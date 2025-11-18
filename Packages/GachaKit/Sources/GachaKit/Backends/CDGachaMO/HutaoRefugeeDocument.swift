@@ -50,8 +50,12 @@ public struct HutaoRefugeeFile: Codable, Hashable, Sendable {
 
         if sqlite3_prepare_v2(db, archiveQuery, -1, &archiveStmt, nil) == SQLITE_OK {
             while sqlite3_step(archiveStmt) == SQLITE_ROW {
-                let innerId = String(cString: sqlite3_column_text(archiveStmt, 0))
-                let uid = String(cString: sqlite3_column_text(archiveStmt, 1))
+                guard let innerIdPtr = sqlite3_column_text(archiveStmt, 0),
+                      let uidPtr = sqlite3_column_text(archiveStmt, 1) else {
+                    continue
+                }
+                let innerId = String(cString: innerIdPtr)
+                let uid = String(cString: uidPtr)
                 let isSelected = sqlite3_column_int(archiveStmt, 2) != 0
 
                 gachaArchives.append(.init(
@@ -73,12 +77,17 @@ public struct HutaoRefugeeFile: Codable, Hashable, Sendable {
 
         if sqlite3_prepare_v2(db, itemQuery, -1, &itemStmt, nil) == SQLITE_OK {
             while sqlite3_step(itemStmt) == SQLITE_ROW {
-                let innerId = String(cString: sqlite3_column_text(itemStmt, 0))
-                let archiveId = String(cString: sqlite3_column_text(itemStmt, 1))
+                guard let innerIdPtr = sqlite3_column_text(itemStmt, 0),
+                      let archiveIdPtr = sqlite3_column_text(itemStmt, 1),
+                      let timeTextPtr = sqlite3_column_text(itemStmt, 5) else {
+                    continue
+                }
+                let innerId = String(cString: innerIdPtr)
+                let archiveId = String(cString: archiveIdPtr)
                 let gachaType = Int(sqlite3_column_int(itemStmt, 2))
                 let queryType = Int(sqlite3_column_int(itemStmt, 3))
                 let itemId = UInt32(sqlite3_column_int(itemStmt, 4))
-                let timeText = String(cString: sqlite3_column_text(itemStmt, 5))
+                let timeText = String(cString: timeTextPtr)
                 let id = sqlite3_column_int64(itemStmt, 6)
 
                 gachaItems.append(.init(
