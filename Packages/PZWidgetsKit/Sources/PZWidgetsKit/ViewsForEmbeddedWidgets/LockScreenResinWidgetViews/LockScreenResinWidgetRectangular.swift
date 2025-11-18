@@ -39,8 +39,8 @@ extension EmbeddedWidgets {
                                 Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(size: size, design: .rounded))
                                     .minimumScaleFactor(0.5)
-                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
-                                    .iconOnlyLabel()
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+
                                     .frame(maxWidth: size * 1 / 2, maxHeight: size * 1 / 2)
                                     .minimumScaleFactor(0.5)
                             }
@@ -70,18 +70,18 @@ extension EmbeddedWidgets {
                                 let size: CGFloat = 40
                                 Image(systemSymbol: .ellipsis)
                                     .renderingMode(.template)
-                                    .iconOnlyLabel()
+
                                     .font(.system(size: size, design: .rounded))
                                     .minimumScaleFactor(0.5)
-                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
-                                    .iconOnlyLabel()
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+
                                     .frame(maxWidth: size * 1 / 2, maxHeight: size * 1 / 2)
                                     .minimumScaleFactor(0.5)
                             }
                             .widgetAccentable()
                             .foregroundColor(.cyan)
-                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
-                                .iconOnlyLabel()
+                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
@@ -99,8 +99,8 @@ extension EmbeddedWidgets {
                                 Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(size: size, design: .rounded))
                                     .minimumScaleFactor(0.5)
-                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
-                                    .iconOnlyLabel()
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+
                                     .frame(maxWidth: size * 1 / 2, maxHeight: size * 1 / 2)
                                     .minimumScaleFactor(0.5)
                             }
@@ -131,17 +131,17 @@ extension EmbeddedWidgets {
                                 let size: CGFloat = 40
                                 Image(systemSymbol: .ellipsis)
                                     .renderingMode(.template)
-                                    .iconOnlyLabel()
+
                                     .font(.system(size: size, design: .rounded))
                                     .minimumScaleFactor(0.5)
-                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
-                                    .iconOnlyLabel()
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+
                                     .frame(maxWidth: size * 1 / 2, maxHeight: size * 1 / 2)
                                     .minimumScaleFactor(0.5)
                             }
                             .widgetAccentable()
-                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
-                                .iconOnlyLabel()
+                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .foregroundColor(.gray)

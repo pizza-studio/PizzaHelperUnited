@@ -280,7 +280,7 @@ extension DailyNoteProtocol {
     }
 }
 
-// MARK: - Asset Icons (non-SVG)
+// MARK: - Asset Icons (Full Color, non-Embedded)
 
 extension Pizza.SupportedGame {
     /// 主要玩家体力。

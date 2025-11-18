@@ -11,10 +11,10 @@ import UIKit
 import AppKit
 #endif
 
-// MARK: - SVGIconAsset
+// MARK: - EmbeddedIcons
 
 @available(iOS 16.2, macCatalyst 16.2, *)
-public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
+public enum EmbeddedIcons: String, CaseIterable, Identifiable, Sendable {
     case infoUnavailable = "icon.info.unavailable"
     case resin = "icon.resin"
     case trailblazePower = "icon.trailblazePower"
@@ -59,11 +59,13 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
     }
 
     @MainActor
-    public func resolvedImage() -> Image {
+    public func resolvedImage() -> some View {
         let image = assetImage() ?? Image(systemSymbol: fallbackSymbol)
         return image
             .renderingMode(.template)
             .resizable()
+            .aspectRatio(contentMode: .fit)
+            .scaledToFit()
     }
 
     // MARK: Private
@@ -79,91 +81,94 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
     }
 }
 
-// MARK: - Syntax Sugar for Asset Icons (SVG)
+// MARK: - Syntax Sugar for Asset Icons (4Embedded)
 
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension Pizza.SupportedGame? {
-    @MainActor public var unavailableAssetSVG: Image {
-        SVGIconAsset.infoUnavailable.resolvedImage()
+    @MainActor public var unavailableAsset4Embedded: some View {
+        EmbeddedIcons.infoUnavailable.resolvedImage()
     }
 
-    @MainActor public var primaryStaminaAssetSVG: Image {
-        self?.primaryStaminaAssetSVG ?? unavailableAssetSVG
+    @MainActor @ViewBuilder public var primaryStaminaAsset4Embedded: some View {
+        if let this = self {
+            this.primaryStaminaAsset4Embedded
+        } else {
+            unavailableAsset4Embedded
+        }
     }
 
-    @MainActor public var dailyTaskAssetSVG: Image {
-        self?.dailyTaskAssetSVG ?? unavailableAssetSVG
+    @MainActor @ViewBuilder public var dailyTaskAsset4Embedded: some View {
+        if let this = self {
+            this.dailyTaskAsset4Embedded
+        } else {
+            unavailableAsset4Embedded
+        }
     }
 
-    @MainActor public var expeditionAssetSVG: Image {
-        guard let this = self, this != .zenlessZone else { return unavailableAssetSVG }
-        return this.expeditionAssetSVG
+    @MainActor @ViewBuilder public var expeditionAsset4Embedded: some View {
+        if let this = self, this != .zenlessZone {
+            this.expeditionAsset4Embedded
+        } else {
+            unavailableAsset4Embedded
+        }
     }
 }
 
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension Pizza.SupportedGame {
     /// 主要玩家体力。
-    @MainActor public var primaryStaminaAssetSVG: Image {
+    @MainActor public var primaryStaminaAsset4Embedded: some View {
         primaryStaminaIcon.resolvedImage()
     }
 
-    @MainActor public var dailyTaskAssetSVG: Image {
+    @MainActor public var dailyTaskAsset4Embedded: some View {
         dailyTaskIcon.resolvedImage()
     }
 
-    @MainActor public var expeditionAssetSVG: Image {
+    @MainActor public var expeditionAsset4Embedded: some View {
         expeditionIcon.resolvedImage()
     }
 
-    @MainActor public var giTransformerAssetSVG: Image {
-        SVGIconAsset.transformer.resolvedImage()
+    @MainActor public var giTransformerAsset4Embedded: some View {
+        EmbeddedIcons.transformer.resolvedImage()
     }
 
-    @MainActor public var giRealmCurrencyAssetSVG: Image {
-        SVGIconAsset.homeCoin.resolvedImage()
+    @MainActor public var giRealmCurrencyAsset4Embedded: some View {
+        EmbeddedIcons.homeCoin.resolvedImage()
     }
 
-    @MainActor public var giTrounceBlossomAssetSVG: Image {
-        SVGIconAsset.trounceBlossom.resolvedImage()
+    @MainActor public var giTrounceBlossomAsset4Embedded: some View {
+        EmbeddedIcons.trounceBlossom.resolvedImage()
     }
 
-    @MainActor public var hsrEchoOfWarAssetSVG: Image {
-        SVGIconAsset.echoOfWar.resolvedImage()
+    @MainActor public var hsrEchoOfWarAsset4Embedded: some View {
+        EmbeddedIcons.echoOfWar.resolvedImage()
     }
 
-    @MainActor public var hsrSimulatedUniverseAssetSVG: Image {
-        SVGIconAsset.simulatedUniverse.resolvedImage()
+    @MainActor public var hsrSimulatedUniverseAsset4Embedded: some View {
+        EmbeddedIcons.simulatedUniverse.resolvedImage()
     }
 
-    @MainActor public var zzzVHSStoreAssetSVG: Image {
-        SVGIconAsset.zzzVHSStore.resolvedImage()
+    @MainActor public var zzzVHSStoreAsset4Embedded: some View {
+        EmbeddedIcons.zzzVHSStore.resolvedImage()
     }
 
-    @MainActor public var zzzScratchCardAssetSVG: Image {
-        SVGIconAsset.zzzScratch.resolvedImage()
+    @MainActor public var zzzScratchCardAsset4Embedded: some View {
+        EmbeddedIcons.zzzScratch.resolvedImage()
     }
 
-    @MainActor public var zzzBountyAssetSVG: Image {
-        SVGIconAsset.zzzBounty.resolvedImage()
+    @MainActor public var zzzBountyAsset4Embedded: some View {
+        EmbeddedIcons.zzzBounty.resolvedImage()
     }
 
-    @MainActor public var zzzInvestigationPointsAssetSVG: Image {
-        SVGIconAsset.zzzInvestigation.resolvedImage()
-    }
-}
-
-@available(iOS 16.2, macCatalyst 16.2, *)
-extension Image {
-    @MainActor
-    func iconOnlyLabel() -> some View {
-        aspectRatio(contentMode: .fit)
+    @MainActor public var zzzInvestigationPointsAsset4Embedded: some View {
+        EmbeddedIcons.zzzInvestigation.resolvedImage()
     }
 }
 
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension Pizza.SupportedGame {
-    fileprivate var primaryStaminaIcon: SVGIconAsset {
+    fileprivate var primaryStaminaIcon: EmbeddedIcons {
         switch self {
         case .genshinImpact: .resin
         case .starRail: .trailblazePower
@@ -171,7 +176,7 @@ extension Pizza.SupportedGame {
         }
     }
 
-    fileprivate var dailyTaskIcon: SVGIconAsset {
+    fileprivate var dailyTaskIcon: EmbeddedIcons {
         switch self {
         case .genshinImpact: .dailyTaskGI
         case .starRail: .dailyTaskHSR
@@ -179,7 +184,7 @@ extension Pizza.SupportedGame {
         }
     }
 
-    fileprivate var expeditionIcon: SVGIconAsset {
+    fileprivate var expeditionIcon: EmbeddedIcons {
         switch self {
         case .genshinImpact, .zenlessZone: .expeditionGI
         case .starRail: .expeditionHSR

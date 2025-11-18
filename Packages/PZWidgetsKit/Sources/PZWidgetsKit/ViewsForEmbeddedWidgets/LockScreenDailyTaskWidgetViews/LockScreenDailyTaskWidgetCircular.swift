@@ -22,9 +22,7 @@ extension EmbeddedWidgets {
 
         public var body: some View {
             VStack(spacing: 0) {
-                Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
-                    .resizable()
-                    .scaledToFit()
+                Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAsset4Embedded
                     .apply { imageView in
                         if widgetRenderingMode == .fullColor {
                             imageView
