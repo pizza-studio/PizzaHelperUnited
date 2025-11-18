@@ -46,12 +46,7 @@ extension EmbeddedWidgets {
                 case .starRail: .line3CrossedSwirlCircleFill
                 case .zenlessZone: .minusPlusAndFluidBatteryblock
                 }
-                Label {
-                    textDisplay
-                } icon: {
-                    Image(systemSymbol: sfSymbol)
-                        .renderingMode(.template)
-                }
+                Text("\(Image(systemSymbol: sfSymbol))") + textDisplay
                 #endif
             case .failure:
                 Text(verbatim: "…")

@@ -27,7 +27,9 @@ extension EmbeddedWidgets {
         // MARK: Public
 
         public var body: some View {
-            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                .resizable()
+                .scaledToFit()
                 .padding(3)
                 .widgetLabel(text)
         }

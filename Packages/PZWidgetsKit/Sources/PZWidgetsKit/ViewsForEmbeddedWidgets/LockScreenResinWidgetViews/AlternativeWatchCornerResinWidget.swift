@@ -44,7 +44,9 @@ extension EmbeddedWidgets {
         private func resinView(data: any DailyNoteProtocol) -> some View {
             switch data {
             case let data as any Note4GI:
-                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                    .resizable()
+                    .scaledToFit()
                     .padding(4)
                     .widgetLabel {
                         let resinInfo = data.resinInfo
@@ -67,7 +69,9 @@ extension EmbeddedWidgets {
                     }
             case let data as any Note4HSR:
                 let staminaInfo = data.staminaInfo
-                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                    .resizable()
+                    .scaledToFit()
                     .padding(4)
                     .widgetLabel {
                         let gaugeInputs = WidgetSafeMath.sanitizedGaugeInputs(
@@ -89,7 +93,9 @@ extension EmbeddedWidgets {
                     }
             case let data as Note4ZZZ:
                 let energyInfo = data.energy
-                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                    .resizable()
+                    .scaledToFit()
                     .padding(4)
                     .widgetLabel {
                         let gaugeInputs = WidgetSafeMath.sanitizedGaugeInputs(
@@ -115,7 +121,9 @@ extension EmbeddedWidgets {
 
         @ViewBuilder
         private func failureView() -> some View {
-            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                .resizable()
+                .scaledToFit()
                 .padding(6)
                 .widgetLabel {
                     Gauge(value: 114, in: 114 ... 514) {
