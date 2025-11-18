@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Foundation
 import PZBaseKit
 import SwiftUI
 
@@ -36,6 +37,18 @@ public struct GachaProfileManagementView: View {
                                 Text(verbatim: gpid.game.localizedDescription)
                             }
                             .textCase(.none)
+                        }
+                    } footer: {
+                        if let gpid = theVM.currentGPID {
+                            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                                Image(systemSymbol: .tray2Fill)
+                                    .foregroundStyle(.secondary)
+                                Text(totalEntriesSummary(for: gpid))
+                                    .font(.footnote)
+                                    .foregroundStyle(.secondary)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
                         }
                     }
                     if theVM.taskState != .busy {
@@ -99,4 +112,21 @@ public struct GachaProfileManagementView: View {
     @State private var isRemovalConfirmationAlertShown: Bool = false
     @Environment(GachaVM.self) private var theVM
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+
+    private var totalEntriesCount: Int {
+        theVM.mappedEntriesByPools.values.reduce(into: 0) { partialResult, entries in
+            partialResult += entries.count
+        }
+    }
+
+    private func totalEntriesSummary(for gpid: GachaProfileID) -> String {
+        let format = "gachaKit.management.totalLocalEntriesFootnote".i18nGachaKit
+        return String(
+            format: format,
+            locale: Locale.current,
+            gpid.uid,
+            gpid.game.localizedShortName,
+            totalEntriesCount
+        )
+    }
 }
