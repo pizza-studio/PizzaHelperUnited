@@ -36,14 +36,17 @@ extension PersistentIdentifier {
     /// Handle notification userinfo table brought by `ModelContext.didSave`.
     public static func parseObjectNames(notificationResult maybeUserInfo: [AnyHashable: Any]?) -> Set<String> {
         guard let userInfo = maybeUserInfo else { return [] }
-        let entitiesNested: [[PersistentIdentifier]?] = [
-            (userInfo["inserted"] as? [PersistentIdentifier]),
-            userInfo["updated"] as? [PersistentIdentifier],
-            userInfo["deleted"] as? [PersistentIdentifier],
-        ]
-        let entityNames: Set<String> = entitiesNested.reduce(Set<String>()) { lhs, rhs in
-            guard let rhs else { return lhs }
-            return lhs.union(rhs.map(\.entityName))
+        let allowedKeys: Set<String> = ["inserted", "updated", "deleted"]
+        let entityNames = userInfo.reduce(into: Set<String>()) { result, element in
+            let (key, value) = element
+            let keyName: String
+            if let stringKey = key as? String {
+                keyName = stringKey
+            } else {
+                keyName = key.description
+            }
+            guard allowedKeys.contains(keyName) else { return }
+            result.formUnion(getEntityNames(from: value))
         }
         #if DEBUG
         if let firstEntityName = entityNames.first, !(firstEntityName.hasPrefix("NSCK")) {
@@ -51,6 +54,16 @@ extension PersistentIdentifier {
         }
         #endif
         return entityNames
+    }
+
+    private static func getEntityNames(from payload: Any?) -> Set<String> {
+        if let identifiers = payload as? Set<PersistentIdentifier> {
+            return Set(identifiers.map(\.entityName))
+        }
+        if let identifiers = payload as? [PersistentIdentifier] {
+            return Set(identifiers.map(\.entityName))
+        }
+        return []
     }
 }
 
