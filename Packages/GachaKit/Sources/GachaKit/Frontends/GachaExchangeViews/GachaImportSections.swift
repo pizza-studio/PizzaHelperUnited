@@ -150,7 +150,10 @@ extension GachaImportSections {
                 case .asUIGFv4:
                     Text("gachaKit.exchange.formatExplain.uigfv4", bundle: .module)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("gachaKit.exchange.formatExplain.uigfv4.refugee", bundle: .module)
+                    Text("gachaKit.exchange.formatExplain.uigfv4.refugee.snapHutao", bundle: .module)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundStyle(.brown)
+                    Text("gachaKit.exchange.formatExplain.uigfv4.refugee.pzHelper4GenshinV4", bundle: .module)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle(.red)
                 case .asSRGFv1:
