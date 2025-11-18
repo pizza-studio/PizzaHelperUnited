@@ -376,6 +376,31 @@ extension GachaVM {
                     }
                 case .asUIGFv4:
                     let data: Data = try Data(contentsOf: url)
+                    
+                    // Try Hutao refugee file (SQLite database)
+                    var isHutaoRefugee = false
+                    hutaoRefugeeTask: do {
+                        // Check if it's a SQLite database by looking for SQLite magic number
+                        if data.count >= 16 {
+                            let sqliteHeader = "SQLite format 3\0"
+                            let headerData = data.prefix(16)
+                            if let headerString = String(data: headerData, encoding: .utf8),
+                               headerString.hasPrefix(sqliteHeader) {
+                                isHutaoRefugee = true
+                                let hutaoFile = try HutaoRefugeeFile.fromDatabase(url: url)
+                                fetchedFile = try hutaoFile.toUIGFv4()
+                                break formatProcess
+                            }
+                        }
+                    } catch let hutaoError {
+                        print(hutaoError)
+                        if isHutaoRefugee {
+                            throw GachaKit.FileExchangeException.otherError(hutaoError)
+                        } else {
+                            break hutaoRefugeeTask
+                        }
+                    }
+                    
                     var isRefugee = false
                     refugeeTask: do {
                         let refugeeData = try PropertyListDecoder().decode(
