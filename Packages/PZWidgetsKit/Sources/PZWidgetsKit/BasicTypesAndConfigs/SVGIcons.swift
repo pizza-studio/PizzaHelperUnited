@@ -77,12 +77,7 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
 
     @MainActor
     func shouldDisableSVG(cache: SVGIconImageCache = .shared) -> Bool {
-        #if os(watchOS)
-        if #unavailable(watchOS 10.0) {
-            return true
-        }
-        #endif
-        return cache.hasImage(for: self) == false
+        cache.hasImage(for: self) == false
     }
 
     // MARK: Private
@@ -163,7 +158,13 @@ public actor SVGIconsCompiler {
 
     @MainActor
     private static func renderImage(for icon: SVGIconAsset) -> SendableImagePtr? {
-        let content = Image(icon.rawValue, bundle: .module)
+        // watchOS Embedded Widgets 的素材只能放到 main bundle 内。
+        #if canImport(AppKit)
+        guard nil != Bundle.module.image(forResource: icon.rawValue) else { return nil }
+        #elseif canImport(UIKit)
+        guard nil != UIImage(named: icon.rawValue, in: .main, with: nil) else { return nil }
+        #endif
+        let content = Image(icon.rawValue, bundle: .main)
             .renderingMode(.template)
             .resizable()
             .aspectRatio(contentMode: .fit)
