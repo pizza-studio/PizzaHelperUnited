@@ -70,7 +70,7 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
 
     @MainActor
     public func inlineText() -> Text {
-        Text(Image(rawValue, bundle: .module).renderingMode(.template))
+        Text(Image(rawValue, bundle: .main).renderingMode(.template))
     }
 
     // MARK: Internal
@@ -159,8 +159,8 @@ public actor SVGIconsCompiler {
     @MainActor
     private static func renderImage(for icon: SVGIconAsset) -> SendableImagePtr? {
         // watchOS Embedded Widgets 的素材只能放到 main bundle 内。
-        #if canImport(AppKit)
-        guard nil != Bundle.module.image(forResource: icon.rawValue) else { return nil }
+        #if canImport(AppKit) && !targetEnvironment(macCatalyst)
+        guard nil != Bundle.main.image(forResource: icon.rawValue) else { return nil }
         #elseif canImport(UIKit)
         guard nil != UIImage(named: icon.rawValue, in: .main, with: nil) else { return nil }
         #endif
