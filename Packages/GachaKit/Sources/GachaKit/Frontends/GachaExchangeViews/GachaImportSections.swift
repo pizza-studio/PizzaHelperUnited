@@ -117,8 +117,9 @@ extension GachaImportSections {
                 InfiniteProgressBar().id(UUID())
             } else {
                 Group {
+                    // `plist` 与 `db` 分别为 披萨难民迁移文件 与 胡桃难民迁移文件。
                     let rawUTTypes: [String] = switch format {
-                    case .asUIGFv4: ["uigf", "json", "plist"]
+                    case .asUIGFv4: ["uigf", "json", "plist", "db"]
                     case .asSRGFv1: ["srgf", "json"]
                     case .asGIGFJson: ["gigf", "json"]
                     case .asGIGFExcel: ["xlsx"]
