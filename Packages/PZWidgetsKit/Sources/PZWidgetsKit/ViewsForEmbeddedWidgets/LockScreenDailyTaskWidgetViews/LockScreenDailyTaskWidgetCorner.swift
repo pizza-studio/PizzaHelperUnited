@@ -23,9 +23,7 @@ extension EmbeddedWidgets {
         public var body: some View {
             switch result {
             case let .success(data):
-                Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
-                    .resizable()
-                    .scaledToFit()
+                Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAsset4Embedded
                     .padding(3.5)
                     .widgetLabel {
                         if data.hasDailyTaskIntel {
@@ -50,9 +48,7 @@ extension EmbeddedWidgets {
                         }
                     }
             case .failure:
-                Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
-                    .resizable()
-                    .scaledToFit()
+                Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAsset4Embedded
                     .padding(4)
                     .widgetLabel(String(
                         localized: String.LocalizationValue(stringLiteral: "pzWidgetsKit.dailyTask"),

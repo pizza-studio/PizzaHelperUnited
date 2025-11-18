@@ -24,9 +24,7 @@ extension EmbeddedWidgets {
             VStack(spacing: 0) {
                 switch result {
                 case let .success(data):
-                    Pizza.SupportedGame(dailyNoteResult: result).expeditionAssetSVG
-                        .resizable()
-                        .scaledToFit()
+                    Pizza.SupportedGame(dailyNoteResult: result).expeditionAsset4Embedded
                     drawExpeditionCompletionStatus(for: data)?
                         .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:

@@ -44,9 +44,7 @@ extension EmbeddedWidgets {
                             endPoint: .bottom
                         )
                         .mask(
-                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
-                                .resizable()
-                                .scaledToFit()
+                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
                         )
                     } currentValueLabel: {
                         let value = "\(staminaIntel.finished)"
@@ -72,9 +70,7 @@ extension EmbeddedWidgets {
                             endPoint: .bottom
                         )
                         .mask(
-                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
-                                .resizable()
-                                .scaledToFit()
+                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
                         )
                     } currentValueLabel: {
                         Image(systemSymbol: .ellipsis)
@@ -94,9 +90,7 @@ extension EmbeddedWidgets {
                         denominator: Double(staminaIntel.all)
                     )
                     Gauge(value: gaugeValue) {
-                        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
-                            .resizable()
-                            .scaledToFit()
+                        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
                     } currentValueLabel: {
                         let value = "\(staminaIntel.finished)"
                         Text(verbatim: value)
@@ -107,9 +101,7 @@ extension EmbeddedWidgets {
                     .gaugeStyle(ProgressGaugeStyle())
                 case .failure:
                     Gauge(value: Double(213), in: 0.0 ... Double(213)) {
-                        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
-                            .resizable()
-                            .scaledToFit()
+                        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
                     } currentValueLabel: {
                         Image(systemSymbol: .ellipsis)
                     }
