@@ -7072,6 +7072,83 @@
         }
       }
     },
+    "gachaKit.management.totalLocalEntriesFootnote" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokal gespeichert für [%2$@] UID %1$@: %3$lld Einträge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stored locally for [%2$@] UID %1$@: %3$lld entries"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardado localmente para [%2$@] UID %1$@: %3$lld registros"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nakaimbak nang lokal para sa [%2$@] UID %1$@: %3$lld tala"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistré localement pour [%2$@] UID %1$@: %3$lld entrées"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memorizzato in locale per [%2$@] UID %1$@: %3$lld voci"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ローカル保存 [%2$@] UID %1$@: %3$lld 件の祈願記録"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로컬에 저장됨 [%2$@] UID %1$@: %3$lld개의 기록"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Локально сохранено для [%2$@] UID %1$@: %3$lld записей"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lưu cục bộ cho [%2$@] UID %1$@: %3$lld bản ghi"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地存储 [%2$@] UID %1$@: %3$lld 条抽卡记录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本机儲存 [%2$@] UID %1$@: %3$lld 筆抽卡記錄"
+          }
+        }
+      }
+    },
     "gachaKit.menu.exchangeGachaRecords" : {
       "extractionState" : "manual",
       "localizations" : {
