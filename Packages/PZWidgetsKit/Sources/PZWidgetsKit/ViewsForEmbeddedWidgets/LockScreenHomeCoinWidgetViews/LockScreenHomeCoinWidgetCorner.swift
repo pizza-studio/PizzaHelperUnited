@@ -25,7 +25,9 @@ extension EmbeddedWidgets {
         // MARK: Public
 
         public var body: some View {
-            Pizza.SupportedGame.genshinImpact.giRealmCurrencyAsset4Embedded
+            Pizza.SupportedGame.genshinImpact.giRealmCurrencyAssetSVG
+                .resizable()
+                .scaledToFit()
                 .padding(3)
                 .widgetLabel(text)
         }

@@ -23,7 +23,9 @@ extension EmbeddedWidgets {
         // MARK: Public
 
         public var body: some View {
-            Pizza.SupportedGame(dailyNoteResult: result).expeditionAsset4Embedded
+            Pizza.SupportedGame(dailyNoteResult: result).expeditionAssetSVG
+                .resizable()
+                .scaledToFit()
                 .padding(4.5)
                 .widgetLabel(text)
         }

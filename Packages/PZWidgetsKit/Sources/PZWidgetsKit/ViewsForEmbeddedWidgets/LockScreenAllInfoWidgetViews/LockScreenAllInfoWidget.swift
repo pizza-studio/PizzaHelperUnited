@@ -98,7 +98,7 @@ extension EmbeddedWidgets {
                         .minimumScaleFactor(0.2)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } icon: {
-                    data.game.primaryStaminaAsset4Embedded
+                    data.game.primaryStaminaSVGAsInlineText
                         .minimumScaleFactor(0.2)
                         .frame(maxWidth: 18, maxHeight: 18)
                         .widgetAccentable(isFullColor)
@@ -120,14 +120,11 @@ extension EmbeddedWidgets {
                         Label {
                             let stateName = cardScratched ? "icon.zzzScratch.done" :
                                 "icon.zzzScratch.available"
-                            Image(stateName, bundle: .module)
-                                .renderingMode(.template)
-                                .resizable()
-
+                            Text("\(Image(stateName, bundle: .module))")
                                 .minimumScaleFactor(0.2)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         } icon: {
-                            data.game.zzzScratchCardAsset4Embedded
+                            data.game.zzzScratchCardSVGAsInlineText
                                 .minimumScaleFactor(0.2)
                                 .frame(maxWidth: 18, maxHeight: 18)
                                 .widgetAccentable(isFullColor)
@@ -151,7 +148,7 @@ extension EmbeddedWidgets {
                         }
                         .minimumScaleFactor(0.2)
                     } icon: {
-                        data.game.expeditionAsset4Embedded
+                        data.game.expeditionSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -179,7 +176,7 @@ extension EmbeddedWidgets {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     } icon: {
-                        data.game.dailyTaskAsset4Embedded
+                        data.game.dailyTaskSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -204,7 +201,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } icon: {
-                        data.game.giRealmCurrencyAsset4Embedded
+                        data.game.giRealmCurrencySVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -223,7 +220,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } icon: {
-                        data.game.hsrSimulatedUniverseAsset4Embedded
+                        data.game.hsrSimulatedUniverseSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -238,14 +235,11 @@ extension EmbeddedWidgets {
                         let isVHSInOperation = data.vhsStoreState.isInOperation
                         let stateName = isVHSInOperation ? "icon.zzzVHSStore.inOperation" :
                             "icon.zzzVHSStore.sleeping"
-                        Image(stateName, bundle: .module)
-                            .renderingMode(.template)
-                            .resizable()
-
+                        Text("\(Image(stateName, bundle: .module))")
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } icon: {
-                        data.game.zzzVHSStoreAsset4Embedded
+                        data.game.zzzVHSStoreSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .foregroundColor(
@@ -281,7 +275,7 @@ extension EmbeddedWidgets {
                                 }
                             }
                         } icon: {
-                            data.game.hsrEchoOfWarAsset4Embedded
+                            data.game.hsrEchoOfWarSVGAsInlineText
                                 .minimumScaleFactor(0.2)
                                 .frame(maxWidth: 18, maxHeight: 18)
                                 .widgetAccentable(isFullColor)
@@ -323,7 +317,7 @@ extension EmbeddedWidgets {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     } icon: {
-                        data.game.giTransformerAsset4Embedded
+                        data.game.giTransformerSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -351,7 +345,7 @@ extension EmbeddedWidgets {
                             }
                         }
                     } icon: {
-                        data.game.giTrounceBlossomAsset4Embedded
+                        data.game.giTrounceBlossomSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -377,7 +371,7 @@ extension EmbeddedWidgets {
                             }
                         }
                     } icon: {
-                        data.game.zzzBountyAsset4Embedded
+                        data.game.zzzBountySVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
@@ -400,7 +394,7 @@ extension EmbeddedWidgets {
                             }
                         }
                     } icon: {
-                        data.game.zzzInvestigationPointsAsset4Embedded
+                        data.game.zzzInvestigationPointsSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)

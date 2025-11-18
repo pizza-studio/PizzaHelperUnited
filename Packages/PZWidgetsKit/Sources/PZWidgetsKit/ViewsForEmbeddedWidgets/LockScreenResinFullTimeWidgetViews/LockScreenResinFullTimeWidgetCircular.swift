@@ -44,7 +44,9 @@ extension EmbeddedWidgets {
                             endPoint: .bottom
                         )
                         .mask(
-                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                                .resizable()
+                                .scaledToFit()
                         )
                         .frame(height: 9)
                         switch result {
@@ -104,7 +106,9 @@ extension EmbeddedWidgets {
                 ZStack {
                     AccessoryWidgetBackground()
                     VStack(spacing: -0.5) {
-                        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
+                        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                            .resizable()
+                            .scaledToFit()
                             .frame(height: 9)
                         switch result {
                         case let .success(data):

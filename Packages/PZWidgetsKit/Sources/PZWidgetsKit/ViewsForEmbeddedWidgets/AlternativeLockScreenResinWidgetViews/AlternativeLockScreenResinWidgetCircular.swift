@@ -25,7 +25,9 @@ extension EmbeddedWidgets {
         public var body: some View {
             VStack(spacing: 0) {
                 let game = (Pizza.SupportedGame(dailyNoteResult: result) ?? .genshinImpact)
-                let img = game.primaryStaminaAsset4Embedded
+                let img = game.primaryStaminaAssetSVG
+                    .resizable()
+                    .scaledToFit()
                 switch widgetRenderingMode {
                 case .fullColor:
                     LinearGradient(

@@ -36,8 +36,8 @@ extension EmbeddedWidgets {
                                 let size: CGFloat = 10
                                 HStack(alignment: .lastTextBaseline, spacing: 0) {
                                     let iconSize: CGFloat = size * 4 / 5
-                                    Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
-                                        .frame(maxWidth: iconSize, maxHeight: iconSize)
+                                    Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
+                                        .font(.system(size: iconSize))
                                         .offset(x: -2)
                                     Text("pzWidgetsKit.stamina", bundle: .module)
                                         .font(.system(
@@ -50,8 +50,8 @@ extension EmbeddedWidgets {
                                 Spacer()
                                 HStack(alignment: .lastTextBaseline, spacing: 2) {
                                     let iconSize: CGFloat = size * 8 / 9
-                                    Pizza.SupportedGame.genshinImpact.giRealmCurrencyAsset4Embedded
-                                        .frame(maxWidth: iconSize, maxHeight: iconSize)
+                                    Pizza.SupportedGame.genshinImpact.giRealmCurrencySVGAsInlineText
+                                        .font(.system(size: iconSize))
                                     Text("pzWidgetsKit.homeCoin", bundle: .module)
                                         .font(.system(
                                             size: size,
@@ -109,8 +109,8 @@ extension EmbeddedWidgets {
                             HStack(alignment: .lastTextBaseline, spacing: 0) {
                                 let size: CGFloat = 20
                                 let iconSize: CGFloat = size * 4 / 5
-                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
-                                    .frame(maxWidth: iconSize, maxHeight: iconSize)
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
+                                    .font(.system(size: iconSize))
                                     .offset(x: -2)
                                 Text(verbatim: "…")
                                     .font(.system(
@@ -122,8 +122,8 @@ extension EmbeddedWidgets {
                             HStack(alignment: .lastTextBaseline, spacing: 2) {
                                 let size: CGFloat = 20
                                 let iconSize: CGFloat = size * 8 / 9
-                                Pizza.SupportedGame.genshinImpact.giRealmCurrencyAsset4Embedded
-                                    .frame(maxWidth: iconSize, maxHeight: iconSize)
+                                Pizza.SupportedGame.genshinImpact.giRealmCurrencySVGAsInlineText
+                                    .font(.system(size: iconSize))
                                 Text(verbatim: "…")
                                     .font(.system(
                                         size: size,
@@ -153,8 +153,8 @@ extension EmbeddedWidgets {
                                 let size: CGFloat = 10
                                 HStack(alignment: .lastTextBaseline, spacing: 0) {
                                     let iconSize: CGFloat = size * 4 / 5
-                                    Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
-                                        .frame(maxWidth: iconSize, maxHeight: iconSize)
+                                    Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
+                                        .font(.system(size: iconSize))
                                         .offset(x: -2)
                                     Text("pzWidgetsKit.stamina", bundle: .module)
                                         .font(.system(
@@ -166,8 +166,8 @@ extension EmbeddedWidgets {
                                 Spacer()
                                 HStack(alignment: .lastTextBaseline, spacing: 2) {
                                     let iconSize: CGFloat = size * 8 / 9
-                                    Pizza.SupportedGame.genshinImpact.giRealmCurrencyAsset4Embedded
-                                        .frame(maxWidth: iconSize, maxHeight: iconSize)
+                                    Pizza.SupportedGame.genshinImpact.giRealmCurrencySVGAsInlineText
+                                        .font(.system(size: iconSize))
                                     Text("pzWidgetsKit.homeCoin", bundle: .module)
                                         .font(.system(
                                             size: size,
@@ -223,8 +223,8 @@ extension EmbeddedWidgets {
                                 let size: CGFloat = 10
                                 HStack(alignment: .lastTextBaseline, spacing: 0) {
                                     let iconSize: CGFloat = size * 4 / 5
-                                    Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
-                                        .frame(maxWidth: iconSize, maxHeight: iconSize)
+                                    Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
+                                        .font(.system(size: iconSize))
                                         .offset(x: -2)
                                     Text("pzWidgetsKit.stamina", bundle: .module)
                                         .font(.system(
@@ -266,8 +266,8 @@ extension EmbeddedWidgets {
                             let size: CGFloat = 10
                             HStack(alignment: .lastTextBaseline, spacing: 0) {
                                 let iconSize: CGFloat = size * 4 / 5
-                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAsset4Embedded
-                                    .frame(maxWidth: iconSize, maxHeight: iconSize)
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
+                                    .font(.system(size: iconSize))
                                     .offset(x: -2)
                                 Text("pzWidgetsKit.stamina", bundle: .module)
                                     .font(.system(
@@ -279,8 +279,8 @@ extension EmbeddedWidgets {
                             Spacer()
                             HStack(alignment: .lastTextBaseline, spacing: 2) {
                                 let iconSize: CGFloat = size * 8 / 9
-                                Pizza.SupportedGame.genshinImpact.giRealmCurrencyAsset4Embedded
-                                    .frame(maxWidth: iconSize, maxHeight: iconSize)
+                                Pizza.SupportedGame.genshinImpact.giRealmCurrencySVGAsInlineText
+                                    .font(.system(size: iconSize))
                                 Text("pzWidgetsKit.homeCoin", bundle: .module)
                                     .font(.system(
                                         size: size,

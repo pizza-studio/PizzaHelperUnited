@@ -24,7 +24,9 @@ extension EmbeddedWidgets {
 
         public var body: some View {
             VStack(spacing: 0) {
-                Pizza.SupportedGame.genshinImpact.giRealmCurrencyAsset4Embedded
+                Pizza.SupportedGame.genshinImpact.giRealmCurrencyAssetSVG
+                    .resizable()
+                    .scaledToFit()
                     .apply { imageView in
                         if widgetRenderingMode == .fullColor {
                             imageView
