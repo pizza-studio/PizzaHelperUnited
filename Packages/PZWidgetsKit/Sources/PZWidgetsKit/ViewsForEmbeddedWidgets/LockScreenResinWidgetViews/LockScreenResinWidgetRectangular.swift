@@ -39,8 +39,9 @@ extension EmbeddedWidgets {
                                 Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(size: size, design: .rounded))
                                     .minimumScaleFactor(0.5)
-                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
-                                    .font(.system(size: size * 1 / 2))
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                                    .iconOnlyLabel()
+                                    .frame(maxWidth: size * 1 / 2, maxHeight: size * 1 / 2)
                                     .minimumScaleFactor(0.5)
                             }
                             .widgetAccentable()
@@ -67,16 +68,20 @@ extension EmbeddedWidgets {
                         VStack(alignment: .leading) {
                             HStack(alignment: .lastTextBaseline, spacing: 2) {
                                 let size: CGFloat = 40
-                                Text(Image(systemSymbol: .ellipsis))
+                                Image(systemSymbol: .ellipsis)
+                                    .renderingMode(.template)
+                                    .iconOnlyLabel()
                                     .font(.system(size: size, design: .rounded))
                                     .minimumScaleFactor(0.5)
-                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
-                                    .font(.system(size: size * 1 / 2))
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                                    .iconOnlyLabel()
+                                    .frame(maxWidth: size * 1 / 2, maxHeight: size * 1 / 2)
                                     .minimumScaleFactor(0.5)
                             }
                             .widgetAccentable()
                             .foregroundColor(.cyan)
-                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
+                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                                .iconOnlyLabel()
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
@@ -94,8 +99,9 @@ extension EmbeddedWidgets {
                                 Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(size: size, design: .rounded))
                                     .minimumScaleFactor(0.5)
-                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
-                                    .font(.system(size: size * 1 / 2))
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                                    .iconOnlyLabel()
+                                    .frame(maxWidth: size * 1 / 2, maxHeight: size * 1 / 2)
                                     .minimumScaleFactor(0.5)
                             }
                             .foregroundColor(.primary)
@@ -123,15 +129,19 @@ extension EmbeddedWidgets {
                         VStack(alignment: .leading) {
                             HStack(alignment: .lastTextBaseline, spacing: 2) {
                                 let size: CGFloat = 40
-                                Text(Image(systemSymbol: .ellipsis))
+                                Image(systemSymbol: .ellipsis)
+                                    .renderingMode(.template)
+                                    .iconOnlyLabel()
                                     .font(.system(size: size, design: .rounded))
                                     .minimumScaleFactor(0.5)
-                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
-                                    .font(.system(size: size * 1 / 2))
+                                Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                                    .iconOnlyLabel()
+                                    .frame(maxWidth: size * 1 / 2, maxHeight: size * 1 / 2)
                                     .minimumScaleFactor(0.5)
                             }
                             .widgetAccentable()
-                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
+                            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+                                .iconOnlyLabel()
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .foregroundColor(.gray)
