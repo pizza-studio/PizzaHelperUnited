@@ -52,7 +52,7 @@ extension GachaItemType {
         }
     }
 
-    // 僅獻給原神抽卡記錄使用。
+    // 僅限給原神抽卡記錄使用。
     init(rawString4GI: String) {
         let weaponStrings: [String] = [
             "Arma", "Arme", "Senjata", "Vũ Khí",
