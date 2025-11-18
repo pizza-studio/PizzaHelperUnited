@@ -20,8 +20,10 @@ public struct GachaProfileManagementView: View {
                             GachaProfileSwitcherView()
                                 .fixedSize()
                                 .environment(theVM)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
                         } label: {
                             Text("gachaKit.management.gachaPullerToPurge", bundle: .module)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         if theVM.taskState == .busy {
                             InfiniteProgressBar().id(UUID())
