@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="INIntents4iOS16/en.lproj/PZProfileIntentBackports.strings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="appEntity_localProfile" xml:space="preserve">
@@ -239,7 +239,7 @@
   </file>
   <file original="INIntents4iOS16/InfoPlist.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -258,7 +258,7 @@
   </file>
   <file original="INIntents4iOS16/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
@@ -277,7 +277,7 @@
   </file>
   <file original="Packages/EnkaKit/Sources/EnkaKit/Resources/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="enka.ASCV.scrollingGuide.appKit" xml:space="preserve">
@@ -526,7 +526,7 @@ Tap anywhere to dismiss.</source>
   </file>
   <file original="Packages/GachaKit/Sources/GachaKit/Resources/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="gachaKit.EntryException.timeRawValueNotParsable" xml:space="preserve">
@@ -736,9 +736,14 @@ Empty selection indicates selecting all gacha pullers.</source>
         <target state="translated">UIGF v4.1은 UIGF 위원회에 의해 수립된 포맷으로, Cognosphere와 MiHoYo에서 제작한 여러 게임의 가챠 기록을 위한 통합 가능한 교환 형식입니다.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.formatExplain.uigfv4.refugee" xml:space="preserve">
-        <source>If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into a UIGFv4 format to import instead. This process is automatic.</source>
+      <trans-unit id="gachaKit.exchange.formatExplain.uigfv4.refugee.pzHelper4GenshinV4" xml:space="preserve">
+        <source>If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into UIGFv4 format to import instead. This process is automatic.</source>
         <target state="translated">Old Pizza Refugee Data 파일을 가져오려면 UIGFv4 형식을 선택하세요. 앱이 모든 itemID를 수정하고 UIGFv4 형식으로 변환하여 가져오기를 자동으로 시작합니다. 이 과정은 자동으로 진행됩니다.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.exchange.formatExplain.uigfv4.refugee.snapHutao" xml:space="preserve">
+        <source>If you have Snap Hutao Refugee Data file to import, please choose UIGFv4 format and load the Snap Hutao `Userdata.db` database file (which is an SQLite database generated using Entity Framework Core). The app will start reading this database file and parse all gacha entries into UIGFv4 format to import instead.</source>
+        <target state="translated">Snap Hutao Refugee Data 파일을 가져오려면 UIGFv4 형식을 선택하고 Snap Hutao의 `Userdata.db` 데이터베이스(Entity Framework Core 로 생성된 SQLite DB)를 불러오세요. 앱이 해당 DB를 읽어 모든 가챠 기록을 UIGFv4 형식으로 변환해 가져옵니다.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.info.time" xml:space="preserve">
@@ -1031,6 +1036,11 @@ Empty selection indicates selecting all gacha pullers.</source>
         <target state="translated">가차 기록 관리</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.management.totalLocalEntriesFootnote" xml:space="preserve">
+        <source>Stored locally for [%2$@] UID %1$@: %3$lld entries</source>
+        <target state="translated">로컬에 저장됨 [%2$@] UID %1$@: %3$lld개의 기록</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.menu.exchangeGachaRecords" xml:space="preserve">
         <source>Import / Export Gacha Records from File</source>
         <target state="translated">가챠 기록을 파일에서 가져오기 / 내보내기</target>
@@ -1291,7 +1301,7 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
   </file>
   <file original="Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="todayMaterialsKit.character.short" xml:space="preserve">
@@ -1333,7 +1343,7 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
   </file>
   <file original="Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/MaterialNames.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="asset.dailyMaterial:talentAdmonition" xml:space="preserve">
@@ -1550,7 +1560,7 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
   </file>
   <file original="Packages/PZAboutKit/Sources/PZAboutKit/Resources/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="aboutKit.3rdParty.headline" xml:space="preserve">
@@ -1987,7 +1997,7 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
   </file>
   <file original="Packages/PZHelper-Watch/Sources/PZHelper-Watch/Resources/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="watch.dailyNote.card.dailyTask.label" xml:space="preserve">
@@ -2110,7 +2120,7 @@ App Icon Illustrator, The Pizza Helper (v5.0)</source>
   </file>
   <file original="Packages/PZHelper/Sources/PZHelper/Resources/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="Error: %@" xml:space="preserve">
@@ -3265,7 +3275,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZHoYoLabKit/Sources/PZHoYoLabKit/Resources/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="hylKit.battleReport.floor.1stHalf" xml:space="preserve">
@@ -3657,7 +3667,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZInGameEventKit/Sources/PZInGameEventKit/Resources/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="igev.gameEvents.daysLeft:%lld" xml:space="preserve">
@@ -3689,7 +3699,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZAccountKit/Resources/HoYoLangNames.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="hoyo.lang.chs" xml:space="preserve">
@@ -3771,7 +3781,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZAccountKit/Resources/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="MiHoYoAPIError.countryRegionRestriction" xml:space="preserve">
@@ -3919,6 +3929,11 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">알림: %@의 모의 우주</target>
         <note/>
       </trans-unit>
+      <trans-unit id="notification.stamina.customize.body.extra:" xml:space="preserve">
+        <source>Issued at: </source>
+        <target state="translated">발행 시각: </target>
+        <note/>
+      </trans-unit>
       <trans-unit id="notification.stamina.customize.body:%@%@%@" xml:space="preserve">
         <source>%1$@ currently has %2$@ stamina and will be fully restored on %3$@.</source>
         <target state="translated">%1$@은(는) 현재 %2$@의 체력을 가지고 있으며 %3$@에 완전히 회복될 것입니다</target>
@@ -4003,7 +4018,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZBaseKit/Resources/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="app.language.de" xml:space="preserve">
@@ -4310,7 +4325,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZWidgetsKit/Sources/PZWidgetsKit/Resources/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="%@" translate="no" xml:space="preserve">
@@ -4531,11 +4546,71 @@ available on Sunday</source>
         <target state="translated">빨강</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.widgets.fetchGenshinNamecardBGOnline" xml:space="preserve">
+        <source>Fetch Namecard Backgrounds Online</source>
+        <target state="translated">온라인으로 명함 배경 가져오기</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.fetchGenshinNamecardBGOnline.explain" xml:space="preserve">
+        <source>To keep the app's file size small, the Genshin Impact namecard assets are intentionally in a lower resolution. When this option is enabled, a desktop widget will try to fetch the full-resolution image from EnkaNetwork. Please note that network latency can sometimes cause the entire widget to freeze. If you experience this issue, simply disable the option.</source>
+        <target state="translated">앱의 파일 크기를 작게 유지하기 위해 원신 명함 에셋은 의도적으로 낮은 해상도로 되어 있습니다. 이 옵션을 활성화하면 데스크톱 위젯이 EnkaNetwork에서 전체 해상도 이미지를 가져오려고 시도합니다. 네트워크 지연으로 인해 때때로 전체 위젯이 멈출 수 있음을 참고하세요. 이 문제가 발생하면 옵션을 비활성화하세요.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.howToUse.explanation" xml:space="preserve">
+        <source>For information on how to use widgets on Apple devices, please consult Apple Support. Please note that widget functionalities may vary across different operating systems and their annual updates. The options shown in the current page only affects desktop widets.</source>
+        <target state="translated">Apple 기기에서 위젯을 사용하는 방법에 대한 정보는 Apple 지원에 문의하세요. 위젯 기능은 다른 운영 체제와 연간 업데이트에 따라 달라질 수 있음을 참고하세요. 현재 페이지에 표시된 옵션은 데스크톱 위젯에만 영향을 줍니다.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.navTitle" xml:space="preserve">
+        <source>Widget Shared Settings</source>
+        <target state="translated">위젯 공유 설정</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.navTitle.shortened" xml:space="preserve">
+        <source>Widgets</source>
+        <target state="translated">위젯</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.custom" xml:space="preserve">
+        <source>Custom</source>
+        <target state="translated">사용자 정의</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.fieldName" xml:space="preserve">
+        <source>Stamina Font</source>
+        <target state="translated">체력 글꼴</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.fontFamilyName" xml:space="preserve">
+        <source>Family Name</source>
+        <target state="translated">패밀리 이름</target>
+        <note>Font Family Name</note>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.fontFamilyName.prompt" xml:space="preserve">
+        <source>Please enter the font family name.</source>
+        <target state="translated">글꼴 패밀리 이름을 입력하세요.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.systemRounded" xml:space="preserve">
+        <source>Rounded</source>
+        <target state="translated">둥근체</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.systemSansSerif" xml:space="preserve">
+        <source>Sans-Serif</source>
+        <target state="translated">고딕체</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.systemSerif" xml:space="preserve">
+        <source>Serif</source>
+        <target state="translated">명조체</target>
+        <note/>
+      </trans-unit>
     </body>
   </file>
   <file original="Packages/WallpaperKit/Sources/WallpaperConfigKit/Resources/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="imageCropper.hint.fingerGestures" xml:space="preserve">
@@ -4727,7 +4802,7 @@ available on Sunday</source>
   </file>
   <file original="SharedBundles/Settings.bundle/en.lproj/Settings.strings" datatype="plaintext" source-language="en" target-language="ko">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="Please go to 📱 [Settings] -&gt; [General] -&gt; [Language &amp; Region] and add the language you wish to set as the second language. " xml:space="preserve">
@@ -4762,7 +4837,7 @@ available on Sunday</source>
   </file>
   <file original="ThePizzaHelper/InfoPlist.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4789,7 +4864,7 @@ available on Sunday</source>
   </file>
   <file original="ThePizzaHelper/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4801,7 +4876,7 @@ available on Sunday</source>
   </file>
   <file original="UnitedPizzaHelperEngine/InfoPlist.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4828,7 +4903,7 @@ available on Sunday</source>
   </file>
   <file original="UnitedPizzaHelperEngine/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4840,7 +4915,7 @@ available on Sunday</source>
   </file>
   <file original="WatchApp/InfoPlist.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4867,7 +4942,7 @@ available on Sunday</source>
   </file>
   <file original="WatchApp/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4879,7 +4954,7 @@ available on Sunday</source>
   </file>
   <file original="WidgetExtension/InfoPlist.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4898,7 +4973,7 @@ available on Sunday</source>
   </file>
   <file original="WidgetExtension/Localizable.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="%@" translate="no" xml:space="preserve">
@@ -5141,6 +5216,11 @@ available on Sunday</source>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.dailyCommission" xml:space="preserve">
+        <source>Daily Commission</source>
+        <target state="translated">일일 의뢰</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.cfgName.dailyCommission.detail" xml:space="preserve">
         <source>Daily Commission Status</source>
         <target state="translated">일일 의뢰 상태</target>
         <note/>
@@ -5161,11 +5241,16 @@ available on Sunday</source>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.homeCoin" xml:space="preserve">
+        <source>Realm Currency</source>
+        <target state="translated">영역 화폐</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.cfgName.homeCoin.detail" xml:space="preserve">
         <source>Realm Currency (GI), only effective if being configured with a local profile configured using a Genshin Impact UID.</source>
         <target state="translated">영역 화폐 (GI), 원신 UID로 구성된 로컬 프로필로 구성된 경우에만 유효합니다.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzWidgetsKit.cfgName.homeCoin.2" xml:space="preserve">
+      <trans-unit id="pzWidgetsKit.cfgName.homeCoin.detail.2" xml:space="preserve">
         <source>Alternative Realm Currency (GI), only effective if being configured with a local profile configured using a Genshin Impact UID.</source>
         <target state="translated">대체 영역 화폐 (GI), 원신 UID로 구성된 로컬 프로필로 구성된 경우에만 유효합니다.</target>
         <note/>
@@ -5309,7 +5394,7 @@ available on Sunday</source>
   </file>
   <file original="WidgetExtension/Resources/InfoPlist.xcstrings" source-language="en" target-language="ko" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">

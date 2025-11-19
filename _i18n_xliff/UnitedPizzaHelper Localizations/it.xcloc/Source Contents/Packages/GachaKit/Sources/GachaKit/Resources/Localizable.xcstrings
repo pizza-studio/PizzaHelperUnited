@@ -232,12 +232,23 @@
         }
       }
     },
-    "gachaKit.exchange.formatExplain.uigfv4.refugee" : {
+    "gachaKit.exchange.formatExplain.uigfv4.refugee.pzHelper4GenshinV4" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into a UIGFv4 format to import instead. This process is automatic."
+            "value" : "If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into UIGFv4 format to import instead. This process is automatic."
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.formatExplain.uigfv4.refugee.snapHutao" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you have Snap Hutao Refugee Data file to import, please choose UIGFv4 format and load the Snap Hutao `Userdata.db` database file (which is an SQLite database generated using Entity Framework Core). The app will start reading this database file and parse all gacha entries into UIGFv4 format to import instead."
           }
         }
       }
@@ -996,6 +1007,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Managing Gacha Records"
+          }
+        }
+      }
+    },
+    "gachaKit.management.totalLocalEntriesFootnote" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stored locally for [%2$@] UID %1$@: %3$lld entries"
           }
         }
       }

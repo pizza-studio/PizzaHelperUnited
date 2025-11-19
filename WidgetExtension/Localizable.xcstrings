@@ -3503,6 +3503,7 @@
       }
     },
     "pzWidgetsKit.cfgName.dailyCommission" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3887,6 +3888,7 @@
       }
     },
     "pzWidgetsKit.cfgName.homeCoin" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

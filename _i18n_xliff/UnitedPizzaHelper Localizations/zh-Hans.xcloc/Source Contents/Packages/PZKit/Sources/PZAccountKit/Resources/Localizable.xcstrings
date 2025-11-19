@@ -313,6 +313,16 @@
         }
       }
     },
+    "notification.stamina.customize.body.extra:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Issued at: "
+          }
+        }
+      }
+    },
     "notification.stamina.full.body:%@" : {
       "localizations" : {
         "en" : {

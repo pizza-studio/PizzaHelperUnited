@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="INIntents4iOS16/en.lproj/PZProfileIntentBackports.strings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="appEntity_localProfile" xml:space="preserve">
@@ -239,7 +239,7 @@
   </file>
   <file original="INIntents4iOS16/InfoPlist.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -258,7 +258,7 @@
   </file>
   <file original="INIntents4iOS16/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
@@ -277,7 +277,7 @@
   </file>
   <file original="Packages/EnkaKit/Sources/EnkaKit/Resources/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="enka.ASCV.scrollingGuide.appKit" xml:space="preserve">
@@ -529,7 +529,7 @@ Chạm bất kỳ đâu để đóng.</target>
   </file>
   <file original="Packages/GachaKit/Sources/GachaKit/Resources/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="gachaKit.EntryException.timeRawValueNotParsable" xml:space="preserve">
@@ -739,9 +739,14 @@ Không chọn gì sẽ nhập tất cả người kéo gacha.</target>
         <target state="translated">UIGF v4.1, được thiết lập bởi ủy ban UIGF, là một định dạng trao đổi hội tụ cho hồ sơ gacha của nhiều trò chơi do Cognosphere và MiHoYo sản xuất.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="gachaKit.exchange.formatExplain.uigfv4.refugee" xml:space="preserve">
-        <source>If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into a UIGFv4 format to import instead. This process is automatic.</source>
+      <trans-unit id="gachaKit.exchange.formatExplain.uigfv4.refugee.pzHelper4GenshinV4" xml:space="preserve">
+        <source>If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into UIGFv4 format to import instead. This process is automatic.</source>
         <target state="translated">Nếu bạn có tệp Old Pizza Refugee Data để nhập, hãy chọn định dạng UIGFv4. Ứng dụng sẽ tự động chuyển đổi các mục gacha, sửa tất cả itemID và chuyển chúng sang định dạng UIGFv4 để nhập. Quá trình này là tự động.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="gachaKit.exchange.formatExplain.uigfv4.refugee.snapHutao" xml:space="preserve">
+        <source>If you have Snap Hutao Refugee Data file to import, please choose UIGFv4 format and load the Snap Hutao `Userdata.db` database file (which is an SQLite database generated using Entity Framework Core). The app will start reading this database file and parse all gacha entries into UIGFv4 format to import instead.</source>
+        <target state="translated">Nếu bạn có tập tin Snap Hutao Refugee Data cần nhập, hãy chọn định dạng UIGFv4 và tải tệp cơ sở dữ liệu `Userdata.db` của Snap Hutao (một cơ sở dữ liệu SQLite được tạo bằng Entity Framework Core). Ứng dụng sẽ đọc cơ sở dữ liệu này và chuyển mọi bản ghi gacha sang định dạng UIGFv4 để nhập.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.info.time" xml:space="preserve">
@@ -1034,6 +1039,11 @@ Không chọn gì sẽ nhập tất cả người kéo gacha.</target>
         <target state="translated">Quản lý hồ sơ Gacha</target>
         <note/>
       </trans-unit>
+      <trans-unit id="gachaKit.management.totalLocalEntriesFootnote" xml:space="preserve">
+        <source>Stored locally for [%2$@] UID %1$@: %3$lld entries</source>
+        <target state="translated">Lưu cục bộ cho [%2$@] UID %1$@: %3$lld bản ghi</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="gachaKit.menu.exchangeGachaRecords" xml:space="preserve">
         <source>Import / Export Gacha Records from File</source>
         <target state="translated">Nhập / Xuất Hồ Sơ Gacha từ Tệp</target>
@@ -1294,7 +1304,7 @@ Lưu ý: Ngay cả khi xuất hiện "Độ tin cậy cao", quyền giải thíc
   </file>
   <file original="Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="todayMaterialsKit.character.short" xml:space="preserve">
@@ -1336,7 +1346,7 @@ Lưu ý: Ngay cả khi xuất hiện "Độ tin cậy cao", quyền giải thíc
   </file>
   <file original="Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/MaterialNames.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="asset.dailyMaterial:talentAdmonition" xml:space="preserve">
@@ -1553,7 +1563,7 @@ Lưu ý: Ngay cả khi xuất hiện "Độ tin cậy cao", quyền giải thíc
   </file>
   <file original="Packages/PZAboutKit/Sources/PZAboutKit/Resources/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="aboutKit.3rdParty.headline" xml:space="preserve">
@@ -1991,7 +2001,7 @@ Trình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5.0)</target>
   </file>
   <file original="Packages/PZHelper-Watch/Sources/PZHelper-Watch/Resources/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="watch.dailyNote.card.dailyTask.label" xml:space="preserve">
@@ -2115,7 +2125,7 @@ Trình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5.0)</target>
   </file>
   <file original="Packages/PZHelper/Sources/PZHelper/Resources/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="Error: %@" xml:space="preserve">
@@ -3275,7 +3285,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZHoYoLabKit/Sources/PZHoYoLabKit/Resources/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="hylKit.battleReport.floor.1stHalf" xml:space="preserve">
@@ -3667,7 +3677,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZInGameEventKit/Sources/PZInGameEventKit/Resources/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="igev.gameEvents.daysLeft:%lld" xml:space="preserve">
@@ -3699,7 +3709,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZAccountKit/Resources/HoYoLangNames.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="hoyo.lang.chs" xml:space="preserve">
@@ -3781,7 +3791,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZAccountKit/Resources/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="MiHoYoAPIError.countryRegionRestriction" xml:space="preserve">
@@ -3929,6 +3939,11 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">Nhắc nhở: Vũ trụ mô phỏng cho %@</target>
         <note/>
       </trans-unit>
+      <trans-unit id="notification.stamina.customize.body.extra:" xml:space="preserve">
+        <source>Issued at: </source>
+        <target state="translated">Phát hành lúc: </target>
+        <note/>
+      </trans-unit>
       <trans-unit id="notification.stamina.customize.body:%@%@%@" xml:space="preserve">
         <source>%1$@ currently has %2$@ stamina and will be fully restored on %3$@.</source>
         <target state="translated">Hiện tại %1$@ có %2$@ thể lực và sẽ được phục hồi hoàn toàn vào %3$@.</target>
@@ -4013,7 +4028,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZBaseKit/Resources/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="app.language.de" xml:space="preserve">
@@ -4320,7 +4335,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZWidgetsKit/Sources/PZWidgetsKit/Resources/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="%@" translate="no" xml:space="preserve">
@@ -4541,11 +4556,71 @@ có sẵn vào Chủ nhật</target>
         <target state="translated">Đỏ</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.widgets.fetchGenshinNamecardBGOnline" xml:space="preserve">
+        <source>Fetch Namecard Backgrounds Online</source>
+        <target state="translated">Tải nền thẻ tên trực tuyến</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.fetchGenshinNamecardBGOnline.explain" xml:space="preserve">
+        <source>To keep the app's file size small, the Genshin Impact namecard assets are intentionally in a lower resolution. When this option is enabled, a desktop widget will try to fetch the full-resolution image from EnkaNetwork. Please note that network latency can sometimes cause the entire widget to freeze. If you experience this issue, simply disable the option.</source>
+        <target state="translated">Để giữ cho kích thước tệp ứng dụng nhỏ, các tài sản thẻ tên Genshin Impact được cố ý ở độ phân giải thấp. Khi tùy chọn này được bật, widget trên màn hình nền sẽ cố gắng tải hình ảnh độ phân giải đầy đủ từ EnkaNetwork. Lưu ý rằng độ trễ mạng đôi khi có thể khiến toàn bộ widget bị đóng băng. Nếu bạn gặp vấn đề này, chỉ cần tắt tùy chọn.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.howToUse.explanation" xml:space="preserve">
+        <source>For information on how to use widgets on Apple devices, please consult Apple Support. Please note that widget functionalities may vary across different operating systems and their annual updates. The options shown in the current page only affects desktop widets.</source>
+        <target state="translated">Để biết thông tin về cách sử dụng widget trên thiết bị Apple, vui lòng tham khảo Hỗ trợ Apple. Lưu ý rằng các chức năng widget có thể khác nhau giữa các hệ điều hành khác nhau và các bản cập nhật hàng năm của chúng. Các tùy chọn hiển thị trong trang hiện tại chỉ ảnh hưởng đến widget trên màn hình nền.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.navTitle" xml:space="preserve">
+        <source>Widget Shared Settings</source>
+        <target state="translated">Cài Đặt Chia Sẻ Widget</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.navTitle.shortened" xml:space="preserve">
+        <source>Widgets</source>
+        <target state="translated">Widget</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.custom" xml:space="preserve">
+        <source>Custom</source>
+        <target state="translated">Tùy chỉnh</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.fieldName" xml:space="preserve">
+        <source>Stamina Font</source>
+        <target state="translated">Font Thể Lực</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.fontFamilyName" xml:space="preserve">
+        <source>Family Name</source>
+        <target state="translated">Tên Họ Font</target>
+        <note>Font Family Name</note>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.fontFamilyName.prompt" xml:space="preserve">
+        <source>Please enter the font family name.</source>
+        <target state="translated">Vui lòng nhập tên họ font.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.systemRounded" xml:space="preserve">
+        <source>Rounded</source>
+        <target state="translated">Bo tròn</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.systemSansSerif" xml:space="preserve">
+        <source>Sans-Serif</source>
+        <target state="translated">Không chân</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.widgets.staminaFontPref.systemSerif" xml:space="preserve">
+        <source>Serif</source>
+        <target state="translated">Có chân</target>
+        <note/>
+      </trans-unit>
     </body>
   </file>
   <file original="Packages/WallpaperKit/Sources/WallpaperConfigKit/Resources/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="imageCropper.hint.fingerGestures" xml:space="preserve">
@@ -4737,7 +4812,7 @@ có sẵn vào Chủ nhật</target>
   </file>
   <file original="SharedBundles/Settings.bundle/en.lproj/Settings.strings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="Please go to 📱 [Settings] -&gt; [General] -&gt; [Language &amp; Region] and add the language you wish to set as the second language. " xml:space="preserve">
@@ -4775,7 +4850,7 @@ có sẵn vào Chủ nhật</target>
   </file>
   <file original="ThePizzaHelper/InfoPlist.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4802,7 +4877,7 @@ có sẵn vào Chủ nhật</target>
   </file>
   <file original="ThePizzaHelper/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4814,7 +4889,7 @@ có sẵn vào Chủ nhật</target>
   </file>
   <file original="UnitedPizzaHelperEngine/InfoPlist.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4841,7 +4916,7 @@ có sẵn vào Chủ nhật</target>
   </file>
   <file original="UnitedPizzaHelperEngine/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4853,7 +4928,7 @@ có sẵn vào Chủ nhật</target>
   </file>
   <file original="WatchApp/InfoPlist.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4880,7 +4955,7 @@ có sẵn vào Chủ nhật</target>
   </file>
   <file original="WatchApp/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4892,7 +4967,7 @@ có sẵn vào Chủ nhật</target>
   </file>
   <file original="WidgetExtension/InfoPlist.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4911,7 +4986,7 @@ có sẵn vào Chủ nhật</target>
   </file>
   <file original="WidgetExtension/Localizable.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="%@" translate="no" xml:space="preserve">
@@ -5154,6 +5229,11 @@ có sẵn vào Chủ nhật</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.dailyCommission" xml:space="preserve">
+        <source>Daily Commission</source>
+        <target state="translated">Hoa hồng hàng ngày</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.cfgName.dailyCommission.detail" xml:space="preserve">
         <source>Daily Commission Status</source>
         <target state="translated">Trạng thái ủy nhiệm hàng ngày</target>
         <note/>
@@ -5174,11 +5254,16 @@ có sẵn vào Chủ nhật</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.homeCoin" xml:space="preserve">
+        <source>Realm Currency</source>
+        <target state="translated">Tiền tệ Realm</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pzWidgetsKit.cfgName.homeCoin.detail" xml:space="preserve">
         <source>Realm Currency (GI), only effective if being configured with a local profile configured using a Genshin Impact UID.</source>
         <target state="translated">Tiền Tệ Vương Quốc (GI), chỉ có hiệu lực khi được cấu hình với hồ sơ cục bộ được cấu hình bằng UID Genshin Impact.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="pzWidgetsKit.cfgName.homeCoin.2" xml:space="preserve">
+      <trans-unit id="pzWidgetsKit.cfgName.homeCoin.detail.2" xml:space="preserve">
         <source>Alternative Realm Currency (GI), only effective if being configured with a local profile configured using a Genshin Impact UID.</source>
         <target state="translated">Tiền tệ Thế giới Khác (GI), chỉ có hiệu lực khi được cấu hình với hồ sơ cục bộ được cấu hình bằng UID Genshin Impact.</target>
         <note/>
@@ -5322,7 +5407,7 @@ có sẵn vào Chủ nhật</target>
   </file>
   <file original="WidgetExtension/Resources/InfoPlist.xcstrings" source-language="en" target-language="vi" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
