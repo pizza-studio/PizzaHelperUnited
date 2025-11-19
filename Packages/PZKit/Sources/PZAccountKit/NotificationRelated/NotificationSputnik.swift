@@ -286,7 +286,7 @@ extension NotificationSputnik {
             formatTimeString(from: timeOnFinish)
         )
         let issuedAtFootnote = formatTimeString(from: Date())
-        let extraNotice = "notification.stamina.customize.body.extra:".i18nAK
+        let extraNotice = NSLocalizedString("notification.stamina.customize.body.extra:", bundle: .module, comment: "")
         content.body = "\(baseBody) // \(extraNotice)\(issuedAtFootnote)"
         content.badge = 1
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
