@@ -467,6 +467,17 @@
       }
     },
     "pzWidgetsKit.cfgName.dailyCommission" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Commission"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.dailyCommission.detail" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -511,6 +522,17 @@
       }
     },
     "pzWidgetsKit.cfgName.homeCoin" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Realm Currency"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.homeCoin.detail" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -521,7 +543,7 @@
         }
       }
     },
-    "pzWidgetsKit.cfgName.homeCoin.2" : {
+    "pzWidgetsKit.cfgName.homeCoin.detail.2" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
