@@ -5,6 +5,7 @@
 import Foundation
 import PZBaseKit
 import SwiftUI
+
 #if canImport(UIKit)
 import UIKit
 #elseif canImport(AppKit)
@@ -30,7 +31,11 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
     case echoOfWar = "icon.echoOfWar"
     case simulatedUniverse = "icon.simulatedUniverse"
     case zzzVHSStore = "icon.zzzVHSStore"
+    case zzzVHSStoreInOperation = "icon.zzzVHSStore.inOperation"
+    case zzzVHSStoreSleeping = "icon.zzzVHSStore.sleeping"
     case zzzScratch = "icon.zzzScratch"
+    case zzzScratchDone = "icon.zzzScratch.done"
+    case zzzScratchAvailable = "icon.zzzScratch.available"
     case zzzBounty = "icon.zzzBounty"
     case zzzInvestigation = "icon.zzzInvestigation"
 
@@ -52,7 +57,11 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
         case .echoOfWar: .headphones
         case .simulatedUniverse: .pc
         case .zzzVHSStore: .film
+        case .zzzVHSStoreInOperation: .clockBadge
+        case .zzzVHSStoreSleeping: .bedDoubleCircle
         case .zzzScratch: .giftcard
+        case .zzzScratchDone: .envelopeOpen
+        case .zzzScratchAvailable: .envelopeBadgeFill
         case .zzzBounty: .scope
         case .zzzInvestigation: .magnifyingglass
         }
@@ -328,8 +337,44 @@ extension Pizza.SupportedGame {
         SVGIconAsset.zzzVHSStore.inlineText()
     }
 
+    @MainActor
+    public func zzzVHSStoreStateAssetSVG(isSleeping: Bool) -> Image {
+        (
+            isSleeping
+                ? SVGIconAsset.zzzVHSStoreSleeping
+                : SVGIconAsset.zzzVHSStoreInOperation
+        ).resolvedImage()
+    }
+
+    @MainActor
+    public func zzzVHSStoreStateAssetSVGAsInlineText(isSleeping: Bool) -> Text {
+        (
+            isSleeping
+                ? SVGIconAsset.zzzVHSStoreSleeping
+                : SVGIconAsset.zzzVHSStoreInOperation
+        ).inlineText()
+    }
+
     @MainActor public var zzzScratchCardAssetSVG: Image {
         SVGIconAsset.zzzScratch.resolvedImage()
+    }
+
+    @MainActor
+    public func zzzScratchCardStateAssetSVG(isDone: Bool) -> Image {
+        (
+            isDone
+                ? SVGIconAsset.zzzScratchDone
+                : SVGIconAsset.zzzScratchAvailable
+        ).resolvedImage()
+    }
+
+    @MainActor
+    public func zzzScratchCardStateAssetSVGAsInlineText(isDone: Bool) -> Text {
+        (
+            isDone
+                ? SVGIconAsset.zzzScratchDone
+                : SVGIconAsset.zzzScratchAvailable
+        ).inlineText()
     }
 
     @MainActor public var zzzScratchCardSVGAsInlineText: Text {
