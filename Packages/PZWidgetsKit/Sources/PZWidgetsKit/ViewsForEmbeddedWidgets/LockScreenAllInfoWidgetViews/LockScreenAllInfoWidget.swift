@@ -103,8 +103,7 @@ extension EmbeddedWidgets {
                         .frame(maxWidth: 18, maxHeight: 18)
                         .widgetAccentable(isFullColor)
                         .foregroundColor(
-                            isFullColor ? PZWidgetsSPM.Colors.IconColor.Resin.accented.suiColor :
-                                nil
+                            isFullColor ? PZWidgetsSPM.Colors.IconColor.Resin.accented.suiColor : nil
                         )
                 }
             }
@@ -118,9 +117,7 @@ extension EmbeddedWidgets {
                     // ZZZ has no expedition API results yet, displaying 刮刮乐 instead.
                     if let cardScratched = data.cardScratched {
                         Label {
-                            let stateName = cardScratched ? "icon.zzzScratch.done" :
-                                "icon.zzzScratch.available"
-                            Text("\(Image(stateName, bundle: .module))")
+                            data.game.zzzScratchCardStateAssetSVGAsInlineText(isDone: cardScratched)
                                 .minimumScaleFactor(0.2)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         } icon: {
@@ -181,8 +178,7 @@ extension EmbeddedWidgets {
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
                             .foregroundColor(
-                                isFullColor ? PZWidgetsSPM.Colors.IconColor.dailyTask.suiColor :
-                                    nil
+                                isFullColor ? PZWidgetsSPM.Colors.IconColor.dailyTask.suiColor : nil
                             )
                     }
                 } else {
@@ -206,8 +202,7 @@ extension EmbeddedWidgets {
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
                             .foregroundColor(
-                                isFullColor ? PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor :
-                                    nil
+                                isFullColor ? PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor : nil
                             )
                     }
                 case let data as any Note4HSR:
@@ -225,17 +220,14 @@ extension EmbeddedWidgets {
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
                             .foregroundColor(
-                                isFullColor ? PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor :
-                                    nil
+                                isFullColor ? PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor : nil
                             )
                     }
                 case let data as Note4ZZZ:
                     // VHS Store.
                     Label {
                         let isVHSInOperation = data.vhsStoreState.isInOperation
-                        let stateName = isVHSInOperation ? "icon.zzzVHSStore.inOperation" :
-                            "icon.zzzVHSStore.sleeping"
-                        Text("\(Image(stateName, bundle: .module))")
+                        data.game.zzzVHSStoreStateAssetSVGAsInlineText(isSleeping: !isVHSInOperation)
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } icon: {
@@ -243,8 +235,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .foregroundColor(
-                                isFullColor ? PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor :
-                                    nil
+                                isFullColor ? PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor : nil
                             )
                     }
                 default: EmptyView()
@@ -267,7 +258,8 @@ extension EmbeddedWidgets {
                                     Text(verbatim: "✔︎")
                                         .minimumScaleFactor(0.2)
                                         .frame(maxWidth: .infinity, alignment: .leading)
-                                } else { Text(verbatim: "\(eowIntel.weeklyEOWRewardsLeft)")
+                                } else {
+                                    Text(verbatim: "\(eowIntel.weeklyEOWRewardsLeft)")
                                     Text(verbatim: " / \(eowIntel.weeklyEOWMaxRewards)")
                                         .font(.caption)
                                         .minimumScaleFactor(0.2)
@@ -280,8 +272,7 @@ extension EmbeddedWidgets {
                                 .frame(maxWidth: 18, maxHeight: 18)
                                 .widgetAccentable(isFullColor)
                                 .foregroundColor(
-                                    isFullColor ? PZWidgetsSPM.Colors.IconColor.weeklyBosses.suiColor :
-                                        nil
+                                    isFullColor ? PZWidgetsSPM.Colors.IconColor.weeklyBosses.suiColor : nil
                                 )
                         }
                         Label {
@@ -322,8 +313,7 @@ extension EmbeddedWidgets {
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
                             .foregroundColor(
-                                isFullColor ? PZWidgetsSPM.Colors.IconColor.transformer.suiColor :
-                                    nil
+                                isFullColor ? PZWidgetsSPM.Colors.IconColor.transformer.suiColor : nil
                             )
                     }
                     Label {
@@ -350,8 +340,7 @@ extension EmbeddedWidgets {
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
                             .foregroundColor(
-                                isFullColor ? PZWidgetsSPM.Colors.IconColor.weeklyBosses.suiColor :
-                                    nil
+                                isFullColor ? PZWidgetsSPM.Colors.IconColor.weeklyBosses.suiColor : nil
                             )
                     }
                 }
@@ -376,8 +365,7 @@ extension EmbeddedWidgets {
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
                             .foregroundColor(
-                                isFullColor ? PZWidgetsSPM.Colors.IconColor.transformer.suiColor :
-                                    nil
+                                isFullColor ? PZWidgetsSPM.Colors.IconColor.transformer.suiColor : nil
                             )
                     }
                     // 调查点数
@@ -399,8 +387,7 @@ extension EmbeddedWidgets {
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
                             .foregroundColor(
-                                isFullColor ? PZWidgetsSPM.Colors.IconColor.weeklyBosses.suiColor :
-                                    nil
+                                isFullColor ? PZWidgetsSPM.Colors.IconColor.weeklyBosses.suiColor : nil
                             )
                     }
                 }
