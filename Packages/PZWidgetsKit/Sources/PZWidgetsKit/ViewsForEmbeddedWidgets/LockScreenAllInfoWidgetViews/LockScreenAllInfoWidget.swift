@@ -348,7 +348,10 @@ extension EmbeddedWidgets {
                 GridRow(alignment: .lastTextBaseline) {
                     // 零号空洞每周悬赏委托
                     Label {
-                        HStack {
+                        HStack(
+                            alignment: .lastTextBaseline,
+                            spacing: 0
+                        ) {
                             if let bountyIntel = data.hollowZero.bountyCommission {
                                 Text(verbatim: "\(bountyIntel.num)")
                                     .minimumScaleFactor(0.2)
