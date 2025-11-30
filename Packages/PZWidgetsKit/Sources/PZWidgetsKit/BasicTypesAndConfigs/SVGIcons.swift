@@ -79,7 +79,13 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
 
     @MainActor
     public func inlineText() -> Text {
-        Text(Image(rawValue, bundle: .main).renderingMode(.template))
+        let assetBundle: Bundle
+        #if os(watchOS)
+        assetBundle = .main
+        #else
+        assetBundle = .module
+        #endif
+        return Text(Image(rawValue, bundle: assetBundle).renderingMode(.template))
     }
 
     // MARK: Internal
@@ -167,13 +173,19 @@ public actor SVGIconsCompiler {
 
     @MainActor
     private static func renderImage(for icon: SVGIconAsset) -> SendableImagePtr? {
+        let assetBundle: Bundle
+        #if os(watchOS)
+        assetBundle = .main
+        #else
+        assetBundle = .module
+        #endif
         // watchOS Embedded Widgets 的素材只能放到 main bundle 内。
         #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-        guard nil != Bundle.main.image(forResource: icon.rawValue) else { return nil }
+        guard nil != assetBundle.image(forResource: icon.rawValue) else { return nil }
         #elseif canImport(UIKit)
-        guard nil != UIImage(named: icon.rawValue, in: .main, with: nil) else { return nil }
+        guard nil != UIImage(named: icon.rawValue, in: assetBundle, with: nil) else { return nil }
         #endif
-        let content = Image(icon.rawValue, bundle: .main)
+        let content = Image(icon.rawValue, bundle: assetBundle)
             .renderingMode(.template)
             .resizable()
             .aspectRatio(contentMode: .fit)
