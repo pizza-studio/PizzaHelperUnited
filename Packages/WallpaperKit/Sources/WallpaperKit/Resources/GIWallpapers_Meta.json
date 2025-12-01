@@ -1412,5 +1412,27 @@
     "game" : "GI",
     "id" : "210262",
     "officialFileNameStem" : "UI_NameCardPic_Bp45_P"
+  },
+  {
+    "bindedCharID" : "10000123",
+    "game" : "GI",
+    "id" : "210263",
+    "officialFileNameStem" : "UI_NameCardPic_Durin_P"
+  },
+  {
+    "bindedCharID" : "10000124",
+    "game" : "GI",
+    "id" : "210264",
+    "officialFileNameStem" : "UI_NameCardPic_Jahoda_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210265",
+    "officialFileNameStem" : "UI_NameCardPic_Bp46_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210266",
+    "officialFileNameStem" : "UI_NameCardPic_Green_P"
   }
 ]
