@@ -66,6 +66,7 @@ extension Enka {
 
         public static let shared = Sputnik()
         public static let commonActor = DBActor()
+        public static let debouncer = Debouncer(delay: 10)
 
         @MainActor public private(set) var eventForResummarizingEnkaProfiles: UUID = .init()
         @MainActor public private(set) var eventForResummarizingHoYoLABProfiles: UUID = .init()

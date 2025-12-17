@@ -64,7 +64,28 @@ extension HYQueriedAvatarProtocol {
     @MainActor
     public static func getLocalHoYoAvatars(theDB: DBType, uid: String) -> [Enka.AvatarSummarized] {
         let raw = getLocalAvatarRaws(uid: uid)
-        return raw.compactMap { $0.summarize(theDB: theDB) }
+        var attemptedToReinitBundledDB = false
+        var localDBMightNeedsUpdate = false
+        let result: [Enka.AvatarSummarized] = raw.compactMap {
+            let returnable = $0.summarize(theDB: theDB)
+            if let returnable { return returnable }
+            if !attemptedToReinitBundledDB {
+                _ = try? theDB.reinitOnlyIfBundledDBIsNewer()
+                attemptedToReinitBundledDB = true
+                let returnable2 = $0.summarize(theDB: theDB)
+                if let returnable2 { return returnable2 }
+                localDBMightNeedsUpdate = true
+            }
+            return nil
+        }
+        if localDBMightNeedsUpdate {
+            Task.detached {
+                await Enka.Sputnik.debouncer.debounce {
+                    _ = try? await theDB.onlineUpdate()
+                }
+            }
+        }
+        return result
     }
 
     /// We assume that this API never fails.
