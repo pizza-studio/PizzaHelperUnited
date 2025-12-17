@@ -125,7 +125,7 @@ extension PZWidgetsSPM {
                             .buttonStyle(.borderedProminent)
                         }
                     )
-                    .onChange(of: widgetStaminaFontPref) { _ in
+                    .react(to: widgetStaminaFontPref) { _, _ in
                         WidgetCenter.shared.reloadAllTimelines()
                     }
                     if widgetStaminaFontPref == .custom {
