@@ -71,7 +71,9 @@ public final class RefugeeVM4iOS14: TaskManagedVMBackported {
             guard hasAccountMO4GI || hasOldGachaLog4GI || hasPZProfileMO else { return }
             Task { @MainActor in
                 await self.debouncer.debounce {
-                    self.startCountingDataEntriesTask(forced: false)
+                    await MainActor.run {
+                        self.startCountingDataEntriesTask(forced: false)
+                    }
                 }
             }
         }

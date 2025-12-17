@@ -13,7 +13,7 @@ public actor Debouncer {
 
     // MARK: Public
 
-    public func debounce(_ action: @escaping @MainActor () async -> Void) async {
+    public func debounce(_ action: @Sendable @escaping () async -> Void) async {
         task?.cancel()
         task = Task { @MainActor [weak self] in
             guard let self else { return }
