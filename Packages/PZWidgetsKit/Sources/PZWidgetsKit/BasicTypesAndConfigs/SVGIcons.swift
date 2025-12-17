@@ -71,7 +71,7 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
     public var rawSymbol: Image {
         // watchOS Embedded Widgets 的素材只能放到 main bundle 内。
         #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-        guard nil != assetBundle.image(forResource: rawValue) else {
+        guard nil != Self.assetBundle.image(forResource: rawValue) else {
             return Image(systemSymbol: fallbackSymbol)
         }
         #elseif canImport(UIKit)
