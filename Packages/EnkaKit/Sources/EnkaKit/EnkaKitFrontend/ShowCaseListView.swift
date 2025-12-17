@@ -45,14 +45,18 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
         .react(to: dbSet.eventForResummarizingEnkaProfiles) { _, _ in
             Task {
                 await debouncer.debounce {
-                    triggerCaseContentUpdate()
+                    await MainActor.run {
+                        triggerCaseContentUpdate()
+                    }
                 }
             }
         }
         .react(to: dbSet.eventForResummarizingHoYoLABProfiles) { _, _ in
             Task {
                 await debouncer.debounce {
-                    triggerCaseContentUpdate()
+                    await MainActor.run {
+                        triggerCaseContentUpdate()
+                    }
                 }
             }
         }

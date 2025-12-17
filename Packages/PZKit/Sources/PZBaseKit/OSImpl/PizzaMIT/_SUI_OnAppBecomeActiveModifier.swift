@@ -42,7 +42,9 @@ private struct OnAppBecomeActiveModifier: ViewModifier {
         } else {
             Task {
                 await debouncer.debounce {
-                    action()
+                    await MainActor.run {
+                        action()
+                    }
                 }
             }
         }
@@ -83,7 +85,9 @@ private struct OnAppBecomeActiveModifierMac: ViewModifier {
                     } else {
                         Task {
                             await debouncer.debounce {
-                                action()
+                                await MainActor.run {
+                                    action()
+                                }
                             }
                         }
                     }
