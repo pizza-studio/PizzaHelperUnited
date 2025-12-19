@@ -54,9 +54,9 @@ extension Defaults.Keys {
     )
 
     /// Whether displaying real names for certain characters, not affecting SRGF imports & exports.
-    public static let useRealCharacterNames = Key<Bool>(
-        "useRealCharacterNames",
-        default: Pizza.isDebug,
+    public static let useAlternativeCharacterNames = Key<Bool>(
+        "useAlternativeCharacterNames",
+        default: false,
         suite: .baseSuite
     )
 

@@ -26,7 +26,7 @@ public struct GachaEntryNameView: View {
     @State var enkaDB = Enka.Sputnik.shared
     @State var metaDB = GachaMeta.sharedDB
 
-    @Default(.useRealCharacterNames) var useRealCharacterNames: Bool
+    @Default(.useAlternativeCharacterNames) var useAlternativeCharacterNames: Bool
 
     func nameLocalized(for lang: GachaLanguage = .current) -> String {
         switch entry.game {
@@ -34,7 +34,7 @@ public struct GachaEntryNameView: View {
             var result: String?
             if lang == .current {
                 result = enkaDB.db4GI.getFailableTranslationFor(
-                    id: entry.itemID, realName: useRealCharacterNames
+                    id: entry.itemID, realName: useAlternativeCharacterNames
                 )
             } else {
                 result = nil
@@ -50,7 +50,7 @@ public struct GachaEntryNameView: View {
             var result: String?
             if lang == .current {
                 result = enkaDB.db4HSR.getFailableTranslationFor(
-                    id: entry.itemID, realName: useRealCharacterNames
+                    id: entry.itemID, realName: useAlternativeCharacterNames
                 )
             } else {
                 result = nil

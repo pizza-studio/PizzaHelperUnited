@@ -43,7 +43,7 @@ extension Enka {
                 }
             }
             Task {
-                for await _ in Defaults.updates(.useRealCharacterNames) {
+                for await _ in Defaults.updates(.useAlternativeCharacterNames) {
                     self.tellViewsToResummarizeEnkaProfiles()
                     self.tellViewsToResummarizeHoYoLABProfiles()
                 }

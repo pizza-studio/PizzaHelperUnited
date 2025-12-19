@@ -102,8 +102,12 @@ extension Enka {
             }
 
             Section {
-                Toggle(isOn: $useRealCharacterNames.animation()) {
-                    Text("settings.display.showCase.useRealCharacterNames".i18nEnka)
+                VStack {
+                    Toggle(isOn: $useAlternativeCharacterNames.animation()) {
+                        Text("settings.display.showCase.useAlternativeCharacterNames".i18nEnka)
+                    }
+                    Text("settings.display.showCase.useAlternativeCharacterNames.explain".i18nEnka)
+                        .asInlineTextDescription()
                 }
                 VStack {
                     Toggle(isOn: $forceCharacterWeaponNameFixed) {
@@ -112,7 +116,7 @@ extension Enka {
                     Text("settings.display.showCase.forceCharacterWeaponNameFixed.explain".i18nEnka)
                         .asInlineTextDescription()
                 }
-                if !useRealCharacterNames {
+                if !useAlternativeCharacterNames {
                     HStack {
                         Text("settings.display.customizingNameForKunikuzushi".i18nEnka)
                         Spacer()
@@ -160,7 +164,7 @@ extension Enka {
         @Default(.useTotemWithGenshinIDPhotos) private var useTotemWithGenshinIDPhotos: Bool
         @Default(.colorizeArtifactSubPropCounts) private var colorizeArtifactSubPropCounts: Bool
         @Default(.artifactRatingRules) private var artifactRatingRules: ArtifactRating.Rules
-        @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
+        @Default(.useAlternativeCharacterNames) private var useAlternativeCharacterNames: Bool
         @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
         @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
         @Default(.lastEnkaDBDataCheckDate) private var lastEnkaDBDataCheckDate: Date
