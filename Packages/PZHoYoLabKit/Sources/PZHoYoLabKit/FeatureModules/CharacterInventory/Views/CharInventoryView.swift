@@ -355,7 +355,7 @@ extension CharacterInventoryView {
         private let summary: CharacterInventoryView.SummaryPtr
         private let game: Pizza.SupportedGame
 
-        @Default(.useRealCharacterNames) private var useRealName: Bool
+        @Default(.useAlternativeCharacterNames) private var useRealName: Bool
 
         private var fetterTag: String {
             guard let fetter = summary.wrappedValue.mainInfo.fetter else { return "" }

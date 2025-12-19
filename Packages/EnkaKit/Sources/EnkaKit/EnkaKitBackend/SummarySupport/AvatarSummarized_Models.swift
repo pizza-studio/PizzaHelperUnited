@@ -216,7 +216,7 @@ extension Enka.AvatarSummarized {
         }
 
         public var name: String {
-            Defaults[.useRealCharacterNames] ? localizedRealName : localizedName
+            Defaults[.useAlternativeCharacterNames] ? localizedRealName : localizedName
         }
     }
 }

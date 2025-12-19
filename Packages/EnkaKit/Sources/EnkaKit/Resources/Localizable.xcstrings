@@ -3305,6 +3305,160 @@
         }
       }
     },
+    "settings.display.showCase.useAlternativeCharacterNames" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stattdessen die alternativen Namen der Charaktere anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show characters’ alternative names instead"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar los nombres alternativos de los personajes en su lugar"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ipakita ang alternatibong pangalan ng mga karakter sa halip"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les noms alternatifs des personnages à la place"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra invece i nomi alternativi dei personaggi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一部のキャラの裏の名前を表示する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "대신 캐릭터의 대체 이름을 표시합니다"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показывать альтернативные имена персонажей вместо этого"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiển thị tên thay thế của các nhân vật"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示部分角色的备用姓名"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "顯示部分角色的備用姓名"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.useAlternativeCharacterNames.explain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese alternativen Namen werden nicht von miHoYo unterstützt. Diese Option ist standardmäßig deaktiviert."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These alternative names are not endorsed by miHoYo. This option is turned off by default."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estos nombres alternativos no están respaldados por miHoYo. Esta opción está desactivada por defecto."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang mga alternatibong pangalan na ito ay hindi inendorso ng miHoYo. Ang opsyong ito ay naka-off bilang default."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ces noms alternatifs ne sont pas approuvés par miHoYo. Cette option est désactivée par défaut."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questi nomi alternativi non sono approvati da miHoYo. Questa opzione è disattivata per impostazione predefinita."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "これらの代替名は株式会社米哈遊によって承認済みとは言えません。このオプションはデフォルトでオフになっています。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이러한 대체 이름은 miHoYo에 의해 승인된 것이 아닙니다. 이 옵션은 기본적으로 꺼져 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эти альтернативные имена не одобрены miHoYo. Эта опция по умолчанию отключена."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Những tên thay thế này không được miHoYo công nhận. Tùy chọn này bị tắt theo mặc định."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这些替代名称并未得到米哈遊的背书。此选项默认关闭。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這些替代名稱並未獲得米哈遊的背書。此選項預設關閉。"
+          }
+        }
+      }
+    },
     "settings.display.showCase.useGenshinStyleCharacterPhotos" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3455,83 +3609,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "為原神角色的面板啟用名片背景"
-          }
-        }
-      }
-    },
-    "settings.display.showCase.useRealCharacterNames" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stattdessen echte Namen der Charaktere anzeigen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show characters’ real names instead"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar los nombres reales de los personajes en su lugar"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ipakita ang tunay na pangalan ng mga karakter sa halip"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Afficher les vrais noms des personnages à la place"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostra invece i veri nomi dei personaggi"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "一部のキャラの本名を表示する"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "캐릭터의 실제 이름을 대신 표시합니다"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Показывать настоящие имена персонажей вместо этого"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hiển thị tên thật của nhân vật thay thế"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示部分角色的真实姓名"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示部分角色的真實姓名"
           }
         }
       }

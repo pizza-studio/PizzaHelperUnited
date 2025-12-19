@@ -294,7 +294,7 @@ extension BundledWallpaper {
     }
 
     private var localizedNameForWidgets: String {
-        Defaults[.useRealCharacterNames]
+        Defaults[.useAlternativeCharacterNames]
             ? localizedRealName
             : localizedName
     }

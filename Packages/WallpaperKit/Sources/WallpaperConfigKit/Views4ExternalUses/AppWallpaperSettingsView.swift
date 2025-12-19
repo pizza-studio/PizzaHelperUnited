@@ -121,7 +121,7 @@ public struct AppWallpaperSettingsView: View {
     @State private var searchText = ""
     @State private var containerSize: CGSize = .zero
 
-    @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
+    @Default(.useAlternativeCharacterNames) private var useAlternativeCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
     @Default(.appWallpaperID) private var appWallpaperID: String
@@ -135,9 +135,9 @@ public struct AppWallpaperSettingsView: View {
     }
 
     private func wallpaperName(for wallpaper: BundledWallpaper) -> String {
-        var result = useRealCharacterNames ? wallpaper.localizedRealName : wallpaper.localizedName
+        var result = useAlternativeCharacterNames ? wallpaper.localizedRealName : wallpaper.localizedName
         checkKunikuzushi: if wallpaper.id == "210143" {
-            guard !customizedNameForWanderer.isEmpty, !useRealCharacterNames else {
+            guard !customizedNameForWanderer.isEmpty, !useAlternativeCharacterNames else {
                 break checkKunikuzushi
             }
             let separators: [String] = [" – ", ": ", " - ", "·"]
