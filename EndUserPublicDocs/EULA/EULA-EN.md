@@ -1,8 +1,8 @@
-# The Pizza Helper End-User License Agreement and Disclaimer
+# The Pizza Helper / The Latte Helper End-User License Agreement and Disclaimer
 
 > All translations of this document are for reference purposes only. The original Simplified Chinese version of this document is the only legally binding version.
 
-The User is hereby reminded to carefully read and fully understand the terms of this **"The Pizza Helper End-User License Agreement and Disclaimer"** (hereinafter referred to as "this Agreement"), including clauses that limit the Developer's liability and those that restrict the User's rights. Before using this application and its related services, the User must carefully review this Agreement and decide whether to accept it (minors should read it with their legal guardians). If the User does not agree with all the terms in this Agreement, they are not authorized to use the relevant services. By using the services, the User acknowledges and agrees to be bound by the terms of this Agreement.
+The User is hereby reminded to carefully read and fully understand the terms of this **"The Pizza Helper / The Latte Helper End-User License Agreement and Disclaimer"** (hereinafter referred to as "this Agreement"), including clauses that limit the Developer's liability and those that restrict the User's rights. Before using this application and its related services, the User must carefully review this Agreement and decide whether to accept it (minors should read it with their legal guardians). If the User does not agree with all the terms in this Agreement, they are not authorized to use the relevant services. By using the services, the User acknowledges and agrees to be bound by the terms of this Agreement.
 
 This Agreement constitutes a legally binding contract between the User (hereinafter referred to as "User") and our team (hereinafter referred to as "Developer") regarding the User's use of the application. It outlines the rights and obligations between the User and the Developer concerning the service of the application. "User" refers to any individual or entity that downloads, uses, or browses this service.
 
