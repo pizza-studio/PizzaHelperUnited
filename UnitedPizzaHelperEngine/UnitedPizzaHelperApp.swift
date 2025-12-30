@@ -3,7 +3,6 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZHelper
-import SwiftData
 import SwiftUI
 
 @main

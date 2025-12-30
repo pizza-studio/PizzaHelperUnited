@@ -32,7 +32,7 @@ public struct OOBEView: View {
                             .frame(width: 70, height: 70, alignment: .center)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         Text(verbatim: "=")
-                        Image("icon.product.pzHelper", bundle: .module)
+                        Image(AboutView.assetName4MainApp, bundle: .module)
                             .resizable()
                             .frame(width: 75, height: 75, alignment: .center)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
