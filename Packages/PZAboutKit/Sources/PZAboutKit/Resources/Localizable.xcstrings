@@ -229,83 +229,6 @@
         }
       }
     },
-    "aboutKit.aboutView.navTitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Über den Pizza-Helfer"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "About The Pizza Helper"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acerca de The Pizza Helper"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tungkol sa Pizza Helper"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "À propos de Pizza Helper"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Informazioni su The Pizza Helper"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ピザ助手(無印)について"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "피자 도우미 정보"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "О программе The Pizza Helper"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Về Trợ Lý Pizza"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "关于披萨小助手"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "關於披薩小助手"
-          }
-        }
-      }
-    },
     "aboutKit.aboutView.navTitle.app" : {
       "localizations" : {
         "de" : {
@@ -454,6 +377,160 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "關於開發者"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.navTitle.LatteHelper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über den Latte-Helfer"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About The Latte Helper"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de The Latte Helper"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tungkol sa The Latte Helper"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos de The Latte Helper"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni su The Latte Helper"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ラテ助手について"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "라떼 도우미 정보"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "О программе The Latte Helper"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Về The Latte Helper"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于拿铁小助手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於拿鐵小助手"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.navTitle.pzHelper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über den Pizza-Helfer"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About The Pizza Helper"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de The Pizza Helper"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tungkol sa Pizza Helper"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos de Pizza Helper"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni su The Pizza Helper"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ピザ助手(無印)について"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "피자 도우미 정보"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "О программе The Pizza Helper"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Về Trợ Lý Pizza"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于披萨小助手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於披薩小助手"
           }
         }
       }
@@ -2813,73 +2890,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Engine Architect & Entwickler, Der Pizza-Helfer (v5)\n- Betreuer, Pizza-Helfer für HSR\n- Betreuer, Pizza-Helfer für Genshin (v3-v4)"
+            "value" : "- Engine Architect & Entwickler, The Pizza Helper / The Latte Helper (v5)\n- Betreuer, Pizza-Helfer für HSR\n- Betreuer, Pizza-Helfer für Genshin (v3-v4)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Engine Architect & Dev, The Pizza Helper (v5)\n- Maintainer, Pizza Helper for HSR\n- Maintainer, Pizza Helper for Genshin (v3-v4)"
+            "value" : "- Engine Architect & Dev, The Pizza Helper / The Latte Helper (v5)\n- Maintainer, Pizza Helper for HSR\n- Maintainer, Pizza Helper for Genshin (v3-v4)"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Arquitecto de Motor y Desarrollador, The Pizza Helper (v5)\n- Mantenedor, Pizza Helper para HSR\n- Mantenedor, Pizza Helper para Genshin (v3-v4)"
+            "value" : "- Arquitecto de Motor y Desarrollador, The Pizza Helper / The Latte Helper (v5)\n- Mantenedor, Pizza Helper para HSR\n- Mantenedor, Pizza Helper para Genshin (v3-v4)"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Arkitekto ng Engine at Dev, Ang Pizza Helper (v5)\n- Tagapangalaga, Pizza Helper para sa HSR\n- Tagapangalaga, Pizza Helper para sa Genshin (v3-v4)"
+            "value" : "- Arkitekto ng Engine at Dev, The Pizza Helper / The Latte Helper (v5)\n- Tagapangalaga, Pizza Helper para sa HSR\n- Tagapangalaga, Pizza Helper para sa Genshin (v3-v4)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Conception et développement du moteur, The Pizza Helper (v5) \n- Responsable, Pizza Helper pour HSR \n- Responsable, Pizza Helper pour Genshin (v3-v4)"
+            "value" : "- Conception et développement du moteur, The Pizza Helper / The Latte Helper (v5) \n- Responsable, Pizza Helper pour HSR \n- Responsable, Pizza Helper pour Genshin (v3-v4)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Architetto e sviluppatore del motore, The Pizza Helper (v5)\n- Manutentore, Pizza Helper per HSR\n- Manutentore, Pizza Helper per Genshin (v3-v4)"
+            "value" : "- Architetto e sviluppatore del motore, The Pizza Helper / The Latte Helper (v5)\n- Manutentore, Pizza Helper per HSR\n- Manutentore, Pizza Helper per Genshin (v3-v4)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- エンジン建築士＆プログラマー（ピザ助手 (無印) v5）\n- ソフトウェア保守（崩スタピザ）\n- ソフトウェア保守（原神ピザ v3-v4）"
+            "value" : "- エンジン建築士＆プログラマー（ピザ助手(無印)/ラテ助手 v5）\n- ソフトウェア保守（崩スタピザ）\n- ソフトウェア保守（原神ピザ v3-v4）"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- 엔진 설계자 및 개발자, 피자 헬퍼 (v5)  \n- 유지 보수 담당자, HSR용 피자 헬퍼  \n- 유지 보수 담당자, Genshin용 피자 헬퍼 (v3-v4)"
+            "value" : "- 엔진 설계자 및 개발자, The Pizza Helper / The Latte Helper (v5)  \n- 유지 보수 담당자, HSR용 피자 헬퍼  \n- 유지 보수 담당자, Genshin용 피자 헬퍼 (v3-v4)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Инженер-разработчик, Помощник пиццайоло (v5)\n- Ответственный за сопровождение, Помощник пиццайоло для HSR\n- Ответственный за сопровождение, Помощник пиццайоло для Genshin (v3-v4)"
+            "value" : "- Инженер-разработчик, Помощник пиццайоло / The Latte Helper (v5)\n- Ответственный за сопровождение, Помощник пиццайоло для HSR\n- Ответственный за сопровождение, Помощник пиццайоло для Genshin (v3-v4)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Kiến trúc sư & Nhà phát triển Công cụ, The Pizza Helper (v5)\n- Người duy trì, Pizza Helper for HSR\n- Người duy trì, Pizza Helper for Genshin (v3-v4)"
+            "value" : "- Kiến trúc sư & Nhà phát triển Công cụ, The Pizza Helper / The Latte Helper (v5)\n- Người duy trì, Pizza Helper for HSR\n- Người duy trì, Pizza Helper for Genshin (v3-v4)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- 引擎架构师＆程序员（统一披萨小助手 v5）\n- 参与维护（原神披萨小助手 v3-v4）\n- 参与维护（星铁披萨小助手）"
+            "value" : "- 引擎架构师＆程序员（统一披萨小助手/拿铁小助手 v5）\n- 参与维护（原神披萨小助手 v3-v4）\n- 参与维护（星铁披萨小助手）"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- 引擎架構師＆程式師（統一披薩小助手 v5）\n- 參與維護（原神披薩小助手 v3-v4）\n- 參與維護（星鐵披薩小助手）"
+            "value" : "- 引擎架構師＆程式師（統一披薩小助手/拿鐵小助手 v5）\n- 參與維護（原神披薩小助手 v3-v4）\n- 參與維護（星鐵披薩小助手）"
           }
         }
       }
@@ -4490,6 +4567,83 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更新"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.LatteHelper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Latte Helper"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Latte Helper"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Latte Helper"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Latte Helper"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Latte Helper"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Latte Helper"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ラテ助手"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "라떼 도우미"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Latte Helper"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Latte Helper"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拿铁小助手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拿鐵小助手"
           }
         }
       }
