@@ -22,7 +22,6 @@ public protocol PZGachaEntryProtocol {
     var gachaID: String { get set }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZGachaEntryProtocol {
     public var gameTyped: Pizza.SupportedGame {
         .init(rawValue: game) ?? .genshinImpact
@@ -32,15 +31,18 @@ extension PZGachaEntryProtocol {
         "\(gameTyped.uidPrefix)-\(uid)"
     }
 
-    public var expressible: GachaEntryExpressible {
-        .init(rawEntry: self)
-    }
-
     public static func makeEntryID() -> String {
         var stringStack = "9"
         while stringStack.count < 19 {
             stringStack.append(Int.random(in: 0 ... 9).description)
         }
         return stringStack
+    }
+}
+
+@available(iOS 17.0, macCatalyst 17.0, *)
+extension PZGachaEntryProtocol {
+    public var expressible: GachaEntryExpressible {
+        .init(rawEntry: self)
     }
 }

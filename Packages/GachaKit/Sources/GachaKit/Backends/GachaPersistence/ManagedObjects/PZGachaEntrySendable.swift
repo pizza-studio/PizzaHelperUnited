@@ -9,7 +9,6 @@ import PZBaseKit
 
 /// 这个 Struct 就做一件事情：跨 Actor 传输资料。
 @frozen
-@available(iOS 17.0, macCatalyst 17.0, *)
 public struct PZGachaEntrySendable: PZGachaEntryProtocol, AbleToCodeSendHash, Identifiable {
     // MARK: Lifecycle
 
@@ -29,9 +28,12 @@ public struct PZGachaEntrySendable: PZGachaEntryProtocol, AbleToCodeSendHash, Id
     public var lang: String = "zh-cn"
     public var itemType: String = "武器"
     public var rankType: String = "3"
-    public var id: String = PZGachaEntryMO.makeEntryID()
+    public var id: String = Self.makeEntryID()
     public var gachaID: String = "0"
+}
 
+@available(iOS 17.0, macCatalyst 17.0, *)
+extension PZGachaEntrySendable {
     public var asMO: PZGachaEntryMO {
         .init { this in
             this.game = game
