@@ -65,11 +65,21 @@ public struct ContentView4iOS14: View {
                         }
                     )
                 } header: {
-                    Text("refugee.limitedServiceCategory4iOS16.header", bundle: .module)
-                        .textCase(.none)
+                    if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                        Text("refugee.limitedServiceCategory4iOS17.header", bundle: .module)
+                            .textCase(.none)
+                    } else {
+                        Text("refugee.limitedServiceCategory4iOS16.header", bundle: .module)
+                            .textCase(.none)
+                    }
                 } footer: {
-                    Text("refugee.limitedServiceCategory4iOS16.footer", bundle: .module)
-                        .textCase(.none)
+                    if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                        Text("refugee.limitedServiceCategory4iOS17.footer", bundle: .module)
+                            .textCase(.none)
+                    } else {
+                        Text("refugee.limitedServiceCategory4iOS16.footer", bundle: .module)
+                            .textCase(.none)
+                    }
                 }
                 .fontWidth(.condensed)
                 WatchDataPusherButton()
@@ -121,9 +131,15 @@ public struct ContentView4iOS14: View {
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(.accentColor)
-                    Text("refugee.footer.whyServiceTerminatedForOS21", bundle: .module)
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                        Text("refugee.footer.whyServiceTerminatedInPublic", bundle: .module)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    } else {
+                        Text("refugee.footer.whyServiceTerminatedForOS21", bundle: .module)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                 }
                 .frame(maxWidth: .infinity)
             }
