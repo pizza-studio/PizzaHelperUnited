@@ -35,6 +35,7 @@ public actor CDGachaMOActor {
     }()
 
     @MainActor public static var shared: CDGachaMOActor? {
+        guard !PZCoreDataKit.isAppStoreReleaseAsLatteHelper else { return nil }
         guard !PZCoreDataKit.isNotMainApp else { return nil }
         guard case let .success(result) = singleton else { return nil }
         return result
