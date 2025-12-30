@@ -59,3 +59,19 @@ extension Pizza {
         return bID.hasSuffix("extension") || bID.hasSuffix("widget") || bID.contains("intents")
     }()
 }
+
+extension Pizza {
+    public static var appTitleLocalizedFull: String {
+        let key = isAppStoreReleaseAsLatteHelper
+            ? "app.title.latte.full"
+            : "app.title.pizza.full"
+        return key.i18nBaseKit
+    }
+
+    public static var appTitleLocalizedShort: String {
+        let key = isAppStoreReleaseAsLatteHelper
+            ? "app.title.latte.short"
+            : "app.title.pizza.short"
+        return key.i18nBaseKit
+    }
+}

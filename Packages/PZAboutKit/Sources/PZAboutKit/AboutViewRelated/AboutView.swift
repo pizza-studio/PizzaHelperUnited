@@ -16,7 +16,9 @@ public struct AboutView: View {
     // MARK: Public
 
     public static let navTitle: String = {
-        let locVal: String.LocalizationValue = "aboutKit.aboutView.navTitle"
+        let locVal: String.LocalizationValue = Pizza.isAppStoreReleaseAsLatteHelper
+            ? "aboutKit.aboutView.navTitle.LatteHelper"
+            : "aboutKit.aboutView.navTitle.pzHelper"
         return String(localized: locVal, bundle: .module)
     }()
 
@@ -87,11 +89,14 @@ struct AppAboutViewSections: View {
 
     var body: some View {
         Section {
+            let titleKey: String.LocalizationValue = Pizza.isAppStoreReleaseAsLatteHelper
+                ? "aboutKit.ourApps.LatteHelper"
+                : "aboutKit.ourApps.pzHelper"
             ContributorItem(
                 isExpanded: true,
                 main: true,
                 icon: AboutView.assetName4MainApp,
-                titleKey: "aboutKit.ourApps.pzHelper",
+                titleKey: titleKey,
                 subtitleKey: "aboutKit.ourApps.pzHelper.description"
             ) {
                 LinkType.github(userID: "pizza-studio/PizzaHelperUnited")
@@ -118,9 +123,12 @@ struct AppAboutViewSections: View {
             }
         } footer: {
             VStack(alignment: .leading, spacing: 10) {
-                Text(verbatim: "桂ICP备2023009538号-2A")
-                    .textCase(.none)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                // TODO: Update this section after finishing the ICP number for The Latte Helper.
+                if !Pizza.isAppStoreReleaseAsLatteHelper {
+                    Text(verbatim: "桂ICP备2023009538号-2A (披萨小助手)")
+                        .textCase(.none)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
                 Text("aboutKit.ourApps.miHoYoCopyrightNotice", bundle: .module)
                     .textCase(.none)
                     .frame(maxWidth: .infinity, alignment: .leading)

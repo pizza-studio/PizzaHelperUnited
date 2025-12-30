@@ -145,7 +145,7 @@ public struct ContentView4iOS14: View {
             }
         }
         .disableFocusable()
-        .navigationTitle(Text("app.appName.full", bundle: .module))
+        .navigationTitle(Text(verbatim: Pizza.appTitleLocalizedFull))
         .navBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
