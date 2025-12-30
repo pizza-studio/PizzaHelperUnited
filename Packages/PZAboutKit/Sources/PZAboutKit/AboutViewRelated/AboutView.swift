@@ -21,7 +21,7 @@ public struct AboutView: View {
     }()
 
     @ViewBuilder public static var navIcon: some View {
-        Image("icon.product.pzHelper", bundle: .module)
+        Image(assetName4MainApp, bundle: .module)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .clipShape(RoundedRectangle(cornerRadius: 6))
@@ -56,6 +56,14 @@ public struct AboutView: View {
         }
     }
 
+    // MARK: Internal
+
+    static let assetName4MainApp = if Pizza.isAppStoreReleaseAsLatteHelper {
+        "icon.product.LatteHelper"
+    } else {
+        "icon.product.pzHelper"
+    }
+
     // MARK: Private
 
     @State private var isShowingCrew: Bool = false
@@ -82,7 +90,7 @@ struct AppAboutViewSections: View {
             ContributorItem(
                 isExpanded: true,
                 main: true,
-                icon: "icon.product.pzHelper",
+                icon: AboutView.assetName4MainApp,
                 titleKey: "aboutKit.ourApps.pzHelper",
                 subtitleKey: "aboutKit.ourApps.pzHelper.description"
             ) {
@@ -219,7 +227,7 @@ struct DevCrewViewSections: View {
         Section {
             ContributorItem(
                 main: true,
-                icon: "icon.product.pzHelper",
+                icon: "icon.PizzaStudio",
                 titleKey: "aboutKit.ourApps.pizzaStudio",
                 subtitleKey: "aboutKit.ourApps.pizzaStudio.description"
             ) {
