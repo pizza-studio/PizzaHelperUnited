@@ -239,6 +239,43 @@ extension GachaActor {
         }
     }
 
+    public func countAllDataEntries(
+        _ descriptor: FetchDescriptor<PZGachaEntryMO>
+    ) throws
+        -> Int {
+        try modelContext.fetchCount(descriptor)
+    }
+
+    public func fetchSendableEntries(
+        _ descriptor: FetchDescriptor<PZGachaEntryMO>
+    ) throws
+        -> [PZGachaEntrySendable] {
+        var existedIDs = Set<String>() // 用来去除重复内容。
+        var fetchedEntries = [PZGachaEntrySendable]()
+        try modelContext.transaction {
+            let count = try modelContext.fetchCount(descriptor)
+            if count > 0 {
+                try modelContext.enumerate(descriptor) { rawEntry in
+                    /// 补遗：检查日期时间格式错误者，发现了就纠正。
+                    try rawEntry.fixTimeFieldIfNecessary(context: modelContext)
+                    let expressible = rawEntry.expressible
+                    if existedIDs.contains(expressible.id) {
+                        modelContext.delete(rawEntry)
+                    } else {
+                        existedIDs.insert(expressible.id)
+                        fetchedEntries.append(rawEntry.asSendable)
+                    }
+                }
+                if modelContext.hasChanges {
+                    Task { @MainActor in
+                        GachaVM.shared.backendChangesAvailable = false
+                    }
+                }
+            }
+        }
+        return fetchedEntries
+    }
+
     public func fetchExpressibleEntries(
         _ descriptor: FetchDescriptor<PZGachaEntryMO>
     ) throws
