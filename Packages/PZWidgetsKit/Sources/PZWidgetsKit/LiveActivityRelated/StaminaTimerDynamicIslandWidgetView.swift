@@ -59,7 +59,7 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
                     .scaledToFit()
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                     .frame(width: 15)
-                Text("app.title.short".i18nBaseKit)
+                Text(Pizza.appTitleLocalizedShort)
                     .foregroundColor(PZWidgetsSPM.Colors.TextColor.appIconLike.suiColor)
                     .font(.caption2)
             }

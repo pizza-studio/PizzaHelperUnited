@@ -37,7 +37,7 @@ public struct OOBEView: View {
                             .frame(width: 75, height: 75, alignment: .center)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
-                    Text("aboutKit.ourApps.pzHelper", bundle: .module)
+                    Text(verbatim: Pizza.appTitleLocalizedFull)
                         .font(.title)
                         .bold()
                 }
