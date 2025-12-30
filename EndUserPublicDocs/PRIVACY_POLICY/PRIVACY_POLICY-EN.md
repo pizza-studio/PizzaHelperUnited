@@ -2,9 +2,9 @@
 
 > All translations of this document are for reference purposes only. The original Simplified Chinese version of this document is the only legally binding version.
 
-Pizza Studio has released the "The Pizza Helper" application (2022 version, 2024 re-release) as an open-source app. This service is provided by Pizza Studio (hereinafter referred to as "the Developer") for free via the Mac App Store and iOS App Store.
+Pizza Studio has released the "The Pizza Helper / The Latte Helper" application (2022 version, 2024 re-release) as an open-source app. This service is provided by Pizza Studio (hereinafter referred to as "the Developer") for free via the Mac App Store and iOS App Store.
 
-If someone decides to use the "The Pizza Helper" (hereinafter referred to as "this application"), this page is used to inform visitors about the collection, use, and disclosure of data by the application.
+If someone decides to use the "The Pizza Helper / The Latte Helper" (hereinafter referred to as "this application"), this page is used to inform visitors about the collection, use, and disclosure of data by the application.
 
 If you choose to use the Developer's services, you can decide whether this application collects and uses information related to this privacy policy. The information collected by the Developer is used to provide and improve the service. Except as described in this privacy policy, the Developer will not use or share your information with anyone.
 
