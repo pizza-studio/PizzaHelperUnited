@@ -8,6 +8,7 @@ import PZAccountKit
 import PZBaseKit
 import PZCoreDataKit4GachaEntries
 import PZCoreDataKit4LocalAccounts
+import SwiftData
 import SwiftUI
 
 // MARK: - RefugeeVM4iOS14
@@ -91,6 +92,11 @@ extension RefugeeVM4iOS14 {
                 } else {
                     result.oldProfiles4GI = try await CDAccountMOActor.shared?.allAccountDataForGenshin() ?? []
                 }
+                if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                    result.newGachaEntries = try await GachaActor.shared.fetchSendableEntries(
+                        .init()
+                    )
+                }
                 return result
             }, completionHandler: { [weak self] newResult in
                 guard let this = self, let newResult else { return }
@@ -110,6 +116,9 @@ extension RefugeeVM4iOS14 {
                     intProfile = ProfileManagerVM.shared.profiles.count
                 } else {
                     intProfile = try await CDAccountMOActor.shared?.countAllAccountData(for: .genshinImpact) ?? 0
+                }
+                if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                    intGacha += try await GachaActor.shared.countAllDataEntries(.init())
                 }
                 return (intGacha, intProfile)
             }, completionHandler: { [weak self] newResult in
