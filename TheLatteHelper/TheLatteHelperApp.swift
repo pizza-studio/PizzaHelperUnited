@@ -7,7 +7,7 @@ import SwiftUI
 
 @main
 @MainActor
-struct ThePizzaHelperApp: App {
+struct TheLatteHelperApp: App {
     var body: some Scene {
         PZHelper.makeMainScene()
     }

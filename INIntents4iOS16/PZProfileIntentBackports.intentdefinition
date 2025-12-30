@@ -250,11 +250,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>appIntentNameSpacePizza</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>24F74</string>
+	<string>25C56</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>16F6</string>
+	<string>17B100</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>16.4</string>
+	<string>26.1.1</string>
 	<key>INIntents</key>
 	<array>
 		<dict>

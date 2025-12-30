@@ -1,13 +1,13 @@
 {
   "images" : [
     {
-      "filename" : "AppIcon_Retail.jpg",
+      "filename" : "AppIcon_Retail_Latte.jpg",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
     },
     {
-      "filename" : "AppIcon_Retail.jpg",
+      "filename" : "AppIcon_Retail_Latte.jpg",
       "idiom" : "universal",
       "platform" : "watchos",
       "size" : "1024x1024"
