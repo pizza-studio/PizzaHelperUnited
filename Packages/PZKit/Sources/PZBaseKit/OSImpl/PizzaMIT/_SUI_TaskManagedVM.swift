@@ -24,6 +24,8 @@ open class TaskManagedVM: TaskManagedVMProtocol {
     public var taskState: ManagedTaskState = .standby
     public var currentError: Error?
 
+    @ObservationIgnored public var taskGeneration: Int = 0
+
     /// 可被子类赋值的 error handler
     @ObservationIgnored public var assignableErrorHandlingTask: ((Error) -> Void) = { _ in }
 
@@ -32,10 +34,20 @@ open class TaskManagedVM: TaskManagedVMProtocol {
         didSet {
             if let theTask = task {
                 stateGuard?.cancel()
-                stateGuard = Task { [weak self] in
+                // 增加世代以标记此次任务分配（用于避免过期的 guard 生效）
+                taskGeneration += 1
+                let generationAtAssignment = taskGeneration
+                let capturedTask = theTask
+                stateGuard = Task { [
+                    weak self,
+                    capturedTask = capturedTask,
+                    generationAtAssignment = generationAtAssignment
+                ] in
                     guard let this = self else { return }
-                    await theTask.value
+                    await capturedTask.value
                     await MainActor.run {
+                        // 如果世代发生变化，说明已分配更新的任务 — 跳过重置状态。
+                        guard this.taskGeneration == generationAtAssignment else { return }
                         withAnimation {
                             this.taskState = .standby
                         }
@@ -45,6 +57,8 @@ open class TaskManagedVM: TaskManagedVMProtocol {
                     taskState = .busy
                 }
             } else {
+                // 使先前的世代失效，防止挂起的 guard 影响后续任务。
+                taskGeneration += 1
                 withAnimation {
                     taskState = .standby
                 }
@@ -70,6 +84,8 @@ open class TaskManagedVMBackported: TaskManagedVMProtocol, ObservableObject {
     @Published public var taskState: ManagedTaskState = .standby
     @Published public var currentError: Error?
 
+    public var taskGeneration: Int = 0
+
     /// 可被子类赋值的 error handler
     public var assignableErrorHandlingTask: ((Error) -> Void) = { _ in }
 
@@ -78,8 +94,10 @@ open class TaskManagedVMBackported: TaskManagedVMProtocol, ObservableObject {
         didSet {
             if task == nil {
                 taskState = .standby
+                taskGeneration += 1
             } else {
                 taskState = .busy
+                taskGeneration += 1
             }
         }
     }
@@ -96,6 +114,7 @@ public protocol TaskManagedVMProtocol: AnyObject {
     typealias State = ManagedTaskState
     var taskState: State { get set }
     var currentError: Error? { get set }
+    var taskGeneration: Int { get set }
     var assignableErrorHandlingTask: (Error) -> Void { get set }
     var task: Task<Void, Never>? { get set }
 
@@ -128,6 +147,7 @@ extension TaskManagedVMProtocol {
     public func forceStopTheTask() {
         task?.cancel()
         taskState = .standby
+        taskGeneration += 1
     }
 
     /// 不要在子 class 内 override 这个方法，因为一点儿屌用也没有。
@@ -140,10 +160,11 @@ extension TaskManagedVMProtocol {
     public func handleError(_ error: Error) {
         withAnimation {
             currentError = error
-            // taskState = .standby
+            taskState = .standby
         }
         assignableErrorHandlingTask(error)
         task?.cancel()
+        taskGeneration += 1
     }
 
     public func fireTask<each T: Sendable>(
@@ -176,6 +197,7 @@ extension TaskManagedVMProtocol {
         Task { [weak self] in
             guard let self else { return }
             let previousTask = task
+            var assignedGeneration = 0
             let newTask = Task(priority: .background) { [weak self] in
                 if cancelPreviousTask {
                     previousTask?.cancel() // 按需取消既有任务。
@@ -186,6 +208,8 @@ extension TaskManagedVMProtocol {
                     let retrieved = try await givenTask()
                     await MainActor.run { [weak self] in
                         guard let this = self else { return }
+                        // 仅在此任务仍为活跃世代时应用结果
+                        guard this.taskGeneration == assignedGeneration else { return }
                         withAnimation {
                             if let retrieved {
                                 completionHandler?(retrieved)
@@ -199,6 +223,8 @@ extension TaskManagedVMProtocol {
                 } catch {
                     await MainActor.run { [weak self] in
                         guard let this = self else { return }
+                        // 忽略来自过期任务的错误
+                        guard this.taskGeneration == assignedGeneration else { return }
                         // Ensure handleError is called on the main actor
                         (errorHandler ?? { error in this.handleError(error) })(error)
                         withAnimation {
@@ -209,6 +235,7 @@ extension TaskManagedVMProtocol {
             }
             await MainActor.run {
                 task = newTask
+                assignedGeneration = self.taskGeneration
             }
         }
     }
