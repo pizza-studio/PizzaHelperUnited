@@ -20,7 +20,6 @@ public struct GachaProfileManagementView: View {
                         LabeledContent {
                             GachaProfileSwitcherView()
                                 .fixedSize()
-                                .environment(theVM)
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                         } label: {
                             Text("gachaKit.management.gachaPullerToPurge", bundle: .module)
@@ -110,7 +109,7 @@ public struct GachaProfileManagementView: View {
     // MARK: Private
 
     @State private var isRemovalConfirmationAlertShown: Bool = false
-    @Environment(GachaVM.self) private var theVM
+    @State private var theVM: GachaVM = .shared
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
     private var totalEntriesCount: Int {

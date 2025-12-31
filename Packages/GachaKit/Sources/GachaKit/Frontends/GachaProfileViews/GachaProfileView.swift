@@ -27,11 +27,10 @@ public struct GachaProfileView: View {
                 GachaChartHorizontal(
                     gpid: theVM.currentGPID,
                     poolType: theVM.currentPoolType
-                )?.environment(theVM)
+                )
             }
             NavigationLink {
                 GachaBigChartView()
-                    .environment(theVM)
             } label: {
                 Label(GachaBigChartView.navTitle, systemSymbol: .chartBarXaxis)
             }
@@ -39,10 +38,9 @@ public struct GachaProfileView: View {
         GachaStatsSection(
             gpid: theVM.currentGPID,
             poolType: theVM.currentPoolType
-        )?.environment(theVM)
+        )
         NavigationLink(GachaProfileDetailedListView.navTitle) {
             GachaProfileDetailedListView()
-                .environment(theVM)
         }
         .saturation(theVM.taskState == .busy ? 0 : 1)
         .disabled(theVM.taskState == .busy)
@@ -57,7 +55,7 @@ public struct GachaProfileView: View {
 
     // MARK: Private
 
-    @Environment(GachaVM.self) private var theVM
+    @State private var theVM: GachaVM = .shared
 
     @ViewBuilder private var poolPicker: some View {
         if let theProfile = theVM.currentGPID {

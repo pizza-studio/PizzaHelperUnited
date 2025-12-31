@@ -34,7 +34,6 @@ public struct GachaRootView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     GachaProfileSwitcherView()
-                        .environment(theVM)
                 }
                 if theVM.taskState == .busy {
                     ToolbarItem(placement: .primaryAction) {
@@ -43,7 +42,6 @@ public struct GachaRootView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     GachaExportToolbarButton(gpid: theVM.currentGPID)?
-                        .environment(theVM)
                         .disabled(theVM.taskState == .busy)
                 }
                 ToolbarItem(placement: .primaryAction) {
@@ -62,7 +60,6 @@ public struct GachaRootView: View {
                         }
                         NavigationLink {
                             GachaProfileManagementView()
-                                .environment(theVM)
                         } label: {
                             Label(
                                 GachaProfileManagementView.navTitle,
@@ -71,7 +68,6 @@ public struct GachaRootView: View {
                         }
                         NavigationLink {
                             GachaExchangeView()
-                                .environment(theVM)
                         } label: {
                             Label(
                                 "gachaKit.menu.exchangeGachaRecords".i18nGachaKit,
@@ -129,7 +125,6 @@ public struct GachaRootView: View {
                     theVM.checkWhetherInheritableDataExists()
                 }
             }
-            .environment(theVM)
             .apply { mainContent in
                 @Bindable var theVM = theVM
                 mainContent
@@ -145,7 +140,7 @@ public struct GachaRootView: View {
 
     // MARK: Private
 
-    @Environment(GachaVM.self) private var theVM
+    @State private var theVM: GachaVM = .shared
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)
