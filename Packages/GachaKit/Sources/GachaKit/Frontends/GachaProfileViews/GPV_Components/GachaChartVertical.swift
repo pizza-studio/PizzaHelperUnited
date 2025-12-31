@@ -39,7 +39,7 @@ public struct GachaChartVertical: View {
 
     // MARK: Private
 
-    @Environment(GachaVM.self) private var theVM
+    @State private var theVM: GachaVM = .shared
 
     private let poolType: GachaPoolExpressible
     private let givenGPID: GachaProfileID

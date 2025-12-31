@@ -32,7 +32,6 @@ public struct GachaProfileDetailedListView: View {
                         GachaEntryBar(entry: entry, showDate: showDate)
                             .padding(.horizontal)
                             .padding(.vertical, 4)
-                            .environment(theVM)
                     }
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
@@ -44,7 +43,6 @@ public struct GachaProfileDetailedListView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     GachaProfileSwitcherView()
-                        .environment(theVM)
                 }
                 if theVM.taskState == .busy {
                     ToolbarItem(placement: .primaryAction) {
@@ -52,8 +50,7 @@ public struct GachaProfileDetailedListView: View {
                     }
                 }
                 ToolbarItem(placement: .primaryAction) {
-                    GachaExportToolbarButton(gpid: theVM.currentGPID)?
-                        .environment(theVM)
+                    GachaExportToolbarButton(gpid: theVM.currentGPID)
                 }
             }
         }
@@ -76,7 +73,7 @@ public struct GachaProfileDetailedListView: View {
 
     // MARK: Private
 
-    @Environment(GachaVM.self) private var theVM
+    @State private var theVM: GachaVM = .shared
     @State private var showDate = false
     @State private var chosenRarity: GachaItemRankType = .rank5
 

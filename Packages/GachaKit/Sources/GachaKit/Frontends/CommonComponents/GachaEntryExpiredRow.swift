@@ -42,7 +42,7 @@ public struct GMDBExpiredRow: View {
 
     // MARK: Private
 
-    @Environment(GachaVM.self) private var theVM
+    @State private var theVM: GachaVM = .shared
 
     private let alwaysVisible: Bool
     private let games: [Pizza.SupportedGame?]?
