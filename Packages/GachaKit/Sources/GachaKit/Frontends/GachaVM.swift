@@ -457,7 +457,11 @@ extension GachaVM {
                         }
 
                         let newUIGFEntries4Genshin = genshinDataRAW.map(\.asPZGachaEntrySendable)
-                        fetchedFile = try UIGFv4(info: .init(), entries: newUIGFEntries4Genshin, lang: .langCHS)
+                        fetchedFile = try UIGFv4(
+                            info: .init(),
+                            entries: newUIGFEntries4Genshin + refugeeData.newGachaEntries,
+                            lang: .langCHS
+                        )
                         fetchedFile.info = .init(
                             exportApp: "PizzaHelper4Genshin",
                             exportAppVersion: "v4",
