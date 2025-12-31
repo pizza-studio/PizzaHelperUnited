@@ -74,24 +74,26 @@ public struct GachaRootView: View {
                                 systemSymbol: .externaldriveFillBadgeWifi
                             )
                         }
-                        Divider()
-                        if FileManager.default.ubiquityIdentityToken != nil {
-                            NavigationLink {
-                                CDGachaMODebugView()
-                            } label: {
-                                Label(
-                                    "gachaKit.menu.listCloudDataFromPreviousVersions".i18nGachaKit,
-                                    systemSymbol: .externaldriveBadgeIcloud
-                                )
-                            }
-                            if theVM.hasInheritableGachaEntries {
-                                Button {
-                                    theVM.migrateOldGachasIntoProfiles()
+                        if !Pizza.isAppStoreReleaseAsLatteHelper {
+                            Divider()
+                            if FileManager.default.ubiquityIdentityToken != nil {
+                                NavigationLink {
+                                    CDGachaMODebugView()
                                 } label: {
                                     Label(
-                                        "gachaKit.menu.inheritCloudDataFromPreviousVersions".i18nGachaKit,
-                                        systemSymbol: .icloudAndArrowDown
+                                        "gachaKit.menu.listCloudDataFromPreviousVersions".i18nGachaKit,
+                                        systemSymbol: .externaldriveBadgeIcloud
                                     )
+                                }
+                                if theVM.hasInheritableGachaEntries {
+                                    Button {
+                                        theVM.migrateOldGachasIntoProfiles()
+                                    } label: {
+                                        Label(
+                                            "gachaKit.menu.inheritCloudDataFromPreviousVersions".i18nGachaKit,
+                                            systemSymbol: .icloudAndArrowDown
+                                        )
+                                    }
                                 }
                             }
                         }
