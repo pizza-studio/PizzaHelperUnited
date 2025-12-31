@@ -68,7 +68,7 @@ public struct GachaEntryNameView: View {
 
     // MARK: Private
 
-    @Environment(GachaVM.self) private var theVM
+    @State private var theVM: GachaVM = .shared
 
     private let entry: GachaEntryExpressible
 }

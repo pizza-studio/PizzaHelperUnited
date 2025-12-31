@@ -122,7 +122,7 @@ public struct GachaProfileSwitcherView: View {
 
     // MARK: Private
 
-    @Environment(GachaVM.self) private var theVM
+    @State private var theVM: GachaVM = .shared
     @Environment(\.colorScheme) private var colorScheme
 
     private var sortedGPIDsNested: [EnumeratedSequence<[[GachaProfileID]?]>.Element] {

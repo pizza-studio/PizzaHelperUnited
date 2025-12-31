@@ -32,7 +32,6 @@ public struct GachaEntryBar: View {
                     VStack(alignment: .leading) {
                         HStack {
                             entry.nameView
-                                .environment(theVM)
                                 .fontWeight(.medium)
                                 .fontWidth(.condensed)
                         }
@@ -112,5 +111,5 @@ public struct GachaEntryBar: View {
         return dateFormatter
     }()
 
-    @Environment(GachaVM.self) private var theVM
+    @State private var theVM: GachaVM = .shared
 }

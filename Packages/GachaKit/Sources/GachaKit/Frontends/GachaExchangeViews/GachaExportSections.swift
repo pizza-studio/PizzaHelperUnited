@@ -209,7 +209,7 @@ public struct GachaExportSections: View {
 
     // MARK: Private
 
-    @Environment(GachaVM.self) private var theVM
+    @State private var theVM: GachaVM = .shared
     @State private var packageMethod: GachaExchange.ExportPackageMethod = .allOwners
     @State private var specifiedProfiles: Set<GachaProfileID> = []
     @State private var exportFormat: GachaExchange.ExportableFormat = .asUIGFv4

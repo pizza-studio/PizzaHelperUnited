@@ -40,7 +40,7 @@ public final class GachaVM: TaskManagedVM {
 
     // MARK: Public
 
-    public static var shared = GachaVM()
+    public static let shared = GachaVM()
 
     @ObservationIgnored public var isDoingBatchInsertionAction = false
     public var backendChangesAvailable = false

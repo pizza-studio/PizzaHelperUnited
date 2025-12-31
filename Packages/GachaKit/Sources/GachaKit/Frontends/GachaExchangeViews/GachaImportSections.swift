@@ -54,7 +54,7 @@ public struct GachaImportSections: View {
 
     // MARK: Private
 
-    @Environment(GachaVM.self) private var theVM
+    @State private var theVM: GachaVM = .shared
     @State private var format: GachaExchange.ImportableFormat = .asUIGFv4
     @State private var chosenGPID: Set<GachaProfileID> = []
     @State private var overrideDuplicatedEntriesOnImport: Bool = false

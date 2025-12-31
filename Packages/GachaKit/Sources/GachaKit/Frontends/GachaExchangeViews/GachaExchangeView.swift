@@ -36,7 +36,6 @@ public struct GachaExchangeView: View {
                     case .exportData: GachaExportSections()
                     }
                 }
-                .environment(theVM)
                 .disabled(theVM.taskState == .busy)
                 .saturation(theVM.taskState == .busy ? 0 : 1)
             }
@@ -79,7 +78,7 @@ public struct GachaExchangeView: View {
     // MARK: Private
 
     @State private var currentPage: Page = .exportData
-    @Environment(GachaVM.self) private var theVM
+    @State private var theVM: GachaVM = .shared
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)

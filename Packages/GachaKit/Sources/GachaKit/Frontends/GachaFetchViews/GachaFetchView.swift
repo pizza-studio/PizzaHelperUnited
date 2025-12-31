@@ -31,12 +31,11 @@ public struct GachaFetchView: View {
             case .zenlessZone: GachaFetchView4Game<GachaTypeZZZ>()
             }
         }
-        .environment(gachaRootVM)
     }
 
     // MARK: Private
 
-    @Environment(GachaVM.self) private var gachaRootVM
+    @State private var gachaRootVM: GachaVM = .shared
 
     private let game: Pizza.SupportedGame
 }
@@ -144,7 +143,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
     // MARK: Private
 
     @State private var gachaVM4Fetch: VMType = .init()
-    @Environment(GachaVM.self) private var gachaRootVM
+    @State private var gachaRootVM: GachaVM = .shared
 }
 
 // MARK: GachaFetchView4Game.WaitingForURLView

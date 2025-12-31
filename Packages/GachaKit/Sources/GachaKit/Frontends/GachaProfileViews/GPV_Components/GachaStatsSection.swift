@@ -147,7 +147,7 @@ extension GachaProfileView {
             return fmt
         }()
 
-        @Environment(GachaVM.self) private var theVM
+        @State private var theVM: GachaVM = .shared
         @State private var isConfidenceExplanationAlertShown: Bool = false
 
         private let poolType: GachaPoolExpressible

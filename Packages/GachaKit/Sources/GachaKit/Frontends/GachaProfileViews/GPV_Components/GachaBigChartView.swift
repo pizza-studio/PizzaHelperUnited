@@ -56,7 +56,7 @@ public struct GachaBigChartView: View {
 
     // MARK: Private
 
-    @Environment(GachaVM.self) private var gachaVM
+    @State private var gachaVM: GachaVM = .shared
     @State private var screenVM: ScreenVM = .shared
 
     private var containerWidth: CGFloat {
