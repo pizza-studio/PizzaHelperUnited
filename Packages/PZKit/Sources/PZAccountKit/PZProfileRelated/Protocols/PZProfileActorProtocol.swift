@@ -80,6 +80,7 @@ extension PZProfileActorProtocol {
     /// An OOBE task attempts inheriting old AccountMOs from the previous Pizza Apps using obsolete engines.
     /// - Parameter resetNotifications: Recheck permissions for notifications && reload all timelines across widgets.
     public func tryAutoInheritOldLocalAccounts(resetNotifications: Bool = true) async {
+        guard !Pizza.isAppStoreReleaseAsLatteHelper else { return }
         guard Pizza.isAppStoreRelease, !Defaults[.oldAccountMOAlreadyAutoInherited] else { return }
         do {
             try await migrateOldAccountsIntoProfiles(
