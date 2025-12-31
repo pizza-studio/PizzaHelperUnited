@@ -25,6 +25,7 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
         super.init()
         configurePublisherObservations()
         Task { @MainActor in
+            guard !Pizza.isAppStoreReleaseAsLatteHelper else { return }
             let count = try? await CDAccountMOActor.shared?.countAllAccountData()
             self.hasOldAccountDataDetected = (count ?? 0) > 0
         }
