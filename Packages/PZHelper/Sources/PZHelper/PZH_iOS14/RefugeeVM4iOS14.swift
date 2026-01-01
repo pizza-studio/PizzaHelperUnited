@@ -29,6 +29,7 @@ public final class RefugeeVM4iOS14: TaskManagedVMBackported {
 
     @Published public var currentExportableDocument: PZRefugeeDocument?
     @Published public var gachaEntriesCount: Int = 0
+    @Published public var gachaEntriesCountModern: Int = 0
     @Published public var localProfileEntriesCount: Int = 0
 
     // MARK: Internal
@@ -110,7 +111,7 @@ extension RefugeeVM4iOS14 {
     public func startCountingDataEntriesTask(forced: Bool) {
         fireTask(
             cancelPreviousTask: forced, givenTask: {
-                var (intGacha, intProfile) = (0, 0)
+                var (intGacha, intGachaModern, intProfile) = (0, 0, 0)
                 intGacha = try await CDGachaMOActor.shared?.countAllDataEntries(for: .genshinImpact) ?? 0
                 if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) {
                     intProfile = ProfileManagerVM.shared.profiles.count
@@ -118,14 +119,15 @@ extension RefugeeVM4iOS14 {
                     intProfile = try await CDAccountMOActor.shared?.countAllAccountData(for: .genshinImpact) ?? 0
                 }
                 if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-                    intGacha += try await GachaActor.shared.countAllDataEntries(.init())
+                    intGachaModern = try await GachaActor.shared.countAllDataEntries(.init())
                 }
-                return (intGacha, intProfile)
+                return (intGacha, intGachaModern, intProfile)
             }, completionHandler: { [weak self] newResult in
                 guard let this = self, let newResult else { return }
-                let (intGacha, intProfile) = newResult
+                let (intGacha, intGachaModern, intProfile) = newResult
                 withAnimation {
                     this.gachaEntriesCount = intGacha
+                    this.gachaEntriesCountModern = intGachaModern
                     this.localProfileEntriesCount = intProfile
                 }
             }
