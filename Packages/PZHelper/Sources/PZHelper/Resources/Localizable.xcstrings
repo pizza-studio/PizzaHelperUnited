@@ -7919,13 +7919,89 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "关闭且无视"
+            "value" : "关闭"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "關閉且無視"
+            "value" : "關閉"
+          }
+        }
+      }
+    },
+    "refugee.crossAppMigrationNotice.headerText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte scrollen Sie zum Ende dieser Seite, um die wichtige Nachricht und die Anweisungen zur Cross-App-Migration zu lesen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please scroll to the bottom of this page to read the important message and the cross-app migration instructions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, desplázate hasta el final de esta página para leer el mensaje importante y las instrucciones de migración entre aplicaciones."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mangyaring mag-scroll sa ibaba ng pahinang ito upang basahin ang mahalagang mensahe at ang mga tagubilin sa cross-app migration."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez faire défiler jusqu'au bas de cette page pour lire le message important et les instructions de migration inter-applications."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si prega di scorrere fino alla fine di questa pagina per leggere il messaggio importante e le istruzioni per la migrazione tra app."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このページの一番下までスクロールして、重要なメッセージと「新しいアプリへのデータの引き継ぎの手順」をお読みください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "중요한 메시지와 크로스 앱 마이그레이션 지침을 읽으려면 이 페이지의 맨 아래로 스크롤하세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста, прокрутите до конца этой страницы, чтобы прочитать важное сообщение и инструкции по миграции между приложениями."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vui lòng cuộn xuống cuối trang này để đọc thông báo quan trọng và hướng dẫn di chuyển giữa các ứng dụng."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请滚动到此页面底部阅读重要消息和跨应用迁移说明。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請捲動到此頁面底部閱讀重要訊息和跨應用遷移說明。"
           }
         }
       }
@@ -8166,73 +8242,149 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wunschverlaufseinträge"
+            "value" : "Gacha-Aufzeichnungseinträge (neues Format)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wish Record Entries"
+            "value" : "Gacha Record Entries (new format)"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Entradas de historial de deseos"
+            "value" : "Entradas de registro de Gacha (nuevo formato)"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mga Entry ng Wish Record"
+            "value" : "Mga Entry ng Gacha Record (bagong format)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Entrées de l'historique des vœux"
+            "value" : "Entrées de l'historique des gachas (nouveau format)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Voci del registro dei desideri"
+            "value" : "Voci del registro Gacha (nuovo formato)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "祈願履歴エントリー"
+            "value" : "ガチャ履歴エントリー（新フォーマット）"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "소원 기록 항목"
+            "value" : "가챠 기록 항목 (새 형식)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Записи истории желаний"
+            "value" : "Записи истории гача (новый формат)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mục Nhật ký Nguyện vọng"
+            "value" : "Mục Nhật ký Gacha (định dạng mới)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "祈愿记录笔数"
+            "value" : "抽卡记录笔数 (新格式)"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "祈願記錄筆數"
+            "value" : "抽卡記錄筆數 (新格式)"
+          }
+        }
+      }
+    },
+    "refugee.exportableCount.gachaEntries4GI" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wunschverlaufseinträge (v4 Format)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wish Record Entries (v4 format)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entradas de historial de deseos (formato v4)"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Entry ng Wish Record (v4 format)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrées de l'historique des vœux (format v4)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voci del registro dei desideri (formato v4)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "祈願履歴エントリー (v4 フォーマット)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "소원 기록 항목 (v4 포맷)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записи истории желаний (v4 формат)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mục Nhật ký Nguyện vọng (v4 format)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "祈愿记录笔数 (v4 格式)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "祈願記錄筆數 (v4 格式)"
           }
         }
       }
@@ -8546,73 +8698,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aufgrund privater Bedenken von Lava (dem ursprünglichen Hauptentwickler von *PizzaHelper4Genshin* v1.x ~ v4.x und *PizzaHelper4HSR* v1.x) muss diese App ihre Updates einstellen, solange sie unter seinem Apple Developer Account veröffentlicht wird. Darüber hinaus ist die aktuelle Bundle-ID aufgrund der Verwendung von Sandbox Group Containers in der macOS-Version (zum Datenaustausch mit eigenen Desktop-Widgets) möglicherweise nicht auf ein anderes Apple Developer Account übertragbar.\n\nInfolgedessen wurden alle Funktionen der App unter dieser Bundle-ID deaktiviert. Die einzig verbleibenden Funktionen sind: 1) Widgets und Benachrichtigungen, bereitgestellt wie sie sind; 2) Die Möglichkeit, lokale Profile und Gacha-Datensätze zu exportieren (unterstützt sowohl das aktuelle Format als auch das alte PizzaHelper4Genshin v4.x-Format). Diese werden in Ihrer exportierten Migrationsdatei enthalten sein.\n\nDer Nachfolger dieser App wird im App Store unter dem neuen Namen ***The Latte Helper (拿鐵小助手 / ラテ助手)*** verfügbar sein. Er wird unter dem Apple Developer Account eines anderen Teammitglieds betrieben. Der neue Name ist eine Anspielung auf den berühmten Waschmittel-Vorfall von Himeko, bei dem sie versehentlich Waschpulver statt Milchpulver in ihren Latte gegeben hat.\n"
+            "value" : "Aufgrund privater Bedenken von Lava (dem ursprünglichen Hauptentwickler von *PizzaHelper4Genshin* v1.x ~ v4.x und *PizzaHelper4HSR* v1.x) muss diese App ihre Updates einstellen, solange sie unter seinem Apple Developer Account veröffentlicht wird. Darüber hinaus ist die aktuelle Bundle-ID aufgrund der Verwendung von Sandbox Group Containers in der macOS-Version (zum Datenaustausch mit eigenen Desktop-Widgets) möglicherweise nicht auf ein anderes Apple Developer Account übertragbar.\n\nInfolgedessen sollten alle Funktionen der App unter dieser Bundle-ID als außerhalb der Wartung betrachtet werden. Die einzig verbleibenden Funktionen sind: 1) Widgets und Benachrichtigungen, bereitgestellt wie sie sind; 2) Die Möglichkeit, lokale Profile und Gacha-Datensätze zu exportieren (unterstützt sowohl das aktuelle Format als auch das alte PizzaHelper4Genshin v4.x-Format). Diese werden in Ihrer exportierten Migrationsdatei enthalten sein.\n\nDer Nachfolger dieser App wird im App Store unter dem neuen Namen ***The Latte Helper (拿鐵小助手 / ラテ助手)*** verfügbar sein. Er wird unter dem Apple Developer Account eines anderen Teammitglieds betrieben. Der neue Name ist eine Anspielung auf den berühmten Waschmittel-Vorfall von Himeko, bei dem sie versehentlich Waschpulver statt Milchpulver in ihren Latte gegeben hat."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Due to private concerns by Lava (the original lead developer of *PizzaHelper4Genshin* v1.x ~ v4.x and *PizzaHelper4HSR* v1.x), this app has to cease its updates as long as it is released under his Apple Developer account. Furthermore, because the macOS version utilizes Sandbox Group Containers (to share data with its own Desktop Widgets), the current Bundle ID is potentially ineligible for transfer to a different Apple Developer account.\n\nAs a result, all features of the app under this Bundle ID have been disabled. The sole remaining functionalities are: 1) Widgets and Notifications, provided as-is; 2) The ability to export local profiles and gacha records (supporting both the current format and the legacy PizzaHelper4Genshin v4.x format). These will be included in your exported migration file.\n\nThe successor to this app will be available on the App Store under the new name ***The Latte Helper (拿鐵小助手 / ラテ助手)***. It will be operated under another team member's Apple Developer account. The new naming is a nod to Himeko’s infamous detergent incident, where she mistakenly brewed her latte with laundry powder rather than milk powder."
+            "value" : "Due to private concerns by Lava (the original lead developer of *PizzaHelper4Genshin* v1.x ~ v4.x and *PizzaHelper4HSR* v1.x), this app has to cease its updates as long as it is released under his Apple Developer account. Furthermore, because the macOS version utilizes Sandbox Group Containers (to share data with its own Desktop Widgets), the current Bundle ID is potentially ineligible for transfer to a different Apple Developer account.\n\nAs a result, all features of the app under this Bundle ID should be considered out-of-maintenance. The sole remaining functionalities are: 1) Widgets and Notifications, provided as-is; 2) The ability to export local profiles and gacha records (supporting both the current format and the legacy PizzaHelper4Genshin v4.x format). These will be included in your exported migration file.\n\nThe successor to this app will be available on the App Store under the new name ***The Latte Helper (拿鐵小助手 / ラテ助手)***. It will be operated under another team member's Apple Developer account. The new naming is a nod to Himeko’s infamous detergent incident, where she mistakenly brewed her latte with laundry powder rather than milk powder."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Debido a preocupaciones privadas de Lava (el desarrollador principal original de *PizzaHelper4Genshin* v1.x ~ v4.x y *PizzaHelper4HSR* v1.x), esta aplicación debe cesar sus actualizaciones mientras siga publicada bajo su cuenta de Apple Developer. Además, dado que la versión de macOS utiliza Sandbox Group Containers (para compartir datos con sus propios Widgets de escritorio), el Bundle ID actual podría no ser elegible para transferirse a otra cuenta de Apple Developer.\n\nComo resultado, todas las funciones de la aplicación bajo este Bundle ID han sido desactivadas. Las únicas funcionalidades restantes son: 1) Widgets y Notificaciones, proporcionados tal cual; 2) La capacidad de exportar perfiles locales y registros de gacha (compatible tanto con el formato actual como con el formato legacy de PizzaHelper4Genshin v4.x). Estos se incluirán en tu archivo de migración exportado.\n\nEl sucesor de esta aplicación estará disponible en la App Store bajo el nuevo nombre ***The Latte Helper (拿鐵小助手 / ラテ助手)***. Será operado bajo la cuenta de Apple Developer de otro miembro del equipo. El nuevo nombre es un guiño al infame incidente del detergente de Himeko, donde por error preparó su latte con polvo de lavandería en lugar de leche en polvo.\n"
+            "value" : "Debido a preocupaciones privadas de Lava (el desarrollador principal original de *PizzaHelper4Genshin* v1.x ~ v4.x y *PizzaHelper4HSR* v1.x), esta aplicación debe cesar sus actualizaciones mientras siga publicada bajo su cuenta de Apple Developer. Además, dado que la versión de macOS utiliza Sandbox Group Containers (para compartir datos con sus propios Widgets de escritorio), el Bundle ID actual podría no ser elegible para transferirse a otra cuenta de Apple Developer.\n\nComo resultado, todas las funciones de la aplicación bajo este Bundle ID deberían considerarse fuera de mantenimiento. Las únicas funcionalidades restantes son: 1) Widgets y Notificaciones, proporcionados tal cual; 2) La capacidad de exportar perfiles locales y registros de gacha (compatible tanto con el formato actual como con el formato legacy de PizzaHelper4Genshin v4.x). Estos se incluirán en tu archivo de migración exportado.\n\nEl sucesor de esta aplicación estará disponible en la App Store bajo el nuevo nombre ***The Latte Helper (拿鐵小助手 / ラテ助手)***. Será operado bajo la cuenta de Apple Developer de otro miembro del equipo. El nuevo nombre es un guiño al infame incidente del detergente de Himeko, donde por error preparó su latte con polvo de lavandería en lugar de leche en polvo."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dahil sa mga private na alalahanin ni Lava (ang orihinal na lead developer ng *PizzaHelper4Genshin* v1.x ~ v4.x at *PizzaHelper4HSR* v1.x), kailangang ihinto ng app na ito ang mga update hangga't ito ay inilalabas sa ilalim ng kanyang Apple Developer account. Bukod pa rito, dahil ginagamit ng macOS version ang Sandbox Group Containers (para mag-share ng data sa sarili nitong Desktop Widgets), posibleng hindi mailipat ang kasalukuyang Bundle ID sa ibang Apple Developer account.\n\nBilang resulta, lahat ng feature ng app sa ilalim ng Bundle ID na ito ay na-disable na. Ang tanging natitirang functionality ay: 1) Widgets at Notifications, na ibinibigay nang as-is; 2) Ang kakayahang mag-export ng local profiles at gacha records (sumusuporta sa kasalukuyang format at sa legacy PizzaHelper4Genshin v4.x format). Isasama ang mga ito sa iyong exported migration file.\n\nAng kahalili ng app na ito ay magiging available sa App Store sa bagong pangalan ***The Latte Helper (拿鐵小助手 / ラテ助手)***. Pamamahalaan ito sa ilalim ng Apple Developer account ng isa pang miyembro ng team. Ang bagong pangalan ay isang pagpupugay sa sikat na insidente ni Himeko kung saan mali niya na ginamit ang laundry powder sa kanyang latte sa halip na milk powder.\n"
+            "value" : "Dahil sa mga private na alalahanin ni Lava (ang orihinal na lead developer ng *PizzaHelper4Genshin* v1.x ~ v4.x at *PizzaHelper4HSR* v1.x), kailangang ihinto ng app na ito ang mga update hangga't ito ay inilalabas sa ilalim ng kanyang Apple Developer account. Bukod pa rito, dahil ginagamit ng macOS version ang Sandbox Group Containers (para mag-share ng data sa sarili nitong Desktop Widgets), posibleng hindi mailipat ang kasalukuyang Bundle ID sa ibang Apple Developer account.\n\nBilang resulta, lahat ng feature ng app sa ilalim ng Bundle ID na ito ay dapat ituring na out-of-maintenance. Ang tanging natitirang functionality ay: 1) Widgets at Notifications, na ibinibigay nang as-is; 2) Ang kakayahang mag-export ng local profiles at gacha records (sumusuporta sa kasalukuyang format at sa legacy PizzaHelper4Genshin v4.x format). Isasama ang mga ito sa iyong exported migration file.\n\nAng kahalili ng app na ito ay magiging available sa App Store sa bagong pangalan ***The Latte Helper (拿鐵小助手 / ラテ助手)***. Pamamahalaan ito sa ilalim ng Apple Developer account ng isa pang miyembro ng team. Ang bagong pangalan ay isang pagpupugay sa sikat na insidente ni Himeko kung saan mali niya na ginamit ang laundry powder sa kanyang latte sa halip na milk powder."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En raison de préoccupations privées de Lava (le développeur principal original de *PizzaHelper4Genshin* v1.x ~ v4.x et *PizzaHelper4HSR* v1.x), cette application doit cesser ses mises à jour tant qu’elle est publiée sous son compte Apple Developer. De plus, comme la version macOS utilise des Sandbox Group Containers (pour partager des données avec ses propres Widgets de bureau), l’identifiant Bundle actuel est potentiellement inéligible à un transfert vers un autre compte Apple Developer.\n\nPar conséquent, toutes les fonctionnalités de l’application sous cet identifiant Bundle ont été désactivées. Les seules fonctionnalités restantes sont : 1) les Widgets et les Notifications, fournis tels quels ; 2) la possibilité d’exporter les profils locaux et les historiques de gacha (supportant à la fois le format actuel et l’ancien format PizzaHelper4Genshin v4.x). Elles seront incluses dans votre fichier de migration exporté.\n\nLe successeur de cette application sera disponible sur l’App Store sous le nouveau nom ***The Latte Helper (拿鐵小助手 / ラテ助手)***. Il sera géré sous le compte Apple Developer d’un autre membre de l’équipe. Ce nouveau nom rend hommage à l’incident célèbre d’Himeko, où elle a par erreur préparé son latte avec de la poudre à lessive au lieu de poudre de lait.\n"
+            "value" : "En raison de préoccupations privées de Lava (le développeur principal original de *PizzaHelper4Genshin* v1.x ~ v4.x et *PizzaHelper4HSR* v1.x), cette application doit cesser ses mises à jour tant qu’elle est publiée sous son compte Apple Developer. De plus, comme la version macOS utilise des Sandbox Group Containers (pour partager des données avec ses propres Widgets de bureau), l’identifiant Bundle actuel est potentiellement inéligible à un transfert vers un autre compte Apple Developer.\n\nPar conséquent, toutes les fonctionnalités de l’application sous cet identifiant Bundle devraient être considérées comme hors maintenance. Les seules fonctionnalités restantes sont : 1) les Widgets et les Notifications, fournis tels quels ; 2) la possibilité d’exporter les profils locaux et les historiques de gacha (supportant à la fois le format actuel et l’ancien format PizzaHelper4Genshin v4.x). Elles seront incluses dans votre fichier de migration exporté.\n\nLe successeur de cette application sera disponible sur l’App Store sous le nouveau nom ***The Latte Helper (拿鐵小助手 / ラテ助手)***. Il sera géré sous le compte Apple Developer d’un autre membre de l’équipe. Ce nouveau nom rend hommage à l’incident célèbre d’Himeko, où elle a par erreur préparé son latte avec de la poudre à lessive au lieu de poudre de lait."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A causa di preoccupazioni private di Lava (lo sviluppatore principale originale di *PizzaHelper4Genshin* v1.x ~ v4.x e *PizzaHelper4HSR* v1.x), questa app deve interrompere gli aggiornamenti fintanto che è pubblicata sotto il suo account Apple Developer. Inoltre, poiché la versione macOS utilizza Sandbox Group Containers (per condividere dati con i propri Widget desktop), l’attuale Bundle ID potrebbe non essere trasferibile a un altro account Apple Developer.\n\nDi conseguenza, tutte le funzionalità dell’app sotto questo Bundle ID sono state disabilitate. Le uniche funzionalità rimaste sono: 1) Widget e Notifiche, forniti così come sono; 2) La possibilità di esportare profili locali e record gacha (supportando sia il formato attuale che il vecchio formato PizzaHelper4Genshin v4.x). Questi saranno inclusi nel file di migrazione esportato.\n\nIl successore di questa app sarà disponibile sull’App Store con il nuovo nome ***The Latte Helper (拿鐵小助手 / ラテ助手)***. Sarà gestito sotto l’account Apple Developer di un altro membro del team. Il nuovo nome è un omaggio all’incidente famoso di Himeko, in cui ha scambiato per errore la polvere detergente con la polvere di latte nel suo latte.\n"
+            "value" : "A causa di preoccupazioni private di Lava (lo sviluppatore principale originale di *PizzaHelper4Genshin* v1.x ~ v4.x e *PizzaHelper4HSR* v1.x), questa app deve interrompere gli aggiornamenti fintanto che è pubblicata sotto il suo account Apple Developer. Inoltre, poiché la versione macOS utilizza Sandbox Group Containers (per condividere dati con i propri Widget desktop), l’attuale Bundle ID potrebbe non essere trasferibile a un altro account Apple Developer.\n\nDi conseguenza, tutte le funzionalità dell’app sotto questo Bundle ID dovrebbero essere considerate fuori manutenzione. Le uniche funzionalità rimaste sono: 1) Widget e Notifiche, forniti così come sono; 2) La possibilità di esportare profili locali e record gacha (supportando sia il formato attuale che il vecchio formato PizzaHelper4Genshin v4.x). Questi saranno inclusi nel file di migrazione esportato.\n\nIl successore di questa app sarà disponibile sull’App Store con il nuovo nome ***The Latte Helper (拿鐵小助手 / ラテ助手)***. Sarà gestito sotto l’account Apple Developer di un altro membro del team. Il nuovo nome è un omaggio all’incidente famoso di Himeko, in cui ha scambiato per errore la polvere detergente con la polvere di latte nel suo latte."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lava（*PizzaHelper4Genshin* v1.x～v4.x および *PizzaHelper4HSR* v1.x のオリジナルリード開発者）の個人的な懸念により、本アプリは彼の Apple Developer アカウント下でリリースされている限りアップデートを停止せざるを得なくなりました。また、macOS 版が Sandbox Group Containers（自前のデスクトップウィジェットとデータを共有するため）を使用しているため、現在の Bundle ID は別の Apple Developer アカウントへの移行ができない可能性があります。\n\nその結果、この Bundle ID 下のアプリの全機能が無効化されました。残された唯一の機能は以下の通りです：1) ウィジェットと通知、そのまま提供されます；2) ローカルプロファイルとガチャ記録のエクスポート機能（現在のフォーマットと旧 PizzaHelper4Genshin v4.x フォーマットの両方に対応）。これらはエクスポートされた移行ファイルに含まれます。\n\n本アプリの後継は App Store で新名称 ***The Latte Helper (拿鐵小助手 / ラテ助手)*** としてリリースされます。チームの別メンバーの Apple Developer アカウントで運用されます。新名称は、姫子が有名な洗剤事件でミルクパウダーの代わりに洗濯洗剤をラテに入れてしまったことへのオマージュです。\n"
+            "value" : "Lava（*PizzaHelper4Genshin* v1.x～v4.x および *PizzaHelper4HSR* v1.x のオリジナルリード開発者）の個人的な懸念により、本アプリは彼の Apple Developer アカウント下でリリースされている限りアップデートを停止せざるを得なくなりました。また、macOS 版が Sandbox Group Containers（自前のデスクトップウィジェットとデータを共有するため）を使用しているため、現在の Bundle ID は別の Apple Developer アカウントへの移行ができない可能性があります。\n\nその結果、この Bundle ID 下のアプリの全機能はメンテナンス外と見なされるべきです。残された唯一の機能は以下の通りです：1) ウィジェットと通知、そのまま提供されます；2) ローカルプロファイルとガチャ記録のエクスポート機能（現在のフォーマットと旧 PizzaHelper4Genshin v4.x フォーマットの両方に対応）。これらはエクスポートされた移行ファイルに含まれます。\n\n本アプリの後継は App Store で新名称 ***The Latte Helper (拿鐵小助手 / ラテ助手)*** としてリリースされます。チームの別メンバーの Apple Developer アカウントで運用されます。新名称は、姫子が有名な洗剤事件でミルクパウダーの代わりに洗濯洗剤をラテに入れてしまったことへのオマージュです。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lava(*PizzaHelper4Genshin* v1.x ~ v4.x 및 *PizzaHelper4HSR* v1.x 의 원래 리드 개발자)의 개인적인 우려로 인해, 이 앱은 그의 Apple Developer 계정 하에서 출시되는 한 업데이트를 중단해야 합니다. 또한, macOS 버전이 Sandbox Group Containers(자체 데스크톱 위젯과 데이터를 공유하기 위해)를 사용하기 때문에 현재 Bundle ID는 다른 Apple Developer 계정으로 이전할 수 없을 가능성이 있습니다.\n\n그 결과, 이 Bundle ID 하의 앱 모든 기능이 비활성화되었습니다. 남아 있는 유일한 기능은 다음과 같습니다: 1) 위젯과 알림, 있는 그대로 제공; 2) 로컬 프로필과 뽑기 기록 내보내기(현재 형식과 레거시 PizzaHelper4Genshin v4.x 형식 모두 지원). 이는 내보낸 마이그레이션 파일에 포함됩니다.\n\n이 앱의 후속작은 App Store에서 새로운 이름 ***The Latte Helper (拿鐵小助手 / ラテ助手)*** 로 출시될 예정입니다. 팀의 다른 멤버의 Apple Developer 계정으로 운영됩니다. 새로운 이름은 히메코가 우유 가루 대신 세제 가루를 라테에 넣은 유명한 사건에 대한 오마주입니다。\n"
+            "value" : "Lava(*PizzaHelper4Genshin* v1.x ~ v4.x 및 *PizzaHelper4HSR* v1.x 의 원래 리드 개발자)의 개인적인 우려로 인해, 이 앱은 그의 Apple Developer 계정 하에서 출시되는 한 업데이트를 중단해야 합니다. 또한, macOS 버전이 Sandbox Group Containers(자체 데스크톱 위젯과 데이터를 공유하기 위해)를 사용하기 때문에 현재 Bundle ID는 다른 Apple Developer 계정으로 이전할 수 없을 가능성이 있습니다.\n\n그 결과, 이 Bundle ID 하의 앱 모든 기능은 유지보수 외로 간주되어야 합니다. 남아 있는 유일한 기능은 다음과 같습니다: 1) 위젯과 알림, 있는 그대로 제공; 2) 로컬 프로필과 뽑기 기록 내보내기(현재 형식과 레거시 PizzaHelper4Genshin v4.x 형식 모두 지원). 이는 내보낸 마이그레이션 파일에 포함됩니다.\n\n이 앱의 후속작은 App Store에서 새로운 이름 ***The Latte Helper (拿鐵小助手 / ラテ助手)*** 로 출시될 예정입니다. 팀의 다른 멤버의 Apple Developer 계정으로 운영됩니다. 새로운 이름은 히메코가 우유 가루 대신 세제 가루를 라테에 넣은 유명한 사건에 대한 오마주입니다。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Из-за личных опасений Lava (оригинального ведущего разработчика *PizzaHelper4Genshin* v1.x ~ v4.x и *PizzaHelper4HSR* v1.x) это приложение вынуждено прекратить обновления, пока оно выпускается под его аккаунтом Apple Developer. Кроме того, поскольку версия для macOS использует Sandbox Group Containers (для обмена данными с собственными виджетами для рабочего стола), текущий Bundle ID потенциально не подлежит передаче на другой аккаунт Apple Developer.\n\nВ результате все функции приложения под этим Bundle ID были отключены. Единственные оставшиеся возможности: 1) Виджеты и уведомления, предоставляемые как есть; 2) Возможность экспорта локальных профилей и записей гатя (поддерживается как текущий формат, так и устаревший формат PizzaHelper4Genshin v4.x). Они будут включены в ваш экспортированный файл миграции.\n\nПреемник этого приложения будет доступен в App Store под новым названием ***The Latte Helper (拿鐵小助手 / ラテ助手)***. Он будет управляться под аккаунтом Apple Developer другого члена команды. Новое название — отсылка к знаменитому инциденту с Химеко, когда она по ошибке заварила свой латте стиральным порошком вместо сухого молока.\n"
+            "value" : "Из-за личных опасений Lava (оригинального ведущего разработчика *PizzaHelper4Genshin* v1.x ~ v4.x и *PizzaHelper4HSR* v1.x) это приложение вынуждено прекратить обновления, пока оно выпускается под его аккаунтом Apple Developer. Кроме того, поскольку версия для macOS использует Sandbox Group Containers (для обмена данными с собственными виджетами для рабочего стола), текущий Bundle ID потенциально не подлежит передаче на другой аккаунт Apple Developer.\n\nВ результате все функции приложения под этим Bundle ID должны считаться вышедшими из обслуживания. Единственные оставшиеся возможности: 1) Виджеты и уведомления, предоставляемые как есть; 2) Возможность экспорта локальных профилей и записей гатя (поддерживается как текущий формат, так и устаревший формат PizzaHelper4Genshin v4.x). Они будут включены в ваш экспортированный файл миграции.\n\nПреемник этого приложения будет доступен в App Store под новым названием ***The Latte Helper (拿鐵小助手 / ラテ助手)***. Он будет управляться под аккаунтом Apple Developer другого члена команды. Новое название — отсылка к знаменитому инциденту с Химеко, когда она по ошибке заварила свой латте стиральным порошком вместо сухого молока."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Do những lo ngại cá nhân từ Lava (nhà phát triển chính ban đầu của *PizzaHelper4Genshin* v1.x ~ v4.x và *PizzaHelper4HSR* v1.x), ứng dụng này buộc phải ngừng cập nhật miễn là nó vẫn được phát hành dưới tài khoản Apple Developer của anh ấy. Hơn nữa, vì phiên bản macOS sử dụng Sandbox Group Containers (để chia sẻ dữ liệu với các Widget Desktop riêng), Bundle ID hiện tại có khả năng không đủ điều kiện chuyển sang tài khoản Apple Developer khác.\n\nKết quả là, tất cả tính năng của ứng dụng dưới Bundle ID này đã bị vô hiệu hóa. Các chức năng duy nhất còn lại là: 1) Widget và Thông báo, được cung cấp nguyên trạng; 2) Khả năng xuất hồ sơ cục bộ và lịch sử gacha (hỗ trợ cả định dạng hiện tại và định dạng cũ PizzaHelper4Genshin v4.x). Chúng sẽ được bao gồm trong tệp di chuyển mà bạn xuất ra.\n\nNgười kế thừa của ứng dụng này sẽ có mặt trên App Store với tên mới ***The Latte Helper (拿鐵小助手 / ラテ助手)***. Nó sẽ được vận hành dưới tài khoản Apple Developer của một thành viên khác trong đội ngũ. Tên mới là sự tri ân đến sự cố bột giặt nổi tiếng của Himeko, khi cô ấy nhầm lẫn dùng bột giặt thay vì bột sữa để pha latte."
+            "value" : "Do những lo ngại cá nhân từ Lava (nhà phát triển chính ban đầu của *PizzaHelper4Genshin* v1.x ~ v4.x và *PizzaHelper4HSR* v1.x), ứng dụng này buộc phải ngừng cập nhật miễn là nó vẫn được phát hành dưới tài khoản Apple Developer của anh ấy. Hơn nữa, vì phiên bản macOS sử dụng Sandbox Group Containers (để chia sẻ dữ liệu với các Widget Desktop riêng), Bundle ID hiện tại có khả năng không đủ điều kiện chuyển sang tài khoản Apple Developer khác.\n\nKết quả là, tất cả tính năng của ứng dụng dưới Bundle ID này nên được coi là ngoài bảo trì. Các chức năng duy nhất còn lại là: 1) Widget và Thông báo, được cung cấp nguyên trạng; 2) Khả năng xuất hồ sơ cục bộ và lịch sử gacha (hỗ trợ cả định dạng hiện tại và định dạng cũ PizzaHelper4Genshin v4.x). Chúng sẽ được bao gồm trong tệp di chuyển mà bạn xuất ra.\n\nNgười kế thừa của ứng dụng này sẽ có mặt trên App Store với tên mới ***The Latte Helper (拿鐵小助手 / ラテ助手)***. Nó sẽ được vận hành dưới tài khoản Apple Developer của một thành viên khác trong đội ngũ. Tên mới là sự tri ân đến sự cố bột giặt nổi tiếng của Himeko, khi cô ấy nhầm lẫn dùng bột giặt thay vì bột sữa để pha latte."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "由于 Lava（*PizzaHelper4Genshin* v1.x～v4.x 以及 *PizzaHelper4HSR* v1.x 的原主要开发者）私人顾虑，本应用只要在其 Apple Developer 账户下发布，就必须停止更新。此外，由于 macOS 版本使用了 Sandbox Group Containers（用于与自家桌面小工具共享数据），当前 Bundle ID 可能无法转移到其他 Apple Developer 账户。\n\n因此，该 Bundle ID 下的应用所有功能已被禁用。唯一保留的功能为：1) 小工具和通知，按原样提供；2) 导出本地账号与抽卡记录（支持当前格式以及旧版 PizzaHelper4Genshin v4.x 格式）的能力。这些内容将包含在您导出的迁移文件中。\n\n本应用的继任者将在 App Store 上以新名称 ***The Latte Helper (拿鐵小助手 / ラテ助手)*** 上架。它将由另一位团队成员的 Apple Developer 账户运营。新名称致敬了姬子那次著名的洗衣粉事件——她错把洗衣粉当奶粉冲进了拿铁。\n"
+            "value" : "由于 Lava（*PizzaHelper4Genshin* v1.x～v4.x 以及 *PizzaHelper4HSR* v1.x 的原主要开发者）私人顾虑，本应用只要在其 Apple Developer 账户下发布，就必须停止更新。此外，由于 macOS 版本使用了 Sandbox Group Containers（用于与自家桌面小工具共享数据），当前 Bundle ID 可能无法转移到其他 Apple Developer 账户。\n\n因此，该 Bundle ID 下的本应用的所有功能应视为已停止维护。唯一保留的功能为：1) 小工具和通知，按原样提供；2) 导出本地账号与抽卡记录（支持当前格式以及旧版 PizzaHelper4Genshin v4.x 格式）的能力。这些内容将包含在您导出的迁移文件中。\n\n本应用的继任者将在 App Store 上以新名称 ***The Latte Helper (拿鐵小助手 / ラテ助手)*** 上架。它将由另一位团队成员的 Apple Developer 账户运营。新名称致敬了姬子那次著名的洗衣粉事件——她错把洗衣粉当奶粉冲进了拿铁。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "由於 Lava（*PizzaHelper4Genshin* v1.x～v4.x 以及 *PizzaHelper4HSR* v1.x 的原主要開發者）私人考量，本應用只要在其 Apple Developer 帳戶下發布，就必須停止更新。此外，由於 macOS 版本使用了 Sandbox Group Containers（用來與自家桌面小工具共享資料），當前 Bundle ID 可能無法轉移至其他 Apple Developer 帳戶。\n\n因此，該 Bundle ID 下的應用所有功能已被停用。唯一保留的功能為：1) 小工具與通知，按原樣提供；2) 匯出本機帳號與抽卡記錄（支援當前格式以及舊版 PizzaHelper4Genshin v4.x 格式）的能力。這些內容將包含在您匯出的遷移檔案中。\n\n本應用的繼任者將在 App Store 上以新名稱 ***The Latte Helper (拿鐵小助手 / ラテ助手)*** 上架。它將由另一位團隊成員的 Apple Developer 帳戶營運。新名稱致敬姬子那次著名的洗衣粉事件——她錯把洗衣粉當奶粉沖進了拿鐵。\n"
+            "value" : "由於 Lava（*PizzaHelper4Genshin* v1.x～v4.x 以及 *PizzaHelper4HSR* v1.x 的原主要開發者）私人考量，本應用只要在其 Apple Developer 帳戶下發布，就必須停止更新。此外，由於 macOS 版本使用了 Sandbox Group Containers（用來與自家桌面小工具共享資料），當前 Bundle ID 可能無法轉移至其他 Apple Developer 帳戶。\n\n因此，該 Bundle ID 下的本應用的所有功能應視為已停止維護。唯一保留的功能為：1) 小工具與通知，按原樣提供；2) 匯出本機帳號與抽卡記錄（支援當前格式以及舊版 PizzaHelper4Genshin v4.x 格式）的能力。這些內容將包含在您匯出的遷移檔案中。\n\n本應用的繼任者將在 App Store 上以新名稱 ***The Latte Helper (拿鐵小助手 / ラテ助手)*** 上架。它將由另一位團隊成員的 Apple Developer 帳戶營運。新名稱致敬姬子那次著名的洗衣粉事件——她錯把洗衣粉當奶粉沖進了拿鐵。"
           }
         }
       }
@@ -8921,6 +9073,82 @@
         }
       }
     },
+    "refugee.link.getTheLatteHelper" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen Sie hier, um The Latte Helper im App Store zu erhalten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap here to get The Latte Helper at App Store"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca aquí para obtener The Latte Helper en la App Store"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I-tap dito upang makuha ang The Latte Helper sa App Store"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appuyez ici pour obtenir The Latte Helper sur l'App Store"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tocca qui per ottenere The Latte Helper sull'App Store"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "『ラテ助手』アプリのAppStoreページへ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store에서 The Latte Helper를 받으려면 여기를 탭하세요"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите здесь, чтобы получить The Latte Helper в App Store"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhấn vào đây để tải The Latte Helper trên App Store"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点此前往《拿铁小助手》的 App Store 页面"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點此前往《拿鐵小助手》的 App Store 頁面"
+          }
+        }
+      }
+    },
     "refugee.liveActivity.featureLabel" : {
       "localizations" : {
         "de" : {
@@ -9069,6 +9297,82 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "點按啟動"
+          }
+        }
+      }
+    },
+    "refugee.navTitle.noticingEndOfMaintenance" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ende der Wartung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End-of-Maintenance"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fin del Mantenimiento"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katapusan ng Maintenance"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fin de Maintenance"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fine della Manutenzione"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メンテナンス中止のお知らせ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유지보수 종료"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Конец обслуживания"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kết thúc Bảo trì"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "维护终止通知"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "維護終止通知"
           }
         }
       }

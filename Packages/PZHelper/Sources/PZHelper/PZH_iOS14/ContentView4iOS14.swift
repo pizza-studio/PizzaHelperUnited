@@ -9,6 +9,10 @@ import PZBaseKit
 import PZWidgetsKit
 import SwiftUI
 
+/// 业务逻辑：
+/// iOS 16.1 为止的系统：仅允许导出资料。
+/// iOS 16.2 开始的 iOS 16 系统：允许导出资料、使用小工具、体力通知、Apple Watch。
+/// iOS 17+：仅允许导出资料，但该画面允许关闭。用户关闭该画面之后可继续照常使用 App，只是所有功能全部放弃维护。
 public struct ContentView4iOS14: View {
     // MARK: Lifecycle
 
@@ -47,49 +51,13 @@ public struct ContentView4iOS14: View {
                     Text(verbatim: "\(theError) ||| \(theError.localizedDescription)")
                 }
             }
-            if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) {
-                Section {
-                    NavigationLink(destination: ProfileManagerPageContent.init) {
-                        Label("profileMgr.manage.title".i18nPZHelper, systemSymbol: .personTextRectangleFill)
-                    }
-                    NavigationLink(destination: NotificationSettingsPageContent.init) {
-                        Label(NotificationSettingsPageContent.navTitle, systemSymbol: .bellBadge)
-                    }
-                    LiveActivitySettingNavigator()
-                    if !pzProfilesMap.isEmpty {
-                        drawLiveActivityCallerRow()
-                    }
-                    AppLanguageSwitcher()
-                    NavigationLink(
-                        destination: AboutView.init,
-                        label: {
-                            Label {
-                                Text(verbatim: AboutView.navTitle)
-                            } icon: {
-                                AboutView.navIcon
-                            }
-                        }
-                    )
-                } header: {
-                    if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-                        Text("refugee.limitedServiceCategory4iOS17.header", bundle: .module)
-                            .textCase(.none)
-                    } else {
-                        Text("refugee.limitedServiceCategory4iOS16.header", bundle: .module)
-                            .textCase(.none)
-                    }
-                } footer: {
-                    if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-                        Text("refugee.limitedServiceCategory4iOS17.footer", bundle: .module)
-                            .textCase(.none)
-                    } else {
-                        Text("refugee.limitedServiceCategory4iOS16.footer", bundle: .module)
-                            .textCase(.none)
-                    }
-                }
-                .fontWidth(.condensed)
-                WatchDataPusherButton()
-                    .fontWidth(.condensed)
+            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                Text("refugee.crossAppMigrationNotice.headerText", bundle: .module)
+                    .font(.body)
+                    .bold()
+                    .foregroundStyle(.red)
+            } else if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) {
+                renderAvailableFeaturesAtThisPage()
             }
             Section {
                 if theVM.localProfileEntriesCount > 0 {
@@ -102,9 +70,21 @@ public struct ContentView4iOS14: View {
                             .padding(.leading)
                     }
                 }
+                if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                    if theVM.gachaEntriesCountModern > 0 {
+                        HStack {
+                            Text("refugee.exportableCount.gachaEntries", bundle: .module)
+                                .multilineTextAlignment(.leading)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Text(verbatim: theVM.gachaEntriesCountModern.description)
+                                .foregroundColor(.secondary)
+                                .padding(.leading)
+                        }
+                    }
+                }
                 if theVM.gachaEntriesCount > 0 {
                     HStack {
-                        Text("refugee.exportableCount.gachaEntries", bundle: .module)
+                        Text("refugee.exportableCount.gachaEntries4GI", bundle: .module)
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Text(verbatim: theVM.gachaEntriesCount.description)
@@ -132,26 +112,11 @@ public struct ContentView4iOS14: View {
                 }
                 .frame(maxWidth: .infinity)
             } footer: {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("refugee.footer.exportInstructions", bundle: .module)
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(.accentColor)
-                    if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-                        Text("refugee.footer.whyServiceTerminatedInPublic", bundle: .module)
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    } else {
-                        Text("refugee.footer.whyServiceTerminatedForOS21", bundle: .module)
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                }
-                .frame(maxWidth: .infinity)
+                renderBottomFooterContents()
             }
         }
         .disableFocusable()
-        .navigationTitle(Text(verbatim: Pizza.appTitleLocalizedFull))
+        .navigationTitle(navTitle)
         .navBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
@@ -232,6 +197,89 @@ public struct ContentView4iOS14: View {
         }
     }
 
+    @available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *)
+    @ViewBuilder
+    func renderAvailableFeaturesAtThisPage() -> some View {
+        Section {
+            NavigationLink(destination: ProfileManagerPageContent.init) {
+                Label(
+                    "profileMgr.manage.title".i18nPZHelper,
+                    systemSymbol: .personTextRectangleFill
+                )
+            }
+            NavigationLink(destination: NotificationSettingsPageContent.init) {
+                Label(NotificationSettingsPageContent.navTitle, systemSymbol: .bellBadge)
+            }
+            LiveActivitySettingNavigator()
+            if !pzProfilesMap.isEmpty {
+                drawLiveActivityCallerRow()
+            }
+            AppLanguageSwitcher()
+            NavigationLink(
+                destination: AboutView.init,
+                label: {
+                    Label {
+                        Text(verbatim: AboutView.navTitle)
+                    } icon: {
+                        AboutView.navIcon
+                    }
+                }
+            )
+        } header: {
+            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                Text("refugee.limitedServiceCategory4iOS17.header", bundle: .module)
+                    .textCase(.none)
+            } else {
+                Text("refugee.limitedServiceCategory4iOS16.header", bundle: .module)
+                    .textCase(.none)
+            }
+        } footer: {
+            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                Text("refugee.limitedServiceCategory4iOS17.footer", bundle: .module)
+                    .textCase(.none)
+            } else {
+                Text("refugee.limitedServiceCategory4iOS16.footer", bundle: .module)
+                    .textCase(.none)
+            }
+        }
+        .fontWidth(.condensed)
+        WatchDataPusherButton()
+            .fontWidth(.condensed)
+    }
+
+    @ViewBuilder
+    func renderBottomFooterContents() -> some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Text("refugee.footer.exportInstructions", bundle: .module)
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundColor(.accentColor)
+            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                Text("refugee.footer.whyServiceTerminatedInPublic", bundle: .module)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                let linkTitle = String(localized: "refugee.link.getTheLatteHelper", bundle: .module)
+                let latteAppURLStr = Pizza.AppStoreURL.asLatteHelper.rawValue
+                let rawMarkdown = "**[\(linkTitle)](\(latteAppURLStr))**"
+                if let attrStr = try? AttributedString(markdown: rawMarkdown) {
+                    Text(attrStr)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                } else if let latteAppURL = URL(string: latteAppURLStr) {
+                    Link(destination: latteAppURL) {
+                        Text("refugee.link.getTheLatteHelper", bundle: .module)
+                            .bold()
+                    }
+                }
+            } else {
+                Text("refugee.footer.whyServiceTerminatedForOS21", bundle: .module)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+
     // MARK: Private
 
     @StateObject private var theVM = RefugeeVM4iOS14.shared
@@ -255,7 +303,7 @@ public struct ContentView4iOS14: View {
     }
 
     private var hasData: Bool {
-        theVM.localProfileEntriesCount + theVM.gachaEntriesCount > 0
+        theVM.localProfileEntriesCount + theVM.gachaEntriesCount + theVM.gachaEntriesCountModern > 0
     }
 
     private var fileSaveActionResultMessagePack: (title: String, message: String) {
@@ -268,6 +316,14 @@ public struct ContentView4iOS14: View {
         case let .failure(message):
             ("refugee.export.failedInSavingToFile".i18nPZHelper, "⚠︎ \(message)")
         case nil: ("", "")
+        }
+    }
+
+    private var navTitle: Text {
+        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+            Text("refugee.navTitle.noticingEndOfMaintenance", bundle: .module)
+        } else {
+            Text(verbatim: Pizza.appTitleLocalizedFull)
         }
     }
 }
