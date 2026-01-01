@@ -497,18 +497,33 @@ private struct DailyNoteCardView4HSR: View {
             Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
         }
         .help("app.dailynote.card.daily_training.label".i18nPZHelper)
-        HStack {
-            dailyNote.game.hsrSimulatedUniverseAssetIcon
-                .resizable()
-                .scaledToFit()
-                .frame(height: iconFrame)
-            Text("app.dailynote.card.simulated_universe.label".i18nPZHelper)
-            Spacer()
-            let currentScore = dailyNote.simulatedUniverseInfo.currentScore
-            let maxScore = dailyNote.simulatedUniverseInfo.maxScore
-            Text(verbatim: "\(currentScore) / \(maxScore)")
+        if let aggregated = dailyNote.simulatedUniverseAggregatedIntel {
+            HStack {
+                dailyNote.game.hsrSimulatedUniverseAssetIcon
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: iconFrame)
+                Text("app.dailynote.card.simulated_universe_aggregated.label".i18nPZHelper)
+                Spacer()
+                let currentScore = aggregated.finished
+                let maxScore = aggregated.all
+                Text(verbatim: "\(currentScore) / \(maxScore)")
+            }
+            .help("app.dailynote.card.simulated_universe_aggregated.label".i18nPZHelper)
+        } else {
+            HStack {
+                dailyNote.game.hsrSimulatedUniverseAssetIcon
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: iconFrame)
+                Text("app.dailynote.card.simulated_universe.label".i18nPZHelper)
+                Spacer()
+                let currentScore = dailyNote.simulatedUniverseInfo.currentScore
+                let maxScore = dailyNote.simulatedUniverseInfo.maxScore
+                Text(verbatim: "\(currentScore) / \(maxScore)")
+            }
+            .help("app.dailynote.card.simulated_universe.label".i18nPZHelper)
         }
-        .help("app.dailynote.card.simulated_universe.label".i18nPZHelper)
         if let eowIntel = dailyNote.echoOfWarIntel {
             HStack {
                 dailyNote.game.hsrEchoOfWarAssetIcon
