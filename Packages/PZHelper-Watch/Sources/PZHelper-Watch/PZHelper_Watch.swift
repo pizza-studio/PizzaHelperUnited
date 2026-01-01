@@ -12,28 +12,36 @@ import SwiftUI
 public enum PZHelperWatch {}
 
 extension PZHelperWatch {
-    @MainActor @SceneBuilder
-    public static func makeMainScene() -> some Scene {
-        WindowGroup {
-            ContentView()
-                .environment(\.horizontalSizeClass, .compact)
-                .defaultAppStorage(.baseSuite)
-                .onAppear {
-                    if !isApplicationBooted {
-                        startupTasks()
+    @MainActor
+    public struct WatchApp: App {
+        // MARK: Lifecycle
+
+        public init() {}
+
+        // MARK: Public
+
+        public var body: some Scene {
+            WindowGroup {
+                ContentView()
+                    .environment(\.horizontalSizeClass, .compact)
+                    .defaultAppStorage(.baseSuite)
+                    .onAppear {
+                        if !isApplicationBooted {
+                            startupTasks()
+                        }
+                        isApplicationBooted = true
                     }
-                    isApplicationBooted = true
-                }
-                .onAppBecomeActive {
-                    Task { @MainActor in
-                        await ProfileManagerVM.shared
-                            .profileActor?
-                            .syncAllDataToUserDefaults()
+                    .onAppBecomeActive {
+                        Task { @MainActor in
+                            await ProfileManagerVM.shared
+                                .profileActor?
+                                .syncAllDataToUserDefaults()
+                        }
+                        Task {
+                            await ASMetaSputnik.shared.updateMeta()
+                        }
                     }
-                    Task {
-                        await ASMetaSputnik.shared.updateMeta()
-                    }
-                }
+            }
         }
     }
 

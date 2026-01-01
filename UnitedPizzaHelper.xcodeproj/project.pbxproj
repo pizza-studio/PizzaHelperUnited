@@ -49,7 +49,6 @@
 		5B703A722F042F5B00EA8295 /* TheLatteWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5B703A282F041DA500EA8295 /* TheLatteWatchApp.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B703A752F042F5F00EA8295 /* TheLatteWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5B703A682F041E6400EA8295 /* TheLatteWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B703A782F042F7D00EA8295 /* TheLatteWatchAppExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5B703A472F041DA700EA8295 /* TheLatteWatchAppExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		5B8000012C6BB00000123457 /* WatchApp/WatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8000002C6BB00000123456 /* WatchApp/WatchApp.swift */; };
 		5B8FF7092E24D14D0014696F /* SwiftData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8FF7082E24D14C0014696F /* SwiftData.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5B8FF70A2E24D1580014696F /* SwiftData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8FF7082E24D14C0014696F /* SwiftData.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5B9668F92F0417AA00C24B11 /* PZHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 5B9668F52F0417AA00C24B11 /* PZHelper */; };
@@ -310,7 +309,6 @@
 				"Localization-Watch-Pizza/InfoPlist.xcstrings",
 				"Localization-Watch-Pizza/Localizable.xcstrings",
 				"PizzaWatchApp-Info.plist",
-				WatchApp.swift,
 			);
 			target = 5B703A1A2F041DA500EA8295 /* TheLatteWatchApp */;
 		};
@@ -1320,7 +1318,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B8000012C6BB00000123457 /* WatchApp/WatchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
