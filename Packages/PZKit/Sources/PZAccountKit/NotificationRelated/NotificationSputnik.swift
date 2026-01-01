@@ -539,8 +539,9 @@ extension NotificationSputnik {
             await deleteNotification(.hsrSimulatedUniverse)
             return nil
         }
-        guard let simulatedUniverse = dailyNote.simulatedUniverseIntel else { return nil }
-        guard simulatedUniverse.currentScore < simulatedUniverse.maxScore else {
+        let simulatedUniverse = dailyNote.simulatedUniverseAggregatedIntel
+        guard let simulatedUniverse else { return nil }
+        guard simulatedUniverse.isMeaningful else {
             await deleteNotification(.hsrSimulatedUniverse)
             return nil
         }
@@ -553,8 +554,8 @@ extension NotificationSputnik {
         content.body = String(
             format: NSLocalizedString("notification.simulatedUniverse.body:%@%@%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
-            simulatedUniverse.currentScore.description,
-            simulatedUniverse.maxScore.description
+            simulatedUniverse.finished.description,
+            simulatedUniverse.all.description
         )
         content.badge = 1
         let trigger = UNCalendarNotificationTrigger(
