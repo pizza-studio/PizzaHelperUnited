@@ -63,7 +63,7 @@ The developers cannot endorse miHoYo's decisions, but to clarify: the App Store 
 
 If both your old and new devices use the same Apple ID and have iCloud Drive enabled with sufficient storage, your old gacha history should theoretically be migratable via iCloud. However, there is no absolute guarantee that the process will always succeed. For a more reliable migration method: update the old Pizza Helper to the latest App Store version and use the app's export feature to produce a Pizza Refugee Data file. Then import the data into the new Pizza Helper on the new device using Local Profile Manager; Gacha records can be imported using UIGF v4 format.
 
-#### Q: I am a refugee of The Pizza Helper / The Latte Helper for HSR. What should I be aware of when migrating to this new app?
+#### Q: I am a refugee of The Pizza Helper for HSR. What should I be aware of when migrating to this new app?
 
 1. **Data Sync**: Although the new unified Pizza Helper engine can read cloud data from Pizza Helper for HSR on the same Apple ID via iCloud, the data synchronization may take time and can be affected by factors like connection status. For a more reliable migration, you can export your local accounts from Pizza Helper for HSR as a JSON file (profile package) and import it into the new version of The Pizza Helper / The Latte Helper. Gacha records can also be migrated using a similar method (via file exchange conforming to UIGF v4 format).
 
