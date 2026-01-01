@@ -102,7 +102,7 @@ Package.resolved
 */.index-build/*
 .index-build
 
-*.xcodeproj/xcshareddata/xcschemes/*.xcscheme
+# *.xcodeproj/xcshareddata/xcschemes/*.xcscheme
 
 # Generated documentation concatenation files
 EndUserPublicDocs/*/_concatResult.md
