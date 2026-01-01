@@ -331,7 +331,14 @@ public struct MetaBar4HSRSimulUniv: View, MetaBar {
 
     public init?(note: any DailyNoteProtocol) {
         guard let hsr = note as? (any Note4HSR) else { return nil }
-        self.intel = hsr.simulatedUniverseInfo
+        let simulUnivIntel = hsr.simulatedUniverseInfo
+        var finished = simulUnivIntel.currentScore
+        var all = simulUnivIntel.maxScore
+        if let aggregated = note.simulatedUniverseAggregatedIntel {
+            finished = aggregated.finished
+            all = aggregated.all
+        }
+        self.intel = .init(pending: all - finished, finished: finished, all: all)
         self.note = note
     }
 
@@ -344,15 +351,15 @@ public struct MetaBar4HSRSimulUniv: View, MetaBar {
     }
 
     public var statusIcon4SUI: Image {
-        let isFinished = intel.currentScore == intel.maxScore
+        let isFinished = intel.finished == intel.all
         return isFinished ? Image(systemSymbol: .checkmark) : Image(systemSymbol: .ellipsis)
     }
 
     public var statusTextUnits4SUI: [Text] {
-        guard intel.currentScore < intel.maxScore else { return [Text(verbatim: "100%")] }
-        let denominator = Double(intel.maxScore)
+        guard intel.finished < intel.all else { return [Text(verbatim: "100%")] }
+        let denominator = Double(intel.all)
         guard denominator > 0 else { return [Text(verbatim: "100%")] }
-        let ratio = (Double(intel.currentScore) / denominator * 100).rounded(.down)
+        let ratio = (Double(intel.finished) / denominator * 100).rounded(.down)
         guard ratio.isFinite, ratio <= 100, ratio >= 0 else { return [Text(verbatim: "100%")] }
         /// Double value cannot be converted to int because it is either infiniteor NaN.
         guard let percentage = ratio.asIntIfFinite() else { return [Text(verbatim: "100%")] }
@@ -360,8 +367,8 @@ public struct MetaBar4HSRSimulUniv: View, MetaBar {
     }
 
     public var completionStatusRatio: Double {
-        guard intel.maxScore > 0 else { return 0 }
-        return Double(intel.currentScore) / Double(intel.maxScore)
+        guard intel.all > 0 else { return 0 }
+        return Double(intel.finished) / Double(intel.all)
     }
 
     public var game: Pizza.SupportedGame {
@@ -370,7 +377,7 @@ public struct MetaBar4HSRSimulUniv: View, MetaBar {
 
     // MARK: Private
 
-    private let intel: SimuUnivInfo4HSR
+    private let intel: FieldCompletionIntel<Int>
 }
 
 // MARK: - MetaBar4ZZZBounty

@@ -208,9 +208,15 @@ extension EmbeddedWidgets {
                 case let data as any Note4HSR:
                     // Simulated Universe
                     Label {
-                        let currentScore = data.simulatedUniverseInfo.currentScore
-                        let maxScore = data.simulatedUniverseInfo.maxScore
-                        let ratio = maxScore > 0 ? (Double(currentScore) / Double(maxScore) * 100).rounded(.down) : 0.0
+                        let ratio: Double = {
+                            var currentScore = data.simulatedUniverseInfo.currentScore
+                            var maxScore = data.simulatedUniverseInfo.maxScore
+                            if let aggregated = data.simulatedUniverseAggregatedIntel {
+                                currentScore = aggregated.finished
+                                maxScore = aggregated.all
+                            }
+                            return maxScore > 0 ? (Double(currentScore) / Double(maxScore) * 100).rounded(.down) : 0.0
+                        }()
                         Text(verbatim: "\(ratio)%")
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: .infinity, alignment: .leading)
