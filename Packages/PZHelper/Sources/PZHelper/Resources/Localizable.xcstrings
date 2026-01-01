@@ -11824,73 +11824,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Nur Star Rail."
+            "value" : "* Nur Star Rail. Das Ergebnis kann gegebenenfalls mit dem Abschlussprozess von Currency Wars summiert werden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Star Rail only."
+            "value" : "* Star Rail only. The result may be summed against the completion process of Currency Wars if possible."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solo Star Rail."
+            "value" : "Solo Star Rail. El resultado puede sumarse al proceso de finalización de Currency Wars si es posible."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Star Rail lamang."
+            "value" : "* Star Rail lamang. Maaaring isama ang resulta sa proseso ng pagkumpleto ng Currency Wars kung posible."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Star Rail uniquement."
+            "value" : "* Star Rail uniquement. Le résultat peut être additionné au processus de complétion de Currency Wars si possible."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Solo Star Rail."
+            "value" : "* Solo Star Rail. Il risultato può essere sommato al processo di completamento di Currency Wars se possibile."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ スターレイルのみ。"
+            "value" : "※ スターレイルのみ。可能であれば、貨幣戦争の完了プロセスと合算される場合があります。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* 스타 레일 전용."
+            "value" : "* 스타 레일 전용. 가능하다면 통화 전쟁 완료 프로세스와 합산될 수 있습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Только для Star Rail."
+            "value" : "* Только для Star Rail. Результат может быть суммирован с процессом завершения Currency Wars, если это возможно."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Chỉ dành cho Star Rail."
+            "value" : "* Chỉ dành cho Star Rail. Kết quả có thể được cộng dồn vào tiến trình hoàn thành của Currency Wars nếu có thể."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ 星穹铁道限定。"
+            "value" : "※ 星穹铁道限定。结果会与已知的货币战争的完成进度合并。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ 星穹鐵道限定。"
+            "value" : "※ 星穹鐵道限定。結果會與已知的貨幣戰爭的完成進度合併。"
           }
         }
       }
