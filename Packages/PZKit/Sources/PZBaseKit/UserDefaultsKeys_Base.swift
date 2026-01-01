@@ -49,7 +49,7 @@ extension Defaults.Keys {
     /// 该选项仅对中文介面可见。
     public static let forceCharacterWeaponNameFixed = Key<Bool>(
         "forceCharacterWeaponNameFixed",
-        default: Pizza.isDebug,
+        default: false,
         suite: .baseSuite
     )
 
