@@ -21,7 +21,7 @@ public struct ASUpdateNoticeView: View {
     public var body: some View {
         Group {
             let url = Pizza.url4AppStore
-            if let meta = cachedAppStoreMeta, meta.isNewerThanCurrentVersion, let url {
+            if let meta = cachedAppStoreMeta, meta.isNewerThanCurrentVersionOnAppStore, let url {
                 #if !os(watchOS)
                 Link(destination: url) {
                     Text("app.version.updatesAvailableAtAppStore:\(meta.version)", bundle: .module)
@@ -88,11 +88,28 @@ public struct ASMeta: AbleToCodeSendHash, Defaults.Serializable {
     public let currentVersionReleaseDate, releaseNotes, version: String
     public let trackViewUrl: String
 
-    public var isNewerThanCurrentVersion: Bool {
+    /// Out-of-date.
+    public var isNewerThanCurrentVersionOnAppStore: Bool {
         guard Pizza.isAppStoreRelease else { return false }
         let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         guard let bundleVersion else { return false }
         return Self.compareVersions(bundleVersion, version) == .orderedAscending
+    }
+
+    /// Testflight or beta releases.
+    public var isOlderThanCurrentVersionOnAppStore: Bool {
+        guard Pizza.isAppStoreRelease else { return false }
+        let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        guard let bundleVersion else { return false }
+        return Self.compareVersions(bundleVersion, version) == .orderedDescending
+    }
+
+    /// Current version.
+    public var isTheSameVersionOnAppStore: Bool {
+        guard Pizza.isAppStoreRelease else { return false }
+        let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        guard let bundleVersion else { return false }
+        return Self.compareVersions(bundleVersion, version) == .orderedSame
     }
 
     // MARK: Private
