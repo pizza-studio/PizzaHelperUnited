@@ -5,6 +5,16 @@
 import PZBaseKit
 
 public struct FieldCompletionIntel<Unit: AbleToCodeSendHash & AdditiveArithmetic>: AbleToCodeSendHash, Equatable {
+    // MARK: Lifecycle
+
+    public init(pending: Unit, finished: Unit, all: Unit) {
+        self.pending = pending
+        self.finished = finished
+        self.all = all
+    }
+
+    // MARK: Public
+
     /// 还没完成的部分
     public let pending: Unit
     /// 完成的部分
