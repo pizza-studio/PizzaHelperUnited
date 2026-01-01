@@ -46,6 +46,22 @@ extension Pizza {
         isAppStoreReleaseAsPizzaHelper || isAppStoreReleaseAsLatteHelper
     }
 
+    public static var urlString4AppStore: String? {
+        if isAppStoreReleaseAsPizzaHelper {
+            return "https://apps.apple.com/app/id1635319193"
+        } else if isAppStoreReleaseAsLatteHelper {
+            // TODO: This needs update later.
+            return nil
+        } else {
+            return nil
+        }
+    }
+
+    public static var url4AppStore: URL? {
+        guard let urlString4AppStore else { return nil }
+        return URL(string: urlString4AppStore)
+    }
+
     public static let isAppStoreReleaseAsPizzaHelper: Bool = {
         Bundle.main.bundleIdentifier?.hasPrefix("Canglong.GenshinPizzaHepler") ?? false
     }()

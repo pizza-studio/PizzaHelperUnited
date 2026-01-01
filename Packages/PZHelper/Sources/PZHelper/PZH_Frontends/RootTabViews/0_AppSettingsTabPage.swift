@@ -66,7 +66,7 @@ struct AppSettingsTabPage: View {
 
                 WatchDataPusherButton()
 
-                if Pizza.isAppStoreRelease {
+                if Pizza.urlString4AppStore != nil {
                     Section {
                         ASReviewHandler.makeRatingButton()
                     } header: {
