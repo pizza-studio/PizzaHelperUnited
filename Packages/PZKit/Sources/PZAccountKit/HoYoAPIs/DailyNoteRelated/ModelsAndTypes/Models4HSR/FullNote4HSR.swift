@@ -15,6 +15,7 @@ public struct FullNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
         self.staminaInfo = try decoder.decode(StaminaInfo4HSR.self)
         self.assignmentInfo = try decoder.decode(AssignmentInfo4HSR.self)
         self.simulatedUniverseInfo = try decoder.decode(SimuUnivInfo4HSR.self)
+        self.currencyWarsInfo = try? decoder.decode(CurrencyWarsInfo4HSR.self)
         self.dailyTrainingInfo = try decoder.decode(DailyTrainingInfo4HSR.self)
         self.optionalMetaData = try? decoder.decode(NoteMetaData4HSR.self)
         self.echoOfWarCostStatus = try? decoder.decode(EchoOfWarInfo4HSR.self)
@@ -30,6 +31,8 @@ public struct FullNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
     public let fetchTime: Date = .init()
     /// Simulated Universe score completion status (weekly)
     public let simulatedUniverseInfo: SimuUnivInfo4HSR
+    /// Currency Wars score completion status (weekly)
+    public let currencyWarsInfo: CurrencyWarsInfo4HSR?
     /// Daily Training Info
     public let dailyTrainingInfo: DailyTrainingInfo4HSR
     /// Echo of War (unable from Widget APIs)

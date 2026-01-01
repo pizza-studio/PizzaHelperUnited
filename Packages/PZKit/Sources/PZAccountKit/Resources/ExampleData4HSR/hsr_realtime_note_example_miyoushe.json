@@ -64,7 +64,9 @@
     "rogue_tourn_weekly_max": 1000,
     "rogue_tourn_weekly_cur": 0,
     "current_ts": 1732616804,
-    "rogue_tourn_exp_is_full": false
+    "rogue_tourn_exp_is_full": false,
+    "grid_fight_weekly_cur": 18000,
+    "grid_fight_weekly_max": 18000
   },
   "message": "OK",
   "retcode": 0
