@@ -20,7 +20,9 @@ extension PZHelper {
     public struct MainApp: App {
         // MARK: Lifecycle
 
-        public init() {}
+        public init() {
+            self.isEOLNoticeDisplayed = Pizza.isAppStoreReleaseAsPizzaHelper
+        }
 
         // MARK: Public
 
@@ -30,6 +32,13 @@ extension PZHelper {
                     if #available(iOS 17.0, macCatalyst 17.0, *) {
                         ContentView()
                             .trackScreenVMParameters()
+                            .sheet(isPresented: $isEOLNoticeDisplayed) {
+                                ContentView4iOS14 {
+                                    Task.detached { @MainActor in
+                                        isEOLNoticeDisplayed = false
+                                    }
+                                }
+                            }
                     } else {
                         ContentView4iOS14()
                     }
@@ -78,6 +87,10 @@ extension PZHelper {
                 return windowToReturn
             }
         }
+
+        // MARK: Private
+
+        @State private var isEOLNoticeDisplayed: Bool
     }
 
     @MainActor static var isApplicationBooted = false
