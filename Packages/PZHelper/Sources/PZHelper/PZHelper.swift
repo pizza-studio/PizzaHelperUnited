@@ -17,58 +17,66 @@ public enum PZHelper {}
 
 extension PZHelper {
     @MainActor
-    public static func makeMainScene() -> some Scene {
-        let windowToReturn = WindowGroup {
-            Group {
-                if #available(iOS 17.0, macCatalyst 17.0, *) {
-                    ContentView()
-                        .trackScreenVMParameters()
-                } else {
-                    ContentView4iOS14()
-                }
-            }
-            .initializeApp()
-            // .environment(\.horizontalSizeClass, .compact)
-            .defaultAppStorage(.baseSuite)
-            // Auto-Correction must be disabled to prevent a memory leak issue on OS24+.
-            // Refs: https://kyleye.top/posts/swiftui-textfield-memory-leak/
-            .autocorrectionDisabled(true)
-            #if targetEnvironment(macCatalyst)
-                .frame(
-                    minWidth: OS.liquidGlassThemeSuspected ? 832 : 800,
-                    minHeight: 800
-                )
-            #elseif os(macOS) && !targetEnvironment(macCatalyst)
-                .frame(
-                    minWidth: OS.liquidGlassThemeSuspected ? 800 : 768,
-                    minHeight: 646
-                )
-            #endif
-                .apply { mainContents in
-                    if #available(iOS 16.2, macCatalyst 16.2, *) {
-                        mainContents
-                            .onAppear {
-                                startupTasks()
-                            }
-                            .onAppBecomeActive(debounced: false) {
-                                Task {
-                                    await ASMetaSputnik.shared.updateMeta()
-                                }
-                            }
+    public struct MainApp: App {
+        // MARK: Lifecycle
+
+        public init() {}
+
+        // MARK: Public
+
+        public var body: some Scene {
+            let windowToReturn = WindowGroup {
+                Group {
+                    if #available(iOS 17.0, macCatalyst 17.0, *) {
+                        ContentView()
+                            .trackScreenVMParameters()
                     } else {
-                        mainContents
+                        ContentView4iOS14()
                     }
                 }
-        }
-        #if os(macOS) && !targetEnvironment(macCatalyst)
-        .windowToolbarStyle(.expanded)
-        #endif
+                .initializeApp()
+                // .environment(\.horizontalSizeClass, .compact)
+                .defaultAppStorage(.baseSuite)
+                // Auto-Correction must be disabled to prevent a memory leak issue on OS24+.
+                // Refs: https://kyleye.top/posts/swiftui-textfield-memory-leak/
+                .autocorrectionDisabled(true)
+                #if targetEnvironment(macCatalyst)
+                    .frame(
+                        minWidth: OS.liquidGlassThemeSuspected ? 832 : 800,
+                        minHeight: 800
+                    )
+                #elseif os(macOS) && !targetEnvironment(macCatalyst)
+                    .frame(
+                        minWidth: OS.liquidGlassThemeSuspected ? 800 : 768,
+                        minHeight: 646
+                    )
+                #endif
+                    .apply { mainContents in
+                        if #available(iOS 16.2, macCatalyst 16.2, *) {
+                            mainContents
+                                .onAppear {
+                                    startupTasks()
+                                }
+                                .onAppBecomeActive(debounced: false) {
+                                    Task {
+                                        await ASMetaSputnik.shared.updateMeta()
+                                    }
+                                }
+                        } else {
+                            mainContents
+                        }
+                    }
+            }
+            #if os(macOS) && !targetEnvironment(macCatalyst)
+            .windowToolbarStyle(.expanded)
+            #endif
 
-        if #available(iOS 17.0, macCatalyst 17.0, *) {
-            return windowToReturn
-                .windowResizability(.contentMinSize)
-        } else {
-            return windowToReturn
+            if #available(iOS 17.0, macCatalyst 17.0, *) {
+                return windowToReturn
+                    .windowResizability(.contentMinSize)
+            } else {
+                return windowToReturn
+            }
         }
     }
 
