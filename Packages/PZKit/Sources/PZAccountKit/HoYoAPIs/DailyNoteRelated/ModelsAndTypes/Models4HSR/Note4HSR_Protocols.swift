@@ -17,6 +17,8 @@ public protocol Note4HSR: DailyNoteProtocol, AbleToCodeSendHash {
     var fetchTime: Date { get }
     /// Simulated Universe score completion status (weekly)
     var simulatedUniverseInfo: SimuUnivInfo4HSR { get }
+    /// Currency Wars score completion status (weekly)
+    var currencyWarsInfo: CurrencyWarsInfo4HSR? { get }
     /// Daily Training Info
     var dailyTrainingInfo: DailyTrainingInfo4HSR { get }
     /// Echo of War (unable from Widget APIs)

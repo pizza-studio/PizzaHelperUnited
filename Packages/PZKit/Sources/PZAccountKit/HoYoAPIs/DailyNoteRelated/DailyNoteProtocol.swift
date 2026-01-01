@@ -253,6 +253,15 @@ extension DailyNoteProtocol {
     }
 }
 
+// MARK: - Per-game properties (Currency Wars)
+
+extension DailyNoteProtocol {
+    /// DailyNoteProtocol: CUrrencyWars, Star Rail Only
+    public var currencyWarsIntel: CurrencyWarsInfo4HSR? {
+        (self as? FullNote4HSR)?.currencyWarsInfo
+    }
+}
+
 // MARK: - Per-game properties (Parametric Transformer)
 
 extension DailyNoteProtocol {
