@@ -42,16 +42,20 @@ public let iCloudContainerName: String = {
 public let groupContainerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID)
 
 extension Pizza {
+    public enum AppStoreURL: String {
+        case asPizzaHelper = "https://apps.apple.com/app/id1635319193"
+        case asLatteHelper = "https://apps.apple.com/app/id6757201427"
+    }
+
     public static var isAppStoreRelease: Bool {
         isAppStoreReleaseAsPizzaHelper || isAppStoreReleaseAsLatteHelper
     }
 
     public static var urlString4AppStore: String? {
         if isAppStoreReleaseAsPizzaHelper {
-            return "https://apps.apple.com/app/id1635319193"
+            return AppStoreURL.asPizzaHelper.rawValue
         } else if isAppStoreReleaseAsLatteHelper {
-            // TODO: This needs update later.
-            return nil
+            return AppStoreURL.asLatteHelper.rawValue
         } else {
             return nil
         }
