@@ -122,11 +122,19 @@ struct WatchProfileDetailView: View {
 
     @ViewBuilder
     private func drawNote4HSR(_ data: any Note4HSR) -> some View {
-        WatchProfileDetailItemView(
-            title: "watch.dailyNote.card.simulatedUniverse.label",
-            value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",
-            icon: data.game.hsrSimulatedUniverseAssetIcon
-        )
+        if let aggregated = data.simulatedUniverseAggregatedIntel {
+            WatchProfileDetailItemView(
+                title: "watch.dailyNote.card.simulatedUniverseAggregated.label",
+                value: "\(aggregated.finished) / \(aggregated.all)",
+                icon: data.game.hsrSimulatedUniverseAssetIcon
+            )
+        } else {
+            WatchProfileDetailItemView(
+                title: "watch.dailyNote.card.simulatedUniverse.label",
+                value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",
+                icon: data.game.hsrSimulatedUniverseAssetIcon
+            )
+        }
         Divider()
         let expeditionIntel = data.expeditionCompletionStatus
         WatchProfileDetailItemView(
