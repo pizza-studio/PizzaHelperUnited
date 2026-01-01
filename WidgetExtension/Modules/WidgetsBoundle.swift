@@ -73,6 +73,7 @@ extension PZWidgets {
     }
 
     @MainActor public static let useBackports: Bool = {
+        guard !Pizza.isAppStoreReleaseAsLatteHelper else { return false }
         if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *, watchOS 10.0, *) {
             return false
         }
