@@ -12,7 +12,13 @@ import SwiftUI
 public struct ContentView4iOS14: View {
     // MARK: Lifecycle
 
-    public init() {}
+    public init() {
+        self.snoozeAction = {}
+    }
+
+    public init(snoozeAction: (() -> Void)?) {
+        self.snoozeAction = snoozeAction
+    }
 
     // MARK: Public
 
@@ -148,6 +154,16 @@ public struct ContentView4iOS14: View {
         .navigationTitle(Text(verbatim: Pizza.appTitleLocalizedFull))
         .navBarTitleDisplayMode(.large)
         .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                if let snoozeAction {
+                    Button {
+                        snoozeAction()
+                    } label: {
+                        Text("pzHelper.refugeeSheet.dismiss", bundle: .module)
+                    }
+                    .disabled(theVM.taskState == .busy)
+                }
+            }
             ToolbarItem(placement: .primaryAction) {
                 if theVM.taskState == .busy {
                     ProgressView()
@@ -220,6 +236,8 @@ public struct ContentView4iOS14: View {
 
     @StateObject private var theVM = RefugeeVM4iOS14.shared
     @State private var fileSaveActionResult: Result<URL, any Error>?
+
+    private let snoozeAction: (() -> Void)?
 
     @Default(.pzProfiles) private var pzProfilesMap: [String: PZProfileSendable]
 
