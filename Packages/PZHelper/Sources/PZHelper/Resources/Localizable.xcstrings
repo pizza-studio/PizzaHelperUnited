@@ -13953,73 +13953,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aufgrund der Entfernung bestimmter Funktionen sind keine Datenschutzoptionen verfügbar. Diese App sammelt jetzt nichts."
+            "value" : "Aufgrund der Entfernung bestimmter Funktionen sind keine Datenschutzoptionen verfügbar. Diese App sammelt jetzt nichts. Zuvor gesammelte Gewundener Abgrund Kampfbereichtsdaten wurden alle im Herbst 2025 zerstört."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "There’s no privacy options available since the removal of certain features. This app now collects nothing."
+            "value" : "There’s no privacy options available since the removal of certain features. This app now collects nothing. Previously collected Spiral Abyss battle report data are all destroyed in Fall 2025."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Debido a la eliminación de ciertas funciones, no hay opciones de privacidad disponibles. Esta aplicación ahora no recoge nada."
+            "value" : "Debido a la eliminación de ciertas funciones, no hay opciones de privacidad disponibles. Esta aplicación ahora no recoge nada. Los datos de informes de batalla de Espiral del Abismo recopilados anteriormente se destruyeron todos en el otoño de 2025."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dahil sa pag-alis ng ilang mga feature, walang available na mga opsyon sa privacy. Ang app na ito ngayon ay walang kinokolekta."
+            "value" : "Dahil sa pag-alis ng ilang mga feature, walang available na mga opsyon sa privacy. Ang app na ito ngayon ay walang kinokolekta. Ang mga dati nang nakolektang datos ng ulat ng labanan ng Spiral Abyss ay lahat nawasak noong Fall 2025."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En raison de la suppression de certaines fonctionnalités, aucune option de confidentialité n'est disponible. Cette application ne collecte rien désormais."
+            "value" : "En raison de la suppression de certaines fonctionnalités, aucune option de confidentialité n'est disponible. Cette application ne collecte rien désormais. Les données de rapports de combat de Profondeurs spiralées précédemment collectées ont toutes été détruites à l'automne 2025."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A causa della rimozione di alcune funzionalità, non ci sono opzioni di privacy disponibili. Questa app ora non raccoglie nulla."
+            "value" : "A causa della rimozione di alcune funzionalità, non ci sono opzioni di privacy disponibili. Questa app ora non raccoglie nulla. I dati dei rapporti di battaglia di Abisso a spirale precedentemente raccolti sono stati tutti distrutti nell'autunno 2025."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "特定の機能が削除されたため、プライバシーオプションは利用できません。このアプリは今、何も収集しません。"
+            "value" : "特定の機能が削除されたため、プライバシーオプションは利用できません。このアプリは今、何も収集しません。以前に収集された深境螺旋の作戦報告データはすべて2025年秋に壊滅処分済みです。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "특정 기능이 제거되었기 때문에 개인정보 보호 옵션이 없습니다. 이 앱은 이제 아무것도 수집하지 않습니다."
+            "value" : "특정 기능이 제거되었기 때문에 개인정보 보호 옵션이 없습니다. 이 앱은 이제 아무것도 수집하지 않습니다. 이전에 수집된 나선 비경 전투 보고서 데이터는 모두 2025년 가을에 파괴되었습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Из-за удаления некоторых функций нет доступных опций конфиденциальности. Это приложение теперь ничего не собирает."
+            "value" : "Из-за удаления некоторых функций нет доступных опций конфиденциальности. Это приложение теперь ничего не собирает. Ранее собранные данные отчетов о боях в Витая Бездна были уничтожены осенью 2025 года."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Do một số tính năng bị xóa, không có tùy chọn quyền riêng tư nào. Ứng dụng này giờ không thu thập bất cứ thứ gì."
+            "value" : "Do một số tính năng bị xóa, không có tùy chọn quyền riêng tư nào. Ứng dụng này giờ không thu thập bất cứ thứ gì. Dữ liệu báo cáo trận chiến ‍La Hoàn‍ ‍Thâm Cảnh‍ đã thu thập trước đó đều bị hủy vào mùa thu năm 2025."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "某些功能被移除了，所以目前没有可用的隐私选项。此应用程序现在不收集任何内容。"
+            "value" : "某些功能被移除了，所以目前没有可用的隐私选项。此应用程序现在不收集任何内容。以前收集的深境螺旋个人战报资料已在2025年秋季全部销毁。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "某些功能被移除了，所以目前沒有可用的隱私權選項。此應用程式現在不收集任何內容。"
+            "value" : "某些功能被移除了，所以目前沒有可用的隱私權選項。此應用程式現在不收集任何內容。以前收集的深境螺旋個人戰報資料已在2025年秋季全部銷毀。"
           }
         }
       }
