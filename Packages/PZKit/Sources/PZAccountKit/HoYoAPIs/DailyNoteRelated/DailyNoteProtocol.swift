@@ -251,6 +251,25 @@ extension DailyNoteProtocol {
     public var simulatedUniverseIntel: SimuUnivInfo4HSR? {
         (self as? FullNote4HSR)?.simulatedUniverseInfo
     }
+
+    /// DailyNoteProtocol: SimulatedUniverseAggregated, Star Rail Only.
+    ///
+    /// A temporary dynamic property summing SimulUniv and CurrencyWars together.
+    /// - Remark: 货币战争必然比模拟宇宙解锁得更晚。
+    public var simulatedUniverseAggregatedIntel: FieldCompletionIntel<Int>? {
+        guard let simulatedUniverseIntel else { return nil }
+        let currencyWarsInfo = currencyWarsIntel
+        let currencyWarsCompleted = currencyWarsInfo?.currentScore ?? 0
+        // 先默认官方会一直用 16000 当上限分。
+        let currencyWarsMaxVal = currencyWarsInfo?.maxScore ?? 16000
+        let maxSummed = currencyWarsMaxVal + simulatedUniverseIntel.maxScore
+        let currSummed = currencyWarsCompleted + simulatedUniverseIntel.currentScore
+        return FieldCompletionIntel<Int>(
+            pending: maxSummed - currSummed,
+            finished: currSummed,
+            all: maxSummed
+        )
+    }
 }
 
 // MARK: - Per-game properties (Currency Wars)
