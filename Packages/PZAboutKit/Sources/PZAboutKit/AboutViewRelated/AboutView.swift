@@ -112,7 +112,7 @@ struct AppAboutViewSections: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 let hasNewVersion = cachedAppStoreMeta?.isNewerThanCurrentVersion ?? false
-                if hasNewVersion, let url = URL(string: "https://apps.apple.com/app/id1635319193") {
+                if hasNewVersion, let url = Pizza.url4AppStore {
                     Link(destination: url) {
                         Text("aboutKit.ourApps.clickHereToUpdate", bundle: .module)
                             .textCase(.none)

@@ -20,7 +20,7 @@ public struct ASUpdateNoticeView: View {
 
     public var body: some View {
         Group {
-            let url = URL(string: "https://apps.apple.com/app/id1635319193")
+            let url = Pizza.url4AppStore
             if let meta = cachedAppStoreMeta, meta.isNewerThanCurrentVersion, let url {
                 #if !os(watchOS)
                 Link(destination: url) {
