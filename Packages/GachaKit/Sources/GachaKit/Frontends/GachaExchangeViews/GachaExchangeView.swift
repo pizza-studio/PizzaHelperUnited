@@ -36,8 +36,8 @@ public struct GachaExchangeView: View {
                     case .exportData: GachaExportSections()
                     }
                 }
-                .disabled(theVM.taskState == .busy)
                 .saturation(theVM.taskState == .busy ? 0 : 1)
+                .disabled(theVM.taskState == .busy)
             }
             .formStyle(.grouped).disableFocusable()
             .navBarTitleDisplayMode(.large)
@@ -57,8 +57,8 @@ public struct GachaExchangeView: View {
                         }
                         .pickerStyle(.segmented)
                         .fixedSize()
-                        .disabled(theVM.taskState == .busy)
                         .saturation(theVM.taskState == .busy ? 0 : 1)
+                        .disabled(theVM.taskState == .busy)
                     }
                 }
             }

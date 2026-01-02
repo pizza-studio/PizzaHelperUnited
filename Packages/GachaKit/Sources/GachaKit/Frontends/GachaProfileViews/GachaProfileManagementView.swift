@@ -72,8 +72,8 @@ public struct GachaProfileManagementView: View {
             }
             .formStyle(.grouped).disableFocusable()
             .navigationTitle(Self.navTitle)
-            .disabled(theVM.taskState == .busy)
             .saturation(theVM.taskState == .busy ? 0 : 1)
+            .disabled(theVM.taskState == .busy)
             .navigationBarBackButtonHidden(theVM.taskState == .busy)
             .animation(.default, value: theVM.taskState)
             .react(to: theVM.hasGPID.wrappedValue) { _, newValue in
