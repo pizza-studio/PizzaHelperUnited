@@ -32,8 +32,8 @@ extension ProfileManagerPageContent {
                     ProfileConfigViewContents(profile: profile)
                 }
                 .formStyle(.grouped).disableFocusable()
-                .disabled(theVM.taskState == .busy)
                 .saturation(theVM.taskState == .busy ? 0 : 1)
+                .disabled(theVM.taskState == .busy)
                 .navigationTitle("profileMgr.edit.title".i18nPZHelper)
                 // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
                 .appTabBarVisibility(.hidden)
@@ -47,8 +47,8 @@ extension ProfileManagerPageContent {
                         Button("sys.done".i18nBaseKit) {
                             saveButtonDidTap()
                         }
-                        .disabled(theVM.taskState == .busy)
                         .saturation(theVM.taskState == .busy ? 0 : 1)
+                        .disabled(theVM.taskState == .busy)
                     }
                     ToolbarItem(placement: .cancellationAction) {
                         Button("sys.cancel".i18nBaseKit) {

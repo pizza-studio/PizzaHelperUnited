@@ -38,8 +38,8 @@ extension ProfileManagerPageContent {
                             gotProfileView()
                         }
                     }
-                    .disabled(theVM.taskState == .busy)
                     .saturation(theVM.taskState == .busy ? 0 : 1)
+                    .disabled(theVM.taskState == .busy)
                 }
                 .formStyle(.grouped).disableFocusable()
                 .navigationTitle("profileMgr.new".i18nPZHelper)
