@@ -502,7 +502,7 @@ extension NotificationOptions {
             if !newValue {
                 Self.shared.giTrounceBlossomNotificationSetting = .disallowed
             } else {
-                Self.shared.giTrounceBlossomNotificationSetting = Self().hsrCosmicStrifeNotificationSetting
+                Self.shared.giTrounceBlossomNotificationSetting = Self().giTrounceBlossomNotificationSetting
             }
         }
     }
@@ -570,7 +570,7 @@ extension NotificationOptions {
             if !newValue {
                 Self.shared.hsrEchoOfWarNotificationSetting = .disallowed
             } else {
-                Self.shared.hsrEchoOfWarNotificationSetting = Self().hsrCosmicStrifeNotificationSetting
+                Self.shared.hsrEchoOfWarNotificationSetting = Self().hsrEchoOfWarNotificationSetting
             }
         }
     }
