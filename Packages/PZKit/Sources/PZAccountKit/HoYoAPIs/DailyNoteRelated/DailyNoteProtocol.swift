@@ -251,12 +251,23 @@ extension DailyNoteProtocol {
     public var simulatedUniverseIntel: SimuUnivInfo4HSR? {
         (self as? FullNote4HSR)?.simulatedUniverseInfo
     }
+}
 
-    /// DailyNoteProtocol: SimulatedUniverseAggregated, Star Rail Only.
+// MARK: - Per-game properties (Currency Wars)
+
+extension DailyNoteProtocol {
+    /// DailyNoteProtocol: CUrrencyWars, Star Rail Only
+    public var currencyWarsIntel: CurrencyWarsInfo4HSR? {
+        (self as? FullNote4HSR)?.currencyWarsInfo
+    }
+}
+
+extension DailyNoteProtocol {
+    /// DailyNoteProtocol: CosmicStrife, Star Rail Only.
     ///
-    /// A temporary dynamic property summing SimulUniv and CurrencyWars together.
+    /// A dynamic property summing SimulUniv and CurrencyWars together.
     /// - Remark: 货币战争必然比模拟宇宙解锁得更晚。
-    public var simulatedUniverseAggregatedIntel: FieldCompletionIntel<Int>? {
+    public var cosmicStrifeIntel: FieldCompletionIntel<Int>? {
         guard let simulatedUniverseIntel else { return nil }
         let currencyWarsInfo = currencyWarsIntel
         let currencyWarsCompleted = currencyWarsInfo?.currentScore ?? 0
@@ -269,15 +280,6 @@ extension DailyNoteProtocol {
             finished: currSummed,
             all: maxSummed
         )
-    }
-}
-
-// MARK: - Per-game properties (Currency Wars)
-
-extension DailyNoteProtocol {
-    /// DailyNoteProtocol: CUrrencyWars, Star Rail Only
-    public var currencyWarsIntel: CurrencyWarsInfo4HSR? {
-        (self as? FullNote4HSR)?.currencyWarsInfo
     }
 }
 
@@ -364,8 +366,8 @@ extension Pizza.SupportedGame {
         AccountKit.imageAsset("hsr_note_weeklyBosses")
     }
 
-    public var hsrSimulatedUniverseAssetIcon: Image {
-        AccountKit.imageAsset("hsr_note_simulatedUniverse")
+    public var hsrCosmicStrifeAssetIcon: Image {
+        AccountKit.imageAsset("hsr_note_cosmicStrife")
     }
 
     public var zzzVHSStoreAssetIcon: Image {

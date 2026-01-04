@@ -354,7 +354,7 @@ private struct NotificationSettingDetailContent: View {
         giParametricTransformerNotificationSection()
         giTrounceBlossomNotificationSection()
         hsrEchoOfWarNotificationSection()
-        hsrSimulatedUniverseNotificationSection()
+        hsrCosmicStrifeNotificationSectionSection()
     }
 
     // MARK: Internal
@@ -580,31 +580,31 @@ private struct NotificationSettingDetailContent: View {
     }
 
     @ViewBuilder
-    private func hsrSimulatedUniverseNotificationSection() -> some View {
+    private func hsrCosmicStrifeNotificationSectionSection() -> some View {
         // 模拟宇宙
         Section {
-            Toggle(isOn: options.allowHSRSimulUnivNotification.animation()) {
-                Text("settings.notification.hsrSimulatedUniverse.toggle", bundle: .module)
+            Toggle(isOn: options.allowHSRCosmicStrifeNotification.animation()) {
+                Text("settings.notification.hsrCosmicStrife.toggle", bundle: .module)
             }
             handleBindingDateAndWeekdays(
-                options.hsrSimulUnivNotificationTime,
-                options.hsrSimulUnivNotificationWeekday
+                options.hsrCosmicStrifeNotificationTime,
+                options.hsrCosmicStrifeNotificationWeekday
             ) { bindingDate, bindingWeekday in
                 DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
-                    Text("settings.notification.hsrSimulatedUniverse.datePicker", bundle: .module)
+                    Text("settings.notification.hsrCosmicStrife.datePicker", bundle: .module)
                 }
                 Picker(selection: bindingWeekday) {
                     ForEach(Weekday.allCases, id: \.rawValue) { weekday in
                         Text(weekday.description).tag(weekday)
                     }
                 } label: {
-                    Text("settings.notification.hsrSimulatedUniverse.weekdayPicker", bundle: .module)
+                    Text("settings.notification.hsrCosmicStrife.weekdayPicker", bundle: .module)
                 }
             }
         } header: {
-            Text("settings.notification.hsrSimulatedUniverse.header", bundle: .module).textCase(.none)
+            Text("settings.notification.hsrCosmicStrife.header", bundle: .module).textCase(.none)
         } footer: {
-            Text("settings.notification.hsrSimulatedUniverse.footer", bundle: .module)
+            Text("settings.notification.hsrCosmicStrife.footer", bundle: .module)
         }
     }
 }

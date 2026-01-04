@@ -323,10 +323,10 @@ public struct MetaBar4HSRReservedTBPower: View, MetaBar {
     private let info: StaminaInfo4HSR
 }
 
-// MARK: - MetaBar4HSRSimulUniv
+// MARK: - MetaBar4HSRCosmicStrife
 
 @available(iOS 16.2, macCatalyst 16.2, *)
-public struct MetaBar4HSRSimulUniv: View, MetaBar {
+public struct MetaBar4HSRCosmicStrife: View, MetaBar {
     // MARK: Lifecycle
 
     public init?(note: any DailyNoteProtocol) {
@@ -334,9 +334,9 @@ public struct MetaBar4HSRSimulUniv: View, MetaBar {
         let simulUnivIntel = hsr.simulatedUniverseInfo
         var finished = simulUnivIntel.currentScore
         var all = simulUnivIntel.maxScore
-        if let aggregated = note.simulatedUniverseAggregatedIntel {
-            finished = aggregated.finished
-            all = aggregated.all
+        if let strifeIntel = note.cosmicStrifeIntel {
+            finished = strifeIntel.finished
+            all = strifeIntel.all
         }
         self.intel = .init(pending: all - finished, finished: finished, all: all)
         self.note = note
@@ -347,7 +347,7 @@ public struct MetaBar4HSRSimulUniv: View, MetaBar {
     public let note: any DailyNoteProtocol
 
     public var labelIcon4SUI: Image {
-        (note as? (any Note4HSR))?.game.hsrSimulatedUniverseAssetIcon ?? Image(systemName: "questionmark")
+        (note as? (any Note4HSR))?.game.hsrCosmicStrifeAssetIcon ?? Image(systemName: "questionmark")
     }
 
     public var statusIcon4SUI: Image {

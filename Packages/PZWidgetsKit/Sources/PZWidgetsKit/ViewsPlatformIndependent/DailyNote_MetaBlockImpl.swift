@@ -44,7 +44,7 @@ extension DailyNoteProtocol {
             if dailyNote.hasExpeditions {
                 MetaBar4Expedition(note: self)
             }
-            MetaBar4HSRSimulUniv(note: self)
+            MetaBar4HSRCosmicStrife(note: self)
             switch viewConfig.echoOfWarDisplayMethod {
             case .disappearAfterCompleted:
                 MetaBar4WeeklyBosses(note: self, disappearIfAllCompleted: true)

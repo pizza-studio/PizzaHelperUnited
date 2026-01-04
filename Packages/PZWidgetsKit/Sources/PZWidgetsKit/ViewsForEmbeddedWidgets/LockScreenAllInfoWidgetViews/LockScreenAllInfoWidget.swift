@@ -211,9 +211,9 @@ extension EmbeddedWidgets {
                         let ratio: Double = {
                             var currentScore = data.simulatedUniverseInfo.currentScore
                             var maxScore = data.simulatedUniverseInfo.maxScore
-                            if let aggregated = data.simulatedUniverseAggregatedIntel {
-                                currentScore = aggregated.finished
-                                maxScore = aggregated.all
+                            if let strifeIntel = data.cosmicStrifeIntel {
+                                currentScore = strifeIntel.finished
+                                maxScore = strifeIntel.all
                             }
                             return maxScore > 0 ? (Double(currentScore) / Double(maxScore) * 100).rounded(.down) : 0.0
                         }()
@@ -221,7 +221,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } icon: {
-                        data.game.hsrSimulatedUniverseSVGAsInlineText
+                        data.game.hsrCosmicStrifeSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
