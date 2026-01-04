@@ -89,7 +89,7 @@ public enum DailyNoteNotificationType: String {
     case giParametricTransformer
     case giTrounceBlossomResinDiscounts
     case hsrEchoOfWarRewardsLeft
-    case hsrSimulatedUniverse
+    case hsrCosmicStrife
 }
 
 // MARK: - NotificationSputnik
@@ -171,7 +171,9 @@ extension NotificationSputnik {
                 await requestsBuffer += scheduleGITransformerNotification()
             }
             // TROUNCE BLOSSOM RESIN DISCOUNTS (GI)
-            if case let .notifyAt(weekday, hour, minute) = options.giTrounceBlossomNotificationSetting {
+            if case let .notifyAt(
+                weekday, hour, minute
+            ) = options.giTrounceBlossomNotificationSetting {
                 await requestsBuffer += scheduleGITrounceBlossomNotification(
                     weekday: Swift.max(0, Swift.min(7, weekday)),
                     hour: hour,
@@ -179,16 +181,20 @@ extension NotificationSputnik {
                 )
             }
             // ECHO OF WAR (HSR)
-            if case let .notifyAt(weekday, hour, minute) = options.hsrEchoOfWarNotificationSetting {
+            if case let .notifyAt(
+                weekday, hour, minute
+            ) = options.hsrEchoOfWarNotificationSetting {
                 await requestsBuffer += scheduleHSREchoOfWarNotification(
                     weekday: Swift.max(0, Swift.min(7, weekday)),
                     hour: hour,
                     minute: minute
                 )
             }
-            // SIMULATED UNIVERSE (HSR)
-            if case let .notifyAt(weekday, hour, minute) = options.hsrSimulUnivNotificationSetting {
-                await requestsBuffer += scheduleHSRSimulatedUniverseNotification(
+            // COSMIC STRIFE (HSR), SUMMING SIMULATED UNIVERSE AND CURRENCY WARS TOGETHER
+            if case let .notifyAt(
+                weekday, hour, minute
+            ) = options.hsrCosmicStrifeNotificationSetting {
+                await requestsBuffer += scheduleHSRCosmicStrifeNotification(
                     weekday: Swift.max(0, Swift.min(7, weekday)),
                     hour: hour,
                     minute: minute
@@ -529,40 +535,41 @@ extension NotificationSputnik {
     }
 
     /// 星穹铁道模拟宇宙。
-    private func scheduleHSRSimulatedUniverseNotification(
+    private func scheduleHSRCosmicStrifeNotification(
         weekday: Int,
         hour: Int,
         minute: Int
     ) async
         -> UNNotificationRequest? {
         guard profile.game == .starRail else {
-            await deleteNotification(.hsrSimulatedUniverse)
+            await deleteNotification(.hsrCosmicStrife)
             return nil
         }
-        let simulatedUniverse = dailyNote.simulatedUniverseAggregatedIntel
-        guard let simulatedUniverse else { return nil }
-        guard simulatedUniverse.isMeaningful else {
-            await deleteNotification(.hsrSimulatedUniverse)
+        let cosmicStrifeIntel = dailyNote.cosmicStrifeIntel
+        guard let cosmicStrifeIntel else { return nil }
+        // 如果已经完成的话，则不提醒。
+        guard cosmicStrifeIntel.isMeaningful, !cosmicStrifeIntel.isAccomplished else {
+            await deleteNotification(.hsrCosmicStrife)
             return nil
         }
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: NSLocalizedString("notification.simulatedUniverse.title:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.cosmicStrife.title:%@", bundle: .module, comment: ""),
             profile.name
         )
         content.body = String(
-            format: NSLocalizedString("notification.simulatedUniverse.body:%@%@%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.cosmicStrife.body:%@%@%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
-            simulatedUniverse.finished.description,
-            simulatedUniverse.all.description
+            cosmicStrifeIntel.finished.description,
+            cosmicStrifeIntel.all.description
         )
         content.badge = 1
         let trigger = UNCalendarNotificationTrigger(
             dateMatching: DateComponents(hour: hour, minute: minute, weekday: weekday),
             repeats: false
         )
-        let id = getID(for: .hsrSimulatedUniverse)
+        let id = getID(for: .hsrCosmicStrife)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         return request
     }

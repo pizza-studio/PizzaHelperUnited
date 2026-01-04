@@ -497,22 +497,22 @@ private struct DailyNoteCardView4HSR: View {
             Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
         }
         .help("app.dailynote.card.daily_training.label".i18nPZHelper)
-        if let aggregated = dailyNote.simulatedUniverseAggregatedIntel {
+        if let strifeIntel = dailyNote.cosmicStrifeIntel {
             HStack {
-                dailyNote.game.hsrSimulatedUniverseAssetIcon
+                dailyNote.game.hsrCosmicStrifeAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(height: iconFrame)
-                Text("app.dailynote.card.simulated_universe_aggregated.label".i18nPZHelper)
+                Text("app.dailynote.card.cosmic_strife.label".i18nPZHelper)
                 Spacer()
-                let currentScore = aggregated.finished
-                let maxScore = aggregated.all
+                let currentScore = strifeIntel.finished
+                let maxScore = strifeIntel.all
                 Text(verbatim: "\(currentScore) / \(maxScore)")
             }
-            .help("app.dailynote.card.simulated_universe_aggregated.label".i18nPZHelper)
+            .help("app.dailynote.card.cosmic_strife.label".i18nPZHelper)
         } else {
             HStack {
-                dailyNote.game.hsrSimulatedUniverseAssetIcon
+                dailyNote.game.hsrCosmicStrifeAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(height: iconFrame)

@@ -925,6 +925,158 @@
         }
       }
     },
+    "notification.cosmicStrife.body:%@%@%@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Kosmische-Zwist-Score (inkl. Currency Wars und Simuliertes Universum) für %1$@ ist noch nicht vollständig. Der aktuelle Fortschritt beträgt %2$@/%3$@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The cosmic strife score (incl. Currency Wars and Simulated Universe) for %1$@ is not yet full. The current progress is %2$@/%3$@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La puntuación de Conflicto Cósmico (incluidas Currency Wars y Universo Simulado) para %1$@ aún no está completa. El progreso actual es %2$@/%3$@."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang Cosmic Strife score (kasama ang Currency Wars at Simulated Universe) para sa %1$@ ay hindi pa buo. Ang kasalukuyang progreso ay %2$@/%3$@."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le score de Querelle Cosmique (incluant le score de Currency Wars et d'Univers simulé) pour %1$@ n'est pas encore complet. La progression actuelle est de %2$@/%3$@."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il punteggio di Cosmic Strife (inclusi Currency Wars e Universo Simulato) per %1$@ non è ancora completo. Il progresso attuale è %2$@/%3$@."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%1$@」の星々の戦いのスコア（貨幣戦争および模擬宇宙を含む）はまだ満点ではありません。現在の進捗は %2$@/%3$@ です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@의 우주 분쟁 점수(통화 전쟁과 모의 우주 포함)가 아직 가득 차지 않았습니다. 현재 진행 상황은 %2$@/%3$@입니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Счет Космического Раздора (включая Currency Wars и Симулированную Вселенную) для %1$@ еще не заполнен. Текущий прогресс %2$@/%3$@."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Điểm Vũ Trụ Phân Tranh (bao gồm Currency Wars và Simulated Universe) cho %1$@ chưa đầy. Tiến độ hiện tại là %2$@/%3$@."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%1$@」的旷宇纷争积分（含货币战争与模拟宇宙）未满，当前进度为 %2$@/%3$@。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%1$@」的曠宇紛爭積分（含貨幣戰爭與模擬宇宙）未滿，當前進度為 %2$@/%3$@。"
+          }
+        }
+      }
+    },
+    "notification.cosmicStrife.title:%@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnerung: Kosmischer Zwist für %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: Cosmic Strife for %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recordatorio: Conflicto Cósmico para %@"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paalala: Cosmic Strife para sa %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rappel : Querelle Cosmique pour %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Promemoria: Cosmic Strife per %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リマインダー：%@ の星々の戦い"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "알림: %@의 우주 분쟁"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Напоминание: Космический Раздор для %@"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhắc nhở: Vũ Trụ Phân Tranh cho %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」旷宇纷争提醒"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」曠宇紛爭提醒"
+          }
+        }
+      }
+    },
     "notification.dailyTask.body:%@%@%@" : {
       "localizations" : {
         "de" : {
@@ -2061,158 +2213,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "「%@」洞天寶錢提醒"
-          }
-        }
-      }
-    },
-    "notification.simulatedUniverse.body:%@%@%@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Der Simulierte-Universums-Score (inkl. Währungskriegs-Score) für %1$@ ist noch nicht vollständig. Der aktuelle Fortschritt beträgt %2$@/%3$@."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The simulated universe score (incl. currency wars score) for %1$@ is not yet full. The current progress is %2$@/%3$@."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La puntuación del universo simulado (incluido el puntaje de las guerras de divisas) para %1$@ aún no está completa. El progreso actual es %2$@/%3$@."
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ang na-simulate na puntos ng uniberso (kabilang ang puntos ng digmaan sa pera) para sa %1$@ ay hindi pa kumpleto. Ang kasalukuyang progreso ay %2$@/%3$@."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le score de l'univers simulé (incluant le score des guerres monétaires) pour %1$@ n'est pas encore complet La progression actuelle est de %2$@/%3$@"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Il punteggio dell'universo simulato (incluso il punteggio delle guerre valutarie) per %1$@ non è ancora completo. L'attuale progresso è %2$@/%3$@"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%1$@」の模擬宇宙ポイント（貨幣戦争のも含む）は未満です。現在の進捗状況は：%2$@/%3$@。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@의 모의 우주 점수 (통화 전쟁 점수 포함) 가 아직 가득 차지 않았습니다 현재 진행 상황은 %2$@/%3$@입니다"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Симуляция очков вселенной (включая очки валютных войн) для %1$@ еще не завершена. Текущий прогресс %2$@/%3$@"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Điểm vũ trụ mô phỏng (bao gồm điểm chiến tranh tiền tệ) cho %1$@ chưa đầy. Tiến trình hiện tại là %2$@/%3$@."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%1$@」的模拟宇宙&货币战争积分未满，当前进度为 %2$@/%3$@。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%1$@」的模擬宇宙&貨幣戰爭積分未滿，當前進度為 %2$@/%3$@。"
-          }
-        }
-      }
-    },
-    "notification.simulatedUniverse.title:%@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erinnerung: Simuliertes Universum für %@"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reminder: Simulated Universe for %@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recordatorio: Universo simulado para %@"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Paalala: Isinaayos na Uniberso para sa %@"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rappel : Univers simulé pour %@"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Promemoria: Universo simulato per %@"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%@」の模擬宇宙"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "알림: %@의 모의 우주"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Напоминание: Смоделированная Вселенная для %@"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nhắc nhở: Vũ trụ mô phỏng cho %@"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%@」模拟宇宙提醒"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%@」模擬宇宙提醒"
           }
         }
       }

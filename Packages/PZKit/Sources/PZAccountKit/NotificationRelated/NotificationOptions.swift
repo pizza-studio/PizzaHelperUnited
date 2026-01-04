@@ -87,10 +87,11 @@ public struct NotificationOptions: AbleToCodeSendHash, Defaults.Serializable {
             forKey: .hsrEchoOfWarNotificationSetting
         ) ?? hsrEchoOfWarNotificationSetting
 
-        self.hsrSimulUnivNotificationSetting = try container.decode(
+        // 这是 5.7.0 之后新增的选项，应该用 nullable decoder。不然会导致用户的通知设定全部被重置。
+        self.hsrCosmicStrifeNotificationSetting = try container.decodeIfPresent(
             ManualSetting.self,
-            forKey: .hsrSimulUnivNotificationSetting
-        )
+            forKey: .hsrCosmicStrifeNotificationSetting
+        ) ?? hsrCosmicStrifeNotificationSetting
     }
 
     // MARK: Public
@@ -239,10 +240,10 @@ public struct NotificationOptions: AbleToCodeSendHash, Defaults.Serializable {
     }
 
     /// Simulated Universe, Notification TimeStamp (Weekly)
-    public var hsrSimulUnivNotificationSetting: ManualSetting = .notifyAt(weekday: 7, hour: 19, minute: 0) {
+    public var hsrCosmicStrifeNotificationSetting: ManualSetting = .notifyAt(weekday: 7, hour: 19, minute: 0) {
         willSet {
             Task {
-                try? await PZNotificationCenter.deleteDailyNoteNotification(of: .hsrSimulatedUniverse)
+                try? await PZNotificationCenter.deleteDailyNoteNotification(of: .hsrCosmicStrife)
             }
         }
     }
@@ -268,7 +269,7 @@ public struct NotificationOptions: AbleToCodeSendHash, Defaults.Serializable {
         case allowGIRealmCurrencyNotification
         case allowGITransformerNotification
         case giTrounceBlossomNotificationSetting
-        case hsrSimulUnivNotificationSetting
+        case hsrCosmicStrifeNotificationSetting
         case hsrEchoOfWarNotificationSetting
     }
 }
@@ -370,9 +371,9 @@ extension NotificationOptions {
         }
     }
 
-    public var hsrSimulUnivNotificationTime: Binding<Date?> {
+    public var hsrCosmicStrifeNotificationTime: Binding<Date?> {
         .init {
-            switch Self.shared.hsrSimulUnivNotificationSetting {
+            switch Self.shared.hsrCosmicStrifeNotificationSetting {
             case let .notifyAt(weekday: _, hour: hour, minute: minute):
                 return Calendar.gregorian.nextDate(
                     after: Date(),
@@ -384,11 +385,11 @@ extension NotificationOptions {
             }
         } set: { date in
             guard let date else { return }
-            switch Self.shared.hsrSimulUnivNotificationSetting {
+            switch Self.shared.hsrCosmicStrifeNotificationSetting {
             case let .notifyAt(weekday: weekday, hour: _, minute: _):
                 let hours = Calendar.autoupdatingCurrent.component(.hour, from: date)
                 let mins = Calendar.autoupdatingCurrent.component(.minute, from: date)
-                Self.shared.hsrSimulUnivNotificationSetting = .notifyAt(
+                Self.shared.hsrCosmicStrifeNotificationSetting = .notifyAt(
                     weekday: weekday,
                     hour: hours,
                     minute: mins
@@ -399,9 +400,9 @@ extension NotificationOptions {
         }
     }
 
-    public var hsrSimulUnivNotificationWeekday: Binding<Weekday?> {
+    public var hsrCosmicStrifeNotificationWeekday: Binding<Weekday?> {
         .init {
-            switch Self.shared.hsrSimulUnivNotificationSetting {
+            switch Self.shared.hsrCosmicStrifeNotificationSetting {
             case let .notifyAt(weekday: weekday, hour: _, minute: _):
                 return Weekday(rawValue: weekday)
             case .disallowed:
@@ -409,9 +410,9 @@ extension NotificationOptions {
             }
         } set: { weekday in
             guard let weekday else { return }
-            switch Self.shared.hsrSimulUnivNotificationSetting {
+            switch Self.shared.hsrCosmicStrifeNotificationSetting {
             case let .notifyAt(weekday: _, hour: hour, minute: minute):
-                Self.shared.hsrSimulUnivNotificationSetting = .notifyAt(
+                Self.shared.hsrCosmicStrifeNotificationSetting = .notifyAt(
                     weekday: weekday.rawValue,
                     hour: hour,
                     minute: minute
@@ -422,18 +423,18 @@ extension NotificationOptions {
         }
     }
 
-    public var allowHSRSimulUnivNotification: Binding<Bool> {
+    public var allowHSRCosmicStrifeNotification: Binding<Bool> {
         .init {
-            if case .disallowed = Self.shared.hsrSimulUnivNotificationSetting {
+            if case .disallowed = Self.shared.hsrCosmicStrifeNotificationSetting {
                 return false
             } else {
                 return true
             }
         } set: { newValue in
             if !newValue {
-                Self.shared.hsrSimulUnivNotificationSetting = .disallowed
+                Self.shared.hsrCosmicStrifeNotificationSetting = .disallowed
             } else {
-                Self.shared.hsrSimulUnivNotificationSetting = Self().hsrSimulUnivNotificationSetting
+                Self.shared.hsrCosmicStrifeNotificationSetting = Self().hsrCosmicStrifeNotificationSetting
             }
         }
     }
@@ -501,7 +502,7 @@ extension NotificationOptions {
             if !newValue {
                 Self.shared.giTrounceBlossomNotificationSetting = .disallowed
             } else {
-                Self.shared.giTrounceBlossomNotificationSetting = Self().hsrSimulUnivNotificationSetting
+                Self.shared.giTrounceBlossomNotificationSetting = Self().hsrCosmicStrifeNotificationSetting
             }
         }
     }
@@ -569,7 +570,7 @@ extension NotificationOptions {
             if !newValue {
                 Self.shared.hsrEchoOfWarNotificationSetting = .disallowed
             } else {
-                Self.shared.hsrEchoOfWarNotificationSetting = Self().hsrSimulUnivNotificationSetting
+                Self.shared.hsrEchoOfWarNotificationSetting = Self().hsrCosmicStrifeNotificationSetting
             }
         }
     }
