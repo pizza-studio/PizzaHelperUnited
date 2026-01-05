@@ -574,38 +574,39 @@ private struct DailyNoteCardView4HSR: View {
 
     @ViewBuilder
     func drawSingleAssignment(_ assignment: AssignmentInfo4HSR.Assignment) -> some View {
-        HStack(alignment: .center) {
-            VStack(alignment: .center, spacing: 4) {
-                // Avatar Icon
-                HStack(alignment: .top, spacing: 2) {
-                    let imageFrame: CGFloat = 32
-                    ForEach(assignment.avatarIconURLs, id: \.self) { url in
-                        let image = getPilotImage(url) ?? Image(systemSymbol: .person)
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: imageFrame)
-                            .background {
-                                Color.gray.opacity(0.5).clipShape(Circle())
-                            }
-                    }
-                }.fixedSize()
-            }
+        HStack(alignment: .center, spacing: 2) {
+            // Avatar Icon
+            HStack(alignment: .top, spacing: 0) {
+                let imageFrame: CGFloat = 32
+                ForEach(assignment.avatarIconURLs, id: \.self) { url in
+                    let image = getPilotImage(url) ?? Image(systemSymbol: .person)
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: imageFrame)
+                        .background {
+                            Color.gray.opacity(0.5).clipShape(Circle())
+                        }
+                }
+            }.fixedSize()
             // Time
             if assignment.remainingTime > 0 {
-                (
+                VStack {
                     Text(assignment.finishedTime, style: .relative)
-                        + Text(verbatim: "\n")
-                        + Text(dateFormatter.string(from: assignment.finishedTime))
-                )
-                .multilineTextAlignment(.leading)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(dateFormatter.string(from: assignment.finishedTime))
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
                 .font(.caption2)
                 .fontWidth(.compressed)
             } else {
                 Image(systemSymbol: .checkmarkCircle)
                     .foregroundColor(.green)
+                    .padding(.leading, 6)
+                    .padding(.trailing, 8)
             }
-            Spacer()
         }
     }
 
