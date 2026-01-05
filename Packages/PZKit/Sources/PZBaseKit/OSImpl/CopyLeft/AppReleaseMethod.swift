@@ -35,4 +35,14 @@ public enum AppReleaseMethod: String, Hashable, Sendable {
         #endif
         #endif
     }()
+
+    public var shortDescription: String {
+        switch self {
+        case .simulator: "SimulatorDebug"
+        case .debug: "Debug"
+        case .testFlight: "TestFlight"
+        case .appStore: "RTM"
+        case .standaloneRelease: "Standalone"
+        }
+    }
 }
