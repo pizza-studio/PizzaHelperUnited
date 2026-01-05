@@ -43,6 +43,7 @@ extension PZHelper {
                         ContentView4iOS14()
                     }
                 }
+                .navigationTitle(Pizza.appTitleLocalizedFull + appVersionStringOrEmpty)
                 .initializeApp()
                 // .environment(\.horizontalSizeClass, .compact)
                 .defaultAppStorage(.baseSuite)
@@ -91,6 +92,17 @@ extension PZHelper {
         // MARK: Private
 
         @State private var isEOLNoticeDisplayed: Bool
+
+        private var appReleaseMethodString: String {
+            AppReleaseMethod.current.shortDescription
+        }
+
+        private var appVersionStringOrEmpty: String {
+            if let versionIntel = try? Bundle.getAppVersionAndBuild() {
+                return " v\(versionIntel.version) (\(versionIntel.build), \(appReleaseMethodString))"
+            }
+            return ""
+        }
     }
 
     @MainActor static var isApplicationBooted = false
