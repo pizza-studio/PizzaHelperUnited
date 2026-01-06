@@ -19,6 +19,7 @@ extension Enka {
         case preservation = "Knight"
         case abundance = "Priest"
         case remembrance = "Memory"
+        case elation = "Elation"
     }
 }
 
