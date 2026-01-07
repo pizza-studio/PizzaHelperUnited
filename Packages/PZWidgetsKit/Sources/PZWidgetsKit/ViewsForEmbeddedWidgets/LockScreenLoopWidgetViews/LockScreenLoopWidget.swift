@@ -101,7 +101,7 @@ extension EmbeddedWidgets {
             case let .success(data):
                 let dailyTaskInfoScore: Double = {
                     guard data.hasDailyTaskIntel else { return 0 }
-                    guard data.allDailyTasksAccomplished ?? false else {
+                    guard data.allDailyTasksAccomplished else {
                         return today8pmPassed ? 1.2 : 0.8
                     }
                     return 0.0
