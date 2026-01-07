@@ -618,7 +618,14 @@ private struct DailyNoteCardView4ZZZ: View {
             Text("app.dailynote.card.zzzVitality.label".i18nPZHelper)
             Spacer()
             let sitrep = dailyNote.dailyTaskCompletionStatus
-            Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
+            if !sitrep.isAccomplished {
+                Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
+            } else {
+                Image(systemSymbol: .checkmarkCircle)
+                    .foregroundColor(.green)
+                    .frame(width: 20, height: 20)
+                    .clipShape(.rect)
+            }
         }
         HStack {
             dailyNote.game.zzzVHSStoreAssetIcon
@@ -639,7 +646,17 @@ private struct DailyNoteCardView4ZZZ: View {
                 Spacer()
                 let stateDone = "app.dailynote.card.zzzScratchableCard.done".i18nPZHelper
                 let stateNyet = "app.dailynote.card.zzzScratchableCard.notYet".i18nPZHelper
-                Text(verbatim: cardScratched ? stateDone : stateNyet)
+                if cardScratched {
+                    HStack {
+                        Text(verbatim: stateDone)
+                        Image(systemSymbol: .checkmarkCircle)
+                            .frame(width: 20, height: 20)
+                            .clipShape(.rect)
+                    }
+                    .foregroundColor(.green)
+                } else {
+                    Text(verbatim: stateNyet)
+                }
             }
         }
         if let bountyCommission = dailyNote.hollowZero.bountyCommission {
@@ -650,7 +667,18 @@ private struct DailyNoteCardView4ZZZ: View {
                     .frame(height: iconFrame)
                 Text("app.dailynote.card.zzzHollowZeroBountyCommission.label".i18nPZHelper)
                 Spacer()
-                Text(verbatim: bountyCommission.textDescription)
+                let sitrep = FieldCompletionIntel<Int>(
+                    pending: bountyCommission.total - bountyCommission.num,
+                    finished: bountyCommission.num,
+                    all: bountyCommission.total
+                )
+                if !sitrep.isAccomplished {
+                    Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
+                } else {
+                    Image(systemSymbol: .checkmarkCircle)
+                        .foregroundColor(.green)
+                        .frame(width: 20, height: 20)
+                }
             }
         }
         if let investigationPoint = dailyNote.hollowZero.investigationPoint {
@@ -661,7 +689,18 @@ private struct DailyNoteCardView4ZZZ: View {
                     .frame(height: iconFrame)
                 Text("app.dailynote.card.zzzHollowZeroInvestigationPoint.label".i18nPZHelper)
                 Spacer()
-                Text(verbatim: investigationPoint.textDescription)
+                let sitrep = FieldCompletionIntel<Int>(
+                    pending: investigationPoint.total - investigationPoint.num,
+                    finished: investigationPoint.num,
+                    all: investigationPoint.total
+                )
+                if !sitrep.isAccomplished {
+                    Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
+                } else {
+                    Image(systemSymbol: .checkmarkCircle)
+                        .foregroundColor(.green)
+                        .frame(width: 20, height: 20)
+                }
             }
         }
     }
