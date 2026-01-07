@@ -288,7 +288,9 @@ extension DailyNoteProtocol {
 extension DailyNoteProtocol {
     /// DailyNoteProtocol: ParametricTransformer, Genshin Impact Only
     public var parametricTransformerIntel: FullNote4GI.TransformerInfo4GI? {
-        (self as? FullNote4GI)?.transformerInfo
+        let result = (self as? FullNote4GI)?.transformerInfo
+        guard result?.obtained ?? false else { return nil }
+        return result
     }
 }
 
