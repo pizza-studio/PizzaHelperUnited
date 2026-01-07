@@ -32,7 +32,7 @@ extension EmbeddedWidgets {
                             let sitrep = data.dailyTaskCompletionStatus
                             let valNow = sitrep.finished
                             let valMax = sitrep.all
-                            let gaugeInputs = WidgetSafeMath.sanitizedGaugeInputs(
+                            let gaugeInputs = DailyNoteSafeMath.sanitizedGaugeInputs(
                                 current: Double(valNow),
                                 maxValue: Double(valMax)
                             )

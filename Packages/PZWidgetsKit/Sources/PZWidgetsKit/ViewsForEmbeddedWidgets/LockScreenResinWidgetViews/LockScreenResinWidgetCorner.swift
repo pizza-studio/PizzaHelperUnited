@@ -56,7 +56,7 @@ extension EmbeddedWidgets {
                             bundle: .module
                         )
                 } else {
-                    let remaining = PZWidgetsSPM.formattedInterval(until: timeOnFinish)
+                    let remaining = HoYo.formattedInterval(until: timeOnFinish)
                     return "\(staminaIntel.finished), \(remaining)"
                 }
             case .failure:

@@ -30,7 +30,7 @@ extension EmbeddedWidgets {
                     switch data {
                     case let data as any Note4GI:
                         let coinIntel = data.homeCoinInfo
-                        let gaugeValue = WidgetSafeMath.normalizedRatio(
+                        let gaugeValue = DailyNoteSafeMath.normalizedRatio(
                             numerator: Double(coinIntel.currentHomeCoin),
                             denominator: Double(coinIntel.maxHomeCoin)
                         )
@@ -102,7 +102,7 @@ extension EmbeddedWidgets {
                     switch data {
                     case let data as any Note4GI:
                         let coinIntel = data.homeCoinInfo
-                        let gaugeValue = WidgetSafeMath.normalizedRatio(
+                        let gaugeValue = DailyNoteSafeMath.normalizedRatio(
                             numerator: Double(coinIntel.currentHomeCoin),
                             denominator: Double(coinIntel.maxHomeCoin)
                         )

@@ -578,17 +578,47 @@ private struct DailyNoteCardView4HSR: View {
             // Avatar Icon
             HStack(alignment: .top, spacing: 0) {
                 let imageFrame: CGFloat = 32
+                let innerImageFrame: CGFloat = imageFrame - 2
                 ForEach(assignment.avatarIconURLs, id: \.self) { url in
                     let image = getPilotImage(url) ?? Image(systemSymbol: .person)
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: imageFrame)
-                        .background {
-                            Color.gray.opacity(0.5).clipShape(Circle())
-                        }
+                    switch assignment.isFinished {
+                    case false:
+                        image
+                            .resizable()
+                            .overlayImageWithRingProgressBar(
+                                assignment.percOfCompletion,
+                                thickness: 2,
+                                startAngle: 0,
+                                scaler: 1.3
+                            )
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundStyle(assignment.isFinished ? Color.clear : .green)
+                            .contentShape(.circle)
+                            .frame(width: innerImageFrame, height: innerImageFrame)
+                            .contentShape(.circle)
+                            .frame(width: imageFrame, height: imageFrame)
+                    case true:
+                        image
+                            .resizable()
+
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: imageFrame)
+                            .background {
+                                Color.gray.opacity(0.5).clipShape(Circle())
+                            }
+                    }
                 }
-            }.fixedSize()
+            }
+            .fixedSize()
+            .contentShape(.rect)
+            .corneredTag(
+                verbatim: assignment.percOfCompletion.formatted(
+                    .percent.precision(.fractionLength(0))
+                ),
+                alignment: .bottom,
+                textSize: 9,
+                padding: 0
+            )
             // Time
             if assignment.remainingTime > 0 {
                 VStack {

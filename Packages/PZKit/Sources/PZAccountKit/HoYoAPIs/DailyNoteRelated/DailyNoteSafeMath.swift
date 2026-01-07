@@ -4,11 +4,11 @@
 
 import Foundation
 
-// MARK: - WidgetSafeMath
+// MARK: - DailyNoteSafeMath
 
-enum WidgetSafeMath {
+public enum DailyNoteSafeMath {
     @inlinable
-    static func normalizedRatio(numerator: Double, denominator: Double) -> Double {
+    public static func normalizedRatio(numerator: Double, denominator: Double) -> Double {
         guard denominator.isFinite, denominator != 0, numerator.isFinite else { return 0 }
         let quotient = numerator / denominator
         guard quotient.isFinite else { return 0 }
@@ -16,12 +16,12 @@ enum WidgetSafeMath {
     }
 
     @inlinable
-    static func normalizedRatio(numerator: Int, denominator: Int) -> Double {
+    public static func normalizedRatio(numerator: Int, denominator: Int) -> Double {
         normalizedRatio(numerator: Double(numerator), denominator: Double(denominator))
     }
 
     @inlinable
-    static func sanitizedGaugeInputs(
+    public static func sanitizedGaugeInputs(
         current: Double,
         maxValue: Double,
         minValue: Double = 0
@@ -39,25 +39,42 @@ enum WidgetSafeMath {
     }
 
     @inlinable
-    static func nonNegativeInterval(_ interval: TimeInterval) -> TimeInterval {
+    public static func nonNegativeInterval(_ interval: TimeInterval) -> TimeInterval {
         guard interval.isFinite else { return 0 }
         return max(0, interval)
     }
 
     @inlinable
-    static func clamp<T: Comparable>(_ value: T, to limits: ClosedRange<T>) -> T {
+    public static func clamp<T: Comparable>(_ value: T, to limits: ClosedRange<T>) -> T {
         min(max(value, limits.lowerBound), limits.upperBound)
     }
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
-extension PZWidgetsSPM {
-    static func formattedInterval(until targetDate: Date, fallback: String = "—") -> String {
+extension HoYo {
+    public static func formattedInterval(until targetDate: Date, fallback: String = "—") -> String {
         formattedInterval(for: TimeInterval.sinceNow(to: targetDate), fallback: fallback)
     }
 
-    static func formattedInterval(for interval: TimeInterval, fallback: String = "—") -> String {
-        let sanitized = WidgetSafeMath.nonNegativeInterval(interval)
+    public static func formattedInterval(for interval: TimeInterval, fallback: String = "—") -> String {
+        let sanitized = DailyNoteSafeMath.nonNegativeInterval(interval)
         return intervalFormatter.string(from: sanitized) ?? fallback
     }
+}
+
+extension HoYo {
+    public static let dateFormatter: DateFormatter = {
+        let fmt = DateFormatter.CurrentLocale()
+        fmt.doesRelativeDateFormatting = true
+        fmt.dateStyle = .short
+        fmt.timeStyle = .short
+        return fmt
+    }()
+
+    public static let intervalFormatter: DateComponentsFormatter = {
+        let dateComponentFormatter = DateComponentsFormatter()
+        dateComponentFormatter.allowedUnits = [.hour, .minute]
+        dateComponentFormatter.maximumUnitCount = 2
+        dateComponentFormatter.unitsStyle = .brief
+        return dateComponentFormatter
+    }()
 }

@@ -51,8 +51,8 @@ extension DesktopWidgets {
             let staminaIntel = data.staminaIntel
             let fullTimeOnFinish = data.staminaFullTimeOnFinish
             if staminaIntel.finished < staminaIntel.all {
-                let formattedDate = PZWidgetsSPM.dateFormatter.string(from: fullTimeOnFinish)
-                let intervalDescription = PZWidgetsSPM.formattedInterval(until: fullTimeOnFinish)
+                let formattedDate = HoYo.dateFormatter.string(from: fullTimeOnFinish)
+                let intervalDescription = HoYo.formattedInterval(until: fullTimeOnFinish)
                 let compoundedText = "\(formattedDate)\n\(intervalDescription)"
                 return (Text(compoundedText), false)
             } else {
