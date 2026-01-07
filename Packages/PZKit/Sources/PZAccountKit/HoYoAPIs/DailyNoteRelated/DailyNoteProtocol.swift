@@ -194,7 +194,7 @@ extension DailyNoteProtocol {
     }
 
     /// DailyNoteProtocol: DailyTaskTrainingVitality
-    public var allDailyTasksAccomplished: Bool? {
+    public var allDailyTasksAccomplished: Bool {
         let extraRewards = claimedRewardsFromKatheryne ?? true
         return dailyTaskCompletionStatus.isAccomplished && extraRewards
     }
