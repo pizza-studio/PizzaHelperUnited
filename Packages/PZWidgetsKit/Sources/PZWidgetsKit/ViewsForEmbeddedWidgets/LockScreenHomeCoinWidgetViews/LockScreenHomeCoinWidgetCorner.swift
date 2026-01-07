@@ -45,7 +45,7 @@ extension EmbeddedWidgets {
                 switch data {
                 case let data as any Note4GI:
                     let currentAmount = data.homeCoinInfo.currentHomeCoin
-                    let fullTimeDescription = PZWidgetsSPM.formattedInterval(until: data.homeCoinInfo.fullTime)
+                    let fullTimeDescription = HoYo.formattedInterval(until: data.homeCoinInfo.fullTime)
                     return "\(currentAmount), \(fullTimeDescription)"
                 default:
                     return "GENSHIN\nONLY"

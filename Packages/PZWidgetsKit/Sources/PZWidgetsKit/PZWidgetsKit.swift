@@ -10,22 +10,3 @@ import PZBaseKit
 
 @available(iOS 16.2, macCatalyst 16.2, *)
 public enum PZWidgetsSPM {}
-
-@available(iOS 16.2, macCatalyst 16.2, *)
-extension PZWidgetsSPM {
-    public static let dateFormatter: DateFormatter = {
-        let fmt = DateFormatter.CurrentLocale()
-        fmt.doesRelativeDateFormatting = true
-        fmt.dateStyle = .short
-        fmt.timeStyle = .short
-        return fmt
-    }()
-
-    public static let intervalFormatter: DateComponentsFormatter = {
-        let dateComponentFormatter = DateComponentsFormatter()
-        dateComponentFormatter.allowedUnits = [.hour, .minute]
-        dateComponentFormatter.maximumUnitCount = 2
-        dateComponentFormatter.unitsStyle = .brief
-        return dateComponentFormatter
-    }()
-}

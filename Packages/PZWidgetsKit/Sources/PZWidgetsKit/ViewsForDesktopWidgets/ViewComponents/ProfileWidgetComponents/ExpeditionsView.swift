@@ -83,13 +83,13 @@ extension DesktopWidgets {
                         if !expedition.isFinished, let finishTime = expedition.timeOnFinish {
                             let totalSecond = 20.0 * 60.0 * 60.0
                             let rawRemaining = TimeInterval.sinceNow(to: finishTime)
-                            let timeRemaining = WidgetSafeMath.nonNegativeInterval(rawRemaining)
+                            let timeRemaining = DailyNoteSafeMath.nonNegativeInterval(rawRemaining)
                             let cappedRemaining = Swift.min(timeRemaining, totalSecond)
                             let percentage = (totalSecond - cappedRemaining) > 0
                                 ? (totalSecond - cappedRemaining) / totalSecond
                                 : 0.0
-                            percentageBar(WidgetSafeMath.clamp(percentage, to: 0 ... 1))
-                            Text(PZWidgetsSPM.formattedInterval(for: timeRemaining))
+                            percentageBar(DailyNoteSafeMath.clamp(percentage, to: 0 ... 1))
+                            Text(HoYo.formattedInterval(for: timeRemaining))
                                 .lineLimit(1)
                                 .font(.caption2)
                                 .minimumScaleFactor(0.4)

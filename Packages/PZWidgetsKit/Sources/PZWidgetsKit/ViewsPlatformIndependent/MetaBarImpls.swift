@@ -260,7 +260,7 @@ public struct MetaBar4GITransformer: View, MetaBar {
             let key: String.LocalizationValue = "pzWidgetsKit.unit.day:\(info.remainingDays)"
             return [Text(String(localized: key, bundle: .module)).fontWidth(.condensed)]
         } else {
-            let intervalString = PZWidgetsSPM.intervalFormatter
+            let intervalString = HoYo.intervalFormatter
                 .string(from: TimeInterval.sinceNow(to: info.recoveryTime)) ?? ""
             return [Text(verbatim: intervalString)]
         }

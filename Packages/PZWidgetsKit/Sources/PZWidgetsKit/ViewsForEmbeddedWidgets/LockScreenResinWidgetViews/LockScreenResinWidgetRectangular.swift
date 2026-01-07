@@ -51,7 +51,7 @@ extension EmbeddedWidgets {
                                     .fixedSize(horizontal: false, vertical: true)
                             } else {
                                 Text(
-                                    "pzWidgetsKit.infoBlock.refilledAt:\(PZWidgetsSPM.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
+                                    "pzWidgetsKit.infoBlock.refilledAt:\(HoYo.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
                                     bundle: .module
                                 )
                                 .lineLimit(2)
@@ -107,7 +107,7 @@ extension EmbeddedWidgets {
                                     .foregroundColor(.gray)
                             } else {
                                 Text(
-                                    "pzWidgetsKit.infoBlock.refilledAt:\(PZWidgetsSPM.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
+                                    "pzWidgetsKit.infoBlock.refilledAt:\(HoYo.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
                                     bundle: .module
                                 )
                                 .lineLimit(2)

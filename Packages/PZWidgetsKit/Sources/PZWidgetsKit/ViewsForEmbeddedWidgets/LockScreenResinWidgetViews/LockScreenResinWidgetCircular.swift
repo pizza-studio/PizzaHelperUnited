@@ -29,7 +29,7 @@ extension EmbeddedWidgets {
                 switch result {
                 case let .success(data):
                     let staminaIntel = data.staminaIntel
-                    let gaugeValue = WidgetSafeMath.normalizedRatio(
+                    let gaugeValue = DailyNoteSafeMath.normalizedRatio(
                         numerator: Double(staminaIntel.finished),
                         denominator: Double(staminaIntel.all)
                     )
@@ -89,7 +89,7 @@ extension EmbeddedWidgets {
                 switch result {
                 case let .success(data):
                     let staminaIntel = data.staminaIntel
-                    let gaugeValue = WidgetSafeMath.normalizedRatio(
+                    let gaugeValue = DailyNoteSafeMath.normalizedRatio(
                         numerator: Double(staminaIntel.finished),
                         denominator: Double(staminaIntel.all)
                     )

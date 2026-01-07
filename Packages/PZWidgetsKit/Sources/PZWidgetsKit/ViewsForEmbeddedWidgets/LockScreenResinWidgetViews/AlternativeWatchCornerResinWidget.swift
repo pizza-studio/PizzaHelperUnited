@@ -50,7 +50,7 @@ extension EmbeddedWidgets {
                     .padding(4)
                     .widgetLabel {
                         let resinInfo = data.resinInfo
-                        let gaugeInputs = WidgetSafeMath.sanitizedGaugeInputs(
+                        let gaugeInputs = DailyNoteSafeMath.sanitizedGaugeInputs(
                             current: Double(resinInfo.currentResinDynamic),
                             maxValue: Double(resinInfo.maxResin)
                         )
@@ -74,7 +74,7 @@ extension EmbeddedWidgets {
                     .scaledToFit()
                     .padding(4)
                     .widgetLabel {
-                        let gaugeInputs = WidgetSafeMath.sanitizedGaugeInputs(
+                        let gaugeInputs = DailyNoteSafeMath.sanitizedGaugeInputs(
                             current: Double(staminaInfo.currentStamina),
                             maxValue: Double(staminaInfo.maxStamina)
                         )
@@ -98,7 +98,7 @@ extension EmbeddedWidgets {
                     .scaledToFit()
                     .padding(4)
                     .widgetLabel {
-                        let gaugeInputs = WidgetSafeMath.sanitizedGaugeInputs(
+                        let gaugeInputs = DailyNoteSafeMath.sanitizedGaugeInputs(
                             current: Double(energyInfo.currentEnergyAmountDynamic),
                             maxValue: Double(energyInfo.progress.max)
                         )
