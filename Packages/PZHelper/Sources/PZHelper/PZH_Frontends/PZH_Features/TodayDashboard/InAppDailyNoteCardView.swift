@@ -22,7 +22,7 @@ struct InAppDailyNoteCardView: View {
             switch theVM.dailyNoteStatus {
             case let .succeed(dailyNote, _):
                 switch dailyNote {
-                case let note as any Note4GI: DailyNoteCardView4SOWM(note: note)
+                case let note as any Note4GI: DailyNoteCardView4GI(note: note)
                 case let note as any Note4HSR: DailyNoteCardView4HSR(note: note)
                 case let note as Note4ZZZ: DailyNoteCardView4ZZZ(note: note)
                 default: EmptyView()
@@ -129,289 +129,7 @@ private let dateComponentsFormatter: DateComponentsFormatter = {
 // MARK: - DailyNoteCardView4GI
 
 @available(iOS 17.0, macCatalyst 17.0, *)
-private struct DailyNoteCardView4GI: View {
-    // MARK: Lifecycle
-
-    public init(note dailyNote: any Note4GI) {
-        self.dailyNote = dailyNote
-    }
-
-    // MARK: Public
-
-    public var body: some View {
-        drawResin() // This draws trounce blossom when resin is finished
-        drawTrounceBlossomIfResinNotFinished()
-        drawDailyTaskAndParametricTransformer()
-        drawRealmCurrencyStatus()
-        drawExpeditions()
-            .task {
-                pilotAssetMap = await dailyNote.getExpeditionAssetMap()
-            }
-    }
-
-    // MARK: Internal
-
-    var resinFinished: Bool {
-        dailyNote.staminaIntel.isAccomplished
-    }
-
-    @ViewBuilder
-    func drawResin() -> some View {
-        VStack(alignment: .leading) {
-            let resinIntel = dailyNote.resinInfo
-            HStack(spacing: 10) {
-                dailyNote.game.primaryStaminaAssetIcon
-                    .resizable()
-                    .scaledToFit()
-                    .scaleEffect(1.1)
-                    .frame(width: iconFrame, height: iconFrame)
-                HStack(alignment: .lastTextBaseline, spacing: 0) {
-                    Text(verbatim: "\(resinIntel.currentResinDynamic)")
-                        .font(.title)
-                    Text(verbatim: " / \(resinIntel.maxResin)")
-                        .font(.caption)
-                    Spacer()
-                    if !resinFinished {
-                        let fullyChargedTime = resinIntel.resinRecoveryTime
-                        let nestedString = """
-                        \(dateComponentsFormatter.string(from: TimeInterval.sinceNow(to: fullyChargedTime))!)
-                        \(dateFormatter.string(from: fullyChargedTime))
-                        """
-                        Text(verbatim: nestedString)
-                            .multilineTextAlignment(.trailing)
-                            .font(.caption2)
-                            .fontWidth(.compressed)
-                    }
-                }
-                // Trounce Blossom (Weekly Bosses)
-                if resinFinished, let dailyNote = dailyNote as? FullNote4GI {
-                    HStack(spacing: 4) {
-                        dailyNote.game.giTrounceBlossomAssetIcon
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: iconFrame - 6, height: iconFrame - 6)
-                        let weeklyBossesInfo = dailyNote.weeklyBossesInfo
-                        if weeklyBossesInfo.allDiscountsAreUsedUp {
-                            Image(systemSymbol: .checkmarkCircle)
-                                .foregroundColor(.green)
-                                .frame(width: 20, height: 20)
-                        } else {
-                            HStack(alignment: .lastTextBaseline, spacing: 0) {
-                                Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
-                                    .font(.title)
-                                Text(verbatim: " / \(weeklyBossesInfo.totalResinDiscount)")
-                                    .font(.caption)
-                            }
-                        }
-                    }
-                    .padding(.horizontal, 6)
-                    .blurMaterialBackground(
-                        shape: RoundedRectangle(cornerRadius: 6, style: .continuous)
-                    )
-                }
-            }
-        }.help("app.dailynote.card.resin.label".i18nPZHelper)
-    }
-
-    @ViewBuilder
-    func drawTrounceBlossomIfResinNotFinished() -> some View {
-        if !resinFinished, let dailyNote = dailyNote as? FullNote4GI {
-            VStack(alignment: .leading) {
-                HStack(spacing: 10) {
-                    dailyNote.game.giTrounceBlossomAssetIcon
-                        .resizable()
-                        .scaledToFit()
-                        .scaleEffect(1.1)
-                        .frame(width: iconFrame, height: iconFrame)
-                    HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        let weeklyBossesInfo = dailyNote.weeklyBossesInfo
-                        if weeklyBossesInfo.allDiscountsAreUsedUp {
-                            Image(systemSymbol: .checkmarkCircle)
-                                .foregroundColor(.green)
-                                .frame(width: 20, height: 20)
-                        } else {
-                            HStack(alignment: .lastTextBaseline, spacing: 0) {
-                                Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
-                                    .font(.title)
-                                Text(verbatim: " / \(weeklyBossesInfo.totalResinDiscount)")
-                                    .font(.caption)
-                            }
-                        }
-                        Spacer()
-                    }
-                }
-            }.help("app.dailynote.card.resin.label".i18nPZHelper)
-        }
-    }
-
-    @ViewBuilder
-    func drawDailyTaskAndParametricTransformer() -> some View {
-        VStack(alignment: .leading) {
-            let sitrep = dailyNote.dailyTaskCompletionStatus
-            HStack(spacing: 10) {
-                dailyNote.game.dailyTaskAssetIcon
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: iconFrame, height: iconFrame)
-                HStack(alignment: .lastTextBaseline, spacing: 0) {
-                    Text(verbatim: "\(sitrep.finished)").font(.title)
-                    Text(verbatim: " / \(sitrep.all)").font(.caption)
-                    Spacer()
-                    Group {
-                        if sitrep.isAccomplished,
-                           let extraRewardClaimed = dailyNote.claimedRewardsFromKatheryne {
-                            switch extraRewardClaimed {
-                            case true:
-                                Text("app.dailynote.card.dailyTask.extraReward.received".i18nPZHelper)
-                            case false:
-                                Text("app.dailynote.card.dailyTask.extraReward.notReceived".i18nPZHelper)
-                            }
-                        }
-                    }
-                    .font(.caption2)
-                    .fontWidth(.compressed)
-                    .multilineTextAlignment(.trailing)
-                }
-
-                // Parametric Transformer
-                if let dailyNote = dailyNote as? FullNote4GI, dailyNote.transformerInfo.obtained {
-                    let paraTransIntel = dailyNote.transformerInfo
-                    VStack(alignment: .leading) {
-                        HStack(spacing: 4) {
-                            dailyNote.game.giTransformerAssetIcon
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: iconFrame - 6, height: iconFrame - 6)
-                            HStack(alignment: .lastTextBaseline, spacing: 0) {
-                                // Time
-                                if !paraTransIntel.isAvailable {
-                                    if paraTransIntel.remainingDays > 0 {
-                                        HStack(alignment: .lastTextBaseline, spacing: 4) {
-                                            Text(verbatim: "\(paraTransIntel.remainingDays)")
-                                                .font(.title)
-                                            Text(verbatim: "app.dailynote.card.unit.days".i18nPZHelper)
-                                                .font(.caption)
-                                                .fontWidth(.compressed)
-                                        }
-                                    } else {
-                                        let recoveryTime = paraTransIntel.recoveryTime
-                                        let nestedString = """
-                                        \(dateFormatter.string(from: recoveryTime))
-                                        \(
-                                            dateComponentsFormatter
-                                                .string(from: TimeInterval.sinceNow(to: recoveryTime))!
-                                        )
-                                        """
-                                        Text(verbatim: nestedString)
-                                            .multilineTextAlignment(.trailing)
-                                            .font(.caption2)
-                                            .fontWidth(.compressed)
-                                    }
-                                } else {
-                                    Image(systemSymbol: .checkmarkCircle)
-                                        .foregroundColor(.green)
-                                        .frame(width: 20, height: 20)
-                                }
-                            }
-                        }
-                    }
-                    .help(Text("app.dailynote.card.parametricTransformer.label".i18nPZHelper))
-                    .padding(.horizontal, 6)
-                    .blurMaterialBackground(
-                        shape: RoundedRectangle(cornerRadius: 6, style: .continuous)
-                    )
-                }
-            }
-        }.help("app.dailynote.card.dailyTask.label".i18nPZHelper)
-    }
-
-    @ViewBuilder
-    func drawRealmCurrencyStatus() -> some View {
-        VStack(alignment: .leading) {
-            let homeCoin = dailyNote.homeCoinInfo
-            HStack(spacing: 10) {
-                dailyNote.game.giRealmCurrencyAssetIcon
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
-                    .frame(width: iconFrame, height: iconFrame)
-                HStack(alignment: .lastTextBaseline, spacing: 0) {
-                    Text(verbatim: "\(homeCoin.currentHomeCoin)")
-                        .font(.title)
-                    Text(verbatim: " / \(homeCoin.maxHomeCoin)")
-                        .font(.caption)
-                    Spacer()
-                    if homeCoin.fullTime > Date() {
-                        let fullyChargedTime = homeCoin.fullTime
-                        let nestedString = """
-                        \(dateComponentsFormatter.string(from: TimeInterval.sinceNow(to: fullyChargedTime))!)
-                        \(dateFormatter.string(from: fullyChargedTime))
-                        """
-                        Text(verbatim: nestedString)
-                            .multilineTextAlignment(.trailing)
-                            .font(.caption2)
-                            .fontWidth(.compressed)
-                    }
-                }
-            }
-        }.help("app.dailynote.card.homeCoin.label".i18nPZHelper)
-    }
-
-    @ViewBuilder
-    func drawExpeditions() -> some View {
-        VStack(alignment: .leading) {
-            let expeditionIntel = dailyNote.expeditionCompletionStatus
-            HStack(alignment: .center, spacing: 0) {
-                dailyNote.game.expeditionAssetIcon
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
-                    .frame(width: iconFrame, height: iconFrame)
-                    .padding(.trailing, 10)
-                HStack(alignment: .lastTextBaseline, spacing: 0) {
-                    Text(verbatim: "\(expeditionIntel.finished)")
-                        .font(.title)
-                    Text(verbatim: " / \(expeditionIntel.all)")
-                        .font(.caption)
-                    Spacer(minLength: 0)
-                }
-                HStack(alignment: .bottom, spacing: 0) {
-                    ForEach(dailyNote.expeditionTasks, id: \.iconURL) { expedition in
-                        let image = getPilotImage(expedition.iconURL) ?? Image(systemSymbol: .person)
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .background {
-                                if expedition.isFinished {
-                                    Color.green.opacity(0.75).clipShape(Circle())
-                                } else {
-                                    Color.gray.opacity(0.5).clipShape(Circle())
-                                }
-                            }
-                            .frame(width: 30, height: 30)
-                    }
-                }
-            }
-        }.help("app.dailynote.card.expedition.label".i18nPZHelper)
-    }
-
-    // MARK: Private
-
-    @State private var pilotAssetMap: [URL: SendableImagePtr]?
-
-    private let dailyNote: any Note4GI
-    private let iconFrame: CGFloat = 40
-
-    private func getPilotImage(_ url: URL?) -> Image? {
-        guard let url else { return nil }
-        return pilotAssetMap?[url]?.img
-    }
-}
-
-// MARK: - DailyNoteCardView4SOWM
-
-@available(iOS 17.0, macCatalyst 17.0, *)
-private struct DailyNoteCardView4SOWM: View, ExpeditionViewSuppliable {
+private struct DailyNoteCardView4GI: View, ExpeditionViewSuppliable {
     // MARK: Lifecycle
 
     public init(note dailyNote: any Note4GI) {
@@ -422,7 +140,7 @@ private struct DailyNoteCardView4SOWM: View, ExpeditionViewSuppliable {
 
     public var body: some View {
         drawStaminaBlock()
-        drawSOWMMiscComponents()
+        drawGIMiscComponents()
         drawExpeditionTasks()
             .task {
                 pilotAssetMap = await dailyNote.getExpeditionAssetMap()
@@ -467,7 +185,7 @@ private struct DailyNoteCardView4SOWM: View, ExpeditionViewSuppliable {
     }
 
     @ViewBuilder
-    func drawSOWMMiscComponents() -> some View {
+    func drawGIMiscComponents() -> some View {
         // Daily Task.
         do {
             let iconFrame: CGFloat = 24
