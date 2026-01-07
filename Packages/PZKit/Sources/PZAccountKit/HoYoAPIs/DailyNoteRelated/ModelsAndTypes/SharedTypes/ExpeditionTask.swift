@@ -27,6 +27,27 @@ extension ExpeditionTask {
         default: return nil
         }
     }
+
+    public var timeRemainingText: String? {
+        guard let finishTime = timeOnFinish else { return nil }
+        guard !isFinished else { return nil }
+        let rawRemaining = TimeInterval.sinceNow(to: finishTime)
+        let timeRemaining = DailyNoteSafeMath.nonNegativeInterval(rawRemaining)
+        return HoYo.formattedInterval(for: timeRemaining)
+    }
+
+    public var percOfCompletion: Double? {
+        guard let finishTime = timeOnFinish else { return nil }
+        guard !isFinished else { return 1 }
+        let totalSecond = 20.0 * 60.0 * 60.0
+        let rawRemaining = TimeInterval.sinceNow(to: finishTime)
+        let timeRemaining = DailyNoteSafeMath.nonNegativeInterval(rawRemaining)
+        let cappedRemaining = Swift.min(timeRemaining, totalSecond)
+        let percentage = (totalSecond - cappedRemaining) > 0
+            ? (totalSecond - cappedRemaining) / totalSecond
+            : 0.0
+        return DailyNoteSafeMath.clamp(percentage, to: 0 ... 1)
+    }
 }
 
 extension [ExpeditionTask] {
