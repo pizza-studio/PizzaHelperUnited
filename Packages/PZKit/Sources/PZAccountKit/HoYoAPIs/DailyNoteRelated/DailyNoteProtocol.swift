@@ -271,8 +271,8 @@ extension DailyNoteProtocol {
         guard let simulatedUniverseIntel else { return nil }
         let currencyWarsInfo = currencyWarsIntel
         let currencyWarsCompleted = currencyWarsInfo?.currentScore ?? 0
-        // 先默认官方会一直用 16000 当上限分。
-        let currencyWarsMaxVal = currencyWarsInfo?.maxScore ?? 16000
+        // 先默认官方会一直用 18000 当上限分。
+        let currencyWarsMaxVal = currencyWarsInfo?.maxScore ?? 18000
         let maxSummed = currencyWarsMaxVal + simulatedUniverseIntel.maxScore
         let currSummed = currencyWarsCompleted + simulatedUniverseIntel.currentScore
         return FieldCompletionIntel<Int>(
