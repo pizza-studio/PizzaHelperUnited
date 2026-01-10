@@ -31,6 +31,7 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
     case trounceBlossom = "icon.trounceBlossom"
     case echoOfWar = "icon.echoOfWar"
     case cosmicStrife = "icon.cosmicStrife"
+    case simulatedUniverse = "icon.simulatedUniverse"
     case zzzVHSStore = "icon.zzzVHSStore"
     case zzzVHSStoreInOperation = "icon.zzzVHSStore.inOperation"
     case zzzVHSStoreSleeping = "icon.zzzVHSStore.sleeping"
@@ -56,7 +57,8 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
         case .homeCoin: .dollarsignCircle
         case .trounceBlossom: .leaf
         case .echoOfWar: .headphones
-        case .cosmicStrife: .pc
+        case .cosmicStrife: .globeBadgeChevronBackward
+        case .simulatedUniverse: .pc
         case .zzzVHSStore: .film
         case .zzzVHSStoreInOperation: .clockBadge
         case .zzzVHSStoreSleeping: .bedDoubleCircle
@@ -435,6 +437,14 @@ extension Pizza.SupportedGame {
 
     @MainActor public var hsrCosmicStrifeSVGAsInlineText: Text {
         SVGIconAsset.cosmicStrife.inlineText()
+    }
+
+    @MainActor public var hsrSimulatedUniverseAssetSVG: Image {
+        SVGIconAsset.simulatedUniverse.resolvedImage()
+    }
+
+    @MainActor public var hsrSimulatedUniverseSVGAsInlineText: Text {
+        SVGIconAsset.simulatedUniverse.inlineText()
     }
 
     @MainActor public var zzzVHSStoreAssetSVG: Image {

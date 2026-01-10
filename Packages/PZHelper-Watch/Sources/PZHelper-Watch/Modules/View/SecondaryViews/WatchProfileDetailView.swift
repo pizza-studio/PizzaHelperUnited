@@ -132,7 +132,7 @@ struct WatchProfileDetailView: View {
             WatchProfileDetailItemView(
                 title: "watch.dailyNote.card.simulatedUniverse.label",
                 value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",
-                icon: data.game.hsrCosmicStrifeAssetIcon
+                icon: data.game.hsrSimulatedUniverseAssetIcon
             )
         }
         Divider()

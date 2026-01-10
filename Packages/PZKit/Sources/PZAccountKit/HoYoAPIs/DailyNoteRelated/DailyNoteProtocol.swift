@@ -368,6 +368,10 @@ extension Pizza.SupportedGame {
         AccountKit.imageAsset("hsr_note_weeklyBosses")
     }
 
+    public var hsrSimulatedUniverseAssetIcon: Image {
+        AccountKit.imageAsset("hsr_note_simulatedUniverse")
+    }
+
     public var hsrCosmicStrifeAssetIcon: Image {
         AccountKit.imageAsset("hsr_note_cosmicStrife")
     }

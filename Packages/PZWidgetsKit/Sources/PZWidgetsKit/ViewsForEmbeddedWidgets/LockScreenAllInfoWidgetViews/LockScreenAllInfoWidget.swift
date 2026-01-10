@@ -206,7 +206,8 @@ extension EmbeddedWidgets {
                             )
                     }
                 case let data as any Note4HSR:
-                    // Simulated Universe
+                    // Simulated Universe or Cosmic Strife
+                    let isCosmicStrife = data.cosmicStrifeIntel != nil
                     Label {
                         let ratio: Double = {
                             var currentScore = data.simulatedUniverseInfo.currentScore
@@ -221,13 +222,19 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } icon: {
-                        data.game.hsrCosmicStrifeSVGAsInlineText
-                            .minimumScaleFactor(0.2)
-                            .frame(maxWidth: 18, maxHeight: 18)
-                            .widgetAccentable(isFullColor)
-                            .foregroundColor(
-                                isFullColor ? PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor : nil
-                            )
+                        Group {
+                            if isCosmicStrife {
+                                data.game.hsrCosmicStrifeSVGAsInlineText
+                            } else {
+                                data.game.hsrSimulatedUniverseSVGAsInlineText
+                            }
+                        }
+                        .minimumScaleFactor(0.2)
+                        .frame(maxWidth: 18, maxHeight: 18)
+                        .widgetAccentable(isFullColor)
+                        .foregroundColor(
+                            isFullColor ? PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor : nil
+                        )
                     }
                 case let data as Note4ZZZ:
                     // VHS Store.

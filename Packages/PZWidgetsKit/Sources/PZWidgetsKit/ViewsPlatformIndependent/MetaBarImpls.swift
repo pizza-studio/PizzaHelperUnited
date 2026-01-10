@@ -347,7 +347,11 @@ public struct MetaBar4HSRCosmicStrife: View, MetaBar {
     public let note: any DailyNoteProtocol
 
     public var labelIcon4SUI: Image {
-        (note as? (any Note4HSR))?.game.hsrCosmicStrifeAssetIcon ?? Image(systemName: "questionmark")
+        if note.cosmicStrifeIntel != nil {
+            return note.game.hsrCosmicStrifeAssetIcon
+        }
+        let result = (note as? (any Note4HSR))?.game.hsrSimulatedUniverseAssetIcon
+        return result ?? Image(systemName: "questionmark")
     }
 
     public var statusIcon4SUI: Image {
