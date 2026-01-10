@@ -483,7 +483,7 @@ private struct DailyNoteCardView4HSR: View, ExpeditionViewSuppliable {
             .help("app.dailynote.card.cosmic_strife.label".i18nPZHelper)
         } else {
             HStack {
-                dailyNote.game.hsrCosmicStrifeAssetIcon
+                dailyNote.game.hsrSimulatedUniverseAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(height: iconFrame)
