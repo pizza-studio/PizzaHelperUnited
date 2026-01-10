@@ -38,6 +38,7 @@ extension PZHelper {
                                         isEOLNoticeDisplayed = false
                                     }
                                 }
+                                .interactiveDismissDisabled()
                             }
                     } else {
                         ContentView4iOS14()
