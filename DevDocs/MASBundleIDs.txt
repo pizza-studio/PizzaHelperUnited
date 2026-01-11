@@ -1,4 +1,13 @@
-// 本文只是用来备忘一些在 MAS 版披萨小助手（也就是一开始的原神披萨助手）所用的 BundleID 资料。
+// 拿铁小助手的 Bundle ID 备忘。
+
+Main App: org.pizzastudio.TheLatteHelper
+Widget Extension (Main App): org.pizzastudio.TheLatteHelper.StaminaWidgetExtension
+Watch App: org.pizzastudio.TheLatteHelper.WatchApp
+Widget Extension (Watch App): org.pizzastudio.TheLatteHelper.WatchApp.watchkitextension
+INIntents: org.pizzastudio.TheLatteHelper.INIntents4iOS16
+
+============================
+// 下文只是用来备忘一些在 MAS 版披萨小助手（也就是一开始的原神披萨助手）所用的 BundleID 资料。
 // 虽然更新过的版本会是使用统一披萨引擎的统一披萨助手，但相关的 BundleID 资讯不能变动（因为是对原神披萨助手的原位升级顶替）。
 
 Canglong.GenshinPizzaHepler.WatchApp.WatchWidgetExtension
@@ -12,7 +21,7 @@ iCloud.com.Canglong.GenshinPizzaHepler
 group.GenshinPizzaHelper
 
 =============
-The following one equals to:
+The following one (for Genshin Pizza Helper only) equals to:
 '~/Library/Group Containers/group.GenshinPizzaHelper/AccountConfiguration.splite'
 ---------------------
 let containerURL = FileManager.default
