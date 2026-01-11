@@ -245,6 +245,7 @@ private struct DailyNoteCardView4GI: View, ExpeditionViewSuppliable {
                     """
                     Text(verbatim: nestedString)
                         .multilineTextAlignment(.trailing)
+                        .font(.caption2)
                 } else {
                     Text(verbatim: "app.dailynote.card.homeCoin.label".i18nPZHelper)
                     Spacer()
