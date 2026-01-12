@@ -522,7 +522,7 @@
       }
     },
     "pzWidgetsKit.cfgName.homeCoin" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

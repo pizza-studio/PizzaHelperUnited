@@ -467,6 +467,28 @@
         }
       }
     },
+    "settings.display.showCase.useAlternativeCharacterNames" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show characters’ alternative names instead"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.useAlternativeCharacterNames.explain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These alternative names are not endorsed by miHoYo. This option is turned off by default."
+          }
+        }
+      }
+    },
     "settings.display.showCase.useGenshinStyleCharacterPhotos" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -485,17 +507,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Use Namecard backgrounds for Genshin Characters’ ShowCase Build panels"
-          }
-        }
-      }
-    },
-    "settings.display.showCase.useRealCharacterNames" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show characters’ real names instead"
           }
         }
       }

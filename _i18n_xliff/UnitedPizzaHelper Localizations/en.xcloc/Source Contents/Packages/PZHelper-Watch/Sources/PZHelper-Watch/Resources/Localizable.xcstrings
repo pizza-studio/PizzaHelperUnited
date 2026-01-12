@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "watch.dailyNote.card.cosmicStrife.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cosmic Strife"
+          }
+        }
+      }
+    },
     "watch.dailyNote.card.dailyTask.label" : {
       "localizations" : {
         "en" : {

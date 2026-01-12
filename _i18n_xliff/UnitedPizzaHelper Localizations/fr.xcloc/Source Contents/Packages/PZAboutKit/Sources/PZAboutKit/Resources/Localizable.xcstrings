@@ -31,17 +31,6 @@
         }
       }
     },
-    "aboutKit.aboutView.navTitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "About The Pizza Helper"
-          }
-        }
-      }
-    },
     "aboutKit.aboutView.navTitle.app" : {
       "localizations" : {
         "en" : {
@@ -58,6 +47,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "About the Crew"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.navTitle.LatteHelper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About The Latte Helper"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.navTitle.pzHelper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About The Pizza Helper"
           }
         }
       }
@@ -401,7 +412,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Engine Architect & Dev, The Pizza Helper (v5)\n- Maintainer, Pizza Helper for HSR\n- Maintainer, Pizza Helper for Genshin (v3-v4)"
+            "value" : "- Engine Architect & Dev, The Pizza Helper / The Latte Helper (v5)\n- Maintainer, Pizza Helper for HSR\n- Maintainer, Pizza Helper for Genshin (v3-v4)"
           }
         }
       }
@@ -626,6 +637,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Update"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.LatteHelper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Latte Helper"
           }
         }
       }

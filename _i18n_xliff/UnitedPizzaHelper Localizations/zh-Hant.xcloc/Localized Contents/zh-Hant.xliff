@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="INIntents4iOS16/en.lproj/PZProfileIntentBackports.strings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="appEntity_localProfile" xml:space="preserve">
@@ -237,9 +237,28 @@
       </trans-unit>
     </body>
   </file>
+  <file original="INIntents4iOS16/Info-INIntent-Latte-InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>INIntents4iOS16</source>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>INIntents4iOS16Latte</source>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
+        <source/>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+    </body>
+  </file>
   <file original="INIntents4iOS16/InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -258,7 +277,7 @@
   </file>
   <file original="INIntents4iOS16/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
@@ -277,7 +296,7 @@
   </file>
   <file original="Packages/EnkaKit/Sources/EnkaKit/Resources/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="enka.ASCV.scrollingGuide.appKit" xml:space="preserve">
@@ -504,6 +523,16 @@ Tap anywhere to dismiss.</source>
         <target state="translated">角色面板與展櫃</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.display.showCase.useAlternativeCharacterNames" xml:space="preserve">
+        <source>Show characters’ alternative names instead</source>
+        <target state="translated">顯示部分角色的備用姓名</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.showCase.useAlternativeCharacterNames.explain" xml:space="preserve">
+        <source>These alternative names are not endorsed by miHoYo. This option is turned off by default.</source>
+        <target state="translated">這些替代名稱並未獲得米哈遊的背書。此選項預設關閉。</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.display.showCase.useGenshinStyleCharacterPhotos" xml:space="preserve">
         <source>Use Genshin-style character photos for Star Rail characters</source>
         <target state="translated">對星穹鐵道角色啟用原神風格的證件照</target>
@@ -512,11 +541,6 @@ Tap anywhere to dismiss.</source>
       <trans-unit id="settings.display.showCase.useNameCardBGWithGICharacters" xml:space="preserve">
         <source>Use Namecard backgrounds for Genshin Characters’ ShowCase Build panels</source>
         <target state="translated">為原神角色的面板啟用名片背景</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.display.showCase.useRealCharacterNames" xml:space="preserve">
-        <source>Show characters’ real names instead</source>
-        <target state="translated">顯示部分角色的真實姓名</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.showCase.useTotemWithGenshinIDPhotos" xml:space="preserve">
@@ -528,7 +552,7 @@ Tap anywhere to dismiss.</source>
   </file>
   <file original="Packages/GachaKit/Sources/GachaKit/Resources/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="gachaKit.EntryException.timeRawValueNotParsable" xml:space="preserve">
@@ -1306,7 +1330,7 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
   </file>
   <file original="Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="todayMaterialsKit.character.short" xml:space="preserve">
@@ -1348,7 +1372,7 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
   </file>
   <file original="Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/MaterialNames.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="asset.dailyMaterial:talentAdmonition" xml:space="preserve">
@@ -1565,7 +1589,7 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
   </file>
   <file original="Packages/PZAboutKit/Sources/PZAboutKit/Resources/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="aboutKit.3rdParty.headline" xml:space="preserve">
@@ -1593,9 +1617,9 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
         <target state="translated">隱私政策</target>
         <note/>
       </trans-unit>
-      <trans-unit id="aboutKit.aboutView.navTitle" xml:space="preserve">
-        <source>About The Pizza Helper</source>
-        <target state="translated">關於披薩小助手</target>
+      <trans-unit id="aboutKit.aboutView.navTitle.LatteHelper" xml:space="preserve">
+        <source>About The Latte Helper</source>
+        <target state="translated">關於拿鐵小助手</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.aboutView.navTitle.app" xml:space="preserve">
@@ -1606,6 +1630,11 @@ Note: Even when "High confidence" comes out, the final interpretation rights sti
       <trans-unit id="aboutKit.aboutView.navTitle.crew" xml:space="preserve">
         <source>About the Crew</source>
         <target state="translated">關於開發者</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="aboutKit.aboutView.navTitle.pzHelper" xml:space="preserve">
+        <source>About The Pizza Helper</source>
+        <target state="translated">關於披薩小助手</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.aboutView.tab.app" xml:space="preserve">
@@ -1781,10 +1810,10 @@ App 圖示繪師 (統一披薩小助手 v5.0)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsMainCrew.shikisuen" xml:space="preserve">
-        <source>- Engine Architect &amp; Dev, The Pizza Helper (v5)
+        <source>- Engine Architect &amp; Dev, The Pizza Helper / The Latte Helper (v5)
 - Maintainer, Pizza Helper for HSR
 - Maintainer, Pizza Helper for Genshin (v3-v4)</source>
-        <target state="translated">- 引擎架構師＆程式師（統一披薩小助手 v5）
+        <target state="translated">- 引擎架構師＆程式師（統一披薩小助手/拿鐵小助手 v5）
 - 參與維護（原神披薩小助手 v3-v4）
 - 參與維護（星鐵披薩小助手）</target>
         <note/>
@@ -1882,6 +1911,11 @@ App 圖示繪師 (統一披薩小助手 v5.0)</target>
       <trans-unit id="aboutKit.eula.title" xml:space="preserve">
         <source>EULA &amp; User Policy</source>
         <target state="translated">使用者授權合約</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="aboutKit.ourApps.LatteHelper" xml:space="preserve">
+        <source>The Latte Helper</source>
+        <target state="translated">拿鐵小助手</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.ourApps.clickHereToUpdate" xml:space="preserve">
@@ -2005,9 +2039,14 @@ App 圖示繪師 (統一披薩小助手 v5.0)</target>
   </file>
   <file original="Packages/PZHelper-Watch/Sources/PZHelper-Watch/Resources/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
+      <trans-unit id="watch.dailyNote.card.cosmicStrife.label" xml:space="preserve">
+        <source>Cosmic Strife</source>
+        <target state="translated">曠宇紛爭</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="watch.dailyNote.card.dailyTask.label" xml:space="preserve">
         <source>Daily Commission</source>
         <target state="translated">每日委託</target>
@@ -2128,7 +2167,7 @@ App 圖示繪師 (統一披薩小助手 v5.0)</target>
   </file>
   <file original="Packages/PZHelper/Sources/PZHelper/Resources/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="Error: %@" xml:space="preserve">
@@ -2136,9 +2175,9 @@ App 圖示繪師 (統一披薩小助手 v5.0)</target>
         <target state="translated">錯誤: %@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="app.appName.full" xml:space="preserve">
-        <source>The Pizza Helper</source>
-        <target state="translated">披薩小助手</target>
+      <trans-unit id="app.dailynote.card.cosmic_strife.label" xml:space="preserve">
+        <source>Cosmic Strife</source>
+        <target state="translated">曠宇紛爭</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.dailynote.card.dailyTask.extraReward.notReceived" xml:space="preserve">
@@ -2180,6 +2219,11 @@ Retrieved</source>
         <target state="translated">探索派遣</target>
         <note/>
       </trans-unit>
+      <trans-unit id="app.dailynote.card.giTrounceBlossom.label" xml:space="preserve">
+        <source>Trounce Blossom</source>
+        <target state="translated">征討之花</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="app.dailynote.card.homeCoin.label" xml:space="preserve">
         <source>Realm Currency</source>
         <target state="translated">洞天寶錢</target>
@@ -2214,11 +2258,6 @@ Retrieved</source>
         <source>d</source>
         <target state="translated">天</target>
         <note>Only one or two characters are allowed.</note>
-      </trans-unit>
-      <trans-unit id="app.dailynote.card.weeklyBoss" xml:space="preserve">
-        <source>Trounce Blossom</source>
-        <target state="translated">征討之花</target>
-        <note/>
       </trans-unit>
       <trans-unit id="app.dailynote.card.zzzBatteryEnergy.label" xml:space="preserve">
         <source>ZZZ Energy</source>
@@ -2669,6 +2708,16 @@ The above link, if directly clicked, will automatically apply the user-agent of 
         <target state="translated">該頁面乃應 App Store 審委會之要求而實作。</target>
         <note/>
       </trans-unit>
+      <trans-unit id="pzHelper.refugeeSheet.dismiss" xml:space="preserve">
+        <source>Dismiss</source>
+        <target state="translated">關閉</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.crossAppMigrationNotice.headerText" xml:space="preserve">
+        <source>Please scroll to the bottom of this page to read the important message and the cross-app migration instructions.</source>
+        <target state="translated">請捲動到此頁面底部閱讀重要訊息和跨應用遷移說明。</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="refugee.export.failedInSavingToFile" xml:space="preserve">
         <source>Failed from dumping the Old Pizza Refugee Data file.</source>
         <target state="translated">舊披薩難民資料匯出失敗。</target>
@@ -2685,8 +2734,13 @@ The above link, if directly clicked, will automatically apply the user-agent of 
         <note/>
       </trans-unit>
       <trans-unit id="refugee.exportableCount.gachaEntries" xml:space="preserve">
-        <source>Wish Record Entries</source>
-        <target state="translated">祈願記錄筆數</target>
+        <source>Gacha Record Entries (new format)</source>
+        <target state="translated">抽卡記錄筆數 (新格式)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.exportableCount.gachaEntries4GI" xml:space="preserve">
+        <source>Wish Record Entries (v4 format)</source>
+        <target state="translated">祈願記錄筆數 (v4 格式)</target>
         <note/>
       </trans-unit>
       <trans-unit id="refugee.exportableCount.header" xml:space="preserve">
@@ -2729,6 +2783,19 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
 《披薩小助手》v5 無法冒資料遺失風險將 SwiftData 降級至 CoreData，因此無法再為低於 OS24 系統的使用者提供服務。FOSS（自由及開源軟體）從來不代表無限可用性與無限責任，敬請受影響使用者見諒。</target>
         <note/>
       </trans-unit>
+      <trans-unit id="refugee.footer.whyServiceTerminatedInPublic" xml:space="preserve">
+        <source>Due to private concerns by Lava (the original lead developer of *PizzaHelper4Genshin* v1.x ~ v4.x and *PizzaHelper4HSR* v1.x), this app becomes inconvenient to release regular updates as long as it is released under his Apple Developer account. Furthermore, because the macOS version utilizes Sandbox Group Containers (to share data with its own Desktop Widgets), the current Bundle ID is potentially ineligible for transfer to a different Apple Developer account.
+
+As a result, all features of the app under this Bundle ID should be considered out-of-maintenance. The sole remaining functionalities are: 1) Widgets and Notifications, provided as-is; 2) The ability to export local profiles and gacha records (supporting both the current format and the legacy PizzaHelper4Genshin v4.x format). These will be included in your exported migration file.
+
+The successor to this app will be available on the App Store under the new name ***The Latte Helper (拿鐵小助手 / ラテ助手)***. It will be operated under another team member's Apple Developer account. The new naming is a nod to Himeko’s infamous detergent incident, where she mistakenly brewed her latte with laundry powder rather than milk powder.</source>
+        <target state="translated">由於 Lava（*PizzaHelper4Genshin* v1.x～v4.x 以及 *PizzaHelper4HSR* v1.x 的原主要開發者）私人考量，在其 Apple Developer 帳戶下發佈的敝應用今後恐不便定期發佈更新。此外，由於 macOS 版本使用了 Sandbox Group Containers（用來與自家桌面小工具共享資料），當前 Bundle ID 可能無法轉移至其他 Apple Developer 帳戶。
+
+因此，該 Bundle ID 下的本應用的所有功能應視為已停止維護。唯一保留的功能為：1) 小工具與通知，按原樣提供；2) 匯出本機帳號與抽卡記錄（支援當前格式以及舊版 PizzaHelper4Genshin v4.x 格式）的能力。這些內容將包含在您匯出的遷移檔案中。
+
+本應用的繼任者將在 App Store 上以新名稱 ***The Latte Helper (拿鐵小助手 / ラテ助手)*** 上架。它將由另一位團隊成員的 Apple Developer 帳戶營運。新名稱致敬姬子那次著名的洗衣粉事件——她錯把洗衣粉當奶粉沖進了拿鐵。</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="refugee.limitedServiceCategory4iOS16.footer" xml:space="preserve">
         <source>Only widgets are available for iOS 16.2 &amp; macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Locale Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14.</source>
         <target state="translated">iOS 16.2 和 macOS 13 僅支援小工具。其他功能仍需 iOS 17 / macOS 14 或更高版本。若你在本機帳號管理器中遇到與翻頁巡覽有關的異常的話，這是 iOS 16 / macOS 13 的 SwiftUI 相關 bug 所致，唯一解法是升級到 iOS 17 / macOS 14。</target>
@@ -2739,6 +2806,21 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
         <target state="translated">iOS 16 和 macOS 13 用戶可用的剩餘服務：</target>
         <note/>
       </trans-unit>
+      <trans-unit id="refugee.limitedServiceCategory4iOS17.footer" xml:space="preserve">
+        <source>Only Widgets and Notifications are provided as-is.</source>
+        <target state="translated">僅小工具和通知按原樣提供。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.limitedServiceCategory4iOS17.header" xml:space="preserve">
+        <source>Remained Services for iOS 17+ &amp; macOS 14+ Users:</source>
+        <target state="translated">iOS 17+ 和 macOS 14+ 用戶可用的剩餘服務：</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.link.getTheLatteHelper" xml:space="preserve">
+        <source>Tap here to get The Latte Helper at App Store</source>
+        <target state="translated">點此前往《拿鐵小助手》的 App Store 頁面</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="refugee.liveActivity.featureLabel" xml:space="preserve">
         <source>Stamina Timer</source>
         <target state="translated">體力計時器</target>
@@ -2747,6 +2829,11 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
       <trans-unit id="refugee.liveActivity.tapHereToInitiate" xml:space="preserve">
         <source>Tap to Initiate</source>
         <target state="translated">點按啟動</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.navTitle.noticingEndOfMaintenance" xml:space="preserve">
+        <source>End-of-Maintenance</source>
+        <target state="translated">維護終止通知</target>
         <note/>
       </trans-unit>
       <trans-unit id="refugee.noDataExportable" xml:space="preserve">
@@ -2904,6 +2991,31 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
         <target state="translated">通知期日</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.notification.hsrCosmicStrife.datePicker" xml:space="preserve">
+        <source>Notify when</source>
+        <target state="translated">通知時刻</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.notification.hsrCosmicStrife.footer" xml:space="preserve">
+        <source>* Star Rail only. The result sums Currency Wars and Simulated Universe together.</source>
+        <target state="translated">※ 星穹鐵道限定。結果會將模擬宇宙與貨幣戰爭合併計算。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.notification.hsrCosmicStrife.header" xml:space="preserve">
+        <source>Cosmic Strife Completion Progress</source>
+        <target state="translated">曠宇紛爭完成度提醒</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.notification.hsrCosmicStrife.toggle" xml:space="preserve">
+        <source>Notify me</source>
+        <target state="translated">啟用該通知</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.notification.hsrCosmicStrife.weekdayPicker" xml:space="preserve">
+        <source>Notify on</source>
+        <target state="translated">通知期日</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.notification.hsrEchoOfWar.datePicker" xml:space="preserve">
         <source>Notify when</source>
         <target state="translated">通知時刻</target>
@@ -2925,31 +3037,6 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.hsrEchoOfWar.weekdayPicker" xml:space="preserve">
-        <source>Notify on</source>
-        <target state="translated">通知期日</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.notification.hsrSimulatedUniverse.datePicker" xml:space="preserve">
-        <source>Notify when</source>
-        <target state="translated">通知時刻</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.notification.hsrSimulatedUniverse.footer" xml:space="preserve">
-        <source>* Star Rail only.</source>
-        <target state="translated">※ 星穹鐵道限定。</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.notification.hsrSimulatedUniverse.header" xml:space="preserve">
-        <source>Simulated Universe Completion Progress</source>
-        <target state="translated">模擬宇宙完成度提醒</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.notification.hsrSimulatedUniverse.toggle" xml:space="preserve">
-        <source>Notify me</source>
-        <target state="translated">啟用該通知</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.notification.hsrSimulatedUniverse.weekdayPicker" xml:space="preserve">
         <source>Notify on</source>
         <target state="translated">通知期日</target>
         <note/>
@@ -3050,8 +3137,8 @@ The Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, 
         <note/>
       </trans-unit>
       <trans-unit id="settings.privacy.noOptionsAvailable" xml:space="preserve">
-        <source>There’s no privacy options available since the removal of certain features. This app now collects nothing.</source>
-        <target state="translated">某些功能被移除了，所以目前沒有可用的隱私權選項。此應用程式現在不收集任何內容。</target>
+        <source>There’s no privacy options available since the removal of certain features. This app now collects nothing. Previously collected Spiral Abyss battle report data are all destroyed in Fall 2025.</source>
+        <target state="translated">某些功能被移除了，所以目前沒有可用的隱私權選項。此應用程式現在不收集任何內容。以前收集的深境螺旋個人戰報資料已在2025年秋季全部銷毀。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.privacy.title" xml:space="preserve">
@@ -3293,7 +3380,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZHoYoLabKit/Sources/PZHoYoLabKit/Resources/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="hylKit.battleReport.floor.1stHalf" xml:space="preserve">
@@ -3685,7 +3772,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZInGameEventKit/Sources/PZInGameEventKit/Resources/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="igev.gameEvents.daysLeft:%lld" xml:space="preserve">
@@ -3717,7 +3804,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZAccountKit/Resources/HoYoLangNames.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="hoyo.lang.chs" xml:space="preserve">
@@ -3799,7 +3886,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZAccountKit/Resources/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="MiHoYoAPIError.countryRegionRestriction" xml:space="preserve">
@@ -3860,6 +3947,16 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       <trans-unit id="dailyNote.zzz.vhsState.revenueAvailable" xml:space="preserve">
         <source>Pending Settlement</source>
         <target state="translated">待結算</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="notification.cosmicStrife.body:%@%@%@" xml:space="preserve">
+        <source>The cosmic strife score (incl. Currency Wars and Simulated Universe) for %1$@ is not yet full. The current progress is %2$@/%3$@.</source>
+        <target state="translated">「%1$@」的曠宇紛爭積分（含貨幣戰爭與模擬宇宙）未滿，當前進度為 %2$@/%3$@。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="notification.cosmicStrife.title:%@" xml:space="preserve">
+        <source>Reminder: Cosmic Strife for %@</source>
+        <target state="translated">「%@」曠宇紛爭提醒</target>
         <note/>
       </trans-unit>
       <trans-unit id="notification.dailyTask.body:%@%@%@" xml:space="preserve">
@@ -3935,16 +4032,6 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       <trans-unit id="notification.realmCurrency.title:%@" xml:space="preserve">
         <source>Reminder: Realm Currency for %@</source>
         <target state="translated">「%@」洞天寶錢提醒</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="notification.simulatedUniverse.body:%@%@%@" xml:space="preserve">
-        <source>The simulated universe score for %1$@ is not yet full. The current progress is %2$@/%3$@.</source>
-        <target state="translated">「%1$@」的模擬宇宙積分未滿，當前進度為 %2$@/%3$@。</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="notification.simulatedUniverse.title:%@" xml:space="preserve">
-        <source>Reminder: Simulated Universe for %@</source>
-        <target state="translated">「%@」模擬宇宙提醒</target>
         <note/>
       </trans-unit>
       <trans-unit id="notification.stamina.customize.body.extra:" xml:space="preserve">
@@ -4036,7 +4123,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZBaseKit/Resources/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="app.language.de" xml:space="preserve">
@@ -4124,12 +4211,22 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">繁體中文</target>
         <note/>
       </trans-unit>
-      <trans-unit id="app.title.full" xml:space="preserve">
+      <trans-unit id="app.title.latte.full" xml:space="preserve">
+        <source>The Latte Helper</source>
+        <target state="translated">拿鐵小助手</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="app.title.latte.short" xml:space="preserve">
+        <source>Latte Helper</source>
+        <target state="translated">拿鐵小助手</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="app.title.pizza.full" xml:space="preserve">
         <source>The Pizza Helper</source>
         <target state="translated">披薩小助手</target>
         <note/>
       </trans-unit>
-      <trans-unit id="app.title.short" xml:space="preserve">
+      <trans-unit id="app.title.pizza.short" xml:space="preserve">
         <source>Pizza Helper</source>
         <target state="translated">披薩小助手</target>
         <note/>
@@ -4343,7 +4440,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZWidgetsKit/Sources/PZWidgetsKit/Resources/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="%@" translate="no" xml:space="preserve">
@@ -4627,7 +4724,7 @@ available on Sunday</source>
   </file>
   <file original="Packages/WallpaperKit/Sources/WallpaperConfigKit/Resources/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="imageCropper.hint.fingerGestures" xml:space="preserve">
@@ -4819,7 +4916,7 @@ available on Sunday</source>
   </file>
   <file original="SharedBundles/Settings.bundle/en.lproj/Settings.strings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="Please go to 📱 [Settings] -&gt; [General] -&gt; [Language &amp; Region] and add the language you wish to set as the second language. " xml:space="preserve">
@@ -4855,9 +4952,47 @@ available on Sunday</source>
       </trans-unit>
     </body>
   </file>
+  <file original="TheLatteHelper/InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>Latte Helper</source>
+        <target state="translated">拿鐵小助手</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>The Latte Helper</source>
+        <target state="translated">拿鐵小助手</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
+        <source>(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).</source>
+        <target state="translated">(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).</target>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+      <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
+        <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
+        <target state="translated">該准許令將允許該 App 在使用者要求的時候將生成的圖片檔案（比如 QR Code）寫入到系統內建的照片應用內。</target>
+        <note>Privacy - Photo Library Additions Usage Description</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="TheLatteHelper/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
+    </header>
+    <body>
+      <trans-unit id="_" translate="no" xml:space="preserve">
+        <source>_</source>
+        <note/>
+      </trans-unit>
+    </body>
+  </file>
   <file original="ThePizzaHelper/InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4884,7 +5019,7 @@ available on Sunday</source>
   </file>
   <file original="ThePizzaHelper/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4895,7 +5030,7 @@ available on Sunday</source>
   </file>
   <file original="UnitedPizzaHelperEngine/InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4922,7 +5057,7 @@ available on Sunday</source>
   </file>
   <file original="UnitedPizzaHelperEngine/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4931,9 +5066,47 @@ available on Sunday</source>
       </trans-unit>
     </body>
   </file>
-  <file original="WatchApp/InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
+  <file original="WatchApp/Localization-Watch-Latte/InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>Latte Helper</source>
+        <target state="translated">拿鐵小助手</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>The Latte Helper</source>
+        <target state="translated">拿鐵小助手</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
+        <source>(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).</source>
+        <target state="translated">(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).</target>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+      <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
+        <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
+        <target state="translated">該准許令將允許該 App 在使用者要求的時候將生成的圖片檔案（比如 QR Code）寫入到系統內建的照片應用內。</target>
+        <note>Privacy - Photo Library Additions Usage Description</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="WatchApp/Localization-Watch-Latte/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
+    </header>
+    <body>
+      <trans-unit id="_" translate="no" xml:space="preserve">
+        <source>_</source>
+        <note/>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="WatchApp/Localization-Watch-Pizza/InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4958,9 +5131,9 @@ available on Sunday</source>
       </trans-unit>
     </body>
   </file>
-  <file original="WatchApp/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
+  <file original="WatchApp/Localization-Watch-Pizza/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -4969,9 +5142,28 @@ available on Sunday</source>
       </trans-unit>
     </body>
   </file>
-  <file original="WidgetExtension/InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
+  <file original="WidgetExtension/Info-TheLatteWatchAppExtension-InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>WatchExtension</source>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>TheLatteWatchAppExtension</source>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
+        <source/>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="WidgetExtension/Info-TheLatteWidgetExtension-InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -4979,7 +5171,26 @@ available on Sunday</source>
         <note>Bundle display name</note>
       </trans-unit>
       <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>TheLatteWidgetExtension</source>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
+        <source/>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="WidgetExtension/InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
         <source>WidgetExtension</source>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>ThePizzaWidgetExtension</source>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
@@ -4990,7 +5201,7 @@ available on Sunday</source>
   </file>
   <file original="WidgetExtension/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="%@" translate="no" xml:space="preserve">
@@ -5416,7 +5627,7 @@ available on Sunday</source>
   </file>
   <file original="WidgetExtension/Resources/InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.2" build-num="17C52"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">

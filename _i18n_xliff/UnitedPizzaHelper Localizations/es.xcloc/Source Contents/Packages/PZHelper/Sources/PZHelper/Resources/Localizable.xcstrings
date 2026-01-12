@@ -1,12 +1,13 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "app.appName.full" : {
+    "app.dailynote.card.cosmic_strife.label" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The Pizza Helper"
+            "value" : "Cosmic Strife"
           }
         }
       }
@@ -88,6 +89,17 @@
         }
       }
     },
+    "app.dailynote.card.giTrounceBlossom.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trounce Blossom"
+          }
+        }
+      }
+    },
     "app.dailynote.card.homeCoin.label" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -163,17 +175,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "d"
-          }
-        }
-      }
-    },
-    "app.dailynote.card.weeklyBoss" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trounce Blossom"
           }
         }
       }
@@ -1121,6 +1122,26 @@
         }
       }
     },
+    "pzHelper.refugeeSheet.dismiss" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dismiss"
+          }
+        }
+      }
+    },
+    "refugee.crossAppMigrationNotice.headerText" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please scroll to the bottom of this page to read the important message and the cross-app migration instructions."
+          }
+        }
+      }
+    },
     "refugee.export.failedInSavingToFile" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1159,7 +1180,17 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wish Record Entries"
+            "value" : "Gacha Record Entries (new format)"
+          }
+        }
+      }
+    },
+    "refugee.exportableCount.gachaEntries4GI" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wish Record Entries (v4 format)"
           }
         }
       }
@@ -1204,6 +1235,16 @@
         }
       }
     },
+    "refugee.footer.whyServiceTerminatedInPublic" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due to private concerns by Lava (the original lead developer of *PizzaHelper4Genshin* v1.x ~ v4.x and *PizzaHelper4HSR* v1.x), this app becomes inconvenient to release regular updates as long as it is released under his Apple Developer account. Furthermore, because the macOS version utilizes Sandbox Group Containers (to share data with its own Desktop Widgets), the current Bundle ID is potentially ineligible for transfer to a different Apple Developer account.\n\nAs a result, all features of the app under this Bundle ID should be considered out-of-maintenance. The sole remaining functionalities are: 1) Widgets and Notifications, provided as-is; 2) The ability to export local profiles and gacha records (supporting both the current format and the legacy PizzaHelper4Genshin v4.x format). These will be included in your exported migration file.\n\nThe successor to this app will be available on the App Store under the new name ***The Latte Helper (拿鐵小助手 / ラテ助手)***. It will be operated under another team member's Apple Developer account. The new naming is a nod to Himeko’s infamous detergent incident, where she mistakenly brewed her latte with laundry powder rather than milk powder."
+          }
+        }
+      }
+    },
     "refugee.limitedServiceCategory4iOS16.footer" : {
       "localizations" : {
         "en" : {
@@ -1224,6 +1265,36 @@
         }
       }
     },
+    "refugee.limitedServiceCategory4iOS17.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only Widgets and Notifications are provided as-is."
+          }
+        }
+      }
+    },
+    "refugee.limitedServiceCategory4iOS17.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remained Services for iOS 17+ & macOS 14+ Users:"
+          }
+        }
+      }
+    },
+    "refugee.link.getTheLatteHelper" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap here to get The Latte Helper at App Store"
+          }
+        }
+      }
+    },
     "refugee.liveActivity.featureLabel" : {
       "localizations" : {
         "en" : {
@@ -1240,6 +1311,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tap to Initiate"
+          }
+        }
+      }
+    },
+    "refugee.navTitle.noticingEndOfMaintenance" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End-of-Maintenance"
           }
         }
       }
@@ -1564,6 +1645,56 @@
         }
       }
     },
+    "settings.notification.hsrCosmicStrife.datePicker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify when"
+          }
+        }
+      }
+    },
+    "settings.notification.hsrCosmicStrife.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "* Star Rail only. The result sums Currency Wars and Simulated Universe together."
+          }
+        }
+      }
+    },
+    "settings.notification.hsrCosmicStrife.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cosmic Strife Completion Progress"
+          }
+        }
+      }
+    },
+    "settings.notification.hsrCosmicStrife.toggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify me"
+          }
+        }
+      }
+    },
+    "settings.notification.hsrCosmicStrife.weekdayPicker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify on"
+          }
+        }
+      }
+    },
     "settings.notification.hsrEchoOfWar.datePicker" : {
       "localizations" : {
         "en" : {
@@ -1605,56 +1736,6 @@
       }
     },
     "settings.notification.hsrEchoOfWar.weekdayPicker" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notify on"
-          }
-        }
-      }
-    },
-    "settings.notification.hsrSimulatedUniverse.datePicker" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notify when"
-          }
-        }
-      }
-    },
-    "settings.notification.hsrSimulatedUniverse.footer" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "* Star Rail only."
-          }
-        }
-      }
-    },
-    "settings.notification.hsrSimulatedUniverse.header" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Simulated Universe Completion Progress"
-          }
-        }
-      }
-    },
-    "settings.notification.hsrSimulatedUniverse.toggle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notify me"
-          }
-        }
-      }
-    },
-    "settings.notification.hsrSimulatedUniverse.weekdayPicker" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1860,7 +1941,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "There’s no privacy options available since the removal of certain features. This app now collects nothing."
+            "value" : "There’s no privacy options available since the removal of certain features. This app now collects nothing. Previously collected Spiral Abyss battle report data are all destroyed in Fall 2025."
           }
         }
       }
