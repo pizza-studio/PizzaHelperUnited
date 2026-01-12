@@ -189,7 +189,29 @@
         }
       }
     },
-    "app.title.full" : {
+    "app.title.latte.full" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Latte Helper"
+          }
+        }
+      }
+    },
+    "app.title.latte.short" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latte Helper"
+          }
+        }
+      }
+    },
+    "app.title.pizza.full" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -200,7 +222,7 @@
         }
       }
     },
-    "app.title.short" : {
+    "app.title.pizza.short" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

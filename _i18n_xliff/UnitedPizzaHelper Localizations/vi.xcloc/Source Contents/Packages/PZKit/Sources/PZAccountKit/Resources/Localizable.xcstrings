@@ -133,6 +133,26 @@
         }
       }
     },
+    "notification.cosmicStrife.body:%@%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The cosmic strife score (incl. Currency Wars and Simulated Universe) for %1$@ is not yet full. The current progress is %2$@/%3$@."
+          }
+        }
+      }
+    },
+    "notification.cosmicStrife.title:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: Cosmic Strife for %@"
+          }
+        }
+      }
+    },
     "notification.dailyTask.body:%@%@%@" : {
       "localizations" : {
         "en" : {
@@ -279,26 +299,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reminder: Realm Currency for %@"
-          }
-        }
-      }
-    },
-    "notification.simulatedUniverse.body:%@%@%@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The simulated universe score for %1$@ is not yet full. The current progress is %2$@/%3$@."
-          }
-        }
-      }
-    },
-    "notification.simulatedUniverse.title:%@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reminder: Simulated Universe for %@"
           }
         }
       }

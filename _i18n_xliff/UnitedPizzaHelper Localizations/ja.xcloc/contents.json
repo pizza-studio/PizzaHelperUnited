@@ -3,10 +3,10 @@
   "project" : "UnitedPizzaHelper.xcodeproj",
   "targetLocale" : "ja",
   "toolInfo" : {
-    "toolBuildNumber" : "17B100",
+    "toolBuildNumber" : "17C52",
     "toolID" : "com.apple.dt.xcode",
     "toolName" : "Xcode",
-    "toolVersion" : "26.1.1"
+    "toolVersion" : "26.2"
   },
   "version" : "1.0"
 }
