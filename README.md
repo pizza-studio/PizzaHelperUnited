@@ -1,8 +1,10 @@
-# The Pizza Helper (powered by the United Pizza Engine)
+# The Latte Helper (powered by the United Pizza Engine)
+
+> `The Pizza Helper` was discontinued due to inconveniencies of releasing regular updates under Lava's Apple Developer account, hence the rebranding to **The Latte Helper**.
 
 ![](./PromotionMaterials/Images/ThePizzaHelper-ui-montage.png)
 
-This is the new repository for **The Pizza Helper** (starting from version 5).
+This is the new repository for **The Latte Helper** (starting from version 5).
 
 * It is rebranded from the previous `Pizza Helper for Genshin (v1 ~ v4)`.
 * It contains all features provided in the `Pizza Helper for HSR`.
@@ -12,13 +14,13 @@ This project uses Swift 6 and targeting iOS 17.4 and later.
 
 > For public documents (e.g., Privacy Policy, EULA, etc.), please check the `EndUserPublicDocs` folder in this repository. The GitHub Wiki of this repository may be outdated in rare circumstances. Public documents are only provided in primary languages (English, Simplified Chinese, Traditional Chinese, and Japanese).
 
-### Regarding Pizza Helper
+### Regarding Pizza Helper / Latte Helper
 
 * It was initially designed as a simple widget app for checking Original Resins and Trailblaze Power.
 * Support for Enka Character Showcase and Gacha Record Management came later.
 * Also the support for Apple Watch.
-* With time, both MiHoYo and HoYoLAB enhanced their own utility features. At this point, Pizza Helper is not meant to be a complete replacement for them, but rather a tool to make things easier to use.
-* Pizza Helper also allows users to manage their gacha records. Their data is stored both locally on their devices and in their private iCloud.
+* With time, both MiHoYo and HoYoLAB enhanced their own utility features. At this point, this app is not meant to be a complete replacement for them, but rather a tool to make things easier to use.
+* This app also allows users to manage their gacha records. Their data is stored both locally on their devices and in their private iCloud.
 
 ### Supported Games
 
@@ -36,11 +38,11 @@ This project may be compilable against earlier iOS releases. However, the compil
 
 ### Installation and Release Notes
 
-For information on installing The Pizza Helper, please refer to the [official iOS / macOS App Store product page](https://apps.apple.com/app/id1635319193).
+For information on installing The Latte Helper, please refer to the [official iOS / macOS App Store product page](https://apps.apple.com/app/id6757201427).
 
 **Note on Android Development:**
 
-We currently do **NOT** develop The Pizza Helper for Android. This decision is due to both technical challenges and the difficulty of cracking down potential counterfeit applications on the Android platform. Counterfeit apps can be malicious, so please exercise caution.
+We currently do **NOT** develop The Latte Helper for Android. This decision is due to both technical challenges and the difficulty of cracking down potential counterfeit applications on the Android platform. Counterfeit apps can be malicious, so please exercise caution.
 
 ### License
 
