@@ -530,7 +530,7 @@ Tap anywhere to dismiss.</source>
       </trans-unit>
       <trans-unit id="settings.display.showCase.useAlternativeCharacterNames.explain" xml:space="preserve">
         <source>These alternative names are not endorsed by miHoYo. This option is turned off by default.</source>
-        <target state="translated">这些替代名称并未得到米哈遊的背书。此选项默认关闭。</target>
+        <target state="translated">这些替代名称并未得到米哈游的背书。此选项默认关闭。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.showCase.useGenshinStyleCharacterPhotos" xml:space="preserve">
