@@ -261,7 +261,13 @@
     "210263" : "Durin – Loderndes Herz",
     "210264" : "Jahoda – Helferin",
     "210265" : "Erlebnispass – Glühender Schnee",
-    "210266" : "Feierlichkeit – Lesen im Traum"
+    "210266" : "Feierlichkeit – Lesen im Traum",
+    "210267" : "Columbina – Eines Tages",
+    "210268" : "Zibai – Verhüllter Ausblick",
+    "210269" : "Illuga – Albtraum-Nachtigal",
+    "210270" : "Errungenschaften – Weitsichtig",
+    "210271" : "Nod-Krai – Laterne der langen Nächte",
+    "210272" : "Erlebnispass – Laternenlicht"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -525,7 +531,13 @@
     "210263" : "Durin: Radiant Heart",
     "210264" : "Jahoda: Helping Hand",
     "210265" : "Travel Notes: Blazing Snow",
-    "210266" : "Celebration: Dream Reader"
+    "210266" : "Celebration: Dream Reader",
+    "210267" : "Columbina: Someday",
+    "210268" : "Zibai: Veiled Vista",
+    "210269" : "Illuga: Nightmare Songbird",
+    "210270" : "Achievement: Far-Sighted",
+    "210271" : "Nod-Krai: Lantern of Longest Night",
+    "210272" : "Travel Notes: Lanternlit Ode"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -789,7 +801,13 @@
     "210263" : "Durin - Corazón resplandeciente",
     "210264" : "Jahoda - Ayudante",
     "210265" : "PB - Nieves ardientes",
-    "210266" : "Celebración - Lectura onírica"
+    "210266" : "Celebración - Lectura onírica",
+    "210267" : "Colombina - Algún día",
+    "210268" : "Zibai - Vista velada",
+    "210269" : "Illuga - Orioles de la Pesadilla",
+    "210270" : "Logro - Visión lejana",
+    "210271" : "Nod Krai - Faro de largas noches",
+    "210272" : "PB - Oda de las linternas"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -1053,7 +1071,13 @@
     "210263" : "Durin - Cœur radieux",
     "210264" : "Jahoda - Aide",
     "210265" : "PB - Givre-flamme",
-    "210266" : "Célébration - Lecture de rêves"
+    "210266" : "Célébration - Lecture de rêves",
+    "210267" : "Columbina - Un jour...",
+    "210268" : "Zibai - Vue voilée",
+    "210269" : "Illuga - Oiseau de cauchemar",
+    "210270" : "Succès - Vue lointaine",
+    "210271" : "Nod-Krai - Longue nuit",
+    "210272" : "PB - Ode sous la lanterne"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1317,7 +1341,13 @@
     "210263" : "Durin: Radiant Heart",
     "210264" : "Jahoda: Helping Hand",
     "210265" : "Catatan Perjalanan: Salju Membara",
-    "210266" : "Perayaan: Pembaca Mimpi"
+    "210266" : "Perayaan: Pembaca Mimpi",
+    "210267" : "Columbina: Someday",
+    "210268" : "Zibai: Veiled Vista",
+    "210269" : "Illuga: Nightmare Songbird",
+    "210270" : "Achievement: Menatap ke Kejauhan",
+    "210271" : "Nod-Krai: Lentera di Malam Terpanjang",
+    "210272" : "Catatan Perjalanan: Di Bawah Lentera"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1581,7 +1611,13 @@
     "210263" : "Durin: Cuore raggiante",
     "210264" : "Jahoda: Una mano amica",
     "210265" : "Appunti di viaggio: Neve ardente",
-    "210266" : "Celebrazione: Lettore di sogni"
+    "210266" : "Celebrazione: Lettore di sogni",
+    "210267" : "Colombina: Un giorno",
+    "210268" : "Zibai: Vista velata",
+    "210269" : "Illuga: Uccello canterino dell'incubo",
+    "210270" : "Obiettivo: Lungimiranza",
+    "210271" : "Nod-Krai: Lanterna della notte più lunga",
+    "210272" : "Appunti di viaggio: Ode illuminata alla lanterna"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1843,9 +1879,15 @@
     "210261" : "ネフェル・秘話",
     "210262" : "紀行・遺跡",
     "210263" : "ドゥリン・輝心",
-    "210264" : "ヤフォダ・助っ人",
+    "210264" : "ヤフォダ・手助け",
     "210265" : "紀行・烈雪",
-    "210266" : "祭典・夢習い"
+    "210266" : "祭典・夢習い",
+    "210267" : "コロンビーナ・幾時",
+    "210268" : "兹白・煙景",
+    "210269" : "イルーガ・闇の夜鳴鶯",
+    "210270" : "アチーブメント・眺望",
+    "210271" : "ナド・クライ・長灯",
+    "210272" : "紀行・天翔"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -2109,7 +2151,13 @@
     "210263" : "두린·빛나는 심장",
     "210264" : "야호다·고양이 손",
     "210265" : "기행·열혈 눈보라",
-    "210266" : "축제·꿈의 공부"
+    "210266" : "축제·꿈의 공부",
+    "210267" : "콜롬비나·기다림",
+    "210268" : "자백·연경",
+    "210269" : "일루가·악몽의 밤꾀꼬리",
+    "210270" : "업적·조망",
+    "210271" : "노드크라이·등대",
+    "210272" : "기행·봄 마차"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2373,7 +2421,13 @@
     "210263" : "Durin: Coração Radiante",
     "210264" : "Jahoda: A Ajudante",
     "210265" : "Passe de Batalha: Neve Ardente",
-    "210266" : "Celebração: Leitor de Sonhos"
+    "210266" : "Celebração: Leitor de Sonhos",
+    "210267" : "Columbina: Algum Dia",
+    "210268" : "Zibai: Vista Velada",
+    "210269" : "Illuga: Orioles do Pesadelo",
+    "210270" : "Conquista: Visão Além do Alcance",
+    "210271" : "Nod-Krai: Lâmpada das Noites Longas",
+    "210272" : "Passe de Batalha: À Luz de Lanternas"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2901,7 +2955,13 @@
     "210263" : "Durin - หัวใจเรืองรอง",
     "210264" : "Jahoda - ผู้ช่วย",
     "210265" : "บันทึก - หิมะโชติช่วง",
-    "210266" : "การฉลอง - อ่านฝัน"
+    "210266" : "การฉลอง - อ่านฝัน",
+    "210267" : "Columbina - สักวันหนึ่ง",
+    "210268" : "Zibai - ม่านมายาทัศนา",
+    "210269" : "Illuga - วิหคนิทราทมิฬ",
+    "210270" : "ความสำเร็จ - มองการณ์ไกล",
+    "210271" : "Nod-Krai - ตะเกียงแห่งค่ำคืนอันยาวนาน",
+    "210272" : "บันทึก - พราวประทีป"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -3165,7 +3225,13 @@
     "210263" : "Durin: Parlak Kalp",
     "210264" : "Jahoda: Yardım Eli",
     "210265" : "Gezi Notları: Alevli Karlar",
-    "210266" : "Kutlama: Rüya Okuyucu"
+    "210266" : "Kutlama: Rüya Okuyucu",
+    "210267" : "Columbina: Günün Birinde",
+    "210268" : "Zibai: Sisli Manzara",
+    "210269" : "Illuga: Kabus Bülbülü",
+    "210270" : "Başarım: İleri Görüşlü",
+    "210271" : "Nod-Krai: En Uzun Gecenin Feneri",
+    "210272" : "Gezi Notları: Fener Işığında Övgüler"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3429,7 +3495,13 @@
     "210263" : "Durin - Trái Tim Rực Rỡ",
     "210264" : "Jahoda - Trợ Thủ",
     "210265" : "Nhật Ký Hành Trình - Tuyết Nóng",
-    "210266" : "Lễ Hội - Giấc Mơ Đọc Sách"
+    "210266" : "Lễ Hội - Giấc Mơ Đọc Sách",
+    "210267" : "Columbina - Khi Nào",
+    "210268" : "Zibai - Cảnh Khói",
+    "210269" : "Illuga - Chim Đêm",
+    "210270" : "Thành Tựu - Nhìn Xa",
+    "210271" : "Nod-Krai - Đèn Đêm Dài",
+    "210272" : "Nhật Ký Hành Trình - Bôn Tiêu"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3693,7 +3765,13 @@
     "210263" : "杜林·曜心",
     "210264" : "雅珂达·帮手",
     "210265" : "纪行·炽雪",
-    "210266" : "庆典·梦读"
+    "210266" : "庆典·梦读",
+    "210267" : "哥伦比娅·几时",
+    "210268" : "兹白·烟景",
+    "210269" : "叶洛亚·魇莺",
+    "210270" : "成就·眺远",
+    "210271" : "挪德卡莱·长灯",
+    "210272" : "纪行·奔霄"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -3957,6 +4035,12 @@
     "210263" : "杜林·曜心",
     "210264" : "雅珂達·幫手",
     "210265" : "紀行·熾雪",
-    "210266" : "慶典·夢讀"
+    "210266" : "慶典·夢讀",
+    "210267" : "哥倫比婭·幾時",
+    "210268" : "茲白·煙景",
+    "210269" : "葉洛亞·魘鶯",
+    "210270" : "成就·眺遠",
+    "210271" : "挪德卡萊·長燈",
+    "210272" : "紀行·奔霄"
   }
 }
