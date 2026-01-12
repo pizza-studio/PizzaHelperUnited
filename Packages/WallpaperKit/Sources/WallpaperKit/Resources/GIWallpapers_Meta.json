@@ -501,6 +501,7 @@
     "officialFileNameStem" : "UI_NameCardPic_Aloy_P"
   },
   {
+    "bindedCharID" : "10000077_207701",
     "game" : "GI",
     "id" : "210096",
     "officialFileNameStem" : "UI_NameCardPic_Bp9_P"
@@ -1061,6 +1062,7 @@
     "officialFileNameStem" : "UI_NameCardPic_Tzz9_P"
   },
   {
+    "bindedCharID" : "10000087_208701",
     "game" : "GI",
     "id" : "210198",
     "officialFileNameStem" : "UI_NameCardPic_WishingPond_P"
@@ -1434,5 +1436,38 @@
     "game" : "GI",
     "id" : "210266",
     "officialFileNameStem" : "UI_NameCardPic_Green_P"
+  },
+  {
+    "bindedCharID" : "10000125",
+    "game" : "GI",
+    "id" : "210267",
+    "officialFileNameStem" : "UI_NameCardPic_Columbina_P"
+  },
+  {
+    "bindedCharID" : "10000126",
+    "game" : "GI",
+    "id" : "210268",
+    "officialFileNameStem" : "UI_NameCardPic_Zibai_P"
+  },
+  {
+    "bindedCharID" : "10000127",
+    "game" : "GI",
+    "id" : "210269",
+    "officialFileNameStem" : "UI_NameCardPic_Illuga_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210270",
+    "officialFileNameStem" : "UI_NameCardPic_Csxy6_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210271",
+    "officialFileNameStem" : "UI_NameCardPic_NodKrai2_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210272",
+    "officialFileNameStem" : "UI_NameCardPic_Bp47_P"
   }
 ]
