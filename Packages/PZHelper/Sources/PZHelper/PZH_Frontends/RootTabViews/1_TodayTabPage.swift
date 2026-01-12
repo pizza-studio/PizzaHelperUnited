@@ -76,7 +76,7 @@ struct TodayTabPage: View {
         } else {
             ForEach(filteredProfiles) { profile in
                 if let dailyNoteVM = multiNoteVM.vmMap[profile.uuid.uuidString] {
-                    InAppDailyNoteCardView()
+                    RealTimeNoteCardView()
                         .environment(dailyNoteVM)
                         .id(profile)
                         .listRowMaterialBackground()
