@@ -20,12 +20,7 @@ public struct CharacterIconView: View {
         clipToHead: Bool = false,
         energySavingMode: Bool = false
     ) {
-        /// 原神主角双子的 charID 是十二位，需要去掉后四位。
-        var newCharID = charID
-        if charID.count == 12 || charID.count == 14 {
-            newCharID = charID.prefix(8).description
-        }
-        self.charIDTruncated = newCharID
+        self.charIDTruncated = Self.truncateCharID4GenshinProtagonists(charID)
         self.charID = charID
         self.size = size
         self.circleClipped = circleClipped
@@ -43,12 +38,7 @@ public struct CharacterIconView: View {
         cardSize size: CGFloat,
         energySavingMode: Bool = false
     ) {
-        /// 原神主角双子的 charID 是十二位，需要去掉后四位。
-        var newCharID = charID
-        if charID.count == 12 || charID.count == 14 {
-            newCharID = charID.prefix(8).description
-        }
-        self.charIDTruncated = newCharID
+        self.charIDTruncated = Self.truncateCharID4GenshinProtagonists(charID)
         self.charID = charID
         self.size = size
         self.circleClipped = false
@@ -356,6 +346,23 @@ public struct CharacterIconView: View {
                 }
             }
         }
+    }
+
+    /// 原神主角双子的 charID 是十二位，需要去掉后四位。
+    /// 但如果是有特色服装的版本的话，则追加七位后缀。
+    private static func truncateCharID4GenshinProtagonists(_ idBeforeTruncation: String) -> String {
+        var newCharID = idBeforeTruncation
+        switch idBeforeTruncation.count {
+        case 12, 14:
+            newCharID = idBeforeTruncation.prefix(8).description
+        case 19, 21:
+            newCharID = [
+                idBeforeTruncation.prefix(8),
+                idBeforeTruncation.suffix(7),
+            ].joined()
+        default: break
+        }
+        return newCharID
     }
 
     private func deductElementColorForMultiply(

@@ -130,7 +130,11 @@ extension Enka.AvatarSummarized {
                 case .someoneElse:
                     self.iconAssetName = "gi_character_\(id)"
                 case .protagonist:
-                    self.iconAssetName = "gi_character_\(idSansCostume.prefix(8))"
+                    if let costumeID {
+                        self.iconAssetName = "gi_character_\(idSansCostume.prefix(8))_\(costumeID)"
+                    } else {
+                        self.iconAssetName = "gi_character_\(idSansCostume.prefix(8))"
+                    }
                 }
             case .starRail:
                 self.iconAssetName = "hsr_character_\(charID)"
