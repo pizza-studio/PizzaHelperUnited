@@ -97,7 +97,7 @@ private class SizeState {
 extension View {
     public func trackCanvasSize(
         debounceDelay: TimeInterval = 0.1,
-        handler: @escaping @MainActor (CGSize) -> Void
+        handler: @escaping (CGSize) -> Void
     )
         -> some View {
         modifier(CanvasSizeTracker(handler: handler, debounceDelay: debounceDelay))
