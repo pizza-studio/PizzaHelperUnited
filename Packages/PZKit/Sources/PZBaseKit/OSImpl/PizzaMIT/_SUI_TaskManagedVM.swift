@@ -30,31 +30,11 @@ open class TaskManagedVM: TaskManagedVMProtocol {
     /// 唯一保留的业务 Task
     public var task: Task<Void, Never>? {
         didSet {
-            if let theTask = task {
-                stateGuard?.cancel()
-                stateGuard = Task { [weak self] in
-                    guard let this = self else { return }
-                    await theTask.value
-                    await MainActor.run {
-                        withAnimation {
-                            this.taskState = .standby
-                        }
-                    }
-                }
-                withAnimation {
-                    taskState = .busy
-                }
-            } else {
-                withAnimation {
-                    taskState = .standby
-                }
+            withAnimation {
+                taskState = task == nil ? .standby : .busy
             }
         }
     }
-
-    // MARK: Private
-
-    @ObservationIgnored private var stateGuard: Task<Void, Never>?
 }
 
 // MARK: - TaskManagedVMBackported
@@ -76,17 +56,9 @@ open class TaskManagedVMBackported: TaskManagedVMProtocol, ObservableObject {
     /// 唯一保留的业务 Task
     public var task: Task<Void, Never>? {
         didSet {
-            if task == nil {
-                taskState = .standby
-            } else {
-                taskState = .busy
-            }
+            taskState = task == nil ? .standby : .busy
         }
     }
-
-    // MARK: Private
-
-    private var stateGuard: Task<Void, Never>?
 }
 
 // MARK: - TaskManagedVMProtocol
@@ -140,10 +112,11 @@ extension TaskManagedVMProtocol {
     public func handleError(_ error: Error) {
         withAnimation {
             currentError = error
-            // taskState = .standby
+            taskState = .standby
         }
         assignableErrorHandlingTask(error)
         task?.cancel()
+        task = nil
     }
 
     public func fireTask<each T: Sendable>(
@@ -182,6 +155,16 @@ extension TaskManagedVMProtocol {
                 } else {
                     await previousTask?.value // 等待既有任务执行完毕。
                 }
+                guard let self else { return }
+                defer {
+                    Task { @MainActor [weak self] in
+                        guard let this = self else { return }
+                        withAnimation {
+                            this.taskState = .standby
+                        }
+                        this.task = nil
+                    }
+                }
                 do {
                     let retrieved = try await givenTask()
                     await MainActor.run { [weak self] in
@@ -191,9 +174,6 @@ extension TaskManagedVMProtocol {
                                 completionHandler?(retrieved)
                             }
                             this.currentError = nil
-                            withAnimation {
-                                this.taskState = .standby // 此步骤必需。
-                            }
                         }
                     }
                 } catch {
@@ -201,9 +181,6 @@ extension TaskManagedVMProtocol {
                         guard let this = self else { return }
                         // Ensure handleError is called on the main actor
                         (errorHandler ?? { error in this.handleError(error) })(error)
-                        withAnimation {
-                            this.taskState = .standby // 此步骤必需。
-                        }
                     }
                 }
             }
