@@ -77,7 +77,7 @@ struct PFMgrAdvancedOptionsView: View {
                     guard oldValue != newValue else { return }
                     formatDeviceFingerprint()
                 }
-                #if !os(macOS) && !targetEnvironment(macCatalyst)
+                #if !(os(macOS) || targetEnvironment(macCatalyst))
                 .keyboardType(.asciiCapable)
                 #endif
                 Button {

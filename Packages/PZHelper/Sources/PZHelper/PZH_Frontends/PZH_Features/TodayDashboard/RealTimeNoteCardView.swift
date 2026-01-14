@@ -40,14 +40,16 @@ struct RealTimeNoteCardView: View {
                 switch theVM.dailyNoteStatus {
                 case let .succeed(dailyNote, _):
                     #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
-                    Menu {
-                        EnableLiveActivityButton(
-                            for: theVM.profile,
-                            dailyNote: dailyNote
-                        )
-                    } label: {
-                        Image(systemSymbol: .ellipsisCircle)
-                            .headerFooterTextVisibilityEnhanced()
+                    if OS.type != .macOS {
+                        Menu {
+                            EnableLiveActivityButton(
+                                for: theVM.profile,
+                                dailyNote: dailyNote
+                            )
+                        } label: {
+                            Image(systemSymbol: .ellipsisCircle)
+                                .headerFooterTextVisibilityEnhanced()
+                        }
                     }
                     #else
                     EmptyView()

@@ -18,11 +18,7 @@ struct GetCookieQRCodeView: View {
     @Binding var deviceID: String
 
     private var qrWidth: CGFloat {
-        #if os(macOS) || targetEnvironment(macCatalyst)
-        340
-        #else
-        280
-        #endif
+        OS.type == .macOS ? 340 : 280
     }
 
     private var qrImage: Image? {
