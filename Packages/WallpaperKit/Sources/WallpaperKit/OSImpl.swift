@@ -24,6 +24,7 @@ extension View {
                             Color.primary.colorInvert().opacity(0.1)
                         }
                     }
+                    .ignoresSafeArea(.all)
             }
         } else {
             self
