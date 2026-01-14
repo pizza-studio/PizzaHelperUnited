@@ -180,28 +180,25 @@ public struct EachAvatarStatView: View {
 
     private let showBackground: Bool
 
-    private var shouldOptimizeForPhone: Bool {
-        #if os(macOS) || targetEnvironment(macCatalyst)
-        return false
-        #else
+    private var shouldOptimizeForMobileDevice: Bool {
+        guard OS.type != .macOS else { return false }
         // ref: https://forums.developer.apple.com/forums/thread/126878
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.regular, .regular): return false
         default: return screenVM.orientation != .landscape && !screenVM.isExtremeCompact
         }
-        #endif
     }
 
     private var fontSize: CGFloat {
-        (shouldOptimizeForPhone ? 17 : 15) * Self.zoomFactor
+        (shouldOptimizeForMobileDevice ? 17 : 15) * Self.zoomFactor
     }
 
     private var outerContentSpacing: CGFloat {
-        (shouldOptimizeForPhone ? 8 : 4) * Self.zoomFactor
+        (shouldOptimizeForMobileDevice ? 8 : 4) * Self.zoomFactor
     }
 
     private var innerContentSpacing: CGFloat {
-        (shouldOptimizeForPhone ? 4 : 2) * Self.zoomFactor
+        (shouldOptimizeForMobileDevice ? 4 : 2) * Self.zoomFactor
     }
 }
 

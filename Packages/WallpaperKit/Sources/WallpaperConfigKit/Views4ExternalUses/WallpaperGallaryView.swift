@@ -79,21 +79,23 @@ public struct WallpaperGalleryViewContent: View {
                         appWallpaperID = currentCard.id
                     }
                     #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
-                    let alreadyChosenAsLABG: Bool = !labvParser.useRandomBackground.wrappedValue
-                        && !labvParser.useEmptyBackground.wrappedValue
-                        && liveActivityWallpaperIDs.contains(currentCard.id)
-                    Button {
-                        if alreadyChosenAsLABG {
-                            liveActivityWallpaperIDs.remove(currentCard.id)
-                        } else {
-                            labvParser.useEmptyBackground.wrappedValue = false
-                            liveActivityWallpaperIDs.insert(currentCard.id)
+                    if OS.type != .macOS {
+                        let alreadyChosenAsLABG: Bool = !labvParser.useRandomBackground.wrappedValue
+                            && !labvParser.useEmptyBackground.wrappedValue
+                            && liveActivityWallpaperIDs.contains(currentCard.id)
+                        Button {
+                            if alreadyChosenAsLABG {
+                                liveActivityWallpaperIDs.remove(currentCard.id)
+                            } else {
+                                labvParser.useEmptyBackground.wrappedValue = false
+                                liveActivityWallpaperIDs.insert(currentCard.id)
+                            }
+                        } label: {
+                            Label(
+                                "wpKit.assign.backgrounds4LiveActivity".i18nWPConfKit,
+                                systemSymbol: alreadyChosenAsLABG ? .checkmark : nil
+                            )
                         }
-                    } label: {
-                        Label(
-                            "wpKit.assign.backgrounds4LiveActivity".i18nWPConfKit,
-                            systemSymbol: alreadyChosenAsLABG ? .checkmark : nil
-                        )
                     }
                     #endif
                 }

@@ -23,17 +23,21 @@ private struct OnAppBecomeActiveModifier: ViewModifier {
     @ViewBuilder
     func body(content: Content) -> some View {
         content
-        #if os(macOS) || targetEnvironment(macCatalyst)
-        .onAppear {
-            triggerAction()
-        }
-        #else
-        .react(to: scenePhase) { _, scenePhase in
-                if scenePhase == .active {
-                    triggerAction()
+            .onAppear {
+                if OS.type == .macOS {
+                    // iOS 18+ and macOS 15+ gets handled by `OnAppBecomeActiveModifierMac` instead.
+                    if #unavailable(iOS 18.0, macCatalyst 18.0, macOS 15.0, watchOS 11.0) {
+                        triggerAction()
+                    }
                 }
             }
-        #endif
+            .react(to: scenePhase) { _, scenePhase in
+                if OS.type != .macOS {
+                    if scenePhase == .active {
+                        triggerAction()
+                    }
+                }
+            }
     }
 
     private func triggerAction() {
@@ -160,12 +164,12 @@ extension View {
         perform action: @escaping () -> Void
     )
         -> some View {
-        if #available(macCatalyst 18.0, macOS 15.0, *) {
-            #if targetEnvironment(macCatalyst) || os(macOS)
-            modifier(OnAppBecomeActiveModifierMac(forced: debounced, action: action))
-            #else
-            modifier(OnAppBecomeActiveModifier(forced: debounced, action: action))
-            #endif
+        if #available(iOS 18.0, macCatalyst 18.0, macOS 15.0, watchOS 11.0, *) {
+            if OS.type == .macOS {
+                modifier(OnAppBecomeActiveModifierMac(forced: debounced, action: action))
+            } else {
+                modifier(OnAppBecomeActiveModifier(forced: debounced, action: action))
+            }
         } else {
             modifier(OnAppBecomeActiveModifier(forced: debounced, action: action))
         }

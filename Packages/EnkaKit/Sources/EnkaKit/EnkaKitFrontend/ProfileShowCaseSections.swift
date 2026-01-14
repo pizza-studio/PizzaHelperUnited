@@ -147,13 +147,13 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
                         textSize: 12
                     )
                     .padding(.trailing, 4)
-                #if targetEnvironment(macCatalyst) || os(macOS)
                     .contextMenu {
-                        Button("↺".description) {
-                            triggerUpdateTask()
+                        if OS.type == .macOS {
+                            Button("↺".description) {
+                                triggerUpdateTask()
+                            }
                         }
                     }
-                #endif
                 VStack(alignment: .leading) {
                     HStack(spacing: 10) {
                         VStack(alignment: .leading) {

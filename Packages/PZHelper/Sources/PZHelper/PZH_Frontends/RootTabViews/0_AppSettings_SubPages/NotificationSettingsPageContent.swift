@@ -37,11 +37,16 @@ struct NotificationSettingsPageContent: View {
                         } icon: {
                             Image(systemSymbol: .gear)
                         }
-                        #if os(macOS) || targetEnvironment(macCatalyst)
-                        let urlOSSettings = "x-apple.systempreferences:com.apple.preference.notifications".asURL
-                        #else
-                        let urlOSSettings = UIApplication.openSettingsURLString.asURL
-                        #endif
+                        let urlOSSettings = switch OS.type {
+                        case .macOS: "x-apple.systempreferences:com.apple.preference.notifications".asURL
+                        default:
+                            // The following if-branch is still necessary to compile as an AppKit app.
+                            #if os(macOS) || targetEnvironment(macCatalyst)
+                            "x-apple.systempreferences:com.apple.preference.notifications".asURL
+                            #else
+                            UIApplication.openSettingsURLString.asURL
+                            #endif
+                        }
                         Link(destination: urlOSSettings) {
                             osSettingsLinkLabel
                         }
@@ -364,12 +369,12 @@ private struct NotificationSettingDetailContent: View {
     // MARK: Private
 
     @ViewBuilder private var macCatalystNoticeView: some View {
-        #if targetEnvironment(macCatalyst)
-        Text("settings.notification.dateTimePicker.macCatalystNotice", bundle: .module)
-            .foregroundStyle(.orange)
-        #else
-        EmptyView()
-        #endif
+        if OS.type == .macOS, !OS.isAppKit {
+            Text("settings.notification.dateTimePicker.macCatalystOrIPAOnMacNotice", bundle: .module)
+                .foregroundStyle(.orange)
+        } else {
+            EmptyView()
+        }
     }
 
     @ViewBuilder

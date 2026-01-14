@@ -205,6 +205,9 @@ public enum OS: Int {
 
     public static let type: OS = {
         guard !ProcessInfo.processInfo.isiOSAppOnMac else { return .macOS }
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["SIMULATE_MAC_ENV"] == "YES" { return .macOS }
+        #endif
         #if os(macOS)
         return .macOS
         #elseif os(watchOS)

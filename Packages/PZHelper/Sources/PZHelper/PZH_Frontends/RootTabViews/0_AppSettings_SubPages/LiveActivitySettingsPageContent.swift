@@ -17,9 +17,7 @@ struct LiveActivitySettingNavigator: View {
     // MARK: Lifecycle
 
     public init?() {
-        #if !DEBUG && (os(macOS) || targetEnvironment(macCatalyst))
-        return nil
-        #endif
+        guard OS.type != .macOS || Pizza.isDebug else { return nil }
     }
 
     // MARK: Internal
@@ -147,16 +145,20 @@ struct LiveActivitySettingsPageContent: View {
     @State private var allowLiveActivity: Bool = StaminaLiveActivityController.shared.allowLiveActivity
 
     @ViewBuilder private var osSettingsLink: some View {
-        #if os(macOS) || targetEnvironment(macCatalyst)
-        EmptyView()
-        #else
-        Link(destination: URL(
-            string: UIApplication
-                .openSettingsURLString
-        )!) {
-            Text("settings.staminaTimer.gotoSystemSettings", bundle: .module)
+        if OS.type == .macOS {
+            EmptyView()
+        } else {
+            #if canImport(UIKit)
+            Link(destination: URL(
+                string: UIApplication
+                    .openSettingsURLString
+            )!) {
+                Text("settings.staminaTimer.gotoSystemSettings", bundle: .module)
+            }
+            #else
+            EmptyView()
+            #endif
         }
-        #endif
     }
 
     private func syncLiveActivityToggleSettings() {

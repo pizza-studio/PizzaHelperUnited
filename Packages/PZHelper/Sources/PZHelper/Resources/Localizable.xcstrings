@@ -10451,78 +10451,78 @@
         }
       }
     },
-    "settings.notification.dateTimePicker.macCatalystNotice" : {
+    "settings.notification.dateTimePicker.macCatalystOrIPAOnMacNotice" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Aufgrund einer Einschränkung im UIKit-to-AppKit-Brückenframework zeigt der DatePicker auf macOS im macCatalyst Apps nicht das Eingabefeld an. Benutzer können nur das gewünschte Eingabefeld auswählen und direkt auf der physischen Tastatur eingeben."
+            "value" : "⚠️ Aufgrund einer Einschränkung im UIKit-to-AppKit-Brückenframework zeigt der DatePicker auf macOS im macCatalyst Apps oder IPA-on-mac Apps nicht das Eingabefeld an. Benutzer können nur das gewünschte Eingabefeld auswählen und direkt auf der physischen Tastatur eingeben."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps. Users can only select the desired input field and type it directly on physical keyboard."
+            "value" : "⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps or IPA-on-mac apps. Users can only select the desired input field and type it directly on physical keyboard."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Debido a una limitación en el framework de puente UIKit a AppKit, el DatePicker en macOS no muestra el panel de entrada en aplicaciones macCatalyst. Los usuarios solo pueden seleccionar el campo de entrada deseado y escribirlo directamente en el teclado físico."
+            "value" : "⚠️ Debido a una limitación en el framework de puente UIKit a AppKit, el DatePicker en macOS no muestra el panel de entrada en aplicaciones macCatalyst o IPA-on-mac. Los usuarios solo pueden seleccionar el campo de entrada deseado y escribirlo directamente en el teclado físico."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Dahil sa limitasyon sa UIKit-to-AppKit bridge framework, hindi ipinapakita ng DatePicker sa macOS ang input panel sa macCatalyst apps. Maaaring piliin lamang ng mga user ang nais na input field at direktang magtype gamit ang pisikal na keyboard."
+            "value" : "⚠️ Dahil sa limitasyon sa UIKit-to-AppKit bridge framework, hindi ipinapakita ng DatePicker sa macOS ang input panel sa macCatalyst apps o IPA-on-mac apps. Maaaring piliin lamang ng mga user ang nais na input field at direktang magtype gamit ang pisikal na keyboard."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ En raison d'une limitation de UIKit-to-AppKit, la séléction de date sur macOS n'affiche pas le panneau de saisie dans les applications macCatalyst. Les utilisateurs ne peuvent sélectionner que le champ de saisie souhaité et le taper directement sur le clavier physique."
+            "value" : "⚠️ En raison d'une limitation de UIKit-to-AppKit, la séléction de date sur macOS n'affiche pas le panneau de saisie dans les applications macCatalyst ou IPA-on-mac. Les utilisateurs ne peuvent sélectionner que le champ de saisie souhaité et le taper directement sur le clavier physique."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ A causa di una limitazione nel framework di collegamento UIKit-to-AppKit, il DatePicker su macOS non mostra il pannello di input nelle app macCatalyst. Gli utenti possono solo selezionare il campo di input desiderato e digitarlo direttamente sulla tastiera fisica."
+            "value" : "⚠️ A causa di una limitazione nel framework di collegamento UIKit-to-AppKit, il DatePicker su macOS non mostra il pannello di input nelle app macCatalyst o IPA-on-mac. Gli utenti possono solo selezionare il campo di input desiderato e digitarlo direttamente sulla tastiera fisica."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ UIKit から AppKit へのブリッジフレームワークの制限により、macCatalyst アプリの DatePicker の入力パネルが表示されません。ご希望の入力フィールドを手動で選択し、物理キーボードで直接入力する必要がございますので、予めご了承くださいませ。"
+            "value" : "⚠️ UIKit から AppKit へのブリッジフレームワークの制限により、macCatalyst アプリまたは IPA-on-mac アプリの DatePicker の入力パネルが表示されません。ご希望の入力フィールドを手動で選択し、物理キーボードで直接入力する必要がございますので、予めご了承くださいませ。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ UIKit-to-AppKit 브리지 프레임워크의 제한으로 인해 macOS에서의 DatePicker는 macCatalyst 앱에서 입력 패널을 표시하지 않습니다. 사용자는 원하는 입력 필드를 선택하고 물리적 키보드에서 직접 입력해야 합니다"
+            "value" : "⚠️ UIKit-to-AppKit 브리지 프레임워크의 제한으로 인해 macOS에서의 DatePicker는 macCatalyst 앱 또는 IPA-on-mac 앱에서 입력 패널을 표시하지 않습니다. 사용자는 원하는 입력 필드를 선택하고 물리적 키보드에서 직접 입력해야 합니다"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Из-за ограничения в фреймворке UIKit-to-AppKit мост, элемент DatePicker на macOS не отображает панель ввода в приложениях macCatalyst. Пользователи могут только выбрать нужное поле ввода и набрать его непосредственно на физической клавиатуре."
+            "value" : "⚠️ Из-за ограничения в фреймворке UIKit-to-AppKit мост, элемент DatePicker на macOS не отображает панель ввода в приложениях macCatalyst или IPA-on-mac. Пользователи могут только выбрать нужное поле ввода и набрать его непосредственно на физической клавиатуре."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Do hạn chế trong framework cầu nối UIKit-to-AppKit, Bộ chọn Ngày trên macOS không hiển thị bảng nhập liệu trong các ứng dụng macCatalyst. Người dùng chỉ có thể chọn trường nhập liệu mong muốn và gõ trực tiếp trên bàn phím vật lý."
+            "value" : "⚠️ Do hạn chế trong framework cầu nối UIKit-to-AppKit, Bộ chọn Ngày trên macOS không hiển thị bảng nhập liệu trong các ứng dụng macCatalyst hoặc IPA-on-mac. Người dùng chỉ có thể chọn trường nhập liệu mong muốn và gõ trực tiếp trên bàn phím vật lý."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 由于 UIKit 到 AppKit 桥接框架的限制，macCatalyst App 中的 macOS 日期选择器不会显示输入面板。用户只能手动选择所需的输入栏位，并直接在实体键盘上输入。"
+            "value" : "⚠️ 由于 UIKit 到 AppKit 桥接框架的限制，macCatalyst App 或 IPA-on-mac App 中的 macOS 日期选择器不会显示输入面板。用户只能手动选择所需的输入栏位，并直接在实体键盘上输入。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 由於 UIKit 到 AppKit 橋接框架的限制，macCatalyst 應用中的 macOS 日期選擇器不會顯示輸入面板。使用者只能手動選擇所需的輸入欄位，並直接在實體鍵盤上輸入。"
+            "value" : "⚠️ 由於 UIKit 到 AppKit 橋接框架的限制，macCatalyst 應用或 IPA-on-mac 應用中的 macOS 日期選擇器不會顯示輸入面板。使用者只能手動選擇所需的輸入欄位，並直接在實體鍵盤上輸入。"
           }
         }
       }

@@ -369,22 +369,24 @@ extension UserWallpaperMgrViewContent {
                     appWallpaperID = userWallpaper.id.uuidString
                 }
                 #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
-                let alreadyChosenAsLABG: Bool =
-                    !labvParser.useRandomBackground.wrappedValue
-                        && !labvParser.useEmptyBackground.wrappedValue
-                        && liveActivityWallpaperIDs.contains(userWallpaper.id.uuidString)
-                Button {
-                    if alreadyChosenAsLABG {
-                        liveActivityWallpaperIDs.remove(userWallpaper.id.uuidString)
-                    } else {
-                        labvParser.useEmptyBackground.wrappedValue = false
-                        liveActivityWallpaperIDs.insert(userWallpaper.id.uuidString)
+                if OS.type != .macOS {
+                    let alreadyChosenAsLABG: Bool =
+                        !labvParser.useRandomBackground.wrappedValue
+                            && !labvParser.useEmptyBackground.wrappedValue
+                            && liveActivityWallpaperIDs.contains(userWallpaper.id.uuidString)
+                    Button {
+                        if alreadyChosenAsLABG {
+                            liveActivityWallpaperIDs.remove(userWallpaper.id.uuidString)
+                        } else {
+                            labvParser.useEmptyBackground.wrappedValue = false
+                            liveActivityWallpaperIDs.insert(userWallpaper.id.uuidString)
+                        }
+                    } label: {
+                        Label(
+                            "wpKit.assign.backgrounds4LiveActivity".i18nWPConfKit,
+                            systemSymbol: alreadyChosenAsLABG ? .checkmark : nil
+                        )
                     }
-                } label: {
-                    Label(
-                        "wpKit.assign.backgrounds4LiveActivity".i18nWPConfKit,
-                        systemSymbol: alreadyChosenAsLABG ? .checkmark : nil
-                    )
                 }
                 #endif
                 Divider()

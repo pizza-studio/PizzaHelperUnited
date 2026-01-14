@@ -28,12 +28,13 @@ extension ProfileProtocol {
         }
     }
 
+    @MainActor
     func asTinyMenuLabelText() -> String {
-        #if os(macOS) || targetEnvironment(macCatalyst)
-        name + " // \(uidWithGame)"
-        #else
-        name + "\n\(uidWithGame)"
-        #endif
+        if OS.type == .macOS {
+            name + " // \(uidWithGame)"
+        } else {
+            name + "\n\(uidWithGame)"
+        }
     }
 
     @MainActor @ViewBuilder

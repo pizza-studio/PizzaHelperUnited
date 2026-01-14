@@ -32,21 +32,17 @@ public struct ContentView: View {
                     .listContainerBackground(thickMaterial: true)
                     .navBarTitleDisplayMode(.large)
             }
+            .toolbar(removing: .sidebarToggle) // Remove toggle button
+            .toolbar(.hidden, for: .navigationBar) // Additional safeguard
             .tint(Color.accessibilityAccent(colorScheme))
-            #if os(macOS) && !targetEnvironment(macCatalyst)
-                .frame(width: sideBarWidth)
-            #endif
-                .toolbar(removing: .sidebarToggle) // Remove toggle button
-            #if !os(macOS)
-                .toolbar(.hidden, for: .navigationBar) // Additional safeguard
-            #endif
-                .fontWidth(screenVM.actualSidebarWidthObserved < 350 ? .compressed : nil)
-                .trackCanvasSize(debounceDelay: 0.3) {
-                    let existingWidth = screenVM.actualSidebarWidthObserved
-                    let newValue = $0.width.rounded(.up)
-                    guard existingWidth != newValue else { return }
-                    screenVM.actualSidebarWidthObserved = newValue
-                }
+            .fontWidth(screenVM.actualSidebarWidthObserved < 350 ? .compressed : nil)
+            .frame(width: OS.isAppKit ? sideBarWidth : nil)
+            .trackCanvasSize(debounceDelay: 0.3) {
+                let existingWidth = screenVM.actualSidebarWidthObserved
+                let newValue = $0.width.rounded(.up)
+                guard existingWidth != newValue else { return }
+                screenVM.actualSidebarWidthObserved = newValue
+            }
         } detail: {
             AppRootPageViewWrapper(tab: rootNavVM.rootPageNav)
                 .appTabBarVisibility(.visible)

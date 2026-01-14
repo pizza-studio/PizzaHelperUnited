@@ -27,6 +27,7 @@ extension PZHelper {
         // MARK: Public
 
         public var body: some Scene {
+            let windowSize = supposedMinWindowSize
             let windowToReturn = WindowGroup {
                 Group {
                     if #available(iOS 17.0, macCatalyst 17.0, *) {
@@ -51,32 +52,25 @@ extension PZHelper {
                 // Auto-Correction must be disabled to prevent a memory leak issue on OS24+.
                 // Refs: https://kyleye.top/posts/swiftui-textfield-memory-leak/
                 .autocorrectionDisabled(true)
-                #if targetEnvironment(macCatalyst)
-                    .frame(
-                        minWidth: OS.liquidGlassThemeSuspected ? 832 : 800,
-                        minHeight: 800
-                    )
-                #elseif os(macOS) && !targetEnvironment(macCatalyst)
-                    .frame(
-                        minWidth: OS.liquidGlassThemeSuspected ? 800 : 768,
-                        minHeight: 646
-                    )
-                #endif
-                    .apply { mainContents in
-                        if #available(iOS 16.2, macCatalyst 16.2, *) {
-                            mainContents
-                                .onAppear {
-                                    startupTasks()
+                .frame(
+                    minWidth: windowSize.w,
+                    minHeight: windowSize.h
+                )
+                .apply { mainContents in
+                    if #available(iOS 16.2, macCatalyst 16.2, *) {
+                        mainContents
+                            .onAppear {
+                                startupTasks()
+                            }
+                            .onAppBecomeActive(debounced: false) {
+                                Task {
+                                    await ASMetaSputnik.shared.updateMeta()
                                 }
-                                .onAppBecomeActive(debounced: false) {
-                                    Task {
-                                        await ASMetaSputnik.shared.updateMeta()
-                                    }
-                                }
-                        } else {
-                            mainContents
-                        }
+                            }
+                    } else {
+                        mainContents
                     }
+                }
             }
             #if os(macOS) && !targetEnvironment(macCatalyst)
             .windowToolbarStyle(.expanded)
@@ -96,6 +90,15 @@ extension PZHelper {
 
         private var appVersionStringOrEmpty: String {
             Pizza.appVersionStringOrEmpty
+        }
+
+        private var supposedMinWindowSize: (w: Double, h: Double) {
+            guard OS.type == .macOS else { return (320, 480) }
+            if OS.isCatalyst {
+                return (OS.liquidGlassThemeSuspected ? 832 : 800, 800)
+            } else {
+                return (OS.liquidGlassThemeSuspected ? 800 : 768, 646)
+            }
         }
     }
 
