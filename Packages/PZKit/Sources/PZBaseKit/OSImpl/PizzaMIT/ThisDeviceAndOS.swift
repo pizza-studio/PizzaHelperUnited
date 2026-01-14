@@ -157,7 +157,13 @@ public enum OS: Int {
 
     // MARK: Public
 
-    public static let isAppKit = OS.type == .macOS && !OS.isCatalyst
+    public static let isAppKit: Bool = {
+        #if canImport(AppKit) && !targetEnvironment(macCatalyst)
+        return true
+        #else
+        return false
+        #endif
+    }()
 
     /// iOS 18.0 ~ 18.3 有关于画面底部的 Bottom Toolbar 的故障，需要单独应对。
     public static let isBuggyOS25Build: Bool = {
