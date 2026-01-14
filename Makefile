@@ -1,5 +1,5 @@
 SHELL := /bin/sh
-.PHONY: clean format lint
+.PHONY: clean gitclean format lint
 
 # 定义日期和时间变量
 DATE_DIR := $(shell date +%Y-%m-%d)
@@ -15,6 +15,9 @@ clean:
 	@echo "Cleaning build artifacts for UnitedPizzaHelperEngine..."
 	@xcodebuild clean -project UnitedPizzaHelper.xcodeproj -scheme UnitedPizzaHelperEngine -configuration Release
 	@echo "Clean completed."
+
+gitclean:
+	git clean -ffdx
 
 format:
 	@swiftformat --swiftversion 6.0 ./
