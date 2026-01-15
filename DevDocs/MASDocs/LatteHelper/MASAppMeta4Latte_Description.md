@@ -3,9 +3,9 @@
 ### English: 
 
 ```
-"The Latte Helper" is a third-party companion utility, not a game. By using this app, you can check the real-time recovery status of in-game stamina (Resin, Trailblaze Power, Battery Charge) for your Genshin Impact, Star Rail, and Zenless Zone Zero accounts directly via widgets. It also displays the status of Realm Currency, Expeditions (Assignments), Daily Commissions/Training, and more. 
+"The Latte Helper" is a third-party companion utility, not a game. By using this app, you can check the real-time recovery status of in-game stamina (Resin, Trailblaze Power, Battery Charge) for your Genshin Impact, Star Rail, and Zenless Zone Zero profiles directly via widgets. It also displays the status of Realm Currency, Expeditions (Assignments), Daily Commissions/Training, and more. 
 
-We support Live Activities and iPhone Lock Screen Widgets. The app features a notification system to remind you when tasks are completed or stamina is full. Adding local accounts is simple, and the app supports multiple profiles, custom background namecards, and personalized widget settings.
+We support Live Activities and iPhone Lock Screen Widgets. The app features a notification system to remind you when tasks are completed or stamina is full. Adding local profiles is simple, and the app supports multiple profiles, custom background namecards, and personalized widget settings.
 
 All features are free, with no in-app purchases. For the best experience, we recommend using this app on iOS devices that are not listed as "Vintage" or "Obsolete" by Apple to ensure smooth performance and stability.
 
@@ -25,7 +25,7 @@ $ EOF.
 ```
 「ラテ助手」はゲームそのものではなく、サードパーティ製のユーティリティアプリです。当アプリを使用することで、『原神』『崩壊：スターレイル』『ゼンレスゾーンゼロ』のゲーム内スタミナ（天然樹脂、開拓力、バッテリー）の回復状況を、ウィジェットでいつでも確認できます。また、洞天宝銭、探索派遣（依頼）、デイリー依頼（訓練）などの状況も表示可能です。
 
-さらに、ライブアクティビティ（Live Activity）や iPhone のロック画面ウィジェットにも対応しています。各項目が完了・満タンになった際に通知でお知らせする機能もあり、ローカルアカウントの追加も非常に簡単です。マルチアカウント（プロファイル切替）、カスタム背景名刺、個別のウィジェット設定にも対応しています。
+さらに、ライブアクティビティ（Live Activity）や iPhone のロック画面ウィジェットにも対応しています。各項目が完了・満タンになった際に通知でお知らせする機能もあり、ローカルプロファイルの追加も非常に簡単です。複数プロファイルの切替、カスタム背景名刺、個別のウィジェット設定にも対応しています。
 
 当アプリの全機能は無料で、アプリ内課金はありません。最高の体験を得るために、Apple によって「ビンテージ製品」または「オブソリート製品」としてリストされていない iOS デバイスでのご利用を推奨します。これにより、スムーズなパフォーマンスと安定した動作が期待できます。
 
@@ -80,7 +80,7 @@ $ EOF.
 ```
 «The Latte Helper» — это стороннее служебное приложение-компаньон, а не игра. С его помощью вы можете в любое время проверять статус восстановления энергии (Смолы, Энергии Освоения, Заряда аккумулятора) в играх Genshin Impact, Honkai: Star Rail и Zenless Zone Zero прямо через виджет. Приложение также отображает статус Сокровищ обители, Экспедиций (Поручений), Ежедневных поручений/Тренировок и многое другое.
 
-Мы поддерживаем Live Activity и виджеты для экрана блокировки iPhone. В приложении есть функция уведомлений, которая напомнит вам о завершении задач или восстановлении энергии. Добавление локальной учетной записи выполняется очень просто. Приложение поддерживает несколько профилей, настраиваемые фоновые именные карты и персонализацию виджетов.
+Мы поддерживаем Live Activity и виджеты для экрана блокировки iPhone. В приложении есть функция уведомлений, которая напомнит вам о завершении задач или восстановлении энергии. Добавление локального профиля выполняется очень просто. Приложение поддерживает несколько профилей, настраиваемые фоновые именные карты и персонализацию виджетов.
 
 Все функции приложения бесплатны, встроенные покупки отсутствуют. Для наилучшей производительности и стабильной работы мы рекомендуем использовать приложение на устройствах iOS, которые не помечены Apple как «винтажные» (Vintage) или «устаревшие» (Obsolete).
 
