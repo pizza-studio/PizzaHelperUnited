@@ -94,15 +94,8 @@ extension PZHelper {
 
         @State private var isEOLNoticeDisplayed: Bool
 
-        private var appReleaseMethodString: String {
-            AppReleaseMethod.current.shortDescription
-        }
-
         private var appVersionStringOrEmpty: String {
-            if let versionIntel = try? Bundle.getAppVersionAndBuild() {
-                return " v\(versionIntel.version) (\(versionIntel.build), \(appReleaseMethodString))"
-            }
-            return ""
+            Pizza.appVersionStringOrEmpty
         }
     }
 
