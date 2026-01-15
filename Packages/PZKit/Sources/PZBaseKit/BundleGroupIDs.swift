@@ -94,4 +94,12 @@ extension Pizza {
             : "app.title.pizza.short"
         return key.i18nBaseKit
     }
+
+    public static var appVersionStringOrEmpty: String {
+        if let versionIntel = try? Bundle.getAppVersionAndBuild() {
+            let releaseMethod = AppReleaseMethod.current.shortDescription
+            return "v\(versionIntel.version) (\(versionIntel.build), \(releaseMethod))"
+        }
+        return ""
+    }
 }
