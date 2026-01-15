@@ -67,12 +67,7 @@ public struct ContentView: View {
         }
         .navigationSplitViewStyle(.balanced)
         .tint(tintForCurrentTab)
-        .apply { currentContent in
-            hookSidebarAndPageHandlers(currentContent)
-                .react(to: rootNavVM.rootPageNav) {
-                    simpleTaptic(type: .medium)
-                }
-        }
+        .apply(hookSidebarAndPageHandlers)
         .navigationSplitViewColumnWidth(sideBarWidth)
         .environment(GachaVM.shared)
     }
@@ -105,9 +100,11 @@ public struct ContentView: View {
     @ViewBuilder
     private func hookSidebarAndPageHandlers(_ givenView: some View) -> some View {
         givenView
-            // .task { fixMainColumnPageIfNeeded() }
             .react(to: screenVM.hashForTracking, initial: true) {
                 fixMainColumnPageIfNeeded()
+            }
+            .react(to: rootNavVM.rootPageNav) {
+                simpleTaptic(type: .medium)
             }
     }
 
