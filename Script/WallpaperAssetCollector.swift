@@ -142,7 +142,7 @@ public enum GenshinLang: String, CaseIterable, Sendable, Identifiable {
 
     var filenamesForChunks: [String] {
         switch self {
-        case .langTH: [
+        case .langRU, .langTH: [
                 rawValue.replacingOccurrences(of: "lang", with: "TextMap").appending("_0.json"),
                 rawValue.replacingOccurrences(of: "lang", with: "TextMap").appending("_1.json"),
             ]
