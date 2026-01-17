@@ -34,8 +34,13 @@ public struct WallpaperGalleryViewContent: View {
                             .tag(Pizza.SupportedGame.starRail as Pizza.SupportedGame?)
                         Text("game.zenlessZone.shortNameEX".i18nBaseKit)
                             .tag(Pizza.SupportedGame.zenlessZone as Pizza.SupportedGame?)
-                        Text("wpKit.gamePicker.Pizza.shortName".i18nWPConfKit)
-                            .tag(Pizza.SupportedGame?.none)
+                        if Pizza.isAppStoreReleaseAsLatteHelper {
+                            Text("wpKit.gamePicker.Latte.shortName".i18nWPConfKit)
+                                .tag(Pizza.SupportedGame?.none)
+                        } else {
+                            Text("wpKit.gamePicker.Pizza.shortName".i18nWPConfKit)
+                                .tag(Pizza.SupportedGame?.none)
+                        }
                     }
                     .pickerStyle(.segmented)
                     .fixedSize()
