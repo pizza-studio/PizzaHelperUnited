@@ -120,11 +120,19 @@ extension BundledWallpaper {
 
 extension BundledWallpaper {
     public static func defaultValue(for game: Pizza.SupportedGame? = nil) -> Self {
-        switch game ?? appGame {
+        let noneFallback: BundledWallpaper
+        if Pizza.isAppStoreReleaseAsLatteHelper {
+            noneFallback = .init(game: nil, id: "110002", bindedCharID: nil)
+        } else if Pizza.isAppStoreReleaseAsPizzaHelper {
+            noneFallback = .init(game: .genshinImpact, id: "210042", bindedCharID: "10000031_203101")
+        } else {
+            noneFallback = .init(game: nil, id: "110000", bindedCharID: nil)
+        }
+        return switch game ?? appGame {
         case .genshinImpact: .init(game: .genshinImpact, id: "210042", bindedCharID: "10000031_203101")
-        case .starRail: .init(game: .genshinImpact, id: "221000", bindedCharID: nil)
-        case .zenlessZone: .init(game: .genshinImpact, id: "990001", bindedCharID: nil)
-        case .none: .init(game: .genshinImpact, id: "210042", bindedCharID: "10000031_203101")
+        case .starRail: .init(game: .starRail, id: "221000", bindedCharID: nil)
+        case .zenlessZone: .init(game: .zenlessZone, id: "990001", bindedCharID: nil)
+        case .none: noneFallback
         }
     }
 
