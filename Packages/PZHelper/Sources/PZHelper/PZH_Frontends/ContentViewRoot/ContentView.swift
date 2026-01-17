@@ -33,16 +33,18 @@ public struct ContentView: View {
                     .navBarTitleDisplayMode(.large)
             }
             .toolbar(removing: .sidebarToggle) // Remove toggle button
-            .toolbar(.hidden, for: .navigationBar) // Additional safeguard
-            .tint(Color.accessibilityAccent(colorScheme))
-            .fontWidth(screenVM.actualSidebarWidthObserved < 350 ? .compressed : nil)
-            .frame(width: OS.isAppKit ? sideBarWidth : nil)
-            .trackCanvasSize(debounceDelay: 0.3) {
-                let existingWidth = screenVM.actualSidebarWidthObserved
-                let newValue = $0.width.rounded(.up)
-                guard existingWidth != newValue else { return }
-                screenVM.actualSidebarWidthObserved = newValue
-            }
+            #if !os(macOS)
+                .toolbar(.hidden, for: .navigationBar) // Additional safeguard
+            #endif
+                .tint(Color.accessibilityAccent(colorScheme))
+                .fontWidth(screenVM.actualSidebarWidthObserved < 350 ? .compressed : nil)
+                .frame(width: OS.isAppKit ? sideBarWidth : nil)
+                .trackCanvasSize(debounceDelay: 0.3) {
+                    let existingWidth = screenVM.actualSidebarWidthObserved
+                    let newValue = $0.width.rounded(.up)
+                    guard existingWidth != newValue else { return }
+                    screenVM.actualSidebarWidthObserved = newValue
+                }
         } detail: {
             AppRootPageViewWrapper(tab: rootNavVM.rootPageNav)
                 .appTabBarVisibility(.visible)
