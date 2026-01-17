@@ -166,7 +166,7 @@ UIDが選択したサーバーに対応しているか確認してください�
 - iOSを使用している場合は、Stream Lab Inc.が開発した「Stream」というiOSアプリを推奨します。
 - WindowsおよびmacOSのパケットキャプチャツールは多すぎるため、詳細は省略します。
 
-パケットキャプチャのルールは、「`/api/getGachaLog`」パスを含むすべてのURLを検出することです。異なるゲーム地域のガチャURLのドメインはすべて「`public-operation`」で始まります：
+パケットキャプチャのルールは、「`/api/getGachaLog`」もしくは「`/api/getLdGachaLog`」パスを含むすべてのURLを検出することです。異なるゲーム地域のガチャURLのドメインはすべて「`public-operation`」で始まります：
 
 - 米遊社在籍のUIDのガチャURLのドメインは、`mihoyo.com`で終わります。
 - HoYoLAB在籍のUIDのガチャURLのドメインは、`hoyoverse.com`で終わります。

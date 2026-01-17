@@ -163,7 +163,7 @@ Enka 面板的結果理論上是最準確的結果，但只能顯示某個 UID �
 - 如果您用的是 iOS 的話，這裡推薦 Stream Lab Inc. 開發的「Stream」這款專門用來抓包的 iOS 應用。
 - Windows 與 macOS 系統的抓包工具太多，不作贅述。
 
-抓包規則就是篩檢所有包含「`/api/getGachaLog`」路徑內容的 URL。不同遊戲的不同區服的抽卡網址的域名均以「`public-operation`」開頭：
+抓包規則就是篩檢所有包含「`/api/getGachaLog`」或「`/api/getLdGachaLog`」路徑內容的 URL。不同遊戲的不同區服的抽卡網址的域名均以「`public-operation`」開頭：
 
 - 受米遊社管轄的 UID 的抽卡網址的域名均以 `mihoyo.com` 結尾。
 - 受 HoYoLAB 管轄的 UID 的抽卡網址的域名均以 `hoyoverse.com` 結尾。

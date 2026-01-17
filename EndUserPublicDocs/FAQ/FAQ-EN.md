@@ -164,7 +164,7 @@ The only current solution is for the user to personally use specialized traffic 
 - If you're using iOS, we recommend "Stream" by Stream Lab Inc., an iOS app specifically designed for packet capture.
 - There are too many packet capture tools for Windows and macOS systems to list here.
 
-The packet capturing rule is to filter all URLs containing the path "`/api/getGachaLog`". The domains of gacha URLs for different game regions will all start with "`public-operation`":
+The packet capturing rule is to filter all URLs containing the path "`/api/getGachaLog`" or "`/api/getLdGachaLog`". The domains of gacha URLs for different game regions will all start with "`public-operation`":
 
 - Gacha URLs for UIDs governed by Miyoushe will have domains ending with `mihoyo.com`.
 - Gacha URLs for UIDs governed by HoYoLAB will have domains ending with `hoyoverse.com`.
