@@ -554,7 +554,7 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension HYQueriedModels.HYLAvatarDetail4GI {
     public static func exampleData() throws -> DecodableList {
-        let exampleURL = Bundle.module.url(
+        let exampleURL = Bundle.currentSPM.url(
             forResource: "HoYoLABAvatarListSample-GI",
             withExtension: "json"
         )!

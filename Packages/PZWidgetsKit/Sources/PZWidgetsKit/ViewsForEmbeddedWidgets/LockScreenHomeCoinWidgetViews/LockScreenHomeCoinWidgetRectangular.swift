@@ -39,7 +39,7 @@ extension EmbeddedWidgets {
                                     Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
                                         .font(.system(size: iconSize))
                                         .offset(x: -2)
-                                    Text("pzWidgetsKit.stamina", bundle: .module)
+                                    Text("pzWidgetsKit.stamina", bundle: .currentSPM)
                                         .font(.system(
                                             size: size,
                                             weight: .medium,
@@ -52,7 +52,7 @@ extension EmbeddedWidgets {
                                     let iconSize: CGFloat = size * 8 / 9
                                     Pizza.SupportedGame.genshinImpact.giRealmCurrencySVGAsInlineText
                                         .font(.system(size: iconSize))
-                                    Text("pzWidgetsKit.homeCoin", bundle: .module)
+                                    Text("pzWidgetsKit.homeCoin", bundle: .currentSPM)
                                         .font(.system(
                                             size: size,
                                             weight: .medium,
@@ -85,14 +85,14 @@ extension EmbeddedWidgets {
                             GridRow(alignment: .lastTextBaseline) {
                                 if data.resinInfo.currentResinDynamic >= data.resinInfo
                                     .maxResin {
-                                    Text("pzWidgetsKit.stamina.full", bundle: .module)
+                                    Text("pzWidgetsKit.stamina.full", bundle: .currentSPM)
                                 } else {
                                     Text(verbatim: "\(format(data.resinInfo.resinRecoveryTime))")
                                 }
                                 Spacer()
                                 if data.homeCoinInfo.currentHomeCoin >= data
                                     .homeCoinInfo.maxHomeCoin {
-                                    Text("pzWidgetsKit.stamina.full", bundle: .module)
+                                    Text("pzWidgetsKit.stamina.full", bundle: .currentSPM)
                                 } else {
                                     Text(verbatim: "\(format(data.homeCoinInfo.fullTime))")
                                 }
@@ -156,7 +156,7 @@ extension EmbeddedWidgets {
                                     Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
                                         .font(.system(size: iconSize))
                                         .offset(x: -2)
-                                    Text("pzWidgetsKit.stamina", bundle: .module)
+                                    Text("pzWidgetsKit.stamina", bundle: .currentSPM)
                                         .font(.system(
                                             size: size,
                                             weight: .medium,
@@ -168,7 +168,7 @@ extension EmbeddedWidgets {
                                     let iconSize: CGFloat = size * 8 / 9
                                     Pizza.SupportedGame.genshinImpact.giRealmCurrencySVGAsInlineText
                                         .font(.system(size: iconSize))
-                                    Text("pzWidgetsKit.homeCoin", bundle: .module)
+                                    Text("pzWidgetsKit.homeCoin", bundle: .currentSPM)
                                         .font(.system(
                                             size: size,
                                             weight: .medium,
@@ -200,14 +200,14 @@ extension EmbeddedWidgets {
                             GridRow(alignment: .lastTextBaseline) {
                                 if data.resinInfo.currentResinDynamic >= data.resinInfo
                                     .maxResin {
-                                    Text("pzWidgetsKit.stamina.full", bundle: .module)
+                                    Text("pzWidgetsKit.stamina.full", bundle: .currentSPM)
                                 } else {
                                     Text(verbatim: "\(format(data.resinInfo.resinRecoveryTime))")
                                 }
                                 Spacer()
                                 if data.homeCoinInfo.currentHomeCoin >= data
                                     .homeCoinInfo.maxHomeCoin {
-                                    Text("pzWidgetsKit.stamina.full", bundle: .module)
+                                    Text("pzWidgetsKit.stamina.full", bundle: .currentSPM)
                                 } else {
                                     Text(verbatim: "\(format(data.homeCoinInfo.fullTime))")
                                 }
@@ -226,7 +226,7 @@ extension EmbeddedWidgets {
                                     Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
                                         .font(.system(size: iconSize))
                                         .offset(x: -2)
-                                    Text("pzWidgetsKit.stamina", bundle: .module)
+                                    Text("pzWidgetsKit.stamina", bundle: .currentSPM)
                                         .font(.system(
                                             size: size,
                                             weight: .medium,
@@ -250,7 +250,7 @@ extension EmbeddedWidgets {
                             .widgetAccentable()
                             GridRow(alignment: .lastTextBaseline) {
                                 if staminaIntel.isAccomplished {
-                                    Text("pzWidgetsKit.stamina.full", bundle: .module)
+                                    Text("pzWidgetsKit.stamina.full", bundle: .currentSPM)
                                 } else {
                                     Text(verbatim: "\(format(data.staminaFullTimeOnFinish))")
                                 }
@@ -269,7 +269,7 @@ extension EmbeddedWidgets {
                                 Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
                                     .font(.system(size: iconSize))
                                     .offset(x: -2)
-                                Text("pzWidgetsKit.stamina", bundle: .module)
+                                Text("pzWidgetsKit.stamina", bundle: .currentSPM)
                                     .font(.system(
                                         size: size,
                                         weight: .medium,
@@ -281,7 +281,7 @@ extension EmbeddedWidgets {
                                 let iconSize: CGFloat = size * 8 / 9
                                 Pizza.SupportedGame.genshinImpact.giRealmCurrencySVGAsInlineText
                                     .font(.system(size: iconSize))
-                                Text("pzWidgetsKit.homeCoin", bundle: .module)
+                                Text("pzWidgetsKit.homeCoin", bundle: .currentSPM)
                                     .font(.system(
                                         size: size,
                                         weight: .medium,

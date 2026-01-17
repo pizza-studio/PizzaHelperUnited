@@ -17,7 +17,7 @@ extension BattleReportView4GI {
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension BattleReportView4GI.TreasuresStarwardType {
     public var asIcon: Image {
-        Image(iconFileNameStem, bundle: .module)
+        Image(iconFileNameStem, bundle: .currentSPM)
     }
 }
 
@@ -51,7 +51,7 @@ public struct BattleReportView4GI: BattleReportView {
                 }
             } label: {
                 LabeledContent {
-                    Text("hylKit.battleReportView.challengeType", bundle: .module)
+                    Text("hylKit.battleReportView.challengeType", bundle: .currentSPM)
                 } label: {
                     Image(systemSymbol: .line3HorizontalDecreaseCircle)
                 }
@@ -233,7 +233,7 @@ extension BattleReportView4GI {
                             VStack(alignment: .center) {
                                 let roomNumber = (offset + 1).description
                                 ViewThatFits {
-                                    Text("hylKit.battleReport.round.title:\(roomNumber)", bundle: .module)
+                                    Text("hylKit.battleReport.round.title:\(roomNumber)", bundle: .currentSPM)
                                         .multilineTextAlignment(.center)
                                         .lineLimit(1)
                                     Text(verbatim: "#\(roomNumber)")
@@ -280,8 +280,8 @@ extension BattleReportView4GI {
                 HStack {
                     Group {
                         isMultiplayer
-                            ? Text("hylKit.battleReport.gi.attendanceMethod.multiplayer", bundle: .module)
-                            : Text("hylKit.battleReport.gi.attendanceMethod.singleplayer", bundle: .module)
+                            ? Text("hylKit.battleReport.gi.attendanceMethod.multiplayer", bundle: .currentSPM)
+                            : Text("hylKit.battleReport.gi.attendanceMethod.singleplayer", bundle: .currentSPM)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -437,7 +437,7 @@ extension BattleReportView4GI {
                 HStack {
                     Text(
                         "hylKit.battleReport.floor.title:\(floorData.index.description)",
-                        bundle: .module
+                        bundle: .currentSPM
                     )
                     Spacer()
                     Text(verbatim: "\(floorData.star) / \(floorData.maxStar)")
@@ -453,7 +453,7 @@ extension BattleReportView4GI {
     private func drawBattleRoom(levelData: HoYo.BattleReport4GI.SpiralAbyssData.Floor.Level) -> some View {
         VStack {
             HStack {
-                Text("hylKit.battleReport.room.title:\(levelData.index.description)", bundle: .module)
+                Text("hylKit.battleReport.room.title:\(levelData.index.description)", bundle: .currentSPM)
                     .fontWeight(.black)
                 Spacer()
                 if levelData.star > 0 {

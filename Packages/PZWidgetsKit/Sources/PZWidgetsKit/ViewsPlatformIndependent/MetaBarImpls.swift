@@ -43,7 +43,7 @@ public struct MetaBar4DailyTask: View, MetaBar {
         let extraRewardClaimed = note.claimedRewardsFromKatheryne
         if sitrep.isAccomplished, !(extraRewardClaimed ?? true) {
             let key: String.LocalizationValue = "pzWidgetsKit.status.not_received"
-            result.append(Text(String(localized: key, bundle: .module)).fontWidth(.condensed))
+            result.append(Text(String(localized: key, bundle: .currentSPM)).fontWidth(.condensed))
         }
         return result
     }
@@ -255,10 +255,10 @@ public struct MetaBar4GITransformer: View, MetaBar {
     public var statusTextUnits4SUI: [Text] {
         if info.isAvailable {
             let key: String.LocalizationValue = "pzWidgetsKit.infoBlock.transformerAvailable"
-            return [Text(String(localized: key, bundle: .module)).fontWidth(.condensed)]
+            return [Text(String(localized: key, bundle: .currentSPM)).fontWidth(.condensed)]
         } else if info.remainingDays > 0 {
             let key: String.LocalizationValue = "pzWidgetsKit.unit.day:\(info.remainingDays)"
-            return [Text(String(localized: key, bundle: .module)).fontWidth(.condensed)]
+            return [Text(String(localized: key, bundle: .currentSPM)).fontWidth(.condensed)]
         } else {
             let intervalString = HoYo.intervalFormatter
                 .string(from: TimeInterval.sinceNow(to: info.recoveryTime)) ?? ""
@@ -496,7 +496,7 @@ public struct MetaBar4ZZZScratchCard: View, MetaBar {
         let key: String.LocalizationValue = scratchable
             ? "pzWidgetsKit.infoBlock.zzzScratchableCard.notYet"
             : "pzWidgetsKit.infoBlock.zzzScratchableCard.done"
-        return [Text(String(localized: key, bundle: .module)).fontWidth(.condensed)]
+        return [Text(String(localized: key, bundle: .currentSPM)).fontWidth(.condensed)]
     }
 
     public var completionStatusRatio: Double {

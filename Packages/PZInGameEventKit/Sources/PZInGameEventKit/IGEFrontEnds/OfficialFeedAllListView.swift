@@ -49,7 +49,7 @@ extension OfficialFeed {
                         $0.endAtTime.second ?? 0 >= 0
                     }).count <= 0 {
                         Spacer(minLength: 50)
-                        Text("igev.gameEvents.noCurrentEventInfo", bundle: .module)
+                        Text("igev.gameEvents.noCurrentEventInfo", bundle: .currentSPM)
                             .padding()
                     }
                     ForEach(eventContents, id: \.id) { content in
@@ -113,12 +113,12 @@ extension OfficialFeed {
                                     if let dayLeft = endAtIntel.day, dayLeft > 0 {
                                         Text(
                                             "igev.gameEvents.daysLeft:\(dayLeft)",
-                                            bundle: .module
+                                            bundle: .currentSPM
                                         )
                                     } else if let hoursLeft = endAtIntel.hour, hoursLeft > 0 {
                                         Text(
                                             "igev.gameEvents.hoursLeft:\(hoursLeft)",
-                                            bundle: .module
+                                            bundle: .currentSPM
                                         )
                                     }
                                 }

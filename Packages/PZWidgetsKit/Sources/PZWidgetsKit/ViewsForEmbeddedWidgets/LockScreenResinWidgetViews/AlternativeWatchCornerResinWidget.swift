@@ -58,7 +58,7 @@ extension EmbeddedWidgets {
                             value: gaugeInputs.value,
                             in: gaugeInputs.range
                         ) {
-                            Text("pzWidgetsKit.stamina", bundle: .module)
+                            Text("pzWidgetsKit.stamina", bundle: .currentSPM)
                         } currentValueLabel: {
                             Text(verbatim: "\(resinInfo.currentResinDynamic)")
                         } minimumValueLabel: {
@@ -82,7 +82,7 @@ extension EmbeddedWidgets {
                             value: gaugeInputs.value,
                             in: gaugeInputs.range
                         ) {
-                            Text("pzWidgetsKit.stamina", bundle: .module)
+                            Text("pzWidgetsKit.stamina", bundle: .currentSPM)
                         } currentValueLabel: {
                             Text(staminaInfo.currentStamina.description)
                         } minimumValueLabel: {
@@ -106,7 +106,7 @@ extension EmbeddedWidgets {
                             value: gaugeInputs.value,
                             in: gaugeInputs.range
                         ) {
-                            Text("pzWidgetsKit.stamina", bundle: .module)
+                            Text("pzWidgetsKit.stamina", bundle: .currentSPM)
                         } currentValueLabel: {
                             Text(energyInfo.currentEnergyAmountDynamic.description)
                         } minimumValueLabel: {

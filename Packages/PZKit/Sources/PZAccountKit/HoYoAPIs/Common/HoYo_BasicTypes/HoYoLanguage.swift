@@ -57,7 +57,7 @@ extension HoYo.APILang {
     }
 
     public var localized: String {
-        NSLocalizedString("\(localizedKey)", tableName: "HoYoLangNames", bundle: .module, comment: "")
+        NSLocalizedString("\(localizedKey)", tableName: "HoYoLangNames", bundle: .currentSPM, comment: "")
     }
 }
 
@@ -134,7 +134,7 @@ extension Locale {
     /// Get the language code used for miHoYo API according to current UI language preference.
     public static var hoyoAPILanguage: HoYo.APILang {
         let languageCode = Locale.preferredLanguages.first
-            ?? Bundle.module.preferredLocalizations.first
+            ?? Bundle.currentSPM.preferredLocalizations.first
             ?? Bundle.main.preferredLocalizations.first
             ?? "en"
         switch languageCode.prefix(7).lowercased() {

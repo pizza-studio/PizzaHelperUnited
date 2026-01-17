@@ -23,7 +23,7 @@ public struct GITodayMaterial: AbleToCodeSendHash, Identifiable, Equatable {
 @available(iOS 15.0, macCatalyst 15.0, *)
 @available(watchOS, unavailable)
 extension GITodayMaterial {
-    public var iconObj: Image { Image(nameTag, bundle: .module) }
+    public var iconObj: Image { Image(nameTag, bundle: .currentSPM) }
 
     public var localized: String {
         "asset.dailyMaterial:\(nameTag)".i18nTodayMaterialNames

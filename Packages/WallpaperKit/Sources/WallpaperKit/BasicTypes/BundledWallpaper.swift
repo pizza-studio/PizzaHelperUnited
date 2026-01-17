@@ -81,21 +81,21 @@ extension BundledWallpaper: Defaults.Serializable {}
 // swiftlint:disable force_unwrapping
 extension BundledWallpaper {
     private static let bundledLangDB4PZ: [String: String] = {
-        let url = Bundle.module.url(forResource: "PizzaWallpapers", withExtension: "json")!
+        let url = Bundle.currentSPM.url(forResource: "PizzaWallpapers", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         let dbs = try! JSONDecoder().decode([String: [String: String]].self, from: data)
         return dbs[Locale.langCodeForEnkaAPI] ?? dbs["en"]!
     }()
 
     private static let bundledLangDB4ZZZ: [String: String] = {
-        let url = Bundle.module.url(forResource: "ZZZWallpapers", withExtension: "json")!
+        let url = Bundle.currentSPM.url(forResource: "ZZZWallpapers", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         let dbs = try! JSONDecoder().decode([String: [String: String]].self, from: data)
         return dbs[Locale.langCodeForEnkaAPI] ?? dbs["en"]!
     }()
 
     private static let bundledLangDB4HSR: [String: String] = {
-        let url = Bundle.module.url(forResource: "HSRWallpapers", withExtension: "json")!
+        let url = Bundle.currentSPM.url(forResource: "HSRWallpapers", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         let dbs = try! JSONDecoder().decode([String: [String: String]].self, from: data)
         return dbs[Locale.langCodeForEnkaAPI] ?? dbs["en"]!
@@ -103,7 +103,7 @@ extension BundledWallpaper {
 
     private static let bundledLangDB4GI: [String: String] = {
         let assetNameTag = "GIWallpapers_Lang"
-        let url = Bundle.module.url(forResource: assetNameTag, withExtension: "json")!
+        let url = Bundle.currentSPM.url(forResource: assetNameTag, withExtension: "json")!
         let data = try! Data(contentsOf: url)
         let dbs = try! JSONDecoder().decode([String: [String: String]].self, from: data)
         return dbs[Locale.langCodeForEnkaAPI] ?? dbs["en"]!
@@ -111,7 +111,7 @@ extension BundledWallpaper {
 
     private static let bundledLangDB4GIRealName: [String: String] = {
         let assetNameTag = "GIWallpapers_Lang_RealName"
-        let url = Bundle.module.url(forResource: assetNameTag, withExtension: "json")!
+        let url = Bundle.currentSPM.url(forResource: assetNameTag, withExtension: "json")!
         let data = try! Data(contentsOf: url)
         let dbs = try! JSONDecoder().decode([String: [String: String]].self, from: data)
         return dbs[Locale.langCodeForEnkaAPI] ?? dbs["en"]!
@@ -213,7 +213,7 @@ extension BundledWallpaper {
 
     public static let allCases4GI: [Self] = {
         var results = [Self]()
-        let url = Bundle.module.url(forResource: "GIWallpapers_Meta", withExtension: "json")!
+        let url = Bundle.currentSPM.url(forResource: "GIWallpapers_Meta", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         return try! JSONDecoder().decode([Self].self, from: data)
     }()
@@ -236,7 +236,7 @@ extension Locale {
     fileprivate static var langCodeForEnkaAPI: String {
         let languageCode =
             Locale.preferredLanguages.first
-                ?? Bundle.module.preferredLocalizations.first
+                ?? Bundle.currentSPM.preferredLocalizations.first
                 ?? Bundle.main.preferredLocalizations.first
                 ?? "en"
         switch languageCode.prefix(7).lowercased() {

@@ -22,17 +22,17 @@ public struct OOBEView: View {
             VStack {
                 VStack {
                     HStack {
-                        Image("icon.product.pzHelper4GI", bundle: .module)
+                        Image("icon.product.pzHelper4GI", bundle: .currentSPM)
                             .resizable()
                             .frame(width: 70, height: 70, alignment: .center)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         Text(verbatim: "+")
-                        Image("icon.product.pzHelper4HSR", bundle: .module)
+                        Image("icon.product.pzHelper4HSR", bundle: .currentSPM)
                             .resizable()
                             .frame(width: 70, height: 70, alignment: .center)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         Text(verbatim: "=")
-                        Image(AboutView.assetName4MainApp, bundle: .module)
+                        Image(AboutView.assetName4MainApp, bundle: .currentSPM)
                             .resizable()
                             .frame(width: 75, height: 75, alignment: .center)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -49,7 +49,7 @@ public struct OOBEView: View {
                             icon: Image(
                                 systemSymbol: .platter2FilledIphone
                             ),
-                            title: Text("oobe.feature.widget.title", bundle: .module),
+                            title: Text("oobe.feature.widget.title", bundle: .currentSPM),
                             detail: widgetDescription,
                             color: .green
                         )
@@ -127,7 +127,7 @@ public struct OOBEView: View {
         case .macOS: "https://support.apple.com/108996/"
         default: "https://support.apple.com/118610/"
         }
-        let strKey = String(localized: .init(stringLiteral: "oobe.feature.widget.detail:%@"), bundle: .module)
+        let strKey = String(localized: .init(stringLiteral: "oobe.feature.widget.detail:%@"), bundle: .currentSPM)
         let str = String(format: strKey, urlStr)
         print(str)
         let attrStr = try? AttributedString(markdown: str)
@@ -155,8 +155,8 @@ extension OOBEView {
             color: Color
         ) {
             self.icon = icon
-            self.title = Text(title, bundle: .module)
-            self.detail = Text(detail, bundle: .module)
+            self.title = Text(title, bundle: .currentSPM)
+            self.detail = Text(detail, bundle: .currentSPM)
             self.color = color
         }
 

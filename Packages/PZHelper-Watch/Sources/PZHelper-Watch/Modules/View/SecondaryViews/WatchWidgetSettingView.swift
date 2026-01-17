@@ -30,7 +30,7 @@ struct WatchWidgetSettingView: View {
                 }
                 .onDelete(perform: deleteItems)
             } header: {
-                Text("watch.profile.manage.title", bundle: .module)
+                Text("watch.profile.manage.title", bundle: .currentSPM)
                     .textCase(.none)
             }
         }

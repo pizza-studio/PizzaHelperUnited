@@ -56,7 +56,7 @@ extension AnonymousIconView {
     }
 
     @ViewBuilder public static var rawImage4SUI: some View {
-        Image(nullPhotoAssetName, bundle: Bundle.module)
+        Image(nullPhotoAssetName, bundle: .currentSPM)
             .resizable()
             .aspectRatio(contentMode: .fit)
     }

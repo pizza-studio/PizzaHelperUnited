@@ -98,7 +98,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                             .frame(minHeight: 120)
                     } header: {
                         HStack {
-                            (Text("gachaKit.getRecord.fetchRange.title", bundle: .module) + Text(verbatim: ":"))
+                            (Text("gachaKit.getRecord.fetchRange.title", bundle: .currentSPM) + Text(verbatim: ":"))
                                 .multilineTextAlignment(.leading)
                             Spacer()
                             Text(verbatim: gachaVM4Fetch.fetchRange.localizedLabel)
@@ -117,7 +117,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                                 .disabled(true)
                         }
                     } header: {
-                        Text("gachaKit.getRecord.running", bundle: .module)
+                        Text("gachaKit.getRecord.running", bundle: .currentSPM)
                             .textCase(.none)
                     }
                 }
@@ -249,7 +249,7 @@ extension GachaFetchView4Game {
                         }
                     }
                 } header: {
-                    Text("gachaKit.getRecord.quickFetch", bundle: .module)
+                    Text("gachaKit.getRecord.quickFetch", bundle: .currentSPM)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .textCase(.none)
                 }
@@ -328,7 +328,7 @@ extension GachaFetchView4Game {
                             Text(rangeCase.localizedLabel).tag(rangeCase)
                         }
                     } label: {
-                        Text("gachaKit.getRecord.fetchRange.title", bundle: .module)
+                        Text("gachaKit.getRecord.fetchRange.title", bundle: .currentSPM)
                     }
                 } icon: {
                     Image(systemSymbol: .chartBarXaxisAscendingBadgeClock)
@@ -346,7 +346,7 @@ extension GachaFetchView4Game {
                     )
                 }
             } header: {
-                Text("gachaKit.getRecord.readyStart.sectionHeader.urgeUsersToBackupFirst", bundle: .module)
+                Text("gachaKit.getRecord.readyStart.sectionHeader.urgeUsersToBackupFirst", bundle: .currentSPM)
                     .multilineTextAlignment(.leading)
                     .textCase(.none)
                     .foregroundStyle(.orange)
@@ -382,7 +382,7 @@ extension GachaFetchView4Game {
                 Group {
                     Text(verbatim: "⚠️ ") + Text(
                         "gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents.linkTitle",
-                        bundle: .module
+                        bundle: .currentSPM
                     )
                     .bold()
                 }
@@ -400,7 +400,7 @@ extension GachaFetchView4Game {
             } message: {
                 Text(
                     "gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents",
-                    bundle: .module
+                    bundle: .currentSPM
                 )
             }
         }
@@ -487,7 +487,7 @@ extension GachaFetchView4Game {
         var body: some View {
             Section {
                 Label {
-                    Text("gachaKit.getRecord.inProgress.obtaining", bundle: .module)
+                    Text("gachaKit.getRecord.inProgress.obtaining", bundle: .currentSPM)
                 } icon: {
                     ProgressView().id(UUID())
                 }
@@ -525,7 +525,7 @@ extension GachaFetchView4Game {
         var body: some View {
             Section {
                 Label {
-                    Text("gachaKit.getRecord.gotSome.obtaining", bundle: .module)
+                    Text("gachaKit.getRecord.gotSome.obtaining", bundle: .currentSPM)
                 } icon: {
                     ProgressView().id(UUID())
                 }
@@ -626,7 +626,7 @@ extension GachaFetchView4Game {
         var body: some View {
             Section {
                 Label {
-                    Text("gachaKit.getRecord.finished.succeeded", bundle: .module)
+                    Text("gachaKit.getRecord.finished.succeeded", bundle: .currentSPM)
                 } icon: {
                     Image(systemSymbol: .checkmarkCircle)
                         .foregroundColor(.green)
@@ -673,13 +673,13 @@ extension GachaFetchView4Game {
         @ViewBuilder private var dataBleachedReportView: some View {
             if dataBleachedCount > 0 {
                 HStack {
-                    Text("gachaKit.getRecord.finished.footer.bleachedInvalidEntriesCount", bundle: .module)
+                    Text("gachaKit.getRecord.finished.footer.bleachedInvalidEntriesCount", bundle: .currentSPM)
                         .multilineTextAlignment(.leading)
                     Spacer()
                     Text(verbatim: dataBleachedCount.description)
                 }
             } else {
-                Text("gachaKit.getRecord.finished.footer.nothingToBleach", bundle: .module)
+                Text("gachaKit.getRecord.finished.footer.nothingToBleach", bundle: .currentSPM)
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }

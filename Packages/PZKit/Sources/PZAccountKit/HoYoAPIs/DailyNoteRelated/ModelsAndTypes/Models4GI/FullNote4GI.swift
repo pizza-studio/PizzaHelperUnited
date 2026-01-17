@@ -76,7 +76,7 @@ public struct FullNote4GI: Note4GI, AbleToCodeSendHash {
 
 extension FullNote4GI {
     public static func exampleData() -> FullNote4GI {
-        let exampleURL = Bundle.module.url(forResource: "gi_realtime_note_example", withExtension: "json")!
+        let exampleURL = Bundle.currentSPM.url(forResource: "gi_realtime_note_example", withExtension: "json")!
         let exampleData = try! Data(contentsOf: exampleURL)
         return try! FullNote4GI.decodeFromMiHoYoAPIJSONResult(
             data: exampleData,

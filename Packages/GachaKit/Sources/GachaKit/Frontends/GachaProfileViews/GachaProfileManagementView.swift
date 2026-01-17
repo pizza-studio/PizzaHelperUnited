@@ -22,7 +22,7 @@ public struct GachaProfileManagementView: View {
                                 .fixedSize()
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                         } label: {
-                            Text("gachaKit.management.gachaPullerToPurge", bundle: .module)
+                            Text("gachaKit.management.gachaPullerToPurge", bundle: .currentSPM)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         if theVM.taskState == .busy {
@@ -31,7 +31,7 @@ public struct GachaProfileManagementView: View {
                     } header: {
                         if let gpid = theVM.currentGPID {
                             HStack {
-                                Text("gachaKit.management.currentGame", bundle: .module)
+                                Text("gachaKit.management.currentGame", bundle: .currentSPM)
                                 Spacer()
                                 Text(verbatim: gpid.game.localizedDescription)
                             }
@@ -54,7 +54,7 @@ public struct GachaProfileManagementView: View {
                         Button(role: .destructive) {
                             isRemovalConfirmationAlertShown = true
                         } label: {
-                            Text("gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID", bundle: .module)
+                            Text("gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID", bundle: .currentSPM)
                                 .fontWidth(.condensed)
                                 .fontWeight(.bold)
                                 .multilineTextAlignment(.center)
@@ -67,7 +67,7 @@ public struct GachaProfileManagementView: View {
                         .listRowBackground(Color.clear)
                     }
                 } else {
-                    Text("gachaKit.prompt.noGachaProfileFound", bundle: .module)
+                    Text("gachaKit.prompt.noGachaProfileFound", bundle: .currentSPM)
                 }
             }
             .formStyle(.grouped).disableFocusable()

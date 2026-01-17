@@ -98,7 +98,7 @@ public enum GachaFetchRange: Int, CaseIterable {
         case .recent60Days:
             "gachaKit.getRecord.fetchRange.recent60Days"
         }
-        return String(localized: rawTag, bundle: .module)
+        return String(localized: rawTag, bundle: .currentSPM)
     }
 
     public func verifyWhetherOutOfRange(against givenTarget: Date) -> Bool {

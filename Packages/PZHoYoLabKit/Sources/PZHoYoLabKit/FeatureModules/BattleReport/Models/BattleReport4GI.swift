@@ -43,7 +43,7 @@ extension HoYo.BattleReport4GI {
         public var id: String { rawValue }
 
         public var localizedTitle: String {
-            .init(localized: localizedStringKey, bundle: .module)
+            .init(localized: localizedStringKey, bundle: .currentSPM)
         }
 
         // MARK: Internal

@@ -19,7 +19,7 @@ class GeetestValidateCoordinator: NSObject, WKNavigationDelegate, WKScriptMessag
     // MARK: Internal
 
     nonisolated static var geetestURL: URL? {
-        Bundle.module.url(forResource: "geetest", withExtension: "html")
+        Bundle.currentSPM.url(forResource: "geetest", withExtension: "html")
     }
 
     var parent: GeetestValidateView

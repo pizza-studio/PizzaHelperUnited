@@ -101,7 +101,7 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
 
         if let backgroundIconName = background.iconName {
             GeometryReader { g in
-                Image(backgroundIconName, bundle: .module)
+                Image(backgroundIconName, bundle: .currentSPM)
                     .resizable()
                     .scaledToFill()
                     .brightness(0.2)

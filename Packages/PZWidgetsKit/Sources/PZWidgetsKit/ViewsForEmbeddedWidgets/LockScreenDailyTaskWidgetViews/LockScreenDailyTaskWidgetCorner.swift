@@ -37,7 +37,7 @@ extension EmbeddedWidgets {
                                 maxValue: Double(valMax)
                             )
                             Gauge(value: gaugeInputs.value, in: gaugeInputs.range) {
-                                Text("pzWidgetsKit.dailyTask", bundle: .module)
+                                Text("pzWidgetsKit.dailyTask", bundle: .currentSPM)
                             } currentValueLabel: {
                                 Text(verbatim: "\(valNow) / \(valMax)")
                             } minimumValueLabel: {
@@ -56,7 +56,7 @@ extension EmbeddedWidgets {
                     .padding(4)
                     .widgetLabel(String(
                         localized: String.LocalizationValue(stringLiteral: "pzWidgetsKit.dailyTask"),
-                        bundle: .module
+                        bundle: .currentSPM
                     ))
             }
         }

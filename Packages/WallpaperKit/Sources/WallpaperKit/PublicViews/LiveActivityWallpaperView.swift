@@ -8,7 +8,7 @@ import SwiftUI
 @available(iOS 15.0, macCatalyst 15.0, *)
 extension BundledWallpaper {
     public var image4LiveActivity: Image {
-        Image(assetName4LiveActivity, bundle: .module)
+        Image(assetName4LiveActivity, bundle: .currentSPM)
     }
 }
 

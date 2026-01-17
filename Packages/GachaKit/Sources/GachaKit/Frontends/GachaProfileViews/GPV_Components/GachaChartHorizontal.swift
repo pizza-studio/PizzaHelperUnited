@@ -39,7 +39,7 @@ public struct GachaChartHorizontal: View {
                 HelpTextForScrollingOnDesktopComputer(.horizontal)
             }
         } else {
-            Text("gachaKit.chart.noPentaStarsFound", bundle: .module)
+            Text("gachaKit.chart.noPentaStarsFound", bundle: .currentSPM)
                 .foregroundColor(.secondary)
                 .font(.caption)
         }

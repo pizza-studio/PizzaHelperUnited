@@ -25,7 +25,7 @@ public struct GMDBExpiredRow: View {
                     theVM.currentSceneStep4Import = .chooseFormat
                     theVM.updateGMDB(for: games)
                 } label: {
-                    Text("gachaKit.GMDB.clickHereToUpdateGMDB", bundle: .module)
+                    Text("gachaKit.GMDB.clickHereToUpdateGMDB", bundle: .currentSPM)
                         .fontWeight(.bold)
                         .fontWidth(.condensed)
                         .multilineTextAlignment(.center)
@@ -34,7 +34,7 @@ public struct GMDBExpiredRow: View {
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.capsule)
                 .tint(.red)
-                Text("gachaKit.GMDB.gmdbExpired.explanation", bundle: .module)
+                Text("gachaKit.GMDB.gmdbExpired.explanation", bundle: .currentSPM)
                     .asInlineTextDescription()
             }
         }

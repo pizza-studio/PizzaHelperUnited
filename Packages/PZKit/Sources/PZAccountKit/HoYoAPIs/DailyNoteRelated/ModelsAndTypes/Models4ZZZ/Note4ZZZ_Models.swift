@@ -258,7 +258,7 @@ extension Note4ZZZ.Energy {
 
 extension Note4ZZZ {
     public static func exampleData() -> Note4ZZZ {
-        let exampleURL = Bundle.module.url(
+        let exampleURL = Bundle.currentSPM.url(
             forResource: "zzz_realtime_note_example_miyoushe", withExtension: "json"
         )!
         // swiftlint:disable force_try

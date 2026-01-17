@@ -105,7 +105,7 @@ extension Enka {
 extension Locale {
     public static var langCodeForEnkaAPI: String {
         let languageCode = Locale.preferredLanguages.first
-            ?? Bundle.module.preferredLocalizations.first
+            ?? Bundle.currentSPM.preferredLocalizations.first
             ?? Bundle.main.preferredLocalizations.first
             ?? "en"
         switch languageCode.prefix(7).lowercased() {
@@ -130,19 +130,19 @@ extension Locale {
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension Bundle {
-    public static let enka = Bundle.module
+    public static let enka = Bundle.currentSPM
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension String {
     public var i18nEnka: String {
-        String(localized: .init(stringLiteral: self), bundle: .module)
+        String(localized: .init(stringLiteral: self), bundle: .currentSPM)
     }
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension String.LocalizationValue {
     public var i18nEnka: String {
-        String(localized: self, bundle: .module)
+        String(localized: self, bundle: .currentSPM)
     }
 }

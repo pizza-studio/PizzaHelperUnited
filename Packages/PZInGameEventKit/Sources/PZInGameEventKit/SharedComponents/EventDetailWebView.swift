@@ -105,13 +105,13 @@ extension EventDetailWebView {
 
         func updateView(_ webView: OPWebView) {
             webView.uiDelegate = self
-            if let startPageURL = Bundle.module.url(
+            if let startPageURL = Bundle.currentSPM.url(
                 forResource: "article",
                 withExtension: "html"
             ) {
                 webView.loadFileURL(
                     startPageURL,
-                    allowingReadAccessTo: Bundle.module.bundleURL
+                    allowingReadAccessTo: Bundle.currentSPM.bundleURL
                 )
             }
         }

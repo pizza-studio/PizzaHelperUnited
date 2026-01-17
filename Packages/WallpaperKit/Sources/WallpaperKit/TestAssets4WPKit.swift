@@ -13,12 +13,12 @@ import SwiftUI
 extension BundledWallpaper {
     public static func queryImageAsset(for assetName: String) -> CGImage? {
         #if os(macOS)
-        guard let image = Bundle.module.image(forResource: assetName) else { return nil }
+        guard let image = Bundle.currentSPM.image(forResource: assetName) else { return nil }
         var imageRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
         let imageRef = image.cgImage(forProposedRect: &imageRect, context: nil, hints: nil)
         return imageRef
         #elseif os(iOS)
-        return UIImage(named: assetName, in: Bundle.module, compatibleWith: nil)?.cgImage
+        return UIImage(named: assetName, in: Bundle.currentSPM, compatibleWith: nil)?.cgImage
         #else
         return nil
         #endif

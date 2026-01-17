@@ -61,7 +61,7 @@ struct LinkLabelItem: View {
     }
 
     private init(_ textKey: String, imageKey: String, url: String) {
-        self.text = String(localized: .init(stringLiteral: textKey), bundle: .module)
+        self.text = String(localized: .init(stringLiteral: textKey), bundle: .currentSPM)
         self.imageKey = imageKey
         self.destination = URL(string: url)!
     }
@@ -75,7 +75,7 @@ struct LinkLabelItem: View {
     private init(qqPersonal: String) {
         var urlStr = "mqqapi://card/show_pslcard?"
         urlStr.append("src_type=internal&version=1&uin=\(qqPersonal)")
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.qq.personal"), bundle: .module)
+        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.qq.personal"), bundle: .currentSPM)
         self.imageKey = "icon.qq.circle"
         self.destination = URL(string: urlStr)!
     }
@@ -88,12 +88,12 @@ struct LinkLabelItem: View {
         var urlStr = "mqqapi://card/show_pslcard?"
         urlStr.append("src_type=internal&version=1&card_type=group&uin=\(qqGroup)")
         let fallbackKeyHeader: String.LocalizationValue = "aboutKit.contactMethod.qq.group.initials"
-        let fallbackKey = String(localized: fallbackKeyHeader, bundle: .module) + qqGroup
+        let fallbackKey = String(localized: fallbackKeyHeader, bundle: .currentSPM) + qqGroup
         if verbatim {
             self.text = titleOverride ?? fallbackKey
         } else {
             if let titleOverride {
-                self.text = String(localized: .init(stringLiteral: titleOverride), bundle: .module)
+                self.text = String(localized: .init(stringLiteral: titleOverride), bundle: .currentSPM)
             } else {
                 self.text = fallbackKey
             }
@@ -104,19 +104,22 @@ struct LinkLabelItem: View {
 
     private init(qqChannel: String) {
         let urlStr = "https://pd.qq.com/s/\(qqChannel)"
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.qq.channel"), bundle: .module)
+        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.qq.channel"), bundle: .currentSPM)
         self.imageKey = "icon.qq.channel"
         self.destination = URL(string: urlStr)!
     }
 
     private init(homePage: String) {
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.homepage"), bundle: .module)
+        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.homepage"), bundle: .currentSPM)
         self.imageKey = "icon.homepage"
         self.destination = URL(string: homePage)!
     }
 
     private init(officialWebsite: String) {
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.officialWebsite"), bundle: .module)
+        self.text = String(
+            localized: .init(stringLiteral: "aboutKit.contactMethod.officialWebsite"),
+            bundle: .currentSPM
+        )
         self.imageKey = "icon.homepage"
         self.destination = URL(string: officialWebsite)!
     }
@@ -128,9 +131,9 @@ struct LinkLabelItem: View {
     ) {
         let fallbackKey = "aboutKit.contactMethod.telegram"
         if verbatim {
-            self.text = titleOverride ?? String(localized: .init(stringLiteral: fallbackKey), bundle: .module)
+            self.text = titleOverride ?? String(localized: .init(stringLiteral: fallbackKey), bundle: .currentSPM)
         } else {
-            self.text = String(localized: .init(stringLiteral: titleOverride ?? fallbackKey), bundle: .module)
+            self.text = String(localized: .init(stringLiteral: titleOverride ?? fallbackKey), bundle: .currentSPM)
         }
         self.imageKey = "icon.telegram"
         self.destination = URL(string: "https://t.me/\(tgID)")!
@@ -143,9 +146,9 @@ struct LinkLabelItem: View {
     ) {
         let fallbackKey = "aboutKit.contactMethod.twitter"
         if verbatim {
-            self.text = titleOverride ?? String(localized: .init(stringLiteral: fallbackKey), bundle: .module)
+            self.text = titleOverride ?? String(localized: .init(stringLiteral: fallbackKey), bundle: .currentSPM)
         } else {
-            self.text = String(localized: .init(stringLiteral: titleOverride ?? fallbackKey), bundle: .module)
+            self.text = String(localized: .init(stringLiteral: titleOverride ?? fallbackKey), bundle: .currentSPM)
         }
         self.imageKey = "icon.twitter"
         self.destination = URL(string: "https://twitter.com/\(twitterName)")!
@@ -158,64 +161,67 @@ struct LinkLabelItem: View {
     ) {
         let fallbackKey = "aboutKit.contactMethod.blueSky"
         if verbatim {
-            self.text = titleOverride ?? String(localized: .init(stringLiteral: fallbackKey), bundle: .module)
+            self.text = titleOverride ?? String(localized: .init(stringLiteral: fallbackKey), bundle: .currentSPM)
         } else {
-            self.text = String(localized: .init(stringLiteral: titleOverride ?? fallbackKey), bundle: .module)
+            self.text = String(localized: .init(stringLiteral: titleOverride ?? fallbackKey), bundle: .currentSPM)
         }
         self.imageKey = "icon.bsky"
         self.destination = URL(string: "https://twitter.com/\(bskyName)")!
     }
 
     private init(youtube youtubeURLStr: String) {
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.youtube"), bundle: .module)
+        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.youtube"), bundle: .currentSPM)
         self.imageKey = "icon.youtube"
         self.destination = URL(string: youtubeURLStr)!
     }
 
     private init(bilibiliSpace buid: String) {
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.bilibili"), bundle: .module)
+        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.bilibili"), bundle: .currentSPM)
         self.imageKey = "icon.bilibili"
         self.destination = URL(string: "https://space.bilibili.com/\(buid)")!
     }
 
     private init(github ghName: String) {
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.github"), bundle: .module)
+        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.github"), bundle: .currentSPM)
         self.imageKey = "icon.github"
         self.destination = URL(string: "https://github.com/\(ghName)")!
     }
 
     private init(neteaseMusic artistID: String) {
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.163MusicArtistHP"), bundle: .module)
+        self.text = String(
+            localized: .init(stringLiteral: "aboutKit.contactMethod.163MusicArtistHP"),
+            bundle: .currentSPM
+        )
         self.imageKey = "icon.163CloudMusic"
         self.destination = URL(string: "https://music.163.com/#/artist/desc?id=\(artistID)")!
     }
 
     private init(tiktokGlobal tiktokID: String) {
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.tiktok"), bundle: .module)
+        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.tiktok"), bundle: .currentSPM)
         self.imageKey = "icon.tiktok"
         self.destination = URL(string: "https://www.tiktok.com/@\(tiktokID)")!
     }
 
     private init(tiktokCN urlStr: String) {
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.douyin"), bundle: .module)
+        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.douyin"), bundle: .currentSPM)
         self.imageKey = "icon.tiktok"
         self.destination = urlStr.asURL
     }
 
     private init(discord urlStr: String) {
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.discord"), bundle: .module)
+        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.discord"), bundle: .currentSPM)
         self.imageKey = "icon.discord"
         self.destination = urlStr.asURL
     }
 
     private init(facebook urlStr: String) {
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.facebook"), bundle: .module)
+        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.facebook"), bundle: .currentSPM)
         self.imageKey = "icon.facebook"
         self.destination = urlStr.asURL
     }
 
     private init(appStore urlStr: String) {
-        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.appStore"), bundle: .module)
+        self.text = String(localized: .init(stringLiteral: "aboutKit.contactMethod.appStore"), bundle: .currentSPM)
         self.imageKey = "icon.appStore"
         self.destination = urlStr.asURL
     }
@@ -262,7 +268,7 @@ struct LinkLabelItem: View {
             Label {
                 Text(verbatim: text)
             } icon: {
-                Image(imageKey, bundle: .module)
+                Image(imageKey, bundle: .currentSPM)
                     .resizable()
                     .scaledToFit()
             }

@@ -7,7 +7,7 @@ import SwiftUI
 
 extension BundledWallpaper {
     public var image4CellphoneWallpaper: Image {
-        Image(assetName, bundle: .module)
+        Image(assetName, bundle: .currentSPM)
     }
 }
 

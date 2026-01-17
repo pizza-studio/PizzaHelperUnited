@@ -304,7 +304,7 @@ extension EmbeddedWidgets {
                             to: data.transformerInfo.recoveryTime
                         ).day
                         if let day {
-                            Text("pzWidgetsKit.unit.day:\(day)", bundle: .module)
+                            Text("pzWidgetsKit.unit.day:\(day)", bundle: .currentSPM)
                                 .minimumScaleFactor(0.2)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         } else if let mins = Calendar.gregorian.dateComponents(
@@ -312,7 +312,7 @@ extension EmbeddedWidgets {
                             from: Date(),
                             to: data.transformerInfo.recoveryTime
                         ).minute {
-                            Text("pzWidgetsKit.unit.minute:\(mins)", bundle: .module)
+                            Text("pzWidgetsKit.unit.minute:\(mins)", bundle: .currentSPM)
                                 .minimumScaleFactor(0.2)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         } else {

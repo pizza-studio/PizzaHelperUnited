@@ -16,9 +16,9 @@ public struct DataVisibilityGuideView: View {
                 .font(.footnote)
             switch region {
             case .hoyoLab:
-                Image("DataVisibilityGuide_HoYoLAB", bundle: .module).resizable().aspectRatio(contentMode: .fit)
+                Image("DataVisibilityGuide_HoYoLAB", bundle: .currentSPM).resizable().aspectRatio(contentMode: .fit)
             case .miyoushe:
-                Image("DataVisibilityGuide_Miyoushe", bundle: .module).resizable().aspectRatio(contentMode: .fit)
+                Image("DataVisibilityGuide_Miyoushe", bundle: .currentSPM).resizable().aspectRatio(contentMode: .fit)
             }
         }
     }

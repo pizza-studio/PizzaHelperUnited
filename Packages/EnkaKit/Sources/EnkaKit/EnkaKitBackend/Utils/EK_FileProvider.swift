@@ -12,7 +12,7 @@ extension Enka {
         decoderConfigurator: ((JSONDecoder) -> Void)? = nil
     )
         -> T? {
-        guard let url = Bundle.module.url(
+        guard let url = Bundle.currentSPM.url(
             forResource: fileNameStem, withExtension: "json"
         ) else { return nil }
         guard let data = try? Data(contentsOf: url) else { return nil }
@@ -25,7 +25,7 @@ extension Enka {
         fileNameStem: String
     )
         -> Data? {
-        guard let url = Bundle.module.url(
+        guard let url = Bundle.currentSPM.url(
             forResource: fileNameStem, withExtension: "json"
         ) else { return nil }
         return try? Data(contentsOf: url)

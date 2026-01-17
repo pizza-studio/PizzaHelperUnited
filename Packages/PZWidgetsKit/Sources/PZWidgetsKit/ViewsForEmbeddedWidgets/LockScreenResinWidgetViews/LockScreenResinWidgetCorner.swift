@@ -53,7 +53,7 @@ extension EmbeddedWidgets {
                                 .LocalizationValue(
                                     stringLiteral: "pzWidgetsKit.infoBlock.staminaFullyFilledDescription.tiny"
                                 ),
-                            bundle: .module
+                            bundle: .currentSPM
                         )
                 } else {
                     let remaining = HoYo.formattedInterval(until: timeOnFinish)
@@ -62,7 +62,7 @@ extension EmbeddedWidgets {
             case .failure:
                 return String(
                     localized: String.LocalizationValue(stringLiteral: "pzWidgetsKit.stamina.label"),
-                    bundle: .module
+                    bundle: .currentSPM
                 )
             }
         }

@@ -20,7 +20,7 @@ public struct LiveActivityBackgroundPicker: View {
 
     public static let navTitle: String = {
         let key: String.LocalizationValue = "settings.staminaTimer.background.navTitle"
-        return .init(localized: key, bundle: .module)
+        return .init(localized: key, bundle: .currentSPM)
     }()
 
     public var body: some View {

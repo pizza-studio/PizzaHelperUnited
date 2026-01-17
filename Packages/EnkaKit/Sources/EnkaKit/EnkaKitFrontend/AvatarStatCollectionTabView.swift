@@ -49,7 +49,7 @@ public struct AvatarStatCollectionTabView: View {
                             // AppKit 的 TabView 不支持走马灯滚动操作。
                             HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
                         } else {
-                            Text("enka.ASCV.scrollingGuide.appKit", bundle: Bundle.module)
+                            Text("enka.ASCV.scrollingGuide.appKit", bundle: .currentSPM)
                                 .font(.caption2)
                                 .fontWidth(.condensed)
                                 .opacity(0.7)
@@ -132,12 +132,12 @@ public struct AvatarStatCollectionTabView: View {
                 Button {
                     Clipboard.currentString = avatar.asText
                 } label: {
-                    Text("enka.ASCV.summarzeToClipboard.asText", bundle: .module)
+                    Text("enka.ASCV.summarzeToClipboard.asText", bundle: .currentSPM)
                 }
                 Button {
                     Clipboard.currentString = avatar.asMarkDown
                 } label: {
-                    Text("enka.ASCV.summarzeToClipboard.asMD", bundle: .module)
+                    Text("enka.ASCV.summarzeToClipboard.asMD", bundle: .currentSPM)
                 }
                 Divider()
                 if isEnka {

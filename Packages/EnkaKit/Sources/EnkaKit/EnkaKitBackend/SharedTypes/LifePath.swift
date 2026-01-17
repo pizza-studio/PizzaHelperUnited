@@ -80,7 +80,7 @@ extension Enka {
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.GenshinLifePathRecord {
     public static let allMap: [String: Enka.LifePath] = {
-        guard let url = Bundle.module.url(
+        guard let url = Bundle.currentSPM.url(
             forResource: "GenshinLifePathMap", withExtension: "json"
         ) else { return [:] }
         do {

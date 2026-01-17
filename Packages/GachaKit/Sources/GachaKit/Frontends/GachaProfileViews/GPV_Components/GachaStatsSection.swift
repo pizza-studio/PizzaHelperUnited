@@ -50,7 +50,7 @@ extension GachaProfileView {
             }
 
             var localizedSUIText: Text {
-                Text(i18nKeyStr, bundle: .module)
+                Text(i18nKeyStr, bundle: .currentSPM)
             }
         }
 
@@ -58,7 +58,7 @@ extension GachaProfileView {
             Section {
                 HStack {
                     Label {
-                        Text("gachaKit.stats.sincePreviousPentaStar", bundle: .module)
+                        Text("gachaKit.stats.sincePreviousPentaStar", bundle: .currentSPM)
                             .fontWidth(.condensed)
                     } icon: {
                         Image(systemSymbol: .flagFill).foregroundStyle(.orange)
@@ -74,7 +74,7 @@ extension GachaProfileView {
                 }
                 HStack {
                     Label {
-                        Text("gachaKit.stats.totalPulls", bundle: .module)
+                        Text("gachaKit.stats.totalPulls", bundle: .currentSPM)
                             .fontWidth(.condensed)
                     } icon: {
                         Image(systemSymbol: .handTapFill).foregroundStyle(.brown)
@@ -85,7 +85,7 @@ extension GachaProfileView {
                 }
                 HStack {
                     Label {
-                        Text("gachaKit.stats.avaragePulls4PentaStars", bundle: .module)
+                        Text("gachaKit.stats.avaragePulls4PentaStars", bundle: .currentSPM)
                             .fontWidth(.condensed)
                     } icon: {
                         Image(systemSymbol: .star).foregroundStyle(.green)
@@ -97,7 +97,7 @@ extension GachaProfileView {
                 if poolType.isSurinukable, theVM.taskState != .busy {
                     HStack {
                         Label {
-                            Text("gachaKit.stats.avaragePulls4NonStandardPentaStars", bundle: .module)
+                            Text("gachaKit.stats.avaragePulls4NonStandardPentaStars", bundle: .currentSPM)
                                 .fontWidth(.condensed)
                         } icon: {
                             Image(systemSymbol: .starFill).foregroundStyle(.indigo)
@@ -109,7 +109,7 @@ extension GachaProfileView {
                     VStack(alignment: .leading, spacing: 2) {
                         HStack {
                             Label {
-                                Text("gachaKit.stats.standardItemHitRate", bundle: .module)
+                                Text("gachaKit.stats.standardItemHitRate", bundle: .currentSPM)
                                     .fontWidth(.condensed)
                             } icon: {
                                 Image(systemSymbol: .trashCircleFill).foregroundStyle(.red)
@@ -127,14 +127,14 @@ extension GachaProfileView {
                 }
             }
             .alert(
-                Text("gachaKit.stats.confidence.alert.title", bundle: .module),
+                Text("gachaKit.stats.confidence.alert.title", bundle: .currentSPM),
                 isPresented: $isConfidenceExplanationAlertShown
             ) {
                 Button("sys.ok".i18nBaseKit) {
                     isConfidenceExplanationAlertShown = false
                 }
             } message: {
-                Text("gachaKit.stats.confidence.alert.message", bundle: .module)
+                Text("gachaKit.stats.confidence.alert.message", bundle: .currentSPM)
             }
         }
 
@@ -249,7 +249,7 @@ extension GachaProfileView {
         private func guestEvaluatorView() -> some View {
             VStack {
                 HStack {
-                    Text(LocalizedStringKey(stringLiteral: poolType.appraiserDescriptionKey), bundle: .module)
+                    Text(LocalizedStringKey(stringLiteral: poolType.appraiserDescriptionKey), bundle: .currentSPM)
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Spacer()
@@ -310,7 +310,7 @@ extension GachaProfileView.GachaStatsSection {
         func appraiserIcon(game: Pizza.SupportedGame) -> Image {
             let header: String = game.rawValue.lowercased()
             let fileName = "\(header)_appraiserIcon_\(rawValue)"
-            return Image(fileName, bundle: .module)
+            return Image(fileName, bundle: .currentSPM)
         }
 
         // MARK: Fileprivate

@@ -7,7 +7,7 @@ import Foundation
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension String {
     public var i18nPZWidgetsKit: String {
-        String(localized: .init(stringLiteral: self), bundle: .module)
+        String(localized: .init(stringLiteral: self), bundle: .currentSPM)
     }
 
     public var asBackportedWidgetKindName: String {
@@ -22,6 +22,6 @@ extension String {
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension String.LocalizationValue {
     public var i18nPZWidgetsKit: String {
-        String(localized: self, bundle: .module)
+        String(localized: self, bundle: .currentSPM)
     }
 }

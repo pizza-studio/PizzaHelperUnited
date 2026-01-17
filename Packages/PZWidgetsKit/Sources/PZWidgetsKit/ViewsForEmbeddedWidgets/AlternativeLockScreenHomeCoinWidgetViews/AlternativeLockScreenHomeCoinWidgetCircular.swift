@@ -45,7 +45,7 @@ extension EmbeddedWidgets {
                                 endPoint: .bottom
                             )
                             .mask(
-                                Image(homeCoinMonochromeIconAssetName, bundle: .module)
+                                Image(homeCoinMonochromeIconAssetName, bundle: .currentSPM)
                                     .resizable()
                                     .scaledToFit()
                             )
@@ -83,7 +83,7 @@ extension EmbeddedWidgets {
                             endPoint: .bottom
                         )
                         .mask(
-                            Image(homeCoinMonochromeIconAssetName, bundle: .module)
+                            Image(homeCoinMonochromeIconAssetName, bundle: .currentSPM)
                                 .resizable()
                                 .scaledToFit()
                         )
@@ -107,7 +107,7 @@ extension EmbeddedWidgets {
                             denominator: Double(coinIntel.maxHomeCoin)
                         )
                         Gauge(value: gaugeValue) {
-                            Image(homeCoinMonochromeIconAssetName, bundle: .module)
+                            Image(homeCoinMonochromeIconAssetName, bundle: .currentSPM)
                                 .resizable()
                                 .scaledToFit()
                         } currentValueLabel: {
@@ -127,7 +127,7 @@ extension EmbeddedWidgets {
                     }
                 case .failure:
                     Gauge(value: Double(213), in: 0.0 ... Double(213)) {
-                        Image(homeCoinMonochromeIconAssetName, bundle: .module)
+                        Image(homeCoinMonochromeIconAssetName, bundle: .currentSPM)
                             .resizable()
                             .scaledToFit()
                     } currentValueLabel: {

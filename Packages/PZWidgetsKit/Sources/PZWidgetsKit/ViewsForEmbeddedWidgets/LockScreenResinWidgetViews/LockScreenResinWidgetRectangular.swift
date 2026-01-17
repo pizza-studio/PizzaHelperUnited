@@ -46,13 +46,13 @@ extension EmbeddedWidgets {
                             .widgetAccentable()
                             .foregroundColor(PZWidgetsSPM.Colors.IconColor.Resin.middle.suiColor)
                             if staminaIntel.isAccomplished {
-                                Text("pzWidgetsKit.stamina.full", bundle: .module)
+                                Text("pzWidgetsKit.stamina.full", bundle: .currentSPM)
                                     .font(.footnote)
                                     .fixedSize(horizontal: false, vertical: true)
                             } else {
                                 Text(
                                     "pzWidgetsKit.infoBlock.refilledAt:\(HoYo.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
-                                    bundle: .module
+                                    bundle: .currentSPM
                                 )
                                 .lineLimit(2)
                                 .font(.footnote)
@@ -101,14 +101,14 @@ extension EmbeddedWidgets {
                             .foregroundColor(.primary)
                             .widgetAccentable()
                             if staminaIntel.isAccomplished {
-                                Text("pzWidgetsKit.stamina.full", bundle: .module)
+                                Text("pzWidgetsKit.stamina.full", bundle: .currentSPM)
                                     .font(.footnote)
                                     .fixedSize(horizontal: false, vertical: true)
                                     .foregroundColor(.gray)
                             } else {
                                 Text(
                                     "pzWidgetsKit.infoBlock.refilledAt:\(HoYo.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
-                                    bundle: .module
+                                    bundle: .currentSPM
                                 )
                                 .lineLimit(2)
                                 .font(.footnote)

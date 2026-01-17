@@ -20,7 +20,7 @@ public struct PrivacyPolicyView: View {
 
     public static let navTitle: String = {
         let key: String.LocalizationValue = "aboutKit.PrivacyPolicy.title"
-        return .init(localized: key, bundle: .module)
+        return .init(localized: key, bundle: .currentSPM)
     }()
 
     public var body: some View {
@@ -54,7 +54,7 @@ public struct PrivacyPolicyView: View {
     // MARK: Private
 
     private static let urlString: String = {
-        let fileURL = Bundle.module.url(forResource: "PRIVACY_POLICY", withExtension: "html")
+        let fileURL = Bundle.currentSPM.url(forResource: "PRIVACY_POLICY", withExtension: "html")
         let url: String = {
             switch Locale.preferredLanguages.first?.prefix(2) {
             case "zh":

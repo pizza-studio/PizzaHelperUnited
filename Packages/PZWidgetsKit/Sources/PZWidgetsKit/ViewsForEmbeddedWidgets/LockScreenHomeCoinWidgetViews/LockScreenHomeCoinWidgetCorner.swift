@@ -53,7 +53,7 @@ extension EmbeddedWidgets {
             case .failure:
                 return String(
                     localized: String.LocalizationValue(stringLiteral: "pzWidgetsKit.homeCoin"),
-                    bundle: .module
+                    bundle: .currentSPM
                 )
             }
         }

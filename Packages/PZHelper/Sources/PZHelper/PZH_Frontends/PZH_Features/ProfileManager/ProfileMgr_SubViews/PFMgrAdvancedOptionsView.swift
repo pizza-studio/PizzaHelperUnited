@@ -19,16 +19,16 @@ struct PFMgrAdvancedOptionsView: View {
                 Picker(selection: $situatePZProfileDBIntoGroupContainer) {
                     Text(
                         "settings.profile.advanced.dbSaveLocation.toGroupContainer",
-                        bundle: .module
+                        bundle: .currentSPM
                     ).tag(true)
                     Text(
                         "settings.profile.advanced.dbSaveLocation.toAppContainer",
-                        bundle: .module
+                        bundle: .currentSPM
                     ).tag(false)
                 } label: {
                     Text(
                         "settings.profile.advanced.dbSaveLocation.title",
-                        bundle: .module
+                        bundle: .currentSPM
                     )
                 }
                 .react(to: situatePZProfileDBIntoGroupContainer) { _, _ in
@@ -43,7 +43,7 @@ struct PFMgrAdvancedOptionsView: View {
             } footer: {
                 Text(
                     "settings.profile.advanced.dbSaveLocation.footer",
-                    bundle: .module
+                    bundle: .currentSPM
                 )
             }
             .alert(
@@ -54,14 +54,14 @@ struct PFMgrAdvancedOptionsView: View {
                     exit(0)
                 }
             } message: {
-                Text("settings.profile.advanced.dbSaveLocation.restartRequired.description", bundle: .module)
+                Text("settings.profile.advanced.dbSaveLocation.restartRequired.description", bundle: .currentSPM)
             }
 
             Section {
                 Toggle(isOn: $automaticallyDeduplicatePZProfiles) {
                     Text(
                         "settings.profile.advanced.autoDeduplication.title",
-                        bundle: .module
+                        bundle: .currentSPM
                     )
                 }
             }
@@ -95,7 +95,7 @@ struct PFMgrAdvancedOptionsView: View {
                 } label: {
                     Text(
                         "settings.profile.advanced.fingerprintPropagation.buttonTitle",
-                        bundle: .module
+                        bundle: .currentSPM
                     )
                 }
                 .disabled(recentlyPropagatedDeviceFingerprint.isEmpty)
@@ -104,7 +104,7 @@ struct PFMgrAdvancedOptionsView: View {
             } footer: {
                 Text(
                     "settings.profile.advanced.fingerprintPropagation.footer",
-                    bundle: .module
+                    bundle: .currentSPM
                 )
             }
         }

@@ -84,7 +84,7 @@ public struct StaminaTimerLiveActivityWidgetView<
                     .frame(maxHeight: 38)
                     .legibilityShadow(isText: false, enabled: !disableTextShadow)
                 VStack(alignment: .leading) {
-                    Text("pzWidgetsKit.currentStamina", bundle: .module)
+                    Text("pzWidgetsKit.currentStamina", bundle: .currentSPM)
                         .font(.caption2)
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
                         Text(verbatim: "\(context.state.currentPrimaryStamina)")
@@ -108,7 +108,7 @@ public struct StaminaTimerLiveActivityWidgetView<
                                 .legibilityShadow(isText: false, enabled: !disableTextShadow)
                         }
                     VStack(alignment: .leading) {
-                        Text("pzWidgetsKit.nextMaxStamina", bundle: .module)
+                        Text("pzWidgetsKit.nextMaxStamina", bundle: .currentSPM)
                             .font(.caption2)
                         Text(
                             timerInterval: Date() ... context.state
@@ -130,7 +130,7 @@ public struct StaminaTimerLiveActivityWidgetView<
                         .frame(maxHeight: 29)
                         .legibilityShadow(isText: false, enabled: !disableTextShadow)
                     VStack(alignment: .leading) {
-                        Text("pzWidgetsKit.expedition.timeToAllCompletion", bundle: .module)
+                        Text("pzWidgetsKit.expedition.timeToAllCompletion", bundle: .currentSPM)
                             .font(.caption2)
                         Text(
                             timerInterval: Date() ... time,

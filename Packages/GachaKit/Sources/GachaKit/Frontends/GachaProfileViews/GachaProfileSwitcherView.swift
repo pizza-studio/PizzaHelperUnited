@@ -60,7 +60,7 @@ public struct GachaProfileSwitcherView: View {
             if let profile = theVM.currentGPID {
                 Text(profile.uidWithGame).fontWidth(.condensed)
             } else {
-                Text("gachaKit.gachaPullerMenu.chooseGachaPuller", bundle: .module)
+                Text("gachaKit.gachaPullerMenu.chooseGachaPuller", bundle: .currentSPM)
             }
         }
         .padding(4).padding(.leading, 12)

@@ -18,7 +18,7 @@ struct WatchProfileDetailItemView: View {
                         .frame(width: 15, height: 15)
                         .scaledToFit()
                 }
-                Text(title, bundle: .module)
+                Text(title, bundle: .currentSPM)
                     .foregroundColor(.gray)
                     .font(.subheadline)
                     .lineLimit(1)

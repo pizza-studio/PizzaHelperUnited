@@ -100,7 +100,7 @@ extension DesktopWidgets {
                                 expedition.isFinished
                                     ? "pzWidgetsKit.expedition.status.finished"
                                     : "pzWidgetsKit.expedition.status.pending",
-                                bundle: .module
+                                bundle: .currentSPM
                             )
                             .lineLimit(1)
                             .font(.caption2)
@@ -132,7 +132,7 @@ extension DesktopWidgets {
                             pilotImage
                                 .resizable()
                         } else {
-                            Image("NetworkImagePlaceholder", bundle: .module)
+                            Image("NetworkImagePlaceholder", bundle: .currentSPM)
                                 .resizable()
                         }
                     }

@@ -29,7 +29,7 @@ struct HoYoMapMenuLinkSection: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
         } footer: {
-            Text("tools.hoyoMap.sectionDescription", bundle: .module)
+            Text("tools.hoyoMap.sectionDescription", bundle: .currentSPM)
         }
     }
 

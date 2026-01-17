@@ -29,7 +29,7 @@ public struct LedgerView4HSR: LedgerView {
 
     public static let navTitle = "hylKit.ledger4HSR.view.navTitle".i18nHYLKit
 
-    public static var stellarJadeImage: Image { Image("hsr_misc_stellarJade", bundle: .module) }
+    public static var stellarJadeImage: Image { Image("hsr_misc_stellarJade", bundle: .currentSPM) }
 
     public let data: LedgerData
 
@@ -54,13 +54,13 @@ public struct LedgerView4HSR: LedgerView {
                 )
             } header: {
                 HStack {
-                    Text("hylKit.ledger4HSR.todayAcquisition.title", bundle: .module)
+                    Text("hylKit.ledger4HSR.todayAcquisition.title", bundle: .currentSPM)
                     Spacer()
                     Text(verbatim: "\(data.date ?? "")")
                 }
                 .headerFooterTextVisibilityEnhanced()
             } footer: {
-                Text("hylKit.ledger4HSR.tip", bundle: .module)
+                Text("hylKit.ledger4HSR.tip", bundle: .currentSPM)
                     .font(.footnote)
                     .multilineTextAlignment(.leading)
                     .headerFooterTextVisibilityEnhanced()
@@ -87,7 +87,7 @@ public struct LedgerView4HSR: LedgerView {
                     previousValue: data.monthData.prevPasses / (dayCountThisMonth ?? 1)
                 )
             } header: {
-                Text("hylKit.ledger4HSR.billThisMonth:\(data.dataMonth.description)", bundle: .module)
+                Text("hylKit.ledger4HSR.billThisMonth:\(data.dataMonth.description)", bundle: .currentSPM)
                     .headerFooterTextVisibilityEnhanced()
             } footer: {
                 footerChart
@@ -162,13 +162,13 @@ public struct LedgerView4HSR: LedgerView {
             Label {
                 VStack(alignment: .leading) {
                     HStack {
-                        Text(title, bundle: .module)
+                        Text(title, bundle: .currentSPM)
                         Spacer()
                         Text(mainValue.description)
                     }
                     if previousValue != nil {
                         HStack {
-                            Text(memo, bundle: .module).foregroundColor(.secondary)
+                            Text(memo, bundle: .currentSPM).foregroundColor(.secondary)
                             Spacer()
                             switch valueDelta {
                             case 1...: Text(verbatim: "+\(valueDelta)")
@@ -180,7 +180,7 @@ public struct LedgerView4HSR: LedgerView {
                     }
                 }
             } icon: {
-                Image(icon, bundle: .module)
+                Image(icon, bundle: .currentSPM)
                     .resizable()
                     .scaledToFit()
             }
@@ -190,7 +190,7 @@ public struct LedgerView4HSR: LedgerView {
 
 #if DEBUG
 @available(iOS 17.0, macCatalyst 17.0, *) private let demoData: HoYo.LedgerData4HSR = {
-    let sampleDataURL = Bundle.module.url(forResource: "ledger_sample_hsr", withExtension: "json")!
+    let sampleDataURL = Bundle.currentSPM.url(forResource: "ledger_sample_hsr", withExtension: "json")!
     let data = try! Data(contentsOf: sampleDataURL)
     let decoded = try! JSONDecoder().decode(HoYo.LedgerData4HSR.self, from: data)
     return decoded

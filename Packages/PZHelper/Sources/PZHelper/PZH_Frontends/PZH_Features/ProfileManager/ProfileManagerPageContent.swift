@@ -288,7 +288,7 @@ struct ProfileManagerPageContent: View {
             let isRecent = Swift.abs(lastTimeResetLocalProfileDB.timeIntervalSinceNow) > 7200
             Text(
                 "profileMgr.lastTimeResetLocalProfileDB:\(dateStr)",
-                bundle: .module
+                bundle: .currentSPM
             )
             .foregroundStyle(isRecent ? Color.red : Color.primary)
             .textCase(.none)

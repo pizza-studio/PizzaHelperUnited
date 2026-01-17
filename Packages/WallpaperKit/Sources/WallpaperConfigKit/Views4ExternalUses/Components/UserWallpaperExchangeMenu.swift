@@ -37,7 +37,7 @@ struct UserWallpaperExchangeMenu<T: View>: View {
                 theVM.currentExportableDocument = Result.success(.init(model: userWallpapers))
             } label: {
                 Label {
-                    Text("userWallpaperMgr.exchange.export.menuTitle", bundle: .module)
+                    Text("userWallpaperMgr.exchange.export.menuTitle", bundle: .currentSPM)
                 } icon: {
                     Image(systemSymbol: .squareAndArrowUpOnSquare)
                 }
@@ -48,7 +48,7 @@ struct UserWallpaperExchangeMenu<T: View>: View {
                 theVM.isImporterVisible = true
             } label: {
                 Label {
-                    Text("userWallpaperMgr.exchange.import.menuTitle", bundle: .module)
+                    Text("userWallpaperMgr.exchange.import.menuTitle", bundle: .currentSPM)
                 } icon: {
                     Image(systemSymbol: .squareAndArrowDownOnSquare)
                 }

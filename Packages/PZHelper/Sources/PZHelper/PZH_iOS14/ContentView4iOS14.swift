@@ -52,7 +52,7 @@ public struct ContentView4iOS14: View {
                 }
             }
             if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-                Text("refugee.crossAppMigrationNotice.headerText", bundle: .module)
+                Text("refugee.crossAppMigrationNotice.headerText", bundle: .currentSPM)
                     .font(.body)
                     .bold()
                     .foregroundStyle(.red)
@@ -62,7 +62,7 @@ public struct ContentView4iOS14: View {
             Section {
                 if theVM.localProfileEntriesCount > 0 {
                     HStack {
-                        Text("refugee.exportableCount.profiles", bundle: .module)
+                        Text("refugee.exportableCount.profiles", bundle: .currentSPM)
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Text(verbatim: theVM.localProfileEntriesCount.description)
@@ -73,7 +73,7 @@ public struct ContentView4iOS14: View {
                 if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
                     if theVM.gachaEntriesCountModern > 0 {
                         HStack {
-                            Text("refugee.exportableCount.gachaEntries", bundle: .module)
+                            Text("refugee.exportableCount.gachaEntries", bundle: .currentSPM)
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Text(verbatim: theVM.gachaEntriesCountModern.description)
@@ -84,7 +84,7 @@ public struct ContentView4iOS14: View {
                 }
                 if theVM.gachaEntriesCount > 0 {
                     HStack {
-                        Text("refugee.exportableCount.gachaEntries4GI", bundle: .module)
+                        Text("refugee.exportableCount.gachaEntries4GI", bundle: .currentSPM)
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Text(verbatim: theVM.gachaEntriesCount.description)
@@ -93,12 +93,12 @@ public struct ContentView4iOS14: View {
                     }
                 }
                 if !hasData {
-                    Text("refugee.noDataExportable", bundle: .module)
+                    Text("refugee.noDataExportable", bundle: .currentSPM)
                         .foregroundColor(.secondary)
                 }
             } header: {
                 HStack {
-                    Text("refugee.exportableCount.header", bundle: .module)
+                    Text("refugee.exportableCount.header", bundle: .currentSPM)
                         .multilineTextAlignment(.leading)
                         .textCase(.none)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -124,7 +124,7 @@ public struct ContentView4iOS14: View {
                     Button {
                         snoozeAction()
                     } label: {
-                        Text("pzHelper.refugeeSheet.dismiss", bundle: .module)
+                        Text("pzHelper.refugeeSheet.dismiss", bundle: .currentSPM)
                     }
                     .disabled(theVM.taskState == .busy)
                 }
@@ -186,11 +186,11 @@ public struct ContentView4iOS14: View {
                     }
                 }
             } label: {
-                Text("refugee.liveActivity.tapHereToInitiate", bundle: .module)
+                Text("refugee.liveActivity.tapHereToInitiate", bundle: .currentSPM)
             }
         } label: {
             Label {
-                Text("refugee.liveActivity.featureLabel", bundle: .module)
+                Text("refugee.liveActivity.featureLabel", bundle: .currentSPM)
             } icon: {
                 Image(systemSymbol: .timerSquare)
             }
@@ -227,18 +227,18 @@ public struct ContentView4iOS14: View {
             )
         } header: {
             if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-                Text("refugee.limitedServiceCategory4iOS17.header", bundle: .module)
+                Text("refugee.limitedServiceCategory4iOS17.header", bundle: .currentSPM)
                     .textCase(.none)
             } else {
-                Text("refugee.limitedServiceCategory4iOS16.header", bundle: .module)
+                Text("refugee.limitedServiceCategory4iOS16.header", bundle: .currentSPM)
                     .textCase(.none)
             }
         } footer: {
             if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-                Text("refugee.limitedServiceCategory4iOS17.footer", bundle: .module)
+                Text("refugee.limitedServiceCategory4iOS17.footer", bundle: .currentSPM)
                     .textCase(.none)
             } else {
-                Text("refugee.limitedServiceCategory4iOS16.footer", bundle: .module)
+                Text("refugee.limitedServiceCategory4iOS16.footer", bundle: .currentSPM)
                     .textCase(.none)
             }
         }
@@ -250,15 +250,15 @@ public struct ContentView4iOS14: View {
     @ViewBuilder
     func renderBottomFooterContents() -> some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("refugee.footer.exportInstructions", bundle: .module)
+            Text("refugee.footer.exportInstructions", bundle: .currentSPM)
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(.accentColor)
             if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-                Text("refugee.footer.whyServiceTerminatedInPublic", bundle: .module)
+                Text("refugee.footer.whyServiceTerminatedInPublic", bundle: .currentSPM)
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                let linkTitle = String(localized: "refugee.link.getTheLatteHelper", bundle: .module)
+                let linkTitle = String(localized: "refugee.link.getTheLatteHelper", bundle: .currentSPM)
                 let latteAppURLStr = Pizza.AppStoreURL.asLatteHelper.rawValue
                 let rawMarkdown = "**[\(linkTitle)](\(latteAppURLStr))**"
                 if let attrStr = try? AttributedString(markdown: rawMarkdown) {
@@ -267,12 +267,12 @@ public struct ContentView4iOS14: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } else if let latteAppURL = URL(string: latteAppURLStr) {
                     Link(destination: latteAppURL) {
-                        Text("refugee.link.getTheLatteHelper", bundle: .module)
+                        Text("refugee.link.getTheLatteHelper", bundle: .currentSPM)
                             .bold()
                     }
                 }
             } else {
-                Text("refugee.footer.whyServiceTerminatedForOS21", bundle: .module)
+                Text("refugee.footer.whyServiceTerminatedForOS21", bundle: .currentSPM)
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -321,7 +321,7 @@ public struct ContentView4iOS14: View {
 
     private var navTitle: Text {
         if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-            Text("refugee.navTitle.noticingEndOfMaintenance", bundle: .module)
+            Text("refugee.navTitle.noticingEndOfMaintenance", bundle: .currentSPM)
         } else {
             Text(verbatim: Pizza.appTitleLocalizedFull)
         }

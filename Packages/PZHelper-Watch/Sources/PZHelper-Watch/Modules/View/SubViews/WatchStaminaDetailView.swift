@@ -18,7 +18,7 @@ struct WatchStaminaDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 25)
-                Text("watch.stamina", bundle: .module)
+                Text("watch.stamina", bundle: .currentSPM)
                     .foregroundColor(.gray)
             }
             Text(verbatim: "\(dailyNote.staminaIntel.finished)")
@@ -32,13 +32,13 @@ struct WatchStaminaDetailView: View {
     func recoveryTimeText() -> some View {
         let timeOnFinish = dailyNote.staminaFullTimeOnFinish
         if timeOnFinish >= Date() {
-            Text("watch.infoBlock.refilledAt:\(dateFormatter.string(from: timeOnFinish))", bundle: .module)
+            Text("watch.infoBlock.refilledAt:\(dateFormatter.string(from: timeOnFinish))", bundle: .currentSPM)
                 .lineLimit(2)
                 .foregroundColor(.gray)
                 .minimumScaleFactor(0.3)
                 .font(.footnote)
         } else {
-            Text("watch.stamina.fullyCharged", bundle: .module)
+            Text("watch.stamina.fullyCharged", bundle: .currentSPM)
                 .foregroundColor(.gray)
                 .minimumScaleFactor(0.3)
                 .font(.footnote)

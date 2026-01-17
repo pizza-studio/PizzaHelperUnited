@@ -36,7 +36,7 @@ struct UserWallpaperMakerView: View {
                         Label {
                             Text(
                                 "userWPCropper.step1.button.pickImageUsingPhotoPicker",
-                                bundle: .module
+                                bundle: .currentSPM
                             )
                         } icon: {
                             Image(systemSymbol: .photoStack)
@@ -61,7 +61,7 @@ struct UserWallpaperMakerView: View {
                         Label {
                             Text(
                                 "userWPCropper.step1.button.pickImageUsingFileImporter",
-                                bundle: .module
+                                bundle: .currentSPM
                             )
                         } icon: {
                             Image(systemSymbol: .doc)
@@ -69,10 +69,10 @@ struct UserWallpaperMakerView: View {
                     }
                 } footer: {
                     VStack(spacing: 8) {
-                        Text("userWPCropper.step1.footerDescription.1", bundle: .module)
+                        Text("userWPCropper.step1.footerDescription.1", bundle: .currentSPM)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .multilineTextAlignment(.leading)
-                        Text("userWPCropper.step1.footerDescription.2", bundle: .module)
+                        Text("userWPCropper.step1.footerDescription.2", bundle: .currentSPM)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .multilineTextAlignment(.leading)
                             .bold().foregroundStyle(.red)
@@ -167,9 +167,9 @@ struct UserWallpaperMakerView: View {
 
     private var navTitle: Text {
         switch currentStep {
-        case .chooseImage: Text("userWPCropper.navTitle.step1.chooseImage", bundle: .module)
-        case .crop4Horizontal: Text("userWPCropper.navTitle.step2.cropHorizontal", bundle: .module)
-        case .crop4Squared: Text("userWPCropper.navTitle.step3.cropSquared", bundle: .module)
+        case .chooseImage: Text("userWPCropper.navTitle.step1.chooseImage", bundle: .currentSPM)
+        case .crop4Horizontal: Text("userWPCropper.navTitle.step2.cropHorizontal", bundle: .currentSPM)
+        case .crop4Squared: Text("userWPCropper.navTitle.step3.cropSquared", bundle: .currentSPM)
         }
     }
 }

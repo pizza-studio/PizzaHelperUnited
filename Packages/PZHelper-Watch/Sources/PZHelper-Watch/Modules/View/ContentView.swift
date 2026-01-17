@@ -22,7 +22,7 @@ public struct ContentView: View {
                 List {
                     Section {
                         LabeledContent {
-                            Text("watch.sync.tips", bundle: .module)
+                            Text("watch.sync.tips", bundle: .currentSPM)
                         } label: {
                             VStack {
                                 Image(systemSymbol: .icloudAndArrowDown).fixedSize()
@@ -46,7 +46,7 @@ public struct ContentView: View {
                         NavigationLink {
                             WatchWidgetSettingView()
                         } label: {
-                            Text("watch.settings.navTitle", bundle: .module)
+                            Text("watch.settings.navTitle", bundle: .currentSPM)
                         }
                     } footer: {
                         if let versionIntel = try? Bundle.getAppVersionAndBuild() {

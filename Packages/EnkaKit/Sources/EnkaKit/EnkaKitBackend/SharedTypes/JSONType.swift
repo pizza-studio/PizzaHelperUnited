@@ -62,7 +62,7 @@ extension Enka {
 
         // Bundle JSON Accessor.
         static let bundledExtraLangTable: Enka.RawLocTables = {
-            guard let url = Bundle.module.url(
+            guard let url = Bundle.currentSPM.url(
                 forResource: "AdditionalLangTableShared", withExtension: "json"
             ) else { return [:] }
             do {
@@ -76,7 +76,7 @@ extension Enka {
 
         // Bundle JSON Accessor.
         static let bundledRealNameTable: Enka.RawLocTables = {
-            guard let url = Bundle.module.url(
+            guard let url = Bundle.currentSPM.url(
                 forResource: "RealNameDict", withExtension: "json"
             ) else { return [:] }
             do {

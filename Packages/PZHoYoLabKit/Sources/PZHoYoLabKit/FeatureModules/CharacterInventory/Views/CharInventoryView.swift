@@ -60,7 +60,8 @@ public struct CharacterInventoryView: View {
         Form {
             Section {
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(characterStats, bundle: .module) + Text(verbatim: " // ") + Text(goldStats, bundle: .module)
+                    Text(characterStats, bundle: .currentSPM) + Text(verbatim: " // ") +
+                        Text(goldStats, bundle: .currentSPM)
                 }.font(.footnote)
             }.listRowMaterialBackground()
             Group {

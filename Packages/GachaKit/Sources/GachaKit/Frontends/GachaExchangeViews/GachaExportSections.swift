@@ -22,7 +22,7 @@ public struct GachaExportSections: View {
                         Text(verbatim: enumeratedLang.localized).tag(enumeratedLang)
                     }
                 }.frame(maxWidth: .infinity)
-                Text("gachaKit.gachaLanguage.languageSupported.explanation", bundle: .module)
+                Text("gachaKit.gachaLanguage.languageSupported.explanation", bundle: .currentSPM)
                     .asInlineTextDescription()
             }
 
@@ -41,7 +41,7 @@ public struct GachaExportSections: View {
                             lang: documentLanguage
                         )
                     } label: {
-                        Text("gachaKit.exchange.export.clickHereToExport", bundle: .module)
+                        Text("gachaKit.exchange.export.clickHereToExport", bundle: .currentSPM)
                             .fontWeight(.bold)
                             .fontWidth(.condensed)
                             .multilineTextAlignment(.center)
@@ -55,16 +55,16 @@ public struct GachaExportSections: View {
             }
         } header: {
             HStack {
-                Text("gachaKit.exchange.export.currentExportOption", bundle: .module)
+                Text("gachaKit.exchange.export.currentExportOption", bundle: .currentSPM)
                 Spacer()
                 Text(packageMethod.localizedName)
             }
             .textCase(.none)
         } footer: {
             VStack(alignment: .leading, spacing: 11) {
-                Text("gachaKit.uigf.affLink.[UIGF](https://uigf.org/)", bundle: .module)
+                Text("gachaKit.uigf.affLink.[UIGF](https://uigf.org/)", bundle: .currentSPM)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("gachaKit.export.share.warnings.doNotShareToPublicCollectors", bundle: .module)
+                Text("gachaKit.export.share.warnings.doNotShareToPublicCollectors", bundle: .currentSPM)
                     .fontWeight(.medium)
                     .foregroundStyle(.red)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -97,7 +97,7 @@ public struct GachaExportSections: View {
                 nameIDMap: theVM.nameIDMap
             )
         } header: {
-            Text("gachaKit.exchange.chooseGachaPullers.export.prompt", bundle: .module)
+            Text("gachaKit.exchange.chooseGachaPullers.export.prompt", bundle: .currentSPM)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .textCase(.none)
         }
@@ -172,7 +172,7 @@ public struct GachaExportSections: View {
             .fixedSize()
             .disabled(formatsToEnumerate.count == 1)
         } label: {
-            Text("gachaKit.exchange.fileFormat", bundle: .module)
+            Text("gachaKit.exchange.fileFormat", bundle: .currentSPM)
         }
     }
 

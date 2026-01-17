@@ -69,7 +69,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .hacchitao: "aboutKit.contributors.name.hacchitao"
         case .xinzoruo: "aboutKit.contributors.name.xinzoruo"
         }
-        return String(localized: rawNameKey, bundle: .module)
+        return String(localized: rawNameKey, bundle: .currentSPM)
     }
 
     @ArrayBuilder<LinkType?> public var links: [LinkType?] {
@@ -137,7 +137,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         default: nil
         }
         guard let key else { return nil }
-        return String(localized: key, bundle: .module)
+        return String(localized: key, bundle: .currentSPM)
     }
 
     public var subtitleAsAssetCrew: String? {
@@ -149,7 +149,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         default: nil
         }
         guard let key else { return nil }
-        return String(localized: key, bundle: .module)
+        return String(localized: key, bundle: .currentSPM)
     }
 
     public var subtitleAsL10nLanguagesCurrent: String? {

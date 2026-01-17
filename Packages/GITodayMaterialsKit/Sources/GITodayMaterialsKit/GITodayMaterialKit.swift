@@ -10,7 +10,7 @@ import Foundation
 @available(watchOS, unavailable)
 extension GITodayMaterial {
     public static let bundledData: [Self] = {
-        guard let url = Bundle.module.url(
+        guard let url = Bundle.currentSPM.url(
             forResource: "BundledGIDailyMaterialsData", withExtension: "json"
         ) else { return [] }
         do {
@@ -53,11 +53,11 @@ extension GITodayMaterial {
 @available(watchOS, unavailable)
 extension String {
     public var i18nTodayMaterials: String {
-        String(localized: .init(stringLiteral: self), bundle: .module)
+        String(localized: .init(stringLiteral: self), bundle: .currentSPM)
     }
 
     public var i18nTodayMaterialNames: String {
-        String(localized: .init(stringLiteral: self), table: "MaterialNames", bundle: .module)
+        String(localized: .init(stringLiteral: self), table: "MaterialNames", bundle: .currentSPM)
     }
 }
 
@@ -65,11 +65,11 @@ extension String {
 @available(watchOS, unavailable)
 extension String.LocalizationValue {
     public var i18nTodayMaterials: String {
-        String(localized: self, bundle: .module)
+        String(localized: self, bundle: .currentSPM)
     }
 
     public var i18nTodayMaterialNames: String {
-        String(localized: self, table: "MaterialNames", bundle: .module)
+        String(localized: self, table: "MaterialNames", bundle: .currentSPM)
     }
 }
 

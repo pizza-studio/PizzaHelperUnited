@@ -25,7 +25,7 @@ extension DesktopWidgets {
                 alternativeLayout: alternativeLayout,
                 today: today
             ) {
-                Text("pzWidgetsKit.material.sunday", bundle: .module)
+                Text("pzWidgetsKit.material.sunday", bundle: .currentSPM)
                     .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .font(.caption)
                     .lineLimit(1)

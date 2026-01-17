@@ -14,12 +14,12 @@ import SwiftUI
 struct ListOf3rdPartyComponentsView: View {
     static let navTitle: String = {
         let key: String.LocalizationValue = "aboutKit.3rdParty.navTitle"
-        return .init(localized: key, bundle: .module)
+        return .init(localized: key, bundle: .currentSPM)
     }()
 
     static let navTitleShortened: String = {
         let key: String.LocalizationValue = "aboutKit.3rdParty.navTitle.shortened"
-        return .init(localized: key, bundle: .module)
+        return .init(localized: key, bundle: .currentSPM)
     }()
 
     var body: some View {
@@ -85,7 +85,7 @@ struct ListOf3rdPartyComponentsView: View {
                     .font(.caption)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 } header: {
-                    Text("aboutKit.3rdParty.headline", bundle: .module)
+                    Text("aboutKit.3rdParty.headline", bundle: .currentSPM)
                         .textCase(.none)
                 }
             }
