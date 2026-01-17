@@ -1,54 +1,67 @@
 {
   "de": {
-    "110000": "Pizza: Paimon nimmt Pizza",
-    "110001": "Pizza: Reines Schwarz"
+    "110000": "Xinzoruo: Paimon nimmt Pizza",
+    "110001": "Reines Schwarz",
+    "110002": "Latte: Inteyvat & Galaktischer Schläger"
   },
   "en": {
-    "110000": "Pizza: Paimon takes Pizza",
-    "110001": "Pizza: Pure Black"
+    "110000": "Xinzoruo: Paimon takes Pizza",
+    "110001": "Pure Black",
+    "110002": "Latte: Inteyvat & Galactic Bat"
   },
   "es": {
-    "110000": "Pizza: Paimon toma Pizza",
-    "110001": "Pizza: Negro Puro"
+    "110000": "Xinzoruo: Paimon toma Pizza",
+    "110001": "Negro Puro",
+    "110002": "Latte: Inteyvat y Bate Galáctico"
   },
   "fr": {
-    "110000": "Pizza : Paimon prend la Pizza",
-    "110001": "Pizza : Noir Pur"
+    "110000": "Xinzoruo : Paimon prend la Pizza",
+    "110001": "Noir Pur",
+    "110002": "Latte : Inteyvat & Batte Galactique"
   },
   "id": {
-    "110000": "Pizza: Paimon mengambil Pizza",
-    "110001": "Pizza: Hitam Murni"
+    "110000": "Xinzoruo: Paimon mengambil Pizza",
+    "110001": "Hitam Murni",
+    "110002": "Latte: Inteyvat & Tongkat Galaksi"
   },
   "ja": {
-    "110000": "ピザ・パイモンが喰うピザ",
-    "110001": "ピザ・純粋なる真っ黒"
+    "110000": "心臓弱眞君: パイモンが喰うピザ",
+    "110001": "純粋なる真っ黒",
+    "110002": "ラテ: インテイワットと銀河バット"
   },
   "ko": {
-    "110000": "피자: 파이몬이 피자를 먹는다",
-    "110001": "피자: 순수한 검정"
+    "110000": "Xinzoruo: 파이몬이 피자를 먹는다",
+    "110001": "순수한 검정",
+    "110002": "라떼: 인티바트와 은하 방망이"
   },
   "pt": {
-    "110000": "Pizza: Paimon pega a Pizza",
-    "110001": "Pizza: Preto Puro"
+    "110000": "Xinzoruo: Paimon pega a Pizza",
+    "110001": "Preto Puro",
+    "110002": "Latte: Inteyvat e Taco Galáctico"
   },
   "ru": {
-    "110000": "Пицца: Паймон берет Пиццу",
-    "110001": "Пицца: Чистый Черный"
+    "110000": "Xinzoruo: Паймон берет Пиццу",
+    "110001": " Чистый Черный",
+    "110002": "Латте: Интейват и Галактическая бита"
   },
   "th": {
-    "110000": "พิซซ่า: ไพม่อนกินพิซซ่า",
-    "110001": "พิซซ่า: ดำบริสุทธิ์"
+    "110000": "Xinzoruo: ไพม่อนกินพิซซ่า",
+    "110001": "ดำบริสุทธิ์",
+    "110002": "ลาเต้: Inteyvat & ไม้เบสบอลแกแล็กซี"
   },
   "vi": {
-    "110000": "Pizza: Paimon lấy Pizza",
-    "110001": "Pizza: Đen Tuyệt Đối"
+    "110000": "Xinzoruo: Paimon lấy Pizza",
+    "110001": "Đen Tuyệt Đối",
+    "110002": "Latte: Inteyvat & Gậy Ngân Hà"
   },
   "zh-cn": {
-    "110000": "披萨・派蒙吃披萨",
-    "110001": "披萨・黑得纯粹"
+    "110000": "心臓弱眞君: 派蒙吃披萨",
+    "110001": "黑得纯粹",
+    "110002": "拿铁・因提瓦特与银河球棒"
   },
   "zh-tw": {
-    "110000": "披薩・派蒙吃披薩",
-    "110001": "披萨・黑得純粹"
+    "110000": "心臓弱眞君: 派蒙吃披薩",
+    "110001": "黑得純粹",
+    "110002": "拿鐵: 因提瓦特與銀河球棒"
   }
 }
