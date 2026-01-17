@@ -15,12 +15,12 @@ import SwiftUI
 extension Enka {
     public static func queryImageAsset(for assetName: String) -> CGImage? {
         #if os(macOS)
-        guard let image = Bundle.module.image(forResource: assetName) else { return nil }
+        guard let image = Bundle.currentSPM.image(forResource: assetName) else { return nil }
         var imageRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
         let imageRef = image.cgImage(forProposedRect: &imageRect, context: nil, hints: nil)
         return imageRef
         #elseif os(iOS)
-        return UIImage(named: assetName, in: Bundle.module, compatibleWith: nil)?.cgImage
+        return UIImage(named: assetName, in: Bundle.currentSPM, compatibleWith: nil)?.cgImage
         #else
         return nil
         #endif
@@ -28,13 +28,13 @@ extension Enka {
 
     public static func queryImageAssetSUI(for assetName: String) -> Image? {
         #if os(macOS)
-        let instance = Bundle.module.image(forResource: assetName)
+        let instance = Bundle.currentSPM.image(forResource: assetName)
         guard instance != nil else { return nil }
-        return Image(assetName, bundle: Bundle.module)
+        return Image(assetName, bundle: .currentSPM)
         #elseif os(iOS)
-        let instance = UIImage(named: assetName, in: Bundle.module, compatibleWith: nil)
+        let instance = UIImage(named: assetName, in: Bundle.currentSPM, compatibleWith: nil)
         guard instance != nil else { return nil }
-        return Image(assetName, bundle: Bundle.module)
+        return Image(assetName, bundle: .currentSPM)
         #else
         return nil
         #endif

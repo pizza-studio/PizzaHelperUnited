@@ -28,7 +28,7 @@ enum BattleReportTestAssets: String {
     }()
 
     var rawData: Data {
-        let exampleURL = Bundle.module.url(forResource: rawValue, withExtension: "json")!
+        let exampleURL = Bundle.currentSPM.url(forResource: rawValue, withExtension: "json")!
         return try! Data(contentsOf: exampleURL)
     }
 

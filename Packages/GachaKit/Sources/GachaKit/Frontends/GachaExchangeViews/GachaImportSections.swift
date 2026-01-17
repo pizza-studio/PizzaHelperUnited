@@ -34,7 +34,7 @@ public struct GachaImportSections: View {
             .labelsHidden()
             .fixedSize()
         } label: {
-            Text("gachaKit.exchange.fileFormat", bundle: .module)
+            Text("gachaKit.exchange.fileFormat", bundle: .currentSPM)
         }
     }
 
@@ -47,7 +47,7 @@ public struct GachaImportSections: View {
                     chosenGPID.removeAll()
                 }
             } label: {
-                Text("gachaKit.exchange.backAndReselectFile.button", bundle: .module)
+                Text("gachaKit.exchange.backAndReselectFile.button", bundle: .currentSPM)
             }
         }
     }
@@ -148,21 +148,21 @@ extension GachaImportSections {
             VStack(alignment: .leading, spacing: 11) {
                 switch format {
                 case .asUIGFv4:
-                    Text("gachaKit.exchange.formatExplain.uigfv4", bundle: .module)
+                    Text("gachaKit.exchange.formatExplain.uigfv4", bundle: .currentSPM)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("gachaKit.exchange.formatExplain.uigfv4.refugee.snapHutao", bundle: .module)
+                    Text("gachaKit.exchange.formatExplain.uigfv4.refugee.snapHutao", bundle: .currentSPM)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle(.brown)
-                    Text("gachaKit.exchange.formatExplain.uigfv4.refugee.pzHelper4GenshinV4", bundle: .module)
+                    Text("gachaKit.exchange.formatExplain.uigfv4.refugee.pzHelper4GenshinV4", bundle: .currentSPM)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle(.red)
                 case .asSRGFv1:
-                    Text("gachaKit.exchange.formatExplain.srgfv1", bundle: .module)
+                    Text("gachaKit.exchange.formatExplain.srgfv1", bundle: .currentSPM)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 case .asGIGFExcel, .asGIGFJson:
                     Text(format.longName)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("gachaKit.exchange.formatExplain.gigf", bundle: .module)
+                    Text("gachaKit.exchange.formatExplain.gigf", bundle: .currentSPM)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     let timeZoneExplain = "gachaKit.exchange.formatExplain.gigf.timeZone".i18nGachaKit
                     let lines = timeZoneExplain.components(separatedBy: .newlines)
@@ -170,10 +170,10 @@ extension GachaImportSections {
                         Text(verbatim: currentLine)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    Text("gachaKit.exchange.formatExplain.gigf.minimumSupportedVersion", bundle: .module)
+                    Text("gachaKit.exchange.formatExplain.gigf.minimumSupportedVersion", bundle: .currentSPM)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                Text("gachaKit.uigf.affLink.[UIGF](https://uigf.org/)", bundle: .module)
+                Text("gachaKit.uigf.affLink.[UIGF](https://uigf.org/)", bundle: .currentSPM)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }.multilineTextAlignment(.leading)
         }
@@ -192,12 +192,12 @@ extension GachaImportSections {
             LabeledContent {
                 Text(verbatim: source.info.previousFormat)
             } label: {
-                Text("gachaKit.exchange.fileFormat", bundle: .module)
+                Text("gachaKit.exchange.fileFormat", bundle: .currentSPM)
             }
             LabeledContent {
                 Text(verbatim: source.info.exportApp)
             } label: {
-                Text("gachaKit.exchange.exportedFromAppOrigin", bundle: .module)
+                Text("gachaKit.exchange.exportedFromAppOrigin", bundle: .currentSPM)
             }
             makeDateLabel(unixTimeStamp: source.info.exportTimestamp)
             Toggle(
@@ -217,7 +217,7 @@ extension GachaImportSections {
                             immediately: false
                         )
                     } label: {
-                        Text("gachaKit.exchange.startImportingData.button", bundle: .module)
+                        Text("gachaKit.exchange.startImportingData.button", bundle: .currentSPM)
                             .fontWeight(.bold)
                             .fontWidth(.condensed)
                             .multilineTextAlignment(.center)
@@ -239,7 +239,7 @@ extension GachaImportSections {
                 nameIDMap: theVM.nameIDMap
             )
         } header: {
-            Text("gachaKit.exchange.chooseGachaPullers.import.prompt", bundle: .module)
+            Text("gachaKit.exchange.chooseGachaPullers.import.prompt", bundle: .currentSPM)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .textCase(.none)
         }
@@ -261,13 +261,13 @@ extension GachaImportSections {
                     bigTime
                 }
             } label: {
-                Text("gachaKit.exchange.import.info.time", bundle: .module)
+                Text("gachaKit.exchange.import.info.time", bundle: .currentSPM)
             }
         } else {
             LabeledContent {
                 Text(verbatim: "N/A")
             } label: {
-                Text("gachaKit.exchange.import.info.time", bundle: .module)
+                Text("gachaKit.exchange.import.info.time", bundle: .currentSPM)
             }
         }
     }
@@ -295,7 +295,7 @@ extension GachaImportSections {
     func body4SceneStepImportResultPresentation(_ result: [GachaProfileID: Int]) -> some View {
         Section {
             Label {
-                Text("gachaKit.exchange.import.succeeded", bundle: .module)
+                Text("gachaKit.exchange.import.succeeded", bundle: .currentSPM)
             } icon: {
                 Image(systemSymbol: .externaldriveFillBadgeCheckmark)
             }
@@ -320,7 +320,7 @@ extension GachaImportSections {
                 }
             }
         } header: {
-            Text("gachaKit.exchange.import.succeededReport.sectionHeader", bundle: .module)
+            Text("gachaKit.exchange.import.succeededReport.sectionHeader", bundle: .currentSPM)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .textCase(.none)
         }

@@ -39,9 +39,9 @@ struct ContributorItem: View {
         self.isExpanded = isExpanded
         self.asMainMember = main
         self.iconName = icon
-        self.title = .init(localized: titleKey, bundle: .module)
+        self.title = .init(localized: titleKey, bundle: .currentSPM)
         if let subtitleKey {
-            self.subtitle = .init(localized: subtitleKey, bundle: .module)
+            self.subtitle = .init(localized: subtitleKey, bundle: .currentSPM)
         } else {
             self.subtitle = ""
         }
@@ -84,7 +84,7 @@ struct ContributorItem: View {
     @ViewBuilder
     private func drawAsMainMember() -> some View {
         HStack {
-            Image(iconName, bundle: .module)
+            Image(iconName, bundle: .currentSPM)
                 .resizable()
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .frame(width: 50, height: 50)
@@ -97,7 +97,7 @@ struct ContributorItem: View {
                         .multilineTextAlignment(.leading)
                     if let retireDate {
                         let dateText = dateFormatter.string(from: retireDate)
-                        Text("aboutKit.contributor.retiredOn:\(dateText)", bundle: .module)
+                        Text("aboutKit.contributor.retiredOn:\(dateText)", bundle: .currentSPM)
                             .font(.caption2)
                             .foregroundColor(.red)
                             .fontWeight(.medium)
@@ -150,7 +150,7 @@ struct ContributorItem: View {
                     }
                 }
             } icon: {
-                Image(iconName, bundle: .module)
+                Image(iconName, bundle: .currentSPM)
                     .resizable()
                     .scaledToFit()
                     .clipShape(RoundedRectangle(cornerRadius: 6))

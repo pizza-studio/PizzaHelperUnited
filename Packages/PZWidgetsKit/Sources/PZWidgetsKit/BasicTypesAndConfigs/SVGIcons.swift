@@ -119,7 +119,7 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
         #if os(watchOS)
         result = .main
         #else
-        result = .module
+        result = .currentSPM
         #endif
         return result
     }
@@ -247,16 +247,16 @@ public actor SVGIconsCompiler {
     /// 检查当前进程是否能存取该图示资源（module 与 main bundle 的差异）。
     static func assetIsAccessible(for icon: SVGIconAsset) -> Bool {
         #if os(watchOS)
-        // watchOS complications 通常无法可靠地从 `Bundle.module` 读取；仅能使用 `Bundle.main`。
+        // watchOS complications 通常无法可靠地从 `Bundle.currentSPM` 读取；仅能使用 `Bundle.main`。
         return UIImage(named: icon.rawValue, in: Bundle.main, with: nil) != nil
         #elseif canImport(UIKit)
-        // UIKit：先尝试 `Bundle.module`，若失败再尝试 `Bundle.main`。
-        let moduleBundle = Bundle.module
+        // UIKit：先尝试 `Bundle.currentSPM`，若失败再尝试 `Bundle.main`。
+        let moduleBundle = Bundle.currentSPM
         if UIImage(named: icon.rawValue, in: moduleBundle, with: nil) != nil { return true }
         if UIImage(named: icon.rawValue, in: Bundle.main, with: nil) != nil { return true }
         return false
         #elseif canImport(AppKit)
-        let moduleBundle = Bundle.module
+        let moduleBundle = Bundle.currentSPM
         if moduleBundle.image(forResource: icon.rawValue) != nil { return true }
         if Bundle.main.image(forResource: icon.rawValue) != nil { return true }
         return false

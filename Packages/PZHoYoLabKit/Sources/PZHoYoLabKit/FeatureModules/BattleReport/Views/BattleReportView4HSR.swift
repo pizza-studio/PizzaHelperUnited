@@ -17,7 +17,7 @@ extension BattleReportView4HSR {
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension BattleReportView4HSR.TreasuresLightwardType {
     public var asIcon: Image {
-        Image(iconFileNameStem, bundle: .module)
+        Image(iconFileNameStem, bundle: .currentSPM)
     }
 }
 
@@ -49,7 +49,7 @@ public struct BattleReportView4HSR: BattleReportView {
                 }
             } label: {
                 LabeledContent {
-                    Text("hylKit.battleReportView.challengeType", bundle: .module)
+                    Text("hylKit.battleReportView.challengeType", bundle: .currentSPM)
                 } label: {
                     Image(systemSymbol: .line3HorizontalDecreaseCircle)
                 }
@@ -174,7 +174,7 @@ public struct BattleReportView4HSR: BattleReportView {
                     HStack {
                         Text(
                             "hylKit.battleReport.floor.title:\(floorData.floorNumStr)",
-                            bundle: .module
+                            bundle: .currentSPM
                         )
                         Spacer()
                         if let challengeTime = floorData.node1.challengeTime {
@@ -213,7 +213,7 @@ public struct BattleReportView4HSR: BattleReportView {
                     HStack {
                         Text(
                             "hylKit.battleReport.floor.title:\(floorData.floorNumStr)",
-                            bundle: .module
+                            bundle: .currentSPM
                         )
                         Spacer()
                         if let challengeTime = floorData.node1.challengeTime {
@@ -254,7 +254,7 @@ public struct BattleReportView4HSR: BattleReportView {
                     HStack {
                         Text(
                             "hylKit.battleReport.floor.title:\(floorData.floorNumStr)",
-                            bundle: .module
+                            bundle: .currentSPM
                         )
                         Spacer()
                         if let challengeTime = floorData.node1.challengeTime {

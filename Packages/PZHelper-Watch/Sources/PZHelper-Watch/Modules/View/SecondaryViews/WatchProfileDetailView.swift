@@ -168,7 +168,7 @@ struct WatchProfileDetailView: View {
             let stateNyet: String.LocalizationValue = "watch.dailyNote.card.zzzScratchableCard.notYet"
             WatchProfileDetailItemView(
                 title: "watch.dailyNote.card.zzzScratchableCard.label",
-                value: String(localized: cardScratched ? stateDone : stateNyet, bundle: .module),
+                value: String(localized: cardScratched ? stateDone : stateNyet, bundle: .currentSPM),
                 icon: data.game.zzzScratchCardAssetIcon
             )
             Divider()
@@ -218,7 +218,7 @@ private struct WatchEachExpeditionView: View {
                         .font(.footnote)
                     percentageBar(TimeInterval.sinceNow(to: finishTime) / Double(20 * 60 * 60))
                 } else {
-                    Text(expedition.isFinished ? "watch.finished" : "watch.pending", bundle: .module)
+                    Text(expedition.isFinished ? "watch.finished" : "watch.pending", bundle: .currentSPM)
                         .font(.footnote)
                     percentageBar(expedition.isFinished ? 0.5 : 1)
                 }

@@ -65,7 +65,7 @@ public struct UserWallpaperMgrViewContent: View {
                         } extraItem: {
                             NavigationLink(destination: callUserWallpaperMakerView) {
                                 Label {
-                                    Text("userWallpaperMgr.menu.addNewWallpaper", bundle: .module)
+                                    Text("userWallpaperMgr.menu.addNewWallpaper", bundle: .currentSPM)
                                 } icon: {
                                     Image(systemSymbol: .photoBadgePlus)
                                 }
@@ -197,7 +197,7 @@ extension UserWallpaperMgrViewContent {
                 .onDelete(perform: deleteItems)
             } header: {
                 if userWallpapers.count >= Self.maxEntriesAmount {
-                    Text("userWallpaperMgr.footerNotice.maximumEntryAmountReached", bundle: .module)
+                    Text("userWallpaperMgr.footerNotice.maximumEntryAmountReached", bundle: .currentSPM)
                         .textCase(.none)
                         .foregroundStyle(
                             userWallpapers.count < Self.maxEntriesAmount
@@ -206,13 +206,13 @@ extension UserWallpaperMgrViewContent {
                         )
                 }
             } footer: {
-                Text("userWallpaperMgr.navDescription", bundle: .module)
+                Text("userWallpaperMgr.navDescription", bundle: .currentSPM)
             }
             if userWallpapers.isEmpty {
                 Section {
-                    Text("userWallpaperMgr.emptyContentsNotice", bundle: .module)
+                    Text("userWallpaperMgr.emptyContentsNotice", bundle: .currentSPM)
                     NavigationLink(destination: callUserWallpaperMakerView) {
-                        Text("userWallpaperMgr.clickToAddYourFirstWallpaper", bundle: .module)
+                        Text("userWallpaperMgr.clickToAddYourFirstWallpaper", bundle: .currentSPM)
                             .fontWeight(.bold)
                             .fontWidth(.condensed)
                             .padding(.vertical, 4)
@@ -362,7 +362,7 @@ extension UserWallpaperMgrViewContent {
                     currentEditingWallpaper = userWallpaper
                     isNameEditorVisible = true
                 } label: {
-                    Text("userWallpaperMgr.contextMenu.renameWallpaperEntry", bundle: .module)
+                    Text("userWallpaperMgr.contextMenu.renameWallpaperEntry", bundle: .currentSPM)
                 }
                 Divider()
                 Button("wpKit.assign.background4App".i18nWPConfKit) {
@@ -403,17 +403,17 @@ extension UserWallpaperMgrViewContent {
                         }
                     }
                 } label: {
-                    Text("userWallpaperMgr.contextMenu.removeWallpaperEntry", bundle: .module)
+                    Text("userWallpaperMgr.contextMenu.removeWallpaperEntry", bundle: .currentSPM)
                 }
             }
             .alert(
-                Text("userWallpaperMgr.editingWallpaperName.prompt", bundle: .module),
+                Text("userWallpaperMgr.editingWallpaperName.prompt", bundle: .currentSPM),
                 isPresented: $isNameEditorVisible,
                 actions: {
                     TextField(
                         text: nameEditingBuffer
                     ) {
-                        Text("userWallpaperMgr.editingWallpaperName.fieldLabel", bundle: .module)
+                        Text("userWallpaperMgr.editingWallpaperName.fieldLabel", bundle: .currentSPM)
                     }
                     .react(to: currentEditingWallpaper) { oldValue, newValue in
                         guard oldValue != newValue else { return }

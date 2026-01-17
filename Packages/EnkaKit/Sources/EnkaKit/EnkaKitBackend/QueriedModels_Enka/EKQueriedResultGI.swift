@@ -81,7 +81,7 @@ extension Enka {
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.QueriedResultGI {
     public static func exampleData() throws -> Self {
-        let exampleURL = Bundle.module.url(
+        let exampleURL = Bundle.currentSPM.url(
             forResource: "testEnkaProfileGI",
             withExtension: "json"
         )!

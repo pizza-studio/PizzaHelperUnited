@@ -49,7 +49,7 @@ public struct WidgetNote4GI: Note4GI {
 
 extension WidgetNote4GI {
     public static func exampleData() -> WidgetNote4GI {
-        let exampleURL = Bundle.module.url(forResource: "gi_widget_note_example", withExtension: "json")!
+        let exampleURL = Bundle.currentSPM.url(forResource: "gi_widget_note_example", withExtension: "json")!
         let exampleData = try! Data(contentsOf: exampleURL)
         return try! WidgetNote4GI.decodeFromMiHoYoAPIJSONResult(
             data: exampleData,

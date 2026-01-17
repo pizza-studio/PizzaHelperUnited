@@ -18,7 +18,7 @@ public struct FAQView: View {
 
     public static let navTitle: String = {
         let key: String.LocalizationValue = "aboutKit.FAQ.title"
-        return .init(localized: key, bundle: .module)
+        return .init(localized: key, bundle: .currentSPM)
     }()
 
     public var body: some View {
@@ -32,7 +32,7 @@ public struct FAQView: View {
     // MARK: Private
 
     private static let urlString: String = {
-        Bundle.module.url(forResource: "FAQ", withExtension: "html")!.absoluteString
+        Bundle.currentSPM.url(forResource: "FAQ", withExtension: "html")!.absoluteString
     }()
 
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>

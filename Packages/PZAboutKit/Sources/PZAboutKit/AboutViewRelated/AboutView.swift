@@ -19,11 +19,11 @@ public struct AboutView: View {
         let locVal: String.LocalizationValue = Pizza.isAppStoreReleaseAsLatteHelper
             ? "aboutKit.aboutView.navTitle.LatteHelper"
             : "aboutKit.aboutView.navTitle.pzHelper"
-        return String(localized: locVal, bundle: .module)
+        return String(localized: locVal, bundle: .currentSPM)
     }()
 
     @ViewBuilder public static var navIcon: some View {
-        Image(assetName4MainApp, bundle: .module)
+        Image(assetName4MainApp, bundle: .currentSPM)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .clipShape(RoundedRectangle(cornerRadius: 6))
@@ -45,8 +45,8 @@ public struct AboutView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Picker(selection: $isShowingCrew.animation()) {
-                        Text("aboutKit.aboutView.tab.app", bundle: .module).tag(false)
-                        Text("aboutKit.aboutView.tab.crew", bundle: .module).tag(true)
+                        Text("aboutKit.aboutView.tab.app", bundle: .currentSPM).tag(false)
+                        Text("aboutKit.aboutView.tab.crew", bundle: .currentSPM).tag(true)
                     } label: {
                         EmptyView()
                     }
@@ -75,7 +75,7 @@ public struct AboutView: View {
         case false: "aboutKit.aboutView.navTitle.app"
         case true: "aboutKit.aboutView.navTitle.crew"
         }
-        return String(localized: locVal, bundle: .module)
+        return String(localized: locVal, bundle: .currentSPM)
     }
 }
 
@@ -114,7 +114,7 @@ struct AppAboutViewSections: View {
                 let hasNewVersion = cachedAppStoreMeta?.isNewerThanCurrentVersionOnAppStore ?? false
                 if hasNewVersion, let url = Pizza.url4AppStore {
                     Link(destination: url) {
-                        Text("aboutKit.ourApps.clickHereToUpdate", bundle: .module)
+                        Text("aboutKit.ourApps.clickHereToUpdate", bundle: .currentSPM)
                             .textCase(.none)
                             .lineLimit(1)
                             .fixedSize()
@@ -129,10 +129,10 @@ struct AppAboutViewSections: View {
                         .textCase(.none)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                Text("aboutKit.ourApps.miHoYoCopyrightNotice", bundle: .module)
+                Text("aboutKit.ourApps.miHoYoCopyrightNotice", bundle: .currentSPM)
                     .textCase(.none)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("aboutKit.ourApps.pizzaStudioCopyrightNotice", bundle: .module)
+                Text("aboutKit.ourApps.pizzaStudioCopyrightNotice", bundle: .currentSPM)
                     .textCase(.none)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }.frame(maxWidth: .infinity)
@@ -168,7 +168,7 @@ struct AppAboutViewSections: View {
 
         // app contact
         Section(
-            header: Text("aboutKit.chatrooms.header", bundle: .module),
+            header: Text("aboutKit.chatrooms.header", bundle: .currentSPM),
             footer: Text(groupFooterText).textCase(.none)
         ) {
             ContributorItem(main: false, icon: "icon.qq", titleKey: "aboutKit.chatrooms.joinQQGroup") {
@@ -253,7 +253,7 @@ struct DevCrewViewSections: View {
                 )
             }
         } header: {
-            Text("aboutKit.contributors.category.mainCrew", bundle: .module)
+            Text("aboutKit.contributors.category.mainCrew", bundle: .currentSPM)
                 .textCase(.none)
         }
 
@@ -265,7 +265,7 @@ struct DevCrewViewSections: View {
                 )
             }
         } header: {
-            Text("aboutKit.contributors.category.assets", bundle: .module)
+            Text("aboutKit.contributors.category.assets", bundle: .currentSPM)
                 .textCase(.none)
         }
 
@@ -277,10 +277,10 @@ struct DevCrewViewSections: View {
                 )
             }
         } header: {
-            Text("aboutKit.contributors.category.i18n.current", bundle: .module)
+            Text("aboutKit.contributors.category.i18n.current", bundle: .currentSPM)
                 .textCase(.none)
         } footer: {
-            Text("aboutKit.contributors.category.i18n.current.description", bundle: .module)
+            Text("aboutKit.contributors.category.i18n.current.description", bundle: .currentSPM)
         }
 
         Section {
@@ -291,17 +291,17 @@ struct DevCrewViewSections: View {
                 )
             }
         } header: {
-            Text("aboutKit.contributors.category.i18n.previous", bundle: .module)
+            Text("aboutKit.contributors.category.i18n.previous", bundle: .currentSPM)
                 .textCase(.none)
         } footer: {
-            Text("aboutKit.contributors.category.i18n.previous.description", bundle: .module)
+            Text("aboutKit.contributors.category.i18n.previous.description", bundle: .currentSPM)
         }
     }
 
     // MARK: Private
 
     private var isJapaneseUI: Bool {
-        Bundle.module.preferredLocalizations.first == "ja"
+        Bundle.currentSPM.preferredLocalizations.first == "ja"
     }
 }
 

@@ -15,7 +15,7 @@ public protocol LocalAssetSuppliable {
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension LocalAssetSuppliable {
     public var localIcon4SUI: Image {
-        Image(iconAssetName, bundle: Bundle.module).resizable()
+        Image(iconAssetName, bundle: .currentSPM).resizable()
     }
 
     @ViewBuilder public var localFittingIcon4SUI: some View {

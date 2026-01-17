@@ -114,7 +114,7 @@ public struct PieChartView: View {
                             activeIndex == -1 ?
                                 String(format: NSLocalizedString(
                                     "pieChart.total",
-                                    bundle: .module,
+                                    bundle: .currentSPM,
                                     comment: "total"
                                 )) : names[activeIndex]
                         )

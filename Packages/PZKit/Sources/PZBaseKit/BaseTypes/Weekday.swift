@@ -22,13 +22,13 @@ public enum Weekday: Int, CaseIterable {
 extension Weekday: CustomStringConvertible {
     public var description: String {
         switch self {
-        case .sunday: String(localized: "sys.weekday.sunday", bundle: .module)
-        case .monday: String(localized: "sys.weekday.monday", bundle: .module)
-        case .tuesday: String(localized: "sys.weekday.tuesday", bundle: .module)
-        case .wednesday: String(localized: "sys.weekday.wednesday", bundle: .module)
-        case .thursday: String(localized: "sys.weekday.thursday", bundle: .module)
-        case .friday: String(localized: "sys.weekday.friday", bundle: .module)
-        case .saturday: String(localized: "sys.weekday.saturday", bundle: .module)
+        case .sunday: String(localized: "sys.weekday.sunday", bundle: .currentSPM)
+        case .monday: String(localized: "sys.weekday.monday", bundle: .currentSPM)
+        case .tuesday: String(localized: "sys.weekday.tuesday", bundle: .currentSPM)
+        case .wednesday: String(localized: "sys.weekday.wednesday", bundle: .currentSPM)
+        case .thursday: String(localized: "sys.weekday.thursday", bundle: .currentSPM)
+        case .friday: String(localized: "sys.weekday.friday", bundle: .currentSPM)
+        case .saturday: String(localized: "sys.weekday.saturday", bundle: .currentSPM)
         }
     }
 }

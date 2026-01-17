@@ -25,7 +25,7 @@ struct LiveActivitySettingNavigator: View {
     var body: some View {
         NavigationLink(destination: LiveActivitySettingsPageContent.init) {
             Label {
-                Text("settings.staminaTimer.settings.navTitle", bundle: .module)
+                Text("settings.staminaTimer.settings.navTitle", bundle: .currentSPM)
             } icon: {
                 Image(systemSymbol: .timer)
             }
@@ -60,7 +60,7 @@ struct LiveActivitySettingsPageContent: View {
                         .foregroundStyle(Color.accentColor)
                         .frame(width: 64, height: 64)
                         .padding(8)
-                    Text("settings.staminaTimer.explanation", bundle: .module)
+                    Text("settings.staminaTimer.explanation", bundle: .currentSPM)
                         .font(.caption)
                 }
                 .frame(maxWidth: .infinity)
@@ -69,7 +69,7 @@ struct LiveActivitySettingsPageContent: View {
                 }
                 if !allowLiveActivity {
                     Label {
-                        Text("settings.staminaTimer.realtimeActivity.notEnabled", bundle: .module)
+                        Text("settings.staminaTimer.realtimeActivity.notEnabled", bundle: .currentSPM)
                     } icon: {
                         Image(systemSymbol: .exclamationmarkCircle)
                             .foregroundColor(.red)
@@ -79,34 +79,34 @@ struct LiveActivitySettingsPageContent: View {
                     Toggle(
                         isOn: $autoDeliveryStaminaTimerLiveActivity.animation()
                     ) {
-                        Text("settings.staminaTimer.autoInit.toggle.title", bundle: .module)
+                        Text("settings.staminaTimer.autoInit.toggle.title", bundle: .currentSPM)
                     }
                     Toggle(
                         isOn: $showExpeditionInLiveActivity.animation()
                     ) {
-                        Text("settings.staminaTimer.showExpedition.title", bundle: .module)
+                        Text("settings.staminaTimer.showExpedition.title", bundle: .currentSPM)
                     }
                 }
             } footer: {
-                Text("settings.staminaTimer.dynamicIsland.howToHide.answer", bundle: .module)
+                Text("settings.staminaTimer.dynamicIsland.howToHide.answer", bundle: .currentSPM)
             }
             Section {
                 Toggle(
                     isOn: labvParser.useEmptyBackground.animation()
                 ) {
-                    Text("settings.staminaTimer.useTransparentBackground.title", bundle: .module)
+                    Text("settings.staminaTimer.useTransparentBackground.title", bundle: .currentSPM)
                 }
                 if !labvParser.useEmptyBackground.wrappedValue {
                     Toggle(
                         isOn: labvParser.useRandomBackground.animation()
                     ) {
-                        Text("settings.staminaTimer.randomBackground.title", bundle: .module)
+                        Text("settings.staminaTimer.randomBackground.title", bundle: .currentSPM)
                     }
                     if !labvParser.useRandomBackground.wrappedValue {
                         NavigationLink {
                             LiveActivityBackgroundPicker()
                         } label: {
-                            Text("settings.staminaTimer.background.choose", bundle: .module)
+                            Text("settings.staminaTimer.background.choose", bundle: .currentSPM)
                         }
                     }
                 }
@@ -153,7 +153,7 @@ struct LiveActivitySettingsPageContent: View {
                 string: UIApplication
                     .openSettingsURLString
             )!) {
-                Text("settings.staminaTimer.gotoSystemSettings", bundle: .module)
+                Text("settings.staminaTimer.gotoSystemSettings", bundle: .currentSPM)
             }
             #else
             EmptyView()

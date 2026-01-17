@@ -47,7 +47,7 @@ extension DesktopWidgets {
             let key: String
                 .LocalizationValue = tiny ? "pzWidgetsKit.infoBlock.staminaFullyFilledDescription.tiny" :
                 "pzWidgetsKit.infoBlock.staminaFullyFilledDescription"
-            let textFull = Text(.init(localized: key, bundle: .module))
+            let textFull = Text(.init(localized: key, bundle: .currentSPM))
             let staminaIntel = data.staminaIntel
             let fullTimeOnFinish = data.staminaFullTimeOnFinish
             if staminaIntel.finished < staminaIntel.all {

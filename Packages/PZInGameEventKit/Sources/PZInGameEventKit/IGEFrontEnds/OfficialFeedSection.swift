@@ -113,14 +113,14 @@ extension OfficialFeed.OfficialFeedSection {
                             LabeledContent {
                                 Image(systemSymbol: .newspaper)
                             } label: {
-                                Text("igev.gameEvents.pendingEvents.title", bundle: .module)
+                                Text("igev.gameEvents.pendingEvents.title", bundle: .currentSPM)
                             }
                             VStack(spacing: 7) {
                                 let eventContentsValid = validEventContents.prefix(3)
                                 if eventContentsValid.isEmpty {
                                     HStack {
                                         Spacer()
-                                        Text("igev.gameEvents.noCurrentEventInfo", bundle: .module)
+                                        Text("igev.gameEvents.noCurrentEventInfo", bundle: .currentSPM)
                                             .font(.caption)
                                             .foregroundColor(.secondary)
                                         Spacer()

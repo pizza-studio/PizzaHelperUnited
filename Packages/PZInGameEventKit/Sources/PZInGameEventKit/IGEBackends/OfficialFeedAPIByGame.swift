@@ -102,7 +102,7 @@ extension Pizza.SupportedGame {
         case .starRail: "hsr_cn"
         case .zenlessZone: "zzz_cn"
         }
-        let url = Bundle.module.url(
+        let url = Bundle.currentSPM.url(
             forResource: "feeds_" + shortID + (isContent ? "_content" : ""),
             withExtension: "json"
         )!

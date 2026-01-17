@@ -36,13 +36,13 @@ extension View {
 @available(iOS 15.0, macCatalyst 15.0, *)
 extension String {
     public var i18nWPKit: String {
-        String(localized: .init(stringLiteral: self), bundle: .module)
+        String(localized: .init(stringLiteral: self), bundle: .currentSPM)
     }
 }
 
 @available(iOS 15.0, macCatalyst 15.0, *)
 extension String.LocalizationValue {
     public var i18nWPKit: String {
-        String(localized: self, bundle: .module)
+        String(localized: self, bundle: .currentSPM)
     }
 }

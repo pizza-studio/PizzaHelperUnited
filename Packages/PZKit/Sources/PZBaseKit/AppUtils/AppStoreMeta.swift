@@ -24,10 +24,10 @@ public struct ASUpdateNoticeView: View {
             if let meta = cachedAppStoreMeta, meta.isNewerThanCurrentVersionOnAppStore, let url {
                 #if !os(watchOS)
                 Link(destination: url) {
-                    Text("app.version.updatesAvailableAtAppStore:\(meta.version)", bundle: .module)
+                    Text("app.version.updatesAvailableAtAppStore:\(meta.version)", bundle: .currentSPM)
                 }
                 #else
-                Text("app.version.updatesAvailableAtAppStore:\(meta.version)", bundle: .module)
+                Text("app.version.updatesAvailableAtAppStore:\(meta.version)", bundle: .currentSPM)
                 #endif
             } else {
                 EmptyView()

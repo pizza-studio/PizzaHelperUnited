@@ -234,11 +234,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: NSLocalizedString("notification.stamina.title:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.stamina.title:%@", bundle: .currentSPM, comment: ""),
             profile.name
         )
         content.body = String(
-            format: NSLocalizedString("notification.stamina.full.body:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.stamina.full.body:%@", bundle: .currentSPM, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
@@ -257,7 +257,7 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: NSLocalizedString("notification.stamina.title:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.stamina.title:%@", bundle: .currentSPM, comment: ""),
             profile.name
         )
         // 计算阈值到达的具体时间
@@ -286,13 +286,17 @@ extension NotificationSputnik {
         }
 
         let baseBody = String(
-            format: NSLocalizedString("notification.stamina.customize.body:%@%@%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.stamina.customize.body:%@%@%@", bundle: .currentSPM, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             threshold.description,
             formatTimeString(from: timeOnFinish)
         )
         let issuedAtFootnote = formatTimeString(from: Date())
-        let extraNotice = NSLocalizedString("notification.stamina.customize.body.extra:", bundle: .module, comment: "")
+        let extraNotice = NSLocalizedString(
+            "notification.stamina.customize.body.extra:",
+            bundle: .currentSPM,
+            comment: ""
+        )
         content.body = "\(baseBody) // \(extraNotice)\(issuedAtFootnote)"
         content.badge = 1
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
@@ -311,11 +315,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: NSLocalizedString("notification.expedition.title:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.expedition.title:%@", bundle: .currentSPM, comment: ""),
             profile.name
         )
         content.body = String(
-            format: NSLocalizedString("notification.expedition.summary.body:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.expedition.summary.body:%@", bundle: .currentSPM, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
@@ -336,11 +340,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: NSLocalizedString("notification.expedition.title:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.expedition.title:%@", bundle: .currentSPM, comment: ""),
             profile.name
         )
         content.body = String(
-            format: NSLocalizedString("notification.expedition.each.body:%@%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.expedition.each.body:%@%@", bundle: .currentSPM, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             index.description
         )
@@ -362,11 +366,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: NSLocalizedString("notification.dailyTask.title:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.dailyTask.title:%@", bundle: .currentSPM, comment: ""),
             profile.name
         )
         content.body = String(
-            format: NSLocalizedString("notification.dailyTask.body:%@%@%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.dailyTask.body:%@%@%@", bundle: .currentSPM, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             sitrep.finished.description,
             sitrep.all.description
@@ -394,11 +398,19 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: NSLocalizedString("notification.katheryneRewardsAvailable.title:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString(
+                "notification.katheryneRewardsAvailable.title:%@",
+                bundle: .currentSPM,
+                comment: ""
+            ),
             profile.name
         )
         content.body = String(
-            format: NSLocalizedString("notification.katheryneRewardsAvailable.body:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString(
+                "notification.katheryneRewardsAvailable.body:%@",
+                bundle: .currentSPM,
+                comment: ""
+            ),
             "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
@@ -419,11 +431,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: NSLocalizedString("notification.realmCurrency.title:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.realmCurrency.title:%@", bundle: .currentSPM, comment: ""),
             profile.name
         )
         content.body = String(
-            format: NSLocalizedString("notification.realmCurrency.body:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.realmCurrency.body:%@", bundle: .currentSPM, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
@@ -446,11 +458,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: NSLocalizedString("notification.parametricTransformer.title:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.parametricTransformer.title:%@", bundle: .currentSPM, comment: ""),
             profile.name
         )
         content.body = String(
-            format: NSLocalizedString("notification.parametricTransformer.body:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.parametricTransformer.body:%@", bundle: .currentSPM, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
@@ -479,11 +491,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: NSLocalizedString("notification.trounceBlossom.title:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.trounceBlossom.title:%@", bundle: .currentSPM, comment: ""),
             profile.name
         )
         content.body = String(
-            format: NSLocalizedString("notification.trounceBlossom.body:%@%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.trounceBlossom.body:%@%@", bundle: .currentSPM, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             trounceBlossom.remainResinDiscount.description
         )
@@ -516,11 +528,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: NSLocalizedString("notification.echoOfWar.title:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.echoOfWar.title:%@", bundle: .currentSPM, comment: ""),
             profile.name
         )
         content.body = String(
-            format: NSLocalizedString("notification.echoOfWar.body:%@%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.echoOfWar.body:%@%@", bundle: .currentSPM, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             eowIntel.weeklyEOWRewardsLeft.description
         )
@@ -555,11 +567,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: NSLocalizedString("notification.cosmicStrife.title:%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.cosmicStrife.title:%@", bundle: .currentSPM, comment: ""),
             profile.name
         )
         content.body = String(
-            format: NSLocalizedString("notification.cosmicStrife.body:%@%@%@", bundle: .module, comment: ""),
+            format: NSLocalizedString("notification.cosmicStrife.body:%@%@%@", bundle: .currentSPM, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             cosmicStrifeIntel.finished.description,
             cosmicStrifeIntel.all.description

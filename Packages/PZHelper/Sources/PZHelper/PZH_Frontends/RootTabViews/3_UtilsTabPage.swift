@@ -40,7 +40,7 @@ struct UtilsTabPage: View {
                     Text(UserWallpaperMgrViewContent.navDescription)
                 }
                 HoYoMapMenuLinkSection()
-                Text("tab.utils.featureRemovalNotice", bundle: .module)
+                Text("tab.utils.featureRemovalNotice", bundle: .currentSPM)
                     .asInlineTextDescription()
             }
             .formStyle(.grouped).disableFocusable()

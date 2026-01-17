@@ -32,7 +32,7 @@ public struct GachaChartVertical: View {
                 drawEntry(nil, avrgCount: avrgCount, showRulerValues: true).id(-889464)
             }
         } else {
-            Text("gachaKit.chart.noPentaStarsFound", bundle: .module)
+            Text("gachaKit.chart.noPentaStarsFound", bundle: .currentSPM)
                 .foregroundColor(.secondary)
         }
     }

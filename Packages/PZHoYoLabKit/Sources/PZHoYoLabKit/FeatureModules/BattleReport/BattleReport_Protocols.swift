@@ -45,11 +45,11 @@ public protocol BattleReportView: View {
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension BattleReportView {
-    public static var abyssStarIcon: Image { Image("abyssStar", bundle: .module) }
+    public static var abyssStarIcon: Image { Image("abyssStar", bundle: .currentSPM) }
 
     @ViewBuilder
     public static func drawAbyssStarIcon(size: CGFloat = 20) -> some View {
-        Image("abyssStar", bundle: .module)
+        Image("abyssStar", bundle: .currentSPM)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: size, height: size)

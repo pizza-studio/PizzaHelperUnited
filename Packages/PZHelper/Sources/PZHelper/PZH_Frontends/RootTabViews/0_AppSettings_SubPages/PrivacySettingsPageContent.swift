@@ -10,7 +10,7 @@ import SwiftUI
 struct PrivacySettingsPageContent: View {
     var body: some View {
         Form {
-            Text("settings.privacy.noOptionsAvailable", bundle: .module)
+            Text("settings.privacy.noOptionsAvailable", bundle: .currentSPM)
                 .asInlineTextDescription()
         }
         .formStyle(.grouped).disableFocusable()

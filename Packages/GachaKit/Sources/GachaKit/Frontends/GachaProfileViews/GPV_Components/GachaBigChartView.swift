@@ -75,7 +75,7 @@ public struct GachaBigChartView: View {
                     }
                 }
             } header: {
-                Text("gachaKit.filter.options", bundle: .module).textCase(.none)
+                Text("gachaKit.filter.options", bundle: .currentSPM).textCase(.none)
             }
         }
     }

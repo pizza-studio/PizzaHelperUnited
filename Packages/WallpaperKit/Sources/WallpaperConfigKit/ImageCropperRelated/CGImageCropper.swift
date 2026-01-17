@@ -341,10 +341,10 @@ extension CGImageCropperView {
                     .onTapGesture {}
                 } footer: {
                     if OS.type != .macOS {
-                        Text("imageCropper.hint.fingerGestures", bundle: .module)
+                        Text("imageCropper.hint.fingerGestures", bundle: .currentSPM)
                             .fontWidth(.condensed)
                     } else if OS.isCatalyst {
-                        Text("imageCropper.hint.mouseGesture", bundle: .module)
+                        Text("imageCropper.hint.mouseGesture", bundle: .currentSPM)
                             .fontWidth(.condensed)
                     }
                 }

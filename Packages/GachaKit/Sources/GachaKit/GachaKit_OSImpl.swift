@@ -9,14 +9,14 @@ import PZBaseKit
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension String {
     public var i18nGachaKit: String {
-        String(localized: .init(stringLiteral: self), bundle: .module)
+        String(localized: .init(stringLiteral: self), bundle: .currentSPM)
     }
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension String.LocalizationValue {
     public var i18nGachaKit: String {
-        String(localized: self, bundle: .module)
+        String(localized: self, bundle: .currentSPM)
     }
 }
 

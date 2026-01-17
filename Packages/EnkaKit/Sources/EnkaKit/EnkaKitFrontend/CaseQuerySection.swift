@@ -114,9 +114,9 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     func sectionHeader() -> some View {
         switch QueryDB.game {
         case .genshinImpact:
-            Text("enka.CaseQuery.title.GI", bundle: .module)
+            Text("enka.CaseQuery.title.GI", bundle: .currentSPM)
         case .starRail:
-            Text("enka.CaseQuery.title.HSR", bundle: .module)
+            Text("enka.CaseQuery.title.HSR", bundle: .currentSPM)
         case .zenlessZone:
             EmptyView() // 临时设定。
         }
@@ -126,9 +126,9 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     func sectionFooterWithExplainTexts() -> some View {
         switch QueryDB.game {
         case .genshinImpact:
-            Text("enka.CaseQuery.showCaseAPIServiceProviders.explain.GI", bundle: .module)
+            Text("enka.CaseQuery.showCaseAPIServiceProviders.explain.GI", bundle: .currentSPM)
         case .starRail:
-            Text("enka.CaseQuery.showCaseAPIServiceProviders.explain.HSR", bundle: .module)
+            Text("enka.CaseQuery.showCaseAPIServiceProviders.explain.HSR", bundle: .currentSPM)
         case .zenlessZone:
             EmptyView() // 临时设定。
         }

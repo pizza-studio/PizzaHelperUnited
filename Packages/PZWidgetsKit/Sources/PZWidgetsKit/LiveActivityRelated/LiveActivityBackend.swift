@@ -42,7 +42,7 @@ public struct EnableLiveActivityButton: View {
                 }
             }
         } label: {
-            Text("app.dailynote.initiateLiveActivity", bundle: .module)
+            Text("app.dailynote.initiateLiveActivity", bundle: .currentSPM)
         }
         .alert(isPresented: $showErrorAlert, error: error) {
             Button("sys.cancel".i18nBaseKit) {
@@ -324,11 +324,11 @@ extension CreateLiveActivityError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .notAllowed:
-            return .init(localized: errorDescriptionKeys, bundle: .module)
+            return .init(localized: errorDescriptionKeys, bundle: .currentSPM)
         case .noInfo:
-            return .init(localized: errorDescriptionKeys, bundle: .module)
+            return .init(localized: errorDescriptionKeys, bundle: .currentSPM)
         case let .otherError(message):
-            return String(format: .init(localized: errorDescriptionKeys, bundle: .module), message)
+            return String(format: .init(localized: errorDescriptionKeys, bundle: .currentSPM), message)
         }
     }
 

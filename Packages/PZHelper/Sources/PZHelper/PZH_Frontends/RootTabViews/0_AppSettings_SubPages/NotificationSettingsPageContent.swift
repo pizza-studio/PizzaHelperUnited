@@ -14,11 +14,11 @@ struct NotificationSettingsPageContent: View {
     // MARK: Public
 
     public static let navTitle: String = .init(
-        localized: "settings.notification.navTitle", bundle: .module
+        localized: "settings.notification.navTitle", bundle: .currentSPM
     )
 
     public static let navTitleShortened: String = .init(
-        localized: "settings.notification.navTitle.shortened", bundle: .module
+        localized: "settings.notification.navTitle.shortened", bundle: .currentSPM
     )
 
     public var body: some View {
@@ -27,13 +27,13 @@ struct NotificationSettingsPageContent: View {
                 if !allowPushNotification {
                     Section {
                         Label {
-                            Text("settings.notification.insufficientSystemPrivileges", bundle: .module)
+                            Text("settings.notification.insufficientSystemPrivileges", bundle: .currentSPM)
                         } icon: {
                             Image(systemSymbol: .bellSlashFill)
                         }
 
                         let osSettingsLinkLabel = Label {
-                            Text("settings.notification.navigateToOSSettings", bundle: .module)
+                            Text("settings.notification.navigateToOSSettings", bundle: .currentSPM)
                         } icon: {
                             Image(systemSymbol: .gear)
                         }
@@ -92,11 +92,11 @@ private struct ProfilesNotificationPermissionView: View {
     // MARK: Public
 
     public static let navTitle: String = .init(
-        localized: "settings.notification.profilesReceivingNotifications.navTitle", bundle: .module
+        localized: "settings.notification.profilesReceivingNotifications.navTitle", bundle: .currentSPM
     )
 
     public static let navTitleShortened: String = .init(
-        localized: "settings.notification.profilesReceivingNotifications.navTitle.shortened", bundle: .module
+        localized: "settings.notification.profilesReceivingNotifications.navTitle.shortened", bundle: .currentSPM
     )
 
     // MARK: Internal
@@ -112,7 +112,7 @@ private struct ProfilesNotificationPermissionView: View {
                     }
                 }
             } footer: {
-                Text("settings.notification.profilesReceivingNotifications.description", bundle: .module)
+                Text("settings.notification.profilesReceivingNotifications.description", bundle: .currentSPM)
             }
             .disabled(profileManagerVM.taskState == .busy)
             .saturation(profileManagerVM.taskState == .busy ? 0 : 1)
@@ -174,7 +174,7 @@ private struct StaminaNotificationThresholdConfigView: View {
     // MARK: Public
 
     public static let navTitle: String = .init(
-        localized: "settings.notification.staminaThresholds.navTitle", bundle: .module
+        localized: "settings.notification.staminaThresholds.navTitle", bundle: .currentSPM
     )
 
     // MARK: Internal
@@ -187,7 +187,7 @@ private struct StaminaNotificationThresholdConfigView: View {
             .alert(
                 String(
                     localized: "settings.notification.staminaThresholds.valueAlreadyExist",
-                    bundle: .module
+                    bundle: .currentSPM
                 ),
                 isPresented: $isNumberExistAlertVisible
             ) {
@@ -218,10 +218,10 @@ private struct StaminaNotificationThresholdConfigView: View {
                     }
                     .onDelete(perform: deleteItems)
                 } header: {
-                    Text("settings.notification.staminaThresholds.header", bundle: .module)
+                    Text("settings.notification.staminaThresholds.header", bundle: .currentSPM)
                         .textCase(.none)
                 } footer: {
-                    Text("settings.notification.staminaThresholds.footer", bundle: .module)
+                    Text("settings.notification.staminaThresholds.footer", bundle: .currentSPM)
                         .textCase(.none)
                 }
             }
@@ -281,7 +281,7 @@ private struct StaminaNotificationThresholdConfigView: View {
     @ViewBuilder private var valueInsertionControls: some View {
         if isActivated {
             HStack {
-                Text("settings.notification.staminaThresholds.add.title", bundle: .module)
+                Text("settings.notification.staminaThresholds.add.title", bundle: .currentSPM)
                 Spacer()
                 Text(verbatim: "\(numberToSave)")
                     .foregroundColor(isNewThresholdValid ? .primary : .red)
@@ -320,7 +320,7 @@ private struct StaminaNotificationThresholdConfigView: View {
                     isActivated.toggle()
                 }
             } label: {
-                Text("settings.notification.staminaThresholds.add.title", bundle: .module)
+                Text("settings.notification.staminaThresholds.add.title", bundle: .currentSPM)
             }
         }
     }
@@ -370,7 +370,7 @@ private struct NotificationSettingDetailContent: View {
 
     @ViewBuilder private var macCatalystNoticeView: some View {
         if OS.type == .macOS, !OS.isAppKit {
-            Text("settings.notification.dateTimePicker.macCatalystOrIPAOnMacNotice", bundle: .module)
+            Text("settings.notification.dateTimePicker.macCatalystOrIPAOnMacNotice", bundle: .currentSPM)
                 .foregroundStyle(.orange)
         } else {
             EmptyView()
@@ -409,7 +409,7 @@ private struct NotificationSettingDetailContent: View {
                 Text(verbatim: ProfilesNotificationPermissionView.navTitle)
             }
         } header: {
-            Text("settings.notification.faq.howNotificationsGetScheduled", bundle: .module)
+            Text("settings.notification.faq.howNotificationsGetScheduled", bundle: .currentSPM)
                 .textCase(.none)
                 .padding([.bottom])
         } footer: {
@@ -422,7 +422,7 @@ private struct NotificationSettingDetailContent: View {
         // 玩家体力通知提醒阈值
         Section {
             Toggle(isOn: $options.allowStaminaNotification.animation()) {
-                Text("settings.notification.stamina.allow", bundle: .module)
+                Text("settings.notification.stamina.allow", bundle: .currentSPM)
             }
             NavigationLink {
                 StaminaNotificationThresholdConfigView()
@@ -431,9 +431,9 @@ private struct NotificationSettingDetailContent: View {
             }
             .disabled(!options.allowStaminaNotification)
         } header: {
-            Text("settings.notification.stamina.header", bundle: .module).textCase(.none)
+            Text("settings.notification.stamina.header", bundle: .currentSPM).textCase(.none)
         } footer: {
-            Text("settings.notification.stamina.footer", bundle: .module)
+            Text("settings.notification.stamina.footer", bundle: .currentSPM)
         }
     }
 
@@ -442,7 +442,7 @@ private struct NotificationSettingDetailContent: View {
         // 派遣委托
         Section {
             Toggle(isOn: $options.allowExpeditionNotification.animation()) {
-                Text("settings.notification.expedition.allow", bundle: .module)
+                Text("settings.notification.expedition.allow", bundle: .currentSPM)
             }
             Picker(selection: $options.expeditionNotificationSetting) {
                 let cases = NotificationOptions.ExpeditionNotificationSetting.allCases
@@ -450,13 +450,13 @@ private struct NotificationSettingDetailContent: View {
                     Text(setting.description.i18nAK).tag(setting)
                 }
             } label: {
-                Text("settings.notification.expedition.method", bundle: .module)
+                Text("settings.notification.expedition.method", bundle: .currentSPM)
             }
             .disabled(!options.allowExpeditionNotification)
         } header: {
-            Text("settings.notification.expedition.header", bundle: .module).textCase(.none)
+            Text("settings.notification.expedition.header", bundle: .currentSPM).textCase(.none)
         } footer: {
-            Text("settings.notification.expedition.footer", bundle: .module)
+            Text("settings.notification.expedition.footer", bundle: .currentSPM)
         }
     }
 
@@ -465,17 +465,17 @@ private struct NotificationSettingDetailContent: View {
         // 每日任务
         Section {
             Toggle(isOn: options.allowDailyTaskNotification.animation()) {
-                Text("settings.notification.dailyTask.toggle", bundle: .module)
+                Text("settings.notification.dailyTask.toggle", bundle: .currentSPM)
             }
             handleBindingDate(options.dailyTaskNotificationTime) { bindingDate in
                 DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
-                    Text("settings.notification.dailyTask.datePicker", bundle: .module)
+                    Text("settings.notification.dailyTask.datePicker", bundle: .currentSPM)
                 }
             }
         } header: {
-            Text("settings.notification.dailyTask.header", bundle: .module).textCase(.none)
+            Text("settings.notification.dailyTask.header", bundle: .currentSPM).textCase(.none)
         } footer: {
-            Text("settings.notification.dailyTask.footer", bundle: .module)
+            Text("settings.notification.dailyTask.footer", bundle: .currentSPM)
         }
     }
 
@@ -484,17 +484,17 @@ private struct NotificationSettingDetailContent: View {
         // 凯瑟琳领奖
         Section {
             Toggle(isOn: options.allowGIKatheryneNotification.animation()) {
-                Text("settings.notification.katheryneRewards.toggle", bundle: .module)
+                Text("settings.notification.katheryneRewards.toggle", bundle: .currentSPM)
             }
             handleBindingDate(options.giKatheryneNotificationTime) { bindingDate in
                 DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
-                    Text("settings.notification.katheryneRewards.datePicker", bundle: .module)
+                    Text("settings.notification.katheryneRewards.datePicker", bundle: .currentSPM)
                 }
             }
         } header: {
-            Text("settings.notification.katheryneRewards.header", bundle: .module).textCase(.none)
+            Text("settings.notification.katheryneRewards.header", bundle: .currentSPM).textCase(.none)
         } footer: {
-            Text("settings.notification.katheryneRewards.footer", bundle: .module)
+            Text("settings.notification.katheryneRewards.footer", bundle: .currentSPM)
         }
     }
 
@@ -503,12 +503,12 @@ private struct NotificationSettingDetailContent: View {
         // 洞天财甕
         Section {
             Toggle(isOn: $options.allowGIRealmCurrencyNotification.animation()) {
-                Text("settings.notification.giRealmCurrency.allow", bundle: .module)
+                Text("settings.notification.giRealmCurrency.allow", bundle: .currentSPM)
             }
         } header: {
-            Text("settings.notification.giRealmCurrency.header", bundle: .module).textCase(.none)
+            Text("settings.notification.giRealmCurrency.header", bundle: .currentSPM).textCase(.none)
         } footer: {
-            Text("settings.notification.giRealmCurrency.footer", bundle: .module)
+            Text("settings.notification.giRealmCurrency.footer", bundle: .currentSPM)
         }
     }
 
@@ -517,12 +517,12 @@ private struct NotificationSettingDetailContent: View {
         // 参量质变仪
         Section {
             Toggle(isOn: $options.allowGITransformerNotification.animation()) {
-                Text("settings.notification.giTransformer.allow", bundle: .module)
+                Text("settings.notification.giTransformer.allow", bundle: .currentSPM)
             }
         } header: {
-            Text("settings.notification.giTransformer.header", bundle: .module).textCase(.none)
+            Text("settings.notification.giTransformer.header", bundle: .currentSPM).textCase(.none)
         } footer: {
-            Text("settings.notification.giTransformer.footer", bundle: .module)
+            Text("settings.notification.giTransformer.footer", bundle: .currentSPM)
         }
     }
 
@@ -531,27 +531,27 @@ private struct NotificationSettingDetailContent: View {
         // 征讨之花
         Section {
             Toggle(isOn: options.allowGITrounceBlossomNotification.animation()) {
-                Text("settings.notification.giTrounceBlossom.toggle", bundle: .module)
+                Text("settings.notification.giTrounceBlossom.toggle", bundle: .currentSPM)
             }
             handleBindingDateAndWeekdays(
                 options.giTrounceBlossomNotificationTime,
                 options.giTrounceBlossomNotificationWeekday
             ) { bindingDate, bindingWeekday in
                 DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
-                    Text("settings.notification.giTrounceBlossom.datePicker", bundle: .module)
+                    Text("settings.notification.giTrounceBlossom.datePicker", bundle: .currentSPM)
                 }
                 Picker(selection: bindingWeekday) {
                     ForEach(Weekday.allCases, id: \.rawValue) { weekday in
                         Text(weekday.description).tag(weekday)
                     }
                 } label: {
-                    Text("settings.notification.giTrounceBlossom.weekdayPicker", bundle: .module)
+                    Text("settings.notification.giTrounceBlossom.weekdayPicker", bundle: .currentSPM)
                 }
             }
         } header: {
-            Text("settings.notification.giTrounceBlossom.header", bundle: .module).textCase(.none)
+            Text("settings.notification.giTrounceBlossom.header", bundle: .currentSPM).textCase(.none)
         } footer: {
-            Text("settings.notification.giTrounceBlossom.footer", bundle: .module)
+            Text("settings.notification.giTrounceBlossom.footer", bundle: .currentSPM)
         }
     }
 
@@ -560,27 +560,27 @@ private struct NotificationSettingDetailContent: View {
         // 历战馀响
         Section {
             Toggle(isOn: options.allowHSREchoOfWarNotification.animation()) {
-                Text("settings.notification.hsrEchoOfWar.toggle", bundle: .module)
+                Text("settings.notification.hsrEchoOfWar.toggle", bundle: .currentSPM)
             }
             handleBindingDateAndWeekdays(
                 options.hsrEchoOfWarNotificationTime,
                 options.hsrEchoOfWarNotificationWeekday
             ) { bindingDate, bindingWeekday in
                 DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
-                    Text("settings.notification.hsrEchoOfWar.datePicker", bundle: .module)
+                    Text("settings.notification.hsrEchoOfWar.datePicker", bundle: .currentSPM)
                 }
                 Picker(selection: bindingWeekday) {
                     ForEach(Weekday.allCases, id: \.rawValue) { weekday in
                         Text(weekday.description).tag(weekday)
                     }
                 } label: {
-                    Text("settings.notification.hsrEchoOfWar.weekdayPicker", bundle: .module)
+                    Text("settings.notification.hsrEchoOfWar.weekdayPicker", bundle: .currentSPM)
                 }
             }
         } header: {
-            Text("settings.notification.hsrEchoOfWar.header", bundle: .module).textCase(.none)
+            Text("settings.notification.hsrEchoOfWar.header", bundle: .currentSPM).textCase(.none)
         } footer: {
-            Text("settings.notification.hsrEchoOfWar.footer", bundle: .module)
+            Text("settings.notification.hsrEchoOfWar.footer", bundle: .currentSPM)
         }
     }
 
@@ -589,27 +589,27 @@ private struct NotificationSettingDetailContent: View {
         // 模拟宇宙
         Section {
             Toggle(isOn: options.allowHSRCosmicStrifeNotification.animation()) {
-                Text("settings.notification.hsrCosmicStrife.toggle", bundle: .module)
+                Text("settings.notification.hsrCosmicStrife.toggle", bundle: .currentSPM)
             }
             handleBindingDateAndWeekdays(
                 options.hsrCosmicStrifeNotificationTime,
                 options.hsrCosmicStrifeNotificationWeekday
             ) { bindingDate, bindingWeekday in
                 DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
-                    Text("settings.notification.hsrCosmicStrife.datePicker", bundle: .module)
+                    Text("settings.notification.hsrCosmicStrife.datePicker", bundle: .currentSPM)
                 }
                 Picker(selection: bindingWeekday) {
                     ForEach(Weekday.allCases, id: \.rawValue) { weekday in
                         Text(weekday.description).tag(weekday)
                     }
                 } label: {
-                    Text("settings.notification.hsrCosmicStrife.weekdayPicker", bundle: .module)
+                    Text("settings.notification.hsrCosmicStrife.weekdayPicker", bundle: .currentSPM)
                 }
             }
         } header: {
-            Text("settings.notification.hsrCosmicStrife.header", bundle: .module).textCase(.none)
+            Text("settings.notification.hsrCosmicStrife.header", bundle: .currentSPM).textCase(.none)
         } footer: {
-            Text("settings.notification.hsrCosmicStrife.footer", bundle: .module)
+            Text("settings.notification.hsrCosmicStrife.footer", bundle: .currentSPM)
         }
     }
 }

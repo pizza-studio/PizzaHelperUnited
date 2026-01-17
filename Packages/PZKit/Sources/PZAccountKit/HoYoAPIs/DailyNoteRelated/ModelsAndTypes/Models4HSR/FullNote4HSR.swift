@@ -45,7 +45,7 @@ public struct FullNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
 
 extension FullNote4HSR {
     public static func exampleData() -> FullNote4HSR {
-        let exampleURL = Bundle.module.url(
+        let exampleURL = Bundle.currentSPM.url(
             forResource: "hsr_realtime_note_example_miyoushe", withExtension: "json"
         )!
         // swiftlint:disable force_try

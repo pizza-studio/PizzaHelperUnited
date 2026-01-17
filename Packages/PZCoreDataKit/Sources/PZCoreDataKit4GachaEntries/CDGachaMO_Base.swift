@@ -46,7 +46,7 @@ extension CDGachaMOProtocol {
 
     public static func getManagedObjModel() -> NSManagedObjectModel {
         .init(
-            contentsOf: Bundle.module.url(forResource: Self.modelName, withExtension: "momd")!
+            contentsOf: Bundle.currentSPM.url(forResource: Self.modelName, withExtension: "momd")!
         )!
     }
 

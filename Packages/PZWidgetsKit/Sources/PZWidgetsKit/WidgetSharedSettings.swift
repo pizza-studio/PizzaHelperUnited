@@ -17,7 +17,7 @@ extension Font {
         case .custom:
             let familyName = Defaults[.widgetStaminaFontFamilyName]
             if familyName == "Hitmarker VF" {
-                let url = Bundle.module.url(forResource: "HMVF", withExtension: "ttf")
+                let url = Bundle.currentSPM.url(forResource: "HMVF", withExtension: "ttf")
                 guard let url else { return nil }
                 CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
             }
@@ -57,11 +57,11 @@ extension PZWidgetsSPM {
         // MARK: Public
 
         public static let navTitle: String = .init(
-            localized: "settings.widgets.navTitle", bundle: .module
+            localized: "settings.widgets.navTitle", bundle: .currentSPM
         )
 
         public static let navTitleShortened: String = .init(
-            localized: "settings.widgets.navTitle.shortened", bundle: .module
+            localized: "settings.widgets.navTitle.shortened", bundle: .currentSPM
         )
 
         public var body: some View {
@@ -73,7 +73,7 @@ extension PZWidgetsSPM {
                         .foregroundStyle(Color.accentColor)
                         .frame(width: 64, height: 64)
                         .padding(8)
-                    Text("settings.widgets.howToUse.explanation", bundle: .module)
+                    Text("settings.widgets.howToUse.explanation", bundle: .currentSPM)
                         .font(.caption)
                 }
                 .frame(maxWidth: .infinity)
@@ -84,9 +84,9 @@ extension PZWidgetsSPM {
                 Section {
                     VStack {
                         Toggle(isOn: $fetchGenshinNamecardBGOnline) {
-                            Text("settings.widgets.fetchGenshinNamecardBGOnline", bundle: .module)
+                            Text("settings.widgets.fetchGenshinNamecardBGOnline", bundle: .currentSPM)
                         }
-                        Text("settings.widgets.fetchGenshinNamecardBGOnline.explain", bundle: .module)
+                        Text("settings.widgets.fetchGenshinNamecardBGOnline.explain", bundle: .currentSPM)
                             .asInlineTextDescription()
                     }
                 }
@@ -94,26 +94,26 @@ extension PZWidgetsSPM {
                 Section {
                     VStack {
                         Picker(selection: $widgetStaminaFontPref) {
-                            Text("settings.widgets.staminaFontPref.systemRounded", bundle: .module)
+                            Text("settings.widgets.staminaFontPref.systemRounded", bundle: .currentSPM)
                                 .tag(WidgetStaminaFontStyle.systemRounded)
-                            Text("settings.widgets.staminaFontPref.systemSansSerif", bundle: .module)
+                            Text("settings.widgets.staminaFontPref.systemSansSerif", bundle: .currentSPM)
                                 .tag(WidgetStaminaFontStyle.systemSansSerif)
-                            Text("settings.widgets.staminaFontPref.systemSerif", bundle: .module)
+                            Text("settings.widgets.staminaFontPref.systemSerif", bundle: .currentSPM)
                                 .tag(WidgetStaminaFontStyle.systemSerif)
-                            Text("settings.widgets.staminaFontPref.custom", bundle: .module)
+                            Text("settings.widgets.staminaFontPref.custom", bundle: .currentSPM)
                                 .tag(WidgetStaminaFontStyle.custom)
                         } label: {
-                            Text("settings.widgets.staminaFontPref.fieldName", bundle: .module)
+                            Text("settings.widgets.staminaFontPref.fieldName", bundle: .currentSPM)
                         }
                     }
                     .alert(
-                        Text("settings.widgets.staminaFontPref.fontFamilyName.prompt", bundle: .module),
+                        Text("settings.widgets.staminaFontPref.fontFamilyName.prompt", bundle: .currentSPM),
                         isPresented: $isWidgetStaminaFontFamilyNameAlertVisible,
                         actions: {
                             TextField(
                                 text: $widgetStaminaFontFamilyName
                             ) {
-                                Text("settings.widgets.staminaFontPref.fontFamilyName", bundle: .module)
+                                Text("settings.widgets.staminaFontPref.fontFamilyName", bundle: .currentSPM)
                             }
                             .autocorrectionDisabled(true)
                             Button {
@@ -130,7 +130,7 @@ extension PZWidgetsSPM {
                     }
                     if widgetStaminaFontPref == .custom {
                         HStack {
-                            Text("settings.widgets.staminaFontPref.fontFamilyName", bundle: .module)
+                            Text("settings.widgets.staminaFontPref.fontFamilyName", bundle: .currentSPM)
                             Spacer()
                             Button {
                                 isWidgetStaminaFontFamilyNameAlertVisible.toggle()

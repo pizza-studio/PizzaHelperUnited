@@ -7,12 +7,12 @@ import SwiftUI
 
 extension String {
     public var i18nWatch: String {
-        String(localized: .init(stringLiteral: self), bundle: .module)
+        String(localized: .init(stringLiteral: self), bundle: .currentSPM)
     }
 }
 
 extension String.LocalizationValue {
     public var i18nWatch: String {
-        String(localized: self, bundle: .module)
+        String(localized: self, bundle: .currentSPM)
     }
 }

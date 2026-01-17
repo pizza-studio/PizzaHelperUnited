@@ -124,7 +124,7 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
                     VStack(alignment: .leading) {
                         Text(
                             "pzWidgetsKit.next20Stamina:\(context.state.next20PrimaryStamina)",
-                            bundle: .module
+                            bundle: .currentSPM
                         )
                         .font(.caption2)
                         Text(
@@ -154,7 +154,7 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
                                 .frame(maxHeight: 24)
                         }
                     VStack(alignment: .leading) {
-                        Text("pzWidgetsKit.nextMaxStamina", bundle: .module)
+                        Text("pzWidgetsKit.nextMaxStamina", bundle: .currentSPM)
                             .font(.caption2)
 
                         Text(

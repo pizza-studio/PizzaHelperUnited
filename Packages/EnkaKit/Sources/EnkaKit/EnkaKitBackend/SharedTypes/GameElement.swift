@@ -117,7 +117,7 @@ extension Enka.GameElement {
         case .quanto: "game.elements.quanto"
         case .imago: "game.elements.imago"
         }
-        return String(localized: rawKey, bundle: .module)
+        return String(localized: rawKey, bundle: .currentSPM)
     }
 
     public var tourID: Int {

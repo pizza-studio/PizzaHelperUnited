@@ -20,7 +20,7 @@ public struct EULAView: View {
 
     public static let navTitle: String = {
         let key: String.LocalizationValue = "aboutKit.eula.title"
-        return .init(localized: key, bundle: .module)
+        return .init(localized: key, bundle: .currentSPM)
     }()
 
     public var body: some View {
@@ -54,7 +54,7 @@ public struct EULAView: View {
     // MARK: Private
 
     private static let urlString: String = {
-        let fileURL = Bundle.module.url(forResource: "EULA", withExtension: "html")
+        let fileURL = Bundle.currentSPM.url(forResource: "EULA", withExtension: "html")
         let url: String = {
             switch Locale.preferredLanguages.first?.prefix(2) {
             case "zh":

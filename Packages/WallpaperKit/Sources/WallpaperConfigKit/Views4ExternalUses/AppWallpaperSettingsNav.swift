@@ -20,12 +20,12 @@ public struct AppWallpaperSettingsNav: View {
 
     public static let navSectionHeader: String = {
         let key: String.LocalizationValue = "settings.display.appWallpaper.navSectionHeader"
-        return .init(localized: key, bundle: .module)
+        return .init(localized: key, bundle: .currentSPM)
     }()
 
     public static let navDescription: String = {
         let key: String.LocalizationValue = "settings.display.appWallpaper.navDescription"
-        return .init(localized: key, bundle: .module)
+        return .init(localized: key, bundle: .currentSPM)
     }()
 
     public var body: some View {
@@ -71,7 +71,7 @@ public struct AppWallpaperSettingsNav: View {
             } else {
                 Text(
                     "settings.display.appWallpaper.userWallPaper.notSpecified",
-                    bundle: .module
+                    bundle: .currentSPM
                 )
                 .multilineTextAlignment(.leading)
                 .foregroundColor(isChosen ? .accentColor : .primary)

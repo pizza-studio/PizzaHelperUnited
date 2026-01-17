@@ -105,7 +105,7 @@ public struct NotificationOptions: AbleToCodeSendHash, Defaults.Serializable {
 
         public var description: String {
             if #available(iOS 15.0, macCatalyst 15.0, *) {
-                String(localized: descriptionKey, bundle: .module)
+                String(localized: descriptionKey, bundle: .currentSPM)
             } else {
                 descriptionKeyStr.i18nAK
             }

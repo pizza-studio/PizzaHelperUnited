@@ -113,7 +113,7 @@ public struct EachAvatarStatView: View {
                 .blurMaterialBackground(shape: clipShape)
         }
         .overlay {
-            Image(data.isEnka ? "EnkanomiyaAsBG" : "HoYoLABIconAsBG", bundle: .module)
+            Image(data.isEnka ? "EnkanomiyaAsBG" : "HoYoLABIconAsBG", bundle: .currentSPM)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .opacity(0.05)

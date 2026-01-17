@@ -55,7 +55,7 @@ extension EmbeddedWidgets {
                         if data.allExpeditionsAccomplished {
                             return String(
                                 localized: String.LocalizationValue(stringLiteral: "pzWidgetsKit.status.done"),
-                                bundle: .module
+                                bundle: .currentSPM
                             )
                         } else if let maxFinishTime = data.expeditionTotalETA {
                             return formatter.string(from: maxFinishTime)
@@ -71,7 +71,7 @@ extension EmbeddedWidgets {
             case .failure:
                 return String(
                     localized: String.LocalizationValue(stringLiteral: "pzWidgetsKit.expedition"),
-                    bundle: .module
+                    bundle: .currentSPM
                 )
             }
         }

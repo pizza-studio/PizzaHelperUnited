@@ -23,7 +23,7 @@ public struct GachaRootView: View {
 
     @MainActor public static var getFAQView: (() -> AnyView)?
 
-    public static var navIcon: Image { Image("GachaRecordMgr_NavIcon", bundle: .module) }
+    public static var navIcon: Image { Image("GachaRecordMgr_NavIcon", bundle: .currentSPM) }
 
     public var body: some View {
         coreBody
@@ -152,7 +152,7 @@ extension GachaRootView {
             if theVM.backendChangesAvailable {
                 Text(
                     "gachaKit.prompt.remoteChangesDetected.withRecommendedAction",
-                    bundle: .module
+                    bundle: .currentSPM
                 )
                 .font(.caption)
                 .fontWeight(.medium)
@@ -161,9 +161,9 @@ extension GachaRootView {
             if theVM.currentGPID != nil {
                 GachaProfileView()
             } else if !theVM.hasGPID.wrappedValue {
-                Text("gachaKit.prompt.pleaseChooseGachaPuller", bundle: .module)
+                Text("gachaKit.prompt.pleaseChooseGachaPuller", bundle: .currentSPM)
             } else {
-                Text("gachaKit.prompt.noGachaProfileFound", bundle: .module)
+                Text("gachaKit.prompt.noGachaProfileFound", bundle: .currentSPM)
             }
         }
         .formStyle(.grouped).disableFocusable()

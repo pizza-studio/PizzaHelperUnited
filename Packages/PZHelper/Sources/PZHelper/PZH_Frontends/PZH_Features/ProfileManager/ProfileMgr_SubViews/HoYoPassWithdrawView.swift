@@ -58,7 +58,7 @@ struct HoYoPassWithdrawView: View {
                 }
             } footer: {
                 VStack(alignment: .leading) {
-                    Text("profileMgr.withdrawal.linkTo:\(urlStrHoYoLab)", bundle: .module)
+                    Text("profileMgr.withdrawal.linkTo:\(urlStrHoYoLab)", bundle: .currentSPM)
                     Text("profileMgr.withdrawal.readme.hoyolab.specialNotice".i18nPZHelper)
                 }
             }
@@ -84,7 +84,7 @@ struct HoYoPassWithdrawView: View {
                 }
             } footer: {
                 VStack(alignment: .leading) {
-                    Text("profileMgr.withdrawal.linkTo:\(urlStrMiyoushe)", bundle: .module)
+                    Text("profileMgr.withdrawal.linkTo:\(urlStrMiyoushe)", bundle: .currentSPM)
                     Text("profileMgr.withdrawal.readme.miyoushe.specialNotice".i18nPZHelper)
                 }
             }

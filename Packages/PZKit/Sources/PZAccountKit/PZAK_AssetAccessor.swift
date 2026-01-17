@@ -6,6 +6,6 @@ import SwiftUI
 
 extension AccountKit {
     public static func imageAsset(_ name: String) -> Image {
-        Image(name, bundle: .module)
+        Image(name, bundle: .currentSPM)
     }
 }
