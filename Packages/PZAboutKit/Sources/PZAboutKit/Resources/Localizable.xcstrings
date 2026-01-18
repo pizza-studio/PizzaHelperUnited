@@ -5636,6 +5636,82 @@
         }
       }
     },
+    "oobe.button.next" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Susunod"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avanti"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次へ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далее"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp theo"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一步"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一步"
+          }
+        }
+      }
+    },
     "oobe.feature.backupYourData.detail" : {
       "localizations" : {
         "de" : {
@@ -6240,6 +6316,158 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通知"
+          }
+        }
+      }
+    },
+    "oobe.feature.refugeeFromThePizzaHelper.detail" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ihre Refugee-Plist-Datei muss zweimal importiert werden: zuerst in den Lokalen Profil-Manager und dann in den Gacha-Datensatz-Manager. Diese beiden Module extrahieren ihre jeweiligen Datentypen aus der Datei."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your refugee plist file needs to be imported twice: first into the Local Profile Manager, and then into the Gacha Record Manager. These two modules will parse their respective data from the file."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su archivo plist de refugee debe importarse dos veces: primero en el Administrador de Perfiles Locales y luego en el Administrador de Registros de Gacha. Estos dos módulos extraerán sus respectivos tipos de datos del archivo."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang inyong refugee plist file ay kailangang i-import ng dalawang beses: una sa Local Profile Manager, at pagkatapos sa Gacha Record Manager. Ang dalawang modules na ito ay mag-e-extract ng kanilang kani-kaniyang data mula sa file."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre fichier plist refugee doit être importé deux fois : d'abord dans le Gestionnaire de profils locaux, puis dans le Gestionnaire d'enregistrements Gacha. Ces deux modules extrairont leurs types de données respectifs du fichier."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il file plist refugee deve essere importato due volte: prima nel Gestore profili locali e poi nel Gestore record Gacha. Questi due moduli estrarranno i rispettivi tipi di dati dal file."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "難民 plist ファイルは2回読み込む必要があります：まずローカルプロファイルマネージャーで、次にガチャ記録マネージャーで。これらの2つのモジュールは、それぞれの対応データをファイルから抽出します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "난민 plist 파일은 두 번 가져와야 합니다: 먼저 로컬 프로필 관리자에서, 그 다음 가챠 기록 관리자에서. 이 두 모듈은 파일에서 각각의 데이터 유형을 추출합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваш файл refugee plist необходимо импортировать дважды: сначала в Менеджер локальных профилей, а затем в Менеджер записей гача. Эти два модуля извлекут свои соответствующие типы данных из файла."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tệp plist refugee của bạn cần được nhập hai lần: đầu tiên vào Trình quản lý hồ sơ cục bộ, sau đó vào Trình quản lý bản ghi Gacha. Hai mô-đun này sẽ trích xuất các loại dữ liệu tương ứng của chúng từ tệp."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您的难民 plist 文件需要导入两次：先导入到本地账号管理器，然后导入到抽卡记录管理器。这两个模块会各自从文件中提取相应的数据类型。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您的難民 plist 檔案需要匯入兩次：先匯入到本機帳號管理器，然後匯入到抽卡記錄管理器。這兩個模組會各自從檔案中提取相應的資料類型。"
+          }
+        }
+      }
+    },
+    "oobe.feature.refugeeFromThePizzaHelper.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refugee von The Pizza Helper?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refugee from The Pizza Helper?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Refugee de The Pizza Helper?"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refugee mula sa The Pizza Helper?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refugee depuis The Pizza Helper ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refugee da The Pizza Helper?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "『ピザ助手』からの難民？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper 난민?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refugee из The Pizza Helper?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refugee từ The Pizza Helper?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "来自《披萨小助手》的难民？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "來自《披薩小助手》的難民？"
           }
         }
       }
