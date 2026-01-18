@@ -44,7 +44,7 @@ public struct GITodayMaterialsView<T: View>: View {
                     .pickerStyle(.segmented)
                     .fixedSize()
                 }
-                if !isAppKit {
+                if !OS.isAppKit {
                     ToolbarItem(placement: .principal) {
                         Picker("".description, selection: $weekday.animation()) {
                             Text(Material.AvailableWeekDay?.none.localizedName).tag(Material.AvailableWeekDay?.none)
@@ -76,7 +76,7 @@ public struct GITodayMaterialsView<T: View>: View {
     // MARK: Internal
 
     @ViewBuilder var content: some View {
-        if isAppKit {
+        if OS.isAppKit {
             Picker("".description, selection: $weekday.animation()) {
                 Text(Material.AvailableWeekDay?.none.localizedName).tag(Material.AvailableWeekDay?.none)
                 ForEach(Material.AvailableWeekDay.allCases) { weekday in
@@ -128,7 +128,6 @@ public struct GITodayMaterialsView<T: View>: View {
 
     private let data: [Material]
     private let querier: (Bool, String) -> T
-    private let isAppKit = OS.type == .macOS && !OS.isCatalyst
 
     private var materialsFiltered: [Material] {
         data.filter {

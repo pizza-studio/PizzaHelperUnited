@@ -198,8 +198,6 @@ struct TodayTabPage: View {
 
     @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
 
-    private let isAppKit = OS.type == .macOS && !OS.isCatalyst
-
     private var filteredProfiles: [PZProfileSendable] {
         pzProfiles.values.filter {
             guard let currentGame = game else { return true }

@@ -45,7 +45,7 @@ public struct AvatarStatCollectionTabView: View {
             if isMainBodyVisible {
                 coreBody()
                     .overlay(alignment: .top) {
-                        if !isAppKit {
+                        if !OS.isAppKit {
                             // AppKit 的 TabView 不支持走马灯滚动操作。
                             HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
                         } else {
@@ -177,8 +177,8 @@ public struct AvatarStatCollectionTabView: View {
             .fixedSize()
             .scaleEffect(scaleRatioCompatible)
             .animation(.easeIn(duration: 0.2), value: screenVM.mainColumnCanvasSizeObserved)
-            .padding(.top, isAppKit ? 0 : 10)
-            .padding(.bottom, isAppKit ? 0 : bottomSpacerHeight)
+            .padding(.top, OS.isAppKit ? 0 : 10)
+            .padding(.bottom, OS.isAppKit ? 0 : bottomSpacerHeight)
             .contentShape(.rect)
     }
 
@@ -203,7 +203,6 @@ public struct AvatarStatCollectionTabView: View {
     private let onClose: (() -> Void)?
     private let bottomSpacerHeight: CGFloat = 20
     private let sortedCharIDMap: [Enka.GameElement: [CharNameID]]
-    private let isAppKit = OS.type == .macOS && !OS.isCatalyst
 
     private var avatar: Enka.AvatarSummarized? {
         summarizedAvatars.first(where: { avatar in
