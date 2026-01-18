@@ -161,8 +161,8 @@ extension ProfileBackupRestoreMenu {
 
 // MARK: - PZProfilesDocument
 
-@available(iOS 16.2, macCatalyst 16.2, *)
-internal struct PZProfilesDocument: FileDocument {
+@available(iOS 14, macCatalyst 14, *)
+public struct PZProfilesDocument: FileDocument {
     // MARK: Lifecycle
 
     public init(configuration: ReadConfiguration) throws {
