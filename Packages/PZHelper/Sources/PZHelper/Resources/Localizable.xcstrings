@@ -8089,73 +8089,458 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alte Pizza Refugee Datendatei erfolgreich exportiert nach:"
+            "value" : "Datei erfolgreich exportiert nach:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Successfully dumped the Old Pizza Refugee Data file to:"
+            "value" : "File successfully dumped to:"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Archivo de datos de Old Pizza Refugee exportado correctamente a:"
+            "value" : "Archivo exportado correctamente a:"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matagumpay na na-export ang Old Pizza Refugee Data file sa:"
+            "value" : "Matagumpay na na-export ang file sa:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fichier de données Old Pizza Refugee exporté avec succès vers :"
+            "value" : "Fichier exporté avec succès vers :"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "File dati Old Pizza Refugee esportato correttamente in:"
+            "value" : "File esportato correttamente in:"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "旧ピザ難民資料を正常に書き出されました:"
+            "value" : "ファイルを正常に書き出されました:"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Old Pizza Refugee 데이터 파일을 다음 위치에 성공적으로 내보냈습니다:"
+            "value" : "파일을 다음 위치에 성공적으로 내보냈습니다:"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Файл данных Old Pizza Refugee успешно экспортирован в:"
+            "value" : "Файл успешно экспортирован в:"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đã xuất thành công tệp dữ liệu Old Pizza Refugee tới:"
+            "value" : "Đã xuất thành công tệp tới:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "旧披萨难民资料已成功导出至: "
+            "value" : "文件已成功导出至:"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "舊披薩難民資料已成功匯出至: "
+            "value" : "檔案已成功匯出至:"
+          }
+        }
+      }
+    },
+    "refugee.export.fileType.profiles" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Dateityp: Profile-Paket (JSON)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 File Type: Profiles Package (JSON)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Tipo de archivo: Paquete de perfiles (JSON)"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Uri ng File: Profiles Package (JSON)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Type de fichier : Package de profils (JSON)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Tipo di file: Pacchetto profili (JSON)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 ファイル種類: プロフィールパッケージ (JSON)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 파일 유형: 프로필 패키지 (JSON)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Тип файла: Пакет профилей (JSON)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Loại tệp: Gói hồ sơ (JSON)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 文件类型：本地账号包 (JSON)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 檔案類型：本機帳號包 (JSON)"
+          }
+        }
+      }
+    },
+    "refugee.export.fileType.refugee" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Dateityp: Old Pizza Refugee Daten (Plist)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 File Type: Old Pizza Refugee Data (Plist)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Tipo de archivo: Datos de Old Pizza Refugee (Plist)"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Uri ng File: Old Pizza Refugee Data (Plist)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Type de fichier : Données Old Pizza Refugee (Plist)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Tipo di file: Dati Old Pizza Refugee (Plist)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 ファイル種類: 旧ピザ難民資料 (Plist)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 파일 유형: Old Pizza Refugee 데이터 (Plist)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Тип файла: Данные Old Pizza Refugee (Plist)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Loại tệp: Dữ liệu Old Pizza Refugee (Plist)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 文件类型：旧披萨难民资料 (Plist)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 檔案類型：舊披薩難民資料 (Plist)"
+          }
+        }
+      }
+    },
+    "refugee.export.fileType.wallpapers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Dateityp: Benutzerdefinierte Hintergründe (JSON)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 File Type: User Wallpapers (JSON)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Tipo de archivo: Fondos de pantalla personalizados (JSON)"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Uri ng File: User Wallpapers (JSON)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Type de fichier : Fonds d'écran personnalisés (JSON)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Tipo di file: Sfondi personalizzati (JSON)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 ファイル種類: ユーザー壁紙 (JSON)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 파일 유형: 사용자 배경화면 (JSON)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Тип файла: Пользовательские обои (JSON)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 Loại tệp: Hình nền tùy chỉnh (JSON)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 文件类型：用户自订壁纸 (JSON)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 檔案類型：使用者自訂壁紙 (JSON)"
+          }
+        }
+      }
+    },
+    "refugee.export.refugeeFileHowToUse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ Auf dem Zielgerät müssen Sie diese Datei sowohl im Lokalen Profil-Manager als auch im Gacha-Datensatz-Manager importieren. Diese beiden Funktionsmodule extrahieren unterschiedliche Datentypen aus der Refugee-Plist-Datei."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ On the target device you are expected to import this file in both the Local Profile Manager and the Gacha Record Manager. These two feature modules extract different types of data from the refugee plist file."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ En el dispositivo de destino, se espera que importe este archivo tanto en el Administrador de Perfiles Locales como en el Administrador de Registros de Gacha. Estos dos módulos de funciones extraen diferentes tipos de datos del archivo plist de refugee."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ Sa target device, inaasahan kang mag-import ng file na ito sa parehong Local Profile Manager at Gacha Record Manager. Ang dalawang feature modules na ito ay nag-e-extract ng iba't ibang uri ng data mula sa refugee plist file."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ Sur l'appareil cible, vous devez importer ce fichier à la fois dans le Gestionnaire de profils locaux et le Gestionnaire d'enregistrements Gacha. Ces deux modules de fonctionnalités extraient différents types de données du fichier plist refugee."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ Sul dispositivo di destinazione, devi importare questo file sia nel Gestore profili locali che nel Gestore record Gacha. Questi due moduli di funzionalità estraggono tipi diversi di dati dal file plist refugee."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ 対象デバイスでは、このファイルをローカルプロファイルマネージャーとガチャ記録マネージャーの両方で読み込む必要があります。これらの2つの機能モジュールは、難民 plist ファイルからそれぞれの対応種類のデータを抽出します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ 대상 장치에서 로컬 프로필 관리자와 가챠 기록 관리자 모두에서 이 파일을 가져와야 합니다. 이 두 기능 모듈은 난민 plist 파일에서 서로 다른 유형의 데이터를 추출합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ На целевом устройстве вам нужно импортировать этот файл как в Менеджер локальных профилей, так и в Менеджер записей гача. Эти два модуля функций извлекают разные типы данных из файла refugee plist."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ Trên thiết bị đích, bạn cần nhập tệp này vào cả Trình quản lý hồ sơ cục bộ và Trình quản lý bản ghi Gacha. Hai mô-đun tính năng này trích xuất các loại dữ liệu khác nhau từ tệp plist refugee."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ 在目标设备上，您需要在本地账号管理器和抽卡记录管理器中分別导入此文件。这两个功能模块会各自从难民 plist 文件中提取不同类型的数据。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ 在目標裝置上，您需要在本機帳號管理器和抽卡記錄管理器中分別匯入此檔案。這兩個功能模組會各自從難民 plist 檔案中提取不同類型的資料。"
+          }
+        }
+      }
+    },
+    "refugee.export.refugeeFileSpecialNotice4iOS17" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Diese Refugee-Plist-Datei enthält aufgrund technischer Einschränkungen und Bedenken bezüglich der Dateigröße keine Benutzer-Wallpapers. Bitte exportieren Sie diese separat."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ This refugee plist file does not include user wallpapers due to technical limitations and file size concerns. Please export them separately."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Este archivo plist de refugee no incluye fondos de pantalla del usuario debido a limitaciones técnicas y preocupaciones sobre el tamaño del archivo. Por favor, expórtelos por separado."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Ang refugee plist file na ito ay hindi kasama ang user wallpapers dahil sa teknikal na limitasyon at alalahanin sa file size. Pakiexport ang mga ito nang hiwalay."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Ce fichier plist refugee n'inclut pas les fonds d'écran utilisateur en raison de limitations techniques et de préoccupations concernant la taille du fichier. Veuillez les exporter séparément."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Questo file plist refugee non include gli sfondi utente a causa di limitazioni tecniche e preoccupazioni sulla dimensione del file. Si prega di esportarli separatamente."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ この難民 plist ファイルには、技術的な制限とファイルサイズの問題により、ユーザーの壁紙が含まれていません。別途エクスポートしてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 이 난민 plist 파일에는 기술적 제한과 파일 크기 문제로 인해 사용자 배경화면이 포함되지 않습니다. 별도로 내보내십시오."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Этот файл трудовых plist не включает пользовательские обои из-за технических ограничений и проблем с размером файла. Пожалуйста, экспортируйте их отдельно."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Tệp plist khó dân này không bao gồm hình nền người dùng do hạn chế kỹ thuật và lo ngại về kích thước tệp. Vui lòng xuất chúng riêng biệt."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 此難民 plist 文件由於技術限制和文件大小問題，不包含用戶壁紙。請單獨導出它們。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 此難民 plist 檔案由於技術限制和檔案大小問題，不包含使用者壁紙。請單獨匯出它們。"
           }
         }
       }
@@ -8166,73 +8551,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die alte Pizza Refugee Datendatei wurde erfolgreich exportiert."
+            "value" : "Die Datei wurde erfolgreich exportiert."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Successfully dumped the Old Pizza Refugee Data file."
+            "value" : "The file is successfully dumped."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El archivo de datos de Old Pizza Refugee se ha exportado correctamente."
+            "value" : "El archivo se ha exportado correctamente."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matagumpay na na-export ang Old Pizza Refugee Data file."
+            "value" : "Matagumpay na na-export ang file."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le fichier de données Old Pizza Refugee a été exporté avec succès."
+            "value" : "Le fichier a été exporté avec succès."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "File dati Old Pizza Refugee esportato con successo."
+            "value" : "File esportato con successo."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "旧ピザ難民資料は正常に書き出されました。"
+            "value" : "ファイルは正常に書き出されました。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Old Pizza Refugee 데이터 파일을 성공적으로 내보냈습니다."
+            "value" : "파일을 성공적으로 내보냈습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Файл данных Old Pizza Refugee успешно экспортирован."
+            "value" : "Файл успешно экспортирован."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tệp dữ liệu Old Pizza Refugee đã được xuất thành công."
+            "value" : "Tệp đã được xuất thành công."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "旧披萨难民资料已成功导出。"
+            "value" : "文件已成功导出。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "舊披薩難民資料已成功匯出。"
+            "value" : "檔案已成功匯出。"
           }
         }
       }
@@ -9297,6 +9682,310 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "點按啟動"
+          }
+        }
+      }
+    },
+    "refugee.menu.export.all" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Inhalte als Paket mit Flüchtlingsdaten (Plist) exportieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export All Contents as Refugee Plist Package"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar todo el contenido como paquete de datos de refugiados (Plist)"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I-export ang Lahat ng Nilalaman bilang package ng datos ng refugee (Plist)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exporter tout le contenu en tant que package Refugee Plist"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esporta tutto il contenuto come pacchetto dati rifugiati (Plist)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのコンテンツを難民資料(Plist)として丸書き出し"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 콘텐츠를 난민 자료(Plist) 패키지로 내보내기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспортировать все содержимое как пакет данных беженцев (Plist)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xuất tất cả nội dung dưới dạng gói dữ liệu người tị nạn (Plist)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将所有内容导出为难民资料(Plist)包"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將所有內容匯出為難民資料(Plist)包"
+          }
+        }
+      }
+    },
+    "refugee.menu.export.gachaRecordsAsUIGFv4" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gacha-Aufzeichnungen exportieren (UIGFv4 JSON)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Gacha Records (UIGFv4 JSON)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar registros de Gacha (UIGFv4 JSON)"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I-export ang Gacha Records (UIGFv4 JSON)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exporter les enregistrements Gacha (UIGFv4 JSON)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esporta record Gacha (UIGFv4 JSON)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ガチャ記録を書き出す (UIGFv4 JSON)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가챠 기록 내보내기 (UIGFv4 JSON)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспортировать записи гача (UIGFv4 JSON)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xuất bản ghi Gacha (UIGFv4 JSON)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导出抽卡记录 (UIGFv4 JSON)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯出抽卡記錄 (UIGFv4 JSON)"
+          }
+        }
+      }
+    },
+    "refugee.menu.export.profiles" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile exportieren (JSON)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Profiles (JSON)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar perfiles (JSON)"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I-export ang Profiles (JSON)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exporter les profils (JSON)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esporta profili (JSON)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロフィールを書き出す (JSON)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필 내보내기 (JSON)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспортировать профили (JSON)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xuất hồ sơ (JSON)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打包导出本地账号 (JSON)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "批次匯出本機帳號 (JSON)"
+          }
+        }
+      }
+    },
+    "refugee.menu.export.wallpapers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzerdefinierte Hintergründe exportieren (JSON)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export User Wallpapers (JSON)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar fondos de pantalla personalizados (JSON)"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I-export ang User Wallpapers (JSON)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exporter les fonds d'écran personnalisés (JSON)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esporta sfondi personalizzati (JSON)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユーザー壁紙を書き出す (JSON)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용자 배경화면 내보내기 (JSON)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспортировать пользовательские обои (JSON)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xuất hình nền tùy chỉnh (JSON)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导出用户自订壁纸 (JSON)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯出使用者自訂壁紙 (JSON)"
           }
         }
       }

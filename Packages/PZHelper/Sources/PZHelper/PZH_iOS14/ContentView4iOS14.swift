@@ -3,11 +3,16 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import GachaKit
 import PZAboutKit
 import PZAccountKit
 import PZBaseKit
 import PZWidgetsKit
 import SwiftUI
+import UniformTypeIdentifiers
+import WallpaperKit
+
+// MARK: - ContentView4iOS14
 
 /// 业务逻辑：
 /// iOS 16.1 为止的系统：仅允许导出资料。
@@ -44,7 +49,6 @@ public struct ContentView4iOS14: View {
     // MARK: Internal
 
     @ViewBuilder var contentsInsideNavigationContainer: some View {
-        let msgPack = fileSaveActionResultMessagePack
         List {
             if let theError = theVM.currentError {
                 Section {
@@ -140,29 +144,29 @@ public struct ContentView4iOS14: View {
                 }
             }
             ToolbarItem(placement: .primaryAction) {
-                Button {
-                    theVM.startDocumentationPreparationTask(forced: false)
-                } label: {
-                    Image(systemSymbol: .squareAndArrowUp)
-                }
-                .disabled(theVM.taskState == .busy)
+                exportButtonAtTrailingToolbar
+                    .disabled(theVM.taskState == .busy)
             }
         }
-        .fileExporter(
-            isPresented: theVM.isExportDialogVisible,
-            document: theVM.currentExportableDocument,
-            contentType: .propertyList,
-            defaultFilename: "PizzaHelper4Genshin_RefugeeMigrationData"
-        ) { result in
-            fileSaveActionResult = result
-            theVM.currentExportableDocument = nil
+        .apply { coreContent in
+            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                coreContent.modifier(
+                    RefugeeExportModifier(
+                        theVM: theVM,
+                        exportResult: $exportResult
+                    )
+                )
+            } else {
+                coreContent
+            }
         }
         .alert(isPresented: isExportResultAvailable) {
             Alert(
-                title: Text(msgPack.title),
-                message: Text(msgPack.message),
+                title: Text(exportResultMessagePack.title),
+                message: Text(exportResultMessagePack.message),
                 dismissButton: Alert.Button.default(Text(verbatim: "✔︎")) {
-                    fileSaveActionResult = nil
+                    exportResult = nil
+                    theVM.lastExportedDocumentKind = nil
                     theVM.forceStopTheTask()
                 }
             )
@@ -170,6 +174,7 @@ public struct ContentView4iOS14: View {
         .react(to: isExportResultAvailable.wrappedValue) {
             theVM.forceStopTheTask()
         }
+        .saturation(theVM.taskState == .busy ? 0 : 1)
     }
 
     @available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *)
@@ -288,7 +293,7 @@ public struct ContentView4iOS14: View {
     // MARK: Private
 
     @StateObject private var theVM = RefugeeVM4iOS14.shared
-    @State private var fileSaveActionResult: Result<URL, any Error>?
+    @State private var exportResult: Result<URL, any Error>?
 
     private let snoozeAction: (() -> Void)?
 
@@ -304,23 +309,40 @@ public struct ContentView4iOS14: View {
     }
 
     private var isExportResultAvailable: Binding<Bool> {
-        .init(get: { fileSaveActionResult != nil }, set: { _ in })
+        .init(get: { exportResult != nil }, set: { _ in })
     }
 
     private var hasData: Bool {
         theVM.localProfileEntriesCount + theVM.gachaEntriesCount + theVM.gachaEntriesCountModern > 0
     }
 
-    private var fileSaveActionResultMessagePack: (title: String, message: String) {
-        switch fileSaveActionResult {
+    private var exportResultMessagePack: (title: String, message: String) {
+        switch exportResult {
         case let .success(url):
-            (
+            var description = ""
+            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                switch theVM.lastExportedDocumentKind {
+                case .refugee:
+                    description += "refugee.export.fileType.refugee".i18nPZHelper + "\n\n"
+                    description += "refugee.export.refugeeFileSpecialNotice4iOS17".i18nPZHelper + "\n\n"
+                    description += "refugee.export.refugeeFileHowToUse".i18nPZHelper + "\n\n"
+                case .profiles:
+                    description += "refugee.export.fileType.profiles".i18nPZHelper + "\n\n"
+                case .wallpapers:
+                    description += "refugee.export.fileType.wallpapers".i18nPZHelper + "\n\n"
+                case .none:
+                    break
+                }
+            }
+            description += "refugee.export.fileSavedTo:".i18nPZHelper + "\n\n\(url)"
+            return (
                 "refugee.export.succeededInSavingToFile".i18nPZHelper,
-                "refugee.export.fileSavedTo:".i18nPZHelper + "\n\n\(url)"
+                description
             )
         case let .failure(message):
-            ("refugee.export.failedInSavingToFile".i18nPZHelper, "⚠︎ \(message)")
-        case nil: ("", "")
+            return ("refugee.export.failedInSavingToFile".i18nPZHelper, "⚠︎ \(message)")
+        case nil:
+            return ("", "")
         }
     }
 
@@ -330,5 +352,105 @@ public struct ContentView4iOS14: View {
         } else {
             Text(verbatim: Pizza.appTitleLocalizedFull)
         }
+    }
+
+    @ViewBuilder private var exportButtonAtTrailingToolbar: some View {
+        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+            Menu {
+                // Local Profiles
+                Button {
+                    theVM.prepareProfilesExportDocument()
+                } label: {
+                    Label {
+                        Text("refugee.menu.export.profiles", bundle: .currentSPM)
+                    } icon: {
+                        Image(systemSymbol: .personTextRectangle)
+                    }
+                }
+                .disabled(theVM.localProfileEntriesCount == 0)
+                // Wallpaper
+                Button {
+                    theVM.prepareWallpapersExportDocument()
+                } label: {
+                    Label {
+                        Text("refugee.menu.export.wallpapers", bundle: .currentSPM)
+                    } icon: {
+                        Image(systemSymbol: .photo)
+                    }
+                }
+                .disabled(UserWallpaperFileHandler.getAllUserWallpapers().isEmpty)
+                // Gacha Records
+                NavigationLink {
+                    GachaExchangeView(disableImport: true)
+                } label: {
+                    Label {
+                        Text("refugee.menu.export.gachaRecordsAsUIGFv4", bundle: .currentSPM)
+                    } icon: {
+                        Image(systemSymbol: .listBulletRectanglePortrait)
+                    }
+                }
+                Divider()
+                // Refugee Plist
+                Button {
+                    theVM.prepareRefugeeExportDocument(forced: false)
+                } label: {
+                    Label {
+                        Text("refugee.menu.export.all", bundle: .currentSPM)
+                    } icon: {
+                        Image(systemSymbol: .suitcaseCart)
+                    }
+                }
+            } label: {
+                Image(systemSymbol: .squareAndArrowUp)
+            }
+            .disabled(theVM.taskState == .busy)
+        } else {
+            Button {
+                theVM.startDocumentationPreparationTask(forced: false)
+            } label: {
+                Image(systemSymbol: .squareAndArrowUp)
+            }
+        }
+    }
+}
+
+// MARK: - RefugeeExportModifier
+
+/// 統一的匯出處理 ViewModifier，用於避免 SwiftUI 多個 fileExporter 只有最後一個生效的 bug。
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+struct RefugeeExportModifier: ViewModifier {
+    // MARK: Internal
+
+    @ObservedObject var theVM: RefugeeVM4iOS14
+    @Binding var exportResult: Result<URL, any Error>?
+
+    func body(content: Content) -> some View {
+        content
+            .fileExporter(
+                isPresented: theVM.isExportDialogVisible,
+                document: currentDocument,
+                contentType: currentContentType,
+                defaultFilename: currentDefaultFileName
+            ) { result in
+                // 記錄最後匯出的文檔類型，用於顯示對應的成功/失敗訊息。
+                theVM.lastExportedDocumentKind = theVM.currentExportDocumentType?.kind
+                exportResult = result
+                theVM.currentExportDocumentType = nil
+            }
+    }
+
+    // MARK: Private
+
+    private var currentDocument: RefugeeUnifiedExportDocument? {
+        guard let docType = theVM.currentExportDocumentType else { return nil }
+        return RefugeeUnifiedExportDocument(type: docType)
+    }
+
+    private var currentContentType: UTType {
+        theVM.currentExportDocumentType?.contentType ?? .json
+    }
+
+    private var currentDefaultFileName: String? {
+        theVM.currentExportDocumentType?.defaultFileName
     }
 }
