@@ -104,6 +104,14 @@ final class RootNavVM {
     private func sharedToolbarNavPicker(allCases: Bool, isMenu: Bool = true) -> some View {
         @Bindable var this = self
         let effectiveCases = !allCases ? AppRootPage.enabledSubCases : AppRootPage.allCases
+        let isMenu: Bool = {
+            if let maxTabLength = effectiveCases.map(\.labelNameTextRaw.count).max() {
+                if maxTabLength > 8 {
+                    return true
+                }
+            }
+            return isMenu
+        }()
         Picker("".description, selection: $this.rootPageNav) {
             ForEach(effectiveCases) { navCase in
                 if navCase.isExposed {

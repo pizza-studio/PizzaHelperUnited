@@ -52,13 +52,17 @@ enum AppRootPage: CaseIterable, Identifiable, Sendable, Hashable {
         }
     }
 
-    public var labelNameText: Text {
+    public var labelNameTextRaw: String {
         switch self {
-        case .today: Text("tab.today".i18nPZHelper)
-        case .showcaseDetail: Text("tab.details".i18nPZHelper)
-        case .utils: Text("tab.utils".i18nPZHelper)
-        case .appSettings: Text("tab.settings".i18nPZHelper)
+        case .today: "tab.today".i18nPZHelper
+        case .showcaseDetail: "tab.details".i18nPZHelper
+        case .utils: "tab.utils".i18nPZHelper
+        case .appSettings: "tab.settings".i18nPZHelper
         }
+    }
+
+    public var labelNameText: Text {
+        Text(labelNameTextRaw)
     }
 
     public var icon: Image {
