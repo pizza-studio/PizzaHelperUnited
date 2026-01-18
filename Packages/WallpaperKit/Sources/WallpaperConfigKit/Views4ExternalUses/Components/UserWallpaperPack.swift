@@ -13,7 +13,7 @@ import WallpaperKit
 // MARK: - UserWallpaperPack
 
 /// 该结构仅用作导出内容之用途。
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 14, macCatalyst 14, *)
 public struct UserWallpaperPack: FileDocument {
     // MARK: Lifecycle
 
