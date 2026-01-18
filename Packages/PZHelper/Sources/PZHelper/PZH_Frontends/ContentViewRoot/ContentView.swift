@@ -79,8 +79,6 @@ public struct ContentView: View {
     @State private var viewColumn: NavigationSplitViewColumn = .content
     @Binding private var rootPageNavBinding: AppRootPage?
 
-    private let isAppKit = OS.type == .macOS && !OS.isCatalyst
-
     private var sideBarWidth: CGFloat { 375 }
 
     private var effectiveAppNavCases: [AppRootPage] {
