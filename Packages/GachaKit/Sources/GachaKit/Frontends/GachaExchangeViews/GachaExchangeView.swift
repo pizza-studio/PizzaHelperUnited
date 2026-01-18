@@ -8,6 +8,12 @@ import SwiftUI
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 public struct GachaExchangeView: View {
+    // MARK: Lifecycle
+
+    public init(disableImport: Bool = false) {
+        self.disableImport = disableImport
+    }
+
     // MARK: Public
 
     public enum Page: String, Sendable, CaseIterable, Identifiable {
@@ -48,7 +54,7 @@ public struct GachaExchangeView: View {
                         ProgressView()
                     }
                 }
-                if !theVM.allGPIDs.isEmpty {
+                if !disableImport, !theVM.allGPIDs.isEmpty {
                     ToolbarItem(placement: .primaryAction) {
                         Picker("".description, selection: $currentPage.animation()) {
                             ForEach(Page.allCases) { currentCase in
@@ -63,7 +69,7 @@ public struct GachaExchangeView: View {
                 }
             }
             .react(to: theVM.hasGPID.wrappedValue, initial: true) { _, hasGPID in
-                if !hasGPID, currentPage != .importData {
+                if !disableImport, !hasGPID, currentPage != .importData {
                     currentPage = .importData
                 }
             }
@@ -79,6 +85,8 @@ public struct GachaExchangeView: View {
 
     @State private var currentPage: Page = .exportData
     @State private var theVM: GachaVM = .shared
+
+    private let disableImport: Bool
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)
