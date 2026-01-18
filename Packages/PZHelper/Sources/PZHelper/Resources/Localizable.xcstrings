@@ -8780,7 +8780,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Only widgets are available for iOS 16.2 & macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Locale Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14."
+            "value" : "Only widgets are available for iOS 16.2 & macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Local Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14."
           }
         },
         "es" : {
@@ -8792,7 +8792,7 @@
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tanging widgets lang ang available para sa iOS 16.2 at macOS 13. Kailangan pa rin ng iOS 17 / macOS 14 o mas bago para sa ibang features. Kung makaranas ka ng bug habang nagna-navigate sa Locale Profile Manager, ito ay dahil sa mga SwiftUI-related na bug sa iOS 16 / macOS 13 at ang tanging solusyon ay mag-upgrade sa iOS 17 / macOS 14."
+            "value" : "Tanging widgets lang ang available para sa iOS 16.2 at macOS 13. Kailangan pa rin ng iOS 17 / macOS 14 o mas bago para sa ibang features. Kung makaranas ka ng bug habang nagna-navigate sa Local Profile Manager, ito ay dahil sa mga SwiftUI-related na bug sa iOS 16 / macOS 13 at ang tanging solusyon ay mag-upgrade sa iOS 17 / macOS 14."
           }
         },
         "fr" : {
@@ -9377,78 +9377,154 @@
         }
       }
     },
-    "refugee.noDataExportable" : {
+    "refugee.noDataExportable.iOS16AndEarlier" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Derzeit sind keine lokalen Daten exportierbar. Diese Ansicht wartet auf iCloud-Hintergrunddatenaktualisierungen, aber alle iCloud-Daten können via iCloud von dieser App unter iOS 17 oder neuer übernommen werden."
+            "value" : "Derzeit sind keine lokalen Daten exportierbar. Diese Ansicht wartet auf möglicherweise verfügbare iCloud-Hintergrunddatenaktualisierungen, es sei denn, es gibt keine solchen Daten, aber alle iCloud-Daten können via iCloud von dieser App unter iOS 17 oder neuer übernommen werden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No local data exportable for now. This view awaits for iCloud background data updates, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later."
+            "value" : "No local data exportable for now. This view awaits for possibly available iCloud background data updates, unless there's no such data, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No hay datos locales exportables por ahora. Esta vista espera actualizaciones de datos en segundo plano de iCloud, pero todos los datos de iCloud pueden ser heredados via iCloud por esta app en iOS 17 o posterior."
+            "value" : "No hay datos locales exportables por ahora. Esta vista espera actualizaciones de datos en segundo plano de iCloud posiblemente disponibles, a menos que no haya tales datos, pero todos los datos de iCloud pueden ser heredados via iCloud por esta app en iOS 17 o posterior."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Walang lokal na data na maaaring i-export sa ngayon. Ang view na ito ay naghihintay ng iCloud background data updates, ngunit lahat ng iCloud data ay maaaring mamanahin via iCloud ng app na ito kapag tumatakbo sa iOS 17 o mas bago."
+            "value" : "Walang lokal na data na maaaring i-export sa ngayon. Ang view na ito ay naghihintay ng posibleng available na iCloud background data updates, maliban kung walang ganoong data, ngunit lahat ng iCloud data ay maaaring mamanahin via iCloud ng app na ito kapag tumatakbo sa iOS 17 o mas bago."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aucune donnée locale exportable pour le moment. Cette vue attend les mises à jour des données iCloud en arrière-plan, mais toutes les données iCloud peuvent être héritées via iCloud par cette application sous iOS 17 ou version ultérieure."
+            "value" : "Aucune donnée locale exportable pour le moment. Cette vue attend les mises à jour des données iCloud en arrière-plan potentiellement disponibles, à moins qu'il n'y ait pas de telles données, mais toutes les données iCloud peuvent être héritées via iCloud par cette application sous iOS 17 ou version ultérieure."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nessun dato locale esportabile al momento. Questa schermata attende aggiornamenti dei dati iCloud in background, ma tutti i dati iCloud possono essere ereditati via iCloud da questa app su iOS 17 o versioni successive."
+            "value" : "Nessun dato locale esportabile al momento. Questa schermata attende aggiornamenti dei dati iCloud in background possibilmente disponibili, a meno che non ci siano tali dati, ma tutti i dati iCloud possono essere ereditati via iCloud da questa app su iOS 17 o versioni successive."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "現時点では書き出し可能なローカルデータはありません。この画面はiCloudのバックグラウンドデータ更新を待っていますが、iOS 17以降ではすべてのiCloudデータを本アプリでvia iCloud引き継ぐことができます。"
+            "value" : "現時点では書き出し可能なローカルデータはありません。この画面は、可能であれば利用可能なiCloudバックグラウンドデータ更新を待っていますが、そのようなデータがない場合を除きますが、iOS 17以降ではすべてのiCloudデータを本アプリでvia iCloud引き継ぐことができます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "현재 내보낼 수 있는 로컬 데이터가 없습니다. 이 화면은 iCloud 백그라운드 데이터 업데이트를 기다리고 있지만, iOS 17 이상에서 실행되는 이 앱은 모든 iCloud 데이터를 via iCloud 상속받을 수 있습니다."
+            "value" : "현재 내보낼 수 있는 로컬 데이터가 없습니다. 이 화면은 가능하다면 사용 가능한 iCloud 백그라운드 데이터 업데이트를 기다리고 있지만, 그러한 데이터가 없는 경우는 제외합니다, 하지만 iOS 17 이상에서 실행되는 이 앱은 모든 iCloud 데이터를 via iCloud 상속받을 수 있습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "В настоящее время нет локальных данных для экспорта. Этот экран ожидает обновления фоновых данных iCloud, но все данные iCloud могут быть унаследованы via iCloud этим приложением на iOS 17 или новее."
+            "value" : "В настоящее время нет локальных данных для экспорта. Этот экран ожидает возможно доступные обновления фоновых данных iCloud, если такие данные существуют, но все данные iCloud могут быть унаследованы via iCloud этим приложением на iOS 17 или новее."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hiện không có dữ liệu cục bộ nào có thể xuất. Giao diện này đang chờ cập nhật dữ liệu nền từ iCloud, nhưng tất cả dữ liệu iCloud đều có thể được kế thừa via iCloud bởi ứng dụng này trên iOS 17 trở lên."
+            "value" : "Hiện không có dữ liệu cục bộ nào có thể xuất. Giao diện này đang chờ cập nhật dữ liệu nền iCloud có thể khả dụng, trừ khi không có dữ liệu như vậy, nhưng tất cả dữ liệu iCloud đều có thể được kế thừa via iCloud bởi ứng dụng này trên iOS 17 trở lên."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "当前暂无可导出的本地数据。本页面正在等待 iCloud 后台数据更新，但所有 iCloud 数据在 iOS 17 及以上系统可由本 App 通过 iCloud 继承。"
+            "value" : "当前暂无可导出的本地数据。本页面正在等待可能可用的 iCloud 后台数据更新，除非没有此类数据，但所有 iCloud 数据在 iOS 17 及以上系统可由本 App 通过 iCloud 继承。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "目前沒有可匯出的本機資料。本頁面正在等待 iCloud 背景資料更新，但所有 iCloud 資料在 iOS 17 及以上系統可由本 App 透過 iCloud 繼承。"
+            "value" : "目前沒有可匯出的本機資料。本頁面正在等待可能可用的 iCloud 背景資料更新，除非沒有此類資料，但所有 iCloud 資料在 iOS 17 及以上系統可由本 App 透過 iCloud 繼承。"
+          }
+        }
+      }
+    },
+    "refugee.noDataExportable.refugeeMigratingToLatteHelper" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derzeit sind keine lokalen Daten exportierbar. Diese Ansicht wartet auf möglicherweise verfügbare iCloud-Hintergrunddatenaktualisierungen, es sei denn, es gibt keine solchen Daten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No local data exportable for now. This view awaits for possibly available iCloud background data updates, unless there's no such data."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay datos locales exportables por ahora. Esta vista espera actualizaciones de datos en segundo plano de iCloud posiblemente disponibles, a menos que no haya tales datos."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walang lokal na data na maaaring i-export sa ngayon. Ang view na ito ay naghihintay ng posibleng available na iCloud background data updates, maliban kung walang ganoong data."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune donnée locale exportable pour le moment. Cette vue attend les mises à jour des données iCloud en arrière-plan potentiellement disponibles, à moins qu'il n'y ait pas de telles données."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun dato locale esportabile al momento. Questa schermata attende aggiornamenti dei dati iCloud in background possibilmente disponibili, a meno che non ci siano tali dati."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現時点では書き出し可能なローカルデータはありません。この画面は、可能であれば利用可能なiCloudバックグラウンドデータ更新を待っていますが、そのようなデータがない場合を除きます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "현재 내보낼 수 있는 로컬 데이터가 없습니다. 이 화면은 가능하다면 사용 가능한 iCloud 백그라운드 데이터 업데이트를 기다리고 있지만, 그러한 데이터가 없는 경우는 제외합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В настоящее время нет локальных данных для экспорта. Этот экран ожидает возможно доступные обновления фоновых данных iCloud, если такие данные существуют."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiện không có dữ liệu cục bộ nào có thể xuất. Giao diện này đang chờ cập nhật dữ liệu nền iCloud có thể khả dụng, trừ khi không có dữ liệu như vậy."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前暂无可导出的本地数据。本页面正在等待可能可用的 iCloud 后台数据更新，除非没有此类数据。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前沒有可匯出的本機資料。本頁面正在等待可能可用的 iCloud 背景資料更新，除非沒有此類資料。"
           }
         }
       }

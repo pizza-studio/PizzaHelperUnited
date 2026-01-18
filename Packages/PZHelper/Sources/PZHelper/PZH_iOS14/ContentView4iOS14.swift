@@ -93,8 +93,13 @@ public struct ContentView4iOS14: View {
                     }
                 }
                 if !hasData {
-                    Text("refugee.noDataExportable", bundle: .currentSPM)
-                        .foregroundColor(.secondary)
+                    if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                        Text("refugee.noDataExportable.refugeeMigratingToLatteHelper", bundle: .currentSPM)
+                            .foregroundColor(.secondary)
+                    } else {
+                        Text("refugee.noDataExportable.iOS16AndEarlier", bundle: .currentSPM)
+                            .foregroundColor(.secondary)
+                    }
                 }
             } header: {
                 HStack {
