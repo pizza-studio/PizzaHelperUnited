@@ -106,6 +106,11 @@ struct AppSettingsTabPage: View {
                     NavigationLink(destination: OtherSettingsPageContent.init) {
                         Label("# Other Settings".description, systemSymbol: .infoSquare)
                     }
+                    Button {
+                        Defaults[.isOOBEViewEverPresented] = false
+                    } label: {
+                        Label("# Call OOBE View".description, systemSymbol: .questionmarkApp)
+                    }
                 }
                 #endif
             }
