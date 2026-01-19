@@ -149,8 +149,30 @@ final class RootNavVM {
     @ViewBuilder
     private func bottomTabBarForCompactLayout(allCases: Bool) -> some View {
         let effectiveCases = !allCases ? AppRootPage.enabledSubCases : AppRootPage.allCases
+        if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *),
+           OS.liquidGlassThemeSuspected {
+            floatingTabBar(effectiveCases: effectiveCases)
+        } else {
+            classicTabBar(effectiveCases: effectiveCases)
+        }
+    }
+
+    /// iOS 26+ Liquid Glass Style 浮動膠囊 Tab Bar
+    @available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *)
+    @ViewBuilder
+    private func floatingTabBar(effectiveCases: [AppRootPage]) -> some View {
+        @Bindable var this = self
+        FloatingGlassTabBar(
+            effectiveCases: effectiveCases,
+            selection: $this.rootPageNav
+        )
+    }
+
+    /// 經典 Tab Bar 樣式（iOS 25 及更早）
+    @ViewBuilder
+    private func classicTabBar(effectiveCases: [AppRootPage]) -> some View {
         HStack(spacing: 0) {
-            ForEach(effectiveCases) { navCase in
+            ForEach(effectiveCases, id: \.self) { navCase in
                 let isChosen: Bool = navCase == self.rootPageNav
                 if navCase.isExposed {
                     Button {
@@ -162,23 +184,17 @@ final class RootNavVM {
                             navCase.icon.frame(width: 28, height: 28)
                             navCase.labelNameText
                                 .font(.footnote)
-                                .padding(.bottom, OS.liquidGlassThemeSuspected ? 0 : 4)
+                                .padding(.bottom, 4)
                         }
                         .padding(.vertical, 4)
                         .fixedSize()
                         .labelStyle(.titleAndIcon)
                         .fontWidth(.compressed)
                         .fontWeight(isChosen ? .bold : .regular)
-                        .foregroundStyle(!isChosen ? Color.secondary : {
-                            if OS.liquidGlassThemeSuspected {
-                                Color.blue
-                            } else {
-                                Color.accentColor
-                            }
-                        }())
+                        .foregroundStyle(!isChosen ? Color.secondary : Color.accentColor)
                         .padding()
                         .contentShape(.rect)
-                        .frame(maxWidth: OS.liquidGlassThemeSuspected ? nil : .infinity)
+                        .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.plain)
                     .id(navCase)
@@ -188,4 +204,74 @@ final class RootNavVM {
         .frame(minHeight: 50, maxHeight: 54)
         .shadow(radius: 4)
     }
+}
+
+// MARK: - FloatingGlassTabBar
+
+@available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *)
+private struct FloatingGlassTabBar: View {
+    // MARK: Lifecycle
+
+    init(effectiveCases: [AppRootPage], selection: Binding<AppRootPage>) {
+        self.effectiveCases = effectiveCases
+        self._selection = selection
+    }
+
+    // MARK: Internal
+
+    @Binding var selection: AppRootPage
+
+    let effectiveCases: [AppRootPage]
+
+    var body: some View {
+        GlassEffectContainer {
+            HStack(spacing: 8) {
+                ForEach(effectiveCases, id: \.self) { (navCase: AppRootPage) in
+                    if navCase.isExposed {
+                        let isChosen = selection == navCase
+                        Button {
+                            // 移除 withAnimation，防止動畫擴散到頁面切換
+                            selection = navCase
+                        } label: {
+                            VStack(spacing: 2) {
+                                navCase.icon
+                                    .imageScale(.medium)
+                                navCase.labelNameText
+                                    .font(.caption2)
+                                    .fontWeight(isChosen ? .bold : .regular)
+                                    .fontWidth(.condensed)
+                                    .fixedSize(horizontal: true, vertical: false)
+                            }
+                            .shadow(radius: 2)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                            .frame(maxWidth: .infinity)
+                            .foregroundStyle(isChosen ? Color.primary : Color.secondary)
+                            .contentShape(Capsule())
+                        }
+                        .buttonStyle(.plain)
+                        // 標記每個 Tab 的位置作為動畫源
+                        .matchedGeometryEffect(id: navCase, in: namespace)
+                    }
+                }
+            }
+            .background {
+                if effectiveCases.contains(selection) {
+                    Capsule()
+                        .fill(Color.white.opacity(0.2))
+                        .glassEffect(.regular.interactive())
+                        // 這是不透明的背景，追隨 selection 的位置
+                        .matchedGeometryEffect(id: selection, in: namespace, isSource: false)
+                }
+            }
+            .glassEffect(.identity, in: .capsule)
+            .animation(.spring(duration: 0.3), value: selection)
+        }
+        .frame(minHeight: 50, maxHeight: 60)
+        // 關鍵：只在 TabBar 局部啟用動畫，不影響外部
+    }
+
+    // MARK: Private
+
+    @Namespace private var namespace
 }
