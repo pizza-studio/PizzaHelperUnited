@@ -55,10 +55,6 @@ public struct WallpaperGalleryViewContent: View {
 
     // MARK: Internal
 
-    var columns: Int {
-        max(Int(floor(containerWidth / 240)), 1)
-    }
-
     var searchResults: [BundledWallpaper] {
         if searchText.isEmpty {
             BundledWallpaper.allCases(for: game)
@@ -73,7 +69,7 @@ public struct WallpaperGalleryViewContent: View {
 
     @ViewBuilder var coreBodyView: some View {
         StaggeredGrid(
-            columns: columns,
+            columns: debouncedColumns,
             showsIndicators: false,
             outerPadding: true,
             scroll: false,
@@ -109,23 +105,24 @@ public struct WallpaperGalleryViewContent: View {
         }
         .searchable(text: $searchText, placement: searchFieldPlacement)
         .padding(.horizontal)
+        .background {
+            // 將 screenVM 的觀察隔離在這個隱形的背景視圖中，
+            // 避免整個 StaggeredGrid 因為 screenVM 變化而重繪。
+            ColumnsObserver(debouncedColumns: $debouncedColumns)
+        }
     }
 
     // MARK: Private
 
-    @State private var screenVM: ScreenVM = .shared
     @State private var game: Pizza.SupportedGame? = appGame ?? .genshinImpact
     @State private var searchText = ""
+    @State private var debouncedColumns: Int = 1
 
     @Default(.useAlternativeCharacterNames) private var useAlternativeCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
     @Default(.appWallpaperID) private var appWallpaperID: String
     @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
-
-    private var containerWidth: CGFloat {
-        screenVM.mainColumnCanvasSizeObserved.width - 48
-    }
 
     private var searchFieldPlacement: SearchFieldPlacement {
         #if os(iOS) || targetEnvironment(macCatalyst)
@@ -176,6 +173,49 @@ public struct WallpaperGalleryViewContent: View {
             }
         }
         return result
+    }
+}
+
+// MARK: WallpaperGalleryViewContent.ColumnsObserver
+
+@available(iOS 17.0, macCatalyst 17.0, *)
+extension WallpaperGalleryViewContent {
+    /// 將 ScreenVM 的觀察隔離在這個獨立的視圖中，
+    /// 避免主視圖因為 ScreenVM 的頻繁變化而觸發不必要的重繪。
+    fileprivate struct ColumnsObserver: View {
+        // MARK: Internal
+
+        @Binding var debouncedColumns: Int
+
+        var body: some View {
+            Color.clear
+                .onAppear {
+                    debouncedColumns = calculatedColumns
+                }
+                .react(to: containerWidth) { _, _ in
+                    Task {
+                        await columnsDebouncer.debounce { @MainActor in
+                            let newColumns = calculatedColumns
+                            guard debouncedColumns != newColumns else { return }
+                            debouncedColumns = newColumns
+                        }
+                    }
+                }
+        }
+
+        // MARK: Private
+
+        @State private var screenVM: ScreenVM = .shared
+
+        private let columnsDebouncer = Debouncer(delay: 0.15)
+
+        private var containerWidth: CGFloat {
+            screenVM.mainColumnCanvasSizeObserved.width - 48
+        }
+
+        private var calculatedColumns: Int {
+            max(Int(floor(containerWidth / 240)), 1)
+        }
     }
 }
 
