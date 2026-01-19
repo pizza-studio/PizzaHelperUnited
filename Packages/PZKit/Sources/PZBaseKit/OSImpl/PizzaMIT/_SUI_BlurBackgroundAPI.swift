@@ -63,7 +63,7 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
         content
             .clipShape(shape) // 必需
             .background(alignment: .center) {
-                if reduceTransparency {
+                if reduceTransparency || ThisDevice.isIntelProcessor {
                     fillColor4ReducedTransparency
                         .clipShape(shape)
                         .blendMode(colorScheme == .dark ? .difference : .normal)
@@ -73,7 +73,7 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
                 }
             }
             .apply { neta in
-                if reduceTransparency {
+                if reduceTransparency || ThisDevice.isIntelProcessor {
                     neta
                 } else if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *),
                           OS.liquidGlassThemeSuspected {
@@ -110,7 +110,7 @@ private struct ListRowMaterialBackgroundView: View {
 
     var body: some View {
         Group {
-            if reduceTransparency {
+            if reduceTransparency || ThisDevice.isIntelProcessor {
                 fillColor4ReducedTransparency
                     .clipShape(.rect)
                     .blendMode(colorScheme == .dark ? .difference : .normal)

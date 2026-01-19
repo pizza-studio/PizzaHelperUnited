@@ -146,7 +146,7 @@ struct CorneredTagMaterialBackground: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .apply { neta in
-                if reduceTransparency {
+                if reduceTransparency || ThisDevice.isIntelProcessor {
                     neta
                         .background(alignment: .center) {
                             capsuleBackground
