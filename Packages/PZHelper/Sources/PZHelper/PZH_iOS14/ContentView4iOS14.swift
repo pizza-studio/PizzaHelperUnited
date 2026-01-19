@@ -50,11 +50,7 @@ public struct ContentView4iOS14: View {
 
     @ViewBuilder var contentsInsideNavigationContainer: some View {
         List {
-            if let theError = theVM.currentError {
-                Section {
-                    Text(verbatim: "\(theError) ||| \(theError.localizedDescription)")
-                }
-            }
+            errorBanner
             if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
                 Text("refugee.crossAppMigrationNotice.headerText", bundle: .currentSPM)
                     .font(.body)
@@ -64,47 +60,7 @@ public struct ContentView4iOS14: View {
                 renderAvailableFeaturesAtThisPage()
             }
             Section {
-                if theVM.localProfileEntriesCount > 0 {
-                    HStack {
-                        Text("refugee.exportableCount.profiles", bundle: .currentSPM)
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(verbatim: theVM.localProfileEntriesCount.description)
-                            .foregroundColor(.secondary)
-                            .padding(.leading)
-                    }
-                }
-                if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-                    if theVM.gachaEntriesCountModern > 0 {
-                        HStack {
-                            Text("refugee.exportableCount.gachaEntries", bundle: .currentSPM)
-                                .multilineTextAlignment(.leading)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Text(verbatim: theVM.gachaEntriesCountModern.description)
-                                .foregroundColor(.secondary)
-                                .padding(.leading)
-                        }
-                    }
-                }
-                if theVM.gachaEntriesCount > 0 {
-                    HStack {
-                        Text("refugee.exportableCount.gachaEntries4GI", bundle: .currentSPM)
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(verbatim: theVM.gachaEntriesCount.description)
-                            .foregroundColor(.secondary)
-                            .padding(.leading)
-                    }
-                }
-                if !hasData {
-                    if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-                        Text("refugee.noDataExportable.refugeeMigratingToLatteHelper", bundle: .currentSPM)
-                            .foregroundColor(.secondary)
-                    } else {
-                        Text("refugee.noDataExportable.iOS16AndEarlier", bundle: .currentSPM)
-                            .foregroundColor(.secondary)
-                    }
-                }
+                refugeeContentCounterSectionContent
             } header: {
                 HStack {
                     Text("refugee.exportableCount.header", bundle: .currentSPM)
@@ -351,6 +307,58 @@ public struct ContentView4iOS14: View {
             Text("refugee.navTitle.noticingEndOfMaintenance", bundle: .currentSPM)
         } else {
             Text(verbatim: Pizza.appTitleLocalizedFull)
+        }
+    }
+
+    @ViewBuilder private var errorBanner: some View {
+        if let theError = theVM.currentError {
+            Section {
+                Text(verbatim: "\(theError) ||| \(theError.localizedDescription)")
+            }
+        }
+    }
+
+    @ViewBuilder private var refugeeContentCounterSectionContent: some View {
+        if theVM.localProfileEntriesCount > 0 {
+            HStack {
+                Text("refugee.exportableCount.profiles", bundle: .currentSPM)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text(verbatim: theVM.localProfileEntriesCount.description)
+                    .foregroundColor(.secondary)
+                    .padding(.leading)
+            }
+        }
+        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+            if theVM.gachaEntriesCountModern > 0 {
+                HStack {
+                    Text("refugee.exportableCount.gachaEntries", bundle: .currentSPM)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(verbatim: theVM.gachaEntriesCountModern.description)
+                        .foregroundColor(.secondary)
+                        .padding(.leading)
+                }
+            }
+        }
+        if theVM.gachaEntriesCount > 0 {
+            HStack {
+                Text("refugee.exportableCount.gachaEntries4GI", bundle: .currentSPM)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text(verbatim: theVM.gachaEntriesCount.description)
+                    .foregroundColor(.secondary)
+                    .padding(.leading)
+            }
+        }
+        if !hasData {
+            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                Text("refugee.noDataExportable.refugeeMigratingToLatteHelper", bundle: .currentSPM)
+                    .foregroundColor(.secondary)
+            } else {
+                Text("refugee.noDataExportable.iOS16AndEarlier", bundle: .currentSPM)
+                    .foregroundColor(.secondary)
+            }
         }
     }
 
