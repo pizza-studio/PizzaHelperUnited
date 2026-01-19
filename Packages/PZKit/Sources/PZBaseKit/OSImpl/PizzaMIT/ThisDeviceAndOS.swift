@@ -22,6 +22,29 @@ import WatchKit
 
 public enum ThisDevice {}
 
+// MARK: - Intel Processor Detection
+
+extension ThisDevice {
+    /// Detects whether the current Mac is running on an Intel processor.
+    /// On non-macOS/macCatalyst platforms, this always returns `false`.
+    public static let isIntelProcessor: Bool = {
+        #if os(watchOS)
+        return false
+        #elseif os(macOS) || targetEnvironment(macCatalyst)
+        var sysinfo = utsname()
+        uname(&sysinfo)
+        let machine = withUnsafePointer(to: &sysinfo.machine) {
+            $0.withMemoryRebound(to: CChar.self, capacity: 1) {
+                String(validatingCString: $0)
+            }
+        }
+        return machine?.contains("x86_64") == true
+        #else
+        return false
+        #endif
+    }()
+}
+
 // MARK: - DeviceIDCache
 
 /// 用於緩存 identifier4Vendor 的線程安全容器。
