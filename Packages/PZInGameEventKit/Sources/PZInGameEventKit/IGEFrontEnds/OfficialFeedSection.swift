@@ -30,8 +30,7 @@ extension OfficialFeed {
 
         public var body: some View {
             MainComponent(
-                supportedGames: supportedGames.animation(),
-                eventContents: eventContentsFiltered.animation(),
+                eventContents: eventContentsFiltered,
                 isFeedSheetShown: $isFeedSheetShown,
                 peripheralViews: peripheralViews,
                 sectionHeader: sectionHeader
@@ -77,20 +76,16 @@ extension OfficialFeed {
         private let peripheralViews: () -> TT
         private let sectionHeader: () -> HH
 
-        private var supportedGames: Binding<Set<Pizza.SupportedGame>> {
-            .init(get: {
-                if let game {
-                    return [game]
-                } else {
-                    return Set<Pizza.SupportedGame>(Pizza.SupportedGame.allCases)
-                }
-            }, set: { _ in })
+        private var supportedGames: Set<Pizza.SupportedGame> {
+            if let game {
+                return [game]
+            } else {
+                return Set<Pizza.SupportedGame>(Pizza.SupportedGame.allCases)
+            }
         }
 
-        private var eventContentsFiltered: Binding<[EventModel]> {
-            .init(get: {
-                theVM.eventContents.filter { supportedGames.wrappedValue.contains($0.game) }
-            }, set: { _ in })
+        private var eventContentsFiltered: [EventModel] {
+            theVM.eventContents.filter { supportedGames.contains($0.game) }
         }
     }
 }
@@ -105,7 +100,7 @@ extension OfficialFeed.OfficialFeedSection {
         public var body: some View {
             Section {
                 peripheralViews()
-                if !$eventContents.animation().wrappedValue.isEmpty {
+                if !eventContents.isEmpty {
                     Button {
                         isFeedSheetShown.toggle()
                     } label: {
@@ -176,8 +171,7 @@ extension OfficialFeed.OfficialFeedSection {
 
         @Environment(\.colorScheme) private var colorScheme
         @Default(.defaultServer) private var defaultServer4GI: String
-        @Binding public var supportedGames: Set<Pizza.SupportedGame>
-        @Binding public var eventContents: [EventModel]
+        public let eventContents: [EventModel]
         @Binding public var isFeedSheetShown: Bool
         public let peripheralViews: () -> T
         public let sectionHeader: () -> H
