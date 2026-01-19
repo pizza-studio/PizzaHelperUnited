@@ -8,6 +8,9 @@ import SwiftUI
 
 // MARK: - CustomSegmentedPicker
 
+/// 该元件是必需的，因为系统原生的 Segmented Picker 在
+/// 某些版本的 iOS 内的 in-Segment-Row Label 里面
+/// 当作 Content 使用时会无法响应点击。
 @available(iOS 15.0, macCatalyst 15.0, *)
 public struct CustomSegmentedPicker<Item: Identifiable & Sendable, Content: View>: View {
     // MARK: Lifecycle
