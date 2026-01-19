@@ -24,7 +24,6 @@ struct EventDetailWebView {
 
     @Environment(\.colorScheme) var colorScheme
 
-    let webView = OPWebView()
     let banner: String
     let nameFull: String
     let content: String
@@ -69,6 +68,8 @@ extension EventDetailWebView {
         // MARK: Internal
 
         var parent: EventDetailWebView
+        /// WKWebView 必須在主線程創建和操作，故在 Coordinator 中懶加載。
+        lazy var webView: OPWebView = .init()
 
         func userContentController(
             _ userContentController: WKUserContentController,
@@ -88,7 +89,7 @@ extension EventDetailWebView {
 
                     let inputJS = "updateArticleInfo(\(articleInfo ?? ""))"
                     print(inputJS)
-                    parent.webView.evaluateJavaScript(inputJS)
+                    webView.evaluateJavaScript(inputJS)
                 }
             default:
                 break
@@ -96,15 +97,15 @@ extension EventDetailWebView {
         }
 
         func makeView() -> OPWebView {
-            parent.webView.configuration.userContentController.add(
+            webView.configuration.userContentController.add(
                 self,
                 name: "getArticleInfoBeforeLoaded"
             )
-            return parent.webView
+            return webView
         }
 
-        func updateView(_ webView: OPWebView) {
-            webView.uiDelegate = self
+        func updateView(_ theWebView: OPWebView) {
+            theWebView.uiDelegate = self
             if let startPageURL = Bundle.currentSPM.url(
                 forResource: "article",
                 withExtension: "html"
