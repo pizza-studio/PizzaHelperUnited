@@ -38,6 +38,21 @@ extension Enka {
                         .buttonStyle(.borderedProminent)
                     }
                 )
+                .confirmationDialog(
+                    "settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmationTitle".i18nEnka,
+                    isPresented: $isResetEnkaDBCacheAlertVisible,
+                    titleVisibility: .visible
+                ) {
+                    Button(role: .destructive) {
+                        Enka.Sputnik.shared.resetLocalEnkaDBCache(for: .genshinImpact)
+                        Enka.Sputnik.shared.resetLocalEnkaDBCache(for: .starRail)
+                    } label: {
+                        Text("settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmButton".i18nEnka)
+                    }
+                    Button(role: .cancel) {} label: {
+                        Text("sys.cancel".i18nBaseKit)
+                    }
+                }
         }
 
         // MARK: Internal
@@ -131,13 +146,6 @@ extension Enka {
             }
 
             Section {
-                if lastEnkaDBDataCheckDate.timeIntervalSince1970 > 10 {
-                    LabeledContent {
-                        Text(lastEnkaDBDataCheckDate.ISO8601Format())
-                    } label: {
-                        Text("settings.display.enkaStatus.lastEnkaDBCheckDate".i18nEnka)
-                    }
-                }
                 VStack {
                     Picker(selection: $defaultDBQueryHost) {
                         Text("settings.display.enkaStatus.defaultDBQueryHost.GitLink".i18nEnka)
@@ -150,6 +158,20 @@ extension Enka {
                     Text("settings.display.enkaStatus.defaultDBQueryHost.explanation".i18nEnka)
                         .asInlineTextDescription()
                 }
+                if lastEnkaDBDataCheckDate.timeIntervalSince1970 > 10 {
+                    LabeledContent {
+                        Text(lastEnkaDBDataCheckDate.ISO8601Format())
+                    } label: {
+                        Text("settings.display.enkaStatus.lastEnkaDBCheckDate".i18nEnka)
+                    }
+                }
+                Button {
+                    isResetEnkaDBCacheAlertVisible.toggle()
+                } label: {
+                    Text("settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault".i18nEnka)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .foregroundStyle(.red)
             } header: {
                 Text("settings.display.enkaStatus.sectionTitle".i18nEnka)
             }
@@ -158,6 +180,7 @@ extension Enka {
         // MARK: Private
 
         @State private var isCustomizedNameForWandererAlertVisible: Bool = false
+        @State private var isResetEnkaDBCacheAlertVisible: Bool = false
 
         @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
         @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleCharacterPhotos: Bool
