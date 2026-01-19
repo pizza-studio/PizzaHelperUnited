@@ -151,13 +151,6 @@ struct CorneredTagMaterialBackground: ViewModifier {
                         .background(alignment: .center) {
                             capsuleBackground
                         }
-                } else if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *),
-                          OS.liquidGlassThemeSuspected {
-                    neta
-                        .background(alignment: .center) {
-                            capsuleBackground
-                        }
-                        .glassEffect(.regular, in: .capsule)
                 } else {
                     neta
                         .background(alignment: .center) {
