@@ -101,6 +101,7 @@ public struct AccountMODebugView: View {
                     print("Action")
                 }
             }
+            .removeSharedBackgroundVisibility()
         }
     }
 

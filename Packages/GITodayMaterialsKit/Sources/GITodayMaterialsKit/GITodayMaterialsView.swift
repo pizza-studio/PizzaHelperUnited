@@ -44,6 +44,7 @@ public struct GITodayMaterialsView<T: View>: View {
                     .pickerStyle(.segmented)
                     .fixedSize()
                 }
+                .removeSharedBackgroundVisibility()
                 if !OS.isAppKit {
                     ToolbarItem(placement: .principal) {
                         Picker("".description, selection: $weekday.animation()) {

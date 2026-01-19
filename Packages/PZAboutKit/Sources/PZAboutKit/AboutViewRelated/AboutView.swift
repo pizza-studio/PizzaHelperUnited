@@ -54,6 +54,7 @@ public struct AboutView: View {
                     .pickerStyle(.segmented)
                     .fixedSize()
                 }
+                .removeSharedBackgroundVisibility()
             }
         }
     }

@@ -67,6 +67,7 @@ public struct CDGachaMODebugView: View {
                     print("Action")
                 }
             }
+            .removeSharedBackgroundVisibility()
         }
         .navigationTitle(delegate.game.titleFullInEnglish)
         .navBarTitleDisplayMode(.large)

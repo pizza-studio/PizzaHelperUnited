@@ -129,9 +129,10 @@ struct TodayTabPage: View {
                     ToolbarSpacer(.flexible, placement: .primaryAction)
                 }
                 if !games.isEmpty {
+                    let useMenu = screenVM.isPhonePortraitSituation && OS.isBuggyOS25Build
                     ToolbarItem(placement: .primaryAction) {
                         // ViewThatFits 不适用于此种场景。
-                        if screenVM.isPhonePortraitSituation, OS.isBuggyOS25Build {
+                        if useMenu {
                             gamePicker
                                 .pickerStyle(.menu)
                         } else {
@@ -139,6 +140,7 @@ struct TodayTabPage: View {
                                 .pickerStyle(.segmented)
                         }
                     }
+                    .removeSharedBackgroundVisibility(bypassWhen: useMenu)
                 }
             }
         }

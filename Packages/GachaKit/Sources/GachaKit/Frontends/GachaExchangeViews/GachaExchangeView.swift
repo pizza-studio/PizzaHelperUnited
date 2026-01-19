@@ -66,6 +66,7 @@ public struct GachaExchangeView: View {
                         .saturation(theVM.taskState == .busy ? 0 : 1)
                         .disabled(theVM.taskState == .busy)
                     }
+                    .removeSharedBackgroundVisibility()
                 }
             }
             .react(to: theVM.hasGPID.wrappedValue, initial: true) { _, hasGPID in
