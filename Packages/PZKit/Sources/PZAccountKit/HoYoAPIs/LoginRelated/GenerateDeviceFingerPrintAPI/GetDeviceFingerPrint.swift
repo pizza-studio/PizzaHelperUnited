@@ -34,7 +34,7 @@ extension HoYo {
         }
         let refreshDate = Defaults[.lastDefaultFingerprintRefreshDate]
         let url = "\(region.publicDataHostURLHeader)/device-fp/api/getFp"
-        let initialDeviceID = await ThisDevice.getDeviceID4Vendor(deviceID)
+        let initialDeviceID = ThisDevice.getDeviceID4Vendor(deviceID)
         let deviceId = (initialDeviceID + refreshDate.timeIntervalSince1970.description).md5
         let seedID = generateSeed()
         let epochSeconds = Date().timeIntervalSince1970.asIntIfFinite() ?? 0

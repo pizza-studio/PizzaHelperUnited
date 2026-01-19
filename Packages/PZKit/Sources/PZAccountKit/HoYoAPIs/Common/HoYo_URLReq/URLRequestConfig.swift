@@ -119,7 +119,7 @@ public enum URLRequestConfig {
     ) async throws
         -> [String: String] {
         let deviceID: String = if #available(macCatalyst 15.0, *) {
-            await ThisDevice.getDeviceID4Vendor(deviceID)
+            ThisDevice.getDeviceID4Vendor(deviceID)
         } else {
             UUID().uuidString
         }

@@ -20,48 +20,102 @@ import WatchKit
 
 // MARK: - ThisDevice
 
-@MainActor
 public enum ThisDevice {}
+
+// MARK: - DeviceIDCache
+
+/// 用於緩存 identifier4Vendor 的線程安全容器。
+private final class DeviceIDCache: @unchecked Sendable {
+    // MARK: Internal
+
+    static let shared = DeviceIDCache()
+
+    var value: String {
+        lock.lock()
+        defer { lock.unlock() }
+
+        if let cached = _cachedValue {
+            return cached
+        }
+
+        let computed = Self.computeIdentifier()
+        _cachedValue = computed
+        return computed
+    }
+
+    // MARK: Private
+
+    private var _cachedValue: String?
+    private let lock = NSLock()
+
+    private static func computeIdentifier() -> String {
+        #if os(watchOS)
+        return UUID().uuidString
+        #elseif canImport(IOKit) && canImport(UIKit)
+        return getUIDeviceIdentifier() ?? ThisDevice.getIdentifier4Vendor() ?? UUID().uuidString
+        #elseif canImport(UIKit) && !canImport(IOKit)
+        return getUIDeviceIdentifier() ?? UUID().uuidString
+        #elseif canImport(IOKit)
+        return ThisDevice.getIdentifier4Vendor() ?? UUID().uuidString
+        #else
+        return UUID().uuidString
+        #endif
+    }
+
+    #if canImport(UIKit) && !os(watchOS)
+    private static func getUIDeviceIdentifier() -> String? {
+        if Thread.isMainThread {
+            return MainActor.assumeIsolated {
+                UIDevice.current.identifierForVendor?.uuidString
+            }
+        }
+        return DispatchQueue.main.sync {
+            UIDevice.current.identifierForVendor?.uuidString
+        }
+    }
+    #endif
+}
 
 #if os(watchOS)
 extension ThisDevice {
-    public static let identifier4Vendor: String = UUID().uuidString
+    public static var identifier4Vendor: String { DeviceIDCache.shared.value }
 
-    public nonisolated static func getDeviceID4Vendor(_: String? = nil) async -> String {
-        await identifier4Vendor
+    public static func getDeviceID4Vendor(_: String? = nil) -> String {
+        identifier4Vendor
     }
 }
 #else
 extension ThisDevice {
-    public static let identifier4Vendor: String = {
-        #if canImport(IOKit) && canImport(UIKit)
-        return UIDevice.current.identifierForVendor?.uuidString ?? getIdentifier4Vendor() ?? UUID().uuidString
-        #elseif canImport(UIKit) && !canImport(IOKit)
-        return UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
-        #elseif canImport(IOKit)
-        return getIdentifier4Vendor() ?? UUID().uuidString
-        #else
-        return UUID().uuidString
-        #endif
-    }()
+    public static var identifier4Vendor: String { DeviceIDCache.shared.value }
 
-    public nonisolated static func getDeviceID4Vendor(_ overridedValue: String? = nil) async -> String {
-        guard let overridedValue else { return await identifier4Vendor.description }
+    public static func getDeviceID4Vendor(_ overridedValue: String? = nil) -> String {
+        guard let overridedValue else { return identifier4Vendor }
         return overridedValue
     }
 }
+#endif
 
 extension ThisDevice {
     // MARK: Public
 
-    public static let modelIdentifier: String = {
+    public static let modelIdentifier: String = getModelIdentifier()
+
+    /// 獨立的 nonisolated 函數，用於取得裝置型號識別碼。
+    /// 此函數不依賴任何 MainActor 隔離的 API，可安全地從任意執行緒呼叫。
+    public nonisolated static func getModelIdentifier() -> String {
         #if os(macOS)
         let service: io_service_t = IOServiceGetMatchingService(
             kIOMainPortDefault,
             IOServiceMatching("IOPlatformExpertDevice")
         )
-        let model = IORegistryEntryCreateCFProperty(service, "model" as CFString, kCFAllocatorDefault, 0)
-        return modelIdentifier as String
+        if let model = IORegistryEntryCreateCFProperty(service, "model" as CFString, kCFAllocatorDefault, 0) {
+            if let modelStr = model.takeRetainedValue() as? String {
+                IOObjectRelease(service)
+                return modelStr
+            }
+        }
+        IOObjectRelease(service)
+        return "UnknownMac"
         #elseif os(iOS) || targetEnvironment(macCatalyst)
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -73,13 +127,24 @@ extension ThisDevice {
                 return identifier + String(UnicodeScalar(UInt8(value)))
             }
         return identifier
+        #elseif os(watchOS)
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children
+            .reduce("") { identifier, element in
+                guard let value = element.value as? Int8,
+                      value != 0 else { return identifier }
+                return identifier + String(UnicodeScalar(UInt8(value)))
+            }
+        return identifier
         #endif
-    }()
+    }
 
-    // MARK: Private
+    // MARK: Fileprivate
 
     #if canImport(IOKit)
-    private static func getIdentifier4Vendor() -> String? {
+    fileprivate nonisolated static func getIdentifier4Vendor() -> String? {
         // Returns an object with a +1 retain count; the caller needs to release.
         func ioService(named name: String, wantBuiltIn: Bool) -> io_service_t? {
             let default_port: mach_port_t
@@ -143,12 +208,10 @@ extension ThisDevice {
     }
     #endif
 }
-#endif
 
 // MARK: - OS
 
-@MainActor
-public enum OS: Int {
+public enum OS: Int, Sendable {
     case macOS = 0
     case iPhoneOS = 1
     case iPadOS = 2
@@ -203,28 +266,6 @@ public enum OS: Int {
         #endif
     }()
 
-    public static let type: OS = {
-        guard !ProcessInfo.processInfo.isiOSAppOnMac else { return .macOS }
-        #if DEBUG
-        if ProcessInfo.processInfo.environment["SIMULATE_MAC_ENV"] == "YES" { return .macOS }
-        #endif
-        #if os(macOS)
-        return .macOS
-        #elseif os(watchOS)
-        return .watchOS
-        #elseif os(tvOS)
-        return .tvOS
-        #elseif os(iOS)
-        #if targetEnvironment(simulator)
-        return maybePad ? .iPadOS : .iPhoneOS
-        #elseif targetEnvironment(macCatalyst)
-        return .macOS
-        #else
-        return maybePad ? .iPadOS : .iPhoneOS
-        #endif
-        #endif
-    }()
-
     public static let isCatalyst: Bool = {
         #if targetEnvironment(macCatalyst)
         return true
@@ -232,6 +273,10 @@ public enum OS: Int {
         return false
         #endif
     }()
+
+    /// 當前作業系統類型。此值在首次存取時會自動初始化（需從 MainActor 上下文首次呼叫）。
+    /// 初始化後可從任何執行緒安全存取。
+    public static var type: OS { OSTypeCache.shared.value }
 
     public static var isOS25OrNewer: Bool {
         switch OS.type {
@@ -252,21 +297,85 @@ public enum OS: Int {
         return false
     }
 
+    public static func initializeOSType() {
+        _ = OS.type
+    }
+}
+
+// MARK: - OSTypeCache
+
+/// 用於緩存 OS.type 的線程安全容器。
+/// 使用 `nonisolated(unsafe)` 配合內部同步機制，確保初始化後可從任意執行緒安全存取。
+private final class OSTypeCache: @unchecked Sendable {
+    // MARK: Internal
+
+    static let shared = OSTypeCache()
+
+    var value: OS {
+        lock.lock()
+        defer { lock.unlock() }
+
+        if let cached = _cachedValue {
+            return cached
+        }
+
+        let computed = Self.computeOSType()
+        _cachedValue = computed
+        return computed
+    }
+
     // MARK: Private
 
-    private static let maybePad: Bool = {
+    private static var maybePad: Bool {
         #if os(iOS) || targetEnvironment(macCatalyst)
-        return ThisDevice.modelIdentifier.contains("iPad") || UIDevice.current.userInterfaceIdiom == .pad
+        // 優先使用 modelIdentifier 判斷（nonisolated 函數，不需要 MainActor）
+        if ThisDevice.getModelIdentifier().contains("iPad") { return true }
+        // 使用 DispatchQueue.main.sync 安全地從 MainActor 取值
+        // 注意：如果已經在 main thread 上，使用 MainActor.assumeIsolated
+        if Thread.isMainThread {
+            return MainActor.assumeIsolated {
+                UIDevice.current.userInterfaceIdiom == .pad
+            }
+        }
+        return DispatchQueue.main.sync {
+            UIDevice.current.userInterfaceIdiom == .pad
+        }
         #else
         return false
         #endif
-    }()
+    }
+
+    private var _cachedValue: OS?
+    private let lock = NSLock()
+
+    private static func computeOSType() -> OS {
+        guard !ProcessInfo.processInfo.isiOSAppOnMac else { return .macOS }
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["SIMULATE_MAC_ENV"] == "YES" { return .macOS }
+        #endif
+        #if os(macOS)
+        return .macOS
+        #elseif os(watchOS)
+        return .watchOS
+        #elseif os(tvOS)
+        return .tvOS
+        #elseif os(iOS)
+        #if targetEnvironment(simulator)
+        return maybePad ? .iPadOS : .iPhoneOS
+        #elseif targetEnvironment(macCatalyst)
+        return .macOS
+        #else
+        return maybePad ? .iPadOS : .iPhoneOS
+        #endif
+        #endif
+    }
 }
 
 // MARK: - Window Size Helpers
 
 #if os(macOS) || os(iOS) || targetEnvironment(macCatalyst)
 @available(iOS 15.0, macCatalyst 15.0, *)
+@MainActor
 extension ThisDevice {
     public static var isScreenLandScape: Bool {
         #if canImport(UIKit)

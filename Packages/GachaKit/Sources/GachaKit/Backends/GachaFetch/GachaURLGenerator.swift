@@ -66,8 +66,7 @@ extension HoYo {
 
         var deviceID = profile.deviceID
         if deviceID.isEmpty {
-            let newDeviceID = await ThisDevice.identifier4Vendor
-            deviceID = newDeviceID
+            deviceID = ThisDevice.identifier4Vendor
         }
 
         let headers: HTTPHeaders = [
