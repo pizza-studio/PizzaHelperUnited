@@ -240,6 +240,7 @@ extension ScreenVM {
         // MARK: Lifecycle
 
         public init(debounceDelay: TimeInterval = 0.1) {
+            self.debounceDelay = debounceDelay
             self._debouncer = .init(wrappedValue: Debouncer(delay: debounceDelay))
         }
 
@@ -254,7 +255,7 @@ extension ScreenVM {
 
         public func body(content: Content) -> some View {
             content
-                .trackCanvasSize { newSizeRAW in
+                .trackCanvasSize(debounceDelay: debounceDelay) { newSizeRAW in
                     var newSize = newSizeRAW
                     newSize.width.round(.up)
                     newSize.height.round(.up)
@@ -290,6 +291,8 @@ extension ScreenVM {
         @State private var screenVM: ScreenVM = .shared
         @State private var debouncer: Debouncer
         @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
+
+        private let debounceDelay: TimeInterval
 
         private func pushTrackedPropertiesToScreenVM() async {
             defer {
