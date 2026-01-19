@@ -50,7 +50,9 @@ public struct ContentView: View {
                 .appTabBarVisibility(.visible)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
-                    rootNavVM.sharedRootPageSwitcherAsToolbarContent()
+                    if !screenVM.isPhonePortraitSituation {
+                        rootNavVM.sharedRootPageSwitcherAsToolbarContent()
+                    }
                 }
                 .tint(tintForCurrentTab)
                 .apply { mainColumnContent in
@@ -62,6 +64,11 @@ public struct ContentView: View {
                         mainColumnContent
                     }
                 }
+        }
+        .toolbar {
+            if screenVM.isPhonePortraitSituation {
+                rootNavVM.sharedRootPageSwitcherAsToolbarContent()
+            }
         }
         .navigationSplitViewStyle(.balanced)
         .tint(tintForCurrentTab)
