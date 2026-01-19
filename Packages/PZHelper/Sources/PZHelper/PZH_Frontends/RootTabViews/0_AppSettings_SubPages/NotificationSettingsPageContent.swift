@@ -242,6 +242,7 @@ private struct StaminaNotificationThresholdConfigView: View {
                     .pickerStyle(.segmented)
                     .fixedSize()
             }
+            .removeSharedBackgroundVisibility()
         }
         .navigationTitle(Self.navTitle)
         .navBarTitleDisplayMode(.large)

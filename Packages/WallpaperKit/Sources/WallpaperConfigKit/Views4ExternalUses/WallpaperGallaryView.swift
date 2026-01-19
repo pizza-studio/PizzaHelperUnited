@@ -45,6 +45,7 @@ public struct WallpaperGalleryViewContent: View {
                     .pickerStyle(.segmented)
                     .fixedSize()
                 }
+                .removeSharedBackgroundVisibility()
             }
             .navigationTitle(Self.navTitle)
             .listRowInsets(.init())

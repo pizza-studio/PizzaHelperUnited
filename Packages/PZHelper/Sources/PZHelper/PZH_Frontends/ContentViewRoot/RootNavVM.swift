@@ -70,32 +70,37 @@ final class RootNavVM {
 
     @ToolbarContentBuilder
     public func sharedRootPageSwitcherAsToolbarContent() -> some ToolbarContent {
-        #if os(macOS) && !targetEnvironment(macCatalyst)
-        ToolbarItem(placement: .cancellationAction) {
-            sharedToolbarNavPicker(
-                allCases: !screenVM.isSidebarVisible,
-                isMenu: false
-            )
-        }
-        #else
+        let allCases = !screenVM.isSidebarVisible
+        let effectiveCases = !allCases ? AppRootPage.enabledSubCases : AppRootPage.allCases
+        let maxLabelLength = effectiveCases.map(\.labelNameTextRaw.count).max()
+        let forceMenu: Bool? = (maxLabelLength ?? 0) > 8 ? true : nil
         let isOverCompact = screenVM.isPhonePortraitSituation
-        let placeAtTop = OS.isBuggyOS25Build || !isOverCompact
-        ToolbarItem(placement: !placeAtTop ? .bottomBar : .cancellationAction) {
-            if !isOverCompact {
+        let placeAtTop = OS.isBuggyOS25Build || !isOverCompact || OS.type == .macOS
+        #if os(macOS)
+        let actualPlacement: ToolbarItemPlacement = .cancellationAction
+        #else
+        let actualPlacement: ToolbarItemPlacement = !placeAtTop ? .bottomBar : .cancellationAction
+        #endif
+        if !isOverCompact {
+            ToolbarItem(placement: actualPlacement) {
                 sharedToolbarNavPicker(
                     allCases: !screenVM.isSidebarVisible,
-                    isMenu: false
+                    isMenu: forceMenu ?? false
                 )
-            } else if OS.isBuggyOS25Build {
+            }
+            .removeSharedBackgroundVisibility(bypassWhen: forceMenu ?? false)
+        } else if OS.isBuggyOS25Build {
+            ToolbarItem(placement: actualPlacement) {
                 sharedToolbarNavPicker(
                     allCases: !screenVM.isSidebarVisible,
-                    isMenu: true
+                    isMenu: forceMenu ?? true
                 )
-            } else {
+            }
+        } else {
+            ToolbarItem(placement: actualPlacement) {
                 bottomTabBarForCompactLayout(allCases: !screenVM.isSidebarVisible)
             }
         }
-        #endif
     }
 
     // MARK: Private
@@ -104,14 +109,6 @@ final class RootNavVM {
     private func sharedToolbarNavPicker(allCases: Bool, isMenu: Bool = true) -> some View {
         @Bindable var this = self
         let effectiveCases = !allCases ? AppRootPage.enabledSubCases : AppRootPage.allCases
-        let isMenu: Bool = {
-            if let maxTabLength = effectiveCases.map(\.labelNameTextRaw.count).max() {
-                if maxTabLength > 8 {
-                    return true
-                }
-            }
-            return isMenu
-        }()
         Picker("".description, selection: $this.rootPageNav) {
             ForEach(effectiveCases) { navCase in
                 if navCase.isExposed {

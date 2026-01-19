@@ -50,6 +50,7 @@ struct PhotoSpecimenView: View {
                     .pickerStyle(.segmented)
                     .fixedSize()
                 }
+                .removeSharedBackgroundVisibility()
             }
             .navigationTitle("enka.photoSpecimen.navTitle".i18nEnka)
             .navBarTitleDisplayMode(.large)

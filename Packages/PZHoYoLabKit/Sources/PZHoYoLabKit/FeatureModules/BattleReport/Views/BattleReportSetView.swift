@@ -59,6 +59,7 @@ public struct BattleReportSetView<Report: BattleReport>: View {
                     }
                     .fixedSize()
                 }
+                .removeSharedBackgroundVisibility()
             }
         }
         // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
