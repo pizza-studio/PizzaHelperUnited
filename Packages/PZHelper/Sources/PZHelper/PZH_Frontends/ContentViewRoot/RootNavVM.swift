@@ -212,18 +212,14 @@ final class RootNavVM {
 private struct FloatingGlassTabBar: View {
     // MARK: Lifecycle
 
-    init(effectiveCases: [AppRootPage], selection: Binding<AppRootPage>) {
+    public init(effectiveCases: [AppRootPage], selection: Binding<AppRootPage>) {
         self.effectiveCases = effectiveCases
         self._selection = selection
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    @Binding var selection: AppRootPage
-
-    let effectiveCases: [AppRootPage]
-
-    var body: some View {
+    public var body: some View {
         GlassEffectContainer {
             HStack(spacing: 8) {
                 ForEach(effectiveCases, id: \.self) { (navCase: AppRootPage) in
@@ -325,7 +321,10 @@ private struct FloatingGlassTabBar: View {
 
     // MARK: Private
 
+    @Binding private var selection: AppRootPage
+
     @Namespace private var namespace
+
     /// 視覺選中狀態，用於控制背景動畫，先於實際 selection 更新
     @State private var visualSelection: AppRootPage = .today
     /// 記錄每個 Tab 的 frame，用於拖曳時判斷最近的 Tab
@@ -334,6 +333,8 @@ private struct FloatingGlassTabBar: View {
     @State private var isDragging: Bool = false
     /// 高亮區域的 X 座標（手指拖曳時跟隨手指，鬆開時動畫到目標）
     @State private var highlightX: CGFloat = 0
+
+    private let effectiveCases: [AppRootPage]
 
     /// 拖曳距離閾值，超過此值才算真正的拖曳（而非點擊）
     private let dragThreshold: CGFloat = 5
@@ -346,7 +347,7 @@ private struct FloatingGlassTabBar: View {
     @ViewBuilder private var highlightCapsule: some View {
         if let referenceFrame = tabFrames[visualSelection] {
             Capsule()
-                .fill(Color.white.opacity(0.2))
+                .fill(Color.primary.opacity(0.2))
                 .glassEffect(.regular.interactive())
                 .frame(width: referenceFrame.width, height: referenceFrame.height)
                 .position(x: highlightX, y: referenceFrame.midY)
