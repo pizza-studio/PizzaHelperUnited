@@ -94,11 +94,16 @@ extension PZHelper {
 
         private var supposedMinWindowSize: (w: Double, h: Double) {
             guard OS.type == .macOS else { return (320, 480) }
+            let (w, h): (Double, Double)
+            h = 640
             if OS.isCatalyst {
-                return (OS.liquidGlassThemeSuspected ? 832 : 800, 800)
+                w = OS.liquidGlassThemeSuspected ? 832 : 800
             } else {
-                return (OS.liquidGlassThemeSuspected ? 800 : 768, 646)
+                w = OS.liquidGlassThemeSuspected ? 800 : 768
             }
+            guard !OS.isAppKit else { return (w, h) }
+            let macCatalystRatio = 1.34
+            return (w * macCatalystRatio, h * macCatalystRatio)
         }
     }
 
