@@ -10,18 +10,27 @@ import SwiftUI
 
 extension View {
     @ViewBuilder
-    public func blurMaterialBackground<T: Shape>(enabled: Bool = true, shape: T) -> some View {
+    public func blurMaterialBackground<T: Shape>(
+        enabled: Bool = true,
+        shape: T,
+        interactive: Bool = false
+    )
+        -> some View {
         if #available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 10.0, *), enabled {
-            modifier(BlurMaterialBackground(shape: shape))
+            modifier(BlurMaterialBackground(shape: shape, interactive: interactive))
         } else {
             self
         }
     }
 
     @ViewBuilder
-    public func blurMaterialBackground(enabled: Bool = true) -> some View {
+    public func blurMaterialBackground(
+        enabled: Bool = true,
+        interactive: Bool = false
+    )
+        -> some View {
         if #available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 10.0, *), enabled {
-            modifier(BlurMaterialBackground(shape: .rect))
+            modifier(BlurMaterialBackground(shape: .rect, interactive: interactive))
         } else {
             self
         }
@@ -52,8 +61,9 @@ extension View {
 struct BlurMaterialBackground<T: Shape>: ViewModifier {
     // MARK: Lifecycle
 
-    public init(shape: T) {
+    public init(shape: T, interactive: Bool) {
         self.shape = shape
+        self.interactive = interactive
     }
 
     // MARK: Public
@@ -77,7 +87,7 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
                     neta
                 } else if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *),
                           OS.liquidGlassThemeSuspected {
-                    neta.glassEffect(.identity, in: shape)
+                    neta.glassEffect(.identity.interactive(interactive), in: shape)
                 } else {
                     neta
                 }
@@ -91,6 +101,7 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     private let shape: T
+    private let interactive: Bool
 
     @ViewBuilder private var fillColor4ReducedTransparency: some View {
         switch colorScheme {
