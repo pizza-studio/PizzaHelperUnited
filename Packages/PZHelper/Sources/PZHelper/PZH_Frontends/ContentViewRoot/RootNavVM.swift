@@ -221,7 +221,7 @@ private struct FloatingGlassTabBar: View {
 
     public var body: some View {
         GlassEffectContainer {
-            HStack(spacing: 8) {
+            HStack(spacing: 0) {
                 ForEach(effectiveCases, id: \.self) { (navCase: AppRootPage) in
                     if navCase.isExposed {
                         let isChosen = isDragging
@@ -236,10 +236,13 @@ private struct FloatingGlassTabBar: View {
                                 .fontWidth(.condensed)
                                 .fixedSize(horizontal: true, vertical: false)
                         }
-                        .shadow(radius: 2)
+                        .shadow(radius: isChosen ? 10 : 2)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
-                        .frame(maxWidth: .infinity)
+                        .frame(
+                            width: buttonWidth / Double(effectiveCases.count),
+                            alignment: .center
+                        )
                         .foregroundStyle(isChosen ? Color.primary : Color.secondary)
                         .contentShape(Capsule())
                         // 標記每個 Tab 的位置作為動畫源
@@ -325,6 +328,8 @@ private struct FloatingGlassTabBar: View {
 
     @Namespace private var namespace
 
+    @State private var screenVM = ScreenVM.shared
+
     /// 視覺選中狀態，用於控制背景動畫，先於實際 selection 更新
     @State private var visualSelection: AppRootPage = .today
     /// 記錄每個 Tab 的 frame，用於拖曳時判斷最近的 Tab
@@ -342,6 +347,10 @@ private struct FloatingGlassTabBar: View {
     private let animationDuration: Double = 0.3
     /// 座標區域命名空間
     private let coordinateSpaceName = "FloatingGlassTabBar"
+
+    private var buttonWidth: Double {
+        screenVM.mainColumnCanvasSizeObserved.width - 70
+    }
 
     /// 高亮膠囊背景 - 統一使用 position 定位，確保動畫連續
     @ViewBuilder private var highlightCapsule: some View {
