@@ -45,20 +45,6 @@ public struct BattleReportView4GI: BattleReportView {
 
     public var body: some View {
         Form {
-            Picker(selection: $contentType.animation()) {
-                ForEach(TreasuresStarwardType.allCases) { contentTypeCase in
-                    Text(verbatim: contentTypeCase.localizedTitle).tag(contentTypeCase)
-                }
-            } label: {
-                LabeledContent {
-                    Text("hylKit.battleReportView.challengeType", bundle: .currentSPM)
-                } label: {
-                    Image(systemSymbol: .line3HorizontalDecreaseCircle)
-                }
-                .fixedSize()
-            }
-            .pickerStyle(.menu)
-            .listRowMaterialBackground()
             if data4SA.hasData || (data4SO?.single.hasData ?? false) {
                 contents
                     .animation(.default, value: screenVM.mainColumnCanvasSizeObserved)
@@ -69,6 +55,24 @@ public struct BattleReportView4GI: BattleReportView {
         .formStyle(.grouped).disableFocusable()
         .scrollContentBackground(.hidden)
         .navigationTitle(contentType.localizedTitle)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Picker(selection: $contentType.animation()) {
+                    ForEach(TreasuresStarwardType.allCases) { contentTypeCase in
+                        Text(verbatim: contentTypeCase.localizedTitle).tag(contentTypeCase)
+                    }
+                } label: {
+                    LabeledContent {
+                        Text("hylKit.battleReportView.challengeType", bundle: .currentSPM)
+                    } label: {
+                        Image(systemSymbol: .line3HorizontalDecreaseCircle)
+                    }
+                    .fixedSize()
+                }
+                .pickerStyle(.menu)
+                .blurMaterialBackground(shape: .capsule, interactive: true)
+            }
+        }
         .react(to: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {
             Task { @MainActor in
                 withAnimation {
