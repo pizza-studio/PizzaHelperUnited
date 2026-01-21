@@ -121,6 +121,10 @@ extension ProfileManagerVM {
             }
         }
         .padding(OS.liquidGlassThemeSuspected ? 0 : 4).padding(.leading, 12)
-        .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected, shape: .capsule)
+        .blurMaterialBackground(
+            enabled: !OS.liquidGlassThemeSuspected,
+            shape: .capsule,
+            interactive: true
+        )
     }
 }
