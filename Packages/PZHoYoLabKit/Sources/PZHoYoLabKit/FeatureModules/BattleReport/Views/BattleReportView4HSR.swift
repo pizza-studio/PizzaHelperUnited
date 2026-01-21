@@ -43,20 +43,6 @@ public struct BattleReportView4HSR: BattleReportView {
 
     public var body: some View {
         Form {
-            Picker(selection: $contentType.animation()) {
-                ForEach(TreasuresLightwardType.allCases) { contentTypeCase in
-                    Text(verbatim: contentTypeCase.localizedTitle).tag(contentTypeCase)
-                }
-            } label: {
-                LabeledContent {
-                    Text("hylKit.battleReportView.challengeType", bundle: .currentSPM)
-                } label: {
-                    Image(systemSymbol: .line3HorizontalDecreaseCircle)
-                }
-                .fixedSize()
-            }
-            .pickerStyle(.menu)
-            .listRowMaterialBackground()
             if data4FH.hasData || data4AS.hasData || data4PF.hasData {
                 contents
                     .frame(width: containerWidth)
@@ -68,6 +54,24 @@ public struct BattleReportView4HSR: BattleReportView {
         .formStyle(.grouped).disableFocusable()
         .scrollContentBackground(.hidden)
         .navigationTitle(contentType.localizedTitle)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Picker(selection: $contentType.animation()) {
+                    ForEach(TreasuresLightwardType.allCases) { contentTypeCase in
+                        Text(verbatim: contentTypeCase.localizedTitle).tag(contentTypeCase)
+                    }
+                } label: {
+                    LabeledContent {
+                        Text("hylKit.battleReportView.challengeType", bundle: .currentSPM)
+                    } label: {
+                        Image(systemSymbol: .line3HorizontalDecreaseCircle)
+                    }
+                    .fixedSize()
+                }
+                .pickerStyle(.menu)
+                .blurMaterialBackground(shape: .capsule, interactive: true)
+            }
+        }
     }
 
     // MARK: Internal
