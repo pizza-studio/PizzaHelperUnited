@@ -136,7 +136,11 @@ final class RootNavVM {
             case true:
                 currentContent
                     .pickerStyle(.menu)
-                    .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected, shape: .capsule)
+                    .blurMaterialBackground(
+                        enabled: !OS.liquidGlassThemeSuspected,
+                        shape: .capsule,
+                        interactive: true
+                    )
             case false:
                 currentContent
                     .pickerStyle(.segmented)

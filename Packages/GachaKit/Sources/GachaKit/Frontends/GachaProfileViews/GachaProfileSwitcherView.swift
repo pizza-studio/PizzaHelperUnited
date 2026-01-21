@@ -70,7 +70,7 @@ public struct GachaProfileSwitcherView: View {
             }
         }
         // 在正中心位置时，不是玻璃按钮，所以始终启用。
-        .blurMaterialBackground(enabled: true, shape: .capsule)
+        .blurMaterialBackground(enabled: true, shape: .capsule, interactive: true)
     }
 
     @ViewBuilder
