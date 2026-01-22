@@ -537,7 +537,7 @@ public struct MetaBar4ZZZVHSStore: View, MetaBar {
     }
 
     public var statusTextUnits4SUI: [Text] {
-        [Text(state.localizedDescription)]
+        [Text(state.localizedDescription).fontWidth(.condensed)]
     }
 
     public var completionStatusRatio: Double {
