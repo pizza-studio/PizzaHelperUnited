@@ -70,6 +70,7 @@ public struct BattleReportView4GI: BattleReportView {
                     .fixedSize()
                 }
                 .pickerStyle(.menu)
+                .labelsHidden()
                 .blurMaterialBackground(shape: .capsule, interactive: true)
             }
         }
