@@ -69,6 +69,7 @@ public struct BattleReportView4HSR: BattleReportView {
                     .fixedSize()
                 }
                 .pickerStyle(.menu)
+                .labelsHidden()
                 .blurMaterialBackground(shape: .capsule, interactive: true)
             }
         }
