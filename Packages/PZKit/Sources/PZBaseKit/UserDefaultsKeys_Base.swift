@@ -66,6 +66,12 @@ extension Defaults.Keys {
         default: "os_asia",
         suite: .baseSuite
     )
+
+    public static let reduceUIGlassDecorations = Key<Bool>(
+        "reduceUIGlassDecorations",
+        default: ThisDevice.isIntelProcessor,
+        suite: .baseSuite
+    )
 }
 
 // MARK: - ResinRecoveryActivityController
