@@ -10218,6 +10218,158 @@
         }
       }
     },
+    "setting.display.reduceUIGlassDecorations" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glasdekorationen reduzieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reduce Glass Decorations"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reducir decoraciones de vidrio"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bawasan ang mga dekorasyong salamin"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réduire les décorations en verre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riduci le decorazioni in vetro"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ガラス装飾を減らす"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "글라스 장식 줄이기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уменьшить стеклянные эффекты"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giảm hiệu ứng kính"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "减少界面玻璃装饰"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "減少 UI 玻璃裝飾"
+          }
+        }
+      }
+    },
+    "setting.display.reduceUIGlassDecorations.explain.intelMac" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Schalter ist auf Intel‑Macs aufgrund von Hardwareleistungsbeschränkungen immer aktiv und gesperrt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This toggle is always active and locked on Intel Macs due to hardware performance constraints."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este interruptor siempre está activo y bloqueado en Macs Intel debido a limitaciones de rendimiento del hardware."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palaging naka-on at naka-lock ang toggle na ito sa Intel Mac dahil sa mga limitasyon ng hardware."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce réglage est toujours activé et verrouillé sur les Mac Intel en raison de contraintes de performances matérielles."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo interruttore è sempre attivo e bloccato sui Mac Intel a causa dei limiti di prestazioni hardware."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intel Mac ではハードウェアの性能制約により、このスイッチは常に有効でロックされています。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intel Mac에서는 하드웨어 성능 제약으로 인해 이 토글이 항상 활성화되어 잠겨 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На Intel Mac этот переключатель всегда включён и заблокирован из-за ограничений производительности аппаратного обеспечения."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trên Mac Intel, tùy chọn này luôn bật và bị khoá do giới hạn hiệu năng phần cứng。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由于硬件效能限制，该选项在 Intel Mac 上始终生效且不可更改。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由於硬體效能限制，此選項在 Intel Mac 上會始終啟用並鎖定，無法更改。"
+          }
+        }
+      }
+    },
     "setting.display.restoreTabOnLaunching" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -10754,6 +10906,158 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通用設定"
+          }
+        }
+      }
+    },
+    "settings.display.performanceSettings.sectionFooter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Einige dieser Einstellungen können durch die Bedienungshilfe-Einstellungen des Systems überschrieben werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Some of these settings can be overridden by system accessibility settings."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Algunas de estas configuraciones pueden ser anuladas por los ajustes de accesibilidad del sistema."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Ang ilang mga setting na ito ay maaaring ma-override ng mga setting ng accessibility ng system."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Certaines de ces options peuvent être remplacées par les paramètres d'accessibilité du système."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Alcune di queste impostazioni possono essere sovrascritte dalle impostazioni di accessibilità del sistema."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ これらの設定の一部は、システムのアクセシビリティ設定によって上書きされる場合があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ 이러한 설정 중 일부는 시스템 접근성 설정에 의해 재정의될 수 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Некоторые из этих параметров могут быть переопределены системными параметрами специальных возможностей."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Một số cài đặt này có thể bị ghi đè bởi các cài đặt trợ năng của hệ thống."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ 某些设定可能会被系统的辅助功能设定所覆盖。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ 部分設定可能會被系統輔助功能設定所覆蓋。"
+          }
+        }
+      }
+    },
+    "settings.display.performanceSettings.sectionHeader" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leistungseinstellungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance Settings"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración de Rendimiento"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Setting ng Pagganap"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres de Performances"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni Prestazioni"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パフォーマンス設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "성능 설정"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки Производительности"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cài đặt Hiệu suất"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "效能设定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "效能設定"
           }
         }
       }
