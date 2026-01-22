@@ -31,17 +31,17 @@ struct UISettingsPageContent: View {
 
             Section {
                 Toggle(isOn: $restoreTabOnLaunching) {
-                    Text("setting.display.restoreTabOnLaunching".i18nPZHelper)
+                    Text("setting.display.restoreTabOnLaunching", bundle: .currentSPM)
                 }
                 defaultServerSelector4GI
             } header: {
-                Text("settings.display.generalSettings.sectionHeader".i18nPZHelper)
+                Text("settings.display.generalSettings.sectionHeader", bundle: .currentSPM)
             }
 
             Enka.DisplayOptionViewContents()
         }
         .formStyle(.grouped).disableFocusable()
-        .navigationTitle("settings.uiSettings.title".i18nPZHelper)
+        .navigationTitle(Text("settings.uiSettings.title", bundle: .currentSPM))
         .navBarTitleDisplayMode(.large)
     }
 
@@ -54,9 +54,9 @@ struct UISettingsPageContent: View {
                     ).tag(server.rawValue)
                 }
             } label: {
-                Text("settings.display.timeZone4OfficialFeedsEtc.title".i18nPZHelper)
+                Text("settings.display.timeZone4OfficialFeedsEtc.title", bundle: .currentSPM)
             }
-            Text("settings.display.timeZone4GI.description".i18nPZHelper)
+            Text("settings.display.timeZone4GI.description", bundle: .currentSPM)
                 .asInlineTextDescription()
         }
     }
