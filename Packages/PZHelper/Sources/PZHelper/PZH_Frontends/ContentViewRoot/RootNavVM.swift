@@ -148,6 +148,9 @@ final class RootNavVM {
             }
         }
         .fixedSize()
+        .react(to: rootPageNav) {
+            simpleTaptic(type: .medium)
+        }
     }
 
     @ViewBuilder
@@ -158,6 +161,9 @@ final class RootNavVM {
             floatingTabBar(effectiveCases: effectiveCases)
         } else {
             classicTabBar(effectiveCases: effectiveCases)
+                .react(to: rootPageNav) {
+                    simpleTaptic(type: .medium)
+                }
         }
     }
 
@@ -300,6 +306,7 @@ private struct FloatingGlassTabBar: View {
                         isDragging = false
                         // 等動畫完成後再更新實際的 selection
                         if selection != targetTab {
+                            simpleTaptic(type: .medium)
                             DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
                                 selection = targetTab
                             }
