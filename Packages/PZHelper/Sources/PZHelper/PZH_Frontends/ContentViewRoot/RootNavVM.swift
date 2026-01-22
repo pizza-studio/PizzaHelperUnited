@@ -322,13 +322,12 @@ private struct FloatingGlassTabBar: View {
                 highlightX = frame.midX
             }
         }
-        .onChange(of: selection) { _, newValue in
+        .react(to: selection) { _, newValue in
             // 當外部改變 selection 時，同步視覺狀態
-            if visualSelection != newValue, !isDragging {
-                visualSelection = newValue
-                if let frame = tabFrames[newValue] {
-                    highlightX = frame.midX
-                }
+            guard visualSelection != newValue, !isDragging else { return }
+            visualSelection = newValue
+            if let frame = tabFrames[newValue] {
+                highlightX = frame.midX
             }
         }
     }
