@@ -30,6 +30,26 @@ struct UISettingsPageContent: View {
             }
 
             Section {
+                VStack {
+                    Toggle(isOn: $reduceUIGlassDecorations) {
+                        Text("setting.display.reduceUIGlassDecorations", bundle: .currentSPM)
+                    }
+                    .disabled(ThisDevice.isIntelProcessor)
+                    if Pizza.isDebug || (ThisDevice.isIntelProcessor && OS.type == .macOS) {
+                        Text(
+                            "setting.display.reduceUIGlassDecorations.explain.intelMac",
+                            bundle: .currentSPM
+                        )
+                        .asInlineTextDescription()
+                    }
+                }
+            } header: {
+                Text("settings.display.performanceSettings.sectionHeader", bundle: .currentSPM)
+            } footer: {
+                Text("settings.display.performanceSettings.sectionFooter", bundle: .currentSPM)
+            }
+
+            Section {
                 Toggle(isOn: $restoreTabOnLaunching) {
                     Text("setting.display.restoreTabOnLaunching", bundle: .currentSPM)
                 }
@@ -67,4 +87,5 @@ struct UISettingsPageContent: View {
 
     @Default(.restoreTabOnLaunching) private var restoreTabOnLaunching: Bool
     @Default(.defaultServer) private var defaultServer4GI: String
+    @Default(.reduceUIGlassDecorations) private var reduceUIGlassDecorations: Bool
 }
