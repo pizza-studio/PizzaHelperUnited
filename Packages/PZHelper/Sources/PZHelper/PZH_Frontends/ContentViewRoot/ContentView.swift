@@ -99,9 +99,6 @@ public struct ContentView: View {
             .react(to: screenVM.hashForTracking, initial: true) {
                 fixMainColumnPageIfNeeded()
             }
-            .react(to: rootNavVM.rootPageNav) {
-                simpleTaptic(type: .medium)
-            }
     }
 
     private func fixMainColumnPageIfNeeded() {
