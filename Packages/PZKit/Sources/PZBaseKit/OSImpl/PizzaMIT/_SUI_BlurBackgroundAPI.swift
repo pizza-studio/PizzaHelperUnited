@@ -4,6 +4,7 @@
 
 // Author: Bill Haku & Shiki Suen
 
+import Defaults
 import SwiftUI
 
 // MARK: - Blur Background
@@ -73,7 +74,7 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
         content
             .clipShape(shape) // 必需
             .background(alignment: .center) {
-                if reduceTransparency || ThisDevice.isIntelProcessor {
+                if sansTransparency || ThisDevice.isIntelProcessor {
                     fillColor4ReducedTransparency
                         .clipShape(shape)
                         .blendMode(colorScheme == .dark ? .difference : .normal)
@@ -83,7 +84,7 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
                 }
             }
             .apply { neta in
-                if reduceTransparency || ThisDevice.isIntelProcessor {
+                if sansTransparency || ThisDevice.isIntelProcessor {
                     neta
                 } else if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *),
                           OS.liquidGlassThemeSuspected {
@@ -100,8 +101,13 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
+    @Default(.reduceUIGlassDecorations) private var reduceUIGlassDecorations
     private let shape: T
     private let interactive: Bool
+
+    private var sansTransparency: Bool {
+        reduceTransparency || reduceUIGlassDecorations
+    }
 
     @ViewBuilder private var fillColor4ReducedTransparency: some View {
         switch colorScheme {
@@ -121,7 +127,7 @@ private struct ListRowMaterialBackgroundView: View {
 
     var body: some View {
         Group {
-            if reduceTransparency || ThisDevice.isIntelProcessor {
+            if sansTransparency || ThisDevice.isIntelProcessor {
                 fillColor4ReducedTransparency
                     .clipShape(.rect)
                     .blendMode(colorScheme == .dark ? .difference : .normal)
@@ -135,8 +141,13 @@ private struct ListRowMaterialBackgroundView: View {
 
     // MARK: Private
 
+    @Default(.reduceUIGlassDecorations) private var reduceUIGlassDecorations
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+
+    private var sansTransparency: Bool {
+        reduceTransparency || reduceUIGlassDecorations
+    }
 
     @ViewBuilder private var fillColor4ReducedTransparency: some View {
         switch colorScheme {
