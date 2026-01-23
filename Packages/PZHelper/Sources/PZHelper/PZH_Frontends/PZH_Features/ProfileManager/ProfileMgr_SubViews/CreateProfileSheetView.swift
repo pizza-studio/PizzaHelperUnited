@@ -149,7 +149,7 @@ extension ProfileManagerPageContent {
 
         @ViewBuilder
         func gotCookieView() -> some View {
-            ProgressView()
+            WinUI3ProgressRing()
         }
 
         @ViewBuilder

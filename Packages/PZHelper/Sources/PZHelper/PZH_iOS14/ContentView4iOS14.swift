@@ -96,7 +96,7 @@ public struct ContentView4iOS14: View {
             }
             ToolbarItem(placement: .primaryAction) {
                 if theVM.taskState == .busy {
-                    ProgressView()
+                    WinUI3ProgressRing()
                 }
             }
             ToolbarItem(placement: .primaryAction) {

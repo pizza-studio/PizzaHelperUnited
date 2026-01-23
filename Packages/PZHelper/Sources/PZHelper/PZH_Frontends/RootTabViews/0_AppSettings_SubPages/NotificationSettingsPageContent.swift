@@ -55,7 +55,7 @@ struct NotificationSettingsPageContent: View {
                 NotificationSettingDetailContent()
                     .disabled(!allowPushNotification)
             } else {
-                ProgressView()
+                WinUI3ProgressRing()
             }
         }
         .formStyle(.grouped).disableFocusable()

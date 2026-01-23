@@ -158,7 +158,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
             #endif
             ZStack {
                 if delegate.taskState == .busy {
-                    ProgressView()
+                    WinUI3ProgressRing()
                 } else {
                     Button(action: triggerUpdateTask) {
                         Image(systemSymbol: SFSymbol.magnifyingglassCircleFill)

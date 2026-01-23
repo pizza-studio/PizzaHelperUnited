@@ -180,7 +180,7 @@ private struct RegenerateDeviceFingerPrintButton: View {
             let labelText = "profileMgr.regenerateDeviceFingerPrint.label".i18nPZHelper
             switch status {
             case .pending: Text(labelText)
-            case .progress: ProgressView()
+            case .progress: WinUI3ProgressRing()
             case .succeed:
                 Label {
                     Text(labelText)

@@ -60,7 +60,7 @@ struct TestAccountSectionView: View {
                 Image(systemSymbol: .xmarkCircle)
                     .foregroundColor(.red)
             case .testing:
-                ProgressView()
+                WinUI3ProgressRing()
             case .verificationNeeded:
                 Image(systemSymbol: .questionmarkCircle)
                     .foregroundColor(.yellow)

@@ -40,7 +40,7 @@ public struct GachaBigChartView: View {
                 }
                 if gachaVM.taskState == .busy {
                     ToolbarItem(placement: .primaryAction) {
-                        ProgressView()
+                        WinUI3ProgressRing()
                     }
                 }
             }

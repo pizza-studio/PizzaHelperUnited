@@ -146,7 +146,7 @@ extension OfficialFeed.OfficialFeedSection {
                         }
                     }
                 } else {
-                    ProgressView()
+                    WinUI3ProgressRing()
                 }
             } header: {
                 sectionHeader()

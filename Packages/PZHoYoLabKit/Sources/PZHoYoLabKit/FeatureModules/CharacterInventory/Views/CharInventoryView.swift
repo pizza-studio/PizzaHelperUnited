@@ -158,7 +158,7 @@ public struct CharacterInventoryView: View {
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 70, height: 63)
                                 } else {
-                                    ProgressView()
+                                    WinUI3ProgressRing()
                                 }
                             }
                             .task {

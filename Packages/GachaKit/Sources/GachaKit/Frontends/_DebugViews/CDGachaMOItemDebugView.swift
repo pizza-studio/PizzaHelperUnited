@@ -24,7 +24,7 @@ public struct CDGachaMODebugView: View {
     public var body: some View {
         Form {
             if delegate.taskState == .busy {
-                ProgressView()
+                WinUI3ProgressRing()
             }
             if delegate.managedObjs.isEmpty {
                 Text(

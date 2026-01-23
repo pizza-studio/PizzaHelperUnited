@@ -96,7 +96,7 @@ extension OfficialFeed {
                                 .aspectRatio(contentMode: .fit)
                                 .scaleEffect(content.game == .starRail ? 1.07 : 1)
                         default:
-                            ProgressView()
+                            WinUI3ProgressRing()
                         }
                     }
                     .scaledToFill()

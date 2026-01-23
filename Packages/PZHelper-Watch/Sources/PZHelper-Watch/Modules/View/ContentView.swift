@@ -26,7 +26,7 @@ public struct ContentView: View {
                         } label: {
                             VStack {
                                 Image(systemSymbol: .icloudAndArrowDown).fixedSize()
-                                ProgressView()
+                                WinUI3ProgressRing()
                             }
                             .fixedSize()
                         }
@@ -158,7 +158,7 @@ private struct DetailNavigator: View {
                     }
                 }
             case .progress:
-                ProgressView()
+                WinUI3ProgressRing()
             }
         }
         .react(to: broadcaster.eventForRefreshingCurrentPage) { _, _ in

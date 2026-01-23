@@ -69,7 +69,7 @@ public struct CharInventoryNav: View {
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                     } placeholder: {
-                                        ProgressView()
+                                        WinUI3ProgressRing()
                                     }
                                 }
                         }
