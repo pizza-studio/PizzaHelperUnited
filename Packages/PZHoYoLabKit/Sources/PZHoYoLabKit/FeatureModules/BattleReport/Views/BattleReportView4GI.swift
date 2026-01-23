@@ -57,21 +57,7 @@ public struct BattleReportView4GI: BattleReportView {
         .navigationTitle(contentType.localizedTitle)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Picker(selection: $contentType.animation()) {
-                    ForEach(TreasuresStarwardType.allCases) { contentTypeCase in
-                        Text(verbatim: contentTypeCase.localizedTitle).tag(contentTypeCase)
-                    }
-                } label: {
-                    LabeledContent {
-                        Text("hylKit.battleReportView.challengeType", bundle: .currentSPM)
-                    } label: {
-                        Image(systemSymbol: .line3HorizontalDecreaseCircle)
-                    }
-                    .fixedSize()
-                }
-                .pickerStyle(.menu)
-                .labelsHidden()
-                .blurMaterialBackground(shape: .capsule, interactive: true)
+                drawPickerContentForReportType($contentType)
             }
         }
         .react(to: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {

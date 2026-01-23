@@ -5,6 +5,7 @@
 import EnkaKit
 import Foundation
 import PZAccountKit
+import PZBaseKit
 import SwiftUI
 
 // MARK: - AbyssValueCell
@@ -45,4 +46,12 @@ struct AbyssValueCell: Identifiable, Hashable {
             ).frame(width: 52, alignment: .center)
         }
     }
+}
+
+// MARK: - HoYoBattleReportType
+
+@available(iOS 17.0, macCatalyst 17.0, *)
+public protocol HoYoBattleReportType: Identifiable, CaseIterable, AbleToCodeSendHash {
+    associatedtype BattleReportData: BattleReport
+    var localizedTitle: String { get }
 }

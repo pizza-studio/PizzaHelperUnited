@@ -21,6 +21,7 @@ public protocol BattleReportSet: AbleToCodeSendHash {
 @available(iOS 17.0, macCatalyst 17.0, *)
 public protocol BattleReport: AbleToCodeSendHash {
     associatedtype ViewType: BattleReportView where Self == ViewType.BattleReportData
+    associatedtype DataType: HoYoBattleReportType
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)
@@ -37,6 +38,7 @@ extension BattleReport {
 @MainActor
 public protocol BattleReportView: View {
     associatedtype BattleReportData: BattleReport where Self == BattleReportData.ViewType
+    associatedtype ReportDataType: HoYoBattleReportType where ReportDataType == BattleReportData.DataType
     init(data: BattleReportData, profile: PZProfileSendable?)
     var data: BattleReportData { get }
     static var navTitle: String { get }
@@ -57,6 +59,26 @@ extension BattleReportView {
                 Color(cgColor: .init(red: 0.99, green: 0.92, blue: 0.65, alpha: 1.00))
             )
             .shadow(color: .black, radius: 1)
+    }
+
+    @ViewBuilder
+    public func drawPickerContentForReportType(_ contentType: Binding<ReportDataType>) -> some View {
+        Picker(selection: contentType.animation()) {
+            ForEach(Array(ReportDataType.allCases)) { contentTypeCase in
+                Text(verbatim: contentTypeCase.localizedTitle).tag(contentTypeCase)
+            }
+        } label: {
+            LabeledContent {
+                Text("hylKit.battleReportView.challengeType", bundle: .currentSPM)
+            } label: {
+                Image(systemSymbol: .line3HorizontalDecreaseCircle)
+            }
+            .fixedSize()
+        }
+        .pickerStyle(.menu)
+        .fixedSize()
+        .labelsHidden()
+        .blurMaterialBackground(shape: .capsule, interactive: true)
     }
 }
 
