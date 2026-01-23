@@ -209,14 +209,16 @@ extension EmbeddedWidgets {
                     // Simulated Universe or Cosmic Strife
                     let isCosmicStrife = data.cosmicStrifeIntel != nil
                     Label {
-                        let ratio: Double = {
-                            var currentScore = data.simulatedUniverseInfo.currentScore
-                            var maxScore = data.simulatedUniverseInfo.maxScore
-                            if let strifeIntel = data.cosmicStrifeIntel {
-                                currentScore = strifeIntel.finished
-                                maxScore = strifeIntel.all
-                            }
-                            return maxScore > 0 ? (Double(currentScore) / Double(maxScore) * 100).rounded(.down) : 0.0
+                        let ratio: Int = {
+                            guard let strifeIntel = data.cosmicStrifeIntel else { return 0 }
+                            guard strifeIntel.finished < strifeIntel.all else { return 100 }
+                            let denominator = Double(strifeIntel.all)
+                            guard denominator > 0 else { return 100 }
+                            let ratio = (Double(strifeIntel.finished) / denominator * 100).rounded(.down)
+                            guard ratio.isFinite, ratio <= 100, ratio >= 0 else { return 100 }
+                            /// Double value cannot be converted to int because it is either infiniteor NaN.
+                            guard let percentage = ratio.asIntIfFinite() else { return 100 }
+                            return percentage
                         }()
                         Text(verbatim: "\(ratio)%")
                             .minimumScaleFactor(0.2)
