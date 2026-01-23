@@ -145,7 +145,11 @@ struct TodayTabPage: View {
             }
         }
         .refreshable {
-            broadcaster.refreshTodayTab()
+            Task { @MainActor in
+                await debouncer4PageRefresh.debounce {
+                    await broadcaster.refreshTodayTab()
+                }
+            }
         }
         .onAppear {
             if let theGame = game, !games.contains(theGame) {
@@ -189,6 +193,7 @@ struct TodayTabPage: View {
 
     // MARK: Private
 
+    @State private var debouncer4PageRefresh: Debouncer = .init(delay: 0.3)
     @State private var isTodayMaterialSheetShown: Bool = false
     @State private var wrappedByNavStack: Bool
     @State private var game: Pizza.SupportedGame? = .none

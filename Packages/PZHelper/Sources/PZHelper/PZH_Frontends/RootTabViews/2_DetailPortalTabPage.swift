@@ -47,7 +47,11 @@ struct DetailPortalTabPage: View {
         }
         .formStyle(.grouped).disableFocusable()
         .refreshable {
-            refreshAction()
+            Task { @MainActor in
+                await debouncer4PageRefresh.debounce {
+                    await refreshAction()
+                }
+            }
         }
         .navigationTitle(
             screenVM.isExtremeCompact
@@ -150,6 +154,7 @@ struct DetailPortalTabPage: View {
 
     // MARK: Private
 
+    @State private var debouncer4PageRefresh: Debouncer = .init(delay: 0.3)
     @State private var wrappedByNavStack: Bool
     @State private var showProfileSwitcher: Bool
     @State private var sharedDB: Enka.Sputnik = .shared
