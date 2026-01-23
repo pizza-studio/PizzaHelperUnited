@@ -14,9 +14,7 @@ import SwiftUI
 public struct BattleReportNav: View {
     // MARK: Lifecycle
 
-    public init(theVM: DetailPortalViewModel) {
-        self._theVM = .init(wrappedValue: theVM)
-    }
+    public init() {}
 
     // MARK: Public
 
@@ -34,7 +32,7 @@ public struct BattleReportNav: View {
         switch theVM.taskStatus4BattleReport {
         case .progress, .standby:
             InformationRowView(navTitle) {
-                ProgressView()
+                WinUI3ProgressRing().id(UUID())
             }
         case let .fail(error):
             InformationRowView(navTitle) {
@@ -151,6 +149,6 @@ public struct BattleReportNav: View {
 
     // MARK: Private
 
-    @State private var theVM: DetailPortalViewModel
+    @Environment(DetailPortalViewModel.self) private var theVM
     @StateObject private var broadcaster = Broadcaster.shared
 }

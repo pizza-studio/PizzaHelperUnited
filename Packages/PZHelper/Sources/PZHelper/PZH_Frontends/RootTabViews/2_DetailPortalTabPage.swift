@@ -34,8 +34,10 @@ struct DetailPortalTabPage: View {
                     .scrollContentBackground(.hidden)
                     .listContainerBackground()
             }
+            .environment(vmDPV)
         } else {
             formContentHooked
+                .environment(vmDPV)
         }
     }
 
@@ -79,7 +81,7 @@ struct DetailPortalTabPage: View {
             switch profile.game {
             case .genshinImpact:
                 ProfileShowCaseSections(theDB4GI: sharedDB.db4GI, pzProfile: profile) {
-                    AnyView(CharInventoryNav(theVM: vmDPV))
+                    AnyView(CharInventoryNav())
                 } onTapGestureAction: {
                     uidInputFieldFocus = false
                 }
@@ -88,7 +90,7 @@ struct DetailPortalTabPage: View {
                 query4GI
             case .starRail:
                 ProfileShowCaseSections(theDB4HSR: sharedDB.db4HSR, pzProfile: profile) {
-                    AnyView(CharInventoryNav(theVM: vmDPV))
+                    AnyView(CharInventoryNav())
                 } onTapGestureAction: {
                     uidInputFieldFocus = false
                 }
@@ -99,8 +101,8 @@ struct DetailPortalTabPage: View {
             }
             // Peripheral Nav Sections.
             Section {
-                BattleReportNav(theVM: vmDPV)
-                LedgerNav(theVM: vmDPV)
+                BattleReportNav()
+                LedgerNav()
             } footer: {
                 Text("dpv.peripherals.footer.whySomeContentsAreRemoved".i18nPZHelper)
             }
