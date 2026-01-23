@@ -78,31 +78,7 @@ public struct ProfileShowCaseSections<AppendedContent: View, QueryDB: EnkaDBProt
         listHeader
         Section {
             Group {
-                switch delegate.taskState {
-                case .standby:
-                    if let result = guardedEnkaProfile {
-                        ShowCaseListView(
-                            profile: result,
-                            enkaDB: theDB,
-                            asCardIcons: true,
-                            appendHoYoLABResults: false
-                        )
-                        .id(result.hashValue)
-                    }
-                case .busy:
-                    if let result = guardedEnkaProfile {
-                        ShowCaseListView(
-                            profile: result,
-                            enkaDB: theDB,
-                            asCardIcons: true,
-                            appendHoYoLABResults: false
-                        )
-                        .id(result.hashValue)
-                        .disabled(delegate.taskState == .busy)
-                        .saturation(delegate.taskState == .busy ? 0 : 1)
-                    }
-                    InfiniteProgressBar().id(UUID())
-                }
+                profileShowCaseList
             }
             .onTapGesture {
                 onTapGestureAction?()
@@ -213,6 +189,30 @@ public struct ProfileShowCaseSections<AppendedContent: View, QueryDB: EnkaDBProt
 
     private var guardedEnkaProfile: QueryDB.QueriedProfile? {
         delegate.currentInfo
+    }
+
+    @ViewBuilder private var profileShowCaseList: some View {
+        if let result = guardedEnkaProfile {
+            ShowCaseListView(
+                profile: result,
+                enkaDB: theDB,
+                asCardIcons: true,
+                appendHoYoLABResults: false
+            )
+            .id(result.hashValue)
+            .disabled(delegate.taskState == .busy)
+            .saturation(delegate.taskState == .busy ? 0 : 1)
+            .padding(.bottom, delegate.taskState == .busy ? 8 : 0)
+            .overlay(alignment: .bottom) {
+                if delegate.taskState == .busy {
+                    InfiniteProgressBar().id(UUID())
+                }
+            }
+        } else {
+            if delegate.taskState == .busy {
+                InfiniteProgressBar().id(UUID())
+            }
+        }
     }
 }
 
