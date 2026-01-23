@@ -45,6 +45,10 @@ public struct BattleReportView4GI: BattleReportView {
 
     public var body: some View {
         Form {
+            if OS.type != .macOS {
+                drawPickerContentForReportType($contentType)
+                    .listRowMaterialBackground()
+            }
             if data4SA.hasData || (data4SO?.single.hasData ?? false) {
                 contents
                     .animation(.default, value: screenVM.mainColumnCanvasSizeObserved)
@@ -56,8 +60,13 @@ public struct BattleReportView4GI: BattleReportView {
         .scrollContentBackground(.hidden)
         .navigationTitle(contentType.localizedTitle)
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                drawPickerContentForReportType($contentType)
+            if OS.type == .macOS {
+                ToolbarItem(placement: .principal) {
+                    drawPickerContentForReportType($contentType)
+                        .fixedSize()
+                        .labelsHidden()
+                        .blurMaterialBackground(shape: .capsule, interactive: true)
+                }
             }
         }
         .react(to: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {

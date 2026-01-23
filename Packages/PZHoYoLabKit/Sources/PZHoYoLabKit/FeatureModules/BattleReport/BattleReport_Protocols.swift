@@ -76,9 +76,6 @@ extension BattleReportView {
             .fixedSize()
         }
         .pickerStyle(.menu)
-        .fixedSize()
-        .labelsHidden()
-        .blurMaterialBackground(shape: .capsule, interactive: true)
     }
 }
 
