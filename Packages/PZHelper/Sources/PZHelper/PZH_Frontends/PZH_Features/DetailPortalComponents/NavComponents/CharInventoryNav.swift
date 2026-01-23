@@ -14,9 +14,7 @@ import SwiftUI
 public struct CharInventoryNav: View {
     // MARK: Lifecycle
 
-    public init(theVM: DetailPortalViewModel) {
-        self._theVM = .init(wrappedValue: theVM)
-    }
+    public init() {}
 
     // MARK: Public
 
@@ -34,7 +32,7 @@ public struct CharInventoryNav: View {
         switch theVM.taskStatus4CharInventory {
         case .progress, .standby:
             InformationRowView(Self.navTitle) {
-                ProgressView()
+                WinUI3ProgressRing().id(UUID())
             }
         case let .fail(error):
             InformationRowView(Self.navTitle) {
@@ -94,6 +92,6 @@ public struct CharInventoryNav: View {
 
     // MARK: Private
 
-    @State private var theVM: DetailPortalViewModel
+    @Environment(DetailPortalViewModel.self) private var theVM
     @StateObject private var broadcaster = Broadcaster.shared
 }
