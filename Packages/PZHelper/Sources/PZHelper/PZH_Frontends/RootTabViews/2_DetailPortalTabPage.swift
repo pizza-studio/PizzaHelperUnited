@@ -81,7 +81,7 @@ struct DetailPortalTabPage: View {
             switch profile.game {
             case .genshinImpact:
                 ProfileShowCaseSections(theDB4GI: sharedDB.db4GI, pzProfile: profile) {
-                    AnyView(CharInventoryNav())
+                    CharInventoryNav()
                 } onTapGestureAction: {
                     uidInputFieldFocus = false
                 }
@@ -90,7 +90,7 @@ struct DetailPortalTabPage: View {
                 query4GI
             case .starRail:
                 ProfileShowCaseSections(theDB4HSR: sharedDB.db4HSR, pzProfile: profile) {
-                    AnyView(CharInventoryNav())
+                    CharInventoryNav()
                 } onTapGestureAction: {
                     uidInputFieldFocus = false
                 }

@@ -10,7 +10,7 @@ import SwiftUI
 // MARK: - ProfileShowCaseSections
 
 @available(iOS 17.0, macCatalyst 17.0, *)
-public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
+public struct ProfileShowCaseSections<AppendedContent: View, QueryDB: EnkaDBProtocol>: View
     where QueryDB.QueriedProfile.DBType == QueryDB {
     // MARK: Lifecycle
 
@@ -18,7 +18,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
     public init(
         theDB: QueryDB,
         pzProfile: any ProfileProtocol,
-        appendedContent: @escaping (() -> AnyView) = { AnyView(EmptyView()) },
+        appendedContent: @escaping (() -> AppendedContent) = { AnyView(EmptyView()) },
         onTapGestureAction: (() -> Void)? = nil
     ) {
         self.appendedContent = appendedContent
@@ -34,7 +34,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
     public init(
         theDB4GI: Enka.EnkaDB4GI,
         pzProfile: any ProfileProtocol,
-        appendedContent: @escaping (() -> AnyView) = { AnyView(EmptyView()) },
+        appendedContent: @escaping (() -> AppendedContent) = { AnyView(EmptyView()) },
         onTapGestureAction: (() -> Void)? = nil
     ) where QueryDB == Enka.EnkaDB4GI {
         self.appendedContent = appendedContent
@@ -55,7 +55,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
     public init(
         theDB4HSR: Enka.EnkaDB4HSR,
         pzProfile: any ProfileProtocol,
-        appendedContent: @escaping (() -> AnyView) = { AnyView(EmptyView()) },
+        appendedContent: @escaping (() -> AppendedContent) = { AnyView(EmptyView()) },
         onTapGestureAction: (() -> Void)? = nil
     ) where QueryDB == Enka.EnkaDB4HSR {
         self.appendedContent = appendedContent
@@ -202,7 +202,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
     @State private var delegate: CaseProfileVM<QueryDB>
     @StateObject private var broadcaster = Broadcaster.shared
 
-    private let appendedContent: () -> AnyView
+    private let appendedContent: () -> AppendedContent
     private let onTapGestureAction: (() -> Void)?
     private var theDB: QueryDB
 
