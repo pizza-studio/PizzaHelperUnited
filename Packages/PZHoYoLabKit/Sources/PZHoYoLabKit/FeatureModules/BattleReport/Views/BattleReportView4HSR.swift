@@ -43,6 +43,10 @@ public struct BattleReportView4HSR: BattleReportView {
 
     public var body: some View {
         Form {
+            if OS.type != .macOS {
+                drawPickerContentForReportType($contentType)
+                    .listRowMaterialBackground()
+            }
             if data4FH.hasData || data4AS.hasData || data4PF.hasData {
                 contents
                     .frame(width: containerWidth)
@@ -55,8 +59,13 @@ public struct BattleReportView4HSR: BattleReportView {
         .scrollContentBackground(.hidden)
         .navigationTitle(contentType.localizedTitle)
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                drawPickerContentForReportType($contentType)
+            if OS.type == .macOS {
+                ToolbarItem(placement: .principal) {
+                    drawPickerContentForReportType($contentType)
+                        .fixedSize()
+                        .labelsHidden()
+                        .blurMaterialBackground(shape: .capsule, interactive: true)
+                }
             }
         }
     }
