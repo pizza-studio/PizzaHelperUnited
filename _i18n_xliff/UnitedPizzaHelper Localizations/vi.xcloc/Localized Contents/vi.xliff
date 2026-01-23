@@ -489,6 +489,21 @@ Chạm bất kỳ đâu để đóng.</target>
         <target state="translated">Các cập nhật cơ sở dữ liệu đã được kiểm tra trước tại:</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault" xml:space="preserve">
+        <source>Reset EnkaDB Cache to Factory Default</source>
+        <target state="translated">Đặt lại bộ nhớ đệm EnkaDB về mặc định ban đầu</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmButton" xml:space="preserve">
+        <source>Reset</source>
+        <target state="translated">Đặt lại</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmationTitle" xml:space="preserve">
+        <source>Are you sure you want to reset the EnkaDB cache?</source>
+        <target state="translated">Bạn có chắc chắn muốn đặt lại bộ nhớ đệm EnkaDB không?</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.display.enkaStatus.sectionTitle" xml:space="preserve">
         <source>On-Device Enka Database Status</source>
         <target state="translated">Trạng thái cơ sở dữ liệu Enka trên thiết bị</target>
@@ -1981,6 +1996,11 @@ Trình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5.0)</target>
         <target state="translated">Không sử dụng nữa và đã được tích hợp vào The Pizza Helper.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="oobe.button.next" xml:space="preserve">
+        <source>Next</source>
+        <target state="translated">Tiếp theo</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="oobe.feature.backupYourData.detail" xml:space="preserve">
         <source>FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup.</source>
         <target state="translated">FOSS không bao giờ có nghĩa là khả năng truy cập / độ tin cậy vĩnh viễn. Hãy chịu trách nhiệm với dữ liệu của bạn bằng cách chủ động xuất các bản ghi gacha dưới dạng tệp UIGF để sao lưu.</target>
@@ -2019,6 +2039,16 @@ Trình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5.0)</target>
       <trans-unit id="oobe.feature.notification.title" xml:space="preserve">
         <source>Notifications</source>
         <target state="translated">Thông báo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.refugeeFromThePizzaHelper.detail" xml:space="preserve">
+        <source>Your refugee plist file needs to be imported twice: first into the Local Profile Manager, and then into the Gacha Record Manager. These two modules will parse their respective data from the file.</source>
+        <target state="translated">Tệp plist refugee của bạn cần được nhập hai lần: đầu tiên vào Trình quản lý hồ sơ cục bộ, sau đó vào Trình quản lý bản ghi Gacha. Hai mô-đun này sẽ trích xuất các loại dữ liệu tương ứng của chúng từ tệp.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.refugeeFromThePizzaHelper.title" xml:space="preserve">
+        <source>Refugee from The Pizza Helper?</source>
+        <target state="translated">Refugee từ The Pizza Helper?</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.widget.detail:%@" xml:space="preserve">
@@ -2717,13 +2747,38 @@ Liên kết trên, nếu nhấn trực tiếp, sẽ tự động áp dụng user
         <note/>
       </trans-unit>
       <trans-unit id="refugee.export.fileSavedTo:" xml:space="preserve">
-        <source>Successfully dumped the Old Pizza Refugee Data file to:</source>
-        <target state="translated">Đã xuất thành công tệp dữ liệu Old Pizza Refugee tới:</target>
+        <source>File successfully dumped to:</source>
+        <target state="translated">Đã xuất thành công tệp tới:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.fileType.profiles" xml:space="preserve">
+        <source>📁 File Type: Profiles Package (JSON)</source>
+        <target state="translated">📁 Loại tệp: Gói hồ sơ (JSON)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.fileType.refugee" xml:space="preserve">
+        <source>📁 File Type: Old Pizza Refugee Data (Plist)</source>
+        <target state="translated">📁 Loại tệp: Dữ liệu Old Pizza Refugee (Plist)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.fileType.wallpapers" xml:space="preserve">
+        <source>📁 File Type: User Wallpapers (JSON)</source>
+        <target state="translated">📁 Loại tệp: Hình nền tùy chỉnh (JSON)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.refugeeFileHowToUse" xml:space="preserve">
+        <source>ℹ️ On the target device you are expected to import this file in both the Local Profile Manager and the Gacha Record Manager. These two feature modules extract different types of data from the refugee plist file.</source>
+        <target state="translated">ℹ️ Trên thiết bị đích, bạn cần nhập tệp này vào cả Trình quản lý hồ sơ cục bộ và Trình quản lý bản ghi Gacha. Hai mô-đun tính năng này trích xuất các loại dữ liệu khác nhau từ tệp plist refugee.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.refugeeFileSpecialNotice4iOS17" xml:space="preserve">
+        <source>⚠️ This refugee plist file does not include user wallpapers due to technical limitations and file size concerns. Please export them separately.</source>
+        <target state="translated">⚠️ Tệp plist khó dân này không bao gồm hình nền người dùng do hạn chế kỹ thuật và lo ngại về kích thước tệp. Vui lòng xuất chúng riêng biệt.</target>
         <note/>
       </trans-unit>
       <trans-unit id="refugee.export.succeededInSavingToFile" xml:space="preserve">
-        <source>Successfully dumped the Old Pizza Refugee Data file.</source>
-        <target state="translated">Tệp dữ liệu Old Pizza Refugee đã được xuất thành công.</target>
+        <source>The file is successfully dumped.</source>
+        <target state="translated">Tệp đã được xuất thành công.</target>
         <note/>
       </trans-unit>
       <trans-unit id="refugee.exportableCount.gachaEntries" xml:space="preserve">
@@ -2790,7 +2845,7 @@ Người kế thừa của ứng dụng này sẽ có mặt trên App Store vớ
         <note/>
       </trans-unit>
       <trans-unit id="refugee.limitedServiceCategory4iOS16.footer" xml:space="preserve">
-        <source>Only widgets are available for iOS 16.2 &amp; macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Locale Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14.</source>
+        <source>Only widgets are available for iOS 16.2 &amp; macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Local Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14.</source>
         <target state="translated">Chỉ có widget khả dụng cho iOS 16.2 &amp; macOS 13. Các tính năng khác vẫn cần iOS 17 / macOS 14 trở lên. Nếu bạn gặp lỗi khi sử dụng Trình quản lý Hồ sơ Cục bộ, đó là do các lỗi liên quan đến SwiftUI trên iOS 16 / macOS 13 và giải pháp duy nhất là nâng cấp lên iOS 17 / macOS 14.</target>
         <note/>
       </trans-unit>
@@ -2824,14 +2879,49 @@ Người kế thừa của ứng dụng này sẽ có mặt trên App Store vớ
         <target state="translated">Nhấn để bắt đầu</target>
         <note/>
       </trans-unit>
+      <trans-unit id="refugee.menu.export.all" xml:space="preserve">
+        <source>Export All Contents as Refugee Plist Package</source>
+        <target state="translated">Xuất tất cả nội dung dưới dạng gói dữ liệu người tị nạn (Plist)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.menu.export.gachaRecordsAsUIGFv4" xml:space="preserve">
+        <source>Export Gacha Records (UIGFv4 JSON)</source>
+        <target state="translated">Xuất bản ghi Gacha (UIGFv4 JSON)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.menu.export.profiles" xml:space="preserve">
+        <source>Export Profiles (JSON)</source>
+        <target state="translated">Xuất hồ sơ (JSON)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.menu.export.wallpapers" xml:space="preserve">
+        <source>Export User Wallpapers (JSON)</source>
+        <target state="translated">Xuất hình nền tùy chỉnh (JSON)</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="refugee.navTitle.noticingEndOfMaintenance" xml:space="preserve">
         <source>End-of-Maintenance</source>
         <target state="translated">Kết thúc Bảo trì</target>
         <note/>
       </trans-unit>
-      <trans-unit id="refugee.noDataExportable" xml:space="preserve">
-        <source>No local data exportable for now. This view awaits for iCloud background data updates, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later.</source>
-        <target state="translated">Hiện không có dữ liệu cục bộ nào có thể xuất. Giao diện này đang chờ cập nhật dữ liệu nền từ iCloud, nhưng tất cả dữ liệu iCloud đều có thể được kế thừa via iCloud bởi ứng dụng này trên iOS 17 trở lên.</target>
+      <trans-unit id="refugee.noDataExportable.iOS16AndEarlier" xml:space="preserve">
+        <source>No local data exportable for now. This view awaits for possibly available iCloud background data updates, unless there's no such data, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later.</source>
+        <target state="translated">Hiện không có dữ liệu cục bộ nào có thể xuất. Giao diện này đang chờ cập nhật dữ liệu nền iCloud có thể khả dụng, trừ khi không có dữ liệu như vậy, nhưng tất cả dữ liệu iCloud đều có thể được kế thừa via iCloud bởi ứng dụng này trên iOS 17 trở lên.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.noDataExportable.refugeeMigratingToLatteHelper" xml:space="preserve">
+        <source>No local data exportable for now. This view awaits for possibly available iCloud background data updates, unless there's no such data.</source>
+        <target state="translated">Hiện không có dữ liệu cục bộ nào có thể xuất. Giao diện này đang chờ cập nhật dữ liệu nền iCloud có thể khả dụng, trừ khi không có dữ liệu như vậy.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="setting.display.reduceUIGlassDecorations" xml:space="preserve">
+        <source>Reduce Glass Decorations</source>
+        <target state="translated">Giảm hiệu ứng kính</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="setting.display.reduceUIGlassDecorations.explain.intelMac" xml:space="preserve">
+        <source>This toggle is always active and locked on Intel Macs due to hardware performance constraints.</source>
+        <target state="translated">Trên Mac Intel, tùy chọn này luôn bật và bị khoá do giới hạn hiệu năng phần cứng。</target>
         <note/>
       </trans-unit>
       <trans-unit id="setting.display.restoreTabOnLaunching" xml:space="preserve">
@@ -2869,6 +2959,16 @@ Người kế thừa của ứng dụng này sẽ có mặt trên App Store vớ
         <target state="translated">Cài đặt chung</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.display.performanceSettings.sectionFooter" xml:space="preserve">
+        <source>⚠︎ Some of these settings can be overridden by system accessibility settings.</source>
+        <target state="translated">⚠︎ Một số cài đặt này có thể bị ghi đè bởi các cài đặt trợ năng của hệ thống.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.performanceSettings.sectionHeader" xml:space="preserve">
+        <source>Performance Settings</source>
+        <target state="translated">Cài đặt Hiệu suất</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.display.timeZone4GI.description" xml:space="preserve">
         <source>The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Daily Material, Official In-Game Events, etc.</source>
         <target state="translated">Các cài đặt Múi giờ trong phần này là để hiển thị ít nhất các thông tin sau đây (của Genshin Impact): Vật liệu Hàng ngày, Sự kiện Chính thức Trong Trò Chơi, v.v.</target>
@@ -2899,9 +2999,9 @@ Người kế thừa của ứng dụng này sẽ có mặt trên App Store vớ
         <target state="translated">Thông báo cho tôi</target>
         <note/>
       </trans-unit>
-      <trans-unit id="settings.notification.dateTimePicker.macCatalystNotice" xml:space="preserve">
-        <source>⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps. Users can only select the desired input field and type it directly on physical keyboard.</source>
-        <target state="translated">⚠️ Do hạn chế trong framework cầu nối UIKit-to-AppKit, Bộ chọn Ngày trên macOS không hiển thị bảng nhập liệu trong các ứng dụng macCatalyst. Người dùng chỉ có thể chọn trường nhập liệu mong muốn và gõ trực tiếp trên bàn phím vật lý.</target>
+      <trans-unit id="settings.notification.dateTimePicker.macCatalystOrIPAOnMacNotice" xml:space="preserve">
+        <source>⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps or IPA-on-mac apps. Users can only select the desired input field and type it directly on physical keyboard.</source>
+        <target state="translated">⚠️ Do hạn chế trong framework cầu nối UIKit-to-AppKit, Bộ chọn Ngày trên macOS không hiển thị bảng nhập liệu trong các ứng dụng macCatalyst hoặc IPA-on-mac. Người dùng chỉ có thể chọn trường nhập liệu mong muốn và gõ trực tiếp trên bàn phím vật lý.</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.expedition.allow" xml:space="preserve">
@@ -4898,6 +4998,11 @@ có sẵn vào Chủ nhật</target>
       <trans-unit id="wpKit.assign.backgrounds4LiveActivity" xml:space="preserve">
         <source>Assign as Live Activity Background</source>
         <target state="translated">Gán làm nền Hoạt động Trực tiếp</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="wpKit.gamePicker.Latte.shortName" xml:space="preserve">
+        <source>LT</source>
+        <target state="translated">LT</target>
         <note/>
       </trans-unit>
       <trans-unit id="wpKit.gamePicker.Pizza.shortName" xml:space="preserve">

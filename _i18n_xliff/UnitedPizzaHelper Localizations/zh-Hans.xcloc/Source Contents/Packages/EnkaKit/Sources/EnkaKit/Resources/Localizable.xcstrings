@@ -390,6 +390,39 @@
         }
       }
     },
+    "settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset EnkaDB Cache to Factory Default"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmationTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to reset the EnkaDB cache?"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        }
+      }
+    },
     "settings.display.enkaStatus.sectionTitle" : {
       "extractionState" : "manual",
       "localizations" : {
