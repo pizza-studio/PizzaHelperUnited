@@ -377,6 +377,17 @@
         }
       }
     },
+    "wpKit.gamePicker.Latte.shortName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LT"
+          }
+        }
+      }
+    },
     "wpKit.gamePicker.Pizza.shortName" : {
       "extractionState" : "manual",
       "localizations" : {

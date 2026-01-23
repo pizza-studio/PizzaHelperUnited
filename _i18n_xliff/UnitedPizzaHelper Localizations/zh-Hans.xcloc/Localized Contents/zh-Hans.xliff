@@ -488,6 +488,21 @@ Tap anywhere to dismiss.</source>
         <target state="translated">最近一次查询 Enka 数据更新的时间点</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault" xml:space="preserve">
+        <source>Reset EnkaDB Cache to Factory Default</source>
+        <target state="translated">将 EnkaDB 缓存重置为出厂默认值</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmButton" xml:space="preserve">
+        <source>Reset</source>
+        <target state="translated">重置</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmationTitle" xml:space="preserve">
+        <source>Are you sure you want to reset the EnkaDB cache?</source>
+        <target state="translated">您确定要重置 EnkaDB 缓存吗？</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.display.enkaStatus.sectionTitle" xml:space="preserve">
         <source>On-Device Enka Database Status</source>
         <target state="translated">当前设备的本机 EnkaDB 数据库状况</target>
@@ -1985,6 +2000,11 @@ App 图标画师 (统一披萨小助手 v5.0)</target>
         <target state="translated">已淘汰。相关功能被并入以统一披萨引擎加持的披萨小助手。</target>
         <note/>
       </trans-unit>
+      <trans-unit id="oobe.button.next" xml:space="preserve">
+        <source>Next</source>
+        <target state="translated">下一步</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="oobe.feature.backupYourData.detail" xml:space="preserve">
         <source>FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup.</source>
         <target state="translated">FOSS并不意味着可以一直安定地使用。请对自己的数据负责。您可以勤加备份自己的抽卡记录（导出为 UIGF 格式）。</target>
@@ -2023,6 +2043,16 @@ App 图标画师 (统一披萨小助手 v5.0)</target>
       <trans-unit id="oobe.feature.notification.title" xml:space="preserve">
         <source>Notifications</source>
         <target state="translated">通知</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.refugeeFromThePizzaHelper.detail" xml:space="preserve">
+        <source>Your refugee plist file needs to be imported twice: first into the Local Profile Manager, and then into the Gacha Record Manager. These two modules will parse their respective data from the file.</source>
+        <target state="translated">您的难民 plist 文件需要导入两次：先导入到本地账号管理器，然后导入到抽卡记录管理器。这两个模块会各自从文件中提取相应的数据类型。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.refugeeFromThePizzaHelper.title" xml:space="preserve">
+        <source>Refugee from The Pizza Helper?</source>
+        <target state="translated">来自《披萨小助手》的难民？</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.widget.detail:%@" xml:space="preserve">
@@ -2724,13 +2754,38 @@ The above link, if directly clicked, will automatically apply the user-agent of 
         <note/>
       </trans-unit>
       <trans-unit id="refugee.export.fileSavedTo:" xml:space="preserve">
-        <source>Successfully dumped the Old Pizza Refugee Data file to:</source>
-        <target state="translated">旧披萨难民资料已成功导出至: </target>
+        <source>File successfully dumped to:</source>
+        <target state="translated">文件已成功导出至:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.fileType.profiles" xml:space="preserve">
+        <source>📁 File Type: Profiles Package (JSON)</source>
+        <target state="translated">📁 文件类型：本地账号包 (JSON)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.fileType.refugee" xml:space="preserve">
+        <source>📁 File Type: Old Pizza Refugee Data (Plist)</source>
+        <target state="translated">📁 文件类型：旧披萨难民资料 (Plist)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.fileType.wallpapers" xml:space="preserve">
+        <source>📁 File Type: User Wallpapers (JSON)</source>
+        <target state="translated">📁 文件类型：用户自订壁纸 (JSON)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.refugeeFileHowToUse" xml:space="preserve">
+        <source>ℹ️ On the target device you are expected to import this file in both the Local Profile Manager and the Gacha Record Manager. These two feature modules extract different types of data from the refugee plist file.</source>
+        <target state="translated">ℹ️ 在目标设备上，您需要在本地账号管理器和抽卡记录管理器中分別导入此文件。这两个功能模块会各自从难民 plist 文件中提取不同类型的数据。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.refugeeFileSpecialNotice4iOS17" xml:space="preserve">
+        <source>⚠️ This refugee plist file does not include user wallpapers due to technical limitations and file size concerns. Please export them separately.</source>
+        <target state="translated">⚠️ 此難民 plist 文件由於技術限制和文件大小問題，不包含用戶壁紙。請單獨導出它們。</target>
         <note/>
       </trans-unit>
       <trans-unit id="refugee.export.succeededInSavingToFile" xml:space="preserve">
-        <source>Successfully dumped the Old Pizza Refugee Data file.</source>
-        <target state="translated">旧披萨难民资料已成功导出。</target>
+        <source>The file is successfully dumped.</source>
+        <target state="translated">文件已成功导出。</target>
         <note/>
       </trans-unit>
       <trans-unit id="refugee.exportableCount.gachaEntries" xml:space="preserve">
@@ -2797,7 +2852,7 @@ The successor to this app will be available on the App Store under the new name 
         <note/>
       </trans-unit>
       <trans-unit id="refugee.limitedServiceCategory4iOS16.footer" xml:space="preserve">
-        <source>Only widgets are available for iOS 16.2 &amp; macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Locale Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14.</source>
+        <source>Only widgets are available for iOS 16.2 &amp; macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Local Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14.</source>
         <target state="translated">iOS 16.2 和 macOS 13 仅支持小工具。其他功能仍需 iOS 17 / macOS 14 或更高版本。如果你在本地账号管理器中遇到与翻页导航有关的异常的话，这是 iOS 16 / macOS 13 的 SwiftUI 相关 bug 所致，唯一的解决办法是升级到 iOS 17 / macOS 14。</target>
         <note/>
       </trans-unit>
@@ -2831,14 +2886,49 @@ The successor to this app will be available on the App Store under the new name 
         <target state="translated">点击启动</target>
         <note/>
       </trans-unit>
+      <trans-unit id="refugee.menu.export.all" xml:space="preserve">
+        <source>Export All Contents as Refugee Plist Package</source>
+        <target state="translated">将所有内容导出为难民资料(Plist)包</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.menu.export.gachaRecordsAsUIGFv4" xml:space="preserve">
+        <source>Export Gacha Records (UIGFv4 JSON)</source>
+        <target state="translated">导出抽卡记录 (UIGFv4 JSON)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.menu.export.profiles" xml:space="preserve">
+        <source>Export Profiles (JSON)</source>
+        <target state="translated">打包导出本地账号 (JSON)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.menu.export.wallpapers" xml:space="preserve">
+        <source>Export User Wallpapers (JSON)</source>
+        <target state="translated">导出用户自订壁纸 (JSON)</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="refugee.navTitle.noticingEndOfMaintenance" xml:space="preserve">
         <source>End-of-Maintenance</source>
         <target state="translated">维护终止通知</target>
         <note/>
       </trans-unit>
-      <trans-unit id="refugee.noDataExportable" xml:space="preserve">
-        <source>No local data exportable for now. This view awaits for iCloud background data updates, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later.</source>
-        <target state="translated">当前暂无可导出的本地数据。本页面正在等待 iCloud 后台数据更新，但所有 iCloud 数据在 iOS 17 及以上系统可由本 App 通过 iCloud 继承。</target>
+      <trans-unit id="refugee.noDataExportable.iOS16AndEarlier" xml:space="preserve">
+        <source>No local data exportable for now. This view awaits for possibly available iCloud background data updates, unless there's no such data, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later.</source>
+        <target state="translated">当前暂无可导出的本地数据。本页面正在等待可能可用的 iCloud 后台数据更新，除非没有此类数据，但所有 iCloud 数据在 iOS 17 及以上系统可由本 App 通过 iCloud 继承。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.noDataExportable.refugeeMigratingToLatteHelper" xml:space="preserve">
+        <source>No local data exportable for now. This view awaits for possibly available iCloud background data updates, unless there's no such data.</source>
+        <target state="translated">当前暂无可导出的本地数据。本页面正在等待可能可用的 iCloud 后台数据更新，除非没有此类数据。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="setting.display.reduceUIGlassDecorations" xml:space="preserve">
+        <source>Reduce Glass Decorations</source>
+        <target state="translated">减少界面玻璃装饰</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="setting.display.reduceUIGlassDecorations.explain.intelMac" xml:space="preserve">
+        <source>This toggle is always active and locked on Intel Macs due to hardware performance constraints.</source>
+        <target state="translated">由于硬件效能限制，该选项在 Intel Mac 上始终生效且不可更改。</target>
         <note/>
       </trans-unit>
       <trans-unit id="setting.display.restoreTabOnLaunching" xml:space="preserve">
@@ -2876,6 +2966,16 @@ The successor to this app will be available on the App Store under the new name 
         <target state="translated">通用设定</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.display.performanceSettings.sectionFooter" xml:space="preserve">
+        <source>⚠︎ Some of these settings can be overridden by system accessibility settings.</source>
+        <target state="translated">⚠︎ 某些设定可能会被系统的辅助功能设定所覆盖。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.performanceSettings.sectionHeader" xml:space="preserve">
+        <source>Performance Settings</source>
+        <target state="translated">效能设定</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.display.timeZone4GI.description" xml:space="preserve">
         <source>The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Daily Material, Official In-Game Events, etc.</source>
         <target state="translated">该时区设定仅用于正确显示至少下述通用原神资讯：每日材料、官方游戏活动，等。</target>
@@ -2906,9 +3006,9 @@ The successor to this app will be available on the App Store under the new name 
         <target state="translated">启用该通知</target>
         <note/>
       </trans-unit>
-      <trans-unit id="settings.notification.dateTimePicker.macCatalystNotice" xml:space="preserve">
-        <source>⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps. Users can only select the desired input field and type it directly on physical keyboard.</source>
-        <target state="translated">⚠️ 由于 UIKit 到 AppKit 桥接框架的限制，macCatalyst App 中的 macOS 日期选择器不会显示输入面板。用户只能手动选择所需的输入栏位，并直接在实体键盘上输入。</target>
+      <trans-unit id="settings.notification.dateTimePicker.macCatalystOrIPAOnMacNotice" xml:space="preserve">
+        <source>⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps or IPA-on-mac apps. Users can only select the desired input field and type it directly on physical keyboard.</source>
+        <target state="translated">⚠️ 由于 UIKit 到 AppKit 桥接框架的限制，macCatalyst App 或 IPA-on-mac App 中的 macOS 日期选择器不会显示输入面板。用户只能手动选择所需的输入栏位，并直接在实体键盘上输入。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.expedition.allow" xml:space="preserve">
@@ -4905,6 +5005,11 @@ available on Sunday</source>
       <trans-unit id="wpKit.assign.backgrounds4LiveActivity" xml:space="preserve">
         <source>Assign as Live Activity Background</source>
         <target state="translated">设为实时活动背景图</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="wpKit.gamePicker.Latte.shortName" xml:space="preserve">
+        <source>LT</source>
+        <target state="translated">拿铁</target>
         <note/>
       </trans-unit>
       <trans-unit id="wpKit.gamePicker.Pizza.shortName" xml:space="preserve">

@@ -1159,7 +1159,62 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Successfully dumped the Old Pizza Refugee Data file to:"
+            "value" : "File successfully dumped to:"
+          }
+        }
+      }
+    },
+    "refugee.export.fileType.profiles" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 File Type: Profiles Package (JSON)"
+          }
+        }
+      }
+    },
+    "refugee.export.fileType.refugee" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 File Type: Old Pizza Refugee Data (Plist)"
+          }
+        }
+      }
+    },
+    "refugee.export.fileType.wallpapers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📁 File Type: User Wallpapers (JSON)"
+          }
+        }
+      }
+    },
+    "refugee.export.refugeeFileHowToUse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ On the target device you are expected to import this file in both the Local Profile Manager and the Gacha Record Manager. These two feature modules extract different types of data from the refugee plist file."
+          }
+        }
+      }
+    },
+    "refugee.export.refugeeFileSpecialNotice4iOS17" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ This refugee plist file does not include user wallpapers due to technical limitations and file size concerns. Please export them separately."
           }
         }
       }
@@ -1170,7 +1225,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Successfully dumped the Old Pizza Refugee Data file."
+            "value" : "The file is successfully dumped."
           }
         }
       }
@@ -1250,7 +1305,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Only widgets are available for iOS 16.2 & macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Locale Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14."
+            "value" : "Only widgets are available for iOS 16.2 & macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Local Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14."
           }
         }
       }
@@ -1315,6 +1370,46 @@
         }
       }
     },
+    "refugee.menu.export.all" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export All Contents as Refugee Plist Package"
+          }
+        }
+      }
+    },
+    "refugee.menu.export.gachaRecordsAsUIGFv4" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Gacha Records (UIGFv4 JSON)"
+          }
+        }
+      }
+    },
+    "refugee.menu.export.profiles" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Profiles (JSON)"
+          }
+        }
+      }
+    },
+    "refugee.menu.export.wallpapers" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export User Wallpapers (JSON)"
+          }
+        }
+      }
+    },
     "refugee.navTitle.noticingEndOfMaintenance" : {
       "localizations" : {
         "en" : {
@@ -1325,12 +1420,42 @@
         }
       }
     },
-    "refugee.noDataExportable" : {
+    "refugee.noDataExportable.iOS16AndEarlier" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No local data exportable for now. This view awaits for iCloud background data updates, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later."
+            "value" : "No local data exportable for now. This view awaits for possibly available iCloud background data updates, unless there's no such data, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later."
+          }
+        }
+      }
+    },
+    "refugee.noDataExportable.refugeeMigratingToLatteHelper" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No local data exportable for now. This view awaits for possibly available iCloud background data updates, unless there's no such data."
+          }
+        }
+      }
+    },
+    "setting.display.reduceUIGlassDecorations" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reduce Glass Decorations"
+          }
+        }
+      }
+    },
+    "setting.display.reduceUIGlassDecorations.explain.intelMac" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This toggle is always active and locked on Intel Macs due to hardware performance constraints."
           }
         }
       }
@@ -1413,6 +1538,26 @@
         }
       }
     },
+    "settings.display.performanceSettings.sectionFooter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Some of these settings can be overridden by system accessibility settings."
+          }
+        }
+      }
+    },
+    "settings.display.performanceSettings.sectionHeader" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance Settings"
+          }
+        }
+      }
+    },
     "settings.display.timeZone4GI.description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1475,12 +1620,12 @@
         }
       }
     },
-    "settings.notification.dateTimePicker.macCatalystNotice" : {
+    "settings.notification.dateTimePicker.macCatalystOrIPAOnMacNotice" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps. Users can only select the desired input field and type it directly on physical keyboard."
+            "value" : "⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps or IPA-on-mac apps. Users can only select the desired input field and type it directly on physical keyboard."
           }
         }
       }

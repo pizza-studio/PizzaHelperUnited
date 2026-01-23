@@ -782,6 +782,16 @@
         }
       }
     },
+    "oobe.button.next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
+    },
     "oobe.feature.backupYourData.detail" : {
       "localizations" : {
         "en" : {
@@ -858,6 +868,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notifications"
+          }
+        }
+      }
+    },
+    "oobe.feature.refugeeFromThePizzaHelper.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your refugee plist file needs to be imported twice: first into the Local Profile Manager, and then into the Gacha Record Manager. These two modules will parse their respective data from the file."
+          }
+        }
+      }
+    },
+    "oobe.feature.refugeeFromThePizzaHelper.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refugee from The Pizza Helper?"
           }
         }
       }

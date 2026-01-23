@@ -489,6 +489,21 @@ Touchez n'importe où pour fermer.</target>
         <target state="translated">Les mises à jour de la base de données sont préalablement vérifiées à :</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault" xml:space="preserve">
+        <source>Reset EnkaDB Cache to Factory Default</source>
+        <target state="translated">Réinitialiser le cache EnkaDB aux paramètres d'usine</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmButton" xml:space="preserve">
+        <source>Reset</source>
+        <target state="translated">Réinitialiser</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmationTitle" xml:space="preserve">
+        <source>Are you sure you want to reset the EnkaDB cache?</source>
+        <target state="translated">Êtes-vous sûr de vouloir réinitialiser le cache EnkaDB ?</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.display.enkaStatus.sectionTitle" xml:space="preserve">
         <source>On-Device Enka Database Status</source>
         <target state="translated">Statut de la base de données Enka sur l'appareil</target>
@@ -1984,6 +1999,11 @@ Illustrateur d'icônes de l'application, The Pizza Helper (v5.0)</target>
         <target state="translated">Obsolète, maintenant intégré dans cette application.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="oobe.button.next" xml:space="preserve">
+        <source>Next</source>
+        <target state="translated">Suivant</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="oobe.feature.backupYourData.detail" xml:space="preserve">
         <source>FOSS never means eternal availability / reliability. Be responsible to your data by proactively exporting your gacha records as UIGF files for backup.</source>
         <target state="translated">FOSS ne signifie jamais une disponibilité / fiabilité éternelle. Soyez responsable de vos données en exportant de manière proactive vos enregistrements gacha sous forme de fichiers UIGF pour la sauvegarde.</target>
@@ -2022,6 +2042,16 @@ Illustrateur d'icônes de l'application, The Pizza Helper (v5.0)</target>
       <trans-unit id="oobe.feature.notification.title" xml:space="preserve">
         <source>Notifications</source>
         <target state="translated">Notifications</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.refugeeFromThePizzaHelper.detail" xml:space="preserve">
+        <source>Your refugee plist file needs to be imported twice: first into the Local Profile Manager, and then into the Gacha Record Manager. These two modules will parse their respective data from the file.</source>
+        <target state="translated">Votre fichier plist refugee doit être importé deux fois : d'abord dans le Gestionnaire de profils locaux, puis dans le Gestionnaire d'enregistrements Gacha. Ces deux modules extrairont leurs types de données respectifs du fichier.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="oobe.feature.refugeeFromThePizzaHelper.title" xml:space="preserve">
+        <source>Refugee from The Pizza Helper?</source>
+        <target state="translated">Refugee depuis The Pizza Helper ?</target>
         <note/>
       </trans-unit>
       <trans-unit id="oobe.feature.widget.detail:%@" xml:space="preserve">
@@ -2720,13 +2750,38 @@ Le lien ci-dessus, s'il est cliqué directement, appliquera automatiquement l'ag
         <note/>
       </trans-unit>
       <trans-unit id="refugee.export.fileSavedTo:" xml:space="preserve">
-        <source>Successfully dumped the Old Pizza Refugee Data file to:</source>
-        <target state="translated">Fichier de données Old Pizza Refugee exporté avec succès vers :</target>
+        <source>File successfully dumped to:</source>
+        <target state="translated">Fichier exporté avec succès vers :</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.fileType.profiles" xml:space="preserve">
+        <source>📁 File Type: Profiles Package (JSON)</source>
+        <target state="translated">📁 Type de fichier : Package de profils (JSON)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.fileType.refugee" xml:space="preserve">
+        <source>📁 File Type: Old Pizza Refugee Data (Plist)</source>
+        <target state="translated">📁 Type de fichier : Données Old Pizza Refugee (Plist)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.fileType.wallpapers" xml:space="preserve">
+        <source>📁 File Type: User Wallpapers (JSON)</source>
+        <target state="translated">📁 Type de fichier : Fonds d'écran personnalisés (JSON)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.refugeeFileHowToUse" xml:space="preserve">
+        <source>ℹ️ On the target device you are expected to import this file in both the Local Profile Manager and the Gacha Record Manager. These two feature modules extract different types of data from the refugee plist file.</source>
+        <target state="translated">ℹ️ Sur l'appareil cible, vous devez importer ce fichier à la fois dans le Gestionnaire de profils locaux et le Gestionnaire d'enregistrements Gacha. Ces deux modules de fonctionnalités extraient différents types de données du fichier plist refugee.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.export.refugeeFileSpecialNotice4iOS17" xml:space="preserve">
+        <source>⚠️ This refugee plist file does not include user wallpapers due to technical limitations and file size concerns. Please export them separately.</source>
+        <target state="translated">⚠️ Ce fichier plist refugee n'inclut pas les fonds d'écran utilisateur en raison de limitations techniques et de préoccupations concernant la taille du fichier. Veuillez les exporter séparément.</target>
         <note/>
       </trans-unit>
       <trans-unit id="refugee.export.succeededInSavingToFile" xml:space="preserve">
-        <source>Successfully dumped the Old Pizza Refugee Data file.</source>
-        <target state="translated">Le fichier de données Old Pizza Refugee a été exporté avec succès.</target>
+        <source>The file is successfully dumped.</source>
+        <target state="translated">Le fichier a été exporté avec succès.</target>
         <note/>
       </trans-unit>
       <trans-unit id="refugee.exportableCount.gachaEntries" xml:space="preserve">
@@ -2793,7 +2848,7 @@ Le successeur de cette application sera disponible sur l’App Store sous le nou
         <note/>
       </trans-unit>
       <trans-unit id="refugee.limitedServiceCategory4iOS16.footer" xml:space="preserve">
-        <source>Only widgets are available for iOS 16.2 &amp; macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Locale Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14.</source>
+        <source>Only widgets are available for iOS 16.2 &amp; macOS 13. Other features still require iOS 17 / macOS 14 or newer. If you see anything buggy while navigating in the Local Profile Manager, it’s due to those SwiftUI-related bugs plagued in iOS 16 / macOS 13 and your only solution is to upgrade to iOS 17 / macOS 14.</source>
         <target state="translated">Seuls les widgets sont disponibles pour iOS 16.2 et macOS 13. Les autres fonctionnalités nécessitent toujours iOS 17 / macOS 14 ou version ultérieure. Si vous constatez des bugs lors de la navigation dans le gestionnaire de profils locaux, cela est dû à des bugs liés à SwiftUI dans iOS 16 / macOS 13 et la seule solution est de passer à iOS 17 / macOS 14.</target>
         <note/>
       </trans-unit>
@@ -2827,14 +2882,49 @@ Le successeur de cette application sera disponible sur l’App Store sous le nou
         <target state="translated">Appuyez pour démarrer</target>
         <note/>
       </trans-unit>
+      <trans-unit id="refugee.menu.export.all" xml:space="preserve">
+        <source>Export All Contents as Refugee Plist Package</source>
+        <target state="translated">Exporter tout le contenu en tant que package Refugee Plist</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.menu.export.gachaRecordsAsUIGFv4" xml:space="preserve">
+        <source>Export Gacha Records (UIGFv4 JSON)</source>
+        <target state="translated">Exporter les enregistrements Gacha (UIGFv4 JSON)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.menu.export.profiles" xml:space="preserve">
+        <source>Export Profiles (JSON)</source>
+        <target state="translated">Exporter les profils (JSON)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.menu.export.wallpapers" xml:space="preserve">
+        <source>Export User Wallpapers (JSON)</source>
+        <target state="translated">Exporter les fonds d'écran personnalisés (JSON)</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="refugee.navTitle.noticingEndOfMaintenance" xml:space="preserve">
         <source>End-of-Maintenance</source>
         <target state="translated">Fin de Maintenance</target>
         <note/>
       </trans-unit>
-      <trans-unit id="refugee.noDataExportable" xml:space="preserve">
-        <source>No local data exportable for now. This view awaits for iCloud background data updates, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later.</source>
-        <target state="translated">Aucune donnée locale exportable pour le moment. Cette vue attend les mises à jour des données iCloud en arrière-plan, mais toutes les données iCloud peuvent être héritées via iCloud par cette application sous iOS 17 ou version ultérieure.</target>
+      <trans-unit id="refugee.noDataExportable.iOS16AndEarlier" xml:space="preserve">
+        <source>No local data exportable for now. This view awaits for possibly available iCloud background data updates, unless there's no such data, but all iCloud data can be inheritable via iCloud by this app running on iOS 17 or later.</source>
+        <target state="translated">Aucune donnée locale exportable pour le moment. Cette vue attend les mises à jour des données iCloud en arrière-plan potentiellement disponibles, à moins qu'il n'y ait pas de telles données, mais toutes les données iCloud peuvent être héritées via iCloud par cette application sous iOS 17 ou version ultérieure.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="refugee.noDataExportable.refugeeMigratingToLatteHelper" xml:space="preserve">
+        <source>No local data exportable for now. This view awaits for possibly available iCloud background data updates, unless there's no such data.</source>
+        <target state="translated">Aucune donnée locale exportable pour le moment. Cette vue attend les mises à jour des données iCloud en arrière-plan potentiellement disponibles, à moins qu'il n'y ait pas de telles données.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="setting.display.reduceUIGlassDecorations" xml:space="preserve">
+        <source>Reduce Glass Decorations</source>
+        <target state="translated">Réduire les décorations en verre</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="setting.display.reduceUIGlassDecorations.explain.intelMac" xml:space="preserve">
+        <source>This toggle is always active and locked on Intel Macs due to hardware performance constraints.</source>
+        <target state="translated">Ce réglage est toujours activé et verrouillé sur les Mac Intel en raison de contraintes de performances matérielles.</target>
         <note/>
       </trans-unit>
       <trans-unit id="setting.display.restoreTabOnLaunching" xml:space="preserve">
@@ -2872,6 +2962,16 @@ Le successeur de cette application sera disponible sur l’App Store sous le nou
         <target state="translated">Paramètres</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.display.performanceSettings.sectionFooter" xml:space="preserve">
+        <source>⚠︎ Some of these settings can be overridden by system accessibility settings.</source>
+        <target state="translated">⚠︎ Certaines de ces options peuvent être remplacées par les paramètres d'accessibilité du système.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.performanceSettings.sectionHeader" xml:space="preserve">
+        <source>Performance Settings</source>
+        <target state="translated">Paramètres de Performances</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.display.timeZone4GI.description" xml:space="preserve">
         <source>The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Daily Material, Official In-Game Events, etc.</source>
         <target state="translated">Les paramètres de fuseau horaire dans cette section servent à afficher au moins les informations suivantes (de Genshin Impact) : matériaux quotidiens, événements officiels en jeu, etc.</target>
@@ -2902,9 +3002,9 @@ Le successeur de cette application sera disponible sur l’App Store sous le nou
         <target state="translated">Activer</target>
         <note/>
       </trans-unit>
-      <trans-unit id="settings.notification.dateTimePicker.macCatalystNotice" xml:space="preserve">
-        <source>⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps. Users can only select the desired input field and type it directly on physical keyboard.</source>
-        <target state="translated">⚠️ En raison d'une limitation de UIKit-to-AppKit, la séléction de date sur macOS n'affiche pas le panneau de saisie dans les applications macCatalyst. Les utilisateurs ne peuvent sélectionner que le champ de saisie souhaité et le taper directement sur le clavier physique.</target>
+      <trans-unit id="settings.notification.dateTimePicker.macCatalystOrIPAOnMacNotice" xml:space="preserve">
+        <source>⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps or IPA-on-mac apps. Users can only select the desired input field and type it directly on physical keyboard.</source>
+        <target state="translated">⚠️ En raison d'une limitation de UIKit-to-AppKit, la séléction de date sur macOS n'affiche pas le panneau de saisie dans les applications macCatalyst ou IPA-on-mac. Les utilisateurs ne peuvent sélectionner que le champ de saisie souhaité et le taper directement sur le clavier physique.</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.expedition.allow" xml:space="preserve">
@@ -4906,6 +5006,11 @@ sont disponibles le dimanche</target>
       <trans-unit id="wpKit.assign.backgrounds4LiveActivity" xml:space="preserve">
         <source>Assign as Live Activity Background</source>
         <target state="translated">Définir comme arrière-plan de l'activité en direct</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="wpKit.gamePicker.Latte.shortName" xml:space="preserve">
+        <source>LT</source>
+        <target state="translated">LT</target>
         <note/>
       </trans-unit>
       <trans-unit id="wpKit.gamePicker.Pizza.shortName" xml:space="preserve">
