@@ -25,6 +25,8 @@ extension HoYo {
 
         // MARK: Public
 
+        public typealias DataType = TreasuresLightwardType
+
         public typealias ViewType = BattleReportView4HSR
 
         public var forgottenHall: ForgottenHallData
@@ -37,12 +39,14 @@ extension HoYo {
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4HSR {
-    public enum TreasuresLightwardType: String, Identifiable, CaseIterable, AbleToCodeSendHash {
+    public enum TreasuresLightwardType: String, Identifiable, CaseIterable, AbleToCodeSendHash, HoYoBattleReportType {
         case forgottenHall
         case pureFiction
         case apocalypticShadow
 
         // MARK: Public
+
+        public typealias BattleReportData = HoYo.BattleReport4HSR
 
         public var id: String { rawValue }
 

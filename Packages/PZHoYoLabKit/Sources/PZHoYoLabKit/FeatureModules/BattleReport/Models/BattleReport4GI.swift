@@ -23,6 +23,8 @@ extension HoYo {
 
         // MARK: Public
 
+        public typealias DataType = TreasuresStarwardType
+
         public typealias ViewType = BattleReportView4GI
 
         public var spiralAbyss: SpiralAbyssData
@@ -34,11 +36,13 @@ extension HoYo {
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4GI {
-    public enum TreasuresStarwardType: String, Identifiable, CaseIterable, AbleToCodeSendHash {
+    public enum TreasuresStarwardType: String, Identifiable, CaseIterable, AbleToCodeSendHash, HoYoBattleReportType {
         case stygianOnslaught
         case spiralAbyss
 
         // MARK: Public
+
+        public typealias BattleReportData = HoYo.BattleReport4GI
 
         public var id: String { rawValue }
 
