@@ -30,7 +30,7 @@ struct RealTimeNoteCardView: View {
             case let .failure(error):
                 DailyNoteCardErrorView(profile: theVM.profile, error: error)
             case .progress:
-                ProgressView()
+                WinUI3ProgressRing()
             }
         } header: {
             HStack {

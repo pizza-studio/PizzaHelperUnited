@@ -84,7 +84,7 @@ public struct GachaProfileManagementView: View {
             .toolbar {
                 if theVM.taskState == .busy {
                     ToolbarItem(placement: .primaryAction) {
-                        ProgressView()
+                        WinUI3ProgressRing()
                     }
                 }
             }

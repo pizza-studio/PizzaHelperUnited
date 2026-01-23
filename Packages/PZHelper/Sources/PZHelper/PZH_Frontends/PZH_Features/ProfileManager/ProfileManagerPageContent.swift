@@ -36,7 +36,7 @@ struct ProfileManagerPageContent: View {
                             .frame(width: 128, height: 128)
                             .background(.regularMaterial)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
-                            .overlay { ProgressView().frame(width: 100, height: 100) }
+                            .overlay { WinUI3ProgressRing().frame(width: 100, height: 100) }
                     }
                 }
         }

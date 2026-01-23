@@ -172,7 +172,7 @@ struct GetCookieQRCodeView: View {
                     if let qrCodeAndTicket = viewModel.qrCodeAndTicket, let qrImage = qrImage {
                         qrImageView(qrImage)
                         if case .manually = viewModel.scanningConfirmationStatus {
-                            ProgressView()
+                            WinUI3ProgressRing()
                         } else {
                             Button("profileMgr.account.qr_code_login.check_scanned".i18nPZHelper) {
                                 Task {
@@ -187,7 +187,7 @@ struct GetCookieQRCodeView: View {
                             }
                         }
                     } else {
-                        ProgressView()
+                        WinUI3ProgressRing()
                     }
                     if shouldShowRetryButton {
                         Button("profileMgr.account.qr_code_login.regenerate_qrcode".i18nPZHelper) {

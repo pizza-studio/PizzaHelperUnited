@@ -489,7 +489,7 @@ extension GachaFetchView4Game {
                 Label {
                     Text("gachaKit.getRecord.inProgress.obtaining", bundle: .currentSPM)
                 } icon: {
-                    ProgressView().id(UUID())
+                    WinUI3ProgressRing().id(UUID())
                 }
                 Button {
                     cancel()
@@ -527,7 +527,7 @@ extension GachaFetchView4Game {
                 Label {
                     Text("gachaKit.getRecord.gotSome.obtaining", bundle: .currentSPM)
                 } icon: {
-                    ProgressView().id(UUID())
+                    WinUI3ProgressRing().id(UUID())
                 }
                 Button {
                     cancel()

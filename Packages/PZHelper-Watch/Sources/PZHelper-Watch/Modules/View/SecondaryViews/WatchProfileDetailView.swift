@@ -209,7 +209,7 @@ private struct WatchEachExpeditionView: View {
                         .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
                 }
             }, placeholder: {
-                ProgressView()
+                WinUI3ProgressRing()
             })
             .frame(width: 25, height: 25)
             VStack(alignment: .leading) {

@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
 import SwiftUI
 
 // MARK: - GachaExchangeView
@@ -51,7 +52,7 @@ public struct GachaExchangeView: View {
             .toolbar {
                 if theVM.taskState == .busy {
                     ToolbarItem(placement: .primaryAction) {
-                        ProgressView()
+                        WinUI3ProgressRing()
                     }
                 }
                 if !disableImport, !theVM.allGPIDs.isEmpty {

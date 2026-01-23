@@ -25,7 +25,7 @@ extension OnlineAssetSuppliable {
                 imgObj.resizable()
             }
         } placeholder: {
-            ProgressView()
+            WinUI3ProgressRing()
         }
     }
 }
