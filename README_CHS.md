@@ -3,7 +3,7 @@
 > 「披萨小助手」在 Lava 的开发者会员账号下无法再定期更新了，于是这个 App 更名为「拿铁小助手」由另一位开发者
 发布到 iOS / macOS App Store。
 
-![](./PromotionMaterials/Images/ThePizzaHelper-ui-montage.png)
+![](./PromotionMaterials/Images/TheLatteHelper-ui-montage.png)
 
 这是 **披萨小助手 / 拿铁小助手** 的新仓库（从版本 5 开始）。
 
