@@ -2,7 +2,7 @@
 
 > `The Pizza Helper` was discontinued due to inconveniencies of releasing regular updates under Lava's Apple Developer account, hence the rebranding to **The Latte Helper**.
 
-![](./PromotionMaterials/Images/ThePizzaHelper-ui-montage.png)
+![](./PromotionMaterials/Images/TheLatteHelper-ui-montage.png)
 
 This is the new repository for **The Latte Helper** (starting from version 5).
 
