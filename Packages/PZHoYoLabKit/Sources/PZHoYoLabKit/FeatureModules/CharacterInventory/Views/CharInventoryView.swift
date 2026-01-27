@@ -278,12 +278,12 @@ extension CharacterInventoryView {
             game: Pizza.SupportedGame,
             avatar: SummaryPtr,
             condensed: Bool,
-            minScaleFactor: Double = 0.5
+            truncateName: Bool = false
         ) {
             self.condensed = condensed
             self.summary = avatar
             self.game = game
-            self.minScaleFactor = Swift.max(minScaleFactor, 0.3)
+            self.truncateName = truncateName
         }
 
         // MARK: Public
@@ -324,11 +324,16 @@ extension CharacterInventoryView {
                     VStack(alignment: .leading, spacing: 3) {
                         HStack(alignment: .lastTextBaseline, spacing: 5) {
                             Text(charNameStr)
-                                .font(.system(size: 20)).bold().fontWidth(.compressed)
+                                .font(
+                                    .system(size: truncateName ? 18 : 20)
+                                )
+                                .fontWidth(.compressed)
+                                .fontWeight(truncateName ? .regular : .bold)
                                 .fixedSize(horizontal: true, vertical: false)
-                                .minimumScaleFactor(minScaleFactor)
+                                .minimumScaleFactor(truncateName ? 1 : 0.5)
                                 .lineLimit(1)
                                 .layoutPriority(1)
+                                .frame(width: truncateName ? 180 : nil, alignment: .leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         HStack(spacing: 0) {
@@ -382,7 +387,7 @@ extension CharacterInventoryView {
 
         private let summary: CharacterInventoryView.SummaryPtr
         private let game: Pizza.SupportedGame
-        private let minScaleFactor: Double
+        private let truncateName: Bool
 
         @Default(.useAlternativeCharacterNames) private var useRealName: Bool
 
@@ -505,7 +510,7 @@ extension CharacterInventoryView {
                                     game: profile.game,
                                     avatar: avatar,
                                     condensed: false,
-                                    minScaleFactor: 1
+                                    truncateName: true
                                 )
                             }
                         }
