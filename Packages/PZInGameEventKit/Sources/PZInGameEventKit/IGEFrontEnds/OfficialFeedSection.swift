@@ -95,7 +95,27 @@ extension OfficialFeed {
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension OfficialFeed.OfficialFeedSection {
     private struct MainComponent<T: View, H: View>: View {
+        // MARK: Lifecycle
+
+        public init(
+            eventContents: [EventModel],
+            isFeedSheetShown: Binding<Bool>,
+            @ViewBuilder peripheralViews: @escaping () -> T,
+            @ViewBuilder sectionHeader: @escaping () -> H
+        ) {
+            self._isFeedSheetShown = isFeedSheetShown
+            self.eventContents = eventContents
+            self.peripheralViews = peripheralViews
+            self.sectionHeader = sectionHeader
+        }
+
         // MARK: Public
+
+        @Binding public var isFeedSheetShown: Bool
+
+        public let eventContents: [EventModel]
+        public let peripheralViews: () -> T
+        public let sectionHeader: () -> H
 
         public var body: some View {
             Section {
@@ -135,7 +155,7 @@ extension OfficialFeed.OfficialFeedSection {
                     .listRowMaterialBackground()
                     .sheet(isPresented: $isFeedSheetShown) {
                         NavigationStack {
-                            OfficialFeed.OfficialFeedAllListView(eventContents: eventContents)
+                            OfficialFeed.OfficialFeedAllListView(eventContents: filteredEventContents)
                                 .toolbar {
                                     ToolbarItem(placement: .cancellationAction) {
                                         Button("sys.close".i18nBaseKit) {
@@ -160,7 +180,7 @@ extension OfficialFeed.OfficialFeedSection {
         typealias IntervalDate = Date.IntervalDate
 
         var validEventContents: [EventModel] {
-            eventContents.filter {
+            filteredEventContents.filter {
                 ($0.endAtTime.day ?? 0) >= 0
                     && ($0.endAtTime.hour ?? 0) >= 0
                     && ($0.endAtTime.minute ?? 0) >= 0
@@ -170,11 +190,10 @@ extension OfficialFeed.OfficialFeedSection {
         // MARK: Private
 
         @Environment(\.colorScheme) private var colorScheme
+
+        @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
         @Default(.defaultServer) private var defaultServer4GI: String
-        public let eventContents: [EventModel]
-        @Binding public var isFeedSheetShown: Bool
-        public let peripheralViews: () -> T
-        public let sectionHeader: () -> H
+        @Default(.filterNonRegisteredGamesFromEventFeed) private var filterNonRegisteredGamesFromEventFeed: Bool
 
         private var viewBackgroundColor: UIColor {
             colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
@@ -182,6 +201,18 @@ extension OfficialFeed.OfficialFeedSection {
 
         private var sectionBackgroundColor: UIColor {
             colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
+        }
+
+        private var filteredEventContents: [EventModel] {
+            let allGamesToKept: Set<Pizza.SupportedGame>
+            if filterNonRegisteredGamesFromEventFeed, !pzProfiles.isEmpty {
+                allGamesToKept = .init(pzProfiles.values.map(\.game))
+            } else {
+                allGamesToKept = .init(Pizza.SupportedGame.allCases)
+            }
+            return eventContents.filter {
+                ($0.endAtTime.second ?? 0 >= 0) && allGamesToKept.contains($0.game)
+            }
         }
     }
 }

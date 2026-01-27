@@ -17,4 +17,10 @@ extension Defaults.Keys {
         default: [:],
         suite: .baseSuite
     )
+
+    public static let filterNonRegisteredGamesFromEventFeed = Key<Bool>(
+        "filterNonRegisteredGamesFromEventFeed",
+        default: false,
+        suite: .baseSuite
+    )
 }
