@@ -73,6 +73,7 @@ public struct AvatarStatCollectionTabView: View {
             // TabView 以 EnkaID 为依据。
             ForEach(summarizedAvatars) { avatar in
                 framedCoreView(avatar)
+                    .tag(avatar.id)
             }
         }
         #if os(iOS) || targetEnvironment(macCatalyst)
