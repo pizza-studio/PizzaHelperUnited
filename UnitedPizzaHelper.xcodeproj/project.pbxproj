@@ -1428,7 +1428,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThePizzaHelper/ThePizzaHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePizzaHelper/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1464,7 +1464,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
 				PRODUCT_NAME = "Pizza Helper";
 				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
@@ -1490,7 +1490,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThePizzaHelper/ThePizzaHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePizzaHelper/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1520,7 +1520,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
 				PRODUCT_NAME = "Pizza Helper";
 				SDKROOT = auto;
@@ -1540,7 +1540,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchExtension/PizzaWatchAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WatchExtension;
@@ -1552,7 +1552,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1571,7 +1571,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchExtension/PizzaWatchAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WatchExtension;
@@ -1583,7 +1583,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1603,7 +1603,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchApp/PizzaWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1616,7 +1616,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1635,7 +1635,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchApp/PizzaWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1648,7 +1648,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1668,7 +1668,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchApp/LatteWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_PREVIEWS = NO;
@@ -1682,7 +1682,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.TheLatteHelper.WatchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1702,7 +1702,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchApp/LatteWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_PREVIEWS = NO;
@@ -1716,7 +1716,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.TheLatteHelper.WatchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1737,7 +1737,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchExtension/LatteWatchAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchExtension/Info-TheLatteWatchAppExtension.plist";
@@ -1750,7 +1750,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.TheLatteHelper.WatchApp.watchkitextension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1770,7 +1770,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchExtension/LatteWatchAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchExtension/Info-TheLatteWatchAppExtension.plist";
@@ -1783,7 +1783,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.TheLatteHelper.WatchApp.watchkitextension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1804,7 +1804,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/TheLatteWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -1819,7 +1819,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.TheLatteHelper.StaminaWidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1843,7 +1843,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/TheLatteWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -1858,7 +1858,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.TheLatteHelper.StaminaWidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1883,7 +1883,7 @@
 				CODE_SIGN_ENTITLEMENTS = TheLatteHelper/TheLatteHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_ASSET_PATHS = "\"TheLatteHelper/Preview Content\"";
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_APP_SANDBOX = YES;
@@ -1914,7 +1914,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.TheLatteHelper;
 				PRODUCT_NAME = "Latte Helper";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1936,7 +1936,7 @@
 				CODE_SIGN_ENTITLEMENTS = TheLatteHelper/TheLatteHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_ASSET_PATHS = "\"TheLatteHelper/Preview Content\"";
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_APP_SANDBOX = YES;
@@ -1967,7 +1967,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.TheLatteHelper;
 				PRODUCT_NAME = "Latte Helper";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1987,7 +1987,7 @@
 				CODE_SIGN_ENTITLEMENTS = INIntents4iOS16/INIntents4iOS16.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -2001,7 +2001,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.INIntents4iOS16;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2022,7 +2022,7 @@
 				CODE_SIGN_ENTITLEMENTS = INIntents4iOS16/INIntents4iOS16.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -2036,7 +2036,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.INIntents4iOS16;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2058,7 +2058,7 @@
 				CODE_SIGN_ENTITLEMENTS = "INIntents4iOS16/INIntents4iOS16-Latte.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -2072,7 +2072,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.TheLatteHelper.INIntents4iOS16;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2093,7 +2093,7 @@
 				CODE_SIGN_ENTITLEMENTS = "INIntents4iOS16/INIntents4iOS16-Latte.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -2107,7 +2107,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.TheLatteHelper.INIntents4iOS16;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2131,7 +2131,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/ThePizzaWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2145,7 +2145,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2168,7 +2168,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/ThePizzaWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2182,7 +2182,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2339,7 +2339,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelperEngine/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -2365,7 +2365,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
 				PRODUCT_NAME = "United Pizza Engine";
 				REGISTER_APP_GROUPS = YES;
@@ -2386,7 +2386,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6183;
+				CURRENT_PROJECT_VERSION = 6195;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelperEngine/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -2412,7 +2412,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 5.7.2;
+				MARKETING_VERSION = 5.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
 				PRODUCT_NAME = "United Pizza Engine";
 				REGISTER_APP_GROUPS = YES;
