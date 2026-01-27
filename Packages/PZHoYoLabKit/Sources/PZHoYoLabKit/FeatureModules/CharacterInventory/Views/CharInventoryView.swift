@@ -102,7 +102,7 @@ public struct CharacterInventoryView: View {
                         }
                     }
                 } label: {
-                    Image(systemSymbol: .arrowLeftArrowRightCircle)
+                    Image(systemSymbol: .line3HorizontalDecreaseCircle)
                 }
             }
         }
