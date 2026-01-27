@@ -130,6 +130,15 @@ public struct CharacterInventoryView: View {
                                     simpleTaptic(type: .medium)
                                 }
                         }
+                    } header: {
+                        HStack {
+                            Color(cgColor: currentElement.themeColor)
+                                .frame(width: 8, height: 8)
+                                .clipShape(.circle)
+                            Text(currentElement.localizedName)
+                                .multilineTextAlignment(.leading)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                     }
                     .textCase(.none)
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
