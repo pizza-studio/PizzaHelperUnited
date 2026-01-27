@@ -266,11 +266,13 @@ extension CharacterInventoryView {
         public init(
             game: Pizza.SupportedGame,
             avatar: SummaryPtr,
-            condensed: Bool
+            condensed: Bool,
+            minScaleFactor: Double = 0.5
         ) {
             self.condensed = condensed
             self.summary = avatar
             self.game = game
+            self.minScaleFactor = Swift.max(minScaleFactor, 0.3)
         }
 
         // MARK: Public
@@ -313,9 +315,10 @@ extension CharacterInventoryView {
                             Text(charNameStr)
                                 .font(.system(size: 20)).bold().fontWidth(.compressed)
                                 .fixedSize(horizontal: true, vertical: false)
-                                .minimumScaleFactor(0.5)
+                                .minimumScaleFactor(minScaleFactor)
                                 .lineLimit(1)
-                            Spacer()
+                                .layoutPriority(1)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         HStack(spacing: 0) {
                             ForEach(avatar.artifacts, id: \.id) { artifact in
@@ -336,9 +339,13 @@ extension CharacterInventoryView {
                                         .frame(width: 20, height: 20)
                                 }
                             }
-                            Spacer().frame(height: 20)
+                            if avatar.artifacts.isEmpty {
+                                Spacer().frame(height: 20)
+                            }
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 if !condensed, let weapon = avatar.equippedWeapon {
                     ZStack(alignment: .bottomLeading) {
@@ -364,6 +371,7 @@ extension CharacterInventoryView {
 
         private let summary: CharacterInventoryView.SummaryPtr
         private let game: Pizza.SupportedGame
+        private let minScaleFactor: Double
 
         @Default(.useAlternativeCharacterNames) private var useRealName: Bool
 
@@ -452,5 +460,79 @@ extension CharacterInventoryView {
             charGold: charGold,
             weaponGold: weaponGold
         )
+    }
+}
+
+// MARK: CharacterInventoryView.ShareAsMasterPageView
+
+@available(iOS 17.0, macCatalyst 17.0, *)
+extension CharacterInventoryView {
+    private struct ShareAsMasterPageView: View {
+        // MARK: Lifecycle
+
+        public init(profile: PZProfileSendable, showingAvatars: [CharacterInventoryView.SummaryPtr]) {
+            self.profile = profile
+            self.showingAvatars = showingAvatars
+        }
+
+        // MARK: Public
+
+        public var body: some View {
+            VStack(spacing: 0) {
+                // Title
+                HStack(alignment: .lastTextBaseline) {
+                    Text(verbatim: profile.name).font(.title).bold()
+                    Text(verbatim: profile.uid).font(.title3)
+                }
+                .padding(.bottom, 9)
+                // 正文
+                HStack(alignment: .top) {
+                    ForEach(eachColumnAvatars, id: \.first!.id) { columnAvatars in
+                        let view = VStack(alignment: .leading) {
+                            ForEach(columnAvatars, id: \.id) { avatar in
+                                CharacterInventoryView.AvatarListItem(
+                                    game: profile.game,
+                                    avatar: avatar,
+                                    condensed: false,
+                                    minScaleFactor: 1
+                                )
+                            }
+                        }
+                        .frame(width: 300)
+                        if columnAvatars != eachColumnAvatars.last {
+                            view.padding(.trailing)
+                        } else {
+                            view
+                        }
+                    }
+                }
+                HStack {
+                    Spacer()
+                    Image("AppIcon")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                    Text(verbatim: Pizza.appTitleLocalizedFull).bold().font(.footnote)
+                }
+                .padding(.top, 2)
+            }
+            .padding()
+            .background { Color.black }
+            .environment(\.colorScheme, .dark)
+        }
+
+        // MARK: Private
+
+        private let chunkSize = 16 // 每纵列的角色数
+        private let profile: PZProfileSendable
+        private let showingAvatars: [CharacterInventoryView.SummaryPtr]
+
+        private var eachColumnAvatars: [[CharacterInventoryView.SummaryPtr]] {
+            stride(from: 0, to: showingAvatars.count, by: chunkSize).map {
+                let max = min($0 + chunkSize, showingAvatars.count)
+                return showingAvatars[$0 ..< max].map(\.self)
+            }
+        }
     }
 }
