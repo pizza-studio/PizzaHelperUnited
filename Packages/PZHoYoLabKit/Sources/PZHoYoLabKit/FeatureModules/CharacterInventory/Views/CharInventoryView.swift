@@ -63,6 +63,17 @@ public struct CharacterInventoryView: View {
                     Text(characterStats, bundle: .currentSPM) + Text(verbatim: " // ") +
                         Text(goldStats, bundle: .currentSPM)
                 }.font(.footnote)
+                TakeViewShotButton {
+                    ShareAsMasterPageView(
+                        profile: profile,
+                        showingAvatars: filterSummaries(
+                            type: allAvatarListDisplayType,
+                            from: summaries
+                        )
+                    )
+                } subLabel: {
+                    Text("hylKit.inventoryView.shareInventoryListAsImage.buttonTitle", bundle: .currentSPM)
+                }
             }.listRowMaterialBackground()
             Group {
                 if expanded {
