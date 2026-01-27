@@ -4,6 +4,7 @@
 
 #if !os(watchOS)
 
+import PZAccountKit
 import PZBaseKit
 import SwiftUI
 import WallpaperKit
@@ -42,25 +43,35 @@ extension OfficialFeed {
             colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
         }
 
+        var filteredEventContents: [EventModel] {
+            // 此处不过滤了，因为在 OfficialFeedSection 的 MainComponent 已经有做过过滤处理。
+            // let allGamesToKept: Set<Pizza.SupportedGame>
+            // if filterNonRegisteredGamesFromEventFeed, !pzProfiles.isEmpty {
+            //     allGamesToKept = .init(pzProfiles.values.map(\.game))
+            // } else {
+            //     allGamesToKept = .init(Pizza.SupportedGame.allCases)
+            // }
+            eventContents.filter {
+                $0.endAtTime.second ?? 0 >= 0 // && allGamesToKept.contains($0.game)
+            }
+        }
+
         var body: some View {
             ScrollView {
                 VStack {
-                    if eventContents.filter({
-                        $0.endAtTime.second ?? 0 >= 0
-                    }).count <= 0 {
+                    let contentsToHandle = filteredEventContents
+                    if contentsToHandle.isEmpty {
                         Spacer(minLength: 50)
                         Text("igev.gameEvents.noCurrentEventInfo", bundle: .currentSPM)
                             .padding()
                     }
-                    ForEach(eventContents, id: \.id) { content in
-                        if content.endAtTime.second ?? 0 >= 0 {
-                            NavigationLink(
-                                destination: eventDetail(event: content)
-                            ) {
-                                cardView(content: content)
-                            }
-                            .buttonStyle(.borderless)
+                    ForEach(contentsToHandle, id: \.id) { content in
+                        NavigationLink(
+                            destination: eventDetail(event: content)
+                        ) {
+                            cardView(content: content)
                         }
+                        .buttonStyle(.borderless)
                     }
                 }
                 .id(defaultServer4GI)
@@ -70,6 +81,20 @@ extension OfficialFeed {
             .navigationTitle(Self.navTitle)
             .navBarTitleDisplayMode(.inline)
             .background(Color(cgColor: viewBackgroundColor.cgColor))
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Menu {
+                        Toggle(isOn: $filterNonRegisteredGamesFromEventFeed) {
+                            Text(
+                                "igev.gameEvents.toggle.filterNonRegisteredGamesFromEventFeed",
+                                bundle: .currentSPM
+                            )
+                        }
+                    } label: {
+                        Image(systemSymbol: .filemenuAndSelection)
+                    }
+                }
+            }
         }
 
         // MARK: CARD VIEW
@@ -161,6 +186,8 @@ extension OfficialFeed {
         // MARK: Private
 
         @Default(.defaultServer) private var defaultServer4GI: String
+        @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
+        @Default(.filterNonRegisteredGamesFromEventFeed) private var filterNonRegisteredGamesFromEventFeed: Bool
 
         private let eventContents: [EventModel]
     }

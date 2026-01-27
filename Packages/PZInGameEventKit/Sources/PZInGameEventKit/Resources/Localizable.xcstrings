@@ -305,6 +305,82 @@
         }
       }
     },
+    "igev.gameEvents.toggle.filterNonRegisteredGamesFromEventFeed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht registrierte Spiele aus dem Event-Feed filtern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter Non-Registered Games From Event Feed"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar juegos no registrados del feed de eventos"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I-filter ang Hindi Nakarehistrong Laro mula sa Event Feed"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrer les jeux non enregistrés du fil d'événements"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtra giochi non registrati dal feed di eventi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "イベントリストから未登録ゲームのイベントを除く"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이벤트 목록에서 등록되지 않은 게임 필터링"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фильтровать незарегистрированные игры из ленты событий"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lọc các trò chơi chưa đăng ký khỏi nguồn cấp sự kiện"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从活动清单中过滤掉未登记的游戏"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從活動清單中過濾掉未登記的遊戲"
+          }
+        }
+      }
+    },
     "igev.gameEvents.viewAll.title" : {
       "extractionState" : "manual",
       "localizations" : {
