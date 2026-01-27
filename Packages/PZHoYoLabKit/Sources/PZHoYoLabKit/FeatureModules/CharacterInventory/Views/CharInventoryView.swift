@@ -14,7 +14,6 @@ public struct CharacterInventoryView: View {
     // MARK: Lifecycle
 
     public init(profile: PZProfileSendable) {
-        self.currentAvatarSummaryID = ""
         self.game = profile.game
         self.profile = profile
         let rawSummaries: [SummaryPtr] = Self.getRawSummaries(profile: profile)
@@ -30,17 +29,6 @@ public struct CharacterInventoryView: View {
         NavigationStack {
             basicBody
                 .appTabBarVisibility(.hidden)
-                .overlay {
-                    AvatarStatCollectionTabView(
-                        selectedAvatarID: $currentAvatarSummaryID,
-                        summarizedAvatars: summaries.map(\.wrappedValue)
-                    ) {
-                        currentAvatarSummaryID = ""
-                        simpleTaptic(type: .medium)
-                    }
-                    // 似乎下一行在这里并不是刚需，暂时先不套用。
-                    // .id(currentAvatarSummaryID)
-                }
         }
         .react(to: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {
             Task { @MainActor in
@@ -128,18 +116,23 @@ public struct CharacterInventoryView: View {
                 if !theListFiltered.isEmpty {
                     Section {
                         ForEach(theListFiltered, id: \.id) { avatar in
-                            AvatarListItem(game: game, avatar: avatar, condensed: false)
-                                .padding(.horizontal)
-                                .padding(.vertical, 4)
-                                .background {
-                                    let idObj = avatar.wrappedValue.mainInfo.idExpressable
-                                    idObj.asRowBG(element: avatar.wrappedValue.mainInfo.element)
-                                }
-                                .drawingGroup()
-                                .onTapGesture {
-                                    currentAvatarSummaryID = avatar.id
-                                    simpleTaptic(type: .medium)
-                                }
+                            NavigationLink {
+                                InventoryEASVTabViewWrapper(
+                                    selectedID: avatar.id,
+                                    avatars: summaries.map(\.wrappedValue)
+                                )
+                                .task { simpleTaptic(type: .medium) }
+                            } label: {
+                                AvatarListItem(game: game, avatar: avatar, condensed: false)
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 4)
+                                    .background {
+                                        let idObj = avatar.wrappedValue.mainInfo.idExpressable
+                                        idObj.asRowBG(element: avatar.wrappedValue.mainInfo.element)
+                                    }
+                                    .drawingGroup()
+                            }
+                            .buttonStyle(.plain)
                         }
                     } header: {
                         HStack {
@@ -170,37 +163,42 @@ public struct CharacterInventoryView: View {
                         scroll: false, spacing: 2, list: theListFiltered
                     ) { avatar in
                         // WIDTH: 70, HEIGHT: 63
-                        Color.clear.frame(width: 70, height: 63)
-                            .overlay {
-                                if let image = avatarItemViewCacheMap[avatar.id] {
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 70, height: 63)
-                                } else {
-                                    WinUI3ProgressRing()
+                        NavigationLink {
+                            InventoryEASVTabViewWrapper(
+                                selectedID: avatar.id,
+                                avatars: summaries.map(\.wrappedValue)
+                            )
+                            .task { simpleTaptic(type: .medium) }
+                        } label: {
+                            Color.clear.frame(width: 70, height: 63)
+                                .overlay {
+                                    if let image = avatarItemViewCacheMap[avatar.id] {
+                                        image
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 70, height: 63)
+                                    } else {
+                                        WinUI3ProgressRing()
+                                    }
                                 }
-                            }
-                            .task {
-                                let avatarListItem = AvatarListItem(game: game, avatar: avatar, condensed: true)
-                                    .padding(.vertical, 4)
-                                    .drawingGroup()
-                                let renderer = ImageRenderer(
-                                    content: avatarListItem
-                                )
-                                renderer.scale = 3.0
-                                if let cgImage = renderer.cgImage {
-                                    avatarItemViewCacheMap[avatar.id] = Image(
-                                        decorative: cgImage,
-                                        scale: 1
+                                .task {
+                                    let avatarListItem = AvatarListItem(game: game, avatar: avatar, condensed: true)
+                                        .padding(.vertical, 4)
+                                        .drawingGroup()
+                                    let renderer = ImageRenderer(
+                                        content: avatarListItem
                                     )
+                                    renderer.scale = 3.0
+                                    if let cgImage = renderer.cgImage {
+                                        avatarItemViewCacheMap[avatar.id] = Image(
+                                            decorative: cgImage,
+                                            scale: 1
+                                        )
+                                    }
                                 }
-                            }
-                            .onTapGesture {
-                                currentAvatarSummaryID = avatar.id
-                                simpleTaptic(type: .medium)
-                            }
-                            .id(avatar.id)
+                        }
+                        .buttonStyle(.plain)
+                        .id(avatar.id)
                     }
                     .frame(width: screenVM.mainColumnCanvasSizeObserved.width - 64)
                     .overlay(alignment: .topLeading) {
@@ -222,7 +220,6 @@ public struct CharacterInventoryView: View {
     @State private var avatarItemViewCacheMap: [String: Image] = [:]
     @State private var allAvatarListDisplayType: InventoryViewFilterType = .all
     @State private var expanded: Bool = false
-    @State private var currentAvatarSummaryID: String
     @State private var screenVM: ScreenVM = .shared
     @StateObject private var broadcaster = Broadcaster.shared
     @Environment(\.dismiss) private var dismiss
@@ -550,5 +547,34 @@ extension CharacterInventoryView {
                 return showingAvatars[$0 ..< max].map(\.self)
             }
         }
+    }
+}
+
+// MARK: CharacterInventoryView.InventoryEASVTabViewWrapper
+
+@available(iOS 17.0, macCatalyst 17.0, *)
+extension CharacterInventoryView {
+    private struct InventoryEASVTabViewWrapper: View {
+        // MARK: Lifecycle
+
+        public init(selectedID: String, avatars: [Enka.AvatarSummarized]) {
+            self.selectedID = selectedID
+            self.avatars = avatars
+        }
+
+        // MARK: Public
+
+        public var body: some View {
+            AvatarStatCollectionTabView(
+                selectedAvatarID: $selectedID,
+                summarizedAvatars: avatars
+            )
+        }
+
+        // MARK: Private
+
+        @State private var selectedID: String
+
+        private let avatars: [Enka.AvatarSummarized]
     }
 }
