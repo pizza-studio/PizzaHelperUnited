@@ -38,8 +38,6 @@ public struct EnkaShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Querie
                 summarizedAvatars: profile.summarizedAvatars,
                 onClose: onClose
             )
-            // 下一行是刚需，否则 OS26 无法通过上下文选单正确跳转到对应的角色页面。
-            .id(showingCharacterIdentifier)
         }
     }
 
