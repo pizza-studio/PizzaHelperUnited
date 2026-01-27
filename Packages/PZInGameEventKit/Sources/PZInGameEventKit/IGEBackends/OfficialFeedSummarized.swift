@@ -118,6 +118,9 @@ extension OfficialFeed {
             guard let contentObj = contentMap[rawMeta.annID] else { return }
             guard var contentDescription = contentObj.content, !contentDescription.isEmpty else { return }
             Self.bleachNewsDescription(&contentDescription)
+            var titleStr = rawMeta.title
+            Self.bleachNewsDescription(&titleStr)
+            titleStr = titleStr.replacing(try! Regex(#"<[^>]+>"#), with: "")
             var bannerImageLink = rawMeta.img ?? rawMeta.banner
             if bannerImageLink.isEmpty {
                 bannerImageLink = contentObj.banner ?? ""
@@ -127,7 +130,7 @@ extension OfficialFeed {
             let newModel = FeedEvent(
                 game: game,
                 id: rawMeta.annID,
-                title: rawMeta.title.replacing(try! Regex(#"<[^>]+>"#), with: ""),
+                title: titleStr,
                 description: contentDescription,
                 banner: bannerImageLink,
                 endAt: rawMeta.endTime,
@@ -170,6 +173,7 @@ extension OfficialFeed {
         target.replace("\\\"", with: "\"")
         target.replace("\\u0026lt;", with: "<")
         target.replace("\\u0026gt;", with: ">")
+        target.replace("&amp;", with: "&")
         target.replace("&lt;", with: "<") // Extra handling for HTML entities
         target.replace("&gt;", with: ">") // Extra handling for HTML entities
 
