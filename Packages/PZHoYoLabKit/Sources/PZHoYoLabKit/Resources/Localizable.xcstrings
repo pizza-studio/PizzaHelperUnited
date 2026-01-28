@@ -3005,73 +3005,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "5-Sterne-Items %lld Mal aus Gacha erhalten, darunter %lld Mal 5-Sterne-Charaktere und %lld Mal 5-Sterne-Waffen (nicht ausgerüstete 5-Sterne-Waffen und der Reisende / Trailblazer werden nicht gezählt)"
+            "value" : "5-Sterne-Items %lld Mal aus Gacha erhalten, darunter %lld Mal 5-Sterne-Charaktere und %lld Mal 5-Sterne-Waffen (nicht ausgerüstete 5-Sterne-Waffen und der Reisende / Trailblazer / Manekins werden nicht gezählt)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (The Traveller / Trailblazer and Unequipped 5-star weapons are not counted)"
+            "value" : "Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (The Traveller / Trailblazer / Manekins and Unequipped 5-star weapons are not counted)"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Adquiridos objetos de 5 estrellas %lld veces de gacha, incluyendo personajes de 5 estrellas %lld veces y armas de 5 estrellas %lld veces. (Las armas de 5 estrellas no equipadas y el Viajero / Trailblazer no se cuentan)"
+            "value" : "Adquiridos objetos de 5 estrellas %lld veces de gacha, incluyendo personajes de 5 estrellas %lld veces y armas de 5 estrellas %lld veces. (Las armas de 5 estrellas no equipadas y el Viajero / Trailblazer / Manekins no se cuentan)"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nakakuha ng 5-star na mga item %lld beses mula sa gacha, kabilang ang 5-star na mga karakter %lld beses at 5-star na mga armas %lld beses. (Hindi kabilang ang mga hindi nasuot na 5-star na armas at ang Traveller / Trailblazer)"
+            "value" : "Nakakuha ng 5-star na mga item %lld beses mula sa gacha, kabilang ang 5-star na mga karakter %lld beses at 5-star na mga armas %lld beses. (Hindi kabilang ang mga hindi nasuot na 5-star na armas at ang Traveller / Trailblazer / Manekins)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Objets 5 étoiles obtenus %lld fois via le gacha, y compris %lld fois des personnages 5 étoiles et %lld fois des armes 5 étoiles (les armes étoiles 5 non équipées et le Voyageur / Pionnier ne sont pas comptés)"
+            "value" : "Objets 5 étoiles obtenus %lld fois via le gacha, y compris %lld fois des personnages 5 étoiles et %lld fois des armes 5 étoiles (les armes étoiles 5 non équipées et le Voyageur / Pionnier / Manekins ne sont pas comptés)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Acquisite oggetti a 5 stelle %lld volte dal gacha, inclusi personaggi a 5 stelle %lld volte e armi a 5 stelle %lld volte. (Le armi a 5 stelle non equipaggiate e il Viaggiatore / Trailblazer non sono conteggiati)"
+            "value" : "Acquisite oggetti a 5 stelle %lld volte dal gacha, inclusi personaggi a 5 stelle %lld volte e armi a 5 stelle %lld volte. (Le armi a 5 stelle non equipaggiate e il Viaggiatore / Trailblazer / Manekins non sono conteggiati)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ガチャで星5アイテムを%lld回獲得した、その中で星5キャラ%lld回、星５武器%lld回。（旅人、葦毛ちゃん、未装備の星5武器はカウントされません）"
+            "value" : "ガチャで星5アイテムを%lld回獲得した、その中で星5キャラ%lld回、星５武器%lld回。（旅人、開拓者、ドール、未装備の星5武器はカウントされません）"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "가챠에서 5성 아이템 %lld회 획득, 5성 캐릭터 %lld회 및 5성 무기 %lld회. (장착하지 않은 5성 무기와 여행자 / Trailblazer는 제외됨)"
+            "value" : "가챠에서 5성 아이템 %lld회 획득, 5성 캐릭터 %lld회 및 5성 무기 %lld회. (장착하지 않은 5성 무기와 여행자 / Trailblazer / 별인형은 제외됨)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Получено 5-звездочных предметов %lld раз из гачи, включая 5-звездочных персонажей %lld раз и 5-звездочные оружия %lld раз. (Неэкипированные 5-звездочные оружия и Путешественник / Trailblazer не учитываются)"
+            "value" : "Получено 5-звездочных предметов %lld раз из гачи, включая 5-звездочных персонажей %lld раз и 5-звездочные оружия %lld раз. (Неэкипированные 5-звездочные оружия и Путешественник / Trailblazer / Манекены не учитываются)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đã nhận được vật phẩm 5 sao %lld lần từ gacha, bao gồm nhân vật 5 sao %lld lần và vũ khí 5 sao %lld lần. (Vũ khí 5 sao chưa trang bị và Traveller / Trailblazer không được tính)"
+            "value" : "Đã nhận được vật phẩm 5 sao %lld lần từ gacha, bao gồm nhân vật 5 sao %lld lần và vũ khí 5 sao %lld lần. (Vũ khí 5 sao chưa trang bị và Traveller / Trailblazer / Manekins không được tính)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "共获得 %lld 金，其中角色 %lld 金，武器 %lld 金。（未统计旅行者/小灰毛和无人装备的五星武器）"
+            "value" : "共获得 %lld 金，其中角色 %lld 金，武器 %lld 金。（未统计旅行者/开拓者/奇偶和无人装备的五星武器）"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "共獲得%lld金，其中角色%lld金，武器%lld金。（未統計旅行者/小灰毛和無人裝備的五星武器）"
+            "value" : "共獲得%lld金，其中角色%lld金，武器%lld金。（未統計旅行者/開拓者/奇偶和無人裝備的五星武器）"
           }
         }
       }

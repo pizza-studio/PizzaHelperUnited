@@ -428,9 +428,11 @@ extension CharacterInventoryView {
     }
 
     private var characterStats: LocalizedStringKey {
-        let a = summaries.count
-        let b = summaries.filter { $0.wrappedValue.mainInfo.rarityStars == 5 }.count
-        let c = summaries.filter { $0.wrappedValue.mainInfo.rarityStars == 4 }.count
+        // 此處的計算內容包括開拓者、旅行者、奇偶。
+        let allMainIntelStars = summaries.compactMap(\.wrappedValue.mainInfo.rarityStars)
+        let a = allMainIntelStars.count
+        let b = allMainIntelStars.filter { $0 == 5 }.count
+        let c = allMainIntelStars.filter { $0 == 4 }.count
         return "hylKit.inventoryView.characters.count.character:\(a, specifier: "%lld")\(b, specifier: "%lld")\(c, specifier: "%lld")"
     }
 
@@ -455,14 +457,17 @@ extension CharacterInventoryView {
     }
 
     private func goldNum() -> GoldNum {
+        // 此處的計算內容不包括開拓者、旅行者、奇偶。
         var charGold = 0
         var weaponGold = 0
         summaries.forEach { summaryPtr in
             let summary = summaryPtr.wrappedValue
-            if summary.mainInfo.idExpressable.isProtagonist { return }
-            if summary.mainInfo.rarityStars == 5 {
+            let mainInfo = summary.mainInfo
+            if mainInfo.idExpressable.isProtagonist { return }
+            if mainInfo.idExpressable.isManekin { return }
+            if mainInfo.rarityStars == 5 {
                 charGold += 1
-                charGold += summary.mainInfo.constellation
+                charGold += mainInfo.constellation
             }
             if let weapon = summary.equippedWeapon, weapon.rarityStars == 5 {
                 weaponGold += weapon.refinement
