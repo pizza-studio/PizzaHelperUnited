@@ -112,43 +112,43 @@ public struct CharacterInventoryView: View {
     func renderAllAvatarListFull() -> some View {
         let allElements = Enka.GameElement.allCases.sorted { $0.tourID < $1.tourID }
         ForEach(allElements, id: \.tourID) { currentElement in
-            if let avatarsOfThisElement = sortedSummariesMap[currentElement] {
-                let theListFiltered = filterSummaries(type: allAvatarListDisplayType, from: avatarsOfThisElement)
-                if !theListFiltered.isEmpty {
-                    Section {
-                        ForEach(theListFiltered, id: \.id) { avatar in
-                            NavigationLink {
-                                InventoryEASVTabViewWrapper(
-                                    selectedID: avatar.id,
-                                    avatars: summaries.map(\.wrappedValue)
-                                )
-                                .task { simpleTaptic(type: .medium) }
-                            } label: {
-                                AvatarListItem(game: game, avatar: avatar, condensed: false)
-                                    .padding(.horizontal)
-                                    .padding(.vertical, 4)
-                                    .background {
-                                        let idObj = avatar.wrappedValue.mainInfo.idExpressable
-                                        idObj.asRowBG(element: avatar.wrappedValue.mainInfo.element)
-                                    }
-                                    .drawingGroup()
+            let theListFiltered = getAllAvatarsOfCertainElement(currentElement)
+            // 注意躲避 macOS 的 Bug:
+            // 不能把 Section 塞到 if closure 里面，否则所有 Section 会被融为一个单独的 Section。
+            Section {
+                ForEach(theListFiltered, id: \.id) { avatar in
+                    NavigationLink {
+                        InventoryEASVTabViewWrapper(
+                            selectedID: avatar.id,
+                            avatars: summaries.map(\.wrappedValue)
+                        )
+                        .task { simpleTaptic(type: .medium) }
+                    } label: {
+                        AvatarListItem(game: game, avatar: avatar, condensed: false)
+                            .padding(.horizontal)
+                            .padding(.vertical, 4)
+                            .background {
+                                let mainIntel = avatar.wrappedValue.mainInfo
+                                mainIntel.idExpressable.asRowBG(element: mainIntel.element)
                             }
-                            .buttonStyle(.plain)
-                        }
-                    } header: {
-                        HStack {
-                            Color(cgColor: currentElement.themeColor)
-                                .frame(width: 8, height: 8)
-                                .clipShape(.circle)
-                            Text(currentElement.localizedName)
-                                .multilineTextAlignment(.leading)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
+                            .drawingGroup()
                     }
-                    .textCase(.none)
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    .buttonStyle(.plain)
+                }
+            } header: {
+                if !theListFiltered.isEmpty {
+                    HStack {
+                        Color(cgColor: currentElement.themeColor)
+                            .frame(width: 8, height: 8)
+                            .clipShape(.circle)
+                        Text(currentElement.localizedName)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                 }
             }
+            .textCase(.none)
+            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
     }
 
@@ -156,60 +156,58 @@ public struct CharacterInventoryView: View {
     func renderAllAvatarListCondensed() -> some View {
         let allElements = Enka.GameElement.allCases.sorted { $0.tourID < $1.tourID }
         ForEach(allElements, id: \.tourID) { currentElement in
-            if let avatarsOfThisElement = sortedSummariesMap[currentElement] {
-                let theListFiltered = filterSummaries(type: allAvatarListDisplayType, from: avatarsOfThisElement)
-                if !theListFiltered.isEmpty {
-                    StaggeredGrid(
-                        columns: lineCapacity, outerPadding: false,
-                        scroll: false, spacing: 2, list: theListFiltered
-                    ) { avatar in
-                        // WIDTH: 70, HEIGHT: 63
-                        NavigationLink {
-                            InventoryEASVTabViewWrapper(
-                                selectedID: avatar.id,
-                                avatars: summaries.map(\.wrappedValue)
-                            )
-                            .task { simpleTaptic(type: .medium) }
-                        } label: {
-                            Color.clear.frame(width: 70, height: 63)
-                                .overlay {
-                                    if let image = avatarItemViewCacheMap[avatar.id] {
-                                        image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 70, height: 63)
-                                    } else {
-                                        WinUI3ProgressRing()
-                                    }
+            let theListFiltered = getAllAvatarsOfCertainElement(currentElement)
+            if !theListFiltered.isEmpty {
+                StaggeredGrid(
+                    columns: lineCapacity, outerPadding: false,
+                    scroll: false, spacing: 2, list: theListFiltered
+                ) { avatar in
+                    // WIDTH: 70, HEIGHT: 63
+                    NavigationLink {
+                        InventoryEASVTabViewWrapper(
+                            selectedID: avatar.id,
+                            avatars: summaries.map(\.wrappedValue)
+                        )
+                        .task { simpleTaptic(type: .medium) }
+                    } label: {
+                        Color.clear.frame(width: 70, height: 63)
+                            .overlay {
+                                if let image = avatarItemViewCacheMap[avatar.id] {
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 70, height: 63)
+                                } else {
+                                    WinUI3ProgressRing()
                                 }
-                                .task {
-                                    let avatarListItem = AvatarListItem(game: game, avatar: avatar, condensed: true)
-                                        .padding(.vertical, 4)
-                                        .drawingGroup()
-                                    let renderer = ImageRenderer(
-                                        content: avatarListItem
+                            }
+                            .task {
+                                let avatarListItem = AvatarListItem(game: game, avatar: avatar, condensed: true)
+                                    .padding(.vertical, 4)
+                                    .drawingGroup()
+                                let renderer = ImageRenderer(
+                                    content: avatarListItem
+                                )
+                                renderer.scale = 3.0
+                                if let cgImage = renderer.cgImage {
+                                    avatarItemViewCacheMap[avatar.id] = Image(
+                                        decorative: cgImage,
+                                        scale: 1
                                     )
-                                    renderer.scale = 3.0
-                                    if let cgImage = renderer.cgImage {
-                                        avatarItemViewCacheMap[avatar.id] = Image(
-                                            decorative: cgImage,
-                                            scale: 1
-                                        )
-                                    }
                                 }
-                        }
-                        .buttonStyle(.plain)
-                        .id(avatar.id)
+                            }
                     }
-                    .frame(width: screenVM.mainColumnCanvasSizeObserved.width - 64)
-                    .overlay(alignment: .topLeading) {
-                        Color(cgColor: currentElement.themeColor)
-                            .frame(width: 8, height: 8)
-                            .clipShape(.circle)
-                    }
-                    .padding(.top, 5)
-                    .listRowSeparatorTint(.secondary.opacity(0.7))
+                    .buttonStyle(.plain)
+                    .id(avatar.id)
                 }
+                .frame(width: screenVM.mainColumnCanvasSizeObserved.width - 64)
+                .overlay(alignment: .topLeading) {
+                    Color(cgColor: currentElement.themeColor)
+                        .frame(width: 8, height: 8)
+                        .clipShape(.circle)
+                }
+                .padding(.top, 5)
+                .listRowSeparatorTint(.secondary.opacity(0.7))
             }
         }
     }
@@ -260,6 +258,10 @@ public struct CharacterInventoryView: View {
         return rawSummaries.sorted {
             $0.wrappedValue.mainInfo.element.tourID < $1.wrappedValue.mainInfo.element.tourID
         }
+    }
+
+    private func getAllAvatarsOfCertainElement(_ currentElement: Enka.GameElement) -> [SummaryPtr] {
+        filterSummaries(type: allAvatarListDisplayType, from: sortedSummariesMap[currentElement] ?? [])
     }
 }
 
