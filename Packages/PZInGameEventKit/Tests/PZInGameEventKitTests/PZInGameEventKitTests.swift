@@ -64,6 +64,8 @@ func testGetAllOfficialFeedEventsCache() async throws {
     _ = await OfficialFeed.getAllFeedEventsOnline(bypassCache: false)
     let cachedGIEvents = OfficialFeed.getCachedEventsIfValid(for: .genshinImpact) ?? []
     #expect(!cachedGIEvents.isEmpty)
-    Defaults[.officialFeedCache].removeAll()
+    Pizza.SupportedGame.allCases.forEach {
+        OfficialFeedFileHandler.removeFeed(for: $0)
+    }
     Defaults[.officialFeedMostRecentFetchDate].removeAll()
 }

@@ -29,6 +29,7 @@ struct DualProfileWidgetProvider: CrossGenServiceableTimelineProvider {
         let sampleData1 = Pizza.SupportedGame.genshinImpact.exampleDailyNoteData
         let sampleData2 = Pizza.SupportedGame.starRail.exampleDailyNoteData
         let assetMap = [sampleData1, sampleData2].prepareAssetMapImmediately()
+        let gameCases4Feeds = Pizza.SupportedGame.allCases.filter { $0 != .zenlessZone }
         return Entry(
             date: Date(),
             resultSlot1: .success(sampleData1),
@@ -37,7 +38,9 @@ struct DualProfileWidgetProvider: CrossGenServiceableTimelineProvider {
             profileSlot1: .getDummyInstance(for: .genshinImpact),
             profileSlot2: .getDummyInstance(for: .starRail),
             pilotAssetMap: assetMap,
-            events: Defaults[.officialFeedCache].filter { $0.game != .zenlessZone }
+            events: OfficialFeedFileHandler.getAllCachedFeeds(
+                specifyGames: gameCases4Feeds
+            )
         )
     }
 
@@ -45,7 +48,10 @@ struct DualProfileWidgetProvider: CrossGenServiceableTimelineProvider {
         for configuration: Intent
     ) async
         -> Entry {
-        let eventResults = Defaults[.officialFeedCache].filter { $0.game != .zenlessZone }
+        let gameCases4Feeds = Pizza.SupportedGame.allCases.filter { $0 != .zenlessZone }
+        let eventResults = OfficialFeedFileHandler.getAllCachedFeeds(
+            specifyGames: gameCases4Feeds
+        )
         let games = Pizza.SupportedGame.initFromDualProfileConfig(intent: configuration)
         var game1 = games.slot1 ?? .genshinImpact
         var game2 = games.slot2 ?? .starRail

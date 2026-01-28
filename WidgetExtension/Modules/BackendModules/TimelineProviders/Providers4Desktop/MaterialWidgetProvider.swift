@@ -22,9 +22,9 @@ struct MaterialWidgetProvider: TimelineProvider {
 
     func placeholder(in context: Context) -> Entry {
         .init(
-            events: Defaults[.officialFeedCache].filter {
-                $0.game == .genshinImpact
-            }
+            events: OfficialFeedFileHandler.getAllCachedFeeds(
+                specifyGames: [.genshinImpact]
+            )
         )
     }
 
@@ -33,9 +33,9 @@ struct MaterialWidgetProvider: TimelineProvider {
         completion: @escaping @Sendable (MaterialWidgetEntry) -> Void
     ) {
         Task {
-            var results: [OfficialFeed.FeedEvent]? = Defaults[.officialFeedCache].filter {
-                $0.game == .genshinImpact
-            }
+            var results: [OfficialFeed.FeedEvent]? = OfficialFeedFileHandler.getAllCachedFeeds(
+                specifyGames: [.genshinImpact]
+            )
             let isEmpty = results?.isEmpty ?? true
             if isEmpty { results = nil }
             var entry = Entry(events: results)

@@ -6,12 +6,6 @@ import Foundation
 import PZBaseKit
 @available(iOS 16.0, macCatalyst 16.0, *)
 extension Defaults.Keys {
-    public static let officialFeedCache = Key<[OfficialFeed.FeedEvent]>(
-        "officialFeedCache",
-        default: OfficialFeed.getAllBundledFeedEvents(),
-        suite: .baseSuite
-    )
-
     public static let officialFeedMostRecentFetchDate = Key<[String: Date]>(
         "officialFeedMostRecentFetchDate",
         default: [:],
