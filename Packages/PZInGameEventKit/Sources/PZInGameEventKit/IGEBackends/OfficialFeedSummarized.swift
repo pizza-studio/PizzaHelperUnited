@@ -21,19 +21,29 @@ extension OfficialFeed {
 
     /// This returns true even if no local cache entry is available.
     public static func getCachedEventsIfValid(for game: Pizza.SupportedGame) -> [FeedEvent]? {
+        OfficialFeedFileHandler.migrateFromUserDefaults()
         let lastFetchDate = Defaults[.officialFeedMostRecentFetchDate][game.rawValue]
         guard let lastFetchDate else { return nil }
         // dateDelta 必然大于 0。
         let dateDelta = [Date.now, lastFetchDate].map(\.timeIntervalSinceNow).reduce(0, -)
         guard dateDelta < (60 * 60 * 1) else { return nil }
-        let cachedEvent = Defaults[.officialFeedCache].filter { $0.game == game }
-        guard cachedEvent.first?.lang == .current else { return nil }
+        let cachedEvent = OfficialFeedFileHandler.getFeed(for: game)
+        guard let cachedEvent,
+              cachedEvent.first?.lang == .current else { return nil }
         return cachedEvent
     }
 
-    public static func getAllBundledFeedEvents() -> [FeedEvent] {
+    public static func getAllBundledFeedEvents(
+        specifyGames games: any Collection<Pizza.SupportedGame> = []
+    )
+        -> [FeedEvent] {
         var resultStack = [FeedEvent]()
-        for game in Pizza.SupportedGame.allCases {
+        // `Pizza.SupportedGame` 已支援 Comparable。参见 PZBaseKit 内的相关 Extensions。
+        var arrGames = Set(games).sorted()
+        if arrGames.isEmpty {
+            arrGames = Pizza.SupportedGame.allCases
+        }
+        for game in arrGames {
             let rawPackage = try? game.getBundledTestOfficialFeedPackage()
             guard let rawPackage else { continue }
             resultStack.append(
@@ -73,8 +83,7 @@ extension OfficialFeed {
             case let .success(rawPackage):
                 let summarized = OfficialFeed.summarize(rawPackage, for: game, server: server)
                 if !bypassCache {
-                    Defaults[.officialFeedCache].removeAll { $0.game == game }
-                    Defaults[.officialFeedCache].append(contentsOf: summarized)
+                    OfficialFeedFileHandler.saveFeed(summarized, for: game)
                     Defaults[.officialFeedMostRecentFetchDate][game.rawValue] = .now
                 }
                 resultStack.append(contentsOf: summarized)

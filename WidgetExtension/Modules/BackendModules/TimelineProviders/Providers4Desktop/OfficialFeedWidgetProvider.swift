@@ -19,7 +19,10 @@ import WidgetKit
 @available(watchOS, unavailable)
 extension OfficialFeedWidgetProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> PZWidgetsKit.OfficialFeedWidgetEntry {
-        Entry(games: .init(Pizza.SupportedGame.allCases), events: Defaults[.officialFeedCache])
+        Entry(
+            games: .init(Pizza.SupportedGame.allCases),
+            events: OfficialFeedFileHandler.getAllCachedFeeds()
+        )
     }
 }
 
@@ -30,7 +33,10 @@ struct OfficialFeedWidgetProvider: CrossGenServiceableTimelineProvider {
     typealias Intent = PZDesktopIntent4GameOnly
 
     func placeholder() -> Entry {
-        Entry(games: .init(Pizza.SupportedGame.allCases), events: Defaults[.officialFeedCache])
+        Entry(
+            games: .init(Pizza.SupportedGame.allCases),
+            events: OfficialFeedFileHandler.getAllCachedFeeds()
+        )
     }
 
     func snapshot(for configuration: Intent) async -> Entry {
@@ -38,14 +44,11 @@ struct OfficialFeedWidgetProvider: CrossGenServiceableTimelineProvider {
         let games = configuration.inverseSelectMode
             ? configuration.game.inverseSelectedValues
             : [game].compactMap { $0 }
-        var results: [OfficialFeed.FeedEvent]? = Defaults[.officialFeedCache].filter {
-            switch game {
-            case .none: true
-            default: games.contains($0.game)
-            }
-        }
-        let isEmpty = results?.isEmpty ?? true
-        if isEmpty { results = nil }
+        let cached = OfficialFeedFileHandler.getAllCachedFeeds(
+            specifyGames: games
+        )
+        var results: [OfficialFeed.FeedEvent]? = cached
+        if cached.isEmpty { results = nil }
         var entry = Entry(games: .init(games), events: results)
         await updateEntryViewConfig(&entry, games: games)
         return entry

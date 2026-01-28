@@ -34,7 +34,9 @@ struct SingleProfileWidgetProvider: CrossGenServiceableTimelineProvider {
             viewConfig: .defaultConfig,
             profile: .getDummyInstance(for: .genshinImpact),
             pilotAssetMap: assetMap,
-            events: Defaults[.officialFeedCache].filter { $0.game == .genshinImpact }
+            events: OfficialFeedFileHandler.getAllCachedFeeds(
+                specifyGames: [.genshinImpact]
+            )
         )
     }
 
@@ -42,7 +44,9 @@ struct SingleProfileWidgetProvider: CrossGenServiceableTimelineProvider {
         for configuration: Intent
     ) async
         -> Entry {
-        let eventResults = Defaults[.officialFeedCache].filter { $0.game == .genshinImpact }
+        let eventResults = OfficialFeedFileHandler.getAllCachedFeeds(
+            specifyGames: [.genshinImpact]
+        )
         let game = Pizza.SupportedGame(intentConfig: configuration) ?? .genshinImpact
         let sampleData = game.exampleDailyNoteData
         let assetMap = await Task(priority: .userInitiated) {
