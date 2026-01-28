@@ -43,7 +43,9 @@ public struct TakeViewShotButton<Content: View, SubLabelContent: View>: View {
             if let heicImage = taskVM.finishedHEICImage {
                 ShareLink(
                     item: heicImage,
-                    preview: SharePreview("takeViewShotButton.preview.imageToShare")
+                    preview: SharePreview(
+                        Text("takeViewShotButton.preview.imageToShare", bundle: .currentSPM)
+                    )
                 ) {
                     Text("takeViewShotButton.button.tapHereToShare", bundle: .currentSPM)
                 }
