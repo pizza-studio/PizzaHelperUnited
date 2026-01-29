@@ -35,7 +35,10 @@ internal struct FloatingGlassTabBar: View {
                                 .fontWidth(.condensed)
                                 .fixedSize(horizontal: true, vertical: false)
                         }
-                        .shadow(radius: isChosen ? 10 : 2)
+                        .shadow(
+                            color: labelTextShadowColor,
+                            radius: getLabelTextShadowRadius(isChosen: isChosen)
+                        )
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
                         .frame(
@@ -119,6 +122,10 @@ internal struct FloatingGlassTabBar: View {
         }
     }
 
+    // MARK: Internal
+
+    @Environment(\.colorScheme) var colorScheme
+
     // MARK: Private
 
     private struct TabFramePreferenceKey: PreferenceKey {
@@ -157,14 +164,29 @@ internal struct FloatingGlassTabBar: View {
         screenVM.mainColumnCanvasSizeObserved.width - 70
     }
 
+    private var labelTextShadowColor: Color {
+        colorScheme == .dark ? .black : .black.opacity(0.33)
+    }
+
     /// 高亮膠囊背景 - 統一使用 position 定位，確保動畫連續
     @ViewBuilder private var highlightCapsule: some View {
         if let referenceFrame = tabFrames[visualSelection] {
             Capsule()
-                .fill(Color.primary.opacity(0.2))
                 .glassEffect(.regular.interactive())
                 .frame(width: referenceFrame.width, height: referenceFrame.height)
                 .position(x: highlightX, y: referenceFrame.midY)
+                .colorMultiply(
+                    Color.primary.opacity(colorScheme == .dark ? 0.6 : 0.2)
+                )
+        }
+    }
+
+    private func getLabelTextShadowRadius(isChosen: Bool) -> Double {
+        switch (colorScheme == .dark, isChosen) {
+        case (false, false): 2
+        case (false, true): 10
+        case (true, false): 10
+        case (true, true): 2
         }
     }
 
