@@ -49,8 +49,11 @@ struct AppSettingsTabPage: View {
                             systemSymbol: .platter2FilledIphone
                         )
                     }
+                    NavigationLink(destination: CacheSettingsPageContent.init) {
+                        Label(CacheSettingsPageContent.navTitle, systemSymbol: .internaldrive)
+                    }
                 } header: {
-                    Text("settings.section.visualSettings.header".i18nPZHelper)
+                    Text("settings.section.featureSettings.header".i18nPZHelper)
                         .textCase(.none)
                 }
 
@@ -77,9 +80,13 @@ struct AppSettingsTabPage: View {
 
                 Section {
                     NavigationLink(
-                        destination: PrivacySettingsPageContent.init,
-                        label: { Label("settings.privacy.title".i18nPZHelper, systemSymbol: .handRaisedSlashFill) }
-                    )
+                        destination: PrivacySettingsPageContent.init
+                    ) {
+                        Label(
+                            "settings.privacy.title".i18nPZHelper,
+                            systemSymbol: .handRaisedSlashFill
+                        )
+                    }
                     NavigationLink(
                         destination: AboutView.init,
                         label: {

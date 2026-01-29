@@ -38,21 +38,6 @@ extension Enka {
                         .buttonStyle(.borderedProminent)
                     }
                 )
-                .confirmationDialog(
-                    "settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmationTitle".i18nEnka,
-                    isPresented: $isResetEnkaDBCacheAlertVisible,
-                    titleVisibility: .visible
-                ) {
-                    Button(role: .destructive) {
-                        Enka.Sputnik.shared.resetLocalEnkaDBCache(for: .genshinImpact)
-                        Enka.Sputnik.shared.resetLocalEnkaDBCache(for: .starRail)
-                    } label: {
-                        Text("settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmButton".i18nEnka)
-                    }
-                    Button(role: .cancel) {} label: {
-                        Text("sys.cancel".i18nBaseKit)
-                    }
-                }
         }
 
         // MARK: Internal
@@ -144,7 +129,67 @@ extension Enka {
             } header: {
                 Text("settings.display.showCase.namingPrefs.sectionTitle".i18nEnka)
             }
+        }
 
+        // MARK: Private
+
+        @State private var isCustomizedNameForWandererAlertVisible: Bool = false
+
+        @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
+        @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleCharacterPhotos: Bool
+        @Default(.useTotemWithGenshinIDPhotos) private var useTotemWithGenshinIDPhotos: Bool
+        @Default(.colorizeArtifactSubPropCounts) private var colorizeArtifactSubPropCounts: Bool
+        @Default(.artifactRatingRules) private var artifactRatingRules: ArtifactRating.Rules
+        @Default(.useAlternativeCharacterNames) private var useAlternativeCharacterNames: Bool
+        @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
+        @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
+
+        private var currentOfficialTranslationForWanderer: String {
+            Enka.Sputnik.shared.db4GI.getTranslationFor(id: "10000075", realName: false)
+        }
+
+        // Function to keep text length in limits
+        private func limitText(_ upper: Int) {
+            if customizedNameForWanderer.count > upper {
+                customizedNameForWanderer = String(customizedNameForWanderer.prefix(upper))
+            }
+        }
+    }
+
+    public struct CacheSettingsViewContents4EnkaDB: View {
+        // MARK: Lifecycle
+
+        public init() {}
+
+        // MARK: Public
+
+        public var body: some View {
+            mainViewSection
+                .confirmationDialog(
+                    "settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmationTitle".i18nEnka,
+                    isPresented: $isResetEnkaDBCacheAlertVisible,
+                    titleVisibility: .visible
+                ) {
+                    Button(role: .destructive) {
+                        Enka.Sputnik.shared.resetLocalEnkaDBCache(for: .genshinImpact)
+                        Enka.Sputnik.shared.resetLocalEnkaDBCache(for: .starRail)
+                    } label: {
+                        Text("settings.display.enkaStatus.resetEnkaDBCacheToFactoryDefault.confirmButton".i18nEnka)
+                    }
+                    Button(role: .cancel) {} label: {
+                        Text("sys.cancel".i18nBaseKit)
+                    }
+                }
+        }
+
+        // MARK: Private
+
+        @State private var isResetEnkaDBCacheAlertVisible: Bool = false
+
+        @Default(.lastEnkaDBDataCheckDate) private var lastEnkaDBDataCheckDate: Date
+        @Default(.defaultDBQueryHost) private var defaultDBQueryHost: Enka.HostType
+
+        @ViewBuilder private var mainViewSection: some View {
             Section {
                 VStack {
                     Picker(selection: $defaultDBQueryHost) {
@@ -174,33 +219,6 @@ extension Enka {
                 .foregroundStyle(.red)
             } header: {
                 Text("settings.display.enkaStatus.sectionTitle".i18nEnka)
-            }
-        }
-
-        // MARK: Private
-
-        @State private var isCustomizedNameForWandererAlertVisible: Bool = false
-        @State private var isResetEnkaDBCacheAlertVisible: Bool = false
-
-        @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
-        @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleCharacterPhotos: Bool
-        @Default(.useTotemWithGenshinIDPhotos) private var useTotemWithGenshinIDPhotos: Bool
-        @Default(.colorizeArtifactSubPropCounts) private var colorizeArtifactSubPropCounts: Bool
-        @Default(.artifactRatingRules) private var artifactRatingRules: ArtifactRating.Rules
-        @Default(.useAlternativeCharacterNames) private var useAlternativeCharacterNames: Bool
-        @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
-        @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
-        @Default(.lastEnkaDBDataCheckDate) private var lastEnkaDBDataCheckDate: Date
-        @Default(.defaultDBQueryHost) private var defaultDBQueryHost: Enka.HostType
-
-        private var currentOfficialTranslationForWanderer: String {
-            Enka.Sputnik.shared.db4GI.getTranslationFor(id: "10000075", realName: false)
-        }
-
-        // Function to keep text length in limits
-        private func limitText(_ upper: Int) {
-            if customizedNameForWanderer.count > upper {
-                customizedNameForWanderer = String(customizedNameForWanderer.prefix(upper))
             }
         }
     }

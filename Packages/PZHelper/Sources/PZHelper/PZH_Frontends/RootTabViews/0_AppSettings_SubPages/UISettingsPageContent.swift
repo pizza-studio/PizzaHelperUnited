@@ -65,7 +65,13 @@ struct UISettingsPageContent: View {
         .navBarTitleDisplayMode(.large)
     }
 
-    @ViewBuilder var defaultServerSelector4GI: some View {
+    // MARK: Private
+
+    @Default(.restoreTabOnLaunching) private var restoreTabOnLaunching: Bool
+    @Default(.defaultServer) private var defaultServer4GI: String
+    @Default(.reduceUIGlassDecorations) private var reduceUIGlassDecorations: Bool
+
+    @ViewBuilder private var defaultServerSelector4GI: some View {
         VStack {
             Picker(selection: $defaultServer4GI) {
                 ForEach(HoYo.Server.allCases4GI) { server in
@@ -80,12 +86,4 @@ struct UISettingsPageContent: View {
                 .asInlineTextDescription()
         }
     }
-
-    // MARK: Private
-
-    @State private var sharedDB = Enka.Sputnik.shared
-
-    @Default(.restoreTabOnLaunching) private var restoreTabOnLaunching: Bool
-    @Default(.defaultServer) private var defaultServer4GI: String
-    @Default(.reduceUIGlassDecorations) private var reduceUIGlassDecorations: Bool
 }
