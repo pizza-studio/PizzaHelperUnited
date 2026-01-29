@@ -76,6 +76,7 @@ extension OfficialFeedFileHandler {
     public static func removeFeed(for game: Pizza.SupportedGame) {
         let fileURL = getURL4Feed(game: game)
         try? FileManager.default.removeItem(at: fileURL)
+        Defaults[.officialFeedMostRecentFetchDate][game.rawValue] = nil
     }
 
     /// We assume that this API never fails.
