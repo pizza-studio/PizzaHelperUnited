@@ -44,10 +44,6 @@ struct WatchWidgetSettingView: View {
 
     /// 该方法是 SwiftUI 内部 Protocol 规定的方法。
     private func deleteItems(offsets: IndexSet) {
-        deleteItems(offsets: offsets, clearEnkaCache: false)
-    }
-
-    private func deleteItems(offsets: IndexSet, clearEnkaCache: Bool) {
         var uuidsToDrop: Set<UUID> = []
         var profilesToDrop: Set<PZProfileSendable> = []
         offsets.forEach {
@@ -55,10 +51,6 @@ struct WatchWidgetSettingView: View {
             profilesToDrop.insert(returned)
             uuidsToDrop.insert(returned.uuid)
         }
-        deleteItems(uuids: uuidsToDrop, clearEnkaCache: clearEnkaCache)
-    }
-
-    private func deleteItems(uuids uuidsToDrop: Set<UUID>, clearEnkaCache: Bool) {
         theVM.deleteProfiles(uuids: uuidsToDrop)
     }
 }
