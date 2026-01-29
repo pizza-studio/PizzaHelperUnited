@@ -5,6 +5,7 @@
 import EnkaKit
 import PZAccountKit
 import PZBaseKit
+import PZInGameEventKit
 import SwiftUI
 import WallpaperConfigKit
 import WallpaperKit
@@ -20,6 +21,7 @@ struct CacheSettingsPageContent: View {
     var body: some View {
         Form {
             Enka.CacheSettingsViewContents4EnkaDB()
+            OfficialFeed.CacheSettingsViewContent()
         }
         .formStyle(.grouped).disableFocusable()
         .navigationTitle(Self.navTitle)

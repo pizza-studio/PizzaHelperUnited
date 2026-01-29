@@ -457,6 +457,310 @@
           }
         }
       }
+    },
+    "settings.display.cacheSettings.officialFeed.clearCachedEventsOfThisGame.button" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zwischengespeicherte Ereignisse dieses Spiels löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Cached Events of This Game"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar Eventos en Caché de Este Juego"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I-clear ang Nakaka-cache na Mga Kaganapan ng Larong Ito"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effacer les événements mis en cache de ce jeu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancella eventi memorizzati nella cache di questo gioco"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このゲームのキャッシュされたイベントをクリア"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 게임의 캐시된 이벤트 지우기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистить кэшированные события этой игры"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xóa sự kiện được lưu trong bộ nhớ đệm của trò chơi này"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除此游戏的活动资讯缓存"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除此遊戲的活動資訊快取"
+          }
+        }
+      }
+    },
+    "settings.display.cacheSettings.officialFeed.noOfficialGameEventsCached" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine offiziellen In-Game-Event-Daten zwischengespeichert."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No official in-game event data cached."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay datos de eventos en el juego oficiales en caché."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walang opisyal na data ng kaganapan sa laro na naka-cache."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune donnée d'événement en jeu officiel mise en cache."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun dato di evento in-game ufficiale memorizzato nella cache."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "公式のゲーム内イベントデータがキャッシュされていません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공식 게임 내 이벤트 데이터가 캐시되지 않았습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет кэшированных официальных данных событий в игре."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có dữ liệu sự kiện trong trò chơi chính thức được lưu trong bộ nhớ đệm."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有缓存的官方游戏内活动数据。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有快取的官方遊戲內活動資料。"
+          }
+        }
+      }
+    },
+    "settings.display.cacheSettings.officialFeed.sectionFooter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie können die zwischengespeicherten Event-Daten aus dem Kontextmenü des neuesten Datenabruf-Zeitstempels jedes Spiels entfernen, der oben aufgeführt ist. Diese App versucht automatisch, die neuesten Event-Informationen online abzurufen, um den Cache sofort zu aktualisieren."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may remove the cached event data from the context menu of each game’s most-recent data fetch timestamp listed above. This app will automatically try fetching the latest event info online to update the cache immediately."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puede eliminar los datos de eventos en caché desde el menú contextual de la marca de tiempo de la última recuperación de datos de cada juego enumerada arriba. Esta aplicación intentará automáticamente obtener la información más reciente del evento en línea para actualizar la caché de inmediato."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maaari mong alisin ang naka-cache na data ng kaganapan mula sa menu ng konteksto ng pinakabagong timestamp ng pagkuha ng data ng bawat laro na nakalista sa itaas. Awtomatikong susubukang kunin ng app na ito ang pinakabagong impormasyon ng kaganapan online upang agad na i-update ang cache."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pouvez supprimer les données d'événement mises en cache depuis le menu contextuel de l'horodatage de la dernière récupération de données de chaque jeu répertorié ci-dessus. Cette application essaiera automatiquement de récupérer les dernières informations d'événement en ligne pour mettre à jour le cache immédiatement."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puoi rimuovere i dati degli eventi memorizzati nella cache dal menu contestuale del timestamp dell'ultima acquisizione dati di ciascun gioco elencato sopra. Questa app tenterà automaticamente di recuperare le ultime informazioni sugli eventi online per aggiornare immediatamente la cache."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上記にリストされている各ゲームの最新のデータ取得タイムスタンプのコンテキストメニューから、キャッシュされたイベントデータを削除できます。このアプリは自動的に最新のイベント情報をオンラインで取得してキャッシュをすぐに更新しようとします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위에 나열된 각 게임의 가장 최근 데이터 가져오기 타임스탬프의 컨텍스트 메뉴에서 캐시된 이벤트 데이터를 제거할 수 있습니다. 이 앱은 자동으로 최신 이벤트 정보를 온라인에서 가져와 캐시를 즉시 업데이트하려고 시도합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы можете удалить кэшированные данные событий из контекстного меню временной метки последнего получения данных для каждой игры, перечисленной выше. Это приложение автоматически попытается получить последнюю информацию о событии онлайн, чтобы немедленно обновить кэш."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn có thể xóa dữ liệu sự kiện được lưu trong bộ nhớ đệm từ menu ngữ cảnh của dấu thời gian lấy dữ liệu gần nhất của mỗi trò chơi được liệt kê ở trên. Ứng dụng này sẽ tự động cố gắng tìm nạp thông tin sự kiện mới nhất trực tuyến để cập nhật bộ nhớ đệm ngay lập tức."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以从上面列出的每个游戏最新数据获取时间戳的上下文选单中删除缓存的活动资讯数据。此应用将自动尝试在线获取最新的活动信息以立即更新缓存。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以從上面列出的每個遊戲最新資料擷取時間戳記的內容選單中刪除快取的活動資訊資料。此應用程式將自動嘗試線上擷取最新的活動資訊以立即更新快取。"
+          }
+        }
+      }
+    },
+    "settings.display.cacheSettings.officialFeed.sectionTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offizielle In-Game-Events-Cache-Daten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official In-Game Events Cache Data"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos de Caché de Eventos Oficiales en el Juego"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opisyal na Data ng Cache ng Mga Kaganapan sa Laro"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Données de Cache des Événements Officiels en Jeu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dati Cache Eventi Ufficiali in Gioco"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "公式ゲーム内イベントキャッシュデータ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공식 게임 내 이벤트 캐시 데이터"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кэш-данные официальных событий в игре"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dữ liệu Bộ Nhớ Đệm Sự Kiện Chính Thức Trong Trò Chơi"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "官方游戏内活动缓存数据"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "官方遊戲內活動快取資料"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
