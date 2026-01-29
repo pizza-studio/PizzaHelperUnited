@@ -273,7 +273,7 @@ struct ProfileManagerPageContent: View {
                 sheetType = .editExistingProfile(profile)
             }
             Button(role: .destructive) {
-                deleteItems(uuids: [profile.uuid], clearEnkaCache: false)
+                deleteItems(uuids: [profile.uuid], clearShowCaseCache: false)
             } label: {
                 Text("profileMgr.delete.title".i18nPZHelper)
             }
@@ -350,7 +350,7 @@ struct ProfileManagerPageContent: View {
 
     /// 该方法是 SwiftUI 内部 Protocol 规定的方法。
     private func deleteItems(offsets: IndexSet) {
-        deleteItems(offsets: offsets, clearEnkaCache: false)
+        deleteItems(offsets: offsets, clearShowCaseCache: false)
     }
 
     private func autoQuitEditModeIfEmpty() {
@@ -361,7 +361,7 @@ struct ProfileManagerPageContent: View {
         #endif
     }
 
-    private func deleteItems(offsets: IndexSet, clearEnkaCache: Bool) {
+    private func deleteItems(offsets: IndexSet, clearShowCaseCache: Bool) {
         var uuidsToDrop: Set<UUID> = []
         var profilesToDrop: Set<PZProfileSendable> = []
         offsets.forEach {
@@ -369,10 +369,10 @@ struct ProfileManagerPageContent: View {
             profilesToDrop.insert(returned)
             uuidsToDrop.insert(returned.uuid)
         }
-        deleteItems(uuids: uuidsToDrop, clearEnkaCache: clearEnkaCache)
+        deleteItems(uuids: uuidsToDrop, clearShowCaseCache: clearShowCaseCache)
     }
 
-    private func deleteItems(uuids uuidsToDrop: Set<UUID>, clearEnkaCache: Bool) {
+    private func deleteItems(uuids uuidsToDrop: Set<UUID>, clearShowCaseCache: Bool) {
         let profilesToDrop: Set<PZProfileSendable> = {
             var profilesToDropResult: Set<PZProfileSendable> = []
             theVM.profiles.forEach {
@@ -392,12 +392,22 @@ struct ProfileManagerPageContent: View {
                     guard !remainingUIDs.contains(currentProfile.uidWithGame) else { return }
                     PZNotificationCenter.deleteDailyNoteNotification(for: currentProfile)
                     if #available(iOS 17.0, macCatalyst 17.0, *) {
-                        if clearEnkaCache {
+                        if clearShowCaseCache {
                             switch currentProfile.game {
                             case .genshinImpact:
-                                Enka.Sputnik.shared.db4GI.removeCachedProfileRAW(uid: currentProfile.uid)
+                                Enka.Sputnik.shared.db4GI.removeCachedProfileRAW(
+                                    uid: currentProfile.uid
+                                )
+                                Enka.EnkaDB4GI.HYLAvatarDetailType.purgeCachedLocalAvatarRaws(
+                                    uid: currentProfile.uid
+                                )
                             case .starRail:
-                                Enka.Sputnik.shared.db4HSR.removeCachedProfileRAW(uid: currentProfile.uid)
+                                Enka.Sputnik.shared.db4HSR.removeCachedProfileRAW(
+                                    uid: currentProfile.uid
+                                )
+                                Enka.EnkaDB4HSR.HYLAvatarDetailType.purgeCachedLocalAvatarRaws(
+                                    uid: currentProfile.uid
+                                )
                             case .zenlessZone: break // 临时设定。
                             }
                         }

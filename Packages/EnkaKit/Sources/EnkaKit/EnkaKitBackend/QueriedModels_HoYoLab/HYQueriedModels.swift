@@ -61,6 +61,11 @@ extension HYQueriedAvatarProtocol {
         return decoded.avatarList
     }
 
+    public static func purgeCachedLocalAvatarRaws(uid: String) {
+        let url = getURL4LocallyCachedAvatars(uid: uid)
+        try? FileManager.default.removeItem(at: getURL4LocallyCachedAvatars(uid: uid))
+    }
+
     @MainActor
     public static func getLocalHoYoAvatars(theDB: DBType, uid: String) -> [Enka.AvatarSummarized] {
         let raw = getLocalAvatarRaws(uid: uid)
