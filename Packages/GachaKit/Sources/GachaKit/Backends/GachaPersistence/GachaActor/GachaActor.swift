@@ -422,7 +422,7 @@ extension GachaActor {
         let tzDelta = GachaKit.getServerTimeZoneDelta(uid: uid, game: game)
         var allTimeTags: [TimeTag] = validTransactionIDMap.keys.compactMap {
             TimeTag($0, tzDelta: tzDelta)
-        }.sorted { $0.time.timeIntervalSince1970 < $1.time.timeIntervalSince1970 }
+        }.sorted()
         /// 处理前先排查：
         /// 如果 allTimeTags 最旧的日期记录已经在库的话，就不处理这个最旧的日期记录，免得误伤已经在资料库内的更旧的抽卡记录。
         /// 这样处理的原因是：十连抽的时间戳都是雷同的。
@@ -475,12 +475,10 @@ extension GachaActor {
         )
         request.propertiesToFetch = [\.time, \.uid, \.game]
         let fetched = try modelContext.fetch(request)
-        var timeTags = fetched.compactMap {
+        let timeTags = fetched.compactMap {
             TimeTag($0.time, tzDelta: tzDelta)
         }
-        timeTags = Array(Set(timeTags)) // Deduplicate.
-        timeTags.sort { $0.time.timeIntervalSince1970 < $1.time.timeIntervalSince1970 }
-        return timeTags
+        return Set(timeTags).sorted() // Deduplicate & Sort.
     }
 
     /// 自本地 SwiftData 抽卡资料库移除由伺服器端此前错误生成的垃圾资料。
