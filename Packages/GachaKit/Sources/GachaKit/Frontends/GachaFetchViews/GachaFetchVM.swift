@@ -6,6 +6,9 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
+#if canImport(UIKit)
+import UIKit
+#endif
 
 // MARK: - GachaFetchVM
 
@@ -109,6 +112,16 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
 
     private var task: Task<Void, Never>?
 
+    /// 设置萤幕是否保持常亮。
+    /// - Parameter disabled: 設為 true 時會停用螢幕自動上鎖；false 則回歸系統預設行為設定。
+    private static func setScreenIdleTimerDisabled(_ disabled: Bool) {
+        #if canImport(UIKit) && !os(watchOS)
+        Task { @MainActor in
+            UIApplication.shared.isIdleTimerDisabled = disabled
+        }
+        #endif
+    }
+
     private func initialize() {
         client = nil
         setWaitingForURL()
@@ -147,7 +160,11 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
         client.fetchRange = fetchRange
         client.chosenPools = chosenPools
         setInProgress()
+        // 在抓取过程中保持萤幕常亮，避免因萤幕自动锁定而中断抓取。
+        Self.setScreenIdleTimerDisabled(true)
         task = Task { [weak self] in
+            // 确保在任务结束时（无论成功、取消或失败）恢复萤幕正常锁定设置。
+            defer { Self.setScreenIdleTimerDisabled(false) }
             guard let self else { return }
             var uid: String?
             var validTransactionIDMap: [String: [String]] = [:]
@@ -209,8 +226,10 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                 }
             } catch {
                 if error is CancellationError {
+                    // 被取消时，最新的时间戳资料可能不完整，因此排除以防误删。
                     bleachCounter += await GachaActor.shared.bleach(
-                        against: validTransactionIDMap, uid: uid, game: GachaType.game
+                        against: validTransactionIDMap, uid: uid, game: GachaType.game,
+                        excludeNewestTimeTag: true
                     )
                     setFinished()
                 } else {
@@ -221,8 +240,10 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                             setFailFetching(page: page, gachaType: .init(rawValue: gachaType), error: error)
                         }
                     case let error as URLError where error.code == .cancelled:
+                        // 同上，被取消时排除最新时间戳以防误删。
                         bleachCounter += await GachaActor.shared.bleach(
-                            against: validTransactionIDMap, uid: uid, game: GachaType.game
+                            against: validTransactionIDMap, uid: uid, game: GachaType.game,
+                            excludeNewestTimeTag: true
                         )
                         setFinished()
                     default:
