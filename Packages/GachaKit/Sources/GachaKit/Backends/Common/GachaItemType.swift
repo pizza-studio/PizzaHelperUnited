@@ -137,7 +137,7 @@ extension GachaItemType {
 // MARK: - TimeTag
 
 @available(iOS 17.0, macCatalyst 17.0, *)
-public struct TimeTag: Hashable, Identifiable {
+public struct TimeTag: Hashable, Identifiable, Comparable {
     // MARK: Lifecycle
 
     public init?(_ timeTagStr: String, tzDelta: Int) {
@@ -155,4 +155,8 @@ public struct TimeTag: Hashable, Identifiable {
     public let dayFromNow: Int
 
     public var id: TimeInterval { time.timeIntervalSince1970 }
+
+    public static func < (lhs: TimeTag, rhs: TimeTag) -> Bool {
+        lhs.time.timeIntervalSince1970 < rhs.time.timeIntervalSince1970
+    }
 }
