@@ -401,11 +401,20 @@ extension GachaActor {
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaActor {
+    /// - Parameters:
+    ///   - validTransactionIDMap: Map of time strings to valid transaction IDs.
+    ///   - uid: UID (must be non-null, otherwise this API is no-op).
+    ///   - game: The game type.
+    ///   - excludeNewestTimeTag: If true, also excludes the newest time tag from bleaching.
+    ///     This is useful when the fetch was interrupted (e.g., by screen lock) and the newest
+    ///     timestamp's data may be incomplete. Defaults to false.
+    /// - Returns: The number of entries bleached.
     /// - Remark: UID must be non-null. Otherwise this API is no-op.
     public func bleach(
         against validTransactionIDMap: [String: [String]],
         uid: String?,
-        game: Pizza.SupportedGame
+        game: Pizza.SupportedGame,
+        excludeNewestTimeTag: Bool = false
     ) async
         -> Int {
         var bleachCounter = 0
@@ -423,6 +432,12 @@ extension GachaActor {
             let allExistingTimeTagsInDB = try getAllExistingTimeTagsInDB(game: game, uid: uid, tzDelta: tzDelta)
             if allExistingTimeTagsInDB.map(\.time).contains(oldestTimeTag.time) {
                 allTimeTags.removeFirst()
+            }
+            // 如果获取被中断（例如萤幕锁定），最新的时间戳资料可能不完整，也应排除以防误删。
+            // If the fetch was interrupted (e.g., by screen lock), the newest timestamp's data
+            // may be incomplete, so we also exclude it to prevent accidental deletion.
+            if excludeNewestTimeTag, !allTimeTags.isEmpty {
+                allTimeTags.removeLast()
             }
             guard !allTimeTags.isEmpty else { return bleachCounter }
             // 开始处理。
