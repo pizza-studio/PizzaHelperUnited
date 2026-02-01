@@ -209,9 +209,9 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                 }
             } catch {
                 if error is CancellationError {
-                    bleachCounter += await GachaActor.shared.bleach(
-                        against: validTransactionIDMap, uid: uid, game: GachaType.game
-                    )
+                    // Do NOT call bleach on cancellation - the validTransactionIDMap is incomplete,
+                    // and bleaching with incomplete data would delete valid existing records.
+                    // See issue #194: Screen lock during fetch caused data loss.
                     setFinished()
                 } else {
                     switch error {
@@ -221,9 +221,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                             setFailFetching(page: page, gachaType: .init(rawValue: gachaType), error: error)
                         }
                     case let error as URLError where error.code == .cancelled:
-                        bleachCounter += await GachaActor.shared.bleach(
-                            against: validTransactionIDMap, uid: uid, game: GachaType.game
-                        )
+                        // Do NOT call bleach on cancellation - same reason as above.
                         setFinished()
                     default:
                         break
