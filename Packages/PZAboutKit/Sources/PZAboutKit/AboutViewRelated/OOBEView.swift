@@ -54,20 +54,42 @@ public struct OOBEView: View {
                 }
                 .padding()
                 .padding(.top)
+                .trackCanvasSize { measuredSize in
+                    topComponentHeight = measuredSize.height
+                }
 
-                netaContentView
+                Color.clear
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .trackCanvasSize { newSize in
-                        canvasSize = newSize
-                        recalculatePages()
+                    .overlay(alignment: .top) {
+                        ScrollView(.vertical) {
+                            netaContentView
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        }
+                        .frame(maxHeight: .infinity)
                     }
+
+                // 頁面指示器
+                if totalPages > 1 {
+                    HStack(spacing: 8) {
+                        ForEach(0 ..< totalPages, id: \.self) { pageIndex in
+                            Circle()
+                                .fill(pageIndex == currentPage ? Color.primary : Color.primary.opacity(0.3))
+                                .frame(width: 8, height: 8)
+                        }
+                    }
+                    .padding(.bottom, 8)
+                }
 
                 bottomButton
                     .padding(.bottom)
+                    .trackCanvasSize { measuredSize in
+                        bottomComponentHeight = measuredSize.height
+                    }
             }
-            .background {
-                // 隐藏的测量层：测量所有 NetaBar 的实际高度
-                measurementLayer
+            .edgesIgnoringSafeArea(.all)
+            .trackCanvasSize { newSize in
+                canvasSize = newSize
+                recalculatePages()
             }
             .background {
                 LinearGradient(
@@ -93,11 +115,17 @@ public struct OOBEView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var currentPage: Int = 0
-    @State private var canvasSize: CGSize = .init(width: 300, height: 400)
+    @State private var canvasSize: CGSize = .init(width: 400, height: 400)
+    @State private var topComponentHeight: CGFloat = 90
+    @State private var bottomComponentHeight: CGFloat = 50
     @State private var measuredHeights: [UUID: CGFloat] = [:]
     @State private var pageBreaks: [Int] = [] // indices where each page starts
 
     private let completionHandler: (() -> Void)?
+
+    private var isExtremeNarrowSituation: Bool {
+        canvasSize.width < 400
+    }
 
     private var totalPages: Int {
         max(1, pageBreaks.count)
@@ -112,13 +140,12 @@ public struct OOBEView: View {
         return Array(Self.allNetaBars[startIndex ..< endIndex])
     }
 
-    /// 隐藏的测量层，用于获取每个 NetaBar 的真实高度
-    @ViewBuilder private var measurementLayer: some View {
-        VStack(alignment: .leading, spacing: Self.netaBarSpacing) {
-            ForEach(Self.allNetaBars) { neta in
-                neta.asView
-                    .background(
-                        // 似乎这里暂时只能用 GeometryReader。
+    @ViewBuilder private var netaContentView: some View {
+        VStack {
+            VStack(alignment: .leading, spacing: Self.netaBarSpacing) {
+                ForEach(currentPageItems) { neta in
+                    neta.renderView(compactMode: isExtremeNarrowSituation).background(
+                        // 似乎这里暂时只能用 GeometryReader 后手测量。
                         GeometryReader { geo in
                             Color.clear.preference(
                                 key: NetaBarHeightsKey.self,
@@ -126,42 +153,18 @@ public struct OOBEView: View {
                             )
                         }
                     )
-            }
-        }
-        .padding(.horizontal)
-        .fixedSize(horizontal: false, vertical: true)
-        .hidden()
-        .onPreferenceChange(NetaBarHeightsKey.self) { heights in
-            measuredHeights = heights
-            recalculatePages()
-        }
-    }
-
-    @ViewBuilder private var netaContentView: some View {
-        VStack {
-            VStack(alignment: .leading, spacing: Self.netaBarSpacing) {
-                ForEach(currentPageItems) { neta in
-                    neta.asView
                 }
             }
             .padding(.horizontal)
             .frame(maxWidth: .infinity, alignment: .leading)
 
             Spacer()
-
-            // 頁面指示器
-            if totalPages > 1 {
-                HStack(spacing: 8) {
-                    ForEach(0 ..< totalPages, id: \.self) { pageIndex in
-                        Circle()
-                            .fill(pageIndex == currentPage ? Color.primary : Color.primary.opacity(0.3))
-                            .frame(width: 8, height: 8)
-                    }
-                }
-                .padding(.bottom, 8)
-            }
         }
         .animation(.easeInOut(duration: 0.3), value: currentPage)
+        .onPreferenceChange(NetaBarHeightsKey.self) { heights in
+            measuredHeights = heights
+            recalculatePages()
+        }
     }
 
     @ViewBuilder private var bottomButton: some View {
@@ -218,7 +221,8 @@ public struct OOBEView: View {
     private func recalculatePages() {
         guard !measuredHeights.isEmpty else { return }
 
-        let availableHeight = canvasSize.height - 30 // 留出页面指示器空间
+        let availableHeight = canvasSize.height - topComponentHeight - bottomComponentHeight
+        guard availableHeight > 0 else { return }
         var breaks = [0]
         var accumulatedHeight: CGFloat = 0
 
@@ -282,8 +286,9 @@ extension OOBEView {
         let detail: Text
         let color: Color
 
-        @MainActor var asView: NetaBarView {
-            NetaBarView(neta: self)
+        @MainActor
+        func renderView(compactMode: Bool) -> NetaBarView {
+            NetaBarView(neta: self, compactMode: compactMode)
         }
     }
 }
@@ -297,33 +302,69 @@ extension OOBEView {
     private struct NetaBarView: View {
         // MARK: Lifecycle
 
-        init(neta: NetaBar) {
+        init(neta: NetaBar, compactMode: Bool) {
             self.netaBar = neta
+            self.isCompactMode = compactMode
         }
 
         init(
             icon: Image,
             title: LocalizedStringKey,
             detail: LocalizedStringKey,
-            color: Color
+            color: Color,
+            compactMode: Bool
         ) {
             self.netaBar = .init(icon: icon, title: title, detail: detail, color: color)
+            self.isCompactMode = compactMode
         }
 
         init(
             icon: Image,
             title: Text,
             detail: Text,
-            color: Color
+            color: Color,
+            compactMode: Bool
         ) {
             self.netaBar = .init(icon: icon, title: title, detail: detail, color: color)
+            self.isCompactMode = compactMode
         }
 
         // MARK: Internal
 
         let netaBar: NetaBar
+        let isCompactMode: Bool
 
         var body: some View {
+            if isCompactMode {
+                bodyCompact
+            } else {
+                bodyFull
+            }
+        }
+
+        @ViewBuilder var bodyCompact: some View {
+            VStack(alignment: .leading) {
+                Label {
+                    mainText
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                } icon: {
+                    netaBar.icon
+                        .foregroundColor(netaBar.color)
+                }
+                let descriptionText =
+                    subText
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                descriptionText
+                    .foregroundStyle(.primary.opacity(0.8))
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
+        }
+
+        @ViewBuilder var bodyFull: some View {
             HStack(alignment: .top, spacing: 15) {
                 netaBar.icon
                     .resizable()
@@ -350,13 +391,25 @@ extension OOBEView {
         // MARK: Private
 
         private var mainText: Text {
-            netaBar.title
-                .fontWeight(.heavy)
+            if isCompactMode {
+                netaBar.title
+                    .font(.subheadline)
+                    .fontWeight(.heavy)
+            } else {
+                netaBar.title
+                    .font(.headline)
+                    .fontWeight(.heavy)
+            }
         }
 
         private var subText: Text {
-            netaBar.detail
-                .font(.subheadline)
+            if isCompactMode {
+                netaBar.detail
+                    .font(.footnote)
+            } else {
+                netaBar.detail
+                    .font(.subheadline)
+            }
         }
     }
 }
