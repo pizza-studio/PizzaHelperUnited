@@ -1516,6 +1516,17 @@
         }
       }
     },
+    "settings.cacheSettings.navTitle" : {
+      "comment" : "This category is related to cached data on the file system.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cache Settings"
+          }
+        }
+      }
+    },
     "settings.disclaimer.requiringAppRebootToApplySettings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2282,6 +2293,17 @@
         }
       }
     },
+    "settings.section.featureSettings.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feature Settings"
+          }
+        }
+      }
+    },
     "settings.section.otherSettings.header" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2300,17 +2322,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Manage Local Profiles"
-          }
-        }
-      }
-    },
-    "settings.section.visualSettings.header" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UI-Related Settings"
           }
         }
       }

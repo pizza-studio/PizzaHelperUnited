@@ -2948,6 +2948,11 @@ Il successore di questa app sarà disponibile sull’App Store con il nuovo nome
         <target state="translated">Recupero riuscito dei seguenti profili locali dal dispositivo iOS:</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.cacheSettings.navTitle" xml:space="preserve">
+        <source>Cache Settings</source>
+        <target state="translated">Impostazioni Cache</target>
+        <note>This category is related to cached data on the file system.</note>
+      </trans-unit>
       <trans-unit id="settings.disclaimer.requiringAppRebootToApplySettings" xml:space="preserve">
         <source>This requires restarting the app to take full effect.</source>
         <target state="translated">Per applicare completamente le modifiche, è necessario riavviare l'app.</target>
@@ -3331,6 +3336,11 @@ L'app verrà riavviata dopo aver confermato questo messaggio.</target>
         <target state="translated">App Store</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.section.featureSettings.header" xml:space="preserve">
+        <source>Feature Settings</source>
+        <target state="translated">Impostazioni delle Funzionalità</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.section.otherSettings.header" xml:space="preserve">
         <source>Other Settings</source>
         <target state="translated">Altre impostazioni</target>
@@ -3339,11 +3349,6 @@ L'app verrà riavviata dopo aver confermato questo messaggio.</target>
       <trans-unit id="settings.section.profileManagement.header" xml:space="preserve">
         <source>Manage Local Profiles</source>
         <target state="translated">Gestisci profili locali</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.section.visualSettings.header" xml:space="preserve">
-        <source>UI-Related Settings</source>
-        <target state="translated">Impostazioni relative all'interfaccia utente</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.staminaTimer.autoInit.toggle.title" xml:space="preserve">
@@ -3670,8 +3675,8 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.inventoryView.characters.count.golds:%lld%lld%lld" xml:space="preserve">
-        <source>Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (The Traveller / Trailblazer and Unequipped 5-star weapons are not counted)</source>
-        <target state="translated">Acquisite oggetti a 5 stelle %lld volte dal gacha, inclusi personaggi a 5 stelle %lld volte e armi a 5 stelle %lld volte. (Le armi a 5 stelle non equipaggiate e il Viaggiatore / Trailblazer non sono conteggiati)</target>
+        <source>Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (The Traveller / Trailblazer / Manekins and Unequipped 5-star weapons are not counted)</source>
+        <target state="translated">Acquisite oggetti a 5 stelle %lld volte dal gacha, inclusi personaggi a 5 stelle %lld volte e armi a 5 stelle %lld volte. (Le armi a 5 stelle non equipaggiate e il Viaggiatore / Trailblazer / Manekins non sono conteggiati)</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.inventoryView.characters.filter.4star" xml:space="preserve">
@@ -3702,6 +3707,11 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       <trans-unit id="hylKit.inventoryView.expand.tabText" xml:space="preserve">
         <source>Expand</source>
         <target state="translated">Espandi</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.inventoryView.shareInventoryListAsImage.buttonTitle" xml:space="preserve">
+        <source>Share this Inventory List as Image</source>
+        <target state="translated">Condividi questo elenco inventario come immagine</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.ledger4GI.action.name.byAbyss" xml:space="preserve">
@@ -3886,9 +3896,34 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">Eventi in corso</target>
         <note/>
       </trans-unit>
+      <trans-unit id="igev.gameEvents.toggle.filterNonRegisteredGamesFromEventFeed" xml:space="preserve">
+        <source>Filter Non-Registered Games From Event Feed</source>
+        <target state="translated">Filtra giochi non registrati dal feed di eventi</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="igev.gameEvents.viewAll.title" xml:space="preserve">
         <source>All</source>
         <target state="translated">Tutto</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.clearCachedEventsOfThisGame.button" xml:space="preserve">
+        <source>Clear Cached Events of This Game</source>
+        <target state="translated">Cancella eventi memorizzati nella cache di questo gioco</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.noOfficialGameEventsCached" xml:space="preserve">
+        <source>No official in-game event data cached.</source>
+        <target state="translated">Nessun dato di evento in-game ufficiale memorizzato nella cache.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.sectionFooter" xml:space="preserve">
+        <source>You may remove the cached event data from the context menu of each game’s most-recent data fetch timestamp listed above. This app will automatically try fetching the latest event info online to update the cache immediately.</source>
+        <target state="translated">Puoi rimuovere i dati degli eventi memorizzati nella cache dal menu contestuale del timestamp dell'ultima acquisizione dati di ciascun gioco elencato sopra. Questa app tenterà automaticamente di recuperare le ultime informazioni sugli eventi online per aggiornare immediatamente la cache.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.sectionTitle" xml:space="preserve">
+        <source>Official In-Game Events Cache Data</source>
+        <target state="translated">Dati Cache Eventi Ufficiali in Gioco</target>
         <note/>
       </trans-unit>
     </body>
@@ -4516,6 +4551,21 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <source>Yes</source>
         <target state="translated">Sì</target>
         <note>Boolean Confirmation</note>
+      </trans-unit>
+      <trans-unit id="takeViewShotButton.button.tapHereToShare" xml:space="preserve">
+        <source>Tap Here to Share</source>
+        <target state="translated">Tocca qui per condividere</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="takeViewShotButton.imageShotPreparationComplete.instruction" xml:space="preserve">
+        <source>Image file successfully prepared for export.</source>
+        <target state="translated">File immagine preparato con successo per l'esportazione.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="takeViewShotButton.preview.imageToShare" xml:space="preserve">
+        <source>Prepared Image</source>
+        <target state="translated">Immagine Preparata</target>
+        <note/>
       </trans-unit>
       <trans-unit id="unit.HHMM:%lldHH%lldMM" xml:space="preserve">
         <source>%lldhrs %lldmin</source>

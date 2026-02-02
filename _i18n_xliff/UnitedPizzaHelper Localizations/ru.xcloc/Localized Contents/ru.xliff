@@ -2946,6 +2946,11 @@ The successor to this app will be available on the App Store under the new name 
         <target state="translated">Успешно получены следующие локальные профили с устройства iOS:</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.cacheSettings.navTitle" xml:space="preserve">
+        <source>Cache Settings</source>
+        <target state="translated">Настройки Кэша</target>
+        <note>This category is related to cached data on the file system.</note>
+      </trans-unit>
       <trans-unit id="settings.disclaimer.requiringAppRebootToApplySettings" xml:space="preserve">
         <source>This requires restarting the app to take full effect.</source>
         <target state="translated">Для полного применения требуется перезапустить приложение.</target>
@@ -3329,6 +3334,11 @@ The app will restart after you confirm this message.</source>
         <target state="translated">App Store</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.section.featureSettings.header" xml:space="preserve">
+        <source>Feature Settings</source>
+        <target state="translated">Настройки функций</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.section.otherSettings.header" xml:space="preserve">
         <source>Other Settings</source>
         <target state="translated">Другие настройки</target>
@@ -3337,11 +3347,6 @@ The app will restart after you confirm this message.</source>
       <trans-unit id="settings.section.profileManagement.header" xml:space="preserve">
         <source>Manage Local Profiles</source>
         <target state="translated">Управление локальными профилями</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.section.visualSettings.header" xml:space="preserve">
-        <source>UI-Related Settings</source>
-        <target state="translated">Настройки интерфейса</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.staminaTimer.autoInit.toggle.title" xml:space="preserve">
@@ -3668,8 +3673,8 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.inventoryView.characters.count.golds:%lld%lld%lld" xml:space="preserve">
-        <source>Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (The Traveller / Trailblazer and Unequipped 5-star weapons are not counted)</source>
-        <target state="translated">Получено 5-звездочных предметов %lld раз из гачи, включая 5-звездочных персонажей %lld раз и 5-звездочные оружия %lld раз. (Неэкипированные 5-звездочные оружия и Путешественник / Trailblazer не учитываются)</target>
+        <source>Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (The Traveller / Trailblazer / Manekins and Unequipped 5-star weapons are not counted)</source>
+        <target state="translated">Получено 5-звездочных предметов %lld раз из гачи, включая 5-звездочных персонажей %lld раз и 5-звездочные оружия %lld раз. (Неэкипированные 5-звездочные оружия и Путешественник / Trailblazer / Манекены не учитываются)</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.inventoryView.characters.filter.4star" xml:space="preserve">
@@ -3700,6 +3705,11 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       <trans-unit id="hylKit.inventoryView.expand.tabText" xml:space="preserve">
         <source>Expand</source>
         <target state="translated">Развернуть</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.inventoryView.shareInventoryListAsImage.buttonTitle" xml:space="preserve">
+        <source>Share this Inventory List as Image</source>
+        <target state="translated">Поделиться этим списком инвентаря как изображением</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.ledger4GI.action.name.byAbyss" xml:space="preserve">
@@ -3884,9 +3894,34 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">Текущие события</target>
         <note/>
       </trans-unit>
+      <trans-unit id="igev.gameEvents.toggle.filterNonRegisteredGamesFromEventFeed" xml:space="preserve">
+        <source>Filter Non-Registered Games From Event Feed</source>
+        <target state="translated">Фильтровать незарегистрированные игры из ленты событий</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="igev.gameEvents.viewAll.title" xml:space="preserve">
         <source>All</source>
         <target state="translated">Все</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.clearCachedEventsOfThisGame.button" xml:space="preserve">
+        <source>Clear Cached Events of This Game</source>
+        <target state="translated">Очистить кэшированные события этой игры</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.noOfficialGameEventsCached" xml:space="preserve">
+        <source>No official in-game event data cached.</source>
+        <target state="translated">Нет кэшированных официальных данных событий в игре.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.sectionFooter" xml:space="preserve">
+        <source>You may remove the cached event data from the context menu of each game’s most-recent data fetch timestamp listed above. This app will automatically try fetching the latest event info online to update the cache immediately.</source>
+        <target state="translated">Вы можете удалить кэшированные данные событий из контекстного меню временной метки последнего получения данных для каждой игры, перечисленной выше. Это приложение автоматически попытается получить последнюю информацию о событии онлайн, чтобы немедленно обновить кэш.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.sectionTitle" xml:space="preserve">
+        <source>Official In-Game Events Cache Data</source>
+        <target state="translated">Кэш-данные официальных событий в игре</target>
         <note/>
       </trans-unit>
     </body>
@@ -4514,6 +4549,21 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <source>Yes</source>
         <target state="translated">Да</target>
         <note>Boolean Confirmation</note>
+      </trans-unit>
+      <trans-unit id="takeViewShotButton.button.tapHereToShare" xml:space="preserve">
+        <source>Tap Here to Share</source>
+        <target state="translated">Нажмите здесь, чтобы поделиться</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="takeViewShotButton.imageShotPreparationComplete.instruction" xml:space="preserve">
+        <source>Image file successfully prepared for export.</source>
+        <target state="translated">Файл изображения успешно подготовлен для экспорта.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="takeViewShotButton.preview.imageToShare" xml:space="preserve">
+        <source>Prepared Image</source>
+        <target state="translated">Подготовленное изображение</target>
+        <note/>
       </trans-unit>
       <trans-unit id="unit.HHMM:%lldHH%lldMM" xml:space="preserve">
         <source>%lldhrs %lldmin</source>

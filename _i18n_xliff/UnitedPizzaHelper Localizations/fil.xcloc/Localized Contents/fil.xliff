@@ -2948,6 +2948,11 @@ Ang kahalili ng app na ito ay magiging available sa App Store sa bagong pangalan
         <target state="translated">Matagumpay na nakuha ang sumusunod na lokal na profiles mula sa iOS device:</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.cacheSettings.navTitle" xml:space="preserve">
+        <source>Cache Settings</source>
+        <target state="translated">Mga Setting ng Cache</target>
+        <note>This category is related to cached data on the file system.</note>
+      </trans-unit>
       <trans-unit id="settings.disclaimer.requiringAppRebootToApplySettings" xml:space="preserve">
         <source>This requires restarting the app to take full effect.</source>
         <target state="translated">Kailangan itong i-restart ang app para ganap na magkabisa.</target>
@@ -3331,6 +3336,11 @@ I-re-restart ang app pagkatapos mong kumpirmahin ang mensaheng ito.</target>
         <target state="translated">App Store</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.section.featureSettings.header" xml:space="preserve">
+        <source>Feature Settings</source>
+        <target state="translated">Mga Setting ng Tampok</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.section.otherSettings.header" xml:space="preserve">
         <source>Other Settings</source>
         <target state="translated">Iba Pang Mga Setting</target>
@@ -3339,11 +3349,6 @@ I-re-restart ang app pagkatapos mong kumpirmahin ang mensaheng ito.</target>
       <trans-unit id="settings.section.profileManagement.header" xml:space="preserve">
         <source>Manage Local Profiles</source>
         <target state="translated">Pamahalaan ang mga Lokal na Profile</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.section.visualSettings.header" xml:space="preserve">
-        <source>UI-Related Settings</source>
-        <target state="translated">Mga Seting Kaugnay sa UI</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.staminaTimer.autoInit.toggle.title" xml:space="preserve">
@@ -3671,8 +3676,8 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.inventoryView.characters.count.golds:%lld%lld%lld" xml:space="preserve">
-        <source>Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (The Traveller / Trailblazer and Unequipped 5-star weapons are not counted)</source>
-        <target state="translated">Nakakuha ng 5-star na mga item %lld beses mula sa gacha, kabilang ang 5-star na mga karakter %lld beses at 5-star na mga armas %lld beses. (Hindi kabilang ang mga hindi nasuot na 5-star na armas at ang Traveller / Trailblazer)</target>
+        <source>Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (The Traveller / Trailblazer / Manekins and Unequipped 5-star weapons are not counted)</source>
+        <target state="translated">Nakakuha ng 5-star na mga item %lld beses mula sa gacha, kabilang ang 5-star na mga karakter %lld beses at 5-star na mga armas %lld beses. (Hindi kabilang ang mga hindi nasuot na 5-star na armas at ang Traveller / Trailblazer / Manekins)</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.inventoryView.characters.filter.4star" xml:space="preserve">
@@ -3703,6 +3708,11 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
       <trans-unit id="hylKit.inventoryView.expand.tabText" xml:space="preserve">
         <source>Expand</source>
         <target state="translated">Palawakin</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.inventoryView.shareInventoryListAsImage.buttonTitle" xml:space="preserve">
+        <source>Share this Inventory List as Image</source>
+        <target state="translated">Ibahagi ang Listahan ng Inventory na ito bilang Larawan</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.ledger4GI.action.name.byAbyss" xml:space="preserve">
@@ -3887,9 +3897,34 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <target state="translated">Mga Nagaganap na Kaganapan</target>
         <note/>
       </trans-unit>
+      <trans-unit id="igev.gameEvents.toggle.filterNonRegisteredGamesFromEventFeed" xml:space="preserve">
+        <source>Filter Non-Registered Games From Event Feed</source>
+        <target state="translated">I-filter ang Hindi Nakarehistrong Laro mula sa Event Feed</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="igev.gameEvents.viewAll.title" xml:space="preserve">
         <source>All</source>
         <target state="translated">Lahat</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.clearCachedEventsOfThisGame.button" xml:space="preserve">
+        <source>Clear Cached Events of This Game</source>
+        <target state="translated">I-clear ang Nakaka-cache na Mga Kaganapan ng Larong Ito</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.noOfficialGameEventsCached" xml:space="preserve">
+        <source>No official in-game event data cached.</source>
+        <target state="translated">Walang opisyal na data ng kaganapan sa laro na naka-cache.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.sectionFooter" xml:space="preserve">
+        <source>You may remove the cached event data from the context menu of each game’s most-recent data fetch timestamp listed above. This app will automatically try fetching the latest event info online to update the cache immediately.</source>
+        <target state="translated">Maaari mong alisin ang naka-cache na data ng kaganapan mula sa menu ng konteksto ng pinakabagong timestamp ng pagkuha ng data ng bawat laro na nakalista sa itaas. Awtomatikong susubukang kunin ng app na ito ang pinakabagong impormasyon ng kaganapan online upang agad na i-update ang cache.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.sectionTitle" xml:space="preserve">
+        <source>Official In-Game Events Cache Data</source>
+        <target state="translated">Opisyal na Data ng Cache ng Mga Kaganapan sa Laro</target>
         <note/>
       </trans-unit>
     </body>
@@ -4517,6 +4552,21 @@ I-swipe pakaliwa ang Stamina Timer sa lock screen upang patayin ang resin timer 
         <source>Yes</source>
         <target state="translated">Oo</target>
         <note>Boolean Confirmation</note>
+      </trans-unit>
+      <trans-unit id="takeViewShotButton.button.tapHereToShare" xml:space="preserve">
+        <source>Tap Here to Share</source>
+        <target state="translated">I-tap dito upang ibahagi</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="takeViewShotButton.imageShotPreparationComplete.instruction" xml:space="preserve">
+        <source>Image file successfully prepared for export.</source>
+        <target state="translated">Ang file ng larawan ay matagumpay na inihanda para sa pag-export.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="takeViewShotButton.preview.imageToShare" xml:space="preserve">
+        <source>Prepared Image</source>
+        <target state="translated">Handang Larawan</target>
+        <note/>
       </trans-unit>
       <trans-unit id="unit.HHMM:%lldHH%lldMM" xml:space="preserve">
         <source>%lldhrs %lldmin</source>

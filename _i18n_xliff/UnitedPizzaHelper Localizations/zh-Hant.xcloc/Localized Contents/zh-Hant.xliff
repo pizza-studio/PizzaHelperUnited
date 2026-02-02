@@ -2956,6 +2956,11 @@ The successor to this app will be available on the App Store under the new name 
         <target state="translated">成功從 iOS 裝置接收到下述本機帳號:</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.cacheSettings.navTitle" xml:space="preserve">
+        <source>Cache Settings</source>
+        <target state="translated">快取設定</target>
+        <note>This category is related to cached data on the file system.</note>
+      </trans-unit>
       <trans-unit id="settings.disclaimer.requiringAppRebootToApplySettings" xml:space="preserve">
         <source>This requires restarting the app to take full effect.</source>
         <target state="translated">該設定的變更需要重新啟動 App 方可生效。</target>
@@ -3339,6 +3344,11 @@ The app will restart after you confirm this message.</source>
         <target state="translated">App Store</target>
         <note/>
       </trans-unit>
+      <trans-unit id="settings.section.featureSettings.header" xml:space="preserve">
+        <source>Feature Settings</source>
+        <target state="translated">功能設定</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.section.otherSettings.header" xml:space="preserve">
         <source>Other Settings</source>
         <target state="translated">其他設定</target>
@@ -3347,11 +3357,6 @@ The app will restart after you confirm this message.</source>
       <trans-unit id="settings.section.profileManagement.header" xml:space="preserve">
         <source>Manage Local Profiles</source>
         <target state="translated">管理這部裝置上的本機帳號</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="settings.section.visualSettings.header" xml:space="preserve">
-        <source>UI-Related Settings</source>
-        <target state="translated">UI 相關</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.staminaTimer.autoInit.toggle.title" xml:space="preserve">
@@ -3679,8 +3684,8 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.inventoryView.characters.count.golds:%lld%lld%lld" xml:space="preserve">
-        <source>Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (The Traveller / Trailblazer and Unequipped 5-star weapons are not counted)</source>
-        <target state="translated">共獲得%lld金，其中角色%lld金，武器%lld金。（未統計旅行者/小灰毛和無人裝備的五星武器）</target>
+        <source>Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (The Traveller / Trailblazer / Manekins and Unequipped 5-star weapons are not counted)</source>
+        <target state="translated">共獲得%lld金，其中角色%lld金，武器%lld金。（未統計旅行者/開拓者/奇偶和無人裝備的五星武器）</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.inventoryView.characters.filter.4star" xml:space="preserve">
@@ -3711,6 +3716,11 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       <trans-unit id="hylKit.inventoryView.expand.tabText" xml:space="preserve">
         <source>Expand</source>
         <target state="translated">展開</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="hylKit.inventoryView.shareInventoryListAsImage.buttonTitle" xml:space="preserve">
+        <source>Share this Inventory List as Image</source>
+        <target state="translated">將此庫存清單分享為圖片</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.ledger4GI.action.name.byAbyss" xml:space="preserve">
@@ -3895,9 +3905,34 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">當前活動</target>
         <note/>
       </trans-unit>
+      <trans-unit id="igev.gameEvents.toggle.filterNonRegisteredGamesFromEventFeed" xml:space="preserve">
+        <source>Filter Non-Registered Games From Event Feed</source>
+        <target state="translated">從活動清單中過濾掉未登記的遊戲</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="igev.gameEvents.viewAll.title" xml:space="preserve">
         <source>All</source>
         <target state="translated">全部</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.clearCachedEventsOfThisGame.button" xml:space="preserve">
+        <source>Clear Cached Events of This Game</source>
+        <target state="translated">清除此遊戲的活動資訊快取</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.noOfficialGameEventsCached" xml:space="preserve">
+        <source>No official in-game event data cached.</source>
+        <target state="translated">沒有快取的官方遊戲內活動資料。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.sectionFooter" xml:space="preserve">
+        <source>You may remove the cached event data from the context menu of each game’s most-recent data fetch timestamp listed above. This app will automatically try fetching the latest event info online to update the cache immediately.</source>
+        <target state="translated">您可以從上面列出的每個遊戲最新資料擷取時間戳記的內容選單中刪除快取的活動資訊資料。此應用程式將自動嘗試線上擷取最新的活動資訊以立即更新快取。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="settings.display.cacheSettings.officialFeed.sectionTitle" xml:space="preserve">
+        <source>Official In-Game Events Cache Data</source>
+        <target state="translated">官方遊戲內活動快取資料</target>
         <note/>
       </trans-unit>
     </body>
@@ -4525,6 +4560,21 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <source>Yes</source>
         <target state="translated">是</target>
         <note>Boolean Confirmation</note>
+      </trans-unit>
+      <trans-unit id="takeViewShotButton.button.tapHereToShare" xml:space="preserve">
+        <source>Tap Here to Share</source>
+        <target state="translated">點擊此處分享</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="takeViewShotButton.imageShotPreparationComplete.instruction" xml:space="preserve">
+        <source>Image file successfully prepared for export.</source>
+        <target state="translated">用來匯出的圖像檔案已成功準備就緒。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="takeViewShotButton.preview.imageToShare" xml:space="preserve">
+        <source>Prepared Image</source>
+        <target state="translated">準備好的圖像</target>
+        <note/>
       </trans-unit>
       <trans-unit id="unit.HHMM:%lldHH%lldMM" xml:space="preserve">
         <source>%lldhrs %lldmin</source>
