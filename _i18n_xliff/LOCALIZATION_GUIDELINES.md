@@ -15,7 +15,7 @@
 
 - For Japanese (`ja-JP`) localization, we prefer written expressions with minimal use of katakana-based loan words (unless absolutely necessary). For **legal documents** (Privacy Policy & EULA), please use formal language consistent with the style of Japanese legal documents from the 1945-1960 period.
 
-- For all non-CJK languages: This project deliberately shares terminology with Genshin Impact and Star Rail. All elements follow Genshin Impact's naming conventions, even when the elements originate from Star Rail. Below is the official English naming of all elements:
+- For all non-CJK languages: This project deliberately shares terminology with Genshin Impact and Star Rail. All elements follow Genshin Impact's naming conventions, even when an element is originated from Star Rail. Below is the official English naming of all elements:
     - Elements in both Genshin and Star Rail: `Physico`, `Anemo`, `Electro`, `Pyro`, `Cryo`.
         - Eula is considered a Physical character, despite her Cryo vision.
     - Star Rail exclusive elements: `Quanto`, `Imago`.

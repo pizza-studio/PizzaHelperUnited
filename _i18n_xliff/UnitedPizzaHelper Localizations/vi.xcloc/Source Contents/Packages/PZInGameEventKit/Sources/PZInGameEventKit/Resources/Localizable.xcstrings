@@ -41,6 +41,16 @@
         }
       }
     },
+    "igev.gameEvents.toggle.filterNonRegisteredGamesFromEventFeed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter Non-Registered Games From Event Feed"
+          }
+        }
+      }
+    },
     "igev.gameEvents.viewAll.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -48,6 +58,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "All"
+          }
+        }
+      }
+    },
+    "settings.display.cacheSettings.officialFeed.clearCachedEventsOfThisGame.button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Cached Events of This Game"
+          }
+        }
+      }
+    },
+    "settings.display.cacheSettings.officialFeed.noOfficialGameEventsCached" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No official in-game event data cached."
+          }
+        }
+      }
+    },
+    "settings.display.cacheSettings.officialFeed.sectionFooter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may remove the cached event data from the context menu of each game’s most-recent data fetch timestamp listed above. This app will automatically try fetching the latest event info online to update the cache immediately."
+          }
+        }
+      }
+    },
+    "settings.display.cacheSettings.officialFeed.sectionTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official In-Game Events Cache Data"
           }
         }
       }

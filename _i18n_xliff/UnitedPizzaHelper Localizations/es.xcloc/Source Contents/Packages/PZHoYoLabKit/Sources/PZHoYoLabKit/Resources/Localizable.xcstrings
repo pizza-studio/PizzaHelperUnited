@@ -431,7 +431,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (The Traveller / Trailblazer and Unequipped 5-star weapons are not counted)"
+            "value" : "Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (The Traveller / Trailblazer / Manekins and Unequipped 5-star weapons are not counted)"
           }
         }
       }
@@ -498,6 +498,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Expand"
+          }
+        }
+      }
+    },
+    "hylKit.inventoryView.shareInventoryListAsImage.buttonTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share this Inventory List as Image"
           }
         }
       }

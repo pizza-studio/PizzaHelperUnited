@@ -659,6 +659,36 @@
         }
       }
     },
+    "takeViewShotButton.button.tapHereToShare" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap Here to Share"
+          }
+        }
+      }
+    },
+    "takeViewShotButton.imageShotPreparationComplete.instruction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image file successfully prepared for export."
+          }
+        }
+      }
+    },
+    "takeViewShotButton.preview.imageToShare" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepared Image"
+          }
+        }
+      }
+    },
     "unit.daysOf:%lld" : {
       "extractionState" : "manual",
       "localizations" : {
