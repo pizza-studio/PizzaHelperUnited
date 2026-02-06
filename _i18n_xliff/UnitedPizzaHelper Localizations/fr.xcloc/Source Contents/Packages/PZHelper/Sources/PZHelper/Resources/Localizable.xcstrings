@@ -1450,6 +1450,16 @@
         }
       }
     },
+    "setting.display.reduceUIGlassDecorations.explain.deviceRAMInsufficient:%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This toggle is always active and locked on devices with less than %lld GB of RAM due to hardware performance constraints."
+          }
+        }
+      }
+    },
     "setting.display.reduceUIGlassDecorations.explain.intelMac" : {
       "localizations" : {
         "en" : {
