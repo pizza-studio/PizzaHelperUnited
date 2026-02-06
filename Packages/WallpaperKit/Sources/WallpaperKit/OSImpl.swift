@@ -15,18 +15,12 @@ extension View {
         thickMaterial: Bool = false
     )
         -> some View {
-        if #available(iOS 15.0, macCatalyst 15.0, *) {
+        if #available(iOS 16.0, macCatalyst 16.0, *) {
             background {
-                AppWallpaperView()
-                    .saturation(thickMaterial ? 0.8 : 1)
-                    .overlay {
-                        if thickMaterial {
-                            Color.primary.colorInvert().opacity(0.1)
-                        }
-                    }
-                    .ignoresSafeArea(.all)
+                AppWallpaperView(thickMaterial: thickMaterial)
             }
         } else {
+            // Intentionally No-op.
             self
         }
     }
