@@ -21,45 +21,7 @@ internal struct FloatingGlassTabBar: View {
     public var body: some View {
         GlassEffectContainer {
             HStack(spacing: 0) {
-                ForEach(effectiveCases, id: \.self) { (navCase: AppRootPage) in
-                    if navCase.isExposed {
-                        let isChosen = isDragging
-                            ? (findClosestTab(to: highlightX) == navCase)
-                            : (visualSelection == navCase)
-                        VStack(spacing: 2) {
-                            navCase.icon
-                                .imageScale(.medium)
-                            navCase.labelNameText
-                                .font(.caption2)
-                                .fontWeight(isChosen ? .bold : .regular)
-                                .fontWidth(.condensed)
-                                .fixedSize(horizontal: true, vertical: false)
-                        }
-                        .shadow(
-                            color: labelTextShadowColor,
-                            radius: getLabelTextShadowRadius(isChosen: isChosen)
-                        )
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 8)
-                        .frame(
-                            width: Swift.max(buttonBarWidth / Double(effectiveCases.count), 25),
-                            alignment: .center
-                        )
-                        .foregroundStyle(isChosen ? Color.primary : Color.secondary)
-                        .contentShape(Capsule())
-                        // 標記每個 Tab 的位置作為動畫源
-                        .matchedGeometryEffect(id: navCase, in: namespace)
-                        // 記錄每個 Tab 的 frame
-                        .background {
-                            GeometryReader { geo in
-                                Color.clear.preference(
-                                    key: TabFramePreferenceKey.self,
-                                    value: [navCase: geo.frame(in: .named(coordinateSpaceName))]
-                                )
-                            }
-                        }
-                    }
-                }
+                ForEach(effectiveCases, id: \.self, content: renderButtonForNavCase)
             }
             .background { highlightCapsule }
             .glassEffect(.identity, in: .capsule)
@@ -71,38 +33,7 @@ internal struct FloatingGlassTabBar: View {
                     highlightX = frame.midX
                 }
             }
-            .gesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { value in
-                        // 記錄拖曳的總距離，用於區分 tap 和 drag
-                        let distance = abs(value.translation.width) + abs(value.translation.height)
-                        if distance > dragThreshold {
-                            // 超過閾值才算真正的拖曳，高亮跟隨手指
-                            isDragging = true
-                            highlightX = clampedX(value.location.x)
-                        }
-                    }
-                    .onEnded { value in
-                        // 找到最近的 Tab 作為目標
-                        let targetTab = findClosestTab(to: isDragging ? highlightX : value.location.x) ??
-                            visualSelection
-                        visualSelection = targetTab
-                        // 用動畫將高亮區域移動到目標 Tab 的中心
-                        if let targetFrame = tabFrames[targetTab] {
-                            withAnimation(.spring(duration: animationDuration)) {
-                                highlightX = targetFrame.midX
-                            }
-                        }
-                        isDragging = false
-                        // 等動畫完成後再更新實際的 selection
-                        if selection != targetTab {
-                            simpleTaptic(type: .medium)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
-                                selection = targetTab
-                            }
-                        }
-                    }
-            )
+            .gesture(handleDragGesture())
         }
         .frame(minHeight: 50, maxHeight: 60)
         .onAppear {
@@ -181,6 +112,47 @@ internal struct FloatingGlassTabBar: View {
         }
     }
 
+    @ViewBuilder
+    private func renderButtonForNavCase(_ navCase: AppRootPage) -> some View {
+        if navCase.isExposed {
+            let isChosen = isDragging
+                ? (findClosestTab(to: highlightX) == navCase)
+                : (visualSelection == navCase)
+            VStack(spacing: 2) {
+                navCase.icon
+                    .imageScale(.medium)
+                navCase.labelNameText
+                    .font(.caption2)
+                    .fontWeight(isChosen ? .bold : .regular)
+                    .fontWidth(.condensed)
+                    .fixedSize(horizontal: true, vertical: false)
+            }
+            .shadow(
+                color: labelTextShadowColor,
+                radius: getLabelTextShadowRadius(isChosen: isChosen)
+            )
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .frame(
+                width: Swift.max(buttonBarWidth / Double(effectiveCases.count), 25),
+                alignment: .center
+            )
+            .foregroundStyle(isChosen ? Color.primary : Color.secondary)
+            .contentShape(Capsule())
+            // 標記每個 Tab 的位置作為動畫源
+            .matchedGeometryEffect(id: navCase, in: namespace)
+            // 記錄每個 Tab 的 frame
+            .background {
+                GeometryReader { geo in
+                    Color.clear.preference(
+                        key: TabFramePreferenceKey.self,
+                        value: [navCase: geo.frame(in: .named(coordinateSpaceName))]
+                    )
+                }
+            }
+        }
+    }
+
     private func getLabelTextShadowRadius(isChosen: Bool) -> Double {
         switch (colorScheme == .dark, isChosen) {
         case (false, false): 2
@@ -213,5 +185,38 @@ internal struct FloatingGlassTabBar: View {
         }
 
         return closestTab
+    }
+
+    private func handleDragGesture() -> some Gesture {
+        DragGesture(minimumDistance: 0)
+            .onChanged { value in
+                // 記錄拖曳的總距離，用於區分 tap 和 drag
+                let distance = abs(value.translation.width) + abs(value.translation.height)
+                if distance > dragThreshold {
+                    // 超過閾值才算真正的拖曳，高亮跟隨手指
+                    isDragging = true
+                    highlightX = clampedX(value.location.x)
+                }
+            }
+            .onEnded { value in
+                // 找到最近的 Tab 作為目標
+                let targetTab = findClosestTab(to: isDragging ? highlightX : value.location.x) ??
+                    visualSelection
+                visualSelection = targetTab
+                // 用動畫將高亮區域移動到目標 Tab 的中心
+                if let targetFrame = tabFrames[targetTab] {
+                    withAnimation(.spring(duration: animationDuration)) {
+                        highlightX = targetFrame.midX
+                    }
+                }
+                isDragging = false
+                // 等動畫完成後再更新實際的 selection
+                if selection != targetTab {
+                    simpleTaptic(type: .medium)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
+                        selection = targetTab
+                    }
+                }
+            }
     }
 }
