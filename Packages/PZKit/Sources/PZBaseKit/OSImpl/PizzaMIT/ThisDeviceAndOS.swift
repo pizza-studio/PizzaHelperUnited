@@ -43,6 +43,29 @@ extension ThisDevice {
         return false
         #endif
     }()
+
+    /// 判定系统配备的记忆体容量是否低于一个需要强制照顾效能的阈值。
+    public static var isLegacyDeviceOrInsufficientRAM: Bool {
+        let ramBytes = ProcessInfo.processInfo.physicalMemory
+        let ramGB = Double(ramBytes) / 1024 / 1024 / 1024
+        let threshold = Double(deviceRAMInsufficientThresholdAsGiB)
+        return ramGB < threshold
+    }
+
+    public static var deviceRAMInsufficientThresholdAsGiB: Int {
+        switch OS.type {
+        case .macOS: 16
+        case .iPadOS:
+            if #available(iOS 26, *) {
+                16
+            } else {
+                8
+            }
+        case .iPhoneOS: 8
+        case .watchOS: 1
+        case .tvOS: 4
+        }
+    }
 }
 
 // MARK: - DeviceIDCache
