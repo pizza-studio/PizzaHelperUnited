@@ -280,6 +280,7 @@ extension Enka.AvatarSummarized.CharacterID {
                 .aspectRatio(contentMode: .fill)
                 .blur(radius: 60)
                 .saturation(3)
+                .drawingGroup()
                 .opacity(0.47)
         }
     }
@@ -576,6 +577,7 @@ private struct WeaponPanelView: View {
                     .blur(radius: 5)
                     .saturation(0.5)
                     .brightness(-0.1)
+                    .drawingGroup()
                     .opacity(0.5)
             }
             .clipShape(.circle)
