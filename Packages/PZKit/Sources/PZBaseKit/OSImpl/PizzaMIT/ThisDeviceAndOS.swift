@@ -47,9 +47,19 @@ extension ThisDevice {
     /// 判定系统配备的记忆体容量是否低于一个需要强制照顾效能的阈值。
     public static var isLegacyDeviceOrInsufficientRAM: Bool {
         let ramBytes = ProcessInfo.processInfo.physicalMemory
-        let ramGB = Double(ramBytes) / 1024 / 1024 / 1024
+        /// 进位制。
+        let degree: Double = switch OS.type {
+        case .macOS: 1024
+        default: 1000
+        }
+        /// 给真实设备预留的偏差值。
+        let delta: Double = switch OS.type {
+        case .macOS: 0
+        default: Double(0.25 * degree * degree * degree)
+        }
+        let ramGB = Double(ramBytes) / degree / degree / degree
         let threshold = Double(deviceRAMInsufficientThresholdAsGiB)
-        return ramGB < threshold
+        return ramGB < (threshold - delta)
     }
 
     public static var deviceRAMInsufficientThresholdAsGiB: Int {
