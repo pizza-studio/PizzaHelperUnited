@@ -62,7 +62,6 @@ extension HYQueriedAvatarProtocol {
     }
 
     public static func purgeCachedLocalAvatarRaws(uid: String) {
-        let url = getURL4LocallyCachedAvatars(uid: uid)
         try? FileManager.default.removeItem(at: getURL4LocallyCachedAvatars(uid: uid))
     }
 
