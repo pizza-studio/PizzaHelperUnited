@@ -74,7 +74,7 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
         content
             .clipShape(shape) // 必需
             .background(alignment: .center) {
-                if sansTransparency || ThisDevice.isIntelProcessor {
+                if sansTransparency || deviceBannedForUIGlassDecorations {
                     fillColor4ReducedTransparency
                         .clipShape(shape)
                         .blendMode(colorScheme == .dark ? .difference : .normal)
@@ -84,7 +84,7 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
                 }
             }
             .apply { neta in
-                if sansTransparency || ThisDevice.isIntelProcessor {
+                if sansTransparency || deviceBannedForUIGlassDecorations {
                     neta
                 } else if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *),
                           OS.liquidGlassThemeSuspected {
@@ -102,8 +102,10 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     @Default(.reduceUIGlassDecorations) private var reduceUIGlassDecorations
+
     private let shape: T
     private let interactive: Bool
+    private let deviceBannedForUIGlassDecorations = ThisDevice.deviceBannedForUIGlassDecorations
 
     private var sansTransparency: Bool {
         reduceTransparency || reduceUIGlassDecorations
@@ -127,7 +129,7 @@ private struct ListRowMaterialBackgroundView: View {
 
     var body: some View {
         Group {
-            if sansTransparency || ThisDevice.isIntelProcessor {
+            if sansTransparency || deviceBannedForUIGlassDecorations {
                 fillColor4ReducedTransparency
                     .clipShape(.rect)
                     .blendMode(colorScheme == .dark ? .difference : .normal)
@@ -144,6 +146,8 @@ private struct ListRowMaterialBackgroundView: View {
     @Default(.reduceUIGlassDecorations) private var reduceUIGlassDecorations
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+
+    private let deviceBannedForUIGlassDecorations = ThisDevice.deviceBannedForUIGlassDecorations
 
     private var sansTransparency: Bool {
         reduceTransparency || reduceUIGlassDecorations

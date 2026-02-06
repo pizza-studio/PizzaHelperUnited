@@ -10294,6 +10294,82 @@
         }
       }
     },
+    "setting.display.reduceUIGlassDecorations.explain.deviceRAMInsufficient:%lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Schalter ist auf Geräten mit weniger als %lld GB RAM aufgrund von Hardwareleistungsbeschränkungen immer aktiv und gesperrt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This toggle is always active and locked on devices with less than %lld GB of RAM due to hardware performance constraints."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este interruptor siempre está activo y bloqueado en dispositivos con menos de %lld GB de RAM debido a limitaciones de rendimiento del hardware."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palaging naka-on at naka-lock ang toggle na ito sa mga device na may mas mababa sa %lld GB ng RAM dahil sa mga limitasyon ng hardware."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce réglage est toujours activé et verrouillé sur les appareils avec moins de %lld Go de RAM en raison de contraintes de performances matérielles."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo interruttore è sempre attivo e bloccato sui dispositivi con meno di %lld GB di RAM a causa dei limiti di prestazioni hardware."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RAM が %lld GB 未満のデバイスでは、ハードウェアの性能制約により、このスイッチは常に有効でロックされています。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RAM이 %lldGB 미만인 장치에서는 하드웨어 성능 제약으로 인해 이 토글이 항상 활성화되어 잠겨 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На устройствах с объёмом оперативной памяти менее %lld ГБ этот переключатель всегда включён и заблокирован из-за ограничений производительности аппаратного обеспечения."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trên các thiết bị có RAM dưới %lld GB, tùy chọn này luôn bật và bị khoá do giới hạn hiệu năng phần cứng."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由于硬件效能限制，该选项在 RAM 低于 %lld GB 的设备上始终生效且不可更改。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由於硬體效能限制，此選項在 RAM 低於 %lld GB 的裝置上會始終啟用並鎖定，無法更改。"
+          }
+        }
+      }
+    },
     "setting.display.reduceUIGlassDecorations.explain.intelMac" : {
       "localizations" : {
         "de" : {

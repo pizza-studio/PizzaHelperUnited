@@ -146,7 +146,7 @@ struct CorneredTagMaterialBackground: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .apply { neta in
-                if reduceTransparency || ThisDevice.isIntelProcessor {
+                if reduceTransparency || deviceBannedForUIGlassDecorations {
                     neta
                         .background(alignment: .center) {
                             capsuleBackground
@@ -161,12 +161,12 @@ struct CorneredTagMaterialBackground: ViewModifier {
             .contentShape(.capsule)
     }
 
-    // MARK: Internal
-
-    @Environment(\.colorScheme) var colorScheme
-    @Environment(\.accessibilityReduceTransparency) var reduceTransparency
-
     // MARK: Private
+
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+
+    private let deviceBannedForUIGlassDecorations = ThisDevice.deviceBannedForUIGlassDecorations
 
     @ViewBuilder private var capsuleBackground: some View {
         Group {
