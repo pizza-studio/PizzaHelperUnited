@@ -42,7 +42,7 @@ internal struct FloatingGlassTabBar: View {
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
                         .frame(
-                            width: buttonWidth / Double(effectiveCases.count),
+                            width: Swift.max(buttonBarWidth / Double(effectiveCases.count), 25),
                             alignment: .center
                         )
                         .foregroundStyle(isChosen ? Color.primary : Color.secondary)
@@ -160,7 +160,7 @@ internal struct FloatingGlassTabBar: View {
     /// 座標區域命名空間
     private let coordinateSpaceName = "FloatingGlassTabBar"
 
-    private var buttonWidth: Double {
+    private var buttonBarWidth: Double {
         screenVM.mainColumnCanvasSizeObserved.width - 70
     }
 
