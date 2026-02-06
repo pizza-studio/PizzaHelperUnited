@@ -22,19 +22,15 @@ private struct CanvasSizeTracker: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .background {
-                Color.clear
-                    .containerRelativeFrameEX([.horizontal, .vertical]) { length, axis in
-                        Task { @MainActor in
-                            switch axis {
-                            case .horizontal:
-                                sizeState.update(width: length)
-                            case .vertical:
-                                sizeState.update(height: length)
-                            }
-                            dispatchHandlerIfValid()
-                        }
-                        return length
+                SizeReadingLayout(onChange: { size in
+                    // 使用 Task 异步更新，避免在布局过程中直接修改状态
+                    Task { @MainActor in
+                        sizeState.update(width: size.width, height: size.height)
+                        dispatchHandlerIfValid()
                     }
+                }) {
+                    Color.clear
+                }
             }
     }
 
@@ -51,6 +47,40 @@ private struct CanvasSizeTracker: ViewModifier {
             }
         }
     }
+}
+
+// MARK: - SizeReadingLayout
+
+/// 一个纯粹用于读取尺寸的 Layout，不干扰子视图的默认布局行为。
+@available(iOS 16.0, macCatalyst 16.0, *)
+private struct SizeReadingLayout: Layout {
+    // MARK: Lifecycle
+
+    init(onChange: @Sendable @escaping (CGSize) -> Void) {
+        self.onChange = .init(onChange)
+    }
+
+    // MARK: Internal
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout Void) -> CGSize {
+        // 直接返回子视图（Color.clear）在当前建议下的大小
+        // Color.clear 通常会填充建议的尺寸
+        subviews.first?.sizeThatFits(proposal) ?? .zero
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout Void) {
+        // 放置子视图
+        subviews.first?.place(at: bounds.origin, proposal: proposal)
+
+        // 报告尺寸
+        onChange.withLock { $0(bounds.size) }
+    }
+
+    // MARK: Private
+
+    // MARK: Private
+
+    private let onChange: NSMutex<(CGSize) -> Void>
 }
 
 // MARK: - SizeState
