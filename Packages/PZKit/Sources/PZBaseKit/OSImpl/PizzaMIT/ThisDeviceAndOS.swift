@@ -66,6 +66,11 @@ extension ThisDevice {
         case .tvOS: 4
         }
     }
+
+    public static var deviceBannedForUIGlassDecorations: Bool {
+        let legacyDeviceOrLessRAM = ThisDevice.isLegacyDeviceOrInsufficientRAM
+        return ThisDevice.isIntelProcessor || legacyDeviceOrLessRAM
+    }
 }
 
 // MARK: - DeviceIDCache

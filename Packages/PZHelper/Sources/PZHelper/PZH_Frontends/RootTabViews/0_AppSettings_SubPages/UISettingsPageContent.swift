@@ -30,19 +30,17 @@ struct UISettingsPageContent: View {
             }
 
             Section {
-                VStack {
+                VStack(alignment: .leading) {
                     Toggle(isOn: $reduceUIGlassDecorations) {
                         Text("setting.display.reduceUIGlassDecorations", bundle: .currentSPM)
                     }
-                    .disabled(ThisDevice.isIntelProcessor)
-                    if Pizza.isDebug || (ThisDevice.isIntelProcessor && OS.type == .macOS) {
-                        Text(
-                            "setting.display.reduceUIGlassDecorations.explain.intelMac",
-                            bundle: .currentSPM
-                        )
-                        .asInlineTextDescription()
+                    .disabled(ThisDevice.deviceBannedForUIGlassDecorations)
+                    let reasons = reasonsWhyDeviceBannedForUIGlassDecorations.enumerated()
+                    ForEach(Array(reasons), id: \.offset) { _, reasonText in
+                        reasonText.asInlineTextDescription()
                     }
                 }
+                .multilineTextAlignment(.leading)
             } header: {
                 Text("settings.display.performanceSettings.sectionHeader", bundle: .currentSPM)
             } footer: {
@@ -70,6 +68,30 @@ struct UISettingsPageContent: View {
     @Default(.restoreTabOnLaunching) private var restoreTabOnLaunching: Bool
     @Default(.defaultServer) private var defaultServer4GI: String
     @Default(.reduceUIGlassDecorations) private var reduceUIGlassDecorations: Bool
+
+    private var reasonsWhyDeviceBannedForUIGlassDecorations: [Text] {
+        var result = [Text]()
+        let threshold = ThisDevice.deviceRAMInsufficientThresholdAsGiB
+        let description4DeviceRAMThreshold = Text(
+            "setting.display.reduceUIGlassDecorations.explain.deviceRAMInsufficient:\(threshold)",
+            bundle: .currentSPM
+        )
+
+        let description4IntelMac = Text(
+            "setting.display.reduceUIGlassDecorations.explain.intelMac",
+            bundle: .currentSPM
+        )
+
+        if Pizza.isDebug {
+            result.append(description4IntelMac)
+            result.append(description4DeviceRAMThreshold)
+        } else if ThisDevice.isIntelProcessor, OS.type == .macOS {
+            result.append(description4IntelMac)
+        } else if ThisDevice.isLegacyDeviceOrInsufficientRAM {
+            result.append(description4DeviceRAMThreshold)
+        }
+        return result
+    }
 
     @ViewBuilder private var defaultServerSelector4GI: some View {
         VStack {

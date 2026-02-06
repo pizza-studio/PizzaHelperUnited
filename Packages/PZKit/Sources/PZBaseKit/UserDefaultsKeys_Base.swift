@@ -69,7 +69,7 @@ extension Defaults.Keys {
 
     public static let reduceUIGlassDecorations = Key<Bool>(
         "reduceUIGlassDecorations",
-        default: ThisDevice.isIntelProcessor,
+        default: ThisDevice.deviceBannedForUIGlassDecorations,
         suite: .baseSuite
     )
 }
