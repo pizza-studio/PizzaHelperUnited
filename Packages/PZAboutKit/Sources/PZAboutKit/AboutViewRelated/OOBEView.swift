@@ -133,9 +133,10 @@ public struct OOBEView: View {
 
     private var currentPageItems: [NetaBar] {
         guard !pageBreaks.isEmpty else { return Self.allNetaBars }
-        let startIndex = pageBreaks[currentPage]
-        let endIndex = currentPage + 1 < pageBreaks.count
-            ? pageBreaks[currentPage + 1]
+        let safeIndex = Swift.min(max(0, currentPage), pageBreaks.count - 1)
+        let startIndex = pageBreaks[safeIndex]
+        let endIndex = safeIndex + 1 < pageBreaks.count
+            ? pageBreaks[safeIndex + 1]
             : Self.allNetaBars.count
         return Array(Self.allNetaBars[startIndex ..< endIndex])
     }
@@ -238,12 +239,14 @@ public struct OOBEView: View {
             }
         }
 
-        pageBreaks = breaks
-
         // 确保当前页不越界
-        if currentPage >= totalPages {
-            currentPage = max(0, totalPages - 1)
+        // 注意：必须在更新 pageBreaks 之前处理 currentPage，否则会导致 View 在中间态刷新时崩溃
+        let newTotalPages = Swift.max(1, breaks.count)
+        if currentPage >= newTotalPages {
+            currentPage = Swift.max(0, newTotalPages - 1)
         }
+
+        pageBreaks = breaks
     }
 }
 
