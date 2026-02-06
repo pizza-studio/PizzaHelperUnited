@@ -75,9 +75,15 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
             .clipShape(shape) // 必需
             .background(alignment: .center) {
                 if sansTransparency || deviceBannedForUIGlassDecorations {
-                    fillColor4ReducedTransparency
-                        .clipShape(shape)
-                        .blendMode(colorScheme == .dark ? .difference : .normal)
+                    ZStack {
+                        Color.primary.colorInvert()
+                            .opacity(0.2)
+                            .blendMode(colorScheme == .dark ? .darken : .hardLight)
+                        fillColor4ReducedTransparency
+                            .blendMode(colorScheme == .dark ? .difference : .normal)
+                            .opacity(0.5)
+                    }
+                    .clipShape(shape)
                 } else {
                     shape
                         .fill(.regularMaterial)
@@ -112,10 +118,11 @@ struct BlurMaterialBackground<T: Shape>: ViewModifier {
     }
 
     @ViewBuilder private var fillColor4ReducedTransparency: some View {
-        switch colorScheme {
-        case .dark: Color.gray.opacity(0.2).brightness(-0.1)
-        default: Color.white.opacity(0.3)
+        let luminance: Double = switch colorScheme {
+        case .dark: 0.35
+        default: 1
         }
+        Color(hue: 0, saturation: 0, brightness: luminance, opacity: 0.6)
     }
 }
 
@@ -130,9 +137,15 @@ private struct ListRowMaterialBackgroundView: View {
     var body: some View {
         Group {
             if sansTransparency || deviceBannedForUIGlassDecorations {
-                fillColor4ReducedTransparency
-                    .clipShape(.rect)
-                    .blendMode(colorScheme == .dark ? .difference : .normal)
+                ZStack {
+                    Color.primary.colorInvert()
+                        .opacity(0.2)
+                        .blendMode(colorScheme == .dark ? .darken : .hardLight)
+                    fillColor4ReducedTransparency
+                        .blendMode(colorScheme == .dark ? .difference : .normal)
+                        .opacity(0.5)
+                }
+                .clipShape(.rect)
             } else {
                 Color.clear
                     .background(.thinMaterial, in: .rect)
@@ -154,9 +167,17 @@ private struct ListRowMaterialBackgroundView: View {
     }
 
     @ViewBuilder private var fillColor4ReducedTransparency: some View {
-        switch colorScheme {
-        case .dark: Color.gray.opacity(0.2).brightness(-0.1)
-        default: Color.white.opacity(0.3)
+        let luminance: Double = switch colorScheme {
+        case .dark: 0.35
+        default: 1
         }
+        LinearGradient(
+            colors: [
+                Color(hue: 0, saturation: 0, brightness: luminance, opacity: 0.6),
+                Color(hue: 0, saturation: 0, brightness: luminance, opacity: 0.5),
+            ],
+            startPoint: .top,
+            endPoint: .bottom
+        )
     }
 }
