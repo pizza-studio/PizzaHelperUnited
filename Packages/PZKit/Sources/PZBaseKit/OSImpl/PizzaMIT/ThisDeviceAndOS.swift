@@ -52,10 +52,10 @@ extension ThisDevice {
         case .macOS: 1024
         default: 1000
         }
-        /// 给真实设备预留的偏差值。
+        /// 给真实设备预留的偏差值（单位：GiB）。
         let delta: Double = switch OS.type {
         case .macOS: 0
-        default: Double(0.25 * degree * degree * degree)
+        default: 0.25
         }
         let ramGB = Double(ramBytes) / degree / degree / degree
         let threshold = Double(deviceRAMInsufficientThresholdAsGiB)
