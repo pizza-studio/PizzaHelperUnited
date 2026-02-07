@@ -38,7 +38,7 @@ let package = Package(
             url: "https://github.com/prisma-ai/Sworm.git", .upToNextMajor(from: "1.3.0")
         )
         Package.Dependency.package(
-            url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.2")
+            url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.11.1")
         )
         Package.Dependency.package(
             url: "https://github.com/ShikiSuen/CodableFileMonitor.git", .upToNextMajor(from: "1.0.6")
