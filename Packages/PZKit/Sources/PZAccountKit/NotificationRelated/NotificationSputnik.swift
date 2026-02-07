@@ -308,7 +308,12 @@ extension NotificationSputnik {
     /// 星穹铁道的话，恐仅对米游社账号有效，因为国际服的星穹铁道的探索派遣没有预计完成时间。
     private func scheduleExpeditionSummaryNotification() async -> UNNotificationRequest? {
         guard dailyNote.hasExpeditions else { return nil }
-        guard let eta = dailyNote.expeditionTotalETA, eta.timeIntervalSinceNow > 0 else {
+        guard let eta = dailyNote.expeditionTotalETA else {
+            await deleteNotification(.expeditionSummary)
+            return nil
+        }
+        let timeInterval = eta.timeIntervalSinceNow
+        guard timeInterval > 0 else {
             await deleteNotification(.expeditionSummary)
             return nil
         }
@@ -323,7 +328,7 @@ extension NotificationSputnik {
             "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: eta.timeIntervalSinceNow, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
         let id = getID(for: .expeditionSummary)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         return request
