@@ -84,20 +84,29 @@ extension PZProfileActor {
         do {
             return (try ModelContainer(for: Schema([PZProfileMO.self]), configurations: [config]), false)
         } catch {
-            secondAttempt: do {
-                try FileManager.default.removeItem(at: config.url)
-                Defaults[.lastTimeResetLocalProfileDB] = .now
-                do {
-                    return (try ModelContainer(for: Schema([PZProfileMO.self]), configurations: [config]), true)
-                } catch {
-                    break secondAttempt
-                }
-            } catch {
-                fatalError(
-                    "Could not remove wrecked PZProfileMO ModelContainer at \(config.url.absoluteString). Error: \(error)"
-                )
+            print("[PZProfileActor] Initial ModelContainer creation failed: \(error)")
+            // 尝试删除损坏的数据库文件及其关联的 WAL/SHM 文件后重建。
+            let dbURL = config.url
+            // 实际上是 .sqlite-wal，但 config.url 已是完整路径。
+            let walURL = dbURL.appendingPathExtension("wal")
+            let shmURL = dbURL.appendingPathExtension("shm")
+            // 针对 SQLite 文件的后缀格式进行额外处理。
+            let dbPath = dbURL.path
+            let walURL2 = URL(fileURLWithPath: dbPath + "-wal")
+            let shmURL2 = URL(fileURLWithPath: dbPath + "-shm")
+            for fileURL in [dbURL, walURL, shmURL, walURL2, shmURL2] {
+                try? FileManager.default.removeItem(at: fileURL)
             }
-            fatalError("Could not create PZProfileMO ModelContainer at \(config.url.absoluteString). Error: \(error)")
+            Defaults[.lastTimeResetLocalProfileDB] = .now
+            do {
+                return (try ModelContainer(for: Schema([PZProfileMO.self]), configurations: [config]), true)
+            } catch {
+                print("[PZProfileActor] Second ModelContainer creation also failed: \(error)")
+            }
+            // 兜底失败。
+            preconditionFailure(
+                "[PZProfileActor] Falling back to in-memory ModelContainer."
+            )
         }
     }
 
