@@ -335,6 +335,18 @@ public enum OS: Int, Sendable {
         #endif
     }()
 
+    public static let isBetaOSBeforeFirstMajorPublicRelease: Bool = {
+        let systemVersion = ProcessInfo.processInfo.operatingSystemVersion
+
+        // 检查是否是大版本的 X.0.0（即 major 版本任意，minor 和 patch 都是 0）
+        // 这涵盖了 Dev Beta 和 Public Beta 的早期阶段
+        if systemVersion.minorVersion == 0, systemVersion.patchVersion == 0 {
+            // 进一步确认是否是 Beta（通过检查 build 号或额外标记）
+            return OSBuild.isUnstableBetaBuild()
+        }
+        return false
+    }()
+
     /// 當前作業系統類型。此值在首次存取時會自動初始化（需從 MainActor 上下文首次呼叫）。
     /// 初始化後可從任何執行緒安全存取。
     public static var type: OS { OSTypeCache.shared.value }
@@ -602,3 +614,40 @@ extension UIEdgeInsets {
     }
 }
 #endif
+
+// MARK: - OSBuild
+
+enum OSBuild {
+    // MARK: Public
+
+    // 底层获取 Build String 的方法
+    public static func getSystemBuildString() -> String? {
+        var size = 0
+        sysctlbyname("kern.osversion", nil, &size, nil, 0)
+
+        guard size > 0 else { return nil }
+
+        var machine = [UInt8](repeating: 0, count: size)
+        sysctlbyname("kern.osversion", &machine, &size, nil, 0)
+
+        return String(decoding: Data(machine), as: UTF8.self)
+    }
+
+    // MARK: Fileprivate
+
+    /// 判断当前系统是否是 Beta 版本 (基于 Build Number 结尾是否为字母)
+    fileprivate static func isUnstableBetaBuild() -> Bool {
+        // 1. 获取系统 Build 版本号 (例如: "21A5277g")
+        guard let buildString = getSystemBuildString() else { return false }
+
+        // 2. 核心判断逻辑
+        // 正式版的 Build Number 通常以数字结尾 (如 "21A329")
+        // Beta 版通常以字母结尾 (如 "21A5277g")
+        // 我们检查最后一个字符是否是字母
+        if let lastChar = buildString.last, lastChar.isLetter {
+            return true
+        }
+
+        return false
+    }
+}
