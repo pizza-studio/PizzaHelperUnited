@@ -2926,6 +2926,158 @@
         }
       }
     },
+    "pizza.notice.prematureBetaOSDetected.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Gerät läuft mit einer Beta-Version des Betriebssystems, die vor der ersten öffentlichen stabilen Version liegt.\n\nBeta-Versionen von Betriebssystemen (insbesondere solche, die vor der ersten öffentlichen stabilen Version liegen) können ungelöste systemweite Fehler enthalten, die dazu führen können, dass Anwendungen instabil werden oder abstürzen. Um die beste Erfahrung zu gewährleisten, aktualisieren Sie bitte Ihr OS auf eine öffentliche stabile Version. Bitte vergessen Sie nicht, den Beta-Kanal auszuschalten, bevor Sie OS-Updates abrufen.\n\nBitte bestätigen: Jegliche Software-Abstürze, die auf Ihrem aktuellen System auftreten, stellen keinen Grund für negative Bewertungen oder niedrige Bewertungen für diese Software im App Store dar.\n\nBitte stellen Sie auch sicher, dass Sie die Endbenutzer-Lizenzvereinbarung von Apple (EULA) bezüglich Pre-Release-OS-Software einhalten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device is running a Beta version of the operating system that predates the first public stable release.\n\nBeta versions of operating systems (especially those that predate the first public stable release) may contain unresolved system-level bugs that can cause applications to become unstable or crash. To ensure the best experience, please upgrade your OS to a public stable release. Please don’t forget to turn off Beta channel before retrieving OS updates.\n\nPlease acknowledge: Any software crashes occurring on your current system shalt not constitute grounds for leaving negative reviews or low ratings for this software on the App Store.\n\nPlease also ensure your compliance with Apple's End User License Agreement (EULA) regarding Pre-Release OS Software."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este dispositivo está ejecutando una versión Beta del sistema operativo que precede a la primera versión estable pública.\n\nLas versiones Beta de los sistemas operativos (especialmente aquellas que preceden a la primera versión estable pública) pueden contener errores no resueltos a nivel del sistema que pueden causar que las aplicaciones se vuelvan inestables o se bloqueen. Para garantizar la mejor experiencia, actualice su OS a una versión estable pública. No olvide desactivar el canal Beta antes de recuperar las actualizaciones del OS.\n\nPor favor, reconozca: Cualquier bloqueo de software que ocurra en su sistema actual no constituirá motivo para dejar reseñas negativas o calificaciones bajas para este software en la App Store.\n\nAsegúrese también de cumplir con el Acuerdo de Licencia de Usuario Final de Apple (EULA) con respecto al Software de OS de Pre-Lanzamiento."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang device na ito ay nagpapatakbo ng Beta version ng operating system na nauuna sa unang public stable release.\n\nAng Beta versions ng operating systems (lalo na ang mga nauuna sa unang public stable release) ay maaaring maglaman ng hindi nalulutas na system-level bugs na maaaring maging sanhi ng pagiging unstable o pag-crash ng mga applications. Upang tiyakin ang pinakamahusay na karanasan, mangyaring i-upgrade ang iyong OS sa isang public stable release. Huwag kalimutang patayin ang Beta channel bago kunin ang mga OS updates.\n\nMangyaring kilalanin: Ang anumang software crashes na nangyayari sa iyong kasalukuyang system ay hindi magiging dahilan para mag-iwan ng negative reviews o low ratings para sa software na ito sa App Store.\n\nMangyaring tiyakin din ang iyong pagsunod sa Apple's End User License Agreement (EULA) tungkol sa Pre-Release OS Software."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cet appareil exécute une version Beta du système d'exploitation qui précède la première version stable publique.\n\nLes versions Beta des systèmes d'exploitation (surtout celles qui précèdent la première version stable publique) peuvent contenir des bogues non résolus au niveau du système qui peuvent rendre les applications instables ou les faire planter. Pour assurer la meilleure expérience, veuillez mettre à niveau votre OS vers une version stable publique. N'oubliez pas de désactiver le canal Beta avant de récupérer les mises à jour OS.\n\nVeuillez reconnaître : Tout plantage logiciel survenant sur votre système actuel ne constituera pas un motif pour laisser des avis négatifs ou des notes basses pour ce logiciel sur l'App Store.\n\nAssurez-vous également de votre conformité avec l'Accord de Licence Utilisateur Final d'Apple (EULA) concernant le Logiciel OS de Pré-Lancement."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo dispositivo sta eseguendo una versione Beta del sistema operativo che precede la prima release stabile pubblica.\n\nLe versioni Beta dei sistemi operativi (soprattutto quelle che precedono la prima release stabile pubblica) possono contenere bug non risolti a livello di sistema che possono causare instabilità o crash delle applicazioni. Per garantire la migliore esperienza, aggiorna il tuo OS a una release stabile pubblica. Non dimenticare di disattivare il canale Beta prima di recuperare gli aggiornamenti OS.\n\nRiconosci: Qualsiasi crash del software che si verifica sul tuo sistema attuale non costituirà motivo per lasciare recensioni negative o valutazioni basse per questo software sull'App Store.\n\nAssicurati anche di rispettare l'Accordo di Licenza per l'Utente Finale di Apple (EULA) riguardo al Software OS di Pre-Rilascio."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このデバイスは、最初の公開安定版リリースよりも前のオペレーティングシステムのベータ版を実行しています。\n\nオペレーティングシステムのベータ版（特に最初の公開安定版リリースよりも前のもの）は、解決されていないシステムレベルのバグを含み、アプリケーションが不安定になったりクラッシュしたりする原因となる可能性があります。最高の体験を確保するために、OSを公開安定版リリースにアップグレードしてください。OSアップデートを取得する前に、ベータチャネルをオフにすることを忘れないでください。\n\nご理解してください：現在のベータ版システムで発生するソフトウェアクラッシュは、このソフトウェアのApp Storeでの否定的なレビューや低い評価を残す理由となりません。\n\nまた、Appleのエンドユーザー使用許諾契約（EULA）におけるプレリリースOSソフトウェアへの準拠を確保してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 장치는 첫 번째 공개 안정 버전보다 앞선 운영 체제의 베타 버전을 실행하고 있습니다.\n\n운영 체제의 베타 버전(특히 첫 번째 공개 안정 버전보다 앞선 것)은 해결되지 않은 시스템 수준 버그를 포함할 수 있으며, 이로 인해 애플리케이션이 불안정해지거나 충돌할 수 있습니다. 최상의 경험을 위해 OS를 공개 안정 버전으로 업그레이드하십시오. OS 업데이트를 검색하기 전에 베타 채널을 끄는 것을 잊지 마십시오.\n\n인정하십시오: 현재 시스템에서 발생하는 소프트웨어 충돌은 이 소프트웨어에 대한 App Store의 부정적인 리뷰나 낮은 평가를 남기는 근거가 되지 않습니다.\n\n또한 Apple의 최종 사용자 라이선스 계약(EULA)에서 사전 릴리스 OS 소프트웨어에 대한 준수를 확인하십시오."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это устройство работает с бета-версией операционной системы, которая предшествует первой публичной стабильной версии.\n\nБета-версии операционных систем (особенно те, которые предшествуют первой публичной стабильной версии) могут содержать неразрешенные системные ошибки, которые могут привести к нестабильности или сбоям приложений. Чтобы обеспечить лучший опыт, обновите ОС до публичной стабильной версии. Не забудьте отключить бета-канал перед получением обновлений ОС.\n\nПожалуйста, признайте: Любые сбои программного обеспечения, происходящие на вашей текущей системе, не будут основанием для оставления отрицательных отзывов или низких оценок для этого программного обеспечения в App Store.\n\nТакже убедитесь в соблюдении Лицензионного соглашения с конечным пользователем Apple (EULA) относительно программного обеспечения ОС предварительного выпуска."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thiết bị này đang chạy phiên bản Beta của hệ điều hành trước phiên bản ổn định công khai đầu tiên.\n\nCác phiên bản Beta của hệ điều hành (đặc biệt là những phiên bản trước phiên bản ổn định công khai đầu tiên) có thể chứa các lỗi hệ thống chưa được giải quyết, có thể khiến ứng dụng trở nên không ổn định hoặc bị crash. Để đảm bảo trải nghiệm tốt nhất, vui lòng nâng cấp OS của bạn lên phiên bản ổn định công khai. Vui lòng không quên tắt kênh Beta trước khi lấy cập nhật OS.\n\nVui lòng xác nhận: Bất kỳ sự cố phần mềm nào xảy ra trên hệ thống hiện tại của bạn sẽ không là cơ sở để để lại đánh giá tiêu cực hoặc xếp hạng thấp cho phần mềm này trên App Store.\n\nVui lòng cũng đảm bảo tuân thủ Thỏa thuận Giấy phép Người dùng Cuối cùng của Apple (EULA) liên quan đến Phần mềm OS Phát hành Trước."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此设备正在运行早于首个公开稳定版本的操作系统 Beta 版本。\n\n操作系统的 Beta 版本（尤其是早于首个公开稳定版本的版本）可能包含未解决的系统级错误，这些错误可能导致应用程序变得不稳定或崩溃。为确保最佳体验，请将您的 OS 升级到公开稳定版本。在检索 OS 更新之前，请不要忘记关闭 Beta 频道。\n\n请知悉：当前测试版本的系统上发生的任何软件崩溃均不得构成在 App Store 上为此软件留下负面评价或低评分的理由。\n\n请同时确保您遵守 Apple 最终用户许可协议 (EULA) 关于预发布 OS 软件的规定。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此裝置正在運行早於首個公開穩定版本的作業系統 Beta 版本。\n\n作業系統的 Beta 版本（尤其是早於首個公開穩定版本的版本）可能包含未解決的系統級錯誤，這些錯誤可能導致應用程式變得不穩定或崩潰。為確保最佳體驗，請將您的 OS 升級到公開穩定版本。在檢索 OS 更新之前，請不要忘記關閉 Beta 頻道。\n\n請知悉：當前測試版本系統上發生的任何軟體崩潰均不得構成在 App Store 上為此軟體留下負面評價或低評分的理由。\n\n請同時確保您遵守 Apple 最終用戶許可協議 (EULA) 關於預發佈 OS 軟體的規定。"
+          }
+        }
+      }
+    },
+    "pizza.notice.prematureBetaOSDetected.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorzeitige Beta-OS erkannt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premature Beta OS Detected"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión Beta del SO Prematura Detectada"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maagang Beta OS Nakita"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OS Bêta Prématuré Détecté"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OS Beta Prematuro Rilevato"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "早期ベータOS検出"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "조기 베타 OS 감지됨"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обнаружена преждевременная бета-версия ОС"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phát hiện OS Beta sớm"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "检测到过早的 Beta OS"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "偵測到過早的 Beta OS"
+          }
+        }
+      }
+    },
     "sys.add" : {
       "extractionState" : "manual",
       "localizations" : {

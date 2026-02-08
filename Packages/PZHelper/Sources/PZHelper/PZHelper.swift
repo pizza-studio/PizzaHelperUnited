@@ -52,10 +52,6 @@ extension PZHelper {
                 // Auto-Correction must be disabled to prevent a memory leak issue on OS24+.
                 // Refs: https://kyleye.top/posts/swiftui-textfield-memory-leak/
                 .autocorrectionDisabled(true)
-                .frame(
-                    minWidth: windowSize.w,
-                    minHeight: windowSize.h
-                )
                 .apply { mainContents in
                     if #available(iOS 16.2, macCatalyst 16.2, *) {
                         mainContents
@@ -71,6 +67,11 @@ extension PZHelper {
                         mainContents
                     }
                 }
+                .hookingBetaOSNoticeModifier()
+                .frame(
+                    minWidth: windowSize.w,
+                    minHeight: windowSize.h
+                )
             }
             #if os(macOS) && !targetEnvironment(macCatalyst)
             .windowToolbarStyle(.expanded)
