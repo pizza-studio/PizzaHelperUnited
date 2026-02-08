@@ -78,8 +78,6 @@ private struct SizeReadingLayout: Layout {
 
     // MARK: Private
 
-    // MARK: Private
-
     private let onChange: NSMutex<(CGSize) -> Void>
 }
 
@@ -125,6 +123,7 @@ private class SizeState {
 
 @available(iOS 16.0, macCatalyst 16.0, *)
 extension View {
+    @ViewBuilder
     public func trackCanvasSize(
         debounceDelay: TimeInterval = 0.1,
         handler: @escaping (CGSize) -> Void
