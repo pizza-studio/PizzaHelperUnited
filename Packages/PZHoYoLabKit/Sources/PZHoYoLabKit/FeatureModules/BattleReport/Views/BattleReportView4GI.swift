@@ -616,7 +616,10 @@ extension BattleReportView4GI {
         .padding(8)
         .background(
             .regularMaterial,
-            in: RoundedRectangle(cornerRadius: 8, style: .circular)
+            in: RoundedRectangle(
+                cornerRadius: OS.liquidGlassThemeSuspected ? 16 : 8,
+                style: .continuous
+            )
         )
     }
 }
