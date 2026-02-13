@@ -11,7 +11,20 @@ import PZBaseKit
 public struct AssignmentInfo4HSR: AbleToCodeSendHash {
     // MARK: Lifecycle
 
+    init(
+        assignments: [Assignment] = [],
+        totalAssignmentNumber: Int = 4,
+        acceptedAssignmentNumber: Int = 0,
+        dataInvalid: Bool = false
+    ) {
+        self.assignments = assignments
+        self.totalAssignmentNumber = totalAssignmentNumber
+        self.acceptedAssignmentNumber = acceptedAssignmentNumber
+        self.dataInvalid = dataInvalid
+    }
+
     public init(from decoder: Decoder) throws {
+        self.dataInvalid = false
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.assignments = try container.decode([AssignmentInfo4HSR.Assignment].self, forKey: .assignments)
         self.totalAssignmentNumber = try container.decode(Int.self, forKey: .totalAssignmentNumber)
@@ -124,12 +137,16 @@ public struct AssignmentInfo4HSR: AbleToCodeSendHash {
         private let _accomplishedTimestamp: Int?
     }
 
+    public static let failedCase = AssignmentInfo4HSR()
+
     /// Details of all accepted assignments
     public var assignments: [Assignment]
     /// Max assignments number
     public let totalAssignmentNumber: Int
     /// Current accepted assignment number
     public let acceptedAssignmentNumber: Int
+
+    public let dataInvalid: Bool
 
     /// The number on going assignments
     public var onGoingAssignmentNumber: Int {
