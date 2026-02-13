@@ -42,7 +42,11 @@ public struct EnableLiveActivityButton: View {
                 }
             }
         } label: {
-            Text("app.dailynote.initiateLiveActivity", bundle: .currentSPM)
+            Label {
+                Text("app.dailynote.initiateLiveActivity", bundle: .currentSPM)
+            } icon: {
+                Image(systemSymbol: .platterFilledTopIphone)
+            }
         }
         .alert(isPresented: $showErrorAlert, error: error) {
             Button("sys.cancel".i18nBaseKit) {
