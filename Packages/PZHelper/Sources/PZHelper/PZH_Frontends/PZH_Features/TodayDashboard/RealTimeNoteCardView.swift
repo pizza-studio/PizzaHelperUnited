@@ -176,10 +176,12 @@ extension RealTimeNoteCardView {
         public var body: some View {
             drawStaminaBlock()
             drawGIMiscComponents()
-            drawExpeditionTasks()
-                .task {
-                    pilotAssetMap = await dailyNote.getExpeditionAssetMap()
-                }
+            if !dailyNote.expeditionTasks.isEmpty {
+                drawExpeditionTasks()
+                    .task {
+                        pilotAssetMap = await dailyNote.getExpeditionAssetMap()
+                    }
+            }
         }
 
         // MARK: Internal
@@ -410,10 +412,12 @@ extension RealTimeNoteCardView {
         public var body: some View {
             drawStaminaBlock()
             drawHSRMiscComponents()
-            drawExpeditionTasks()
-                .task {
-                    pilotAssetMap = await dailyNote.getExpeditionAssetMap()
-                }
+            if !dailyNote.expeditionTasks.isEmpty {
+                drawExpeditionTasks()
+                    .task {
+                        pilotAssetMap = await dailyNote.getExpeditionAssetMap()
+                    }
+            }
         }
 
         // MARK: Internal
