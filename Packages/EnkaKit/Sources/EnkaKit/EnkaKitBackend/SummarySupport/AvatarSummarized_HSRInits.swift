@@ -196,15 +196,29 @@ extension Enka.AvatarSummarized.ArtifactInfo {
 extension Enka.AvatarSummarized.AvatarMainInfo {
     public init?(hsrDB: Enka.EnkaDB4HSR, hylRAW: HYQueriedModels.HYLAvatarDetail4HSR) {
         let charIDStr = hylRAW.avatarIdStr
-        guard let theCommonInfo = hsrDB.characters[charIDStr] else { return nil }
-        guard let idExpressible = Enka.AvatarSummarized.CharacterID(id: charIDStr) else { return nil }
-        guard let lifePath = Enka.LifePath(rawValue: theCommonInfo.avatarBaseType) else { return nil }
-        guard let theElement = Enka.GameElement(rawValue: theCommonInfo.element) else { return nil }
+        guard let theCommonInfo = hsrDB.characters[charIDStr] else {
+            print("[HSR-MainInfo] characters[\(charIDStr)] not found in EnkaDB")
+            return nil
+        }
+        guard let idExpressible = Enka.AvatarSummarized.CharacterID(id: charIDStr) else {
+            print("[HSR-MainInfo] CharacterID init failed for \(charIDStr)")
+            return nil
+        }
+        guard let lifePath = Enka.LifePath(rawValue: theCommonInfo.avatarBaseType) else {
+            print(
+                "[HSR-MainInfo] LifePath init failed for avatarBaseType=\(theCommonInfo.avatarBaseType) charID=\(charIDStr)"
+            )
+            return nil
+        }
+        guard let theElement = Enka.GameElement(rawValue: theCommonInfo.element) else {
+            print("[HSR-MainInfo] GameElement init failed for element=\(theCommonInfo.element) charID=\(charIDStr)")
+            return nil
+        }
         guard let baseSkillSet = Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet(
             hsrDB: hsrDB,
             hylRAW: hylRAW
         ) else {
-            print("baseSkillSet nulled")
+            print("[HSR-MainInfo] BaseSkillSet init returned nil for charID=\(charIDStr)")
             return nil
         }
         self.avatarLevel = hylRAW.level
@@ -231,7 +245,12 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
         if case .ofStelle = Protagonist(rawValue: charID) { charID -= 1 }
         let charIDStr = charID.description
         let skillsRAW = hylRAW.skills.prefix(4)
-        guard skillsRAW.count == 4 else { return nil }
+        guard skillsRAW.count == 4 else {
+            print(
+                "[HSR-BaseSkillSet] skills.prefix(4).count=\(skillsRAW.count) != 4 for charID=\(charIDStr), total skills=\(hylRAW.skills.count)"
+            )
+            return nil
+        }
         let eidolonResonance: Int = hylRAW.eidolonResonanceList.map(\.isUnlocked).reduce(0) {
             $1 ? $0 + 1 : 0
         }
