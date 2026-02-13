@@ -208,6 +208,7 @@ struct EnkaKitWithHoYoQueryResultTests {
     @Test
     func testBatchSummary4GI() async throws {
         let chtDB = try Enka.EnkaDB4GI(locTag: "zh-Hant")
+        Enka.Sputnik.shared.db4GI = chtDB
         let giDecoded = try HYQueriedModels.HYLAvatarDetail4GI.exampleData()
         let summarized = await Task { @MainActor in
             giDecoded.avatarList.compactMap { $0.summarize(theDB: chtDB) }
@@ -219,6 +220,7 @@ struct EnkaKitWithHoYoQueryResultTests {
     @Test
     func testBatchSummary4HSR() async throws {
         let chtDB = try Enka.EnkaDB4HSR(locTag: "zh-Hant")
+        Enka.Sputnik.shared.db4HSR = chtDB
         let hsrDecoded = try HYQueriedModels.HYLAvatarDetail4HSR.exampleData()
         var failedCharIDs: [Int] = []
         let summarized = hsrDecoded.avatarList.compactMap {
@@ -241,6 +243,7 @@ struct EnkaKitWithHoYoQueryResultTests {
             throw TestError.error(msg: "First avatar (Raiden Ei) missing.")
         }
         let chtDB = try Enka.EnkaDB4GI(locTag: "zh-Hant")
+        Enka.Sputnik.shared.db4GI = chtDB
         guard let summarized = firstAvatar.summarize(theDB: chtDB)?.artifactsRated() else {
             throw TestError.error(msg: "Failed in summarizing Keqing's character build.")
         }
@@ -263,8 +266,9 @@ struct EnkaKitWithHoYoQueryResultTests {
             throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
         }
         let chtDB = try Enka.EnkaDB4HSR(locTag: "zh-Hant")
+        Enka.Sputnik.shared.db4HSR = chtDB
         guard let summarized = firstAvatar.summarize(theDB: chtDB)?.artifactsRated() else {
-            throw TestError.error(msg: "Failed in summarizing Keqing's character build.")
+            throw TestError.error(msg: "Failed in summarizing Yomi(Acheron)'s character build.")
         }
         print(summarized.asText)
         print(summarized.mainInfo.idExpressable.onlineAssetURLStr)
