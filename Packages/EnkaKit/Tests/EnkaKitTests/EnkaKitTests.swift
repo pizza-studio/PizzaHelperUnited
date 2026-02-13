@@ -39,6 +39,7 @@ struct ArtifactRatingTests {
 
 // MARK: - EnkaKitTests
 
+@MainActor
 struct EnkaKitTests {
     @available(iOS 17.0, macCatalyst 17.0, *)
     @Test
@@ -135,7 +136,7 @@ struct EnkaKitTests {
         guard let profile = hsrDecoded.detailInfo, let firstAvatar = profile.avatarDetailList.first else {
             throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
         }
-        guard let summarized = await firstAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
+        guard let summarized = firstAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
             throw TestError.error(msg: "Failed in summarizing Raiden Mei's character build.")
         }
         print(summarized.asText)
@@ -164,7 +165,7 @@ struct EnkaKitTests {
         }
         // Test Manekina.
         let manekinaRAW = profile.avatarDetailList[9]
-        guard let manekina = await manekinaRAW.summarize(theDB: englishDB)?.artifactsRated() else {
+        guard let manekina = manekinaRAW.summarize(theDB: englishDB)?.artifactsRated() else {
             throw TestError.error(msg: "Failed in summarizing Manekina.")
         }
         #expect(manekina.mainInfo.element == .pyro)
@@ -182,7 +183,7 @@ struct EnkaKitTests {
         print(x4Manekina ?? "Result Rating Failed for Manekina.")
         // Test Hutao with costume.
         let ninthAvatar = profile.avatarDetailList[8]
-        guard let hutao = await ninthAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
+        guard let hutao = ninthAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
             throw TestError.error(msg: "Failed in summarizing Hutao character build (with costume).")
         }
         print(hutao.asText)
@@ -201,6 +202,7 @@ struct EnkaKitTests {
 
 // MARK: - EnkaKitWithHoYoQueryResultTests
 
+@MainActor
 struct EnkaKitWithHoYoQueryResultTests {
     @available(iOS 17.0, macCatalyst 17.0, *)
     @Test
@@ -218,9 +220,16 @@ struct EnkaKitWithHoYoQueryResultTests {
     func testBatchSummary4HSR() async throws {
         let chtDB = try Enka.EnkaDB4HSR(locTag: "zh-Hant")
         let hsrDecoded = try HYQueriedModels.HYLAvatarDetail4HSR.exampleData()
-        let summarized = await Task { @MainActor in
-            hsrDecoded.avatarList.compactMap { $0.summarize(theDB: chtDB) }
-        }.value
+        var failedCharIDs: [Int] = []
+        let summarized = hsrDecoded.avatarList.compactMap {
+            let summarizedSingle = $0.summarize(theDB: chtDB)
+            if summarizedSingle == nil {
+                failedCharIDs.append($0.id)
+            }
+            return summarizedSingle
+        }
+        print("failedCharIDs: \(failedCharIDs)")
+        #expect(failedCharIDs.isEmpty)
         #expect(hsrDecoded.avatarList.count == summarized.count)
     }
 
@@ -232,7 +241,7 @@ struct EnkaKitWithHoYoQueryResultTests {
             throw TestError.error(msg: "First avatar (Raiden Ei) missing.")
         }
         let chtDB = try Enka.EnkaDB4GI(locTag: "zh-Hant")
-        guard let summarized = await firstAvatar.summarize(theDB: chtDB)?.artifactsRated() else {
+        guard let summarized = firstAvatar.summarize(theDB: chtDB)?.artifactsRated() else {
             throw TestError.error(msg: "Failed in summarizing Keqing's character build.")
         }
         print(summarized.asText)
@@ -254,7 +263,7 @@ struct EnkaKitWithHoYoQueryResultTests {
             throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
         }
         let chtDB = try Enka.EnkaDB4HSR(locTag: "zh-Hant")
-        guard let summarized = await firstAvatar.summarize(theDB: chtDB)?.artifactsRated() else {
+        guard let summarized = firstAvatar.summarize(theDB: chtDB)?.artifactsRated() else {
             throw TestError.error(msg: "Failed in summarizing Keqing's character build.")
         }
         print(summarized.asText)

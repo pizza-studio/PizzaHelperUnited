@@ -348,6 +348,10 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
         case point16 = "Point16"
         case point17 = "Point17"
         case point18 = "Point18"
+        case point19 = "Point19"
+        case point20 = "Point20"
+        case point21 = "Point21"
+        case point22 = "Point22"
     }
 
     // MARK: - SkillStage
