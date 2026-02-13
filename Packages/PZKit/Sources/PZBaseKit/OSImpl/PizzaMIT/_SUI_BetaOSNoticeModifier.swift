@@ -69,7 +69,9 @@ private struct BetaOSNoticeModifier: ViewModifier {
                 }
                 .navigationTitle(Pizza.appTitleLocalizedFull)
             }
+            #if !os(macOS) && !targetEnvironment(macCatalyst)
             .navigationViewStyle(.stack)
+            #endif
         }
     }
 
@@ -93,6 +95,8 @@ private struct BrighteningPressButtonStyle: ButtonStyle {
             Text(verbatim: "114514")
         }
     }
+    #if !os(macOS) && !targetEnvironment(macCatalyst)
     .navigationViewStyle(.stack)
+    #endif
     .hookingBetaOSNoticeModifier()
 }
