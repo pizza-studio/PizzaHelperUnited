@@ -39,21 +39,7 @@ struct RealTimeNoteCardView: View {
                 Text(theVM.profile.uidWithGame)
                 switch theVM.dailyNoteStatus {
                 case let .succeed(dailyNote, _):
-                    #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
-                    if OS.type != .macOS {
-                        Menu {
-                            EnableLiveActivityButton(
-                                for: theVM.profile,
-                                dailyNote: dailyNote
-                            )
-                        } label: {
-                            Image(systemSymbol: .ellipsisCircle)
-                                .headerFooterTextVisibilityEnhanced()
-                        }
-                    }
-                    #else
-                    EmptyView()
-                    #endif
+                    topTrailingMenu(note: dailyNote)
                 default:
                     EmptyView()
                 }
@@ -104,6 +90,36 @@ struct RealTimeNoteCardView: View {
 
     @Environment(DailyNoteViewModel.self) private var theVM
     @StateObject private var broadcaster = Broadcaster.shared
+
+    @Default(.cachedDailyNotes) private var dailyNoteCache: [String: CachedJSON]
+
+    @ViewBuilder
+    private func topTrailingMenu(note dailyNote: any DailyNoteProtocol) -> some View {
+        Menu {
+            #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
+            if OS.type != .macOS {
+                EnableLiveActivityButton(
+                    for: theVM.profile,
+                    dailyNote: dailyNote
+                )
+            }
+            #endif
+            if Pizza.isDebug, let cached = dailyNoteCache[theVM.profile.uidWithGame] {
+                Button {
+                    Clipboard.currentString = cached.rawJSONString
+                } label: {
+                    Label {
+                        Text(verbatim: "COPY_RAW_JSON_TO_CLIPBOARD")
+                    } icon: {
+                        Image(systemSymbol: .docOnClipboard)
+                    }
+                }
+            }
+        } label: {
+            Image(systemSymbol: .ellipsisCircle)
+                .headerFooterTextVisibilityEnhanced()
+        }
+    }
 }
 
 // MARK: RealTimeNoteCardView.DailyNoteCardErrorView
