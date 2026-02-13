@@ -71,6 +71,7 @@ let package = Package(
                     package: "CodableFileMonitor"
                 )
             },
+            resources: [.process("Resources")],
             swiftSettings: sharedSwiftSettings
         )
         Target.target(
