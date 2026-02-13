@@ -288,7 +288,6 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
             isActivated: Bool,
             isRankWork: Bool,
             prePoint: String,
-            anchor: Anchor,
             remake: String,
             // skillStages: [SkillStage]
         ) {
@@ -299,7 +298,6 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
             self.isActivated = isActivated
             self.isRankWork = isRankWork
             self.prePoint = prePoint
-            self.anchor = anchor
             self.remake = remake
             // self.skillStages = skillStages
         }
@@ -314,7 +312,7 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
             case isActivated = "is_activated"
             case isRankWork = "is_rank_work"
             case prePoint = "pre_point"
-            case anchor, remake
+            case remake
             // case skillStages = "skill_stages"
         }
 
@@ -324,34 +322,8 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
         public var level: Int
         public var isActivated, isRankWork: Bool
         public var prePoint: String
-        public var anchor: Anchor
         public var remake: String
         // public var skillStages: [SkillStage]
-    }
-
-    public enum Anchor: String, AbleToCodeSendHash {
-        case point01 = "Point01"
-        case point02 = "Point02"
-        case point03 = "Point03"
-        case point04 = "Point04"
-        case point05 = "Point05"
-        case point06 = "Point06"
-        case point07 = "Point07"
-        case point08 = "Point08"
-        case point09 = "Point09"
-        case point10 = "Point10"
-        case point11 = "Point11"
-        case point12 = "Point12"
-        case point13 = "Point13"
-        case point14 = "Point14"
-        case point15 = "Point15"
-        case point16 = "Point16"
-        case point17 = "Point17"
-        case point18 = "Point18"
-        case point19 = "Point19"
-        case point20 = "Point20"
-        case point21 = "Point21"
-        case point22 = "Point22"
     }
 
     // MARK: - SkillStage
