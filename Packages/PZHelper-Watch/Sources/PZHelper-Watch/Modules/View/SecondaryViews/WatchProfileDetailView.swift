@@ -68,6 +68,8 @@ struct WatchProfileDetailView: View {
         switch data {
         case _ as Note4ZZZ:
             EmptyView()
+        case _ as any Note4HSR:
+            EmptyView()
         default:
             Divider()
             VStack(alignment: .leading, spacing: 10) {

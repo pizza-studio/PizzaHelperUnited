@@ -416,7 +416,7 @@ extension RealTimeNoteCardView {
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension RealTimeNoteCardView {
-    private struct NoteCardView4HSR: View, ExpeditionViewSuppliable {
+    private struct NoteCardView4HSR: View {
         // MARK: Lifecycle
 
         public init(note dailyNote: any Note4HSR) {
@@ -428,12 +428,6 @@ extension RealTimeNoteCardView {
         public var body: some View {
             drawStaminaBlock()
             drawHSRMiscComponents()
-            if !dailyNote.expeditionTasks.isEmpty {
-                drawExpeditionTasks()
-                    .task {
-                        pilotAssetMap = await dailyNote.getExpeditionAssetMap()
-                    }
-            }
         }
 
         // MARK: Internal
@@ -564,37 +558,6 @@ extension RealTimeNoteCardView {
                         Text(verbatim: eowIntel.textDescription)
                     }
                 }
-            }
-        }
-
-        @ViewBuilder
-        func drawExpeditionTasks() -> some View {
-            // Dispatch
-            VStack {
-                HStack {
-                    let iconFrame: CGFloat = 24
-                    dailyNote.game.expeditionAssetIcon
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: iconFrame)
-                    Text("app.dailynote.card.dispatch.label".i18nPZHelper).bold()
-                    Spacer()
-                    let completionIntel = dailyNote.expeditionCompletionStatus
-                    if completionIntel.isAccomplished {
-                        Image(systemSymbol: .checkmarkCircle)
-                            .foregroundColor(.green)
-                            .frame(width: 20, height: 20)
-                    } else {
-                        Text(verbatim: "\(completionIntel.finished) / \(completionIntel.all)")
-                    }
-                }
-                ExpeditionAutoGridLayout(xSpacing: 2, ySpacing: 8) {
-                    ForEach(dailyNote.expeditionTasks, id: \.hashValue) { expeditionTask in
-                        drawSingleExpedition(expeditionTask)
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .fixedSize(horizontal: false, vertical: true)
             }
         }
 

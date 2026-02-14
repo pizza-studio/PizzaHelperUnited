@@ -13,9 +13,6 @@ public struct FullNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
     public init(from decoder: Decoder) throws {
         let decoder = try decoder.singleValueContainer()
         self.staminaInfo = try decoder.decode(StaminaInfo4HSR.self)
-        self.assignmentInfo = (try? decoder.decode(AssignmentInfo4HSR.self)) ?? .init(
-            dataInvalid: true
-        )
         self.simulatedUniverseInfo = try decoder.decode(SimuUnivInfo4HSR.self)
         self.currencyWarsInfo = try? decoder.decode(CurrencyWarsInfo4HSR.self)
         self.dailyTrainingInfo = try decoder.decode(DailyTrainingInfo4HSR.self)
@@ -27,8 +24,6 @@ public struct FullNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
 
     /// Stamina info
     public var staminaInfo: StaminaInfo4HSR
-    /// Assignment info
-    public var assignmentInfo: AssignmentInfo4HSR
     /// The time when this struct is generated
     public let fetchTime: Date = .init()
     /// Simulated Universe score completion status (weekly)
