@@ -4,11 +4,12 @@
 
 @testable import GachaKit
 import GachaMetaDB
-import XCTest
+import Testing
 
-@available(iOS 17.0, macCatalyst 17.0, *)
-@MainActor
-final class GachaKitGMDBTests: XCTestCase {
+@Suite(.serialized)
+struct GachaKitGMDBTests {
+    @Test
+    @available(iOS 17.0, macCatalyst 17.0, *)
     func testFetchingRemoteData() async throws {
         _ = try await GachaMeta.Sputnik.fetchPreCompiledData(from: .miyoushe(.genshinImpact))
         _ = try await GachaMeta.Sputnik.fetchPreCompiledData(from: .miyoushe(.starRail))
