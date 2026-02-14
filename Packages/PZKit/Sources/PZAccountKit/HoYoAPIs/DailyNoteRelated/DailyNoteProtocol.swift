@@ -139,10 +139,11 @@ extension DailyNoteProtocol {
 
     /// DailyNoteProtocol: Expedition
     public var expeditionTasks: [any ExpeditionTask] {
+        // 星穹铁道官方 API 移除了对探索派遣的资料提供，故彻底移除相关代码。
         switch self {
         case let dailyNote as FullNote4GI: dailyNote.expeditionInfo.expeditions
         case let dailyNote as WidgetNote4GI: dailyNote.expeditionInfo.expeditions
-        case let dailyNote as any Note4HSR: dailyNote.assignmentInfo.assignments
+        case _ as any Note4HSR: []
         case _ as Note4ZZZ: []
         default: []
         }

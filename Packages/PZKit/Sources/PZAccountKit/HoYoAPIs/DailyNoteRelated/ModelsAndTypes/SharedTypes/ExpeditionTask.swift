@@ -20,8 +20,8 @@ extension ExpeditionTask {
     public var game: Pizza.SupportedGame { Self.game }
     // Expedition Protocol Method.
     public var timeOnFinish: Date? {
+        // 星穹铁道官方 API 移除了对探索派遣的资料提供，故彻底移除相关代码。
         switch self {
-        case let data as AssignmentInfo4HSR.Assignment: return data.finishedTime
         case let data as FullNote4GI.ExpeditionInfo4GI.Expedition: return data.finishTime
         case _ as WidgetNote4GI.ExpeditionInfo4GI.Expedition: return nil
         default: return nil

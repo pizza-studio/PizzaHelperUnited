@@ -11,8 +11,6 @@ import PZBaseKit
 public protocol Note4HSR: DailyNoteProtocol, AbleToCodeSendHash {
     /// Stamina info
     var staminaInfo: StaminaInfo4HSR { get }
-    /// Assignment info
-    var assignmentInfo: AssignmentInfo4HSR { get }
     /// The time when this struct is generated
     var fetchTime: Date { get }
     /// Simulated Universe score completion status (weekly)

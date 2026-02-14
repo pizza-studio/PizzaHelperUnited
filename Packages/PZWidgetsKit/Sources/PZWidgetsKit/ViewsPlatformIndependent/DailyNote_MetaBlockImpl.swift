@@ -25,31 +25,28 @@ extension DailyNoteProtocol {
         }
         switch self {
         case let dailyNote as any Note4GI:
-            MetaBar4GIRealmCurrency(note: self)
+            MetaBar4GIRealmCurrency(note: dailyNote)
             if dailyNote.hasExpeditions {
-                MetaBar4Expedition(note: self)
+                MetaBar4Expedition(note: dailyNote)
             }
             if viewConfig.showTransformer {
-                MetaBar4GITransformer(note: self)
+                MetaBar4GITransformer(note: dailyNote)
             }
             switch viewConfig.trounceBlossomDisplayMethod {
             case .disappearAfterCompleted:
-                MetaBar4WeeklyBosses(note: self, disappearIfAllCompleted: true)
+                MetaBar4WeeklyBosses(note: dailyNote, disappearIfAllCompleted: true)
             case .alwaysShow:
-                MetaBar4WeeklyBosses(note: self)
+                MetaBar4WeeklyBosses(note: dailyNote)
             case .neverShow: .none
             }
         case let dailyNote as any Note4HSR:
-            MetaBar4HSRReservedTBPower(note: self)
-            if dailyNote.hasExpeditions {
-                MetaBar4Expedition(note: self)
-            }
-            MetaBar4HSRCosmicStrife(note: self)
+            MetaBar4HSRReservedTBPower(note: dailyNote)
+            MetaBar4HSRCosmicStrife(note: dailyNote)
             switch viewConfig.echoOfWarDisplayMethod {
             case .disappearAfterCompleted:
-                MetaBar4WeeklyBosses(note: self, disappearIfAllCompleted: true)
+                MetaBar4WeeklyBosses(note: dailyNote, disappearIfAllCompleted: true)
             case .alwaysShow:
-                MetaBar4WeeklyBosses(note: self)
+                MetaBar4WeeklyBosses(note: dailyNote)
             case .neverShow: .none
             }
         case let dailyNote as Note4ZZZ:

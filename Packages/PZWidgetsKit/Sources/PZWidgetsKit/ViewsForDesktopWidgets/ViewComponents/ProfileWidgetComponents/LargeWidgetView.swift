@@ -62,8 +62,12 @@ extension DesktopWidgets {
         }
 
         private var hasExpeditionInfoForDisplay: Bool {
-            /// 绝区零没有探索派遣。
-            dailyNote.game != .zenlessZone && !dailyNote.expeditionTasks.isEmpty
+            /// 绝区零没有探索派遣，星穹铁道 API 也没有探索派遣。
+            switch dailyNote.game {
+            case .genshinImpact: !dailyNote.expeditionTasks.isEmpty
+            case .starRail: false
+            case .zenlessZone: false
+            }
         }
 
         private var hasGIMaterialForDisplay: Bool {

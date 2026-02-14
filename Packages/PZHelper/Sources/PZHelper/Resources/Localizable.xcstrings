@@ -11830,73 +11830,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Nur Genshin Impact und Star Rail."
+            "value" : "* Nur Genshin Impact."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Genshin Impact and Star Rail only."
+            "value" : "* Genshin Impact only."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Solo Genshin Impact y Star Rail."
+            "value" : "* Solo Genshin Impact."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Genshin Impact at Star Rail lang."
+            "value" : "* Para sa Genshin Impact lamang."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Genshin Impact et Star Rail uniquement."
+            "value" : "* Genshin Impact uniquement."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Solo Genshin Impact e Star Rail."
+            "value" : "* Solo Genshin Impact."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ スターレイルと原神のみ。"
+            "value" : "※ 原神のみ。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* 원신과 스타레일만 가능합니다."
+            "value" : "* 원신 전용."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Только для Genshin Impact и Star Rail."
+            "value" : "* Только Genshin Impact."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Chỉ Genshin Impact và Star Rail."
+            "value" : "* Chỉ Genshin Impact."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ 星穹铁道与原神限定。"
+            "value" : "※ 原神限定。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ 星穹鐵道與原神限定。"
+            "value" : "※ 原神限定。"
           }
         }
       }
