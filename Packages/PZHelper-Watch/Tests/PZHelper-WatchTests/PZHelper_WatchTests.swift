@@ -1,7 +1,9 @@
 @testable import PZHelper_Watch
-import XCTest
+import Testing
 
-final class PZHelper_WatchTests: XCTestCase {
+@Suite(.serialized)
+struct PZHelper_WatchTests {
+    @Test
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest
