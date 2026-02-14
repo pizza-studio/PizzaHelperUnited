@@ -95,30 +95,46 @@ struct RealTimeNoteCardView: View {
 
     @ViewBuilder
     private func topTrailingMenu(note dailyNote: any DailyNoteProtocol) -> some View {
-        Menu {
-            #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
-            if OS.type != .macOS {
-                EnableLiveActivityButton(
-                    for: theVM.profile,
-                    dailyNote: dailyNote
-                )
-            }
-            #endif
-            if Pizza.isDebug, let cached = dailyNoteCache[theVM.profile.uidWithGame] {
-                Button {
-                    Clipboard.currentString = cached.rawJSONString
-                } label: {
-                    Label {
-                        Text(verbatim: "COPY_RAW_JSON_TO_CLIPBOARD")
-                    } icon: {
-                        Image(systemSymbol: .docOnClipboard)
-                    }
+        let items = topTrailingMenuItems(note: dailyNote)
+        if !items.isEmpty {
+            Menu {
+                ForEach(Array(items.enumerated()), id: \.offset) { _, currentMenuCommandItem in
+                    currentMenuCommandItem
                 }
+            } label: {
+                Image(systemSymbol: .ellipsisCircle)
+                    .headerFooterTextVisibilityEnhanced()
             }
-        } label: {
-            Image(systemSymbol: .ellipsisCircle)
-                .headerFooterTextVisibilityEnhanced()
         }
+    }
+
+    private func topTrailingMenuItems(note dailyNote: any DailyNoteProtocol) -> [AnyView] {
+        var items: [AnyView] = []
+        switch OS.type {
+        case .iPadOS, .iPhoneOS:
+            let button4LA = EnableLiveActivityButton(
+                for: theVM.profile,
+                dailyNote: dailyNote
+            )
+            guard let button4LA else { break }
+            items.append(AnyView(button4LA))
+        default: break
+        }
+        if !items.isEmpty {
+            items.append(AnyView(Divider()))
+        }
+        if Pizza.isDebug, let cached = dailyNoteCache[theVM.profile.uidWithGame] {
+            items.append(AnyView(Button {
+                Clipboard.currentString = cached.rawJSONString
+            } label: {
+                Label {
+                    Text(verbatim: "COPY_RAW_JSON_TO_CLIPBOARD")
+                } icon: {
+                    Image(systemSymbol: .docOnClipboard)
+                }
+            }))
+        }
+        return items
     }
 }
 
