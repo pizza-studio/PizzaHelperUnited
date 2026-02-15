@@ -60,12 +60,30 @@ public struct CGImageCropperView: View {
     @State private var originY: Double = 0
     @State private var sourceCGImageZoomedAndCroppedCache: CGImage?
     @State private var screenVM: ScreenVM = .shared
+    @State private var lastDragTranslation: CGSize = .zero
+    @State private var lastMagnification: Double = 1.0
+    @State private var displayedImageSize: CGSize = .zero
 
     private let cropCompletionHandler: ((CGImage) -> Void)?
     private let targetDimension: CGSize
 
     private var needsToShrinkThePreviewViewport: Bool {
         targetDimension.height / targetDimension.width >= 0.7
+    }
+
+    /// 螢幕上每一點與圖片像素之間的比率（用於手勢計算）。
+    private var screenToImageFactor: CGFloat {
+        guard displayedImageSize.width > 0 else { return 1.0 }
+        return targetDimension.width / displayedImageSize.width
+    }
+
+    /// 用於觸發 .task(id:) 重新渲染裁剪預覽的 key。
+    /// 將座標四捨五入到整數以實現自然防抖——手勢期間的亞像素變化不會反覆觸發重算。
+    private var cropTaskID: String {
+        let x = Int(originX.rounded())
+        let y = Int(originY.rounded())
+        let z = Int(scaleFactor * 1000)
+        return "\(z)-\(x)-\(y)"
     }
 
     private var currentMetrics: (x: String, y: String, zoom: String) {
@@ -145,9 +163,9 @@ public struct CGImageCropperView: View {
     }
 
     private func fixOriginIfNeeded() {
-        // 确保当缩放因子改变时，原点也在有效范围内
-        originX = max(0, min(originX.rounded(.down), maxOrigin.x))
-        originY = max(0, min(originY.rounded(.down), maxOrigin.y))
+        // 确保当缩放因子改变时，原点也在有效范围内（保留小数精度以实现平滑拖拽）
+        originX = max(0, min(originX, maxOrigin.x))
+        originY = max(0, min(originY, maxOrigin.y))
     }
 
     private func areMetricsMakingSense(against source: CGImage?) -> Bool {
@@ -284,6 +302,15 @@ extension CGImageCropperView {
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(8)
                     .frame(width: previewBlockWidth)
+                    .background {
+                        GeometryReader { geometry in
+                            Color.clear
+                                .onAppear { displayedImageSize = geometry.size }
+                                .onChange(of: geometry.size) { _, newSize in
+                                    displayedImageSize = newSize
+                                }
+                        }
+                    }
                     .frame(maxWidth: .infinity)
                     .cornerRadius(8)
                     // 以下修改阻止手势事件传递到父视图
@@ -302,42 +329,55 @@ extension CGImageCropperView {
                     )
                     .listRowInsets(.init())
                     .highPriorityGesture(
-                        DragGesture()
+                        DragGesture(minimumDistance: 1)
                             .onChanged { value in
-                                // 计算拖动距离
-                                let translation = value.translation
-
-                                // 计算水平和垂直方向上的拖动量
-                                let dragSensitivity: CGFloat = 0.15 // 调整拖动灵敏度
-                                let dragX = -1 * translation.width * dragSensitivity
-                                let dragY = translation.height * dragSensitivity
-
-                                // 计算新的原点位置，并确保在有效范围内
-                                let newOriginX = min(max(0, originX + dragX), maxOrigin.x)
-                                let newOriginY = min(max(0, originY + dragY), maxOrigin.y)
-
-                                // 更新原点位置
-                                originX = newOriginX
-                                originY = newOriginY
-                            }
-                    )
-                    .gesture(
-                        MagnificationGesture()
-                            .onChanged { value in
-                                // 计算新的缩放因子
-                                let delta = Double(value - 1.0)
-                                let zoomSensitivity = 0.15 // 调整缩放灵敏度
-                                let newScaleFactor = scaleFactor * (1.0 + delta * zoomSensitivity)
-
-                                // 确保缩放因子在有效范围内
-                                let maxScaleFactor = max(2.0, minimumScaleFactor)
-                                scaleFactor = min(max(minimumScaleFactor, newScaleFactor), maxScaleFactor)
-
-                                // 更新缩放后需要调整原点
+                                // 計算自上次更新以來的增量移動
+                                let delta = CGSize(
+                                    width: value.translation.width - lastDragTranslation.width,
+                                    height: value.translation.height - lastDragTranslation.height
+                                )
+                                lastDragTranslation = value.translation
+                                let factor = screenToImageFactor
+                                // 手指/滑鼠拖動方向與圖片內容移動方向一致（直接操作範式）
+                                // 注意：crop() 內部對 Y 軸做了座標翻轉，因此 Y 方向需取反
+                                originX -= delta.width * factor
+                                originY += delta.height * factor
                                 fixOriginIfNeeded()
                             }
+                            .onEnded { _ in
+                                lastDragTranslation = .zero
+                            }
                     )
-                    // 禁用父视图的滚动行为，防止事件传递到父视图
+                    .simultaneousGesture(
+                        MagnificationGesture()
+                            .onChanged { value in
+                                let magnificationValue = Double(value)
+                                let delta = magnificationValue / lastMagnification
+                                lastMagnification = magnificationValue
+
+                                let oldScale = scaleFactor
+                                let maxScaleFactor = minimumScaleFactor + 2.0
+                                let newScale = min(
+                                    max(minimumScaleFactor, scaleFactor * delta),
+                                    maxScaleFactor
+                                )
+
+                                if newScale != oldScale {
+                                    // 以當前視窗中心為縮放錨點
+                                    let viewportCenterX = originX + targetDimension.width / 2
+                                    let viewportCenterY = originY + targetDimension.height / 2
+                                    let ratio = newScale / oldScale
+                                    originX = viewportCenterX * ratio - targetDimension.width / 2
+                                    originY = viewportCenterY * ratio - targetDimension.height / 2
+                                    scaleFactor = newScale
+                                    fixOriginIfNeeded()
+                                }
+                            }
+                            .onEnded { _ in
+                                lastMagnification = 1.0
+                            }
+                    )
+                    // 禁用父視圖的滾動行為，防止事件傳遞到父視圖
                     .onTapGesture {}
                 } footer: {
                     if OS.type != .macOS {
@@ -357,10 +397,9 @@ extension CGImageCropperView {
                 }
             }
         }
-        .task {
+        .task(id: cropTaskID) {
             sourceCGImageZoomedAndCroppedCache = await getSourceCGImageZoomedAndCropped()
         }
-        .id("\(scaleFactor)-\(originX)-\(originY)")
     }
 }
 
