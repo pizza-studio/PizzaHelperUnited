@@ -51,6 +51,47 @@ public struct CGImageCropperView: View {
         }
     }
 
+    // MARK: Fileprivate
+
+    /// 處理滑鼠滾輪事件。
+    /// - 無修飾鍵：垂直滾動（滾輪向上 → 內容向上）
+    /// - Shift：水平滾動（滾輪向上 → 內容向左）
+    /// - Command：縮放（滾輪向上 → 放大）
+    fileprivate func handleScrollWheel(
+        deltaX: CGFloat, deltaY: CGFloat,
+        isShiftHeld: Bool, isCommandHeld: Bool
+    ) {
+        if isCommandHeld {
+            // Command + 滾輪：縮放
+            let zoomSensitivity = 0.01
+            let oldScale = scaleFactor
+            let maxScaleFactor = minimumScaleFactor + 2.0
+            let newScale = min(
+                max(minimumScaleFactor, scaleFactor * (1.0 + deltaY * zoomSensitivity)),
+                maxScaleFactor
+            )
+            if newScale != oldScale {
+                let viewportCenterX = originX + targetDimension.width / 2
+                let viewportCenterY = originY + targetDimension.height / 2
+                let ratio = newScale / oldScale
+                originX = viewportCenterX * ratio - targetDimension.width / 2
+                originY = viewportCenterY * ratio - targetDimension.height / 2
+                scaleFactor = newScale
+                fixOriginIfNeeded()
+            }
+        } else if isShiftHeld {
+            // Shift + 滾輪：水平平移
+            // macOS 可能自動將 Shift+垂直滾動轉為水平滾動，取較大軸
+            let scrollAmount = abs(deltaX) > abs(deltaY) ? deltaX : deltaY
+            originX -= scrollAmount * screenToImageFactor
+            fixOriginIfNeeded()
+        } else {
+            // 純滾輪：垂直平移（與拖拽方向一致）
+            originY += deltaY * screenToImageFactor
+            fixOriginIfNeeded()
+        }
+    }
+
     // MARK: Private
 
     @State private var currentState: OperationState
@@ -328,6 +369,14 @@ extension CGImageCropperView {
                         padding: 6
                     )
                     .listRowInsets(.init())
+                    .overlay {
+                        ScrollWheelOverlay { deltaX, deltaY, isShift, isCommand in
+                            handleScrollWheel(
+                                deltaX: deltaX, deltaY: deltaY,
+                                isShiftHeld: isShift, isCommandHeld: isCommand
+                            )
+                        }
+                    }
                     .highPriorityGesture(
                         DragGesture(minimumDistance: 1)
                             .onChanged { value in
@@ -426,6 +475,133 @@ extension CGImageCropperView {
     }
     .formStyle(.grouped).disableFocusable()
 }
+#endif
+
+// MARK: - ScrollWheelOverlay
+
+#if canImport(UIKit)
+
+@available(iOS 17.0, macCatalyst 17.0, *)
+private struct ScrollWheelOverlay: UIViewRepresentable {
+    final class ScrollWheelCaptureUIView: UIView {
+        // MARK: Lifecycle
+
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            backgroundColor = .clear
+            let panGR = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+            panGR.allowedScrollTypesMask = [.continuous, .discrete]
+            panGR.maximumNumberOfTouches = 0
+            addGestureRecognizer(panGR)
+        }
+
+        @available(*, unavailable)
+        required init?(coder: NSCoder) { fatalError() }
+
+        // MARK: Internal
+
+        var onScroll: ((_ deltaX: CGFloat, _ deltaY: CGFloat, _ isShiftHeld: Bool, _ isCommandHeld: Bool) -> Void)?
+
+        override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+            // 僅攔截滾輪事件；其他事件（觸控、懸停）穿透至下層 SwiftUI 視圖
+            if event?.type == .scroll {
+                return super.hitTest(point, with: event)
+            }
+            return nil
+        }
+
+        // MARK: Private
+
+        @objc
+        private func handlePan(_ gesture: UIPanGestureRecognizer) {
+            guard gesture.state == .changed else { return }
+            let translation = gesture.translation(in: self)
+            gesture.setTranslation(.zero, in: self)
+            let flags = gesture.modifierFlags
+            onScroll?(translation.x, translation.y, flags.contains(.shift), flags.contains(.command))
+        }
+    }
+
+    let onScroll: @MainActor (_ deltaX: CGFloat, _ deltaY: CGFloat, _ isShiftHeld: Bool, _ isCommandHeld: Bool) -> Void
+
+    func makeUIView(context: Context) -> ScrollWheelCaptureUIView {
+        let view = ScrollWheelCaptureUIView()
+        view.onScroll = onScroll
+        return view
+    }
+
+    func updateUIView(_ uiView: ScrollWheelCaptureUIView, context: Context) {
+        uiView.onScroll = onScroll
+    }
+}
+
+#elseif canImport(AppKit)
+
+@available(macOS 14.0, *)
+private struct ScrollWheelOverlay: NSViewRepresentable {
+    final class ScrollWheelCaptureNSView: NSView {
+        // MARK: Lifecycle
+
+        deinit {
+            if let scrollMonitor {
+                NSEvent.removeMonitor(scrollMonitor)
+            }
+        }
+
+        // MARK: Internal
+
+        var onScroll: ((_ deltaX: CGFloat, _ deltaY: CGFloat, _ isShiftHeld: Bool, _ isCommandHeld: Bool) -> Void)?
+
+        override func viewDidMoveToWindow() {
+            super.viewDidMoveToWindow()
+            // 移除舊的 monitor
+            if let scrollMonitor {
+                NSEvent.removeMonitor(scrollMonitor)
+                self.scrollMonitor = nil
+            }
+            guard window != nil else { return }
+            // 攔截滾輪事件，當游標在本視圖範圍內時消費事件
+            scrollMonitor = NSEvent.addLocalMonitorForEvents(matching: .scrollWheel) { [weak self] event in
+                guard let self, window != nil else { return event }
+                let locationInView = convert(event.locationInWindow, from: nil)
+                guard bounds.contains(locationInView) else { return event }
+
+                var dx = event.scrollingDeltaX
+                var dy = event.scrollingDeltaY
+                // 非精確滾輪（有段落感的滑鼠滾輪）的 delta 以「行」為單位，需放大
+                if !event.hasPreciseScrollingDeltas {
+                    dx *= 10
+                    dy *= 10
+                }
+                let isShift = event.modifierFlags.contains(.shift)
+                let isCommand = event.modifierFlags.contains(.command)
+                onScroll?(dx, dy, isShift, isCommand)
+                return nil // 消費事件，阻止傳遞至底層 ScrollView
+            }
+        }
+
+        override func hitTest(_ point: NSPoint) -> NSView? {
+            nil // 非滾輪事件全部穿透
+        }
+
+        // MARK: Private
+
+        nonisolated(unsafe) private var scrollMonitor: Any?
+    }
+
+    let onScroll: @MainActor (_ deltaX: CGFloat, _ deltaY: CGFloat, _ isShiftHeld: Bool, _ isCommandHeld: Bool) -> Void
+
+    func makeNSView(context: Context) -> ScrollWheelCaptureNSView {
+        let view = ScrollWheelCaptureNSView()
+        view.onScroll = onScroll
+        return view
+    }
+
+    func updateNSView(_ nsView: ScrollWheelCaptureNSView, context: Context) {
+        nsView.onScroll = onScroll
+    }
+}
+
 #endif
 
 #endif
