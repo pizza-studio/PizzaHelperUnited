@@ -35,6 +35,8 @@ struct OfficialFeedWidget: Widget {
     }
 }
 
+#if ENABLE_ININTENTS_BACKPORTS
+
 @available(iOS 16.2, macCatalyst 16.2, *)
 @available(watchOS, unavailable)
 struct INOfficialFeedWidget: Widget {
@@ -59,5 +61,6 @@ struct INOfficialFeedWidget: Widget {
         .containerBackgroundRemovable(false)
     }
 }
+#endif
 
 #endif

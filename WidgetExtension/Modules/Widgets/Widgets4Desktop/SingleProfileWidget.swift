@@ -33,6 +33,8 @@ struct SingleProfileWidget: Widget {
     }
 }
 
+#if ENABLE_ININTENTS_BACKPORTS
+
 @available(iOS 16.2, macCatalyst 16.2, *)
 @available(watchOS, unavailable)
 struct INSingleProfileWidget: Widget {
@@ -55,5 +57,7 @@ struct INSingleProfileWidget: Widget {
         .containerBackgroundRemovable(false)
     }
 }
+
+#endif
 
 #endif

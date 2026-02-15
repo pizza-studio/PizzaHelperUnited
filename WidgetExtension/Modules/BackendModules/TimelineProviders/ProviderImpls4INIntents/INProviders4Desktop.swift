@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if ENABLE_ININTENTS_BACKPORTS
 #if !os(watchOS)
 
 import CoreGraphics
@@ -47,4 +48,5 @@ struct INOfficialFeedWidgetProvider: INThreadSafeTimelineProvider {
     public let asyncTLProvider: NextGenTLProvider = .init()
 }
 
+#endif
 #endif

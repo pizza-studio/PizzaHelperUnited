@@ -33,6 +33,8 @@ struct DualProfileWidget: Widget {
     }
 }
 
+#if ENABLE_ININTENTS_BACKPORTS
+
 @available(iOS 16.2, macCatalyst 16.2, *)
 @available(watchOS, unavailable)
 struct INDualProfileWidget: Widget {
@@ -55,5 +57,7 @@ struct INDualProfileWidget: Widget {
         .containerBackgroundRemovable(false)
     }
 }
+
+#endif
 
 #endif
