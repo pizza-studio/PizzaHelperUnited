@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if ENABLE_ININTENTS_BACKPORTS
 #if !(os(macOS) || targetEnvironment(macCatalyst))
 
 import PZAccountKit
@@ -326,4 +327,5 @@ struct INAlternativeWatchCornerResinWidget: Widget {
     }
 }
 
+#endif
 #endif

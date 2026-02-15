@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if ENABLE_ININTENTS_BACKPORTS
+
 import Foundation
 import Intents
 import PZWidgetsKit
@@ -164,3 +166,5 @@ extension SelectOnlyGameIntent: AppIntentUpgradable { // SelectOnlyGameIntent
         return result
     }
 }
+
+#endif

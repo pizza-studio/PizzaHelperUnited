@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if ENABLE_ININTENTS_BACKPORTS
 #if !os(macOS)
 
 import Foundation
@@ -117,4 +118,5 @@ struct INLockScreenWidgetProvider: INThreadSafeTimelineProvider {
     private static var viewConfig: WidgetViewConfig { .init(noticeMessage: nil) }
 }
 
+#endif
 #endif
