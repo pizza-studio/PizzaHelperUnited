@@ -82,73 +82,149 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sie können auch Mausgesten auf das Vorschaubild anwenden."
+            "value" : "Sie können auch Mausgesten auf das Vorschaubild anwenden:\n- Nur Rad: Vertikal scrollen.\n- Rad+Umschalt: Horizontal scrollen.\n- Rad+Befehl: Zoom-Verhältnis ändern."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You may also use mouse gestures on the preview image."
+            "value" : "You may also use mouse gestures on the preview image:\n- Wheel-only: Scroll vertically.\n- Wheel+Shift: Scroll horizontally.\n- Wheel+Command: Change zoom ratio."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "También puede aplicar gestos con el ratón en la imagen de vista previa."
+            "value" : "También puede aplicar gestos con el ratón en la imagen de vista previa:\n- Solo rueda: Desplazarse verticalmente.\n- Rueda+Mayús: Desplazarse horizontalmente.\n- Rueda+Comando: Cambiar la relación de zoom."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maaari ka ring gumamit ng mga mouse gesture sa preview image."
+            "value" : "Maaari ka ring gumamit ng mga mouse gesture sa preview image:\n- Wheel lamang: Mag-scroll nang patayo.\n- Wheel+Shift: Mag-scroll nang pahalang.\n- Wheel+Command: Baguhin ang zoom ratio."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous pouvez également utiliser des gestes de la souris sur l'aperçu de l'image."
+            "value" : "Vous pouvez également utiliser des gestes de la souris sur l'aperçu de l'image:\n- Roue seule: Défilement vertical.\n- Roue+Maj: Défilement horizontal.\n- Roue+Commande: Changer le rapport de zoom."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Puoi anche applicare gesti del mouse sull'immagine di anteprima."
+            "value" : "Puoi anche applicare gesti del mouse sull'immagine di anteprima:\n- Solo rotella: Scorri verticalmente.\n- Rotella+Maiusc: Scorri orizzontalmente.\n- Rotella+Comando: Cambia rapporto zoom."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "プレビュー画像上でマウスのジェスチャーを使用することもできます。"
+            "value" : "プレビュー画像上でマウスのジェスチャーを使用することもできます：\n- ホイールのみ：垂直スクロール。\n- ホイール+Shift：水平スクロール。\n- ホイール+Command：ズーム比率を変更。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "미리보기 이미지에 마우스 제스처를 적용할 수도 있습니다."
+            "value" : "미리보기 이미지에 마우스 제스처를 적용할 수도 있습니다:\n- 휠만: 세로 스크롤.\n- 휠+Shift: 가로 스크롤.\n- 휠+Command: 줌 비율 변경."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вы также можете использовать жесты мыши на предварительном просмотре изображения."
+            "value" : "Вы также можете использовать жесты мыши на предварительном просмотре изображения:\n- Только колесо: Прокрутка вертикально.\n- Колесо+Shift: Прокрутка горизонтально.\n- Колесо+Command: Изменить коэффициент масштабирования."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bạn cũng có thể áp dụng cử chỉ chuột lên hình ảnh xem trước."
+            "value" : "Bạn cũng có thể áp dụng cử chỉ chuột lên hình ảnh xem trước:\n- Chỉ bánh xe: Cuộn dọc.\n- Bánh xe+Shift: Cuộn ngang.\n- Bánh xe+Command: Thay đổi tỷ lệ thu phóng."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您也可以对预览图使用鼠标手势操作。"
+            "value" : "您也可以对预览图使用鼠标手势操作：\n- 仅滚轮：垂直滚动。\n- 滚轮+Shift：水平滚动。\n- 滚轮+Command：更改缩放比例。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您也可以對預覽圖使用滑鼠手勢操作。"
+            "value" : "您也可以對預覽圖使用滑鼠手勢操作：\n- 僅滾輪：垂直捲動。\n- 滾輪+Shift：水平捲動。\n- 滾輪+Command：更改縮放比例。"
+          }
+        }
+      }
+    },
+    "imageCropper.toggle.hint.label" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bedienungshinweise anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Operation Hints"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar pistas de operación"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ipakita ang mga Hint ng Operasyon"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les indices d'opération"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra suggerimenti operativi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "操作ヒントを表示"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "작업 힌트 표시"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показать подсказки по операциям"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiển thị gợi ý thao tác"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示操作提示"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "顯示操作提示"
           }
         }
       }
