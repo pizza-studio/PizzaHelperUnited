@@ -104,9 +104,30 @@ public struct CGImageCropperView: View {
     @State private var lastDragTranslation: CGSize = .zero
     @State private var lastMagnification: Double = 1.0
     @State private var displayedImageSize: CGSize = .zero
+    @State private var showOperationHints: Bool = true
 
     private let cropCompletionHandler: ((CGImage) -> Void)?
     private let targetDimension: CGSize
+
+    private var tutorialTexts: Text {
+        var result = [Text]()
+        if OS.type != .macOS {
+            result.append(
+                Text("imageCropper.hint.fingerGestures", bundle: .currentSPM)
+            )
+        }
+        if [.macOS, .iPadOS].contains(OS.type) {
+            if !result.isEmpty {
+                result.append(Text(verbatim: "\n"))
+            }
+            result.append(
+                Text("imageCropper.hint.mouseGesture", bundle: .currentSPM)
+            )
+        }
+        return result.reduce(Text(verbatim: "")) { a, b in
+            a + b
+        }
+    }
 
     private var needsToShrinkThePreviewViewport: Bool {
         targetDimension.height / targetDimension.width >= 0.7
@@ -258,11 +279,13 @@ extension CGImageCropperView {
                     updateScaleFactors(for: thisCGImage)
                 }
             Section {
-                sliders4Origin
-                slider4ScaleFactor
-            }
-            if let cropCompletionHandler, let sourceCGImageZoomedAndCroppedCache {
-                Section {
+                VStack(alignment: .leading) {
+                    sliders4Origin
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    slider4ScaleFactor
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                if let cropCompletionHandler, let sourceCGImageZoomedAndCroppedCache {
                     Button {
                         cropCompletionHandler(sourceCGImageZoomedAndCroppedCache)
                     } label: {
@@ -270,8 +293,14 @@ extension CGImageCropperView {
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
-                    .listRowInsets(.init())
-                    .listRowBackground(EmptyView())
+                }
+            }
+            .listRowSeparator(.hidden)
+            .listRowInsets(.init())
+            .listRowBackground(Color.clear)
+            Section {
+                Toggle(isOn: $showOperationHints) {
+                    Text("imageCropper.toggle.hint.label", bundle: .currentSPM)
                 }
             }
         case .cropCompleted:
@@ -360,14 +389,36 @@ extension CGImageCropperView {
                         verbatim: "x:\(metrics.x), y:\(metrics.y)",
                         alignment: .bottomLeading,
                         textSize: 14,
-                        padding: 6
+                        padding: OS.liquidGlassThemeSuspected ? 12 : 6
                     )
                     .corneredTag(
                         verbatim: "\(metrics.zoom)x",
                         alignment: .bottomTrailing,
                         textSize: 14,
-                        padding: 6
+                        padding: OS.liquidGlassThemeSuspected ? 12 : 6
                     )
+                    .overlay(alignment: .topLeading) {
+                        if showOperationHints {
+                            tutorialTexts
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.white)
+                                .font(.footnote)
+                                .fontWidth(.condensed)
+                                .shadow(color: .black, radius: 1)
+                                .shadow(color: .black, radius: 1)
+                                .padding(OS.liquidGlassThemeSuspected ? 12 : 6)
+                                .background {
+                                    LinearGradient(
+                                        colors: [
+                                            .black.opacity(0.5),
+                                            .black.opacity(0),
+                                        ],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                }
+                        }
+                    }
                     .listRowInsets(.init())
                     .overlay {
                         ScrollWheelOverlay { deltaX, deltaY, isShift, isCommand in
@@ -428,14 +479,6 @@ extension CGImageCropperView {
                     )
                     // 禁用父視圖的滾動行為，防止事件傳遞到父視圖
                     .onTapGesture {}
-                } footer: {
-                    if OS.type != .macOS {
-                        Text("imageCropper.hint.fingerGestures", bundle: .currentSPM)
-                            .fontWidth(.condensed)
-                    } else if OS.isCatalyst {
-                        Text("imageCropper.hint.mouseGesture", bundle: .currentSPM)
-                            .fontWidth(.condensed)
-                    }
                 }
             } else {
                 Section {
