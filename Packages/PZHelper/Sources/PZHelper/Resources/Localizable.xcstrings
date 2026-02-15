@@ -10606,73 +10606,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dies stellt das Layout-Verhalten von Pizza Helper 4 Genshin v3.0 und früher wieder her. Sie können die Karten weiterhin einzeln antippen, um sie in das moderne listenbasierte Layout zu expandieren."
+            "value" : "Dies stellt das Layout-Verhalten von Pizza Helper 4 Genshin v3.x und früher wieder her. Sie können die Karten weiterhin einzeln antippen, um sie in das moderne listenbasierte Layout zu expandieren."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This restores the layout behavior used by Pizza Helper 4 Genshin v3.0 and earlier. You can still tap the cards individually to expand them to the modern list-based layout."
+            "value" : "This restores the layout behavior used by Pizza Helper 4 Genshin v3.x and earlier. You can still tap the cards individually to expand them to the modern list-based layout."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Esto restaura el comportamiento de diseño utilizado por Pizza Helper 4 Genshin v3.0 y anterior. Aún puede tocar las tarjetas individualmente para expandirlas al diseño moderno basado en listas."
+            "value" : "Esto restaura el comportamiento de diseño utilizado por Pizza Helper 4 Genshin v3.x y anterior. Aún puede tocar las tarjetas individualmente para expandirlas al diseño moderno basado en listas."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ibinabalik nito ang pag-uugali ng layout na ginamit ng Pizza Helper 4 Genshin v3.0 at mas maaga. Maaari pa rin kayong mag-tap sa mga card nang indibidwal upang palawakin ang mga ito sa modernong layout na batay sa listahan."
+            "value" : "Ibinabalik nito ang pag-uugali ng layout na ginamit ng Pizza Helper 4 Genshin v3.x at mas maaga. Maaari pa rin kayong mag-tap sa mga card nang indibidwal upang palawakin ang mga ito sa modernong layout na batay sa listahan."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cela restaure le comportement de disposition utilisé par Pizza Helper 4 Genshin v3.0 et antérieur. Vous pouvez toujours appuyer sur les cartes individuellement pour les développer vers la disposition moderne baseée sur la liste."
+            "value" : "Cela restaure le comportement de disposition utilisé par Pizza Helper 4 Genshin v3.x et antérieur. Vous pouvez toujours appuyer sur les cartes individuellement pour les développer vers la disposition moderne baseée sur la liste."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Questo ripristina il comportamento del layout utilizzato da Pizza Helper 4 Genshin v3.0 e versioni precedenti. Puoi ancora toccare le schede singolarmente per espanderle al moderno layout basato su elenco."
+            "value" : "Questo ripristina il comportamento del layout utilizzato da Pizza Helper 4 Genshin v3.x e versioni precedenti. Puoi ancora toccare le schede singolarmente per espanderle al moderno layout basato su elenco."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "これにより、《原神ピザ助手》v3.0まで使われていた組版が復元されます。カードを個別にタップして、現代のリスト式組版に展開することもできます。"
+            "value" : "これにより、《原神ピザ助手》v3.xまで使われていた組版が復元されます。カードを個別にタップして、現代のリスト式組版に展開することもできます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pizza Helper 4 Genshin v3.0 이전 버전에서 사용된 레이아웃 동작을 복원합니다. 여전히 카드를 개별적으로 탭하여 최신 목록 기반 레이아웃으로 확장할 수 있습니다."
+            "value" : "Pizza Helper 4 Genshin v3.x 이전 버전에서 사용된 레이아웃 동작을 복원합니다. 여전히 카드를 개별적으로 탭하여 최신 목록 기반 레이아웃으로 확장할 수 있습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Это восстанавливает макет, используемый в Pizza Helper 4 Genshin v3.0 и более ранних версиях. Вы по-прежнему можете нажимать на карточки по отдельности, чтобы развернуть их в современный макет на основе списка."
+            "value" : "Это восстанавливает макет, используемый в Pizza Helper 4 Genshin v3.x и более ранних версиях. Вы по-прежнему можете нажимать на карточки по отдельности, чтобы развернуть их в современный макет на основе списка."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Điều này khôi phục hành vi bố cục được sử dụng bởi Pizza Helper 4 Genshin v3.0 và các phiên bản trước. Bạn vẫn có thể nhấn vào các thẻ riêng lẻ để mở rộng chúng thành bố cục dựa trên danh sách hiện đại."
+            "value" : "Điều này khôi phục hành vi bố cục được sử dụng bởi Pizza Helper 4 Genshin v3.x và các phiên bản trước. Bạn vẫn có thể nhấn vào các thẻ riêng lẻ để mở rộng chúng thành bố cục dựa trên danh sách hiện đại."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "这会恢复《原神披萨小助手》v3.0 及更早版本使用的布局行为。您仍然可以单独点击卡片来将其展开为现代的列表式布局。"
+            "value" : "这会恢复《原神披萨小助手》v3.x 及更早版本使用的布局行为。您仍然可以单独点击卡片来将其展开为现代的列表式布局。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "這會恢復《原神披薩小助手》v3.0 及更早版本使用的佈局行為。您仍然可以單獨點擊卡片來將其展開為現代的清單式佈局。"
+            "value" : "這會恢復《原神披薩小助手》v3.x 及更早版本使用的佈局行為。您仍然可以單獨點擊卡片來將其展開為現代的清單式佈局。"
           }
         }
       }
