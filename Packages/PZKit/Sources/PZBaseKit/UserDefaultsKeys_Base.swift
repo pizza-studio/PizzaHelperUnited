@@ -72,6 +72,12 @@ extension Defaults.Keys {
         default: ThisDevice.deviceBannedForUIGlassDecorations,
         suite: .baseSuite
     )
+
+    public static let useDesktopWidgetsLayoutInTodayNoteCards = Key<Bool>(
+        "useDesktopWidgetsLayoutInTodayNoteCards",
+        default: true,
+        suite: .baseSuite
+    )
 }
 
 // MARK: - ResinRecoveryActivityController

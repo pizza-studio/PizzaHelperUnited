@@ -21,11 +21,52 @@ struct RealTimeNoteCardView: View {
         Section {
             switch theVM.dailyNoteStatus {
             case let .succeed(dailyNote, _):
-                switch dailyNote {
-                case let note as any Note4GI: NoteCardView4GI(note: note)
-                case let note as any Note4HSR: NoteCardView4HSR(note: note)
-                case let note as Note4ZZZ: NoteCardView4ZZZ(note: note)
-                default: EmptyView()
+                Group {
+                    if useDesktopWidgetsLayoutInTodayNoteCards, !isExpanded {
+                        let configPair = getWidgetConfigPair(note: dailyNote)
+                        DesktopWidgets.MainInfoWithDetail(
+                            entry: configPair.widgetEntry,
+                            dailyNote: dailyNote,
+                            viewConfig: configPair.viewCfg
+                        )
+                        .legibilityShadow()
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 12)
+                        .background {
+                            WidgetBackgroundView4DesktopWidgets(
+                                background: .randomWallpaperBackground4Game(dailyNote.game),
+                                darkModeOn: configPair.viewCfg.isDarkModeRespected
+                            )
+                            .frame(height: 150)
+                        }
+                        .clipShape(
+                            RoundedRectangle(
+                                cornerRadius: OS.liquidGlassThemeSuspected ? 16 : 8
+                            )
+                        )
+                        .frame(height: 150)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(.init())
+                        .drawingGroup()
+                        .id(widgetStaminaFontPref)
+                    } else {
+                        switch dailyNote {
+                        case let note as any Note4GI: NoteCardView4GI(note: note)
+                        case let note as any Note4HSR: NoteCardView4HSR(note: note)
+                        case let note as Note4ZZZ: NoteCardView4ZZZ(note: note)
+                        default: EmptyView()
+                        }
+                    }
+                }
+                .contentShape(.rect)
+                .onTapGesture {
+                    Task { @MainActor in
+                        simpleTaptic(type: .light)
+                        withAnimation {
+                            isExpanded.toggle()
+                        }
+                    }
                 }
             case let .failure(error):
                 DailyNoteCardErrorView(profile: theVM.profile, error: error)
@@ -90,8 +131,12 @@ struct RealTimeNoteCardView: View {
 
     @Environment(DailyNoteViewModel.self) private var theVM
     @StateObject private var broadcaster = Broadcaster.shared
+    @State private var isExpanded: Bool = !Defaults[.useDesktopWidgetsLayoutInTodayNoteCards]
 
     @Default(.cachedDailyNotes) private var dailyNoteCache: [String: CachedJSON]
+    @Default(.widgetStaminaFontPref) private var widgetStaminaFontPref: WidgetStaminaFontStyle
+
+    @Default(.useDesktopWidgetsLayoutInTodayNoteCards) private var useDesktopWidgetsLayoutInTodayNoteCards: Bool
 
     @ViewBuilder
     private func topTrailingMenu(note dailyNote: any DailyNoteProtocol) -> some View {
@@ -135,6 +180,30 @@ struct RealTimeNoteCardView: View {
             }))
         }
         return items
+    }
+
+    private func getWidgetConfigPair(note givenNote: any DailyNoteProtocol)
+        -> (viewCfg: WidgetViewConfig, widgetEntry: ProfileWidgetEntry) {
+        var cfg = WidgetViewConfig()
+        cfg.showTransformer = true
+        cfg.trounceBlossomDisplayMethod = .alwaysShow
+        cfg.echoOfWarDisplayMethod = .alwaysShow
+        cfg.isDarkModeRespected = true
+        cfg.showStaminaOnly = false
+        cfg.useTinyGlassDisplayStyle = false
+        cfg.showMaterialsInLargeSizeWidget = false
+        cfg.randomBackground = true
+        cfg.expeditionDisplayPolicy = .neverDisplay
+
+        let entry = ProfileWidgetEntry(
+            date: .now,
+            note: givenNote,
+            viewConfig: cfg,
+            profile: theVM.profile,
+            pilotAssetMap: [:],
+            events: []
+        )
+        return (cfg, entry)
     }
 }
 
