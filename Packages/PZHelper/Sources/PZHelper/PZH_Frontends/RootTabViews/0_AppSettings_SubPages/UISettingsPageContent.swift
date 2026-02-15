@@ -52,6 +52,19 @@ struct UISettingsPageContent: View {
                     Text("setting.display.restoreTabOnLaunching", bundle: .currentSPM)
                 }
                 defaultServerSelector4GI
+                VStack {
+                    Toggle(isOn: $useDesktopWidgetsLayoutInTodayNoteCards) {
+                        Text(
+                            "setting.display.useDesktopWidgetsLayoutInTodayNoteCards",
+                            bundle: .currentSPM
+                        )
+                    }
+                    Text(
+                        "setting.display.useDesktopWidgetsLayoutInTodayNoteCards.explanation",
+                        bundle: .currentSPM
+                    )
+                    .asInlineTextDescription()
+                }
             } header: {
                 Text("settings.display.generalSettings.sectionHeader", bundle: .currentSPM)
             }
@@ -68,6 +81,8 @@ struct UISettingsPageContent: View {
     @Default(.restoreTabOnLaunching) private var restoreTabOnLaunching: Bool
     @Default(.defaultServer) private var defaultServer4GI: String
     @Default(.reduceUIGlassDecorations) private var reduceUIGlassDecorations: Bool
+
+    @Default(.useDesktopWidgetsLayoutInTodayNoteCards) private var useDesktopWidgetsLayoutInTodayNoteCards: Bool
 
     private var reasonsWhyDeviceBannedForUIGlassDecorations: [Text] {
         var result = [Text]()

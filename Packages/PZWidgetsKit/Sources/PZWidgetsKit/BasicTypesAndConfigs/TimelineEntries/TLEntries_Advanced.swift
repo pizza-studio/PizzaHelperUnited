@@ -17,6 +17,24 @@ public struct ProfileWidgetEntry: TimelineEntry, Sendable {
 
     public init(
         date: Date,
+        note: any DailyNoteProtocol,
+        viewConfig: WidgetViewConfig,
+        profile: PZProfileSendable?,
+        pilotAssetMap: [URL: SendableImagePtr]? = nil,
+        events: [OfficialFeed.FeedEvent] = []
+    ) {
+        self.date = date
+        self.resultSlot1 = .success(note)
+        self.resultSlot2 = .failure(Self.secondarySlotIntentionallyBlankException)
+        self.viewConfig = viewConfig
+        self.profileSlot1 = profile
+        self.profileSlot2 = nil
+        self.events = events
+        self.pilotAssetMap = pilotAssetMap ?? [:]
+    }
+
+    public init(
+        date: Date,
         result: Result<any DailyNoteProtocol, any Error>,
         viewConfig: WidgetViewConfig,
         profile: PZProfileSendable?,

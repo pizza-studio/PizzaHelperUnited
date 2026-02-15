@@ -13,12 +13,23 @@ import WidgetKit
 @available(iOS 16.2, macCatalyst 16.2, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
-    struct MainInfoWithDetail: View {
-        let entry: ProfileWidgetEntry
-        var dailyNote: any DailyNoteProtocol
-        let viewConfig: WidgetViewConfig
+    /// This view is intentionally public since the main App might reuse this view.
+    public struct MainInfoWithDetail: View {
+        // MARK: Lifecycle
 
-        var body: some View {
+        public init(
+            entry: ProfileWidgetEntry,
+            dailyNote: any DailyNoteProtocol,
+            viewConfig: WidgetViewConfig
+        ) {
+            self.entry = entry
+            self.dailyNote = dailyNote
+            self.viewConfig = viewConfig
+        }
+
+        // MARK: Public
+
+        public var body: some View {
             let tinyGlass = viewConfig.useTinyGlassDisplayStyle
             HStack {
                 MainInfo(
@@ -53,6 +64,12 @@ extension DesktopWidgets {
             }
             .frame(maxWidth: tinyGlass ? nil : 300)
         }
+
+        // MARK: Internal
+
+        let entry: ProfileWidgetEntry
+        var dailyNote: any DailyNoteProtocol
+        let viewConfig: WidgetViewConfig
     }
 }
 
