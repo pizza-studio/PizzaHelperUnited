@@ -29,6 +29,7 @@ struct RealTimeNoteCardView: View {
                             dailyNote: dailyNote,
                             viewConfig: configPair.viewCfg
                         )
+                        .environment(\.colorScheme, .dark)
                         .legibilityShadow()
                         .frame(maxWidth: .infinity)
                         .padding(.horizontal, 16)
