@@ -73,6 +73,9 @@ extension Pizza.SupportedGame {
 public protocol DailyNoteProtocol: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
     static var game: Pizza.SupportedGame { get }
     static func exampleData() -> Self
+    /// - warning: Do not abuse the setter of this property.
+    /// This setter is for decoders to assign the correct timestamp to it.
+    var fetchedTime: Date { get set }
 }
 
 extension DailyNoteProtocol {
