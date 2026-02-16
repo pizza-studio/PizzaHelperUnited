@@ -23,34 +23,10 @@ struct RealTimeNoteCardView: View {
             case let .succeed(dailyNote, _):
                 Group {
                     if useDesktopWidgetsLayoutInTodayNoteCards, !isExpanded {
-                        let configPair = getWidgetConfigPair(note: dailyNote)
-                        DesktopWidgets.MainInfoWithDetail(
-                            entry: configPair.widgetEntry,
-                            dailyNote: dailyNote,
-                            viewConfig: configPair.viewCfg
+                        WidgetProfileNoteCardView(
+                            note: dailyNote,
+                            profile: theVM.profile
                         )
-                        .environment(\.colorScheme, .dark)
-                        .legibilityShadow()
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 12)
-                        .background {
-                            WidgetBackgroundView4DesktopWidgets(
-                                background: .randomWallpaperBackground4Game(dailyNote.game),
-                                darkModeOn: configPair.viewCfg.isDarkModeRespected
-                            )
-                            .frame(height: 150)
-                        }
-                        .clipShape(
-                            RoundedRectangle(
-                                cornerRadius: OS.liquidGlassThemeSuspected ? 16 : 8
-                            )
-                        )
-                        .frame(height: 150)
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(.init())
-                        .drawingGroup()
-                        .id(widgetStaminaFontPref)
                     } else {
                         switch dailyNote {
                         case let note as any Note4GI: NoteCardView4GI(note: note)
@@ -135,8 +111,6 @@ struct RealTimeNoteCardView: View {
     @State private var isExpanded: Bool = !Defaults[.useDesktopWidgetsLayoutInTodayNoteCards]
 
     @Default(.cachedDailyNotes) private var dailyNoteCache: [String: CachedJSON]
-    @Default(.widgetStaminaFontPref) private var widgetStaminaFontPref: WidgetStaminaFontStyle
-
     @Default(.useDesktopWidgetsLayoutInTodayNoteCards) private var useDesktopWidgetsLayoutInTodayNoteCards: Bool
 
     @ViewBuilder
@@ -182,29 +156,88 @@ struct RealTimeNoteCardView: View {
         }
         return items
     }
+}
 
-    private func getWidgetConfigPair(note givenNote: any DailyNoteProtocol)
-        -> (viewCfg: WidgetViewConfig, widgetEntry: ProfileWidgetEntry) {
-        var cfg = WidgetViewConfig()
-        cfg.showTransformer = true
-        cfg.trounceBlossomDisplayMethod = .alwaysShow
-        cfg.echoOfWarDisplayMethod = .alwaysShow
-        cfg.isDarkModeRespected = true
-        cfg.showStaminaOnly = false
-        cfg.useTinyGlassDisplayStyle = false
-        cfg.showMaterialsInLargeSizeWidget = false
-        cfg.randomBackground = true
-        cfg.expeditionDisplayPolicy = .neverDisplay
+// MARK: RealTimeNoteCardView.WidgetProfileNoteCardView
 
-        let entry = ProfileWidgetEntry(
-            date: .now,
-            note: givenNote,
-            viewConfig: cfg,
-            profile: theVM.profile,
-            pilotAssetMap: [:],
-            events: []
-        )
-        return (cfg, entry)
+@available(iOS 17.0, macCatalyst 17.0, *)
+extension RealTimeNoteCardView {
+    private struct WidgetProfileNoteCardView: View {
+        // MARK: Lifecycle
+
+        public init(note dailyNote: any DailyNoteProtocol, profile: PZProfileSendable) {
+            self.dailyNote = dailyNote
+            self.profile = profile
+            let widgetConfig: WidgetViewConfig = {
+                var cfg = WidgetViewConfig()
+                cfg.showTransformer = true
+                cfg.trounceBlossomDisplayMethod = .alwaysShow
+                cfg.echoOfWarDisplayMethod = .alwaysShow
+                cfg.isDarkModeRespected = true
+                cfg.showStaminaOnly = false
+                cfg.useTinyGlassDisplayStyle = false
+                cfg.showMaterialsInLargeSizeWidget = false
+                cfg.randomBackground = true
+                cfg.background = .randomWallpaperBackground4Game(dailyNote.game)
+                cfg.expeditionDisplayPolicy = .neverDisplay
+                return cfg
+            }()
+            self.widgetConfig = widgetConfig
+            self.widgetEntry = {
+                ProfileWidgetEntry(
+                    date: dailyNote.fetchedTime,
+                    note: dailyNote,
+                    viewConfig: widgetConfig,
+                    profile: profile,
+                    pilotAssetMap: [:],
+                    events: []
+                )
+            }()
+        }
+
+        // MARK: Public
+
+        public var body: some View {
+            DesktopWidgets.MainInfoWithDetail(
+                entry: widgetEntry,
+                dailyNote: dailyNote,
+                viewConfig: widgetConfig
+            )
+            .id(widgetStaminaFontPref)
+            .environment(\.colorScheme, .dark)
+            .legibilityShadow()
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background {
+                WidgetBackgroundView4DesktopWidgets(
+                    background: widgetConfig.background,
+                    darkModeOn: widgetConfig.isDarkModeRespected
+                )
+                .frame(height: 150)
+                .id(dailyNote.hashValue)
+            }
+            .clipShape(
+                RoundedRectangle(
+                    cornerRadius: OS.liquidGlassThemeSuspected ? 16 : 8
+                )
+            )
+            .frame(height: 150)
+            .listRowBackground(Color.clear)
+            .listRowInsets(.init())
+            .drawingGroup()
+            .id(dailyNote.hashValue)
+        }
+
+        // MARK: Private
+
+        @State private var widgetConfig: WidgetViewConfig
+        @State private var widgetEntry: ProfileWidgetEntry
+
+        private let dailyNote: any DailyNoteProtocol
+        private let profile: PZProfileSendable
+
+        @Default(.widgetStaminaFontPref) private var widgetStaminaFontPref: WidgetStaminaFontStyle
     }
 }
 
