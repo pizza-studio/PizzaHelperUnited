@@ -44,10 +44,19 @@ public struct Note4ZZZ: Codable, Hashable, DecodableFromMiHoYoAPIJSONResult, Dai
     public static let game: Pizza.SupportedGame = .zenlessZone
 
     /// 电池电量
-    public let energy: Energy
     public let vitality: Vitality
     public let vhsStoreState: VHSState
     public let hollowZero: HollowZero
+    public private(set) var energy: Energy
+
+    public var fetchedTime: Date {
+        get {
+            energy.fetchedTime
+        }
+        set {
+            energy.fetchedTime = newValue
+        }
+    }
 
     public var cardScratched: Bool? {
         cardSign?.contains("Done")
@@ -176,7 +185,7 @@ extension Note4ZZZ {
 
         public let progress: EnergyProgress
         public let restore: Int
-        public let fetchedTime: Date = .init() // 从伺服器拿到这笔资料的那一刻的时间戳。
+        public var fetchedTime: Date = .init() // 从伺服器拿到这笔资料的那一刻的时间戳。
 
         public var fullyChargedDate: Date {
             .init(timeInterval: Double(restore), since: fetchedTime)

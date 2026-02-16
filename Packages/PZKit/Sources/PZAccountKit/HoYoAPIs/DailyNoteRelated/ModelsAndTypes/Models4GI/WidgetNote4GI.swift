@@ -45,6 +45,7 @@ public struct WidgetNote4GI: Note4GI {
     public let expeditionInfo: ExpeditionInfo4GI
     public let homeCoinInfo: HomeCoinInfo4GI
     public let resinInfo: ResinInfo4GI
+    public var fetchedTime: Date = .init()
 }
 
 extension WidgetNote4GI {

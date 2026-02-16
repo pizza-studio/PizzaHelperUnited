@@ -72,6 +72,7 @@ public struct FullNote4GI: Note4GI, AbleToCodeSendHash {
     public let expeditionInfo: ExpeditionInfo4GI
     public let transformerInfo: TransformerInfo4GI
     public let homeCoinInfo: HomeCoinInfo4GI
+    public var fetchedTime: Date = .init()
 }
 
 extension FullNote4GI {

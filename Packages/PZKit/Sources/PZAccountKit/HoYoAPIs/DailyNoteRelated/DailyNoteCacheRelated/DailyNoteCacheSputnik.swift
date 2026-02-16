@@ -32,7 +32,9 @@ public struct DailyNoteCacheSputnik<T: DailyNoteProtocol> {
         let decoded = try? T.decodeFromMiHoYoAPIJSONResult(
             data: data, debugTag: "DailyNoteCacheSputnik.getCache()"
         )
-        return decoded
+        guard var successfullyDecoded = decoded else { return nil }
+        successfullyDecoded.fetchedTime = Date(timeIntervalSince1970: cachedTimestamp)
+        return successfullyDecoded
     }
 }
 

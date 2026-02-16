@@ -25,7 +25,7 @@ public struct FullNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
     /// Stamina info
     public var staminaInfo: StaminaInfo4HSR
     /// The time when this struct is generated
-    public let fetchTime: Date = .init()
+    public var fetchedTime: Date = .init()
     /// Simulated Universe score completion status (weekly)
     public let simulatedUniverseInfo: SimuUnivInfo4HSR
     /// Currency Wars score completion status (weekly)

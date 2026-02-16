@@ -12,7 +12,7 @@ public protocol Note4HSR: DailyNoteProtocol, AbleToCodeSendHash {
     /// Stamina info
     var staminaInfo: StaminaInfo4HSR { get }
     /// The time when this struct is generated
-    var fetchTime: Date { get }
+    var fetchedTime: Date { get set }
     /// Simulated Universe score completion status (weekly)
     var simulatedUniverseInfo: SimuUnivInfo4HSR { get }
     /// Currency Wars score completion status (weekly)
