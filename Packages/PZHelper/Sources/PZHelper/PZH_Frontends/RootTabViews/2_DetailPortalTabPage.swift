@@ -182,11 +182,18 @@ struct DetailPortalTabPage: View {
         broadcaster.refreshPage()
     }
 
+    /// - Important: `.refreshable` 的 async closure 絕不可過早返回；
+    ///   否則 UIRefreshControl 結束動畫時觸發的 layout pass 可能與
+    ///   SwiftUI AttributeGraph 的 node 拆解產生競態，導致 EXC_BAD_ACCESS。
+    ///   即便是 guard 不通過的情況也必須 sleep 至少 300ms。
     private func handleRefreshableListTask() async {
         let now = Date()
-        guard now.timeIntervalSince(lastRefreshDate) > 0.6, !isAnyVMSubtaskBusy else { return }
+        guard now.timeIntervalSince(lastRefreshDate) > 0.6, !isAnyVMSubtaskBusy else {
+            try? await Task.sleep(nanoseconds: 600_000_000)
+            return
+        }
         lastRefreshDate = now
         refreshAction()
-        try? await Task.sleep(nanoseconds: 300_000_000)
+        try? await Task.sleep(nanoseconds: 600_000_000)
     }
 }
