@@ -17,11 +17,13 @@ extension DesktopWidgets {
         public init(
             entry: ProfileWidgetEntry,
             dailyNote: any DailyNoteProtocol,
-            viewConfig: WidgetViewConfig
+            viewConfig: WidgetViewConfig,
+            didRefreshAction: (() -> Void)? = nil
         ) {
             self.entry = entry
             self.dailyNote = dailyNote
             self.viewConfig = viewConfig
+            self.didRefreshAction = didRefreshAction
         }
 
         // MARK: Public
@@ -30,7 +32,8 @@ extension DesktopWidgets {
             ProfileAndMainStaminaView(
                 profile: entry.profile,
                 dailyNote: dailyNote,
-                tinyGlassDisplayStyle: viewConfig.useTinyGlassDisplayStyle
+                tinyGlassDisplayStyle: viewConfig.useTinyGlassDisplayStyle,
+                didRefreshAction: didRefreshAction
             )
         }
 
@@ -39,6 +42,7 @@ extension DesktopWidgets {
         private let entry: ProfileWidgetEntry
         private let dailyNote: any DailyNoteProtocol
         private let viewConfig: WidgetViewConfig
+        private let didRefreshAction: (() -> Void)?
     }
 }
 
