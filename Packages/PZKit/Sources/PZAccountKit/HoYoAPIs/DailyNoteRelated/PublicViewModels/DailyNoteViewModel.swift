@@ -30,19 +30,6 @@ public final class MultiNoteViewModel {
     public static let shared: MultiNoteViewModel = .init()
 
     public var vmMap: [String: DailyNoteViewModel] = [:]
-
-    public func updateVMInstances() {
-        let dailyNoteVMMapKeys = Set(vmMap.keys)
-        let latestProfileKeys = Set<String>(Defaults[.pzProfiles].keys)
-        let vmKeysToDrop = dailyNoteVMMapKeys.subtracting(latestProfileKeys)
-        let vmKeysToAdd = latestProfileKeys.subtracting(dailyNoteVMMapKeys)
-        vmKeysToDrop.forEach { vmMap.removeValue(forKey: $0) }
-        vmKeysToAdd.forEach { uuidStr in
-            if vmMap[uuidStr] == nil, let profile = Defaults[.pzProfiles][uuidStr] {
-                vmMap[uuidStr] = .init(profile: profile)
-            }
-        }
-    }
 }
 #else
 @MainActor
@@ -67,7 +54,13 @@ public final class MultiNoteViewModel: ObservableObject {
             objectWillChange.send()
         }
     }
+}
+#endif
 
+#if !os(watchOS)
+@available(iOS 17.0, macCatalyst 17.0, *)
+#endif
+extension MultiNoteViewModel {
     public func updateVMInstances() {
         let dailyNoteVMMapKeys = Set(vmMap.keys)
         let latestProfileKeys = Set<String>(Defaults[.pzProfiles].keys)
@@ -80,8 +73,13 @@ public final class MultiNoteViewModel: ObservableObject {
             }
         }
     }
+
+    public func getAllDailyNoteUnchecked() async {
+        for subVM in vmMap.values {
+            await subVM.getDailyNoteUncheckAndWaitUntilFinish()
+        }
+    }
 }
-#endif
 
 // MARK: - DailyNoteViewModel
 
@@ -106,12 +104,6 @@ public final class DailyNoteViewModel: TaskManagedVM {
 
     // MARK: Public
 
-    public enum Status: Sendable {
-        case succeed(dailyNote: any DailyNoteProtocol, refreshDate: Date)
-        case failure(error: AnyLocalizedError)
-        case progress(Task<Void, Never>?)
-    }
-
     /// The fetched daily note result.
     public private(set) var dailyNote: (any DailyNoteProtocol)?
 
@@ -120,54 +112,6 @@ public final class DailyNoteViewModel: TaskManagedVM {
 
     /// The account for which the daily note is being fetched.
     public var profile: PZProfileSendable
-
-    /// Computed status for backward-compatible view consumption.
-    public var dailyNoteStatus: Status {
-        if taskState == .busy {
-            return .progress(task)
-        } else if let error = currentError {
-            return .failure(error: AnyLocalizedError(error))
-        } else if let dailyNote, let refreshDate {
-            return .succeed(dailyNote: dailyNote, refreshDate: refreshDate)
-        } else {
-            return .progress(nil)
-        }
-    }
-
-    /// Fetches the daily note and updates the published `dailyNote` property accordingly.
-    public func getDailyNote() {
-        switch dailyNoteStatus {
-        case let .succeed(_, refreshDate):
-            // check if note is older than 15 minutes
-            let shouldUpdateAfterMinute: Double = 15
-            let shouldUpdateAfterSecond = 60.0 * shouldUpdateAfterMinute
-            if Date().timeIntervalSince(refreshDate) > shouldUpdateAfterSecond {
-                getDailyNoteUncheck()
-            }
-        case .progress:
-            return // another operation is already in progress
-        default:
-            getDailyNoteUncheck()
-        }
-    }
-
-    /// Asynchronously fetches the daily note using the MiHoYoAPI with the account information it was initialized with.
-    public func getDailyNoteUncheck(getCachedResult: Bool = true) {
-        let theProfile = profile
-        let theExtraTask = extraTask
-        fireTask(
-            cancelPreviousTask: true,
-            givenTask: {
-                try await theProfile.getDailyNote(cached: getCachedResult)
-            },
-            completionHandler: { [weak self] result in
-                guard let self, let result else { return }
-                dailyNote = result
-                refreshDate = Date()
-                theExtraTask?(result)
-            }
-        )
-    }
 
     // MARK: Private
 
@@ -192,12 +136,6 @@ public final class DailyNoteViewModel: TaskManagedVMBackported {
 
     // MARK: Public
 
-    public enum Status: Sendable {
-        case succeed(dailyNote: any DailyNoteProtocol, refreshDate: Date)
-        case failure(error: AnyLocalizedError)
-        case progress(Task<Void, Never>?)
-    }
-
     /// The fetched daily note result.
     @Published public private(set) var dailyNote: (any DailyNoteProtocol)?
 
@@ -206,6 +144,23 @@ public final class DailyNoteViewModel: TaskManagedVMBackported {
 
     /// The account for which the daily note is being fetched.
     @Published public var profile: PZProfileSendable
+
+    // MARK: Private
+
+    private let extraTask: ((any DailyNoteProtocol) -> Void)?
+}
+
+#endif
+
+#if !os(watchOS)
+@available(iOS 17.0, macCatalyst 17.0, *)
+#endif
+extension DailyNoteViewModel {
+    public enum Status: Sendable {
+        case succeed(dailyNote: any DailyNoteProtocol, refreshDate: Date)
+        case failure(error: AnyLocalizedError)
+        case progress(Task<Void, Never>?)
+    }
 
     /// Computed status for backward-compatible view consumption.
     public var dailyNoteStatus: Status {
@@ -238,7 +193,27 @@ public final class DailyNoteViewModel: TaskManagedVMBackported {
     }
 
     /// Asynchronously fetches the daily note using the MiHoYoAPI with the account information it was initialized with.
-    public func getDailyNoteUncheck(getCachedResult: Bool = true) {
+    public func getDailyNoteUncheck(
+        getCachedResult: Bool = true
+    ) {
+        getDailyNoteUncheckWithExtraTasks(
+            getCachedResult: getCachedResult
+        )
+    }
+
+    public func getDailyNoteUncheckAndWaitUntilFinish(getCachedResult: Bool = true) async {
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            getDailyNoteUncheckWithExtraTasks(
+                getCachedResult: getCachedResult,
+                onEverythingEnds: { continuation.resume() }
+            )
+        }
+    }
+
+    fileprivate func getDailyNoteUncheckWithExtraTasks(
+        getCachedResult: Bool = true,
+        onEverythingEnds: (() -> Void)? = nil
+    ) {
         let theProfile = profile
         let theExtraTask = extraTask
         fireTask(
@@ -247,17 +222,18 @@ public final class DailyNoteViewModel: TaskManagedVMBackported {
                 try await theProfile.getDailyNote(cached: getCachedResult)
             },
             completionHandler: { [weak self] result in
-                guard let self, let result else { return }
+                guard let self, let result else {
+                    onEverythingEnds?()
+                    return
+                }
                 dailyNote = result
                 refreshDate = Date()
                 theExtraTask?(result)
+                onEverythingEnds?()
+            },
+            errorHandler: { _ in
+                onEverythingEnds?()
             }
         )
     }
-
-    // MARK: Private
-
-    private let extraTask: ((any DailyNoteProtocol) -> Void)?
 }
-
-#endif
