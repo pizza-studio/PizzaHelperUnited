@@ -47,9 +47,7 @@ struct DetailPortalTabPage: View {
         }
         .formStyle(.grouped).disableFocusable()
         .refreshable {
-            await debouncer4PageRefresh.debounce {
-                await refreshAction()
-            }
+            await handleRefreshableListTask()
         }
         .navigationTitle(
             screenVM.isExtremeCompact
@@ -152,7 +150,7 @@ struct DetailPortalTabPage: View {
 
     // MARK: Private
 
-    @State private var debouncer4PageRefresh: Debouncer = .init(delay: 0.3)
+    @State private var lastRefreshDate: Date = .distantPast
     @State private var wrappedByNavStack: Bool
     @State private var showProfileSwitcher: Bool
     @State private var sharedDB: Enka.Sputnik = .shared
@@ -171,7 +169,24 @@ struct DetailPortalTabPage: View {
             .filter { $0.game != .zenlessZone } // 临时设定。
     }
 
+    private var isAnyVMSubtaskBusy: Bool {
+        let busyStates: [Bool] = [
+            vmDPV.taskStatus4BattleReport.isBusy,
+            vmDPV.taskStatus4Ledger.isBusy,
+            vmDPV.taskStatus4CharInventory.isBusy,
+        ]
+        return Set(busyStates).contains(true)
+    }
+
     private func refreshAction() {
         broadcaster.refreshPage()
+    }
+
+    private func handleRefreshableListTask() async {
+        let now = Date()
+        guard now.timeIntervalSince(lastRefreshDate) > 0.6, !isAnyVMSubtaskBusy else { return }
+        lastRefreshDate = now
+        refreshAction()
+        try? await Task.sleep(nanoseconds: 300_000_000)
     }
 }

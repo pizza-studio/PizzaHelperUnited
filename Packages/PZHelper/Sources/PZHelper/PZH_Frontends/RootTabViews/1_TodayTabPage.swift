@@ -145,9 +145,7 @@ struct TodayTabPage: View {
             }
         }
         .refreshable {
-            await debouncer4PageRefresh.debounce {
-                await broadcaster.refreshTodayTab()
-            }
+            await handleRefreshableListTask()
         }
         .onAppear {
             if let theGame = game, !games.contains(theGame) {
@@ -191,7 +189,7 @@ struct TodayTabPage: View {
 
     // MARK: Private
 
-    @State private var debouncer4PageRefresh: Debouncer = .init(delay: 0.3)
+    @State private var lastRefreshDate: Date = .distantPast
     @State private var isTodayMaterialSheetShown: Bool = false
     @State private var wrappedByNavStack: Bool
     @State private var game: Pizza.SupportedGame? = .none
@@ -230,6 +228,10 @@ struct TodayTabPage: View {
         }
     }
 
+    private var isAnySubVMBusy: Bool {
+        multiNoteVM.vmMap.values.map(\.taskState).contains(.busy)
+    }
+
     @ViewBuilder private var gamePicker: some View {
         if !pzProfiles.isEmpty {
             Picker(game.localizedShortName, selection: $game.animation()) {
@@ -262,5 +264,13 @@ struct TodayTabPage: View {
     private func refresh() {
         broadcaster.refreshTodayTab()
         Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+    }
+
+    private func handleRefreshableListTask() async {
+        let now = Date()
+        guard now.timeIntervalSince(lastRefreshDate) > 0.6, !isAnySubVMBusy else { return }
+        lastRefreshDate = now
+        broadcaster.refreshTodayTab()
+        try? await Task.sleep(nanoseconds: 300_000_000)
     }
 }

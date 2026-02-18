@@ -61,7 +61,7 @@ public struct ContentView: View {
                 }
                 .listStyle(.carousel)
                 .refreshable {
-                    broadcaster.refreshPage()
+                    await handleRefreshableListTask()
                 }
             }
         }
@@ -95,6 +95,7 @@ public struct ContentView: View {
 
     // MARK: Private
 
+    @State private var lastRefreshDate: Date = .distantPast
     @StateObject private var connectivityManager = AppleWatchSputnik.shared
     @StateObject private var broadcaster = Broadcaster.shared
     @StateObject private var multiNoteVM = MultiNoteViewModel.shared
@@ -105,6 +106,18 @@ public struct ContentView: View {
         pzProfiles.values.sorted {
             $0.priority < $1.priority
         }
+    }
+
+    private var isAnySubVMBusy: Bool {
+        multiNoteVM.vmMap.values.map(\.taskState).contains(.busy)
+    }
+
+    private func handleRefreshableListTask() async {
+        let now = Date()
+        guard now.timeIntervalSince(lastRefreshDate) > 0.6, !isAnySubVMBusy else { return }
+        lastRefreshDate = now
+        broadcaster.refreshPage()
+        try? await Task.sleep(nanoseconds: 300_000_000)
     }
 }
 
