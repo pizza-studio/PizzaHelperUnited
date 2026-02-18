@@ -13,15 +13,14 @@ import SwiftUI
 #if !os(watchOS)
 @available(iOS 17.0, macCatalyst 17.0, *)
 @Observable @MainActor
-public final class MultiNoteViewModel: TaskManagedVM {
+public final class MultiNoteViewModel {
     // MARK: Lifecycle
 
-    override public init() {
-        super.init()
-        fireTask(givenTask: updateVMInstances)
-        Task {
+    public init() {
+        updateVMInstances()
+        Task { [weak self] in
             for await _ in Defaults.updates(.pzProfiles) {
-                self.fireTask(givenTask: self.updateVMInstances)
+                self?.updateVMInstances()
             }
         }
     }
@@ -47,15 +46,14 @@ public final class MultiNoteViewModel: TaskManagedVM {
 }
 #else
 @MainActor
-public final class MultiNoteViewModel: TaskManagedVMBackported {
+public final class MultiNoteViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    override public init() {
-        super.init()
-        fireTask(givenTask: updateVMInstances)
-        Task {
+    public init() {
+        updateVMInstances()
+        Task { [weak self] in
             for await _ in Defaults.updates(.pzProfiles) {
-                self.fireTask(givenTask: self.updateVMInstances)
+                self?.updateVMInstances()
             }
         }
     }
