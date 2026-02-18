@@ -114,12 +114,15 @@ public struct ContentView: View {
 
     private func handleRefreshableListTask() async {
         let now = Date()
-        guard now.timeIntervalSince(lastRefreshDate) > 0.6, !isAnySubVMBusy else { return }
+        guard now.timeIntervalSince(lastRefreshDate) > 0.6, !isAnySubVMBusy else {
+            try? await Task.sleep(nanoseconds: 600_000_000)
+            return
+        }
         lastRefreshDate = now
         // 此處不使用 Broadcaster，不然與 `.refreshable` 不相容。
         // `.refreshable` 僅適合阻塞性 async 任務。
         await multiNoteVM.getAllDailyNoteUnchecked()
-        try? await Task.sleep(nanoseconds: 300_000_000)
+        try? await Task.sleep(nanoseconds: 600_000_000)
     }
 }
 
