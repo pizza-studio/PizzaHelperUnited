@@ -38,9 +38,14 @@ extension DesktopWidgets {
         public var body: some View {
             VStack(alignment: .leading, spacing: spacing) {
                 ForEach(Array(allMetaBars.enumerated()), id: \.offset) { offset, currentMetaBar in
-                    AnyView(currentMetaBar.body)
-                        .frame(maxHeight: lineHeightMax)
-                        .tag(offset)
+                    AnyView(
+                        currentMetaBar
+                            .body
+                            .foregroundColor(.primary)
+                            .environment(\.colorScheme, .dark)
+                    )
+                    .frame(maxHeight: lineHeightMax)
+                    .tag(offset)
                 }
             }
         }
