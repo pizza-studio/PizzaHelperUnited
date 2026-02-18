@@ -145,10 +145,8 @@ struct TodayTabPage: View {
             }
         }
         .refreshable {
-            Task { @MainActor in
-                await debouncer4PageRefresh.debounce {
-                    await broadcaster.refreshTodayTab()
-                }
+            await debouncer4PageRefresh.debounce {
+                await broadcaster.refreshTodayTab()
             }
         }
         .onAppear {

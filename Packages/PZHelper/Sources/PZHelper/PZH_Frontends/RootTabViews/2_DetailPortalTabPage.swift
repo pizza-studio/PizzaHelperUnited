@@ -47,10 +47,8 @@ struct DetailPortalTabPage: View {
         }
         .formStyle(.grouped).disableFocusable()
         .refreshable {
-            Task { @MainActor in
-                await debouncer4PageRefresh.debounce {
-                    await refreshAction()
-                }
+            await debouncer4PageRefresh.debounce {
+                await refreshAction()
             }
         }
         .navigationTitle(
