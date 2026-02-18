@@ -144,7 +144,7 @@ struct TodayTabPage: View {
                 }
             }
         }
-        .refreshable {
+        .refreshableIfOS26 {
             await handleRefreshableListTask()
         }
         .onAppear {
