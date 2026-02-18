@@ -93,7 +93,7 @@ public final class MultiNoteViewModel: TaskManagedVMBackported {
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 @Observable @MainActor
-public final class DailyNoteViewModel {
+public final class DailyNoteViewModel: TaskManagedVM {
     // MARK: Lifecycle
 
     /// Initializes a new instance of the view model.
@@ -102,6 +102,7 @@ public final class DailyNoteViewModel {
     public init(profile: PZProfileSendable, extraTaskAfterFetch: ((any DailyNoteProtocol) -> Void)? = nil) {
         self.profile = profile
         self.extraTask = extraTaskAfterFetch
+        super.init()
         getDailyNoteUncheck(getCachedResult: true)
     }
 
@@ -113,59 +114,72 @@ public final class DailyNoteViewModel {
         case progress(Task<Void, Never>?)
     }
 
-    /// The current daily note.
-    public private(set) var dailyNoteStatus: Status = .progress(nil)
+    /// The fetched daily note result.
+    public private(set) var dailyNote: (any DailyNoteProtocol)?
+
+    /// The date when the daily note was last refreshed.
+    public private(set) var refreshDate: Date?
 
     /// The account for which the daily note is being fetched.
     public var profile: PZProfileSendable
 
+    /// Computed status for backward-compatible view consumption.
+    public var dailyNoteStatus: Status {
+        if taskState == .busy {
+            return .progress(task)
+        } else if let error = currentError {
+            return .failure(error: AnyLocalizedError(error))
+        } else if let dailyNote, let refreshDate {
+            return .succeed(dailyNote: dailyNote, refreshDate: refreshDate)
+        } else {
+            return .progress(nil)
+        }
+    }
+
     /// Fetches the daily note and updates the published `dailyNote` property accordingly.
     public func getDailyNote() {
-        if case let .succeed(_, refreshDate) = dailyNoteStatus {
+        switch dailyNoteStatus {
+        case let .succeed(_, refreshDate):
             // check if note is older than 15 minutes
             let shouldUpdateAfterMinute: Double = 15
             let shouldUpdateAfterSecond = 60.0 * shouldUpdateAfterMinute
-
             if Date().timeIntervalSince(refreshDate) > shouldUpdateAfterSecond {
                 getDailyNoteUncheck()
             }
-        } else if case .progress = dailyNoteStatus {
+        case .progress:
             return // another operation is already in progress
-        } else {
+        default:
             getDailyNoteUncheck()
         }
     }
 
     /// Asynchronously fetches the daily note using the MiHoYoAPI with the account information it was initialized with.
     public func getDailyNoteUncheck(getCachedResult: Bool = true) {
-        if case let .progress(task) = dailyNoteStatus {
-            task?.cancel()
-        }
-        let task = Task { @MainActor in
-            do {
-                let result = try await profile.getDailyNote(cached: getCachedResult)
-                withAnimation {
-                    dailyNoteStatus = .succeed(dailyNote: result, refreshDate: Date())
-                }
-                extraTask?(result)
-            } catch {
-                withAnimation {
-                    dailyNoteStatus = .failure(error: AnyLocalizedError(error))
-                }
+        let theProfile = profile
+        let theExtraTask = extraTask
+        fireTask(
+            cancelPreviousTask: true,
+            givenTask: {
+                try await theProfile.getDailyNote(cached: getCachedResult)
+            },
+            completionHandler: { [weak self] result in
+                guard let self, let result else { return }
+                dailyNote = result
+                refreshDate = Date()
+                theExtraTask?(result)
             }
-        }
-        dailyNoteStatus = .progress(task)
+        )
     }
 
     // MARK: Private
 
-    private let extraTask: ((any DailyNoteProtocol) -> Void)?
+    @ObservationIgnored private let extraTask: ((any DailyNoteProtocol) -> Void)?
 }
 
 #else
 
 @MainActor
-public final class DailyNoteViewModel: ObservableObject {
+public final class DailyNoteViewModel: TaskManagedVMBackported {
     // MARK: Lifecycle
 
     /// Initializes a new instance of the view model.
@@ -174,6 +188,7 @@ public final class DailyNoteViewModel: ObservableObject {
     public init(profile: PZProfileSendable, extraTaskAfterFetch: ((any DailyNoteProtocol) -> Void)? = nil) {
         self.profile = profile
         self.extraTask = extraTaskAfterFetch
+        super.init()
         getDailyNoteUncheck(getCachedResult: true)
     }
 
@@ -185,48 +200,61 @@ public final class DailyNoteViewModel: ObservableObject {
         case progress(Task<Void, Never>?)
     }
 
-    /// The current daily note.
-    @Published public private(set) var dailyNoteStatus: Status = .progress(nil)
+    /// The fetched daily note result.
+    @Published public private(set) var dailyNote: (any DailyNoteProtocol)?
+
+    /// The date when the daily note was last refreshed.
+    @Published public private(set) var refreshDate: Date?
 
     /// The account for which the daily note is being fetched.
     @Published public var profile: PZProfileSendable
 
+    /// Computed status for backward-compatible view consumption.
+    public var dailyNoteStatus: Status {
+        if taskState == .busy {
+            return .progress(task)
+        } else if let error = currentError {
+            return .failure(error: AnyLocalizedError(error))
+        } else if let dailyNote, let refreshDate {
+            return .succeed(dailyNote: dailyNote, refreshDate: refreshDate)
+        } else {
+            return .progress(nil)
+        }
+    }
+
     /// Fetches the daily note and updates the published `dailyNote` property accordingly.
     public func getDailyNote() {
-        if case let .succeed(_, refreshDate) = dailyNoteStatus {
+        switch dailyNoteStatus {
+        case let .succeed(_, refreshDate):
             // check if note is older than 15 minutes
             let shouldUpdateAfterMinute: Double = 15
             let shouldUpdateAfterSecond = 60.0 * shouldUpdateAfterMinute
-
             if Date().timeIntervalSince(refreshDate) > shouldUpdateAfterSecond {
                 getDailyNoteUncheck()
             }
-        } else if case .progress = dailyNoteStatus {
+        case .progress:
             return // another operation is already in progress
-        } else {
+        default:
             getDailyNoteUncheck()
         }
     }
 
     /// Asynchronously fetches the daily note using the MiHoYoAPI with the account information it was initialized with.
     public func getDailyNoteUncheck(getCachedResult: Bool = true) {
-        if case let .progress(task) = dailyNoteStatus {
-            task?.cancel()
-        }
-        let task = Task { @MainActor in
-            do {
-                let result = try await profile.getDailyNote(cached: getCachedResult)
-                withAnimation {
-                    dailyNoteStatus = .succeed(dailyNote: result, refreshDate: Date())
-                }
-                extraTask?(result)
-            } catch {
-                withAnimation {
-                    dailyNoteStatus = .failure(error: AnyLocalizedError(error))
-                }
+        let theProfile = profile
+        let theExtraTask = extraTask
+        fireTask(
+            cancelPreviousTask: true,
+            givenTask: {
+                try await theProfile.getDailyNote(cached: getCachedResult)
+            },
+            completionHandler: { [weak self] result in
+                guard let self, let result else { return }
+                dailyNote = result
+                refreshDate = Date()
+                theExtraTask?(result)
             }
-        }
-        dailyNoteStatus = .progress(task)
+        )
     }
 
     // MARK: Private
