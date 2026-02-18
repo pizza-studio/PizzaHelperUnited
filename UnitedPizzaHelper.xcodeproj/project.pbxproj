@@ -1319,7 +1319,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThePizzaHelper/ThePizzaHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePizzaHelper/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1381,7 +1381,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThePizzaHelper/ThePizzaHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePizzaHelper/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1431,7 +1431,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchExtension/PizzaWatchAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WatchExtension;
@@ -1463,7 +1463,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchExtension/PizzaWatchAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WatchExtension;
@@ -1496,7 +1496,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchApp/PizzaWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1528,7 +1528,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchApp/PizzaWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1561,7 +1561,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchApp/LatteWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_PREVIEWS = NO;
@@ -1595,7 +1595,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchApp/LatteWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_PREVIEWS = NO;
@@ -1630,7 +1630,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchExtension/LatteWatchAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchExtension/Info-TheLatteWatchAppExtension.plist";
@@ -1663,7 +1663,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchExtension/LatteWatchAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchExtension/Info-TheLatteWatchAppExtension.plist";
@@ -1697,7 +1697,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/TheLatteWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -1736,7 +1736,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/TheLatteWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -1776,7 +1776,7 @@
 				CODE_SIGN_ENTITLEMENTS = TheLatteHelper/TheLatteHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_ASSET_PATHS = "\"TheLatteHelper/Preview Content\"";
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_APP_SANDBOX = YES;
@@ -1829,7 +1829,7 @@
 				CODE_SIGN_ENTITLEMENTS = TheLatteHelper/TheLatteHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_ASSET_PATHS = "\"TheLatteHelper/Preview Content\"";
 				DEVELOPMENT_TEAM = WEY3MS268C;
 				ENABLE_APP_SANDBOX = YES;
@@ -1880,7 +1880,7 @@
 				CODE_SIGN_ENTITLEMENTS = INIntents4iOS16/INIntents4iOS16.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -1916,7 +1916,7 @@
 				CODE_SIGN_ENTITLEMENTS = INIntents4iOS16/INIntents4iOS16.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -1955,7 +1955,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/ThePizzaWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1993,7 +1993,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/ThePizzaWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2166,7 +2166,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelperEngine/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -2213,7 +2213,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6273;
+				CURRENT_PROJECT_VERSION = 6282;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelperEngine/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
