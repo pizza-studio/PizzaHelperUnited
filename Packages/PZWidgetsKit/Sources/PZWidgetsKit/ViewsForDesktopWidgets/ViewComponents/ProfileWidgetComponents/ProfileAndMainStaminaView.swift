@@ -24,13 +24,15 @@ extension DesktopWidgets {
             dailyNote: any DailyNoteProtocol,
             tinyGlassDisplayStyle: Bool = false,
             verticalSpacing4NonTinyGlassMode: CGFloat? = 0,
-            useSpacer: Bool = true
+            useSpacer: Bool = true,
+            didRefreshAction: (() -> Void)? = nil
         ) {
             self.profile = profile
             self.dailyNote = dailyNote
             self.tinyGlassDisplayStyle = tinyGlassDisplayStyle
             self.useSpacer = useSpacer
             self.verticalSpacing4NonTinyGlassMode = verticalSpacing4NonTinyGlassMode
+            self.didRefreshAction = didRefreshAction
         }
 
         // MARK: Public
@@ -66,9 +68,16 @@ extension DesktopWidgets {
                             .font(.title3)
                             .clipShape(.circle)
                             .legibilityShadow()
-                        if #available(iOS 17.0, macCatalyst 17.0, *) {
+                        if let didRefreshAction {
+                            Button(action: didRefreshAction) {
+                                labelImage
+                            }
+                            .buttonStyle(.plain)
+                        } else if #available(iOS 17.0, macCatalyst 17.0, *) {
                             Button(
-                                intent: WidgetRefreshIntent(dailyNoteUIDWithGame: profile?.uidWithGame)
+                                intent: WidgetRefreshIntent(
+                                    dailyNoteUIDWithGame: profile?.uidWithGame
+                                )
                             ) {
                                 labelImage
                             }
@@ -137,8 +146,17 @@ extension DesktopWidgets {
             .padding(.trailing, 10)
             .padding(.vertical, 5)
             .widgetAccessibilityBackground(enabled: true)
-            if #available(iOS 17.0, macCatalyst 17.0, *) {
-                Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: profile?.uidWithGame)) {
+            if let didRefreshAction {
+                Button(action: didRefreshAction) {
+                    bigLabel
+                }
+                .buttonStyle(.plain)
+            } else if #available(iOS 17.0, macCatalyst 17.0, *) {
+                Button(
+                    intent: WidgetRefreshIntent(
+                        dailyNoteUIDWithGame: profile?.uidWithGame
+                    )
+                ) {
                     bigLabel
                 }
                 .buttonStyle(.plain)
@@ -156,6 +174,7 @@ extension DesktopWidgets {
         private let tinyGlassDisplayStyle: Bool
         private let verticalSpacing4NonTinyGlassMode: CGFloat?
         private let useSpacer: Bool
+        private let didRefreshAction: (() -> Void)?
 
         private var staminaFont4TinyGlassMode: Font {
             switch widgetFamily {

@@ -26,7 +26,9 @@ struct RealTimeNoteCardView: View {
                         WidgetProfileNoteCardView(
                             note: dailyNote,
                             profile: theVM.profile
-                        )
+                        ) {
+                            theVM.getDailyNoteUncheck()
+                        }
                     } else {
                         switch dailyNote {
                         case let note as any Note4GI: NoteCardView4GI(note: note)
@@ -165,9 +167,14 @@ extension RealTimeNoteCardView {
     private struct WidgetProfileNoteCardView: View {
         // MARK: Lifecycle
 
-        public init(note dailyNote: any DailyNoteProtocol, profile: PZProfileSendable) {
+        public init(
+            note dailyNote: any DailyNoteProtocol,
+            profile: PZProfileSendable,
+            didRefreshAction: (() -> Void)? = nil
+        ) {
             self.dailyNote = dailyNote
             self.profile = profile
+            self.didRefreshAction = didRefreshAction
             let widgetConfig: WidgetViewConfig = {
                 var cfg = WidgetViewConfig()
                 cfg.showTransformer = true
@@ -201,7 +208,8 @@ extension RealTimeNoteCardView {
             DesktopWidgets.MainInfoWithDetail(
                 entry: widgetEntry,
                 dailyNote: dailyNote,
-                viewConfig: widgetConfig
+                viewConfig: widgetConfig,
+                didRefreshAction: didRefreshAction
             )
             .id(widgetStaminaFontPref)
             .environment(\.colorScheme, .dark)
@@ -236,6 +244,7 @@ extension RealTimeNoteCardView {
 
         private let dailyNote: any DailyNoteProtocol
         private let profile: PZProfileSendable
+        private let didRefreshAction: (() -> Void)?
 
         @Default(.widgetStaminaFontPref) private var widgetStaminaFontPref: WidgetStaminaFontStyle
     }

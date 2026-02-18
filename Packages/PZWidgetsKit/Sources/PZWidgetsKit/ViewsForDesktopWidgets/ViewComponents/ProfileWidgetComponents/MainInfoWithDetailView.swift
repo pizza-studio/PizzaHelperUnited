@@ -20,11 +20,13 @@ extension DesktopWidgets {
         public init(
             entry: ProfileWidgetEntry,
             dailyNote: any DailyNoteProtocol,
-            viewConfig: WidgetViewConfig
+            viewConfig: WidgetViewConfig,
+            didRefreshAction: (() -> Void)? = nil
         ) {
             self.entry = entry
             self.dailyNote = dailyNote
             self.viewConfig = viewConfig
+            self.didRefreshAction = didRefreshAction
         }
 
         // MARK: Public
@@ -35,7 +37,8 @@ extension DesktopWidgets {
                 MainInfo(
                     entry: entry,
                     dailyNote: dailyNote,
-                    viewConfig: viewConfig
+                    viewConfig: viewConfig,
+                    didRefreshAction: didRefreshAction
                 )
                 .frame(maxWidth: .infinity, alignment: tinyGlass ? .leading : .center)
                 Group {
@@ -65,11 +68,12 @@ extension DesktopWidgets {
             .frame(maxWidth: tinyGlass ? nil : 300)
         }
 
-        // MARK: Internal
+        // MARK: Private
 
-        let entry: ProfileWidgetEntry
-        var dailyNote: any DailyNoteProtocol
-        let viewConfig: WidgetViewConfig
+        private let entry: ProfileWidgetEntry
+        private let dailyNote: any DailyNoteProtocol
+        private let viewConfig: WidgetViewConfig
+        private let didRefreshAction: (() -> Void)?
     }
 }
 
