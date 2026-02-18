@@ -46,7 +46,7 @@ struct DetailPortalTabPage: View {
             formContent
         }
         .formStyle(.grouped).disableFocusable()
-        .refreshable {
+        .refreshableIfOS26 {
             await handleRefreshableListTask()
         }
         .navigationTitle(
