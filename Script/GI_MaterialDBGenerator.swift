@@ -57,120 +57,6 @@ private let materialNameTags: [String] = [
     // 此处插入原神今后大版本的新的武器突破材料的命名。
 ]
 
-// MARK: - GIMaterialMetaQueried
-
-public enum GIMaterialMetaQueried {
-    public protocol GIMaterialMetaProtocol: Codable, Hashable, Sendable {
-        var allUnits: [MaterialUnit] { get }
-    }
-
-    public struct MaterialUnit: Codable, Hashable, Sendable {
-        public enum CodingKeys: String, CodingKey {
-            case name = "Name"
-            case id = "Id"
-            case count = "Count"
-            case rank = "Rank"
-        }
-
-        public var name: String
-        public var id, count, rank: Int
-
-        public var assetURLString: String {
-            Self.assetURLString(id: id.description)
-        }
-
-        public static func assetURLString(id: String) -> String {
-            "https://api.hakush.in/gi/UI/UI_ItemIcon_\(id).webp"
-        }
-    }
-
-    public struct GICharMaterialMeta: GIMaterialMetaProtocol {
-        public enum CodingKeys: String, CodingKey {
-            case materials = "Materials"
-        }
-
-        public struct Materials: Codable, Hashable, Sendable {
-            public enum CodingKeys: String, CodingKey {
-                case talents = "Talents"
-            }
-
-            public struct Talent: Codable, Hashable, Sendable {
-                public enum CodingKeys: String, CodingKey {
-                    case mats = "Mats"
-                    case cost = "Cost"
-                }
-
-                public var mats: [GIMaterialMetaQueried.MaterialUnit]
-                public var cost: Int
-            }
-
-            public var talents: [[Talent]]
-        }
-
-        public var materials: Materials
-
-        public var first: MaterialUnit? { materials.talents.first?.first?.mats.first }
-
-        public var allUnits: [MaterialUnit] {
-            materials.talents.map { $0.map(\.mats).reduce([], +) }.reduce([], +)
-        }
-    }
-
-    public struct GIWeaponMaterialMeta: GIMaterialMetaProtocol {
-        public enum CodingKeys: String, CodingKey {
-            case materials = "Materials"
-        }
-
-        public struct Material: Codable, Hashable, Sendable {
-            public enum CodingKeys: String, CodingKey {
-                case mats = "Mats"
-                case cost = "Cost"
-            }
-
-            public var mats: [GIMaterialMetaQueried.MaterialUnit]
-            public var cost: Int
-        }
-
-        public var materials: [String: Material]
-
-        public var first: MaterialUnit? { materials["1"]?.mats.first }
-
-        public var allUnits: [MaterialUnit] {
-            materials.values.map(\.mats).reduce([], +)
-        }
-    }
-
-    public static func queryMaterials(for id: String) async throws -> [GIMaterialMetaQueried.MaterialUnit] {
-        guard let intID = Int(id) else { return [] }
-        var isWeapon: Bool
-        switch id.count {
-        case 8: isWeapon = false // Character
-        case 0 ..< 8: isWeapon = true // Weapon
-        default: return []
-        }
-        let urlString = switch isWeapon {
-        case false: "https://api.hakush.in/gi/data/zh/character/\(intID).json"
-        case true: "https://api.hakush.in/gi/data/zh/weapon/\(intID).json"
-        }
-        guard let url = URL(string: urlString) else { return [] }
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let decoded: any GIMaterialMetaProtocol
-        do {
-            switch isWeapon {
-            case false:
-                decoded = try JSONDecoder().decode(GICharMaterialMeta.self, from: data)
-            case true:
-                decoded = try JSONDecoder().decode(GIWeaponMaterialMeta.self, from: data)
-            }
-        } catch {
-            print("❌ JSON Decoding Error for URL: \(urlString)")
-            print("Error details: \(error)")
-            throw error
-        }
-        return decoded.allUnits
-    }
-}
-
 // MARK: - DimbreathMaterialRAW
 
 public enum DimbreathMaterialRAW {
@@ -253,7 +139,7 @@ public enum DimbreathMaterialRAW {
 
     public typealias DailyDungeonConfigData = [DailyDungeonConfigDatum]
 
-    public static let urlPrefix = "https://gitlab.com/Dimbreath/AnimeGameData/-/raw/master/"
+    public static let urlPrefix = "https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/refs/heads/master/"
 }
 
 extension DimbreathMaterialRAW.MaterialSourceDataExcelConfigData {
@@ -362,51 +248,185 @@ extension GIMaterialDBGenerator {
     }
 
     public static func getAllCharIDsExceptProtagonists() async throws -> [Int] {
-        let url = URL(string: "https://api.hakush.in/gi/data/character.json")!
+        /// 从 `ExcelBinOutput/AvatarExcelConfigData.json` 取得所有角色 ID。
+        /// 过滤掉主角 ID 和超出有效区间的 ID。
+        struct AvatarEntry: Decodable { let id: Int }
+        let urlString = DimbreathMaterialRAW.urlPrefix + "ExcelBinOutput/AvatarExcelConfigData.json"
+        guard let url = URL(string: urlString) else { return [] }
         let (data, _) = try await URLSession.shared.data(from: url)
-        let decoded: [String: Any]
+        let entries: [AvatarEntry]
         do {
-            decoded = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+            entries = try JSONDecoder().decode([AvatarEntry].self, from: data)
         } catch {
-            print("❌ JSON Decoding Error for URL: \(url.absoluteString)")
+            print("❌ JSON Decoding Error for URL: \(urlString)")
             print("Error details: \(error)")
             throw error
         }
-        return decoded.keys.compactMap { Int($0) }.sorted()
+        let excludedIDs: Set<Int> = [10000005, 10000007, 10000117, 10000118]
+        let validRange = 10000000 ... 10000800
+        return entries.map(\.id)
+            .filter { validRange.contains($0) && !excludedIDs.contains($0) }
+            .sorted()
     }
 
     public static func getAllWeaponIDs() async throws -> [Int] {
-        let url = URL(string: "https://api.hakush.in/gi/data/weapon.json")!
+        /// 从 `ExcelBinOutput/WeaponExcelConfigData.json` 取得所有武器 ID。
+        /// 对 3 星以上武器通过 `skillAffix[0] != 0` 过滤掉测试武器与剧情武器。
+        /// 1-2 星武器全部保留（它们的 skillAffix[0] 本身就为 0，属于正常情况）。
+        struct WeaponEntry: Decodable {
+            let id: Int
+            let rankLevel: Int?
+            let skillAffix: [Int]?
+            var isValid: Bool {
+                let rank = rankLevel ?? 0
+                if rank <= 2 { return true }
+                return (skillAffix?.first ?? 0) != 0
+            }
+        }
+        let urlString = DimbreathMaterialRAW.urlPrefix + "ExcelBinOutput/WeaponExcelConfigData.json"
+        guard let url = URL(string: urlString) else { return [] }
         let (data, _) = try await URLSession.shared.data(from: url)
-        let decoded: [String: Any]
+        let entries: [WeaponEntry]
         do {
-            decoded = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+            entries = try JSONDecoder().decode([WeaponEntry].self, from: data)
         } catch {
-            print("❌ JSON Decoding Error for URL: \(url.absoluteString)")
+            print("❌ JSON Decoding Error for URL: \(urlString)")
             print("Error details: \(error)")
             throw error
         }
-        // Filter out weapon skins (6-digit IDs) and only return actual weapons (5-digit IDs)
-        return decoded.keys.compactMap { Int($0) }.filter { $0 < 100000 }.sorted()
+        // 有效武器 ID 区间：[11100, 20000)。
+        // 3 星以上武器额外要求 skillAffix 首个元素不为 0（排除测试/剧情武器）。
+        let validRange = 11100 ..< 20000
+        return entries
+            .filter { validRange.contains($0.id) && $0.isValid }
+            .map(\.id)
+            .sorted()
+    }
+
+    /// 批量构建实体 ID（角色/武器）→ 素材 ID 集合的映射。从 ExcelBinOutput 批量读取。
+    /// - 角色: AvatarExcel → SkillDepot → Skill → ProudSkill(costItems)
+    /// - 武器: WeaponExcel → WeaponPromote(costItems)
+    public static func buildBulkUserMaterialMap(
+        charIDs: [Int],
+        weaponIDs: [Int]
+    ) async throws
+        -> [String: Set<Int>] {
+        struct AvatarEntry: Decodable { let id: Int; let skillDepotId: Int }
+        struct SkillDepotEntry: Decodable { let id: Int; let skills: [Int]?; let energySkill: Int? }
+        struct SkillEntry: Decodable { let id: Int; let proudSkillGroupId: Int? }
+        struct CostItem: Decodable { let id: Int; let count: Int }
+        struct ProudSkillEntry: Decodable {
+            let proudSkillGroupId: Int; let level: Int; let costItems: [CostItem]?
+        }
+        struct WeaponExcelEntry: Decodable { let id: Int; let weaponPromoteId: Int? }
+        struct WeaponPromoteEntry: Decodable {
+            let weaponPromoteId: Int; let costItems: [CostItem]?
+        }
+
+        let urlBase = DimbreathMaterialRAW.urlPrefix + "ExcelBinOutput/"
+
+        // 并行加载所有 ExcelBinOutput 数据。
+        async let avatarData = URLSession.shared.data(
+            from: URL(string: urlBase + "AvatarExcelConfigData.json")!
+        )
+        async let depotData = URLSession.shared.data(
+            from: URL(string: urlBase + "AvatarSkillDepotExcelConfigData.json")!
+        )
+        async let skillData = URLSession.shared.data(
+            from: URL(string: urlBase + "AvatarSkillExcelConfigData.json")!
+        )
+        async let proudData = URLSession.shared.data(
+            from: URL(string: urlBase + "ProudSkillExcelConfigData.json")!
+        )
+        async let wpnExcelData = URLSession.shared.data(
+            from: URL(string: urlBase + "WeaponExcelConfigData.json")!
+        )
+        async let wpnPromData = URLSession.shared.data(
+            from: URL(string: urlBase + "WeaponPromoteExcelConfigData.json")!
+        )
+
+        let avatarEntries = try JSONDecoder().decode([AvatarEntry].self, from: try await avatarData.0)
+        let depotEntries = try JSONDecoder().decode([SkillDepotEntry].self, from: try await depotData.0)
+        let skillEntries = try JSONDecoder().decode([SkillEntry].self, from: try await skillData.0)
+        let proudEntries = try JSONDecoder().decode([ProudSkillEntry].self, from: try await proudData.0)
+        let wpnExcelEntries = try JSONDecoder().decode(
+            [WeaponExcelEntry].self, from: try await wpnExcelData.0
+        )
+        let wpnPromEntries = try JSONDecoder().decode(
+            [WeaponPromoteEntry].self, from: try await wpnPromData.0
+        )
+
+        // 构建查找表。
+        let avatarToDepot = Dictionary(
+            avatarEntries.map { ($0.id, $0.skillDepotId) },
+            uniquingKeysWith: { a, _ in a }
+        )
+        let depotMap = Dictionary(
+            depotEntries.map { ($0.id, $0) },
+            uniquingKeysWith: { a, _ in a }
+        )
+        let skillToProudGroup = Dictionary(
+            skillEntries.compactMap { s in s.proudSkillGroupId.map { (s.id, $0) } },
+            uniquingKeysWith: { a, _ in a }
+        )
+
+        // proudSkillGroupId → 所有等级的素材 ID 集合。
+        var proudGroupMaterials = [Int: Set<Int>]()
+        for entry in proudEntries where entry.level >= 2 {
+            guard let items = entry.costItems else { continue }
+            let ids = Set(items.map(\.id).filter { $0 > 0 })
+            proudGroupMaterials[entry.proudSkillGroupId, default: []].formUnion(ids)
+        }
+
+        // weaponPromoteId → 所有突破等级的素材 ID 集合。
+        var wpnPromoteMaterials = [Int: Set<Int>]()
+        for entry in wpnPromEntries {
+            guard let items = entry.costItems else { continue }
+            let ids = Set(items.map(\.id).filter { $0 > 0 })
+            wpnPromoteMaterials[entry.weaponPromoteId, default: []].formUnion(ids)
+        }
+
+        let wpnToPromoteId = Dictionary(
+            wpnExcelEntries.compactMap { w in w.weaponPromoteId.map { (w.id, $0) } },
+            uniquingKeysWith: { a, _ in a }
+        )
+
+        // 构建结果映射。
+        var result = [String: Set<Int>]()
+
+        for charID in charIDs {
+            guard let depotId = avatarToDepot[charID] else { continue }
+            guard let depot = depotMap[depotId] else { continue }
+            var materialIDs = Set<Int>()
+            let allSkillIDs = (depot.skills ?? []) + [depot.energySkill].compactMap { $0 }
+            for skillID in allSkillIDs where skillID > 0 {
+                guard let groupId = skillToProudGroup[skillID] else { continue }
+                if let mats = proudGroupMaterials[groupId] {
+                    materialIDs.formUnion(mats)
+                }
+            }
+            if !materialIDs.isEmpty {
+                result[charID.description] = materialIDs
+            }
+        }
+
+        for weaponID in weaponIDs {
+            guard let promoteId = wpnToPromoteId[weaponID] else { continue }
+            if let mats = wpnPromoteMaterials[promoteId] {
+                result[weaponID.description] = mats
+            }
+        }
+
+        return result
     }
 
     public static func compileMaterialDB() async throws -> [GITodayMaterialEncoded] {
         let allCharIDs = try await getAllCharIDsExceptProtagonists()
         let allWeaponIDs = try await getAllWeaponIDs()
 
-        var userMaterialMap = [String: Set<Int>]()
-
-        for userID in allWeaponIDs + allCharIDs {
-            do {
-                let queried = try await GIMaterialMetaQueried.queryMaterials(for: userID.description).map(\.id)
-                userMaterialMap[userID.description] = Set(queried)
-            } catch {
-                print("⚠️ Failed to query materials for ID: \(userID)")
-                print("Continuing with next item...")
-                // Continue processing other items instead of failing completely
-                continue
-            }
-        }
+        let userMaterialMap = try await buildBulkUserMaterialMap(
+            charIDs: allCharIDs, weaponIDs: allWeaponIDs
+        )
 
         func findUsers(itemID: Int) -> [String] {
             var results = [String]()
