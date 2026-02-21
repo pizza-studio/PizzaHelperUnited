@@ -40,9 +40,9 @@ extension Enka.AvatarSummarized.CharacterID: OnlineAssetSuppliable {
         }
         let urlStr = switch game {
         case .genshinImpact:
-            "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
+            "https://gi.yatta.moe/assets/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:
-            "https://api.hakush.in/hsr/UI/avatarshopicon/\(iconOnlineFileNameStem).webp"
+            "https://sr.yatta.moe/hsr/assets/UI/avatar/medium/\(iconOnlineFileNameStem).webp"
         case .zenlessZone:
             "114514" // 临时设定。
         }
@@ -60,7 +60,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill: OnlineAss
         }
         let urlStr = switch game {
         case .genshinImpact:
-            "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
+            "https://gi.yatta.moe/assets/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:
             "https://sr.yatta.moe/hsr/assets/UI/skill/\(iconOnlineFileNameStem).png"
         case .zenlessZone:
@@ -80,9 +80,9 @@ extension Enka.AvatarSummarized.WeaponPanel: OnlineAssetSuppliable {
         }
         let urlStr = switch game {
         case .genshinImpact:
-            "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
+            "https://gi.yatta.moe/assets/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:
-            "https://api.hakush.in/hsr/UI/lightconemediumicon/\(iconOnlineFileNameStem).webp"
+            "https://sr.yatta.moe/hsr/assets/UI/equipment/\(iconOnlineFileNameStem).webp"
         case .zenlessZone: "114514" // 临时设定。
         }
         return urlStr
@@ -99,9 +99,9 @@ extension Enka.AvatarSummarized.ArtifactInfo: OnlineAssetSuppliable {
         }
         let urlStr = switch game {
         case .genshinImpact:
-            "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
+            "https://gi.yatta.moe/assets/UI/reliquary/\(iconOnlineFileNameStem).webp"
         case .starRail:
-            "https://api.hakush.in/hsr/UI/relicfigures/\(iconOnlineFileNameStem).webp"
+            "https://sr.yatta.moe/hsr/assets/UI/relic/\(iconOnlineFileNameStem).webp"
         case .zenlessZone: "114514" // 临时设定。
         }
         return urlStr
