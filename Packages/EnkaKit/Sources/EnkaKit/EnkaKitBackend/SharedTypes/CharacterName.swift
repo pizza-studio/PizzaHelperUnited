@@ -38,7 +38,7 @@ extension Enka {
 
         /// Used for EnkaDB.
         public func getGenshinProtagonistSkillDepotID(element: Enka.GameElement) -> Int? {
-            let trailingNumber = getGenshinProtagonistSharedSkillDepotID(element: element)
+            let trailingNumber = getGenshinProtagonistSkillDepotIDSuffix(element: element)
             guard let trailingNumber else { return nil }
             return switch self {
             case .protagonist(.ofLumine): trailingNumber + 700
@@ -53,8 +53,9 @@ extension Enka {
             }
         }
 
-        /// Used for Hakush.in APIs.
-        public func getGenshinProtagonistSharedSkillDepotID(element: Enka.GameElement) -> Int? {
+        // MARK: Private
+
+        private func getGenshinProtagonistSkillDepotIDSuffix(element: Enka.GameElement) -> Int? {
             switch self {
             case let .protagonist(name):
                 guard [.ofLumine, .ofAether].contains(name) else { return nil }
