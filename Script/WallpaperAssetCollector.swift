@@ -228,11 +228,13 @@ struct EnkaCharacterDictValueType: Decodable {
 }
 
 var allCharIDs: [String] = []
+let specialIDs: Set<String> = ["10000005", "10000007", "10000117", "10000118"]
 
 try await EnkaCharacterDictValueType.getRemoteMap().forEach { key, _ in
-    guard key.count == 8, !key.hasPrefix("10000007"), !key.hasPrefix("10000005") else { return } // 主角没有名片。
-    // TODO: 此处增加检查。如果连 Hakushin 都没列出当前迭代的 characterID 的话，
-    // 那么这个 characterID 对应的就是测试角色、得排除。
+    // 主角与 Manekin 没有名片。
+    guard key.count == 8, specialIDs.allSatisfy({ !key.hasPrefix($0) }) else { return }
+    // 這裡暫時假設 charID 不會高於 10000800。
+    guard let intCharID = Int(key), intCharID < 10000800 else { return }
     allCharIDs.append(key)
 }
 
@@ -255,7 +257,7 @@ struct MaterialExcelConfigData: Decodable {
     // MARK: Internal
 
     static let urlPath = """
-    https://gitlab.com/Dimbreath/AnimeGameData/-/raw/master/ExcelBinOutput/MaterialExcelConfigData.json
+    https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/refs/heads/master/ExcelBinOutput/MaterialExcelConfigData.json
     """
 
     let id: Int
@@ -312,40 +314,65 @@ let assetObjects: [WallpaperAsset] = try await MaterialExcelConfigData.getRemote
     )
 }
 
-// MARK: - HakushinChar
+// MARK: - FetterCharacterCardEntry
 
-struct HakushinChar: Decodable {
-    struct CharaInfo: Decodable {
-        struct Namecard: Decodable {
-            let Id: Int
-            let Name: String
-            let Icon: String
-        }
-
-        let Namecard: Namecard
-    }
-
-    let CharaInfo: CharaInfo
+/// 通过 FetterCharacterCardExcelConfigData 与 RewardExcelConfigData 交叉引用的方式取得角色 ID 对应的名片物品 ID。
+struct FetterCharacterCardEntry: Decodable {
+    let avatarId: Int
+    let rewardId: Int
 }
 
-for charID in allCharIDs {
-    let url = "https://api.hakush.in/gi/data/zh/character/\(charID).json".asURL
-    do {
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let hakushinObj = try JSONDecoder().decode(HakushinChar.self, from: data)
-        let nameCardID = hakushinObj.CharaInfo.Namecard.Id
+// MARK: - RewardEntry
+
+struct RewardEntry: Decodable {
+    struct RewardItem: Decodable {
+        let itemId: Int
+        let itemCount: Int
+    }
+
+    let rewardId: Int
+    let rewardItemList: [RewardItem]
+}
+
+do {
+    let fetterURLStr = """
+    https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/refs/heads/master/\
+    ExcelBinOutput/FetterCharacterCardExcelConfigData.json
+    """
+    let rewardURLStr = """
+    https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/refs/heads/master/\
+    ExcelBinOutput/RewardExcelConfigData.json
+    """
+    async let fetterResp = URLSession.shared.data(from: fetterURLStr.asURL)
+    async let rewardResp = URLSession.shared.data(from: rewardURLStr.asURL)
+    let fetterEntries = try JSONDecoder().decode(
+        [FetterCharacterCardEntry].self, from: try await fetterResp.0
+    )
+    let rewardEntries = try JSONDecoder().decode(
+        [RewardEntry].self, from: try await rewardResp.0
+    )
+
+    // Build rewardId → first non-zero itemId lookup.
+    let rewardToItemId: [Int: Int] = Dictionary(
+        rewardEntries.compactMap { entry in
+            guard let firstItem = entry.rewardItemList.first(where: { $0.itemId > 0 })
+            else { return nil }
+            return (entry.rewardId, firstItem.itemId)
+        },
+        uniquingKeysWith: { a, _ in a }
+    )
+
+    for charID in allCharIDs {
+        guard let intCharID = Int(charID) else { continue }
+        guard let fetterEntry = fetterEntries.first(where: { $0.avatarId == intCharID })
+        else { continue }
+        guard let nameCardID = rewardToItemId[fetterEntry.rewardId] else { continue }
         let matched = assetObjects.first { $0.id == nameCardID.description }
         matched?.bindedCharID = charID
-    } catch {
-        // 這裡暫時假設 charID 不會高於 10000800。
-        guard let intCharID = Int(charID), intCharID < 10000800 else { continue }
-        print("------------------------")
-        print("FAILED FROM HANDLING SOURCE URL: \(url.absoluteString)")
-        print("------------------------")
-        print(error)
-        print("------------------------")
-        continue
     }
+} catch {
+    print("❌ Error building character-namecard mappings from ExcelBinOutput:")
+    print(error)
 }
 
 // MARK: - Add supplemental charIDs for chars with costumes.
