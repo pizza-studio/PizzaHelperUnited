@@ -42,7 +42,7 @@ $ EOF.
 
 ### zh-Hant:
 ```
-使用「拿鐵小助手」這款工具軟體，您可以隨時在小工具中查看您在《原神》《星穹鐵道》《絕區零》的遊戲內的玩家體力回滿狀況，也可以顯示洞天財甕、派遣委託、每日委託/每日訓練等內容的完成狀況。我們還支持 Live Activity （即時動態）和用於 iPhone 鎖定畫面的特殊小工具。該軟體還具有通知功能，當每項內容完成時會提醒您；添加本機帳戶也非常簡單。該軟體具備多區服支援、多帳戶、客製化背景名片和個性化小工具設置。
+「拿鐵小助手」是一款第三方工具軟體，而非遊戲本身。使用「拿鐵小助手」這款工具軟體，您可以隨時在小工具中查看您在《原神》《星穹鐵道》《絕區零》的遊戲內的玩家體力回滿狀況，也可以顯示洞天財甕、派遣委託、每日委託/每日訓練等內容的完成狀況。我們還支持 Live Activity （即時動態）和用於 iPhone 鎖定畫面的特殊小工具。該軟體還具有通知功能，當每項內容完成時會提醒您；添加本機帳號也非常簡單。該軟體具備多區服支援、多帳號、客製化背景名片和個性化小工具設置。
 
 本應用程式的所有功能都是免費的，您無需支付應用內購買費用。為獲得最佳體驗，建議在未被 Apple 列為 Vintage 或 Obsolete 的 iOS 裝置上使用本應用程式，以確保流暢的性能和穩定的操作。
 
@@ -59,17 +59,15 @@ $ EOF.
 
 ### zh-Hans:
 ```
-「拿铁小助手」是一款第三方工具软件，而非游戏本身。通过使用本应用，您可以随时在小工具（小组件）中查看您在《原神》、《星穹铁道》及《绝区零》游戏内的体力恢复状态（树脂/开拓力/电量），同时也支持显示洞天宝钱、探索派遣、每日委托/每日实训等内容的完成情况。
+「拿铁小助手」是一款第三方工具软件，而非游戏本身。使用「拿铁小助手」这款资讯工具软件，您可以随时在小工具（小组件）中查看您在《原神》《星穹铁道》《绝区零》的游戏内的玩家体力回满状况，也可以显示洞天财瓮、派遣委托、每日委托/每日训练等内容的完成状况。我们还支持 Live Activity （实时活动）和用于 iPhone 锁定画面的特殊小工具。该软件还具有通知功能，当每项内容完成时会提醒您；添加本地账号也非常简单。该软件具备多区服支援、多账号、自订背景名片和个性化小工具设置。
 
-我们支持实时活动（Live Activity）和 iPhone 锁屏小工具。应用具备通知功能，可在各项内容完成时提醒您。添加本地账号非常简单，同时支持多区服、多账号、自定义背景名片以及个性化小工具设置。
+本应用程序的所有功能都是免费的，您无需支付应用内购买费用。为获得最佳体验，建议在未被 Apple 列为 Vintage 或 Obsolete 的 iOS 装置上使用本应用程序，以确保流畅的性能和稳定的操作。
 
-本应用的所有功能完全免费，无需任何应用内购买。为获得最佳体验，建议在未被 Apple 列为「过时（Vintage）」或「停产（Obsolete）」产品的 iOS 设备上使用本应用，以确保流畅的性能和稳定的运行。
+拿铁小助手及其前身与米哈游股份有限公司（及其子公司）无任何关联，作为粉丝作品开发，并作为免费的开放原始码软件（FOSS）提供给公众。如果您对这款软件有资讯安全疑虑的话，我们欢迎对这款应用程序的原始程序码仓库进行安全性审计：https://github.com/pizza-studio/PizzaHelperUnited
 
-「拿铁小助手」及其前身与米哈游公司（及其子公司）无任何关联，是作为粉丝作品开发的免费开源软件（FOSS）。如果您对本应用的安全性有顾虑，我们欢迎您对源代码仓库进行安全审计：https://github.com/pizza-studio/PizzaHelperUnited
+Copyright (excl. the Swift program part of this app): (c) All rights reserved by miHoYo and its subsidiaries. Other properties and any right, title, and interest thereof and therein (intellectual property rights included) not derived from miHoYo's game titles ("Star Rail", "Genshin Impact", "Zenless Zone Zero", etc.) belong to their respective owners. // 版权（不包括本应用程序的 Swift 程序部分）：(c) 由上海米哈游网络科技股份有限公司及其子公司保留所有权利。其他财产以及任何权利、所有权和利益（包括智财权）若非源自米哈游自有之游戏品牌（《星穹铁道》、《原神》、《绝区零》等），则属于其各自的所有者。
 
-Copyright (excl. the Swift program part of this app): (c) All rights reserved by miHoYo and its subsidiaries. Other properties and any right, title, and interest thereof and therein (intellectual property rights included) not derived from miHoYo's game titles ("Star Rail", "Genshin Impact", "Zenless Zone Zero", etc.) belong to their respective owners. // 版权（不包括本应用程序的 Swift 代码部分）：(c) 由米哈游及其子公司保留所有权利。其他财产以及任何权利、所有权和利益（包括知识产权）若非源自米哈游自有之游戏品牌（《星穹铁道》、《原神》、《绝区零》等），则属于其各自的所有者。
-
-Copyright (the Swift program part of this app, excluding the data models used for decoding external JSON files): (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later). // 版权（此应用程序的 Swift 代码部分，不包括用于解码外部 JSON 文件的数据模型）：(c) 2024 年及以后 Pizza Studio（AGPL v3.0 许可证或更高版本）。
+Copyright (the Swift program part of this app, excluding the data models used for decoding external JSON files): (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later). // 版权（此应用程序的 Swift 程序部分，不包括用于解码外部 JSON 档案的资料模型）：(c) 2024 年及以后 Pizza Studio（AGPL v3.0 许可证或更高版本）。
 
 --------
 
