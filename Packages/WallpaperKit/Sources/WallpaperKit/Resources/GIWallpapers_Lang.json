@@ -267,7 +267,9 @@
     "210269" : "Illuga – Albtraum-Nachtigal",
     "210270" : "Errungenschaften – Weitsichtig",
     "210271" : "Nod-Krai – Laterne der langen Nächte",
-    "210272" : "Erlebnispass – Laternenlicht"
+    "210272" : "Erlebnispass – Laternenlicht",
+    "210273" : "Varka – Leitwolf",
+    "210274" : "Erlebnispass – Nordwind"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -537,7 +539,9 @@
     "210269" : "Illuga: Nightmare Songbird",
     "210270" : "Achievement: Far-Sighted",
     "210271" : "Nod-Krai: Lantern of Longest Night",
-    "210272" : "Travel Notes: Lanternlit Ode"
+    "210272" : "Travel Notes: Lanternlit Ode",
+    "210273" : "Varka: Lead Wolf",
+    "210274" : "Travel Notes: Northerly Winds"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -807,7 +811,9 @@
     "210269" : "Illuga - Orioles de la Pesadilla",
     "210270" : "Logro - Visión lejana",
     "210271" : "Nod Krai - Faro de largas noches",
-    "210272" : "PB - Oda de las linternas"
+    "210272" : "PB - Oda de las linternas",
+    "210273" : "Varka - Lobo alfa",
+    "210274" : "PB - Viento del Norte"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -1077,7 +1083,9 @@
     "210269" : "Illuga - Oiseau de cauchemar",
     "210270" : "Succès - Vue lointaine",
     "210271" : "Nod-Krai - Longue nuit",
-    "210272" : "PB - Ode sous la lanterne"
+    "210272" : "PB - Ode sous la lanterne",
+    "210273" : "Varka - Chef de meute",
+    "210274" : "PB - Vents du nord"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1347,7 +1355,9 @@
     "210269" : "Illuga: Nightmare Songbird",
     "210270" : "Achievement: Menatap ke Kejauhan",
     "210271" : "Nod-Krai: Lentera di Malam Terpanjang",
-    "210272" : "Catatan Perjalanan: Di Bawah Lentera"
+    "210272" : "Catatan Perjalanan: Di Bawah Lentera",
+    "210273" : "Varka: Lead Wolf",
+    "210274" : "Catatan Perjalanan: Angin Utara"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1486,7 +1496,7 @@
     "210138" : "Sumeru: Schiacciasabbia",
     "210139" : "Obiettivo: Sogni specchiati",
     "210140" : "Nahida: mezzaluna",
-    "210141" : "Layla: sogno a occhi aperti",
+    "210141" : "Layla: Sogno a occhi aperti",
     "210142" : "Appunti di viaggio: terra dei Miconoidi",
     "210143" : "Vagabondo: Ballata effimera",
     "210144" : "Faruzan: Segreto sigillato",
@@ -1617,7 +1627,9 @@
     "210269" : "Illuga: Uccello canterino dell'incubo",
     "210270" : "Obiettivo: Lungimiranza",
     "210271" : "Nod-Krai: Lanterna della notte più lunga",
-    "210272" : "Appunti di viaggio: Ode illuminata alla lanterna"
+    "210272" : "Appunti di viaggio: Ode illuminata alla lanterna",
+    "210273" : "Varka: Capobranco",
+    "210274" : "Appunti di viaggio: Venti del Nord"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1887,7 +1899,9 @@
     "210269" : "イルーガ・闇の夜鳴鶯",
     "210270" : "アチーブメント・眺望",
     "210271" : "ナド・クライ・長灯",
-    "210272" : "紀行・天翔"
+    "210272" : "紀行・天翔",
+    "210273" : "ファルカ・群狼の長",
+    "210274" : "紀行・北風"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -2157,7 +2171,9 @@
     "210269" : "일루가·악몽의 밤꾀꼬리",
     "210270" : "업적·조망",
     "210271" : "노드크라이·등대",
-    "210272" : "기행·봄 마차"
+    "210272" : "기행·봄 마차",
+    "210273" : "바르카·우두머리 늑대",
+    "210274" : "기행·북풍"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2427,7 +2443,9 @@
     "210269" : "Illuga: Orioles do Pesadelo",
     "210270" : "Conquista: Visão Além do Alcance",
     "210271" : "Nod-Krai: Lâmpada das Noites Longas",
-    "210272" : "Passe de Batalha: À Luz de Lanternas"
+    "210272" : "Passe de Batalha: À Luz de Lanternas",
+    "210273" : "Varka: Lobo Líder",
+    "210274" : "Passe de Batalha: Vento Norte"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2697,7 +2715,9 @@
     "210269" : "Соловей кошмара",
     "210270" : "Взгляд вдаль",
     "210271" : "Ночной фонарь",
-    "210272" : "Сияние фонарей"
+    "210272" : "Сияние фонарей",
+    "210273" : "Вожак стаи",
+    "210274" : "Северный ветер"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -2967,7 +2987,9 @@
     "210269" : "Illuga - วิหคนิทราทมิฬ",
     "210270" : "ความสำเร็จ - มองการณ์ไกล",
     "210271" : "Nod-Krai - ตะเกียงแห่งค่ำคืนอันยาวนาน",
-    "210272" : "บันทึก - พราวประทีป"
+    "210272" : "บันทึก - พราวประทีป",
+    "210273" : "Varka - จ่าฝูงหมาป่า",
+    "210274" : "บันทึก - ลมเหนือ"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -3237,7 +3259,9 @@
     "210269" : "Illuga: Kabus Bülbülü",
     "210270" : "Başarım: İleri Görüşlü",
     "210271" : "Nod-Krai: En Uzun Gecenin Feneri",
-    "210272" : "Gezi Notları: Fener Işığında Övgüler"
+    "210272" : "Gezi Notları: Fener Işığında Övgüler",
+    "210273" : "Varka: Lider Kurt",
+    "210274" : "Gezi Notları: Kuzey Rüzgarları"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3507,7 +3531,9 @@
     "210269" : "Illuga - Chim Đêm",
     "210270" : "Thành Tựu - Nhìn Xa",
     "210271" : "Nod-Krai - Đèn Đêm Dài",
-    "210272" : "Nhật Ký Hành Trình - Bôn Tiêu"
+    "210272" : "Nhật Ký Hành Trình - Bôn Tiêu",
+    "210273" : "Varka - Sói Đầu Đàn",
+    "210274" : "Nhật Ký Hành Trình - Bắc Phong"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3777,7 +3803,9 @@
     "210269" : "叶洛亚·魇莺",
     "210270" : "成就·眺远",
     "210271" : "挪德卡莱·长灯",
-    "210272" : "纪行·奔霄"
+    "210272" : "纪行·奔霄",
+    "210273" : "法尔伽·头狼",
+    "210274" : "纪行·北风"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -4047,6 +4075,8 @@
     "210269" : "葉洛亞·魘鶯",
     "210270" : "成就·眺遠",
     "210271" : "挪德卡萊·長燈",
-    "210272" : "紀行·奔霄"
+    "210272" : "紀行·奔霄",
+    "210273" : "法爾伽·頭狼",
+    "210274" : "紀行·北風"
   }
 }
