@@ -8,6 +8,7 @@
 - 对在今日页签或边栏显示的每个实时便笺的右上角的选单按钮做了行为调整：现在仅会在有选单内容时才会显示这个选单按钮。
 - 彻底废黜了《星穹铁道》的「派遣委托」资讯在实时便笺的显示。原因：米游社与 HoYoLAB 的小工具 API 现在不再提供相关资讯了。这项简化非常有意义：玩家们现在可以随时在游戏内收获由「派遣委托」收集来的资产。
 - 针对使用者壁纸管理器优化了对图片素材的剪裁操作体验。
+- 为解决 iOS 26 之前版本的潜在的设计缺陷（会在手指摁住不放时无限执行重载动作），已针对 iOS 26 之前的系统停用 `.refreshable`。受影响的视图（今日页签和详情页签）仍在工具栏中提供专用的重载按钮。
 
 (现阶段暂停提供 macCatalyst 版本，以减轻 App Store 审委会的审核工作量。这导致该 App 目前无法支持 Intel Mac 机种，因为只有 Apple Silicon Mac 可以直接运行 iPad 应用。上文中讨论到的与 macOS 有关的内容更新均指该 App 的 iPadOS 版本在 macOS 系统下的行为。)
 
@@ -25,6 +26,7 @@ $EOF.
 - 對在今日頁簽或邊欄顯示的每個實時便箋的右上角的選單按鈕做了行為調整：現在僅會在有選單內容時才會顯示這個選單按鈕。
 - 徹底廢黜了《星穹鐵道》的「派遣委託」資訊在實時便箋的顯示。原因：米游社與 HoYoLAB 的小工具 API 現在不再提供相關資訊了。這項簡化非常有意義：玩家們現在可以隨時在遊戲內收穫由「派遣委託」收集來的資產。
 - 針對使用者壁紙管理器優化了對圖片素材的剪裁操作體驗。
+- 為解決 iOS 26 之前版本的潛在設計缺陷（會在手指按住不放時無限執行重載動作），已針對 iOS 26 之前的系統停用 `.refreshable`。受影響的檢視（今日頁籤和詳情頁籤）仍在工具列中提供專用的重新載入按鈕。
 
 (現階段暫停提供 macCatalyst 版本，以減輕 App Store 審委會的審核工作量。這導致該 App 目前無法支援 Intel Mac 機種，因為只有 Apple Silicon Mac 可以直接運行 iPad 應用。上文中討論到的與 macOS 有關的內容更新均指该 App 的 iPadOS 版本在 macOS 系統下的行為。)
 
@@ -42,6 +44,7 @@ $EOF.
 - Real-Time Note Cards shown in Today Tab / Sidebar won't show the top-trailing menu button anymore if no menu contents are available on the current device platform.
 - Completely deprecated the Dispatch Assignment feature from the Real-Time Note Cards of Star Rail. Reason: HoYoLAB and Miyoushe stopped providing the related data through the widgets API. This simplification makes sense since a player can harvest the Dispatch Assignment assets at anytime.
 - Optimized the operation experience of the image clipper view used by the User Wallpaper Manager.
+- Removed `.refreshable` support for pre-iOS 26 versions to fix a design flaw where holding down continuously triggered reload actions. Affected views (Today Tab and Details Tab) still feature dedicated reload buttons in the Toolbar.
 
 (We stopped supplying the macCatalyst build at App Store to reduce the App Review workload. As a result, the app is currently unavailable on Intel-based Macs. Only Apple Silicon Macs are capable of running the iPad app. All macOS-related mentions above refer to the behavior of the iPadOS version running on macOS.)
 
@@ -59,6 +62,7 @@ $EOF.
 - 今日タブ/サイドバーに表示されるリアルタイム便箋カードの右上隅のメニューボタンは、現在のデバイスプラットフォームで利用可能なメニューコンテンツがない場合、表示されなくなりました。
 - スターレイル のリアルタイム便箋カードから「派遣依頼」機能を完全に廃止しました。理由：HoYoLAB と米遊社はウィジェット API を通じて関連データの提供を中止しました。この簡略化は意味があります。なぜなら、プレイヤーはいつでもゲーム内で「派遣依頼」の資産を収穫できるからです。
 - ユーザー壁紙マネージャーで使用される画像クリッパービューの操作体験を最適化しました。
+- iOS 26 以前のバージョンの潜在的な設計欠陥（指を押し続けるとリロード動作が無限に実行される）に対応するため、iOS 26 以前のシステム向けに `.refreshable` を無効化しました。影響を受けるビュー（今日タブと詳細タブ）では、ツールバーで専用のリロードボタンが提供されています。
 
 （App Review の作業負荷を軽減するため、macCatalyst 版の提供を一時停止しています。そのため現時点では Intel 製 Mac ではご利用できませんので、ご了承くださいませ。Apple Silicon 機種では iPad アプリを使うのは可能です。上記の macOS に関する全ての説明は、macOS 上で実行されている当アプリの iPadOS 版の動作に関連しています。）
 
@@ -76,6 +80,7 @@ $EOF.
 - Карточки заметок реального времени, отображаемые на вкладке «Сегодня» / боковой панели, больше не отображают кнопку меню в верхнем правом углу, если на текущей платформе устройства нет доступного содержимого меню.
 - Полностью исключена функция «Назначение экспедиции» из карточек заметок реального времени Star Rail. Причина: HoYoLAB и Miyoushe прекратили предоставление соответствующих данных через API виджетов. Это упрощение имеет смысл, поскольку игроки могут получить активы экспедиции в любое время.
 - Оптимизирован опыт использования средства обрезки изображений, используемого менеджером пользовательских обоев.
+- Удалена поддержка `.refreshable` для версий iOS ранее iOS 26 для устранения проблемы проектирования, при которой удержание пальца вызывает непрерывные действия перезагрузки. Затронутые представления (вкладка «Сегодня» и вкладка «Подробности») по-прежнему предоставляют выделенные кнопки перезагрузки на панели инструментов.
 
 (Временно приостановлен выпуск версии macCatalyst, чтобы снизить нагрузку на команду App Review. Поэтому приложение сейчас недоступно на компьютерах Mac с процессорами Intel. Apple Silicon Mac могут запускать приложение iPad напрямую. Все упоминания macOS выше относятся к поведению версии для iPad этого приложения, работающей на macOS.)
 
