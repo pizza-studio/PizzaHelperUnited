@@ -127,9 +127,9 @@ public enum DimbreathMaterialRAW {
 
         public enum CodingKeysAlt: String, CodingKey {
             case id
-            case monday = "INNGOIJCJPC"
-            case tuesday = "KIDAOMDAAGO"
-            case wednesday = "HDGHJLILOKF"
+            case monday = "DHAFPNDLMCL"
+            case tuesday = "GEIPPLCLPCC"
+            case wednesday = "JONCPCJPJHO"
         }
 
         public var id: Int
@@ -317,10 +317,49 @@ extension GIMaterialDBGenerator {
         struct CostItem: Decodable { let id: Int; let count: Int }
         struct ProudSkillEntry: Decodable {
             let proudSkillGroupId: Int; let level: Int; let costItems: [CostItem]?
+
+            private enum CodingKeys: String, CodingKey {
+                case proudSkillGroupId, level, costItems
+            }
+
+            private enum CodingKeysAlt: String, CodingKey {
+                case costItems = "NJMNABKGKIJ"
+            }
+
+            init(from decoder: any Decoder) throws {
+                let c = try decoder.container(keyedBy: CodingKeys.self)
+                self.proudSkillGroupId = try c.decode(Int.self, forKey: .proudSkillGroupId)
+                self.level = try c.decode(Int.self, forKey: .level)
+                if c.contains(.costItems) {
+                    self.costItems = try c.decodeIfPresent([CostItem].self, forKey: .costItems)
+                } else {
+                    let cAlt = try decoder.container(keyedBy: CodingKeysAlt.self)
+                    self.costItems = try cAlt.decodeIfPresent([CostItem].self, forKey: .costItems)
+                }
+            }
         }
         struct WeaponExcelEntry: Decodable { let id: Int; let weaponPromoteId: Int? }
         struct WeaponPromoteEntry: Decodable {
             let weaponPromoteId: Int; let costItems: [CostItem]?
+
+            private enum CodingKeys: String, CodingKey {
+                case weaponPromoteId, costItems
+            }
+
+            private enum CodingKeysAlt: String, CodingKey {
+                case costItems = "NJMNABKGKIJ"
+            }
+
+            init(from decoder: any Decoder) throws {
+                let c = try decoder.container(keyedBy: CodingKeys.self)
+                self.weaponPromoteId = try c.decode(Int.self, forKey: .weaponPromoteId)
+                if c.contains(.costItems) {
+                    self.costItems = try c.decodeIfPresent([CostItem].self, forKey: .costItems)
+                } else {
+                    let cAlt = try decoder.container(keyedBy: CodingKeysAlt.self)
+                    self.costItems = try cAlt.decodeIfPresent([CostItem].self, forKey: .costItems)
+                }
+            }
         }
 
         let urlBase = DimbreathMaterialRAW.urlPrefix + "ExcelBinOutput/"
