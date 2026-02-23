@@ -216,7 +216,6 @@
 		5B703A472F041DA700EA8295 /* TheLatteWatchAppExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TheLatteWatchAppExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B703A682F041E6400EA8295 /* TheLatteWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TheLatteWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7619052D3293DC0076AA08 /* GI_MaterialDBGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GI_MaterialDBGenerator.swift; sourceTree = "<group>"; };
-		5B8000002C6BB00000123456 /* WatchApp/WatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchApp/WatchApp.swift; sourceTree = "<group>"; };
 		5B8FF7082E24D14C0014696F /* SwiftData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftData.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.5.sdk/System/Library/Frameworks/SwiftData.framework; sourceTree = DEVELOPER_DIR; };
 		5B9669042F0417AB00C24B11 /* Latte Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Latte Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B978A8F2C8D8DF60000EB61 /* GITodayMaterialsKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GITodayMaterialsKit; sourceTree = "<group>"; };
@@ -542,14 +541,6 @@
 			path = SharedBundles;
 			sourceTree = "<group>";
 		};
-		5B693CD32F043DDF00DDFFE3 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				5B8000002C6BB00000123456 /* WatchApp/WatchApp.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		5BDDF26B2C75FEB8006D4BFE /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,7 +600,6 @@
 				5B2A65F92C69204600BAEE7E /* Frameworks */,
 				5BFD6B8D2C628CD8000A63E9 /* Products */,
 				5B560A182C6BBB8300175FB1 /* SharedBundles */,
-				5B693CD32F043DDF00DDFFE3 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
