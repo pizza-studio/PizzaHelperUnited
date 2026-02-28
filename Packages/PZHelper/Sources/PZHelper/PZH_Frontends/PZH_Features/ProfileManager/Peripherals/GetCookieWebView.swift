@@ -4,7 +4,6 @@
 
 import PZAccountKit
 import PZBaseKit
-import SafariServices
 import SwiftUI
 import WebKit
 
@@ -19,7 +18,21 @@ private func getAccountPageLoginURL(region: HoYo.AccountRegion) -> String {
 }
 
 private func getHTTPHeaderFields(region: HoYo.AccountRegion) -> [String: String] {
-    switch region {
+    let theUA: String
+    if #available(iOS 17, macCatalyst 17, *) {
+        theUA = """
+                    Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) \
+                    AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 \
+                    Safari/604.1
+        """
+    } else {
+        theUA = """
+                    Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) \
+                    AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 \
+                    Safari/604.1
+        """
+    }
+    return switch region {
     case .miyoushe:
         [
             "Accept": """
@@ -30,11 +43,7 @@ private func getHTTPHeaderFields(region: HoYo.AccountRegion) -> [String: String]
             "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
             "Connection": "keep-alive",
             "Accept-Encoding": "gzip, deflate, br",
-            "User-Agent": """
-            Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) \
-            AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 \
-            Safari/604.1
-            """,
+            "User-Agent": theUA,
             "cache-control": "max-age=0",
         ]
     case .hoyoLab:
@@ -47,11 +56,7 @@ private func getHTTPHeaderFields(region: HoYo.AccountRegion) -> [String: String]
             """,
             "accept-language": "zh-CN,zh-Hans;q=0.9",
             "accept-encoding": "gzip, deflate, br",
-            "user-agent": """
-            Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) \
-            AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 \
-            Safari/604.1
-            """,
+            "User-Agent": theUA,
             "cache-control": "max-age=0",
         ]
     }
@@ -278,7 +283,7 @@ struct CookieGetterWebView {
 // MARK: CookieGetterWebView.Coordinator
 
 extension CookieGetterWebView {
-    final class Coordinator: NSObject, WKNavigationDelegate {
+    final class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
         // MARK: Lifecycle
 
         init(_ parent: CookieGetterWebView) {
@@ -288,6 +293,9 @@ extension CookieGetterWebView {
         // MARK: Internal
 
         var parent: CookieGetterWebView
+
+        /// 追蹤 target="_blank" 開啟的子 WKWebView（OAuth 彈窗等）。
+        weak var popupWebView: WKWebView?
 
         func webView(
             _ webView: WKWebView,
@@ -303,10 +311,43 @@ extension CookieGetterWebView {
             webView.evaluateJavaScript(jsonScript)
         }
 
+        // MARK: WKUIDelegate
+
+        /// 處理 target="_blank" 彈窗（Sign-with-Apple / Sign-with-Google 等 OAuth 流程）。
+        /// 在 App 內建立一個子 WKWebView（共享 processPool），疊加於父 WebView 上方，
+        /// 使 OAuth 完成後能正確回傳 session / cookie 至父頁面。
+        func webView(
+            _ webView: WKWebView,
+            createWebViewWith configuration: WKWebViewConfiguration,
+            for navigationAction: WKNavigationAction,
+            windowFeatures: WKWindowFeatures
+        )
+            -> WKWebView? {
+            let popup = WKWebView(frame: webView.bounds, configuration: configuration)
+            #if os(macOS)
+            popup.autoresizingMask = [.width, .height]
+            #else
+            popup.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            #endif
+            popup.uiDelegate = self
+            webView.addSubview(popup)
+            popupWebView = popup
+            return popup
+        }
+
+        /// 子 WKWebView 呼叫 window.close() 時觸發（OAuth 完成後），移除彈窗。
+        func webViewDidClose(_ webView: WKWebView) {
+            if webView === popupWebView {
+                webView.removeFromSuperview()
+                popupWebView = nil
+            }
+        }
+
         func makeView() -> OPWebView {
             guard let request = parent.makeURLRequest() else { return OPWebView() }
             let webview = parent.makeViewWithoutLoad()
             webview.navigationDelegate = self
+            webview.uiDelegate = self
             Task { webview.load(request) }
             return webview
         }
@@ -330,6 +371,11 @@ extension CookieGetterWebView {
 
 #if canImport(AppKit) && !canImport(UIKit)
 extension CookieGetterWebView: NSViewRepresentable {
+    static func dismantleNSView(_ nsView: OPWebView, coordinator: Coordinator) {
+        coordinator.popupWebView?.removeFromSuperview()
+        coordinator.popupWebView = nil
+    }
+
     func makeNSView(context: Context) -> OPWebView {
         context.coordinator.makeView()
     }
@@ -342,6 +388,11 @@ extension CookieGetterWebView: NSViewRepresentable {
 #elseif canImport(UIKit)
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension CookieGetterWebView: UIViewRepresentable {
+    static func dismantleUIView(_ uiView: OPWebView, coordinator: Coordinator) {
+        coordinator.popupWebView?.removeFromSuperview()
+        coordinator.popupWebView = nil
+    }
+
     func makeUIView(context: Context) -> OPWebView {
         context.coordinator.makeView()
     }
