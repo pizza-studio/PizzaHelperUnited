@@ -4706,73 +4706,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sign-in-with-Apple funktioniert, außer dass PassKey-Anmeldung nicht unterstützt wird. Bevor Sie versuchen, sich hier über Sign-in-with-Apple anzumelden, binden Sie bitte manuell Ihr Apple-Konto an Ihr HoYoLAB-Konto über HoYoLAB's Kontoeinstellungen. Wir empfehlen, die stärksten Kontosicherheitseinstellungen von Apple für Ihr Apple-Konto zu aktivieren, einschließlich, aber nicht beschränkt auf Zwei-Faktor-Authentifizierung."
+            "value" : "ℹ️ Sign-in-with-Apple funktioniert, außer dass PassKey-Anmeldung nicht unterstützt wird. Bevor Sie versuchen, sich hier über Sign-in-with-Apple anzumelden, **⚠️ müssen Sie Ihr Apple-Konto manuell über die HoYoVerse-Spiel-Apps auf iPhone oder iPad an Ihr HoYoLAB-Konto binden**, um zu vermeiden, dass versehentlich ein neues leeres HoYoVerse-Konto erstellt wird. Wir empfehlen, die stärksten Kontosicherheitseinstellungen von Apple für Ihr Apple-Konto zu aktivieren, einschließlich, aber nicht beschränkt auf Zwei-Faktor-Authentifizierung."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sign-in-with-Apple works except that PassKey login is not supported. Before attempting to log in via Sign-in-with-Apple here, please manually bind your Apple account to your HoYoLAB account through HoYoLAB's account settings. We recommend enabling Apple's strongest account security settings for your Apple ID, including but not limited to two-factor authentication."
+            "value" : "ℹ️ Sign-in-with-Apple works except that PassKey login is not supported. Before attempting to log in via Sign-in-with-Apple here, **⚠️ you MUST manually bind your Apple account to your HoYoLAB account through HoYoVerse game apps on iOS** to avoid accidentally creating a new blank HoYoVerse account. We recommend enabling Apple's strongest account security settings for your Apple ID, including but not limited to two-factor authentication."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sign-in-with-Apple funciona excepto que el inicio de sesión con PassKey no es compatible. Antes de intentar iniciar sesión a través de Sign-in-with-Apple aquí, vincule manualmente su cuenta de Apple a su cuenta HoYoLAB a través de la configuración de cuenta de HoYoLAB. Recomendamos habilitar la configuración de seguridad de cuenta más fuerte de Apple para su ID de Apple, incluida, entre otras, la autenticación de dos factores."
+            "value" : "ℹ️ Sign-in-with-Apple funciona excepto que el inicio de sesión con PassKey no es compatible. Antes de intentar iniciar sesión a través de Sign-in-with-Apple aquí, **⚠️ debe vincular manualmente su cuenta de Apple a su cuenta HoYoLAB a través de las aplicaciones de juegos de HoYoVerse en iOS** para evitar crear accidentalmente una nueva cuenta HoYoVerse en blanco. Recomendamos habilitar la configuración de seguridad de cuenta más fuerte de Apple para su ID de Apple, incluida, entre otras, la autenticación de dos factores."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang Sign-in-with-Apple ay gumagana maliban na ang PassKey login ay hindi sinusuportahan. Bago subukan ang pag-sign in sa pamamagitan ng Sign-in-with-Apple dito, mangyaring manu-manong i-bind ang iyong Apple account sa iyong HoYoLAB account sa pamamagitan ng HoYoLAB account settings. Inirerekomenda namin na paganahin ang pinakamalakas na setting ng seguridad ng account ng Apple para sa iyong Apple ID, kabilang ng hindi limitado sa two-factor authentication."
+            "value" : "ℹ️ Ang Sign-in-with-Apple ay gumagana maliban na ang PassKey login ay hindi sinusuportahan. Bago subukan ang pag-sign in sa pamamagitan ng Sign-in-with-Apple dito, **⚠️ dapat mong manu-manong i-bind ang iyong Apple account sa iyong HoYoLAB account sa pamamagitan ng mga HoYoVerse game apps sa iOS** upang maiwasan ang hindi sinasadyang paglikha ng bagong blankong HoYoVerse account. Inirerekomenda namin na paganahin ang pinakamalakas na setting ng seguridad ng account ng Apple para sa iyong Apple ID, kabilang at hindi limitado sa two-factor authentication."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sign-in-with-Apple fonctionne sauf que la connexion PassKey n'est pas prise en charge. Avant de tenter de vous connecter via Sign-in-with-Apple ici, veuillez lier manuellement votre compte Apple à votre compte HoYoLAB via les paramètres de compte de HoYoLAB. Nous vous recommandons d'activer les paramètres de sécurité de compte les plus forts d'Apple pour votre ID Apple, y compris, entre autres, l'authentification à deux facteurs."
+            "value" : "ℹ️ Sign-in-with-Apple fonctionne sauf que la connexion PassKey n'est pas prise en charge. Avant de tenter de vous connecter via Sign-in-with-Apple ici, **⚠️ vous DEVEZ lier manuellement votre compte Apple à votre compte HoYoLAB via les applications de jeu HoYoVerse sur iOS** pour éviter de créer accidentellement un nouveau compte HoYoVerse vierge. Nous vous recommandons d'activer les paramètres de sécurité de compte les plus forts d'Apple pour votre ID Apple, y compris, entre autres, l'authentification à deux facteurs."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sign-in-with-Apple funziona tranne che l'accesso a PassKey non è supportato. Prima di tentare di accedere tramite Sign-in-with-Apple qui, collega manualmente il tuo account Apple al tuo account HoYoLAB tramite le impostazioni dell'account HoYoLAB. Ti consigliamo di abilitare le impostazioni di sicurezza dell'account più forti di Apple per il tuo ID Apple, inclusa, tra l'altro, l'autenticazione a due fattori."
+            "value" : "ℹ️ Sign-in-with-Apple funziona tranne che l'accesso a PassKey non è supportato. Prima di tentare di accedere tramite Sign-in-with-Apple qui, **⚠️ DEVI collegare manualmente il tuo account Apple al tuo account HoYoLAB tramite le app di gioco HoYoVerse su iOS** per evitare di creare accidentalmente un nuovo account HoYoVerse vuoto. Ti consigliamo di abilitare le impostazioni di sicurezza dell'account più forti di Apple per il tuo ID Apple, inclusa, tra l'altro, l'autenticazione a due fattori."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple でサインインは機能しますが、PassKey ログインはサポートされていません。このビューで Apple でのサインインを試みる前に、HoYoLAB のアカウント設定から Apple アカウントを HoYoLAB アカウントに手動でバインドしてください。ご所有の Apple ID に対して、Apple が推奨する最も厳しいアカウントセキュリティ設定を有効にすることをお勧めします。これには二要素認証を含みますが、これに限りません。"
+            "value" : "ℹ️ 「Appleでサインイン」は機能しますが、PassKey ログインはサポートされていません。この画面でお試しになる前に、誤って空の HoYoVerse アカウントを新規作成してしまう大厄介を防ぐため、**⚠️ 必ず iOS 版の HoYoVerse ゲームアプリ経由で、ご自身の Apple アカウントを HoYoLAB アカウントに連携（バインド）しておいてください。** ご利用の Apple ID に対して、Apple が推奨する最も強力なアカウントセキュリティ設定（二要素認証などを含みますが、これに限定されません）を有効にすることをお勧めします。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple로 로그인은 작동하지만 PassKey 로그인은 지원되지 않습니다. 여기서 Apple로 로그인을 시도하기 전에 HoYoLAB 계정 설정을 통해 Apple 계정을 HoYoLAB 계정에 수동으로 연결해 주세요. 당신의 Apple ID에 대해 Apple이 권장하는 가장 강한 계정 보안 설정을 설정하기를 권장합니다(단, 이중 인증 등)."
+            "value" : "ℹ️ Apple로 로그인은 작동하지만 PassKey 로그인은 지원되지 않습니다. 여기서 Apple로 로그인을 시도하기 전에 **iOS의 HoYoVerse 게임 앱을 통해 Apple 계정을 HoYoLAB 계정에 반드시 수동으로 연결해야 실수로 새로운 빈 HoYoVerse 계정을 만드는 것을 피할 수 있습니다⚠️ **. 당신의 Apple ID에 대해 Apple이 권장하는 가장 강한 계정 보안 설정을 설정하기를 권장합니다(단, 이중 인증 등)."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sign-in-with-Apple работает, за исключением того, что вход с PassKey не поддерживается. Перед попыткой входа через Sign-in-with-Apple здесь вручную свяжите свой аккаунт Apple с вашим аккаунтом HoYoLAB в настройках аккаунта HoYoLAB. Мы рекомендуем включить наиболее надежные настройки безопасности аккаунта Apple для вашего ID Apple, включая, кроме прочего, двухфакторную аутентификацию."
+            "value" : "ℹ️ Sign-in-with-Apple работает, за исключением того, что вход с PassKey не поддерживается. Перед попыткой входа через Sign-in-with-Apple здесь **⚠️ вы ДОЛЖНЫ вручную связать свой аккаунт Apple с вашим аккаунтом HoYoLAB через приложения игр HoYoVerse на iOS**, чтобы избежать случайного создания нового пустого аккаунта HoYoVerse. Мы рекомендуем включить наиболее надежные настройки безопасности аккаунта Apple для вашего ID Apple, включая, кроме прочего, двухфакторную аутентификацию."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đăng nhập bằng Apple hoạt động ngoại trừ việc đăng nhập PassKey không được hỗ trợ. Trước khi cố gắng đăng nhập qua Đăng nhập bằng Apple ở đây, vui lòng liên kết tài khoản Apple của bạn với tài khoản HoYoLAB của bạn thông qua cài đặt tài khoản HoYoLAB. Chúng tôi khuyến khích bạn bật các cài đặt bảo mật tài khoản mạnh nhất của Apple cho Apple ID của bạn, bao gồm nhưng không giới hạn ở xác thực hai yếu tố."
+            "value" : "ℹ️ Đăng nhập bằng Apple hoạt động ngoại trừ việc đăng nhập PassKey không được hỗ trợ. Trước khi cố gắng đăng nhập qua Đăng nhập bằng Apple ở đây, **⚠️ bạn PHẢI liên kết tài khoản Apple của bạn với tài khoản HoYoLAB của bạn thông qua các ứng dụng trò chơi HoYoVerse trên iOS** để tránh tạo ngẫu nhiên một tài khoản HoYoVerse trống mới. Chúng tôi khuyến khích bạn bật các cài đặt bảo mật tài khoản mạnh nhất của Apple cho Apple ID của bạn, bao gồm nhưng không giới hạn ở xác thực hai yếu tố."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple 登录可以使用，但不支持 PassKey 登录。在尝试在此视图中使用 Apple 登录之前，请通过 HoYoLAB 账户设置手动将你的 Apple 账户绑定到 HoYoLAB 账户。我们建议您的 Apple ID 启用 Apple 所建议的最强账户安全设定，包括但不限于双因认证。"
+            "value" : "ℹ️ 您或可使用 Apple ID 来登录（也就是「Sign-in-with-Apple」），但 PassKey 登录不受此画面支持。在您尝试在此画面中使用 Apple ID 登录之前，**⚠️ 您必须得通过 iOS 上的 HoYoVerse 游戏应用手动将您的 Apple ID 绑定到 HoYoLAB 账户**，以避免意外创建新的空白 HoYoVerse 账户。开发者建议您的 Apple ID 启用 Apple 所建议的最强账户安全设定，包括但不限于双因认证。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple 登入可以使用，但不支援 PassKey 登入。在嘗試在此檢視中使用 Apple 登入之前，請通過 HoYoLAB 帳戶設定手動將您的 Apple 帳戶綁定到 HoYoLAB 帳戶。我們建議您的 Apple ID 啟用 Apple 建議的最強帳戶安全設定，包括但不限於雙因認證。"
+            "value" : "ℹ️ 您或可使用 Apple ID 來登入（也就是「Sign-in-with-Apple」），但 PassKey 登入不受此畫面支援。在您嘗試在此畫面中使用 Apple ID 登入之前，**⚠️ 您必須得通過 iOS 上的 HoYoVerse 遊戲應用手動將您的 Apple ID 綁定到 HoYoLAB 帳戶**，以避免意外建立新的空白 HoYoVerse 帳戶。開發者建議您的 Apple ID 啟用 Apple 建議的最強帳戶安全設定，包括但不限於雙因認證。"
           }
         }
       }
@@ -9296,13 +9296,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iOS 16.2 和 macOS 13 仅支持小工具。其他功能仍需 iOS 17 / macOS 14 或更高版本。如果你在本地账号管理器中遇到与翻页导航有关的异常的话，这是 iOS 16 / macOS 13 的 SwiftUI 相关 bug 所致，唯一的解决办法是升级到 iOS 17 / macOS 14。"
+            "value" : "iOS 16.2 和 macOS 13 仅支持小工具。其他功能仍需 iOS 17 / macOS 14 或更高版本。如果您在本地账号管理器中遇到与翻页导航有关的异常的话，这是 iOS 16 / macOS 13 的 SwiftUI 相关 bug 所致，唯一的解决办法是升级到 iOS 17 / macOS 14。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iOS 16.2 和 macOS 13 僅支援小工具。其他功能仍需 iOS 17 / macOS 14 或更高版本。若你在本機帳號管理器中遇到與翻頁巡覽有關的異常的話，這是 iOS 16 / macOS 13 的 SwiftUI 相關 bug 所致，唯一解法是升級到 iOS 17 / macOS 14。"
+            "value" : "iOS 16.2 和 macOS 13 僅支援小工具。其他功能仍需 iOS 17 / macOS 14 或更高版本。若您在本機帳號管理器中遇到與翻頁巡覽有關的異常的話，這是 iOS 16 / macOS 13 的 SwiftUI 相關 bug 所致，唯一解法是升級到 iOS 17 / macOS 14。"
           }
         }
       }
