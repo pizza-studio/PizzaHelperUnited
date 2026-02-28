@@ -102,6 +102,7 @@ struct GetCookieWebView: View {
                             .foregroundStyle(.orange)
                             .padding(.bottom)
                     }
+                    .fontWidth(.condensed)
                     .padding()
                 }
             }
@@ -186,6 +187,15 @@ struct GetCookieWebView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundStyle(.orange)
                                 .fontWeight(.medium)
+                            Text(
+                                "profileMgr.accountLogin.instruction.specialWarning.exceptionallyAllowedMethods"
+                                    .i18nPZHelper
+                            )
+                            .multilineTextAlignment(.leading)
+                            .font(.caption)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundStyle(.secondary)
+                            .fontWeight(.medium)
                             Text("profileMgr.accountLogin.instruction.passwordInputSafetyExplanation".i18nPZHelper)
                                 .multilineTextAlignment(.leading)
                                 .font(.caption)
@@ -202,6 +212,7 @@ struct GetCookieWebView: View {
                             }
                             .buttonStyle(.borderedProminent)
                         }
+                        .fontWidth(.condensed)
                         .padding(.horizontal, 16)
                         .padding(.vertical, 24)
                         .background {
