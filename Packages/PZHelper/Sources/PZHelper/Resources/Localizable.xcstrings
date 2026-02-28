@@ -4552,7 +4552,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Um sicherzustellen, dass Sie sich hierbei sicher fühlen, hier ist, wie es funktioniert: Ihre Passworteingabe wird durch die in macOS integrierte SecureEventInputAPI (oder deren Äquivalent zu iOS) geschützt und dann direkt von der HoYoLAB-Login-Webseite verarbeitet. Dies ist das Prinzip der Gestaltung von WKWebView durch Apple. Niemand sonst kann diesen Prozess oder diese App stören/abfangen. Sie können sehen, dass Sie nicht zu Drittanbieter-Eingabemethoden wechseln können, während das Passwort Benutzereingaben erhält."
+            "value" : "Damit Sie sich sicher fühlen, erklären wir Ihnen die Funktionsweise: Ihre Passworteingabe wird durch die in macOS integrierte SecureEventInputAPI (bzw. das iOS-Äquivalent) geschützt und anschließend direkt von der HoYoLAB-Login-Webseite verarbeitet. Dies entspricht dem von Apple vorgesehenen Designprinzip von WKWebView. Weder Dritte noch diese App selbst können in diesen Prozess eingreifen oder ihn abfangen. Sie werden feststellen, dass Sie während der Passworteingabe nicht zu Eingabemethoden von Drittanbietern wechseln können."
           }
         },
         "en" : {
@@ -4576,19 +4576,19 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pour vous assurer que vous vous sentiez en sécurité, voici comment cela fonctionne : votre saisie de mot de passe est protégée par l'API SecureEventInput intégrée de macOS (ou son équivalent sur iOS), puis elle sera directement gérée par la page de connexion HoYoLAB. Tel est la manière donc à été conçu WKWebView par Apple. Personne d'autre ne peut interférer ou intercepter ce processus, même cette application. Vous pouvez remarquer que vous ne pouvez pas passer à des méthodes de saisie tierces pendant que le mot de passe est en cours de saisie par l'utilisateur."
+            "value" : "Pour votre tranquillité d'esprit, voici comment cela fonctionne : votre saisie de mot de passe est protégée par l'API SecureEventInput intégrée à macOS (ou son équivalent sur iOS), puis est directement traitée par la page de connexion HoYoLAB. C'est ainsi que WKWebView a été conçu par Apple. Personne d'autre ne peut interférer ni intercepter ce processus, y compris cette application elle-même. Vous remarquerez d'ailleurs que vous ne pouvez pas passer à des méthodes de saisie tierces pendant la saisie du mot de passe."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Per garantirti la sicurezza, ecco come funziona: L'input della tua password è protetto dall'API SecureEventInputAPI integrata in macOS (o il suo equivalente su iOS), e verrà gestito direttamente dalla pagina di login di HoYoLAB. Questa è la natura di come WKWebView è progettato da Apple. Nessun altro può interferire o intercettare questo processo, né questa app. Puoi notare che non puoi passare a metodi di input di terze parti mentre la password riceve input dall'utente."
+            "value" : "Per garantirti la sicurezza, ecco come funziona: l'inserimento della tua password è protetto dall'API SecureEventInput integrata in macOS (o dal suo equivalente su iOS), e viene gestito direttamente dalla pagina di accesso di HoYoLAB. Questa è la caratteristica fondamentale di WKWebView, così come progettato da Apple. Nessuno può interferire o intercettare questo processo, nemmeno questa app. Puoi notare che non è possibile passare a metodi di input di terze parti mentre si sta inserendo la password."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "安全性に対するご心配はあると思いますが、その仕組みをご紹介させていただきます：貴殿のパスワード入力は、macOS に組み込まれた SecureEventInput API（iOS にも似ている API もある）によって保護され、その後 HoYoLAB のログインウェブページで直接処理されます。これは、Apple の WKWebView のデザインのためです。他の誰もこのプロセスに干渉したり、傍受したりすることはできず、このアプリも同様です。パスワードがユーザーからの入力を受け取っている間、サードパーティの入力方式に切り替えることができないことは、まさに好例です。"
+            "value" : "安全性に対するご心配はあると思いますが、その仕組みをご紹介させていただきます：パスワードのご入力は、macOS に組み込まれた SecureEventInput API（iOS にも似ている API もある）によって保護され、その後 HoYoLAB のログインウェブページで直接処理されます。これは、Apple の WKWebView のデザインのためです。他の誰もこのプロセスに干渉したり、傍受したりすることはできず、このアプリも同様です。パスワードがユーザーからの入力を受け取っている間、サードパーティの入力方式に切り替えることができないことは、まさに好例です。"
           }
         },
         "ko" : {
@@ -4612,13 +4612,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或iOS上的等效功能）的保护，然后将直接由 HoYoLAB 登录网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括本 App。举例：在密码接收来自用户的输入的过程中，您无法切换到第三方输入法。"
+            "value" : "为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或iOS上的等效功能）的保护，然后将直接由 HoYoLAB 登录网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括本 App。举例：在密码栏位接收来自用户的输入的过程中，您无法切换到第三方输入法。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "為了確保您對此感到安全，這裡介紹一下運作方式：您的密碼輸入受到 macOS 內建的 SecureEventInputAPI（或 iOS 上的等效功能）的保護，然後將直接由 HoYoLAB 登入網頁處理。這是 Apple 對 WKWebView 的設計使然。其他人無法干擾或截聽這個過程，包括敝應用。您會發現，在密碼接收來自使用者的輸入的過程中，您無法切換到第三方輸入法。"
+            "value" : "為了確保您對此感到安全，這裡介紹一下運作方式：您的密碼輸入受到 macOS 內建的 SecureEventInputAPI（或 iOS 上的等效功能）的保護，然後將直接由 HoYoLAB 登入網頁處理。這是 Apple 對 WKWebView 的設計使然。其他人無法干擾或截聽這個過程，包括敝應用。您會發現，在密碼欄位接收來自使用者的輸入的過程中，您無法切換到第三方輸入法。"
           }
         }
       }
@@ -4629,73 +4629,150 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Drittanbieter-Anmeldedienste wie Google, Facebook, Twitter, Sign-in-with-Apple usw. WERDEN IN DIESER APP TECHNISCH NICHT UNTERSTÜTZT. Bitte melden Sie sich mit Ihrem Benutzernamen und Passwort an."
+            "value" : "⚠️ Anmeldedienste von Drittanbietern wie Google, Facebook und Twitter (X) werden technisch nicht unterstützt. Bitte verwenden Sie andere Anmeldemethoden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 3rd-party sign-in services like Google, Facebook, Twitter, Sign-in-with-Apple, etc. ARE NOT TECHNICALLY SUPPORTABLE IN THIS APP, please sign in with your username & password."
+            "value" : "⚠️ Third-party sign-in services such as Google, Facebook, and Twitter (X) are not technically supported in this app. Please sign in with other methods."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Los servicios de inicio de sesión de terceros como Google, Facebook, Twitter, Sign-in-with-Apple, etc. NO SON TÉCNICAMENTE COMPATIBLES EN ESTA APLICACIÓN, por favor inicie sesión con su nombre de usuario y contraseña."
+            "value" : "⚠️ Los servicios de inicio de sesión de terceros como Google, Facebook y Twitter (X) no son técnicamente compatibles en esta aplicación. Utilice otros métodos de inicio de sesión."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Ang mga third-party sign-in na serbisyo tulad ng Google, Facebook, Twitter, Sign-in-with-Apple, atbp. AY HINDI TEKNIKAL NA SUPORTADO SA APP NA ITO, mangyaring mag-sign in gamit ang iyong username at password."
+            "value" : "⚠️ Ang mga third-party sign-in na serbisyo tulad ng Google, Facebook, at Twitter (X) ay hindi teknikal na sinusuportahan sa app na ito. Mangyaring gumamit ng ibang paraan para mag-sign in."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Les services de connexion de tiers comme Google, Facebook, Twitter, Sign-in-with-Apple, etc. NE SONT PAS PRIS EN CHARGE DANS CETTE APPLICATION, veuillez vous connecter avec votre nom d'utilisateur et votre mot de passe."
+            "value" : "⚠️ Les services de connexion tiers tels que Google, Facebook et Twitter (X) ne sont pas techniquement pris en charge dans cette application. Veuillez utiliser d'autres méthodes de connexion."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ I servizi di accesso di terze parti come Google, Facebook, Twitter, Sign-in-with-Apple, ecc. NON SONO TECNICAMENTE SUPPORTABILI IN QUESTA APP. Accedi con il tuo nome utente e password."
+            "value" : "⚠️ I servizi di accesso di terze parti come Google, Facebook e Twitter (X) non sono tecnicamente supportati in questa app. Utilizza altri metodi di accesso."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ SNSアカウントでログインする機能は技術的にはこのアプリで実装できません。アカウントとパスワードでログインしてください。"
+            "value" : "⚠️ Google、Facebook、Twitter (X) などのサードパーティのサインインサービスは、このアプリで技術的にサポートされていません。他の方法でサインインしてください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Google, Facebook, Twitter, Apple로 로그인 등과 같은 제3자 로그인 서비스는 이 앱에서 기술적으로 지원되지 않으므로 사용자 이름과 비밀번호로 로그인해 주세요."
+            "value" : "⚠️ Google, Facebook, Twitter (X) 등과 같은 제3자 로그인 서비스는 이 앱에서 기술적으로 지원되지 않습니다. 다른 방법으로 로그인해 주세요."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Технически невозможно поддерживать сторонние сервисы входа, такие как Google, Facebook, Twitter, Sign-in-with-Apple и другие, пожалуйста, войдите с помощью вашего имени пользователя и пароля."
+            "value" : "⚠️ Сторонние сервисы входа, такие как Google, Facebook и Twitter (X), технически не поддерживаются в этом приложении. Пожалуйста, используйте другие способы входа."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Các dịch vụ đăng nhập của bên thứ ba như Google, Facebook, Twitter, Đăng nhập với Apple, v.v. KHÔNG HỖ TRỢ KỸ THUẬT TRONG ỨNG DỤNG NÀY, vui lòng đăng nhập với tên người dùng và mật khẩu của bạn."
+            "value" : "⚠️ Các dịch vụ đăng nhập của bên thứ ba như Google, Facebook và Twitter (X) không được hỗ trợ kỹ thuật trong ứng dụng này. Vui lòng sử dụng phương pháp đăng nhập khác."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 通过 Google，Facebook，Twitter 或 Sign-in-with-Apple 等第三方服务登录 HoYoLAB 的方式不受本 App 支持，请使用账号密码登录。"
+            "value" : "⚠️ Google、Facebook、Twitter (X) 等第三方登录服务在本应用中不受技术支持。请使用其他方式登录。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 通過 Google，Facebook，Twitter 或 Sign-in-with-Apple 等第三方服務登入 HoYoLAB 的方式不受敝 App支援，請使用帳號密碼登入。"
+            "value" : "⚠️ Google、Facebook、Twitter (X) 等第三方登入服務在本應用中不受技術支援。請使用其他方式登入。"
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.instruction.specialWarning.exceptionallyAllowedMethods" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign-in-with-Apple funktioniert, außer dass PassKey-Anmeldung nicht unterstützt wird. Bevor Sie versuchen, sich hier über Sign-in-with-Apple anzumelden, binden Sie bitte manuell Ihr Apple-Konto an Ihr HoYoLAB-Konto über HoYoLAB's Kontoeinstellungen. Wir empfehlen, die stärksten Kontosicherheitseinstellungen von Apple für Ihr Apple-Konto zu aktivieren, einschließlich, aber nicht beschränkt auf Zwei-Faktor-Authentifizierung."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign-in-with-Apple works except that PassKey login is not supported. Before attempting to log in via Sign-in-with-Apple here, please manually bind your Apple account to your HoYoLAB account through HoYoLAB's account settings. We recommend enabling Apple's strongest account security settings for your Apple ID, including but not limited to two-factor authentication."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign-in-with-Apple funciona excepto que el inicio de sesión con PassKey no es compatible. Antes de intentar iniciar sesión a través de Sign-in-with-Apple aquí, vincule manualmente su cuenta de Apple a su cuenta HoYoLAB a través de la configuración de cuenta de HoYoLAB. Recomendamos habilitar la configuración de seguridad de cuenta más fuerte de Apple para su ID de Apple, incluida, entre otras, la autenticación de dos factores."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang Sign-in-with-Apple ay gumagana maliban na ang PassKey login ay hindi sinusuportahan. Bago subukan ang pag-sign in sa pamamagitan ng Sign-in-with-Apple dito, mangyaring manu-manong i-bind ang iyong Apple account sa iyong HoYoLAB account sa pamamagitan ng HoYoLAB account settings. Inirerekomenda namin na paganahin ang pinakamalakas na setting ng seguridad ng account ng Apple para sa iyong Apple ID, kabilang ng hindi limitado sa two-factor authentication."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign-in-with-Apple fonctionne sauf que la connexion PassKey n'est pas prise en charge. Avant de tenter de vous connecter via Sign-in-with-Apple ici, veuillez lier manuellement votre compte Apple à votre compte HoYoLAB via les paramètres de compte de HoYoLAB. Nous vous recommandons d'activer les paramètres de sécurité de compte les plus forts d'Apple pour votre ID Apple, y compris, entre autres, l'authentification à deux facteurs."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign-in-with-Apple funziona tranne che l'accesso a PassKey non è supportato. Prima di tentare di accedere tramite Sign-in-with-Apple qui, collega manualmente il tuo account Apple al tuo account HoYoLAB tramite le impostazioni dell'account HoYoLAB. Ti consigliamo di abilitare le impostazioni di sicurezza dell'account più forti di Apple per il tuo ID Apple, inclusa, tra l'altro, l'autenticazione a due fattori."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple でサインインは機能しますが、PassKey ログインはサポートされていません。このビューで Apple でのサインインを試みる前に、HoYoLAB のアカウント設定から Apple アカウントを HoYoLAB アカウントに手動でバインドしてください。ご所有の Apple ID に対して、Apple が推奨する最も厳しいアカウントセキュリティ設定を有効にすることをお勧めします。これには二要素認証を含みますが、これに限りません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple로 로그인은 작동하지만 PassKey 로그인은 지원되지 않습니다. 여기서 Apple로 로그인을 시도하기 전에 HoYoLAB 계정 설정을 통해 Apple 계정을 HoYoLAB 계정에 수동으로 연결해 주세요. 당신의 Apple ID에 대해 Apple이 권장하는 가장 강한 계정 보안 설정을 설정하기를 권장합니다(단, 이중 인증 등)."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign-in-with-Apple работает, за исключением того, что вход с PassKey не поддерживается. Перед попыткой входа через Sign-in-with-Apple здесь вручную свяжите свой аккаунт Apple с вашим аккаунтом HoYoLAB в настройках аккаунта HoYoLAB. Мы рекомендуем включить наиболее надежные настройки безопасности аккаунта Apple для вашего ID Apple, включая, кроме прочего, двухфакторную аутентификацию."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đăng nhập bằng Apple hoạt động ngoại trừ việc đăng nhập PassKey không được hỗ trợ. Trước khi cố gắng đăng nhập qua Đăng nhập bằng Apple ở đây, vui lòng liên kết tài khoản Apple của bạn với tài khoản HoYoLAB của bạn thông qua cài đặt tài khoản HoYoLAB. Chúng tôi khuyến khích bạn bật các cài đặt bảo mật tài khoản mạnh nhất của Apple cho Apple ID của bạn, bao gồm nhưng không giới hạn ở xác thực hai yếu tố."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 登录可以使用，但不支持 PassKey 登录。在尝试在此视图中使用 Apple 登录之前，请通过 HoYoLAB 账户设置手动将你的 Apple 账户绑定到 HoYoLAB 账户。我们建议您的 Apple ID 启用 Apple 所建议的最强账户安全设定，包括但不限于双因认证。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 登入可以使用，但不支援 PassKey 登入。在嘗試在此檢視中使用 Apple 登入之前，請通過 HoYoLAB 帳戶設定手動將您的 Apple 帳戶綁定到 HoYoLAB 帳戶。我們建議您的 Apple ID 啟用 Apple 建議的最強帳戶安全設定，包括但不限於雙因認證。"
           }
         }
       }
