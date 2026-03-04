@@ -61,12 +61,10 @@ struct NotificationSettingsPageContent: View {
         .formStyle(.grouped).disableFocusable()
         .navBarTitleDisplayMode(.large)
         .navigationTitle(Self.navTitleShortened)
-        .onAppear {
-            Task {
-                authorizationStatus = await PZNotificationCenter.authorizationStatus()
-                if authorizationStatus == .notDetermined {
-                    _ = try? await PZNotificationCenter.requestAuthorization()
-                }
+        .task {
+            authorizationStatus = await PZNotificationCenter.authorizationStatus()
+            if authorizationStatus == .notDetermined {
+                _ = try? await PZNotificationCenter.requestAuthorization()
             }
         }
     }
