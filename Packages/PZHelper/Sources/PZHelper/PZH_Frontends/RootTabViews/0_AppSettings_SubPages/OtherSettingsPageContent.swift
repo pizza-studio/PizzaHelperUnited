@@ -67,11 +67,9 @@ struct OtherSettingsPageContent: View {
             Text(alertMessage)
                 .font(.footnote)
                 .padding()
-                .onAppear {
-                    Task {
-                        for message in await PZNotificationCenter.getAllNotificationsDescriptions() {
-                            alertMessage += message + "\n"
-                        }
+                .task {
+                    for message in await PZNotificationCenter.getAllNotificationsDescriptions() {
+                        alertMessage += message + "\n"
                     }
                 }
         }
