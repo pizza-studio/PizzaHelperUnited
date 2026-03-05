@@ -20,17 +20,13 @@ private func getAccountPageLoginURL(region: HoYo.AccountRegion) -> String {
 private func getHTTPHeaderFields(region: HoYo.AccountRegion) -> [String: String] {
     let theUA: String
     if #available(iOS 17, macCatalyst 17, *) {
-        theUA = """
-                    Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) \
-                    AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 \
-                    Safari/604.1
-        """
+        theUA = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) "
+            + "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 "
+            + "Safari/604.1"
     } else {
-        theUA = """
-                    Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) \
-                    AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 \
-                    Safari/604.1
-        """
+        theUA = "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) "
+            + "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 "
+            + "Safari/604.1"
     }
     return switch region {
     case .miyoushe:
@@ -280,6 +276,8 @@ struct CookieGetterWebView {
         }
         let webview = OPWebView()
         webview.configuration.websiteDataStore = dataStore
+        webview.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        webview.customUserAgent = httpHeaderFields["User-Agent"]
         return webview
     }
 
@@ -298,7 +296,7 @@ struct CookieGetterWebView {
 // MARK: CookieGetterWebView.Coordinator
 
 extension CookieGetterWebView {
-    final class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
+    final class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
         // MARK: Lifecycle
 
         init(_ parent: CookieGetterWebView) {
@@ -312,25 +310,53 @@ extension CookieGetterWebView {
         /// 追蹤 target="_blank" 開啟的子 WKWebView（OAuth 彈窗等）。
         weak var popupWebView: WKWebView?
 
+        /// 用於在 OAuth 回呼時載入回呼 URL 或轉發 postMessage。
+        weak var parentWebView: WKWebView?
+
+        // MARK: - WKNavigationDelegate
+
         func webView(
             _ webView: WKWebView,
             didFinish _: WKNavigation!
         ) {
-            let jsonScript = """
-            let timer = setInterval(() => {
-            var m = document.getElementById("driver-page-overlay");
-            m.parentNode.removeChild(m);
-            }, 300);
-            setTimeout(() => {clearInterval(timer);timer = null}, 10000);
-            """
-            webView.evaluateJavaScript(jsonScript)
+            // 移除 driver-page-overlay（僅父 WebView 需要）。
+            if webView !== popupWebView {
+                let jsonScript = """
+                let timer = setInterval(() => {
+                var m = document.getElementById("driver-page-overlay");
+                m.parentNode.removeChild(m);
+                }, 300);
+                setTimeout(() => {clearInterval(timer);timer = null}, 10000);
+                """
+                webView.evaluateJavaScript(jsonScript)
+            }
+            // 安全網：若 popup 已載入 HoYoLAB 域的頁面（表示 OAuth callback
+            // 已在 popup 中完成），則移除 popup 並 reload 父頁以取得 session cookie。
+            if webView === popupWebView,
+               let host = webView.url?.host?.lowercased(),
+               Self.isOAuthCallbackHost(host) {
+                let parentRef = parentWebView
+                cleanupPopup()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    parentRef?.reload()
+                }
+            }
         }
 
-        // MARK: WKUIDelegate
+        /// iOS（非 macOS）上不改寫 Apple 授權 URL、不攔截回呼提交。
+        /// Apple 的 `web_message` 回呼依賴 popup 中的 window.opener.postMessage，
+        /// 實際轉發由 bridge script + WKScriptMessageHandler 處理。
+        func webView(
+            _ webView: WKWebView,
+            decidePolicyFor navigationAction: WKNavigationAction,
+            decisionHandler: @MainActor @escaping @Sendable (WKNavigationActionPolicy) -> Void
+        ) {
+            decisionHandler(.allow)
+        }
 
-        /// 處理 target="_blank" 彈窗（Sign-with-Apple / Sign-with-Google 等 OAuth 流程）。
-        /// 在 App 內建立一個子 WKWebView（共享 processPool），疊加於父 WebView 上方，
-        /// 使 OAuth 完成後能正確回傳 session / cookie 至父頁面。
+        // MARK: - WKUIDelegate
+
+        /// 處理 target="_blank" 彈窗（Sign-with-Apple 等 OAuth 流程）。
         func webView(
             _ webView: WKWebView,
             createWebViewWith configuration: WKWebViewConfiguration,
@@ -338,13 +364,24 @@ extension CookieGetterWebView {
             windowFeatures: WKWindowFeatures
         )
             -> WKWebView? {
+            parentWebView = webView
+            let bridgeScript = WKUserScript(
+                source: Self.oauthBridgeJS,
+                injectionTime: .atDocumentStart,
+                forMainFrameOnly: false
+            )
+            configuration.userContentController.addUserScript(bridgeScript)
+            configuration.userContentController.removeScriptMessageHandler(forName: Self.bridgeName)
+            configuration.userContentController.add(self, name: Self.bridgeName)
             let popup = WKWebView(frame: webView.bounds, configuration: configuration)
             #if os(macOS)
             popup.autoresizingMask = [.width, .height]
             #else
             popup.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             #endif
+            popup.navigationDelegate = self
             popup.uiDelegate = self
+            popup.customUserAgent = webView.customUserAgent
             webView.addSubview(popup)
             popupWebView = popup
             return popup
@@ -353,14 +390,72 @@ extension CookieGetterWebView {
         /// 子 WKWebView 呼叫 window.close() 時觸發（OAuth 完成後），移除彈窗。
         func webViewDidClose(_ webView: WKWebView) {
             if webView === popupWebView {
-                webView.removeFromSuperview()
-                popupWebView = nil
+                let parentRef = parentWebView
+                cleanupPopup()
+                // iOS 安全網：popup 關閉時 reload 父頁，
+                // 以防 session cookie 已透過 dataStore 共享但父頁尚未更新。
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    parentRef?.reload()
+                }
             }
         }
+
+        // MARK: - WKScriptMessageHandler
+
+        nonisolated func userContentController(
+            _ userContentController: WKUserContentController,
+            didReceive message: WKScriptMessage
+        ) {
+            MainActor.assumeIsolated {
+                guard message.name == Self.bridgeName,
+                      let body = message.body as? [String: Any],
+                      let type = body["type"] as? String
+                else { return }
+
+                if type == "bridgeState" { return }
+
+                guard type == "postMessage",
+                      let payload = body["payload"] as? String,
+                      let senderOrigin = body["senderOrigin"] as? String
+                else { return }
+
+                let targetOrigin = (body["targetOrigin"] as? String) ?? ""
+                let payloadB64 = Data(payload.utf8).base64EncodedString()
+                let senderOriginB64 = Data(senderOrigin.utf8).base64EncodedString()
+                let targetOriginB64 = Data(targetOrigin.utf8).base64EncodedString()
+
+                let js = """
+                (function(){
+                    var payloadText = atob('\(payloadB64)');
+                    var senderOrigin = atob('\(senderOriginB64)');
+                    var targetOrigin = atob('\(targetOriginB64)');
+                    var packet = {
+                        __pzSIWARelay__: true,
+                        payload: payloadText,
+                        senderOrigin: senderOrigin,
+                        targetOrigin: targetOrigin
+                    };
+                    try { window.postMessage(packet, '*'); } catch (e) {}
+                    for (var i = 0; i < window.frames.length; i++) {
+                        try { window.frames[i].postMessage(packet, '*'); } catch (e) {}
+                    }
+                })();
+                """
+                parentWebView?.evaluateJavaScript(js)
+            }
+        }
+
+        // MARK: - View lifecycle
 
         func makeView() -> OPWebView {
             guard let request = parent.makeURLRequest() else { return OPWebView() }
             let webview = parent.makeViewWithoutLoad()
+            let relayScript = WKUserScript(
+                source: Self.parentRelayJS,
+                injectionTime: .atDocumentStart,
+                forMainFrameOnly: false
+            )
+            webview.configuration.userContentController.addUserScript(relayScript)
             webview.navigationDelegate = self
             webview.uiDelegate = self
             Task { webview.load(request) }
@@ -368,18 +463,131 @@ extension CookieGetterWebView {
         }
 
         func updateView(_ webview: OPWebView) {
-            if let url = URL(string: parent.url) {
-                let timeoutInterval: TimeInterval = 10
-                var request = URLRequest(
-                    url: url,
-                    cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
-                    timeoutInterval: timeoutInterval
-                )
-                request.httpShouldHandleCookies = false
-                request.allHTTPHeaderFields = parent.httpHeaderFields
-                print(request.description)
-                Task { webview.load(request) }
+            // SwiftUI may call updateUIView/updateNSView many times during state updates.
+            // Re-loading here can reset OAuth callback state and drop login continuity on iOS.
+            webview.navigationDelegate = self
+            webview.uiDelegate = self
+            webview.customUserAgent = parent.httpHeaderFields["User-Agent"]
+        }
+
+        func cleanupPopup() {
+            guard let popup = popupWebView else { return }
+            popup.configuration.userContentController
+                .removeScriptMessageHandler(forName: Self.bridgeName)
+            popup.removeFromSuperview()
+            popupWebView = nil
+            parentWebView = nil
+        }
+
+        // MARK: Private
+
+        private static let bridgeName = "__pzOAuthBridge__"
+
+        /// 在 popup 內 patch window.opener，
+        /// 將 Apple SIWA 的 opener.postMessage() 中轉到 native 再轉發給父 WebView。
+        private static let oauthBridgeJS: String = """
+        (function(){
+            if(window.__pzOAuthBridgeInstalled__)return;
+            window.__pzOAuthBridgeInstalled__=true;
+
+            function parseRedirectOrigin(){
+                try{
+                    var params=new URLSearchParams(window.location.search||'');
+                    var raw=params.get('redirect_uri');
+                    if(!raw)return '';
+                    return new URL(decodeURIComponent(raw)).origin||'';
+                }catch(e){
+                    return '';
+                }
             }
+
+            var redirectOrigin=parseRedirectOrigin();
+            var fakeOpener={
+                closed:false,
+                focus:function(){},
+                close:function(){},
+                location:{
+                    href:redirectOrigin,
+                    origin:redirectOrigin
+                },
+                postMessage:function(payload,targetOrigin){
+                    try{
+                        var rawPayload='';
+                        if(typeof payload==='string'){
+                            rawPayload=payload;
+                        }else{
+                            try{
+                                rawPayload=JSON.stringify(payload);
+                            }catch(e0){
+                                rawPayload=String(payload);
+                            }
+                        }
+                        window.webkit.messageHandlers.__pzOAuthBridge__.postMessage({
+                            type:'postMessage',
+                            payload:rawPayload,
+                            senderOrigin:window.location.origin||'',
+                            targetOrigin:targetOrigin||''
+                        });
+                    }catch(e){}
+                }
+            };
+
+            var patched=false;
+            try{
+                Object.defineProperty(window,'opener',{
+                    configurable:true,
+                    enumerable:false,
+                    get:function(){return fakeOpener;}
+                });
+                patched=true;
+            }catch(e1){
+                try{
+                    window.opener=fakeOpener;
+                    patched=true;
+                }catch(e2){}
+            }
+
+            try{
+                window.webkit.messageHandlers.__pzOAuthBridge__.postMessage({
+                    type:'bridgeState',
+                    patched:patched,
+                    redirectOrigin:redirectOrigin,
+                    locationOrigin:window.location.origin||''
+                });
+            }catch(e3){}
+        })();
+        """
+
+        /// 在 parent 與其所有 iframe 中安裝 relay listener，
+        /// 將 native 注入的 `__pzSIWARelay__` 封包轉回標準 MessageEvent。
+        private static let parentRelayJS: String = """
+        (function(){
+            if(window.__pzSIWAParentRelayInstalled__)return;
+            window.__pzSIWAParentRelayInstalled__=true;
+
+            window.addEventListener('message',function(evt){
+                var packet=evt&&evt.data;
+                if(!packet||packet.__pzSIWARelay__!==true)return;
+
+                var payloadText=packet.payload||'';
+                var senderOrigin=packet.senderOrigin||'';
+                // Apple JS SDK expects event.data to be a JSON string and then
+                // calls JSON.parse(event.data) internally. Keep it as raw string.
+                var data=payloadText;
+
+                window.dispatchEvent(new MessageEvent('message',{
+                    data:data,
+                    origin:senderOrigin,
+                    source:window
+                }));
+            },false);
+        })();
+        """
+
+        /// 判斷 host 是否為 HoYoLAB / miHoYo 系的域名（OAuth callback redirect 目標）。
+        private static func isOAuthCallbackHost(_ host: String) -> Bool {
+            let domains = ["hoyolab.com", "hoyoverse.com", "mihoyo.com", "miyoushe.com"]
+            return domains.contains { host == $0 || host.hasSuffix(".\($0)") }
         }
     }
 }
@@ -387,8 +595,7 @@ extension CookieGetterWebView {
 #if canImport(AppKit) && !canImport(UIKit)
 extension CookieGetterWebView: NSViewRepresentable {
     static func dismantleNSView(_ nsView: OPWebView, coordinator: Coordinator) {
-        coordinator.popupWebView?.removeFromSuperview()
-        coordinator.popupWebView = nil
+        coordinator.cleanupPopup()
     }
 
     func makeNSView(context: Context) -> OPWebView {
@@ -404,8 +611,7 @@ extension CookieGetterWebView: NSViewRepresentable {
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension CookieGetterWebView: UIViewRepresentable {
     static func dismantleUIView(_ uiView: OPWebView, coordinator: Coordinator) {
-        coordinator.popupWebView?.removeFromSuperview()
-        coordinator.popupWebView = nil
+        coordinator.cleanupPopup()
     }
 
     func makeUIView(context: Context) -> OPWebView {
