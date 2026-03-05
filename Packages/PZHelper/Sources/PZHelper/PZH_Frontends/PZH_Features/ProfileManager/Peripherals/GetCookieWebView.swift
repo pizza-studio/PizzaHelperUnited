@@ -178,30 +178,34 @@ struct GetCookieWebView: View {
                     .overlay {
                         VStack(alignment: .center, spacing: 12) {
                             Text("profileMgr.accountLogin.attention.title".i18nPZHelper)
-                                .font(.largeTitle)
+                                .font(.title)
                             Text("profileMgr.accountLogin.instruction".i18nPZHelper)
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
+                                .font(.caption)
                             Text("profileMgr.accountLogin.instruction.specialWarning".i18nPZHelper)
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundStyle(.orange)
                                 .fontWeight(.medium)
-                            Text(
+                                .font(.caption)
+                            let mkdnStrSiwA =
                                 "profileMgr.accountLogin.instruction.specialWarning.exceptionallyAllowedMethods"
                                     .i18nPZHelper
-                            )
-                            .multilineTextAlignment(.leading)
-                            .font(.caption)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundStyle(.secondary)
-                            .fontWeight(.medium)
+                            let attrStrSiwA: AttributedString = {
+                                (try? AttributedString(markdown: mkdnStrSiwA))
+                                    ?? AttributedString(mkdnStrSiwA)
+                            }()
+                            Text(attrStrSiwA)
+                                .multilineTextAlignment(.leading)
+                                .font(.caption)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundStyle(.red)
                             Text("profileMgr.accountLogin.instruction.passwordInputSafetyExplanation".i18nPZHelper)
                                 .multilineTextAlignment(.leading)
                                 .font(.caption)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundStyle(.secondary)
-                                .fontWeight(.medium)
                             Button {
                                 Task.detached { @MainActor in
                                     showAlert = false
