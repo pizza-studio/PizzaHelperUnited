@@ -242,7 +242,16 @@
 
 			<h4>Q: Is it safe for me to login my Miyoushe / HoYoLAB account via The Pizza Helper / The Latte Helper?</h4>
 
-			<p><strong>Miyoushe account logins in this app is through QRCode scan which does not need a password input</strong>; For HoYoLAB accounts, <strong>the process is protected by different methods supplied by Apple which varies by your device type</strong>: if iOS, the system-provided secure input keyboard on your screen is the one retrieving your password input; if macOS, the system-provided hardware-level SecureEventInput API directly retrieving your physical keyboard inputs. <strong>Both inputs will be directly passed through WKWebView to HoYoLAB login page</strong>. Then the server generates the device-specific Cookie which this app utilizes for servicing the user's information needs. <strong>This entire process is not interceptable by anyone else (nor The Pizza Helper / The Latte Helper app)</strong>. Thanks to Apple for making these security efforts.</p>
+			<p><strong>Miyoushe account logins in this app is through QRCode scan which does not need a password input</strong>.</p>
+
+			<p>For HoYoLAB accounts, <strong>the process is protected by different methods supplied by Apple which varies by your device type</strong>: if iOS, the system-provided secure input keyboard on your screen is the one retrieving your password input; if macOS, the system-provided hardware-level SecureEventInput API directly retrieving your physical keyboard inputs. <strong>Both inputs will be directly passed through WKWebView to HoYoLAB login page</strong>. Then the server generates the device-specific Cookie which this app utilizes for servicing the user's information needs. <strong>This entire process is not interceptable by anyone else (nor The Pizza Helper / The Latte Helper app)</strong>. Thanks to Apple for making these security efforts.</p>
+
+			<p>Starting with The Latte Helper v5.7.7, you have an alternative choice: HoYoLAB accounts can use Sign-in-with-Apple for login without the need of entering its login / password.</p>
+			<ul>
+				<li>[METHOD] This implementation simply involves correctly configuring certain conformation processes in WKWebView that are related to the WKUIDelegate protocol without touching Apple ID login credentials. Moreover, the code changes of this implementation mentions no additional domains (nor the <code>apple.com</code> domain), in the WKWebView configuration options. However, third-party software cannot implement FIDO Passkey password-free login functionality without special permission and technical collaboration from Cognosphere. Therefore, when using this feature to log in with your Apple ID, you must log in using your password. If you have security concerns, please enable Apple's recommended Apple ID security settings (including but not limited to two-factor authentication).</li>
+				<li>[ATTENTION] Before signing in to your HoYoLAB account with your Apple ID, you must first link your existing HoYoLAB account to your Apple ID. This linkage can be completed within the iOS global versions of Genshin Impact, Star Rail, or Zenless Zone Zero. If you attempt to sign in with your Apple ID before completing the linkage, the HoYoVerse system will automatically create a new blank HoYoLAB account and bind your Apple ID to that account. In such cases, you may need to wait approximately 30 days (the account deletion cool-down period) before you can delete the newly created account and rebind your Apple ID to your original HoYoLAB account.</li>
+				<li>Note: This software technically cannot support logging into HoYoLAB accounts via social media accounts like Google, Facebook, and Twitter (X).</li>
+			</ul>
 
 			<h4>Q: How does The Pizza Helper / The Latte Helper handle users' gacha records?</h4>
 
@@ -486,7 +495,17 @@
 
 			<h4>Q: 我藉由披薩小助手/拿鐵小助手登入米遊社 / HoYoLAB 帳號的過程是安全的嗎？</h4>
 
-			<p>披薩小助手/拿鐵小助手<strong>對米游社帳號是採取 QRCode 掃碼登入的、不會牽涉到帳號盜取的嫌疑</strong>；對 HoYoLAB 帳號雖然需要密碼登入，但使用者對自己帳號的密碼輸入是<strong>直接由 iOS 系統的安全鍵盤接管（macOS 平台則是 SecureEventInput 模式從硬體層面接管所有的鍵盤輸入訊號）、然後直接被 iOS / macOS 內建的 WKWebView 轉交給 HoYoLAB 完成登入</strong>、才產生了可以由披薩小助手/拿鐵小助手在所處裝置賴以使用的 Cookie。<strong>整個登入過程當中，披薩小助手/拿鐵小助手始終無權截獲使用者對密碼的鍵盤輸入</strong>。感謝 Apple 一直以來致力於對資訊安全環境的營造。</p>
+			<p>披薩小助手/拿鐵小助手<strong>對米游社帳號是採取 QRCode 掃碼登入的、不會牽涉到帳號盜取的嫌疑</strong>。</p>
+
+			<p>對 HoYoLAB 帳號雖然需要密碼登入，但使用者對自己帳號的密碼輸入是<strong>直接由 iOS 系統的安全鍵盤接管（macOS 平台則是 SecureEventInput 模式從硬體層面接管所有的鍵盤輸入訊號）、然後直接被 iOS / macOS 內建的 WKWebView 轉交給 HoYoLAB 完成登入</strong>、才產生了可以由披薩小助手/拿鐵小助手在所處裝置賴以使用的 Cookie。<strong>整個登入過程當中，披薩小助手/拿鐵小助手始終無權截獲使用者對密碼的鍵盤輸入</strong>。感謝 Apple 一直以來致力於對資訊安全環境的營造。</p>
+
+			<p>從拿鐵小助手 v5.7.7 版開始，你有了新選擇：HoYoLAB 帳號可以使用 Sign-in-with-Apple 的功能來登入，無需輸入 HoYoLAB 帳密資訊。</p>
+
+			<ul>
+				<li>[原理] 這個實作方法就是對 WKWebView 的某些與 WKUIDelegate 協定有關的遵守過程做了正確的配置處理，且這些變更不會接觸到 Apple ID 帳密資訊，甚至在這個過程中都不需要在新的配置選項裡面額外提到包括 <code>apple.com</code> 域名在內的任何域名。然而，副廠軟體在沒有 Cognosphere 官方的特別許可與技術協作的情況下，無法對這種功能實裝 FIDO Passkey 免密登入的特性。於是，您在使用該功能登入 Apple ID 時只能通過密碼來登入。如果您有資訊安全疑慮的話，請啟用 Apple 推薦的 Apple ID 帳號安全設定（包括但不限於雙因認證）。</li>
+				<li>[注意] 在使用 Apple ID 登入 HoYoLAB 帳號之前，請務必先將您現有的 HoYoLAB 帳號與 Apple ID 完成綁定。該綁定操作可以在 iOS 全球版本的《原神》《星穹鐵道》《絕區零》遊戲內完成。如果在未完成綁定的情況下直接使用 Apple ID 登入的話，HoYoVerse 的系統會自動創建一個全新的空白 HoYoLAB 帳號，並將您的 Apple ID 強制綁定至該新帳號。在這種情況下，您可能需要等待約 30 天的帳號註銷冷靜期，才能成功註銷該新帳號並重新完成綁定。</li>
+				<li>另：敝軟體在技術上無法支持通過 Google &amp; Facebook &amp; Twitter (X) 等社群網站登入 HoYoLAB 帳號的特性。</li>
+			</ul>
 
 			<h4>Q: 披薩小助手/拿鐵小助手會怎麼處理使用者的抽卡記錄？</h4>
 
@@ -729,9 +748,19 @@
 
 			<p>根据到目前为止的反馈来看，迄今为止尚无先例。根据热心玩家向米哈游专属客服的求证，得到的答覆是游戏账号不会被停权。（《披萨小助手/拿铁小助手用户许可协议与免责声明（EULA）》有提及：<strong>开发者对于因用户行为所导致之任何损害不承担任何责任</strong>。）</p>
 
-			<h4>Q: 我通过披萨小助手/拿铁小助手登入米游社 / HoYoLAB 账号的过程是安全的吗？</h4>
+			<h4>Q: 我通过披萨小助手/拿铁小助手登录米游社 / HoYoLAB 账号的过程是安全的吗？</h4>
 
-			<p>披萨小助手/拿铁小助手<strong>对米游社账号是采取 QRCode 扫码登入的、不会牵涉到账号盗取的嫌疑</strong>；对 HoYoLAB 账号虽然需要密码登入，但用户对自己账号的密码输入是<strong>直接由 iOS 系统的安全键盘接管（macOS 平台则是 SecureEventInput 模式从硬件层面接管所有的键盘输入讯号）、然后直接被 iOS / macOS 内建的 WKWebView 转交给 HoYoLAB 完成登入</strong>、才产生了可以由披萨小助手/拿铁小助手在所处设备赖以使用的 Cookie。<strong>整个登入过程当中，披萨小助手/拿铁小助手始终无权截获用户对密码的键盘输入</strong>。感谢 Apple 一直以来致力于对资讯安全环境的营造。</p>
+			<p>披萨小助手/拿铁小助手<strong>对米游社账号是采取 QRCode 扫码登录的、不会牵涉到账号盗取的嫌疑</strong>。</p>
+
+			<p>对 HoYoLAB 账号虽然需要密码登录，但用户对自己账号的密码输入是<strong>直接由 iOS 系统的安全键盘接管（macOS 平台则是 SecureEventInput 模式从硬件层面接管所有的键盘输入讯号）、然后直接被 iOS / macOS 内建的 WKWebView 转交给 HoYoLAB 完成登录</strong>、才产生了可以由披萨小助手/拿铁小助手在所处设备赖以使用的 Cookie。<strong>整个登录过程当中，披萨小助手/拿铁小助手始终无权截获用户对密码的键盘输入</strong>。感谢 Apple 一直以来致力于对资讯安全环境的营造。</p>
+
+			<p>从拿铁小助手 v5.7.7 版开始，你有了新选择：HoYoLAB 账号可以使用 Sign-in-with-Apple 的功能来登录，无需输入 HoYoLAB 账密资讯。</p>
+
+			<ul>
+				<li>[原理] 这个实作方法就是对 WKWebView 的某些与 WKUIDelegate 协定有关的遵守过程做了正确的配置处理，且这些变更不会接触到 Apple ID 账密资讯，甚至在这个过程中都不需要在新的配置选项里面额外提到包括 <code>apple.com</code> 域名在内的任何域名。然而，副厂软件在没有 Cognosphere 官方的特别许可与技术协作的情况下，无法对这种功能实装 FIDO Passkey 免密登录的特性。于是，您在使用该功能登录 Apple ID 时只能通过密码来登录。如果您有资讯安全疑虑的话，请启用 Apple 推荐的 Apple ID 账号安全设定（包括但不限于双因认证）。</li>
+				<li>[注意] 在使用 Apple ID 登录 HoYoLAB 账号之前，请务必先将您现有的 HoYoLAB 账号与 Apple ID 完成绑定。该绑定操作可以在 iOS 全球版本的《原神》《星穹铁道》《绝区零》游戏内完成。如果在未完成绑定的情况下直接使用 Apple ID 登录的话，HoYoVerse 的系统会自动创建一个全新的空白 HoYoLAB 账号，并将您的 Apple ID 强制绑定至该新账号。在这种情况下，您可能需要等待约 30 天的账号注销冷静期，才能成功注销该新账号并重新完成绑定。</li>
+				<li>另：本软件在技术上无法支持通过 Google &amp; Facebook &amp; Twitter (X) 等社群网站登录 HoYoLAB 账号的特性。</li>
+			</ul>
 
 			<h4>Q: 披萨小助手/拿铁小助手会怎么处理用户的抽卡记录？</h4>
 
@@ -739,8 +768,8 @@
 
 			<ul>
 				<li>阁下使用披萨小助手/拿铁小助手时之 Apple 数字设备。</li>
-				<li>以及该数字设备当时所已经登入使用 iCloud Drive 的 Apple ID 之自身的 iCloud 私有云空间。</li>
-				<li>以及任何被登入该 Apple ID 使用 iCloud Drive 且有安装披萨小助手/拿铁小助手之数字设备。</li>
+				<li>以及该数字设备当时所已经登录使用 iCloud Drive 的 Apple ID 之自身的 iCloud 私有云空间。</li>
+				<li>以及任何被登录该 Apple ID 使用 iCloud Drive 且有安装披萨小助手/拿铁小助手之数字设备。</li>
 			</ul>
 
 			<p>虽然披萨小助手/拿铁小助手允许用户导入、导出抽卡记录，但开发团队不建议您将这些资料上交给任何可能会擅自公开统计结果的第三方网站。</p>
@@ -798,7 +827,7 @@
 
 			<h4>Q: 小工具（小组件）是怎样自动更新玩家的账号的原粹树脂 / 开拓力 / 绝区电量状态的？</h4>
 
-			<p>这些在披萨小助手/拿铁小助手被统称为「玩家体力（Stamina）」。从 5.0.4 版开始，披萨小助手/拿铁小助手的小工具每过一个玩家体力点恢复时间就会尝试向米游社 / HoYoLAB 服务器请求一次最新的实时便笺资料（里面包括了对应 UID 的原粹树脂 / 开拓力 / 绝区电量状态等资讯）。桌面小工具额外会有用于重载内容专用的刷新按钮。开启披萨小助手/拿铁小助手本体 App 时，所有小工具都会自动重新请求一次实时便笺资料。如果您未曾登入游戏消耗过玩家体力的话，理论上通过小工具显示的玩家体力的误差不会超过 1。</p>
+			<p>这些在披萨小助手/拿铁小助手被统称为「玩家体力（Stamina）」。从 5.0.4 版开始，披萨小助手/拿铁小助手的小工具每过一个玩家体力点恢复时间就会尝试向米游社 / HoYoLAB 服务器请求一次最新的实时便笺资料（里面包括了对应 UID 的原粹树脂 / 开拓力 / 绝区电量状态等资讯）。桌面小工具额外会有用于重载内容专用的刷新按钮。开启披萨小助手/拿铁小助手本体 App 时，所有小工具都会自动重新请求一次实时便笺资料。如果您未曾登录游戏消耗过玩家体力的话，理论上通过小工具显示的玩家体力的误差不会超过 1。</p>
 
 			<p>然而，对于3年以上的旧款iPhone机种来讲，哪怕有更换过新的电池，上述的小工具运作规律也会增加电力的消耗。因此，请在使用这类机种时尽量控制小工具的数量。</p>
 
@@ -855,11 +884,11 @@
 
 			<h4>Q: 错误码 -1（未获取到数据）或 错误码 10102、10103、10104（Cookie 与 UID 不对应）</h4>
 
-			<p>检查是否开启米游社的实时便笺（或 HoYoLAB 的实时便笺）功能，并重新获取 Cookie。另请注意登入的账号本身是否正确。</p>
+			<p>检查是否开启米游社的实时便笺（或 HoYoLAB 的实时便笺）功能，并重新获取 Cookie。另请注意登录的账号本身是否正确。</p>
 
 			<h4>Q: 错误码 10001 （Cookie 有误或 Cookie 失效）</h4>
 
-			<p>建议将对应的本地账号重新登入。这个过程会重新获取 Cookie。</p>
+			<p>建议将对应的本地账号重新登录。这个过程会重新获取 Cookie。</p>
 
 			<h4>Q: 错误码 1008（UID 有误）</h4>
 
@@ -976,7 +1005,17 @@
 
 			<h4>Q: ピザ助手/ラテ助手を通じて、米遊社 / HoYoLABアカウントにログインしても安全ですか？</h4>
 
-			<p><strong>米遊社アカウントへのログインはQRコードスキャンを通じて行われ、パスワードの入力は不要です</strong>。HoYoLABアカウントの場合、<strong>iOSデバイスではシステム提供のセキュアな入力キーボードがパスワードの入力を取得し、macOSではハードウェアレベルのSecureEventInput APIが直接物理キーボードの入力を取得します</strong>。<strong>両方の入力はWKWebViewを通じてHoYoLABのログインページに直接渡されます</strong>。その後、サーバーはデバイス固有のクッキーを生成し、このアプリは使用者の「情報のニーズ」に応じてそれを利用します。<strong>この過程は他の誰にも（ピザ助手/ラテ助手アプリにも）傍受されません</strong>。Appleのセキュリティ対策に感謝します。</p>
+			<p><strong>米遊社アカウントへのログインはQRコードスキャンを通じて行われ、パスワードの入力は不要です</strong>。</p>
+			
+			<p>HoYoLABアカウントの場合、<strong>iOSデバイスではシステム提供のセキュアな入力キーボードがパスワードの入力を取得し、macOSではハードウェアレベルのSecureEventInput APIが直接物理キーボードの入力を取得します</strong>。<strong>両方の入力はWKWebViewを通じてHoYoLABのログインページに直接渡されます</strong>。その後、サーバーはデバイス固有のクッキーを生成し、このアプリは使用者の「情報のニーズ」に応じてそれを利用します。<strong>この過程は他の誰にも（ピザ助手/ラテ助手アプリにも）傍受されません</strong>。Appleのセキュリティ対策に感謝します。</p>
+
+			<p>ラテ助手 v5.7.7以降、HoYoLABアカウントはSign-in-with-Appleを使って、HoYoLABのログイン情報を入力せずにサインインするという選択肢が追加されました。</p>
+
+			<ul>
+				<li>[原理] この実装はWKUIDelegateプロトコルに関連するWKWebViewのいくつかの準拠処理を適切に設定するだけで、Apple IDのログイン資格情報に触れません。また、この実装のコード変更では、<code>apple.com</code>ドメインを含むいかなる追加ドメインもWKWebView設定オプションに明記する必要がありません。しかし、サードパーティ製ソフトウェアはCognosphereの特別な許可および技術協力がない限りFIDO Passkeyによるパスワード不要ログイン機能を実装できません。したがってこの機能でApple IDにログインする場合はパスワードを使用する必要があります。セキュリティにお不安があれば、Appleが推奨するApple IDのセキュリティ設定（2要素認証など）を有効にしてください。</li>
+				<li>[ご注意] Apple IDでHoYoLABアカウントにサインインする前に、既存のHoYoLABアカウントとApple IDを必ずリンクしてください。このリンクはiOS版の『原神』『星穹鉄道』『絶区零』ゲーム内で行えます。リンクを完了する前にApple IDでサインインすると、HoYoVerseシステムが新しい空のHoYoLABアカウントを自動作成し、Apple IDをそのアカウントに強制的に紐付けます。そのような場合、新たに作成されたアカウントの削除クールダウン期間（約30日）を経てから元のアカウントに再リンクする必要があります。</li>
+				<li>なお、本アプリはGoogle、Facebook、Twitter（X）などのソーシャルメディアを介したHoYoLABアカウントログインを技術的にサポートしていません。</li>
+			</ul>
 
 			<h4>Q: ピザ助手/ラテ助手は使用者のガチャ記録をどのように扱いますか？</h4>
 
