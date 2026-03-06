@@ -313,6 +313,9 @@ extension CookieGetterWebView {
         /// 用於在 OAuth 回呼時載入回呼 URL 或轉發 postMessage。
         weak var parentWebView: WKWebView?
 
+        /// 用於取消舊的 parent reload 排程，避免重複重載。
+        var parentReloadScheduleID: Int = 0
+
         // MARK: - WKNavigationDelegate
 
         func webView(
@@ -337,9 +340,7 @@ extension CookieGetterWebView {
                Self.isOAuthCallbackHost(host) {
                 let parentRef = parentWebView
                 cleanupPopup()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    parentRef?.reload()
-                }
+                scheduleParentReloads(parentRef, reason: "popup finished callback host")
             }
         }
 
@@ -392,11 +393,7 @@ extension CookieGetterWebView {
             if webView === popupWebView {
                 let parentRef = parentWebView
                 cleanupPopup()
-                // iOS 安全網：popup 關閉時 reload 父頁，
-                // 以防 session cookie 已透過 dataStore 共享但父頁尚未更新。
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    parentRef?.reload()
-                }
+                scheduleParentReloads(parentRef, reason: "popup window.close")
             }
         }
 
@@ -477,6 +474,81 @@ extension CookieGetterWebView {
             popup.removeFromSuperview()
             popupWebView = nil
             parentWebView = nil
+        }
+
+        /// 在不同時間點重載 parent，避免慢機上 callback/cookie 落地延遲造成未登入狀態。
+        /// 若偵測到疑似已落地的授權 cookies，則停止後續重載。
+        func scheduleParentReloads(_ parentRef: WKWebView?, reason: String) {
+            guard let parentRef else { return }
+            parentReloadScheduleID += 1
+            let scheduleID = parentReloadScheduleID
+            let probeDelays: [TimeInterval] = [0.8, 1.8, 3.2, 5.2, 8.0]
+
+            for (index, delay) in probeDelays.enumerated() {
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self, weak parentRef] in
+                    guard let self, let parentRef, parentReloadScheduleID == scheduleID else { return }
+                    Task { @MainActor [weak self, weak parentRef] in
+                        guard let self, let parentRef, parentReloadScheduleID == scheduleID else { return }
+                        let cookieReady = await hasLikelyHoYoAuthCookies()
+                        #if DEBUG
+                        print(
+                            "[SIWA] parent cookie probe=\(index + 1) reason=\(reason) delay=\(delay) ready=\(cookieReady)"
+                        )
+                        #endif
+
+                        if cookieReady {
+                            parentReloadScheduleID += 1
+                            #if DEBUG
+                            print("[SIWA] auth cookies settled, reload parent once")
+                            #endif
+                            parentRef.reloadFromOrigin()
+                            return
+                        }
+
+                        if index == probeDelays.count - 1 {
+                            #if DEBUG
+                            let cookieNames = await hoyoCookieNameSnapshot()
+                            print("[SIWA] final cookie names snapshot=\(cookieNames)")
+                            #endif
+                            parentReloadScheduleID += 1
+                            #if DEBUG
+                            print("[SIWA] auth cookies not detected after probes, perform fallback reload")
+                            #endif
+                            parentRef.reloadFromOrigin()
+                        }
+                    }
+                }
+            }
+        }
+
+        /// 嘗試判斷 HoYo 授權 cookies 是否已落地。
+        func hasLikelyHoYoAuthCookies() async -> Bool {
+            let cookies = await parent.dataStore.httpCookieStore.allCookies()
+            let names = Set(cookies.map { $0.name.lowercased() })
+
+            // HoYoLab overseas v2 cookies (from real-world capture).
+            let hasV2Token = names.contains("ltoken_v2") || names.contains("cookie_token_v2")
+            let hasV2UID = names.contains("account_id_v2") || names.contains("ltuid_v2")
+            if hasV2Token, hasV2UID { return true }
+
+            // Legacy/other region cookies.
+            let hasLegacyToken = names.contains("ltoken") || names.contains("stoken") || names.contains("login_ticket")
+            let hasLegacyUID = names.contains("ltuid") || names.contains("stuid") || names.contains("login_uid")
+            if hasLegacyToken, hasLegacyUID { return true }
+
+            // Additional overseas fallback cluster.
+            let hasAccountCluster = names.contains("account_id_v2") && names.contains("account_mid_v2")
+            let hasRegionSignal = names.contains("ma_passport_region") || names.contains("ltmid_v2")
+            if hasAccountCluster, hasRegionSignal { return true }
+
+            return false
+        }
+
+        /// DEBUG 專用：回傳目前 dataStore 中的 cookie 名稱快照（不含 cookie 值）。
+        func hoyoCookieNameSnapshot() async -> [String] {
+            let cookies = await parent.dataStore.httpCookieStore.allCookies()
+            let names = Set(cookies.map { $0.name.lowercased() })
+            return names.sorted()
         }
 
         // MARK: Private
