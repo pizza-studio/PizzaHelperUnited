@@ -65,23 +65,27 @@ struct WatchProfileDetailView: View {
     private var profile: PZProfileSendable
 
     @ViewBuilder private var expeditionsList: some View {
-        switch data {
-        case _ as Note4ZZZ:
+        if data.expeditionTasks.isEmpty {
             EmptyView()
-        case _ as any Note4HSR:
-            EmptyView()
-        default:
-            Divider()
-            VStack(alignment: .leading, spacing: 10) {
-                ForEach(
-                    data.expeditionTasks,
-                    id: \.iconURL
-                ) { expedition in
-                    WatchEachExpeditionView(
-                        expedition: expedition,
-                        useAsyncImage: true
-                    )
-                    .frame(maxHeight: 40)
+        } else {
+            switch data {
+            case _ as Note4ZZZ:
+                EmptyView()
+            case _ as any Note4HSR:
+                EmptyView()
+            default:
+                Divider()
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach(
+                        data.expeditionTasks,
+                        id: \.iconURL
+                    ) { expedition in
+                        WatchEachExpeditionView(
+                            expedition: expedition,
+                            useAsyncImage: true
+                        )
+                        .frame(maxHeight: 40)
+                    }
                 }
             }
         }
@@ -137,13 +141,6 @@ struct WatchProfileDetailView: View {
                 icon: data.game.hsrSimulatedUniverseAssetIcon
             )
         }
-        Divider()
-        let expeditionIntel = data.expeditionCompletionStatus
-        WatchProfileDetailItemView(
-            title: "watch.dailyNote.card.expedition.label",
-            value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
-            icon: data.game.expeditionAssetIcon
-        )
         Divider()
         if let eowIntel = data.echoOfWarIntel {
             WatchProfileDetailItemView(
