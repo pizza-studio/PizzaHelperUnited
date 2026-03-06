@@ -113,6 +113,25 @@ extension EmbeddedWidgets {
         private func cellR1C2(_ data: any DailyNoteProtocol) -> some View {
             Group {
                 switch data {
+                case let data as any Note4HSR:
+                    // HSR has removed their expedition API, displaying reserved stamina instead.
+                    Label {
+                        Text(verbatim: "\(data.staminaInfo.currentReserveStamina)")
+                            .minimumScaleFactor(0.2)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    } icon: {
+                        data.game.primaryStaminaSVGAsInlineText
+                            .minimumScaleFactor(0.2)
+                            .frame(maxWidth: 18, maxHeight: 18)
+                            .rotationEffect(.degrees(90))
+                            .widgetAccentable(isFullColor)
+                            .foregroundColor(
+                                isFullColor
+                                    ? PZWidgetsSPM.Colors.IconColor.Resin.accented.suiColor
+                                    : nil
+                            )
+                            .hueRotation(.degrees(30))
+                    }
                 case let data as Note4ZZZ:
                     // ZZZ has no expedition API results yet, displaying 刮刮乐 instead.
                     if let cardScratched = data.cardScratched {
