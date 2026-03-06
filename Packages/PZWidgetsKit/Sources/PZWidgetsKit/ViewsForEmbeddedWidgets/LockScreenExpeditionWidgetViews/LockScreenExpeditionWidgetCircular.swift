@@ -57,13 +57,8 @@ extension EmbeddedWidgets {
                 let denominator = data.expeditionCompletionStatus.all
                 let result = "\(numerator) / \(denominator)"
                 return Text(verbatim: result)
-            case let data as any Note4HSR:
-                let numerator = data.expeditionCompletionStatus.finished
-                let denominator = data.expeditionCompletionStatus.all
-                let result = "\(numerator) / \(denominator)"
-                return Text(verbatim: result)
             default:
-                return nil
+                return Text(verbatim: "GENSHIN_ONLY")
             }
         }
     }

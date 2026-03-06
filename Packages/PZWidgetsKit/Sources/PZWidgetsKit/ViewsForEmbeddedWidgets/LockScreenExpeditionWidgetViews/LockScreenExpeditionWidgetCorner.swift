@@ -49,8 +49,7 @@ extension EmbeddedWidgets {
             case let .success(data):
                 /// ZZZ Has no expedition intels available through API yet.
                 switch data {
-                case _ as Note4ZZZ: return "NOT 4\nZZZ"
-                default:
+                case _ as any Note4GI:
                     let timeDescription: String = {
                         if data.allExpeditionsAccomplished {
                             return String(
@@ -67,6 +66,8 @@ extension EmbeddedWidgets {
                     let numerator = data.expeditionCompletionStatus.finished
                     let denominator = data.expeditionCompletionStatus.all
                     return "\(numerator) / \(denominator) \(timeDescription)"
+                default:
+                    return "GENSHIN_ONLY"
                 }
             case .failure:
                 return String(
