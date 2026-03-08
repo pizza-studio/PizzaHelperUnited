@@ -203,6 +203,9 @@ struct AppAboutViewSections: View {
             NavigationLink(PrivacyPolicyView.navTitle) {
                 PrivacyPolicyView()
             }
+            NavigationLink(ZeroLeaksPledgeView.navTitle) {
+                ZeroLeaksPledgeView()
+            }
             NavigationLink(destination: ListOf3rdPartyComponentsView()) {
                 Text(ListOf3rdPartyComponentsView.navTitle)
             }

@@ -39,6 +39,10 @@ private struct OOBESheetHooker: ViewModifier {
                         PrivacyPolicyView {
                             isPrivacyPolicyConfirmed = true
                         }
+                    case .confirmingZeroLeaksPledge:
+                        ZeroLeaksPledgeView {
+                            isZeroLeaksPledgeConfirmed = true
+                        }
                     case .readingOOBEMessages:
                         OOBEView {
                             isOOBEViewEverPresented = true
@@ -60,6 +64,7 @@ private struct OOBESheetHooker: ViewModifier {
     private enum OOBEStep: Int {
         case confirmingEULA
         case confirmingPrivacyPolicy
+        case confirmingZeroLeaksPledge
         case readingOOBEMessages
     }
 
@@ -67,11 +72,13 @@ private struct OOBESheetHooker: ViewModifier {
 
     @Default(.isEULAConfirmed) private var isEULAConfirmed: Bool
     @Default(.isPrivacyPolicyConfirmed) private var isPrivacyPolicyConfirmed: Bool
+    @Default(.isZeroLeaksPledgeConfirmed) private var isZeroLeaksPledgeConfirmed: Bool
     @Default(.isOOBEViewEverPresented) private var isOOBEViewEverPresented: Bool
 
     private var currentStep: OOBEStep? {
         guard isEULAConfirmed else { return .confirmingEULA }
         guard isPrivacyPolicyConfirmed else { return .confirmingPrivacyPolicy }
+        guard isZeroLeaksPledgeConfirmed else { return .confirmingZeroLeaksPledge }
         guard isOOBEViewEverPresented else { return .readingOOBEMessages }
         return nil
     }

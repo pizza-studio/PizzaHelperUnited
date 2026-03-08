@@ -1,0 +1,1291 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- [TO COPILOT] MODIFY THE TITLE TO MATCH THE ZERO_LEAKS_PLEDGE (FAQ / EULA / PRIVACY POLICY). -->
+	<title>ZERO_LEAKS_PLEDGE</title>
+	<style>
+		/* General reset */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+				Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+			background-color: #ffffff;
+			color: #24292e;
+			line-height: 1.5;
+			padding: 2rem;
+			transition: background-color 0.3s, color 0.3s;
+		}
+
+		/* Dark mode */
+		@media (prefers-color-scheme: dark) {
+			body {
+				background-color: #0d1117;
+				color: #c9d1d9;
+			}
+
+			header {
+				border-bottom: none;
+			}
+
+			.language-selector {
+				background-color: #161b22;
+				color: #c9d1d9;
+				border: 1px solid #30363d;
+			}
+
+			code,
+			pre {
+				background-color: #161b22;
+				border: 1px solid #30363d;
+			}
+		}
+
+		header {
+			align-items: leading;
+		}
+
+		.language-selector {
+			font-size: 1rem;
+			padding: 0.5rem;
+			border: 1px solid #d0d7de;
+			border-radius: 6px;
+			background-color: #f6f8fa;
+			color: #24292e;
+		}
+
+		hr {
+			opacity: 0.1;
+		}
+
+		main {
+			padding: 0;
+		}
+
+		@media (max-width: 600px) {
+			body {
+				padding: 1rem;
+			}
+		}
+
+		/* GitHub Markdown CSS */
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin-top: 1em;
+			margin-bottom: 0.5em;
+			font-weight: 600;
+			line-height: 1.25;
+		}
+
+		h2 {
+			border-bottom: 0.1em solid;
+			border-right: 1em solid;
+			padding-right: 0.5em;
+		}
+
+		h3 {
+			background-color: #114514;
+			color: white;
+			padding: 5px;
+		}
+
+		h4 {
+			border-left: 0.5em solid;
+			border-bottom: 0.05em solid;
+			padding: 0.25em 0.5em;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 1em;
+			margin-bottom: 1em;
+		}
+
+		p {
+			margin-bottom: 1em;
+		}
+
+		a {
+			color: #0366d6;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		ul,
+		ol {
+			padding-left: 2em;
+			margin-bottom: 1em;
+		}
+
+		blockquote {
+			padding: 0.5em 1em;
+			border-left: 0.25em solid #d0d7de;
+			margin-bottom: 0.5em;
+			opacity: 0.7;
+			/* Reduced space at the bottom */
+		}
+
+		code {
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+				Courier, monospace;
+			font-size: 85%;
+			padding: 0.2em 0.4em;
+			border-radius: 6px;
+		}
+
+		pre {
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+				Courier, monospace;
+			font-size: 85%;
+			line-height: 1.45;
+			background-color: #f6f8fa;
+			padding: 1em;
+			border-radius: 6px;
+			overflow: auto;
+			border: none;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 1em;
+		}
+
+		th,
+		td {
+			border: 1px solid #d0d7de;
+			padding: 0.6em;
+		}
+
+		th {
+			background-color: #f6f8fa;
+			font-weight: 600;
+		}
+
+		/* Hide all content divs by default */
+		.content {
+			display: none;
+		}
+
+		/* Show content div when it is active */
+		.content.active {
+			display: block;
+		}
+	</style>
+	<script>
+		function changeLanguage() {
+			const language = document.getElementById("language-selector").value;
+			const contentDivs = document.querySelectorAll(".content");
+			contentDivs.forEach((div) => div.classList.remove("active"));
+			const selectedContent = document.getElementById(`content-${language}`);
+			if (selectedContent) {
+				selectedContent.classList.add("active");
+			}
+		}
+
+		function detectLanguage() {
+			const browserLang = navigator.language || navigator.userLanguage;
+			const supportedLanguages = ["en-US", "zh-Hant", "zh-Hans", "ja-JP"];
+			// Default to "zh-Hans" if the browser's language is not supported
+			let language = supportedLanguages.includes(browserLang)
+				? browserLang
+				: "zh-Hans";
+			document.getElementById("language-selector").value = language;
+			changeLanguage(); // Call changeLanguage to set the correct content visibility
+		}
+
+		window.onload = detectLanguage; // Initialize on page load
+	</script>
+</head>
+
+<body>
+	<header>
+		<select id="language-selector" class="language-selector" onchange="changeLanguage()">
+			<option value="en-US">English</option>
+			<option value="zh-Hant">繁體中文 (Traditional Chinese)</option>
+			<option value="zh-Hans">简体中文 (Simplified Chinese)</option>
+			<option value="ja-JP">日本語 (Japanese)</option>
+		</select>
+		<span> ← 🌐</span>
+	</header>
+	<main>
+		<div id="content-en-US" class="content" lang="en">
+
+			<h1 id="toc_0">Pledge on Zero Use &amp; Zero Leaks of NDA-Protected Game Test Client Content</h1>
+
+			<blockquote>
+				All translations of this document are for reference purposes only. The original Simplified Chinese
+					version of this document is the only legally binding version. This document constitutes the
+					self-regulatory declaration and project code of conduct for Pizza Studio (hereinafter referred to as
+					&quot;the Developer&quot; or &quot;our team&quot;). Although not formally a legal contract in
+					judicial proceedings, it serves as the highest guiding principle for the compliance development and
+					community management of our projects.
+			</blockquote>
+
+			<p>This statement is the compliance policy promulgated by Pizza Studio, applicable to &quot;The Latte
+				Helper&quot; (hereinafter referred to as &quot;this application&quot;) and retrospectively applicable to
+				the discontinued precursor, &quot;The Pizza Helper&quot; version 5.x.</p>
+
+			<p><strong>Last Updated: March 8th, 2026</strong></p>
+
+			<hr />
+
+			<h2 id="toc_1">Article 1: Purpose and Stance</h2>
+
+			<h3 id="toc_2">1.1 Background and Necessity</h3>
+
+			<p>Given the significant negative impact on the overall game community and developers caused by recent
+				systematic thefts and malicious leaks of unreleased game content (such as the HomDGCat lawsuit, Case No.
+				1:26-cv-00676-SEG), the Developer hereby solemnly declares:</p>
+
+			<p>This application is strictly unaffiliated with any &quot;insider/leaker&quot; perpetrators who steal,
+				disseminate, or exploit unreleased game data. The Developer <strong>strictly dissociates and draws a
+					clear line</strong> against such actions that violate Non-Disclosure Agreements (NDAs) and infringe
+				upon trade secrets.</p>
+
+			<h3 id="toc_3">1.2 Effectiveness and Modification</h3>
+
+			<p>This statement takes effect on the date of publication. The Developer reserves the right to revise this
+				statement at any time based on legislative changes, industry practices, or practical needs, and such
+				updates shall be published in the project repository. Users and contributors bear the obligation to
+				periodically review the latest version. Continued use of this application or participation in this
+				project implies agreement with and acceptance of the then-current terms of this statement.</p>
+
+			<hr />
+
+			<h2 id="toc_4">Article 2: Definition of Confidential Information</h2>
+
+			<p>&quot;Confidential Information&quot; as referred to in this statement is strictly limited to the
+				following two categories of <strong>NDA-protected game client data</strong>:</p>
+
+			<ul>
+				<li><strong>Game client</strong> data content directly constrained by miHoYo&#39;s / Cognosphere&#39;s
+					Non-Disclosure Agreement (NDA) terms.</li>
+				<li><strong>Game client</strong> data content not voluntarily and publicly provided by miHoYo.</li>
+			</ul>
+
+			<blockquote>
+				The Developer <strong>respects the legal legitimacy of the NDA as a confidentiality
+						mechanism</strong>. Our objection is directed solely at &quot;<strong>the act of leaking
+						NDA-protected game client content</strong>&quot;, not the NDA system itself.
+			</blockquote>
+
+			<p>&quot;Non-Confidential Information&quot; refers to the officially released game version data. Among such
+				data, content that was originally confidential but matches the official release shall lose its
+				confidential status and become non-confidential information starting from the date miHoYo pushes the
+				&quot;official game client pre-download data.&quot; However, any game storyline content included in the
+				aforementioned pre-download data legally remains Confidential Information.</p>
+
+			<blockquote>
+				Game storyline content is not necessary for the functional operation of this application, and
+					therefore will not be, and does not need to be, called upon.
+			</blockquote>
+
+			<hr />
+
+			<h2 id="toc_5">Article 3: Substantial Damages Caused by Leaks</h2>
+
+			<p>The Developer is well aware that the premature disclosure of NDA-protected game test client content or
+				unreleased resources is by no means &quot;simple information sharing.&quot; Instead, it constitutes a
+				<strong>systematic attack and substantial damage</strong> against the original development team (miHoYo
+				/ Cognosphere Pte. Ltd.) across multiple dimensions. Such damages include, but are not limited to:</p>
+
+			<h3 id="toc_6">3.1 Direct Economic Losses</h3>
+
+			<ul>
+				<li><strong>&quot;Premature Fatigue&quot; Effect</strong>: When players learn about character skills or
+					storylines in advance, they may feel &quot;fatigued&quot; or find the content &quot;below
+					expectations,&quot; leading them to abandon their consumption plans and directly causing a decline
+					in revenue from new character banners.</li>
+				<li><strong>Impact on Marketing Conversion</strong>: Leaks render official pre-release promotions
+					ineffective; the sunk costs invested fail to generate expected conversion benefits, resulting in a
+					futile waste of marketing resources.</li>
+			</ul>
+
+			<h3 id="toc_7">3.2 Disruption of Business Models and Promotional Pacing</h3>
+
+			<ul>
+				<li>Premature exposure severely interferes with the official marketing plans, causing carefully
+					orchestrated &quot;elements of surprise&quot; to drastically depreciate.</li>
+				<li>It destroys the core operational model of &quot;generating attention through game version
+					updates,&quot; forcing publishers to alter version scheduling abruptly and thereby increasing
+					operational costs.</li>
+			</ul>
+
+			<h3 id="toc_8">3.3 Commercial Competition and Security Risks</h3>
+
+			<ul>
+				<li>Systematically datamining and publishing NDA-protected unreleased <strong>game client</strong> data
+					equates to exposing core business secrets (including character designs, numerical systems, storyline
+					progressions, and version roadmaps) to potential competitors.</li>
+				<li>Competitors may utilize this intelligence for early planning, strategy adjustments, or even targeted
+					poaching, thereby weakening the original developer&#39;s market-exclusive advantages.</li>
+			</ul>
+
+			<h3 id="toc_9">3.4 Poisoning of the Community Ecosystem</h3>
+
+			<ul>
+				<li><strong>Collapse of Trust</strong>: Leaked content is often taken out of context, leading to biased
+					evaluations and misunderstandings among players, sparking community disputes, and severely degrading
+					a healthy ecological environment.</li>
+				<li><strong>Loss of Surprise</strong>: Players’ prior knowledge of storylines, characters, and events
+					drastically diminishes the sense of novelty and the sheer joy of exploration upon official release.
+				</li>
+				<li><strong>Compromised Fairness</strong>: Prematurely published game test client data grants some players
+					asymmetric information advantages, disrupting a fair competitive environment within the game.</li>
+			</ul>
+
+			<h3 id="toc_10">3.5 Suppression of Creative Enthusiasm</h3>
+
+			<p>Unauthorized leaking that blatantly disregards intellectual property rights will severely damage the
+				creative willingness of upstream game designers and development teams, potentially reducing the supply
+				of high-quality game titles and negatively impacting the broader game industry.</p>
+
+			<hr />
+
+			<h2 id="toc_11">Article 4: Self-Regulatory Conduct and Commitments</h2>
+
+			<p>To prevent the aforementioned damages to the original developer and to maintain a sound player ecosystem,
+				this application commits to adhering to the <strong>highest standards of self-regulatory
+					compliance</strong>:</p>
+
+			<h3 id="toc_12">4.1 Refusal to Feature NDA-Protected Game Test Client Content</h3>
+
+			<p>This application <strong>does not possess, securely store, or display</strong> any <strong>game client
+					content</strong> that is NDA-protected and has not yet been publicly released on the official game client (including but not limited to: character stats, storyline texts, art assets, and future version
+				roadmaps).</p>
+
+			<h3 id="toc_13">4.2 Strict Prohibition on Illegal Datamining of NDA-Protected Game Clients</h3>
+
+			<p>The Developer <strong>strictly does not participate</strong> in any cracking, decompiling, unpacking, or
+				circumvention of encryption mechanisms targeting <strong>NDA-protected game test clients</strong> (including
+				game clients not officially released as stable-public-releases); nor do we engage in technical exchanges
+				or data sharing with any organization or individual involved in such acts.</p>
+
+			<h3 id="toc_14">4.3 Strict Prohibition on Inducement of Violations</h3>
+
+			<p>The Developer <strong>strictly refrains from instigating, inciting, or inducing</strong> any internal
+				testers who have signed NDAs to leak confidential information.</p>
+
+			<hr />
+
+			<h2 id="toc_15">Article 5: Compliance and Transparency of Data Sources</h2>
+
+			<p>All game version-related data and assets utilized by this application are ensured to be sourced
+				<strong>publicly, securely, and completely free from NDA risks</strong>:</p>
+
+			<h3 id="toc_16">5.1 Officially Released Information</h3>
+
+			<ul>
+				<li>Information proactively published by the official developers via social media (e.g., HoYoLAB),
+					preview livestreams, or official announcements.</li>
+				<li>Content already showcased to the public by miHoYo (e.g., &quot;Drip Marketing&quot; character
+					reveals, preview programs, and promotional trailers).</li>
+			</ul>
+
+			<h3 id="toc_17">5.2 Content Available in Official Releases</h3>
+
+			<ul>
+				<li>Real-time client content of officially launched versions accessible to any player.</li>
+				<li>As a general principle, third-party datamining results derived from the <strong>official game client
+						pre-download data</strong> (not game test client data) released by the game development team one to
+					two days prior to an update launch may be used, subject to the following restrictions:
+
+					<ol>
+						<li>Any game storyline content within such data falls outside the scope of processing by this
+							application to prevent the risk of spoilers. The functional implementation of this
+							application similarly does not require invoking such information.</li>
+						<li>In the case of <em>Honkai: Star Rail</em>, usage is strictly limited to the content
+							available on the day the new version goes live.</li>
+					</ol>
+				</li>
+				<li>If a public provider of datamined resources is suspected of illicitly mining NDA-protected data, the
+					Developer hereby declares: <strong>no interaction with, nor utilization of, such illicit
+						data</strong> shall occur.</li>
+			</ul>
+
+			<h3 id="toc_18">5.3 Technical Considerations for Rejecting Confidential Data</h3>
+
+			<p>In addition to the aforementioned legal risks, another key reason for rejecting non-official game client data
+				is <strong>technical reliability</strong>. Datamined figures from non-official environments (such as
+				game test clients) are highly uncertain and subject to frequent changes before the official launch. Such
+				volatile data cannot serve as a reliable basis for offering precise character stat calculations or
+				stable auxiliary features within this application.</p>
+
+			<h3 id="toc_19">5.4 Integration of Third-Party APIs</h3>
+
+			<ul>
+				<li><strong>Public Character Showcase Interface APIs</strong> (such as Enka.Network): These APIs
+					strictly do not access NDA data; they only relay character showcase data that players have
+					voluntarily made public.</li>
+			</ul>
+
+			<hr />
+
+			<h2 id="toc_20">Article 6: Project Protection Mechanisms and Contributor Rules</h2>
+
+			<p>As an open-source and community-driven project, the Developer has instituted <strong>stringent rules and
+					technical protection mechanisms</strong> for the project&#39;s development workflow and community
+				contributors:</p>
+
+			<h3 id="toc_21">6.1 Technical Protections and Review Mechanisms</h3>
+
+			<ul>
+				<li><strong>Submission Restrictions and Asset Update Pipelines</strong>: The GitHub repository for this
+					application solely accepts Pull Requests pertaining to source code modifications; it utterly refuses
+					any submissions implicating game version data. Updates to game assets are uniformly executed by the
+					Developer’s internal, dedicated Continuous Integration (CI) pipeline. This pipeline enforces
+					data-filtering mechanisms to thwart unauthorized confidential data from infiltrating the outputs.
+				</li>
+				<li><strong>Content Review and Leak Prevention</strong>: The Developer conducts periodic content reviews
+					to ensure the holistic compliance of data sources. Should any potential discrepancy be discovered,
+					please promptly contact <code>contact@pizzastudio.org</code>. The team commits to addressing such
+					issues within 72 hours.</li>
+			</ul>
+
+			<h3 id="toc_22">6.2 Ban on Submitting Leaked Content</h3>
+
+			<p>It is strictly prohibited for anyone to directly submit, indirectly disseminate, cite links to, or
+				implicitly suggest the following contents using Issues, Pull Requests, project discussion boards, or
+				within any related communities:</p>
+
+			<ul>
+				<li><strong>Game Test Client Data</strong>: Any data related to Beta tests or closed network tests.</li>
+				<li><strong>Unreleased Content</strong>: Unreleased character intelligence, unimplemented story texts.
+				</li>
+				<li><strong>Confidential Information</strong>: Any confidential information defined within Article 2 of
+					this statement.</li>
+			</ul>
+
+			<p>Contributors or users violating this ban shall solely bear all resultant legal and breach-of-contract
+				liabilities.</p>
+
+			<h3 id="toc_23">6.3 Contributor Authorization and Warranties</h3>
+
+			<p>Given that the project repository does not accept Pull Requests pertaining to game version
+				data—restricting submissions strictly to code modifications—all participants (including those submitting
+				Issues or PRs, joining discussions, or contributing code) must make the following declarations and
+				warranties:</p>
+
+			<ul>
+				<li><strong>Content Compliance</strong>: All submitted content (including source code, discussions, and
+					proposals) does not encompass any confidential information defined in Article 2 of this statement.
+				</li>
+				<li><strong>Development Originality</strong>: The submitted code was not developed using any
+					NDA-protected techniques, figures, or data as a basis.</li>
+				<li><strong>Prohibition of Inducement and Distribution</strong>: The participant has never disseminated,
+					cited, or implied confidential information in any form (directly or indirectly) within the project
+					community, nor incited someone else to violate NDA terms.</li>
+				<li><strong>Liability for Damages</strong>: Should the submitted content violate the aforementioned
+					warranties, entangling the project or the Developer in legal disputes or causing
+					reputational/property damage, the defaulting contributor shall bear absolute legal responsibility
+					and fully compensate the Developer for all direct and indirect damages sustained.</li>
+			</ul>
+
+			<h3 id="toc_24">6.4 Handling of Feature Requests</h3>
+
+			<p>If a user requests the application to prematurely adapt to &quot;unreleased content only known via
+				leaks,&quot; the request will be <strong>summarily closed and definitively rejected</strong>, without
+				exception.</p>
+
+			<h3 id="toc_25">6.5 Sanctions for Violations</h3>
+
+			<p>For individuals who repeatedly submit NDA-related content in violation of the rules, the Developer may
+				enforce a <strong>permanent ban</strong>, revoking their access to participate in the project. The
+				Developer further reserves the right to gather evidence for presentation to judicial authorities in the
+				event of ensuing litigation.</p>
+
+			<hr />
+
+			<h2 id="toc_26">Article 7: Disclaimer and Copyright Notice</h2>
+
+			<p>&quot;The Latte Helper&quot; is a third-party auxiliary software independently developed by players,
+				representing a fan-made creation. There is <strong>strictly no official contract, sponsorship, or
+					affiliation</strong> with miHoYo, Cognosphere Pte. Ltd., or their affiliated companies.</p>
+
+			<p>The copyrights and trademark rights of the official art assets, game names, and trademarks involved in
+				this application exclusively belong to the original developer (miHoYo / Cognosphere). The initial intent
+				of developing this application is merely to enhance the daily gaming experience of players, strictly
+				adhering to the actual needs of the player community, and it has never incorporated any
+				NDA-Protected Game Test Client Content. The Developer respects and will <strong>strive to
+					protect</strong> the intellectual property rights and commercial interests of the original
+				developer.</p>
+
+			<hr />
+
+			<h2 id="toc_27">Article 8: Conclusion</h2>
+
+			<p>Since its inception, this application has scrupulously adhered to the principle of
+				&quot;<strong>Respecting Originality and Prohibiting Leaks</strong>&quot;. The Developer firmly believes
+				that only by strictly guarding this bottom line can a long-lasting, stable, and valuable service be
+				provided to the player community, thereby contributing our modest efforts to a balanced and healthy
+				gaming ecosystem.</p>
+
+			<p>The Developer hereby appeals to all users and contributors:</p>
+
+			<ul>
+				<li><strong>Support Official Channels</strong>: Obtain game information through official and formal
+					avenues.</li>
+				<li><strong>Reject Leaked Content</strong>: Refrain from disseminating, discussing, or utilizing any
+					leaked content.</li>
+				<li><strong>Exercise Mutual Supervision</strong>: Assist the Developer in maintaining the compliance of
+					this project.</li>
+			</ul>
+
+			<p>We look forward to working hand-in-hand with the development ecosystem and the vast player community to
+				co-create a prosperous gaming industry that respects intellectual property rights and fosters sound
+				growth.</p>
+
+			<hr />
+
+			<p><strong>Pizza Studio</strong><br />
+				March 1, 2026</p>
+
+			<hr />
+
+			<p><em>The ultimate right of interpretation of this statement belongs solely to Pizza Studio.</em></p>
+
+
+		</div>
+		<div id="content-zh-Hant" class="content active" lang="zh-Hant">
+
+			<h1 id="toc_0">關於「對受 NDA 保護的測試服遊戲客戶端內容的不利用、不洩密」的貫徹聲明</h1>
+
+			<blockquote>
+				敝聲明之所有外文翻譯版本僅供參考，概以簡體中文原版對敝軟體之使用者暨貢獻者生拘束力。本文件係披薩工作室（下稱「敝團隊」）之自律聲明暨專案行為準則，雖非司法訴訟上之正式契約，然屬敝專案合規開發暨社群管理之最高準則。
+			</blockquote>
+
+			<p>敝聲明乃披薩工作室所頒布之合規規範，適用於《拿鐵小助手 (The Latte Helper)》（下稱「敝軟體」），並溯及既往適用於已停止開發之前身《披薩小助手 (The Pizza Helper)》5.x
+				版本。</p>
+
+			<p><strong>最後修訂日期：西元二〇二六年三月八日</strong></p>
+
+			<hr />
+
+			<h2 id="toc_1">1. 聲明宗旨與立場</h2>
+
+			<h3 id="toc_2">1.1 背景與必要性</h3>
+
+			<p>鑑於近期針對遊戲未公開內容之系統性竊取暨惡意洩密事件（如 HomDGCat/妮可少女 訴訟案，Case No.
+				1:26-cv-00676-SEG）對整體遊戲社群及開發商造成重大之負面影響，敝團隊爰在此鄭重聲明：</p>
+
+			<p>敝軟體與任何竊取、傳播、利用未公開遊戲資料之「內鬼／洩密」行為者概無任何關聯，並就此類違反保密協定 (NDA)
+				暨侵害營業秘密之<strong>行為</strong>，予以<strong>嚴正切割並劃清界線</strong>。</p>
+
+			<h3 id="toc_3">1.2 生效與修訂</h3>
+
+			<p>敝聲明自發布之日起生效。敝團隊得視法令變更、行業慣例或實務需求，隨時修訂敝聲明，並公告於專案儲存庫。使用者與貢獻者負有定期查閱最新版本之義務。凡繼續使用敝軟體或參與敝專案者，即推定為同意並接受當時有效之聲明條款。
+			</p>
+
+			<hr />
+
+			<h2 id="toc_4">2. 保密資訊之定義</h2>
+
+			<p>敝聲明所指之「保密資訊」，僅限於下列兩類<strong>受 NDA 保護之遊戲客戶端資料內容</strong>：</p>
+
+			<ul>
+				<li>受米哈遊（miHoYo / Cognosphere）保密協定（NDA）條款直接拘束之<strong>遊戲客戶端</strong>資料內容；</li>
+				<li>未經米哈遊主動公開提供之<strong>遊戲客戶端</strong>資料內容。</li>
+			</ul>
+
+			<blockquote>
+				敝團隊<strong>尊重 NDA 作為保密工具之法律正當性</strong>，反對者僅為「<strong>對受 NDA 保護之遊戲客戶端內容的洩密行為</strong>」，而非 NDA 制度本身。
+			</blockquote>
+
+			<p>敝聲明所稱「非保密資訊」，係指已公開之正式服遊戲版本資料內容；其中，原屬保密資訊但與正式服內容一致者，自米哈遊推送「正式服預下載資料」之日起，即解除其保密屬性，歸入非保密資訊之範疇。惟前項預下載資料中涉及遊戲劇情之內容，依法仍屬保密資訊。
+			</p>
+
+			<blockquote>
+				遊戲劇情之内容非敝軟體功能運轉所必需，故不予且無須調用。
+			</blockquote>
+
+			<hr />
+
+			<h2 id="toc_5">3. 洩密行為所致之實質損害</h2>
+
+			<p>敝團隊深知：「將受 NDA 保護之測試服遊戲客戶端內容或未公開資源予以提前洩露」之行為，絕非單純之「資訊分享」，實為對原廠開發團隊（miHoYo / Cognosphere Pte.
+				Ltd.）於多個維度上之<strong>系統性攻擊與實質損害</strong>，其狀包括但不限於：</p>
+
+			<h3 id="toc_6">3.1 直接經濟損失</h3>
+
+			<ul>
+				<li><strong>「未發先冷」效應</strong>：玩家提前獲知角色技能或劇情後，因感受「倦怠」或「不符預期」而放棄消費計畫，直接導致新角色卡池營收之折損。</li>
+				<li><strong>營銷轉化之衝擊</strong>：洩密行為致使官方預熱宣傳失效，已投入之沉沒成本無法產生應有之轉化效益，造成營銷資源之平白耗損。</li>
+			</ul>
+
+			<h3 id="toc_7">3.2 商業模式與宣發節奏之破壞</h3>
+
+			<ul>
+				<li>提前曝光將嚴重干擾官方原定之行銷企劃，致使精心籌劃之「驚喜感」大幅貶值。</li>
+				<li>破壞「藉由遊戲版本更新以提升關注度」之核心營運模式，迫使官方臨時更動版本規劃，徒增營運成本。</li>
+			</ul>
+
+			<h3 id="toc_8">3.3 商業競爭與安全風險</h3>
+
+			<ul>
+				<li>系統性挖掘並公開受 NDA 保護之非公開<strong>遊戲客戶端</strong>數據，等同將核心商業機密（包含角色設計、數值體系、劇情走向、版本規劃）暴露於潛在競爭對手。</li>
+				<li>競爭對手得利用前揭情資提前布局、調整策略，甚或針對性進行挖角，削弱原廠之市場獨占優勢。</li>
+			</ul>
+
+			<h3 id="toc_9">3.4 社群生態之毒化</h3>
+
+			<ul>
+				<li><strong>信賴感瓦解</strong>：洩密內容屢遭斷章取義，致生玩家片面之評價與誤解，引生社群爭端，嚴重敗壞健康之生態環境。</li>
+				<li><strong>驚喜感消退</strong>：玩家提前悉知劇情、角色、活動等資訊，致正式服上線時之新鮮感與探索樂趣大幅低落。</li>
+				<li><strong>公平性受損</strong>：測試服遊戲客戶端數據提前公開，使部分玩家獲致資訊不對稱之優勢，破壞遊戲內之公平競爭環境。</li>
+			</ul>
+
+			<h3 id="toc_10">3.5 創作熱忱之貶抑</h3>
+
+			<p>無視智慧財產權之曝料行為，將嚴重挫傷上游遊戲設計師與開發團隊之創作意願，降低優質遊戲產品之供給，乃至對整體遊戲產業發展生負面之影響。</p>
+
+			<hr />
+
+			<h2 id="toc_11">4. 敝軟體之自律規範與承諾事項</h2>
+
+			<p>為免對原廠造成前條所述之損害，並維護健全之玩家生態，敝軟體承諾恪遵<strong>最高標準之自我合規要求</strong>：</p>
+
+			<h3 id="toc_12">4.1 拒絕收錄受 NDA 保護之測試用遊戲客戶端內容</h3>
+
+			<p>敝軟體<strong>絕不具備、不收錄、亦不展示</strong>任何受 NDA
+				保護且尚未於正式服遊戲客戶端公開之<strong>遊戲客戶端內容</strong>（包括但不限於：角色數值、劇情文本、美術資源及未來之版本規劃）。</p>
+
+			<h3 id="toc_13">4.2 嚴禁對受 NDA 保護之測試用遊戲客戶端的非法探勘</h3>
+
+			<p>敝團隊<strong>絕不參與</strong>任何針對受 NDA
+				保護之測試服遊戲客戶端（含非正式服客戶端）之破解、反編譯、解包或規避加密機制之行為；亦<strong>不與</strong>任何從事此類行為之組織或個人進行此類技術交流或此類資料交換。</p>
+
+			<h3 id="toc_14">4.3 嚴禁違規誘導</h3>
+
+			<p>敝團隊<strong>絕不教唆、煽惑或誘導</strong>任何已簽署 NDA 之內部測試人員洩漏機密。</p>
+
+			<hr />
+
+			<h2 id="toc_15">5. 資料來源合規與透明化</h2>
+
+			<p>敝軟體所取用之所有與遊戲版本相關之資料與素材，其來源均確保為<strong>公開、安全、不涉及 NDA 風險</strong>：</p>
+
+			<h3 id="toc_16">5.1 官方主動公開之資訊</h3>
+
+			<ul>
+				<li>官方藉由社群媒體（如米遊社、HoYoLAB 等）、前瞻直播或官方公告主動發布之資訊。</li>
+				<li>米哈遊官方已對外展示之內容（如「天外衛星通訊」新角色預告、新版本前瞻節目與宣傳影片等）。</li>
+			</ul>
+
+			<h3 id="toc_17">5.2 正式服公開之內容</h3>
+
+			<ul>
+				<li>已正式上線且任一玩家均得存取之即時遊戲客戶端內容。</li>
+				<li>原則上採用遊戲開發團隊於正式開服前一至二日所釋出之<strong>正式服預下載資料</strong>（非測試服遊戲客戶端資料）之第三方探勘結果，惟設有下列限制：
+
+					<ol>
+						<li>該資料中涉及遊戲劇情之內容，非屬敝軟體處理之範疇，以防生劇透之虞。敝軟體之功能實作亦毋須調用此類資訊。</li>
+						<li>於《星穹鐵道》之情形，現僅限使用新版本開服當日起可利用之該版本內容。</li>
+					</ol>
+				</li>
+				<li>倘資料探勘之公開提供方涉有對 NDA 資料進行不法探勘之情事，敝團隊特此聲明：對此類不法資料一概<strong>不予接觸、不予利用</strong>。</li>
+			</ul>
+
+			<h3 id="toc_18">5.3 拒絕採用保密資料之技術考量</h3>
+
+			<p>除前揭法律風險外，敝軟體拒絕使用非正式服資料之另一要旨為<strong>技術可靠性</strong>：非正式服（如測試服遊戲客戶端）之探勘數據具高度不確定性，官方於正式上線前仍可能頻繁更動。此等變動無常之數據，無從作為敝軟體提供精確角色面板計算或穩定輔助功能之可靠依據。
+			</p>
+
+			<h3 id="toc_19">5.4 第三方應用程式介面（API）之介接</h3>
+
+			<ul>
+				<li><strong>角色面板公開查詢介面</strong>（如 Enka.Network 等）：此類 API 概不存取 NDA 資料，僅提供玩家主動公開之角色展櫃數據。</li>
+			</ul>
+
+			<hr />
+
+			<h2 id="toc_20">6. 專案開發防護機制與貢獻者規範</h2>
+
+			<p>身為開源暨社群專案，敝團隊對專案之開發流程與社群貢獻者設有<strong>嚴格之規範與技術防護機制</strong>：</p>
+
+			<h3 id="toc_21">6.1 技術防護與審查機制</h3>
+
+			<ul>
+				<li><strong>提交限制與資源更新管線</strong>：敝軟體之 GitHub 儲存庫僅受理涉及程式碼變更之 Pull
+					Request，概不受理任何涉遊戲版本資料之提交；遊戲資源之更新，悉由敝團隊內部專屬持續整合（Continuous Integration,
+					CI）管線執行，該管線設有資料過濾機制，俾阻絕未經授權之保密資料滲入產出物。</li>
+				<li><strong>內容審查與防漏機制</strong>：敝團隊定期實施內容審查，以確保資料來源全面合規。倘察覺潛在缺失，請逕洽「<code>contact@pizzastudio.org</code>」，敝團隊將於
+					72 小時內處置。</li>
+			</ul>
+
+			<h3 id="toc_22">6.2 內容提交禁令</h3>
+
+			<p>嚴禁任何人於 Issue、Pull Request、專案討論區及所有相關社群中，直接提交、間接傳播、引用連結或變相暗示下列內容：</p>
+
+			<ul>
+				<li><strong>測試服遊戲客戶端數據</strong>：Beta 測試或封閉測試之相關資料。</li>
+				<li><strong>未實裝內容</strong>：尚未公開之角色情報、未實裝之劇情文本。</li>
+				<li><strong>保密資訊</strong>：任何經敝聲明第 2 條所界定之保密資訊。</li>
+			</ul>
+
+			<p>倘貢獻者或使用者違反本項禁令，應自負因此所生之一切法律與違約責任。</p>
+
+			<h3 id="toc_23">6.3 貢獻者之授權與保證</h3>
+
+			<p>鑑於敝專案儲存庫不受理任何涉遊戲版本資料之 Pull Request，僅限程式碼變更類提交，凡參與者（含提交 Issue、PR、參與討論、貢獻代碼者）均應作如下之聲明與保證：</p>
+
+			<ul>
+				<li><strong>內容合規性</strong>：所提交之全部內容（含程式碼、討論、建議等）均未包含敝聲明第 2 條所界定之任何保密資訊。</li>
+				<li><strong>開發原創性</strong>：所提交之程式碼均未以任何受 NDA 保護之技術、數據或資料為基礎進行開發。</li>
+				<li><strong>禁止教唆與散布</strong>：未曾以任何形式（不論直接或間接）於專案社群內散布、引用、暗示保密資訊，亦未教唆他人違反 NDA 條款。</li>
+				<li><strong>損害賠償責任</strong>：倘因提交之內容違反前述保證，致敝專案或敝團隊面臨法律訟累、受有名譽或財產上之損害，違約之貢獻者應承擔悉數法律責任，並對敝團隊所受之直接與間接損害負完全賠償之責。
+				</li>
+			</ul>
+
+			<h3 id="toc_24">6.4 功能請求之處置</h3>
+
+			<p>如使用者請求敝軟體提前適配「尚未正式發布且僅見於曝料」之內容，該請求將予以<strong>逕行關閉 (Closed) 並拒絕處理</strong>，概無例外。</p>
+
+			<h3 id="toc_25">6.5 違規情事之裁處</h3>
+
+			<p>屢次違規提交 NDA 相關內容者，敝團隊得予以<strong>永久封鎖</strong>，拒絕其參與敝專案。敝團隊並保留蒐證之權利，以備於涉訟時向司法機關舉證之用。</p>
+
+			<hr />
+
+			<h2 id="toc_26">7. 免責暨著作權聲明</h2>
+
+			<p>《拿鐵小助手 (The Latte Helper)》係由玩家自發研製之第三方輔助軟體，屬同人創作，與 miHoYo、Cognosphere Pte. Ltd.
+				及其關係企業<strong>概無任何官方契約、贊助或合作關係</strong>。</p>
+
+			<p>敝軟體內所涉官方美術素材、遊戲名稱及商標，其著作權及商標權悉歸原廠（miHoYo /
+				Cognosphere）所有。敝軟體之開發初衷僅在升級玩家日常之遊戲體驗，悉依玩家社群之實際需求而為，絕未採用任何「受 NDA 保護的測試服遊戲客戶端」的資源。敝團隊尊重並將<strong>竭力保障</strong>原廠之智慧財產權與商業利益。
+			</p>
+
+			<hr />
+
+			<h2 id="toc_27">8. 結語</h2>
+
+			<p>敝軟體自肇建之初，即恪遵「<strong>尊重原創、杜絕洩密</strong>」之原則。敝團隊深信，唯有嚴守此等底線，方能為玩家社群提供長治久安且具價值之服務，並為衡平健康之遊戲生態克盡綿薄。</p>
+
+			<p>敝團隊在此呼籲全體使用者暨貢獻者：</p>
+
+			<ul>
+				<li><strong>支持官方途徑</strong>：依循官方正式管道獲取遊戲資訊。</li>
+				<li><strong>杜絕內鬼內容</strong>：不傳播、不討論、不利用任何洩密內容。</li>
+				<li><strong>發揮共同監督</strong>：協助敝團隊維持敝專案之合規性。</li>
+			</ul>
+
+			<p>期能攜手開發生態與廣大玩家，共創尊重智慧財產權、健全蓬勃之遊戲產業榮景。</p>
+
+			<hr />
+
+			<p><strong>披薩工作室</strong><br />
+				<strong>Pizza Studio</strong><br />
+				西元二〇二六年三月一日
+			</p>
+
+			<hr />
+
+			<p><em>敝聲明之最終解釋權，悉歸披薩工作室所有。</em></p>
+
+
+		</div>
+		<div id="content-zh-Hans" class="content" lang="zh-Hans">
+
+			<h1 id="toc_0">关于「对受 NDA 保护的测试服游戏客户端内容的不利用、不泄密」的贯彻声明</h1>
+
+			<blockquote>
+				敝声明之所有外文翻译版本仅供参考，概以简体中文原版对敝软件之使用者暨贡献者生拘束力。本文件系披萨工作室（下称「敝团队」）之自律声明暨专案行为准则，虽非司法诉讼上之正式契约，然属敝专案合规开发暨社群管理之最高准则。
+			</blockquote>
+
+			<p>敝声明乃披萨工作室所颁布之合规规范，适用于《拿铁小助手 (The Latte Helper)》（下称「敝软件」），并溯及既往适用于已停止开发之前身《披萨小助手 (The Pizza Helper)》5.x
+				版本。</p>
+
+			<p><strong>最后修订日期：西元二〇二六年三月八日</strong></p>
+
+			<hr />
+
+			<h2 id="toc_1">1. 声明宗旨与立场</h2>
+
+			<h3 id="toc_2">1.1 背景与必要性</h3>
+
+			<p>鉴于近期针对游戏未公开内容之系统性窃取暨恶意泄密事件（如 HomDGCat/妮可少女 诉讼案，Case No.
+				1:26-cv-00676-SEG）对整体游戏社群及开发商造成重大之负面影响，敝团队爰在此郑重声明：</p>
+
+			<p>敝软件与任何窃取、传播、利用未公开游戏资料之「内鬼／泄密」行为者概无任何关联，并就此类违反保密协定 (NDA)
+				暨侵害营业秘密之<strong>行为</strong>，予以<strong>严正切割并划清界线</strong>。</p>
+
+			<h3 id="toc_3">1.2 生效与修订</h3>
+
+			<p>敝声明自发布之日起生效。敝团队得视法令变更、行业惯例或实务需求，随时修订敝声明，并公告于专案储存库。使用者与贡献者负有定期查阅最新版本之义务。凡继续使用敝软件或参与敝专案者，即推定为同意并接受当时有效之声明条款。
+			</p>
+
+			<hr />
+
+			<h2 id="toc_4">2. 保密资讯之定义</h2>
+
+			<p>敝声明所指之「保密资讯」，仅限于下列两类<strong>受 NDA 保护之游戏客户端资料内容</strong>：</p>
+
+			<ul>
+				<li>受米哈游（miHoYo / Cognosphere）保密协定（NDA）条款直接拘束之<strong>游戏客户端</strong>资料内容；</li>
+				<li>未经米哈游主动公开提供之<strong>游戏客户端</strong>资料内容。</li>
+			</ul>
+
+			<blockquote>
+				敝团队<strong>尊重 NDA 作为保密工具之法律正当性</strong>，反对者仅为「<strong>对受 NDA 保护之游戏客户端内容的洩密行为</strong>」，而非 NDA 制度本身。
+			</blockquote>
+
+			<p>敝声明所称「非保密资讯」，系指已公开之正式服游戏版本资料内容；其中，原属保密资讯但与正式服内容一致者，自米哈游推送「正式服预下载资料」之日起，即解除其保密属性，归入非保密资讯之范畴。惟前项预下载资料中涉及游戏剧情之内容，依法仍属保密资讯。
+			</p>
+
+			<blockquote>
+				游戏剧情之内容非敝软件功能运转所必需，故不予且无须调用。
+			</blockquote>
+
+			<hr />
+
+			<h2 id="toc_5">3. 泄密行为所致之实质损害</h2>
+
+			<p>敝团队深知：「将受 NDA 保护之测试服游戏客户端内容或未公开资源予以提前泄露」之行为，绝非单纯之「资讯分享」，实为对原厂开发团队（miHoYo / Cognosphere Pte.
+				Ltd.）于多个维度上之<strong>系统性攻击与实质损害</strong>，其状包括但不限于：</p>
+
+			<h3 id="toc_6">3.1 直接经济损失</h3>
+
+			<ul>
+				<li><strong>「未发先冷」效应</strong>：玩家提前获知角色技能或剧情后，因感受「倦怠」或「不符预期」而放弃消费计划，直接导致新角色卡池营收之折损。</li>
+				<li><strong>营销转化之冲击</strong>：泄密行为致使官方预热宣传失效，已投入之沉没成本无法产生应有之转化效益，造成营销资源之平白耗损。</li>
+			</ul>
+
+			<h3 id="toc_7">3.2 商业模式与宣发节奏之破坏</h3>
+
+			<ul>
+				<li>提前曝光将严重干扰官方原定之行销企划，致使精心筹划之「惊喜感」大幅贬值。</li>
+				<li>破坏「借由游戏版本更新以提升关注度」之核心营运模式，迫使官方临时更动版本规划，徒增营运成本。</li>
+			</ul>
+
+			<h3 id="toc_8">3.3 商业竞争与安全风险</h3>
+
+			<ul>
+				<li>系统性挖掘并公开受 NDA 保护之非公开<strong>游戏客户端</strong>数据，等同将核心商业机密（包含角色设计、数值体系、剧情走向、版本规划）暴露于潜在竞争对手。</li>
+				<li>竞争对手得利用前揭情资提前布局、调整策略，甚或针对性进行挖角，削弱原厂之市场独占优势。</li>
+			</ul>
+
+			<h3 id="toc_9">3.4 社群生态之毒化</h3>
+
+			<ul>
+				<li><strong>信赖感瓦解</strong>：泄密内容屡遭断章取义，致生玩家片面之评价与误解，引生社群争端，严重败坏健康之生态环境。</li>
+				<li><strong>惊喜感消退</strong>：玩家提前悉知剧情、角色、活动等资讯，致正式服上线时之新鲜感与探索乐趣大幅低落。</li>
+				<li><strong>公平性受损</strong>：测试服游戏客户端数据提前公开，使部分玩家获致资讯不对称之优势，破坏游戏内之公平竞争环境。</li>
+			</ul>
+
+			<h3 id="toc_10">3.5 创作热忱之贬抑</h3>
+
+			<p>无视智慧财产权之曝料行为，将严重挫伤上游游戏设计师与开发团队之创作意愿，降低优质游戏产品之供给，乃至对整体游戏产业发展生负面之影响。</p>
+
+			<hr />
+
+			<h2 id="toc_11">4. 敝软件之自律规范与承诺事项</h2>
+
+			<p>为免对原厂造成前条所述之损害，并维护健全之玩家生态，敝软件承诺恪遵<strong>最高标准之自我合规要求</strong>：</p>
+
+			<h3 id="toc_12">4.1 拒绝收录受 NDA 保护之測試用游戏客户端内容</h3>
+
+			<p>敝软件<strong>绝不具备、不收录、亦不展示</strong>任何受 NDA
+				保护且尚未于正式服游戏客户端公开之<strong>游戏客户端内容</strong>（包括但不限于：角色数值、剧情文本、美术资源及未来之版本规划）。</p>
+
+			<h3 id="toc_13">4.2 严禁对受 NDA 保护之封测试用游戏客户端的非法探勘</h3>
+
+			<p>敝团队<strong>绝不参与</strong>任何针对受 NDA
+				保护之测试服游戏客户端（含非正式服客户端）之破解、反编译、解包或规避加密机制之行为；亦<strong>不与</strong>任何从事此类行为之组织或个人进行此类技术交流或此类资料交换。</p>
+
+			<h3 id="toc_14">4.3 严禁违规诱导</h3>
+
+			<p>敝团队<strong>绝不教唆、煽惑或诱导</strong>任何已签署 NDA 之内部测试人员泄漏机密。</p>
+
+			<hr />
+
+			<h2 id="toc_15">5. 资料来源合规与透明化</h2>
+
+			<p>敝软件所取用之所有与游戏版本相关之资料与素材，其来源均确保为<strong>公开、安全、不涉及 NDA 风险</strong>：</p>
+
+			<h3 id="toc_16">5.1 官方主动公开之资讯</h3>
+
+			<ul>
+				<li>官方借由社群媒体（如米游社、HoYoLAB 等）、前瞻直播或官方公告主动发布之资讯。</li>
+				<li>米哈游官方已对外展示之内容（如「天外卫星通讯」新角色预告、新版本前瞻节目与宣传影片等）。</li>
+			</ul>
+
+			<h3 id="toc_17">5.2 正式服公开之内容</h3>
+
+			<ul>
+				<li>已正式上线且任一玩家均得存取之即时游戏客户端内容。</li>
+				<li>原则上采用游戏开发团队于正式开服前一至二日所释出之<strong>正式服预下载资料</strong>（非测试服游戏客户端资料）之第三方探勘结果，惟设有下列限制：
+
+					<ol>
+						<li>该资料中涉及游戏剧情之内容，非属敝软件处理之范畴，以防生剧透之虞。敝软件之功能实作亦毋须调用此类资讯。</li>
+						<li>于《星穹铁道》之情形，现仅限使用新版本开服当日起可利用之该版本内容。</li>
+					</ol>
+				</li>
+				<li>倘资料探勘之公开提供方涉有对 NDA 资料进行不法探勘之情事，敝团队特此声明：对此类不法资料一概<strong>不予接触、不予利用</strong>。</li>
+			</ul>
+
+			<h3 id="toc_18">5.3 拒绝采用保密资料之技术考量</h3>
+
+			<p>除前揭法律风险外，敝软件拒绝使用非正式服资料之另一要旨为<strong>技术可靠性</strong>：非正式服（如测试服游戏客户端）之探勘数据具高度不确定性，官方于正式上线前仍可能频繁更动。此等变动无常之数据，无从作为敝软件提供精确角色面板计算或稳定辅助功能之可靠依据。
+			</p>
+
+			<h3 id="toc_19">5.4 第三方应用程式介面（API）之介接</h3>
+
+			<ul>
+				<li><strong>角色面板公开查询介面</strong>（如 Enka.Network 等）：此类 API 概不存取 NDA 资料，仅提供玩家主动公开之角色展柜数据。</li>
+			</ul>
+
+			<hr />
+
+			<h2 id="toc_20">6. 专案开发防护机制与贡献者规范</h2>
+
+			<p>身为开源暨社群专案，敝团队对专案之开发流程与社群贡献者设有<strong>严格之规范与技术防护机制</strong>：</p>
+
+			<h3 id="toc_21">6.1 技术防护与审查机制</h3>
+
+			<ul>
+				<li><strong>提交限制与资源更新管线</strong>：敝软件之 GitHub 储存库仅受理涉及程式码变更之 Pull
+					Request，概不受理任何涉游戏版本资料之提交；游戏资源之更新，悉由敝团队内部专属持续整合（Continuous Integration,
+					CI）管线执行，该管线设有资料过滤机制，俾阻绝未经授权之保密资料渗入产出物。</li>
+				<li><strong>内容审查与防漏机制</strong>：敝团队定期实施内容审查，以确保资料来源全面合规。倘察觉潜在缺失，请迳洽「<code>contact@pizzastudio.org</code>」，敝团队将于
+					72 小时内处置。</li>
+			</ul>
+
+			<h3 id="toc_22">6.2 内容提交禁令</h3>
+
+			<p>严禁任何人于 Issue、Pull Request、专案讨论区及所有相关社群中，直接提交、间接传播、引用连结或变相暗示下列内容：</p>
+
+			<ul>
+				<li><strong>测试服游戏客户端数据</strong>：Beta 测试或封闭测试之相关资料。</li>
+				<li><strong>未实装内容</strong>：尚未公开之角色情报、未实装之剧情文本。</li>
+				<li><strong>保密资讯</strong>：任何经敝声明第 2 条所界定之保密资讯。</li>
+			</ul>
+
+			<p>倘贡献者或使用者违反本项禁令，应自负因此所生之一切法律与违约责任。</p>
+
+			<h3 id="toc_23">6.3 贡献者之授权与保证</h3>
+
+			<p>鉴于敝专案储存库不受理任何涉游戏版本资料之 Pull Request，仅限程式码变更类提交，凡参与者（含提交 Issue、PR、参与讨论、贡献代码者）均应作如下之声明与保证：</p>
+
+			<ul>
+				<li><strong>内容合规性</strong>：所提交之全部内容（含程式码、讨论、建议等）均未包含敝声明第 2 条所界定之任何保密资讯。</li>
+				<li><strong>开发原创性</strong>：所提交之程式码均未以任何受 NDA 保护之技术、数据或资料为基础进行开发。</li>
+				<li><strong>禁止教唆与散布</strong>：未曾以任何形式（不论直接或间接）于专案社群内散布、引用、暗示保密资讯，亦未教唆他人违反 NDA 条款。</li>
+				<li><strong>损害赔偿责任</strong>：倘因提交之内容违反前述保证，致敝专案或敝团队面临法律讼累、受有名誉或财产上之损害，违约之贡献者应承担悉数法律责任，并对敝团队所受之直接与间接损害负完全赔偿之责。
+				</li>
+			</ul>
+
+			<h3 id="toc_24">6.4 功能请求之处置</h3>
+
+			<p>如使用者请求敝软件提前适配「尚未正式发布且仅见于曝料」之内容，该请求将予以<strong>迳行关闭 (Closed) 并拒绝处理</strong>，概无例外。</p>
+
+			<h3 id="toc_25">6.5 违规情事之裁处</h3>
+
+			<p>屡次违规提交 NDA 相关内容者，敝团队得予以<strong>永久封锁</strong>，拒绝其参与敝专案。敝团队并保留搜证之权利，以备于涉讼时向司法机关举证之用。</p>
+
+			<hr />
+
+			<h2 id="toc_26">7. 免责暨著作权声明</h2>
+
+			<p>《拿铁小助手 (The Latte Helper)》系由玩家自发研制之第三方辅助软件，属同人创作，与 miHoYo、Cognosphere Pte. Ltd.
+				及其关系企业<strong>概无任何官方契约、赞助或合作关系</strong>。</p>
+
+			<p>敝软件内所涉官方美术素材、游戏名称及商标，其著作权及商标权悉归原厂（miHoYo /
+				Cognosphere）所有。敝软件之开发初衷仅在升级玩家日常之游戏体验，悉依玩家社群之实际需求而为，绝未采用任何「受 NDA 保护的测试服游戏客户端」的资源。敝团队尊重并将<strong>竭力保障</strong>原厂之智慧财产权与商业利益。
+			</p>
+
+			<hr />
+
+			<h2 id="toc_27">8. 结语</h2>
+
+			<p>敝软件自肇建之初，即恪遵「<strong>尊重原创、杜绝泄密</strong>」之原则。敝团队深信，唯有严守此等底线，方能为玩家社群提供长治久安且具价值之服务，并为衡平健康之游戏生态克尽绵薄。</p>
+
+			<p>敝团队在此呼吁全体使用者暨贡献者：</p>
+
+			<ul>
+				<li><strong>支持官方途径</strong>：依循官方正式管道获取游戏资讯。</li>
+				<li><strong>杜绝内鬼内容</strong>：不传播、不讨论、不利用任何泄密内容。</li>
+				<li><strong>发挥共同监督</strong>：协助敝团队维持敝专案之合规性。</li>
+			</ul>
+
+			<p>期能携手开发生态与广大玩家，共创尊重智慧财产权、健全蓬勃之游戏产业荣景。</p>
+
+			<hr />
+
+			<p><strong>披萨工作室</strong><br />
+				<strong>Pizza Studio</strong><br />
+				西元二〇二六年三月一日
+			</p>
+
+			<hr />
+
+			<p><em>敝声明之最终解释权，悉归披萨工作室所有。</em></p>
+
+
+		</div>
+		<div id="content-ja-JP" class="content" lang="ja">
+
+			<h1 id="toc_0">NDA の加護を受くゲームテストクライエント資料の不使用と不漏洩の誓約</h1>
+
+			<blockquote>
+				本書の全ての翻訳は参考のためのみ提供され、簡体字中国語の原本のみが当ソフトウェアの使用者および貢献者に対して法的拘束力を有す。本文書はピザスタジオ（以下「当チーム」という）の自主規制宣言およびプロジェクト行動規範であり、司法上の正式な契約ではないが、当プロジェクトのコンプライアンス開発およびコミュニティ管理の最高基準である。
+			</blockquote>
+
+			<p>本宣言は、ピザスタジオが制定せしコンプライアンス規範であり、『ラテ助手 (The Latte Helper)』（以下「当ソフトウェア」という）に適用され、また開発を終了せし前身たる『ピザ助手 (The
+				Pizza Helper)』5.x バージョンに対しても遡及して適用されるものとす。</p>
+
+			<p><strong>最終改訂日：令和八年(2026年)三月八日</strong></p>
+
+			<hr />
+
+			<h2 id="toc_1">1. 宣言の趣旨および立場</h2>
+
+			<h3 id="toc_2">1.1 背景および必要性</h3>
+
+			<p>近時、未公開のゲームコンテンツに対する組織的な窃取および悪意ある漏洩事件（例えば HomDGCat・ニコール少女 訴訟事件、Case No.
+				1:26-cv-00676-SEG）が、ゲームコミュニティ全体および開発元に重大な悪影響を及ぼしていることに鑑み、当チームはここに厳粛に宣言す：</p>
+
+			<p>当ソフトウェアは、未公開のゲームデータを窃取、伝播、利用するいかなる「インサイダー／リーカー」の行為者とも一切の関わりを持たず、秘密保持契約（NDA）に違反し営業秘密を侵害するこれら<strong>行為</strong>に対し、<strong>断固として関係を絶ち、明確な一線を画するものとす</strong>。
+			</p>
+
+			<h3 id="toc_3">1.2 発効および改訂</h3>
+
+			<p>本宣言は発表の日より効力を生ず。当チームは、法令の変更、業界の慣行、または実務上の必要に応じ、本宣言を随時改訂し、プロジェクトのリポジトリに公告せし権利を有す。使用者および貢献者は、定期的に最新版を確認せし義務を負う。本ソフトウェアの利用を継続し、または当プロジェクトに参加せし者は、その時点で有効な宣言条項に同意し受諾したものと見なされる。
+			</p>
+
+			<hr />
+
+			<h2 id="toc_4">2. 秘密情報の定義</h2>
+
+			<p>本宣言にいう「秘密情報」とは、以下の二種類の<strong>NDAによって保護されるゲームクライアントデータ内容</strong>に限定されるものとす：</p>
+
+			<ul>
+				<li>miHoYo / Cognosphere の秘密保持契約（NDA）条項に直接拘束される<strong>ゲームクライアント</strong>のデータ内容。</li>
+				<li>miHoYo が自発的に公開し提供していない<strong>ゲームクライアント</strong>のデータ内容。</li>
+			</ul>
+
+			<blockquote>
+				当チームは、<strong>機密保持手段としてのNDAの法的正当性を尊重しており</strong>、反対するのは「<strong>NDAによって保護されたゲームクライアント内容に対する漏洩行為</strong>」のみであり、NDA制度そのものに反対するものではない。
+			</blockquote>
+
+			<p>本宣言にいう「非秘密情報」とは、既に公開された正式ゲームクライアントのゲームバージョンのデータ内容を指す。このうち、本来秘密情報であったが正式ゲームクライアントの内容と一致するものについては、miHoYo
+				が「正式ゲームクライアント向け事前ダウンロードデータ」を配信せし日より、その秘密属性は解除され、非秘密情報の範疇に属するものとす。但し、当該事前ダウンロードデータに含まれるゲームのシナリオ内容については、法に基づき依然として秘密情報に属するものとす。
+			</p>
+
+			<blockquote>
+				ゲームのシナリオ内容は当ソフトウェアの機能稼働に必須ではなく、故に呼び出すことはなく、その必要もなし。
+			</blockquote>
+
+			<hr />
+
+			<h2 id="toc_5">3. 漏洩行為がもたらす実質的損害</h2>
+
+			<p>当チームは深く承知す：「NDAによって保護されたゲームテストクライエントの内容または未公開のリソースを提前に漏洩せしめる」行為は、決して単なる「情報共有」などではなく、原開発会社（miHoYo /
+				Cognosphere）の多次元にわたる<strong>組織的攻撃および実質的損害</strong>に他ならず、その実態は以下の通りであるが、これに限定されぬ：</p>
+
+			<h3 id="toc_6">3.1 直接的な経済的損失</h3>
+
+			<ul>
+				<li><strong>「実装前の熱冷め」効果</strong>：プレイヤーがキャラクターのスキルやシナリオを事前に知ることで、「飽き」を感じたり「期待外れ」と思ったりして消費計画を放棄し、それが新キャラクターのガチャの収益の直接的な毀損に繋がる。
+				</li>
+				<li><strong>マーケティング転換への打撃</strong>：漏洩行為は公式のプレ宣伝を無効化し、既に投入せしサンクコストが本来の転換効果を生まず、マーケティングリソースの徒労を招く。</li>
+			</ul>
+
+			<h3 id="toc_7">3.2 ビジネスモデルと宣伝スケジュールの破壊</h3>
+
+			<ul>
+				<li>早期の暴露は公式の当初のマーケティング企画を著しく妨害し、綿密に計画された「サプライズ感」の価値を大幅に貶める。</li>
+				<li>「ゲームのバージョンアップデートを通じて注目度を高める」という核心的運営モデルを破壊し、公式にバージョンプランの一時的な変更を強要し、無用の運営コストを増加せしめる。</li>
+			</ul>
+
+			<h3 id="toc_8">3.3 商業的競争および安全保障上のリスク</h3>
+
+			<ul>
+				<li>NDAによって保護された未公開の<strong>ゲームクライアント</strong>データを組織的に発掘し公開せし行為は、核心的な企業秘密（キャラクターデザイン、数値体系、シナリオの展開、バージョンプラン等を含む）を潜在的競争相手に暴露するに等しい。
+				</li>
+				<li>競争相手はその情報を用いて事前の布石を打ち、戦略を調整し、甚だしきはターゲットを絞って引き抜きを行うなど、原開発元の市場の独占的優位を弱体化せしめる恐れあり。</li>
+			</ul>
+
+			<h3 id="toc_9">3.4 コミュニティ環境の毒化</h3>
+
+			<ul>
+				<li><strong>信頼感の崩壊</strong>：漏洩内容は度々文脈を無視して切り取られ、プレイヤーの偏った評価や誤解を生み、コミュニティの紛争を引き起こし、健全な環境を著しく悪化せしめる。</li>
+				<li><strong>サプライズ感の消失</strong>：プレイヤーが事前にシナリオ、キャラクター、イベント等の情報を知破ることで、正式ゲームクライアント実装時の新鮮味や探索の楽しみが著しく低下す。</li>
+				<li><strong>公平性の毀損</strong>：ゲームテストクライエントデータが提前に公開されることで、一部のプレイヤーが情報非対称の優位を得ることとなり、ゲーム内の公平な競争環境を破壊す。</li>
+			</ul>
+
+			<h3 id="toc_10">3.5 創作意欲の減耗</h3>
+
+			<p>知的財産権を無視せし暴露行為は、上流のゲームデザイナーや開発チームの創作意欲を著しく挫き、良質なゲーム製品の供給を低下せしめ、更にはゲーム産業全体の発展に悪影響を及ぼすこととなる。</p>
+
+			<hr />
+
+			<h2 id="toc_11">4. 当ソフトウェアの自主規制と誓約事項</h2>
+
+			<p>前条に述べた原開発元への損害を避け、かつ健全なプレイヤー環境を維持せしため、当ソフトウェアは<strong>最高水準の自己コンプライアンス要求</strong>を厳守することを誓約す：</p>
+
+			<h3 id="toc_12">4.1 NDAに保護されたテスト用ゲームクライアント内容の収録拒否</h3>
+
+			<p>当ソフトウェアは、NDAによって保護され未だ正式ゲームクライアントにて公開されていない<strong>ゲームクライアント内容</strong>（キャラクターの数値、シナリオのテキスト、美術リソースおよび将来のバージョンプランを含むがこれに限らず）を<strong>決して保有せず、収録せず、展示せぬものとす</strong>。
+			</p>
+
+			<h3 id="toc_13">4.2 NDAに保護されたテスト用ゲームクライアントの不法な探査の厳禁</h3>
+
+			<p>当チームは、<strong>NDAによって保護された</strong>ゲームテストクライエントの<strong>ゲームクライアント</strong>（非正式ゲームクライアントを含む）に対するクラッキング、デコンパイル、アンパックまたは暗号化メカニズムの回避行為に<strong>決して関与せず</strong>；また、かかる行為に従事するいかなる組織または個人とも、これら技術交流やデータ交換を<strong>行わぬものとす</strong>。
+			</p>
+
+			<h3 id="toc_14">4.3 違反の誘引等の厳禁</h3>
+
+			<p>当チームは、既にNDAに署名せし内部テスト参加者に対し、機密漏洩の<strong>教唆、煽動または誘引を決して行わぬものとす</strong>。</p>
+
+			<hr />
+
+			<h2 id="toc_15">5. データソースの合法的裏付けと透明性</h2>
+
+			<p>当ソフトウェアが利用せしすべてのゲームバージョンに関連するデータおよび素材は、そのソースが<strong>公開され、安全であり、NDAのリスクを伴わぬ</strong>ことを保証す：</p>
+
+			<h3 id="toc_16">5.1 公式が自発的に公開せし情報</h3>
+
+			<ul>
+				<li>公式がソーシャルメディア（例：HoYoLAB 等）、予告番組または公式告知を通じて自発的に発表せし情報。</li>
+				<li>miHoYo 公式がすでに外部に展示せし内容（例：「天外衛星通信」新キャラクター予告、新バージョンの予告番組および宣伝用動画等）。</li>
+			</ul>
+
+			<h3 id="toc_17">5.2 正式ゲームクライアントにて公開せし内容</h3>
+
+			<ul>
+				<li>既に正式にサービスインし、いかなるプレイヤーもアクセス可能な状態にあるリアルタイムのゲームクライアント内容。</li>
+				<li>原則として、ゲーム開発チームが正式サービス開始の１～２日前に提供せし<strong>正式ゲームクライアント向け事前ダウンロードデータ</strong>（ゲームテストクライエントのデータではない）の第三者による探査結果を用いんとするが、以下の制限を設ける：
+
+					<ol>
+						<li>当該データに含まれるゲームのシナリオ内容については、ネタバレの恐れを防ぐため、当ソフトウェアが取り扱う範疇には属さぬものとす。当ソフトウェアの機能実装においても、かかる情報を呼び出す必要は一切なし。
+						</li>
+						<li>『崩壊：スターレイル』の場合においては、新バージョンが正式公開された当日から利用可能な当該バージョンの内容に限って使用す。</li>
+					</ol>
+				</li>
+				<li>若しデータ探査の公開提供者がNDAデータに対する不法な探査に関与している疑いがある場合、当チームはここに宣言す：かかる不法なデータには一切<strong>接触せず、利用せぬものとす</strong>。
+				</li>
+			</ul>
+
+			<h3 id="toc_18">5.3 秘密データ採用を拒否する技術的理由</h3>
+
+			<p>前述せし法的リスクに加え、当ソフトウェアが非正式ゲームクライアントの使用を拒否するもう一つの要旨は<strong>技術的信頼性</strong>にあり。非正式ゲームクライアント（ゲームテストクライエント等）の探査データは極めて不確実性が高く、公式は正式稼働前に度々変更を加え得る。これら変動の激しいデータは、当ソフトウェアが精確なキャラクターのステータス計算や安定した補助機能を提供するための信頼し得る根拠とは絶対になり得ぬものとす。
+			</p>
+
+			<h3 id="toc_19">5.4 サードパーティAPIの接続</h3>
+
+			<ul>
+				<li><strong>キャラクターステータス公開照会インターフェース</strong>（Enka.Network等）：これらのAPIは一切NDAデータにアクセスせず、プレイヤーが自発的に公開せしキャラクター展示データのみを提供するものとす。
+				</li>
+			</ul>
+
+			<hr />
+
+			<h2 id="toc_20">6. プロジェクト開発の防御メカニズムと貢献者規範</h2>
+
+			<p>オープンソースおよびコミュニティのプロジェクトとして、当チームはプロジェクトの開発プロセスおよびコミュニティの貢献者に対して<strong>厳格な規範および技術的防御メカニズム</strong>を設く：</p>
+
+			<h3 id="toc_21">6.1 技術的防御および審査メカニズム</h3>
+
+			<ul>
+				<li><strong>提出の制限およびリソース更新のパイプライン</strong>：当ソフトウェアの GitHub リポジトリにおいて受理するのは、ソースコードの変更を伴う Pull
+					Request（プルリクエスト）のみであり、ゲームバージョンのデータが関与する提出は一切受理せぬ；ゲームリソースの更新については、すべて当チーム内部の専用の継続的インテグレーション（Continuous
+					Integration, CI）パイプラインによって実行され、当該パイプラインにはデータフィルタリングメカニズムが備えられており、これにより許可なく秘密データが生成物へ混入することを阻止す。</li>
+				<li><strong>内容の審査および漏洩防止メカニズム</strong>：当チームは定期的に内容の審査を実施し、データソースの全面的な合法性を確保す。もし潜在的欠陥を発見した場合、直ちに「<code>contact@pizzastudio.org</code>」へ連絡せよ。当チームは72時間以内に処置を行うべし。
+				</li>
+			</ul>
+
+			<h3 id="toc_22">6.2 内容提出の禁止令</h3>
+
+			<p>何人も、Issue、Pull
+				Request、プロジェクトの議論フォーラムおよびすべての関連コミュニティにおいて、以下の内容を直接提出し、間接的に伝播し、リンクを引用し、または形を変えて暗示せしことを<strong>厳に禁ずる</strong>：
+			</p>
+
+			<ul>
+				<li><strong>ゲームテストクライエントデータ</strong>：Betaテストまたはクローズドテストの関連データ。</li>
+				<li><strong>未実装内容</strong>：未だ公開されていないキャラクター情報、未実装のシナリオテキスト。</li>
+				<li><strong>秘密情報</strong>：いかなる場合も本宣言第2条において定義せし秘密情報。</li>
+			</ul>
+
+			<p>もし貢献者または使用者が本禁止令に違反した場合、これにより生じうる一切の法的および契約違反の責任を自ら負うものとす。</p>
+
+			<h3 id="toc_23">6.3 貢献者の許諾および保証</h3>
+
+			<p>当プロジェクトのリポジトリにおいてゲームバージョンデータが関与するいかなる Pull Request
+				も受理せぬこと、すなわちソースコード変更の提出に限ることの性質上、参加者（Issue、PRの提出、議論の参加、コードの貢献者を含む）は皆、以下の宣言および保証を行わねばならぬ：</p>
+
+			<ul>
+				<li><strong>内容の合法的裏付け</strong>：提出せしすべての内容（コード、議論、提案を含む）は、本宣言第2条において定義せし如何なる秘密情報も含まぬこと。</li>
+				<li><strong>開発の独自性</strong>：提出せしコードは、NDAによって保護された技術、データまたは情報等にいかなる根拠も求めて開発されたものではなきこと。</li>
+				<li><strong>教唆および流布の禁止</strong>：未だかつて如何なる形式（直接間接を問わず）においても、プロジェクトコミュニティ内にて秘密情報を流布し、引用し、暗示せしことはなく、また他者にNDA条項の違反を教唆せしこともなきこと。
+				</li>
+				<li><strong>損害賠償責任</strong>：万一提出せし内容が前述の保証に反し、これにより当プロジェクトまたは当チームが法的手続きに巻き込まれ、名誉または財産上の損害を被る事態となった場合、違反せし貢献者はすべての法的責任を負い、当チームの被りたる直接的および間接的損害の全てを賠償せし全責任を負うものとす。
+				</li>
+			</ul>
+
+			<h3 id="toc_24">6.4 機能リクエストに対する処分</h3>
+
+			<p>もし使用者が当ソフトウェアに対し、「未だ正式に発表されずして情報漏洩のみによって知られる」内容に対する事前の対応（先行実装等）を求めた場合、そのリクエストは<strong>ただちにクローズ (Closed)
+					され、対応を拒否されるものとす</strong>。これに例外はなし。</p>
+
+			<h3 id="toc_25">6.5 違反事項に対する裁定</h3>
+
+			<p>度重なりNDAの関連内容を違反して提出せし者に対し、当チームはこれを<strong>永久に遮断（BAN）</strong>し、当プロジェクトへの参加を拒絶せし権利を有す。当チームはまた、訴訟の際に司法機関へ立証するための用に供すべく、証拠を収集せし権利を留保するものとす。
+			</p>
+
+			<hr />
+
+			<h2 id="toc_26">7. 免責および著作権声明</h2>
+
+			<p>『ラテ助手 (The Latte Helper)』は、プレイヤーが自発的に開発せしサードパーティの補助ソフトウェアであり、同人創作に属し、miHoYo、Cognosphere Pte. Ltd.
+				およびその関連会社とは<strong>いかなる公式の契約、スポンサーシップまたは提携関係も一切有せぬ</strong>。</p>
+
+			<p>当ソフトウェア内で用いられる公式の美術素材、ゲーム名称および商標の著作権ならびに商標権は、すべて原開発会社（miHoYo /
+				Cognosphere）に帰属す。当ソフトウェアの開発の初志は、専らプレイヤーの日常のゲーム体験を向上させることにあり、プレイヤーコミュニティの実際の要望に基づいて行われしものであって、「NDA の加護を受くゲームテストクライエント資料」は決して採用しておらぬ。当チームは原開発会社の知的財産権および商業的利益を尊重し、<strong>その保護に尽力せしものとす</strong>。
+			</p>
+
+			<hr />
+
+			<h2 id="toc_27">8. 結語</h2>
+
+			<p>当ソフトウェアは、その創設の当初より「<strong>独創性を尊重し、漏洩を杜絶す</strong>」との原則を厳守してきたものとす。当チームは、此等の越えてはならぬ一線を厳守するにのみ、プレイヤーコミュニティに対して長きにわたり安定して価値あるサービスを提供し得、かつ均衡のとれた健全なるゲームエコシステムに微力を尽くし得るものと固く信ず。
+			</p>
+
+			<p>当チームはここに、すべての使用者および貢献者に対して以下の通り呼びかけん：</p>
+
+			<ul>
+				<li><strong>公式の経路の支持</strong>：ゲーム情報は公式の正式な経路より取得せよ。</li>
+				<li><strong>インサイダー情報の杜絶</strong>：いかなる漏洩内容も伝播せず、議論せず、利用せざること。</li>
+				<li><strong>共同での監視の遂行</strong>：当チームが当プロジェクトの合法的裏付けを維持すべく、これに協力せよ。</li>
+			</ul>
+
+			<p>開発エコシステムおよび広範なるプレイヤーと手を携え、知的財産権が尊重され、健全にして繁栄するゲーム産業の好景気を共に創り出さんことを期す。</p>
+
+			<hr />
+
+			<p><strong>ピザスタジオ</strong><br />
+				<strong>Pizza Studio</strong><br />
+				西暦二〇二六年三月一日
+			</p>
+
+			<hr />
+
+			<p><em>本宣言の最終的な解釈権は、すべてピザスタジオに帰属するものとす。</em></p>
+		</div>
+	</main>
+</body>
+
+</html>
