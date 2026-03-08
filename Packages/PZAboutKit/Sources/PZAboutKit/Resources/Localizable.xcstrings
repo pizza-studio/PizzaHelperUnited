@@ -5636,6 +5636,82 @@
         }
       }
     },
+    "aboutKit.ZeroLeaksPledge.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erklärung zur Keine Nutzung und Keine Lecks von NDA-geschütztem Game-Test-Client-Inhalt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pledge on Zero Use & Zero Leaks of NDA-Protected Game Test Client Content"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compromiso sobre Cero Uso y Cero Filtraciones de Contenido de Cliente de Prueba de Juego Protegido por NDA"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pangako tungkol sa Zero Use at Zero Leaks ng NDA-Protected Game Test Client Content"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engagement sur l'Utilisation Zéro et Les Zéro Fuites du Contenu du Client de Test de Jeu Protégé par NDA"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impegno su Zero Uso e Zero Fughe di Contenuti del Client di Test del Gioco Protetti da NDA"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NDA の加護を受くゲームテストクライエント資料の不使用と不漏洩の誓約"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NDA로 보호된 게임 테스트 클라이언트 콘텐츠의 영점 사용 및 영점 유출에 대한 약속"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обязательство об отсутствии использования и утечек защищённого NDA содержимого тестового клиента игры"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cam Kết về Sử Dụng Không và Không Rò Rỉ Nội Dung Máy Khách Thử Nghiệm Trò Chơi Được Bảo Vệ bởi NDA"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于「对受 NDA 保护的测试服游戏客户端内容的不利用、不泄密」的贯彻声明"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於「對受 NDA 保護的測試服遊戲客戶端內容的不利用、不洩密」的貫徹聲明"
+          }
+        }
+      }
+    },
     "oobe.button.next" : {
       "localizations" : {
         "de" : {

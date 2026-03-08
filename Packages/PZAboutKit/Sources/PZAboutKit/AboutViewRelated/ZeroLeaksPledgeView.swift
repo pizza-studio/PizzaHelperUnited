@@ -1,0 +1,80 @@
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
+
+import Foundation
+import PZBaseKit
+import SwiftUI
+
+// MARK: - ZeroLeaksPledgeView
+
+@available(iOS 16.0, macCatalyst 16.0, *)
+public struct ZeroLeaksPledgeView: View {
+    // MARK: Lifecycle
+
+    public init(completionHandler: (() -> Void)? = nil) {
+        self.completionHandler = completionHandler
+    }
+
+    // MARK: Public
+
+    public static let navTitle: String = {
+        let key: String.LocalizationValue = "aboutKit.ZeroLeaksPledge.title"
+        return .init(localized: key, bundle: .currentSPM)
+    }()
+
+    public var body: some View {
+        NavigationStack {
+            WebBrowserView(url: Self.urlString)
+                .navigationTitle(Self.navTitle)
+                .navBarTitleDisplayMode(.inline)
+                .apply { content in
+                    if let completionHandler {
+                        content
+                            .navigationBarBackButtonHidden()
+                            .toolbar {
+                                ToolbarItem(placement: .cancellationAction) {
+                                    Button("sys.decline".i18nBaseKit) {
+                                        exit(1)
+                                    }
+                                }
+                                ToolbarItem(placement: .primaryAction) {
+                                    Button("sys.agree".i18nBaseKit) {
+                                        completionHandler()
+                                    }
+                                }
+                            }
+                    } else {
+                        content
+                    }
+                }
+        }
+    }
+
+    // MARK: Private
+
+    private static let urlString: String = {
+        let fileURL = Bundle.currentSPM.url(forResource: "ZERO_LEAKS_PLEDGE", withExtension: "html")
+        let url: String = {
+            switch Locale.preferredLanguages.first?.prefix(2) {
+            case "zh":
+                return "https://hsr.pizzastudio.org/static/policy"
+            case "ja":
+                return "https://hsr.pizzastudio.org/static/policy_ja"
+            default:
+                return "https://hsr.pizzastudio.org/static/policy_en"
+            }
+        }()
+        return fileURL?.absoluteString ?? url
+    }()
+
+    private let completionHandler: (() -> Void)?
+}
+
+extension Defaults.Keys {
+    public static let isZeroLeaksPledgeConfirmed = Key<Bool>(
+        "isZeroLeaksPledgeConfirmed",
+        default: false,
+        suite: .baseSuite
+    )
+}
