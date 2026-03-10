@@ -71,10 +71,22 @@ extension CGImage {
 
     /// 通过CGContext进行替代解码。
     /// 有些表情包的图片是用 URGB 色彩空间编码的，必须手动解码，否则只能解出一张白色噪点图。
+    /// 兼容各种 alpha 模式和无 alpha 图像。
     private static func decodeImageManually(_ sourceImage: CGImage, width: Int, height: Int) -> CGImage? {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        // 修正 bitmapInfo，保留 alpha channel
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+
+        // 使用源图像的 alpha info，但确保有有效的值
+        let sourceAlphaInfo = sourceImage.alphaInfo
+        let bitmapInfo: CGBitmapInfo
+
+        if sourceAlphaInfo == .none || sourceAlphaInfo == .noneSkipFirst || sourceAlphaInfo == .noneSkipLast {
+            // 源图像无 alpha，创建不带 alpha 的上下文
+            bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
+        } else {
+            // 源图像有 alpha，保留它（优先使用 premultipliedLast）
+            bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+        }
+
         guard let context = CGContext(
             data: nil,
             width: width,
@@ -84,7 +96,7 @@ extension CGImage {
             space: colorSpace,
             bitmapInfo: bitmapInfo.rawValue
         ) else {
-            print("Failed to create CGContext for manual decoding")
+            print("Failed to create CGContext for manual decoding (alphaInfo: \(sourceAlphaInfo))")
             return nil
         }
 
@@ -145,11 +157,19 @@ extension CGImage {
             1,
             nil
         ) else {
-            print("Failed to create image destination")
+            print("Failed to create image destination for re-encoding")
             return nil
         }
 
-        CGImageDestinationAddImageFromSource(destination, source, 0, sharedCGImageDestinationOptions)
+        // 添加强制使用 RGB 色彩空间的选项以处理更多情况
+        let reencodeOptions = [
+            kCGImageDestinationLossyCompressionQuality: 1.0,
+            kCGImageDestinationEmbedThumbnail: false,
+            kCGImagePropertyColorModel: kCGImagePropertyColorModelRGB,
+            kCGImageDestinationMetadata: [] as CFArray,
+        ] as CFDictionary
+
+        CGImageDestinationAddImageFromSource(destination, source, 0, reencodeOptions)
         guard CGImageDestinationFinalize(destination) else {
             print("Failed to finalize re-encoding")
             return nil
@@ -203,12 +223,15 @@ extension CGImage {
         return directResized(size: size, quality: quality)
     }
 
-    public func directResized(size: CGSize, quality: CGInterpolationQuality = .high) -> CGImage? {
-        // Ref: https://rockyshikoku.medium.com/resize-cgimage-baf23a0f58ab
+    public func directResized(
+        size: CGSize,
+        quality: CGInterpolationQuality = .high,
+        preserveAspectRatio: Bool = false
+    )
+        -> CGImage? {
         let width = Int(floor(size.width))
         let height = Int(floor(size.height))
 
-        // 检查尺寸有效性
         guard width > 0, height > 0 else { return nil }
 
         let bytesPerPixel = bitsPerPixel / bitsPerComponent
@@ -226,7 +249,36 @@ extension CGImage {
         ) else { return nil }
 
         context.interpolationQuality = quality
-        context.draw(self, in: CGRect(x: 0, y: 0, width: width, height: height))
+
+        if preserveAspectRatio {
+            // Use uniform scale to fit the image within target dimensions, preserving aspect ratio.
+            // Output image dimensions match the actual content (no padding), so no
+            // transparent/white border that would pollute dominant-color extraction.
+            let scaleX = Double(width) / Double(self.width)
+            let scaleY = Double(height) / Double(self.height)
+            let scale = min(scaleX, scaleY)
+
+            let fitWidth = max(1, Int(Double(self.width) * scale))
+            let fitHeight = max(1, Int(Double(self.height) * scale))
+
+            let fitBytesPerRow = fitWidth * bytesPerPixel
+            guard let fitContext = CGContext(
+                data: nil,
+                width: fitWidth,
+                height: fitHeight,
+                bitsPerComponent: bitsPerComponent,
+                bytesPerRow: fitBytesPerRow,
+                space: colorSpace,
+                bitmapInfo: alphaInfo.rawValue
+            ) else { return nil }
+
+            fitContext.interpolationQuality = quality
+            fitContext.draw(self, in: CGRect(x: 0, y: 0, width: fitWidth, height: fitHeight))
+            return fitContext.makeImage()
+        } else {
+            // Stretch to fill target dimensions (original behavior)
+            context.draw(self, in: CGRect(x: 0, y: 0, width: width, height: height))
+        }
 
         return context.makeImage()
     }
