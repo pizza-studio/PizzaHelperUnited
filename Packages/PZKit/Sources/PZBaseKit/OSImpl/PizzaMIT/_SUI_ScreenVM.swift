@@ -125,6 +125,7 @@ public final class ScreenVM {
     // MARK: Static Helpers
 
     private static func getInitialOrientation() -> Orientation {
+        guard OS.type != .macOS else { return .landscape }
         #if os(iOS) && !targetEnvironment(macCatalyst)
         // 优先使用 UIWindowScene.interfaceOrientation
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
