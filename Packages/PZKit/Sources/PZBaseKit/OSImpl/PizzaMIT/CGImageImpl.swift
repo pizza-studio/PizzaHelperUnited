@@ -471,7 +471,10 @@ extension CGImage {
             case .png:
                 return [:]
             case let .heic(quality):
-                return [kCGImageDestinationLossyCompressionQuality: quality]
+                return [
+                    kCGImageDestinationLossyCompressionQuality: quality,
+                    kCGImageDestinationOptimizeColorForSharing: true,
+                ]
             }
         }
     }
