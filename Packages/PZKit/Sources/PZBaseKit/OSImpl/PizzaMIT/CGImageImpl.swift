@@ -13,6 +13,16 @@ import CoreImage
 #endif
 import UniformTypeIdentifiers
 
+// MARK: - Debugging
+
+/// Debug print helper that only prints in DEBUG builds.
+@inline(__always)
+private func debugPrint(_ items: Any..., separator: String = " ", terminator: String = "\n") {
+    #if DEBUG
+    print(items, separator: separator, terminator: terminator)
+    #endif
+}
+
 // MARK: - Constructors.
 
 extension CGImage {
@@ -81,7 +91,8 @@ extension CGImage {
 
         if sourceAlphaInfo == .none || sourceAlphaInfo == .noneSkipFirst || sourceAlphaInfo == .noneSkipLast {
             // 源图像无 alpha，创建不带 alpha 的上下文
-            bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
+            // 使用 noneSkipLast 而不是 none，因为 CGBitmapContext 不支援 kCGImageAlphaNone
+            bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.noneSkipLast.rawValue)
         } else {
             // 源图像有 alpha，保留它（优先使用 premultipliedLast）
             bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
@@ -96,7 +107,7 @@ extension CGImage {
             space: colorSpace,
             bitmapInfo: bitmapInfo.rawValue
         ) else {
-            print("Failed to create CGContext for manual decoding (alphaInfo: \(sourceAlphaInfo))")
+            debugPrint("Failed to create CGContext for manual decoding (alphaInfo: \(sourceAlphaInfo))")
             return nil
         }
 
@@ -110,22 +121,22 @@ extension CGImage {
         var width = 0
         var height = 0
         if let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [String: Any] {
-            print("Image Properties: \(properties)")
+            debugPrint("Image Properties: \(properties)")
             if let jfif = properties[kCGImagePropertyJFIFDictionary as String] as? [String: Any],
                let isProgressive = jfif[kCGImagePropertyJFIFIsProgressive as String] as? Bool {
-                print("Progressive JPEG: \(isProgressive)")
+                debugPrint("Progressive JPEG: \(isProgressive)")
             }
             if let profile = properties[kCGImagePropertyProfileName as String] {
-                print("Color Profile: \(profile)")
+                debugPrint("Color Profile: \(profile)")
             }
             if let exif = properties[kCGImagePropertyExifDictionary as String] as? [String: Any] {
-                print("EXIF Data: \(exif)")
+                debugPrint("EXIF Data: \(exif)")
             }
             if let pixelWidth = properties[kCGImagePropertyPixelWidth as String] as? Int,
                let pixelHeight = properties[kCGImagePropertyPixelHeight as String] as? Int {
                 width = pixelWidth
                 height = pixelHeight
-                print("Dimensions: \(width)x\(height)")
+                debugPrint("Dimensions: \(width)x\(height)")
             }
         }
 
@@ -134,21 +145,21 @@ extension CGImage {
 
         // 尝试直接读取
         if let cgImage = CGImageSourceCreateImageAtIndex(source, 0, options) {
-            print("Direct loading successful")
+            debugPrint("Direct loading successful")
             // 尝试手动解码，以求绕过有故障的色彩空间配置
             if width > 0, height > 0, let decodedImage = decodeImageManually(cgImage, width: width, height: height) {
-                print("Manual decoding successful")
+                debugPrint("Manual decoding successful")
                 return decodedImage
             }
-            print("Manual decoding skipped or failed, returning direct-loaded image")
+            debugPrint("Manual decoding skipped or failed, returning direct-loaded image")
             return cgImage
         }
 
-        print("Direct loading failed, attempting re-encoding...")
+        debugPrint("Direct loading failed, attempting re-encoding...")
 
         // 回退：重新编码，将色彩空间标准化
         guard let destinationData = CFDataCreateMutable(nil, 0) else {
-            print("Failed to create mutable data for re-encoding")
+            debugPrint("Failed to create mutable data for re-encoding")
             return nil
         }
         guard let destination = CGImageDestinationCreateWithData(
@@ -157,7 +168,7 @@ extension CGImage {
             1,
             nil
         ) else {
-            print("Failed to create image destination for re-encoding")
+            debugPrint("Failed to create image destination for re-encoding")
             return nil
         }
 
@@ -171,44 +182,44 @@ extension CGImage {
 
         CGImageDestinationAddImageFromSource(destination, source, 0, reencodeOptions)
         guard CGImageDestinationFinalize(destination) else {
-            print("Failed to finalize re-encoding")
+            debugPrint("Failed to finalize re-encoding")
             return nil
         }
 
         guard let newDataProvider = CGDataProvider(data: destinationData) else {
-            print("Failed to create data provider for re-encoded image")
+            debugPrint("Failed to create data provider for re-encoded image")
             return nil
         }
         guard let newImageSource = CGImageSourceCreateWithDataProvider(newDataProvider, nil) else {
-            print("Failed to create image source for re-encoded image")
+            debugPrint("Failed to create image source for re-encoded image")
             return nil
         }
 
         // 检查重新编码的 Image 的属性是否合理
         if let reencodedProperties = CGImageSourceCopyPropertiesAtIndex(newImageSource, 0, nil) as? [String: Any] {
-            print("Re-encoded Image Properties: \(reencodedProperties)")
+            debugPrint("Re-encoded Image Properties: \(reencodedProperties)")
             if let profile = reencodedProperties[kCGImagePropertyProfileName as String] {
-                print("Re-encoded Color Profile: \(profile)")
+                debugPrint("Re-encoded Color Profile: \(profile)")
             } else {
-                print("Re-encoded image has no color profile")
+                debugPrint("Re-encoded image has no color profile")
             }
         }
 
         if let reencodedImage = CGImageSourceCreateImageAtIndex(newImageSource, 0, options) {
-            print("Re-encoding successful")
+            debugPrint("Re-encoding successful")
             // 尝试将重新编码过的 Image 手动解码
             if width > 0, height > 0, let decodedImage = decodeImageManually(
                 reencodedImage,
                 width: width,
                 height: height
             ) {
-                print("Manual decoding of re-encoded image successful")
+                debugPrint("Manual decoding of re-encoded image successful")
                 return decodedImage
             }
-            print("Manual decoding of re-encoded image skipped or failed, returning re-encoded image")
+            debugPrint("Manual decoding of re-encoded image skipped or failed, returning re-encoded image")
             return reencodedImage
         } else {
-            print("Re-encoding failed to produce a valid image")
+            debugPrint("Re-encoding failed to produce a valid image")
             return nil
         }
     }
