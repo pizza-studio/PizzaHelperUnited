@@ -3,9 +3,6 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import AppIntents
-#if ENABLE_ININTENTS_BACKPORTS
-import Intents
-#endif
 import WidgetKit
 
 // MARK: - CrossGenServiceableTimelineProvider
@@ -35,58 +32,3 @@ extension CrossGenServiceableTimelineProvider where Self: AppIntentTimelineProvi
         placeholder()
     }
 }
-
-#if ENABLE_ININTENTS_BACKPORTS
-
-// MARK: - AppIntentUpgradable
-
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
-public protocol AppIntentUpgradable {
-    associatedtype AppIntent: AppIntents.AppIntent
-    var asAppIntent: AppIntent { get }
-}
-
-// MARK: - INThreadSafeTimelineProvider
-
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
-public protocol INThreadSafeTimelineProvider: IntentTimelineProvider, Sendable where Intent: AppIntentUpgradable,
-    Entry: TimelineEntry & Sendable {
-    typealias AppIntent = Intent.AppIntent
-    typealias Context = TimelineProviderContext
-    associatedtype NextGenTLProvider: CrossGenServiceableTimelineProvider where NextGenTLProvider.Intent == AppIntent,
-        NextGenTLProvider.Entry == Self.Entry
-    var asyncTLProvider: NextGenTLProvider { get }
-}
-
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
-extension INThreadSafeTimelineProvider {
-    public func getSnapshot(
-        for configuration: Intent,
-        in context: Context,
-        completion: @escaping @Sendable (Entry) -> Void
-    ) {
-        let newIntent = configuration.asAppIntent
-        Task(priority: .userInitiated) {
-            let completed = await self.asyncTLProvider.snapshot(for: newIntent)
-            completion(completed)
-        }
-    }
-
-    public func getTimeline(
-        for configuration: Intent,
-        in context: Context,
-        completion: @escaping @Sendable (Timeline<Entry>) -> Void
-    ) {
-        let newIntent = configuration.asAppIntent
-        Task(priority: .userInitiated) {
-            let completed = await self.asyncTLProvider.timeline(for: newIntent)
-            completion(completed)
-        }
-    }
-
-    public func placeholder(in context: Context) -> Entry {
-        asyncTLProvider.placeholder()
-    }
-}
-
-#endif
