@@ -222,8 +222,14 @@ struct EnkaCharacterDictValueType: Decodable {
     """
 
     static func getRemoteMap() async throws -> [String: EnkaCharacterDictValueType] {
-        let (data, _) = try await URLSession.shared.data(from: urlPath.asURL)
-        return try JSONDecoder().decode([String: EnkaCharacterDictValueType].self, from: data)
+        let url = urlPath.asURL
+        let (data, _) = try await URLSession.shared.data(from: url)
+        do {
+            return try JSONDecoder().decode([String: EnkaCharacterDictValueType].self, from: data)
+        } catch {
+            print("JSON decode error from URL: \(url.absoluteString)")
+            throw error
+        }
     }
 }
 
@@ -276,13 +282,19 @@ struct MaterialExcelConfigData: Decodable {
     }
 
     static func getRemoteMap() async throws -> [MaterialExcelConfigData] {
-        let (data, _) = try await URLSession.shared.data(from: urlPath.asURL)
-        let valMap = try JSONDecoder().decode([MaterialExcelConfigData].self, from: data)
-        var newValues = [MaterialExcelConfigData]()
-        valMap.forEach { value in
-            if value.isValid { newValues.append(value) }
+        let url = urlPath.asURL
+        let (data, _) = try await URLSession.shared.data(from: url)
+        do {
+            let valMap = try JSONDecoder().decode([MaterialExcelConfigData].self, from: data)
+            var newValues = [MaterialExcelConfigData]()
+            valMap.forEach { value in
+                if value.isValid { newValues.append(value) }
+            }
+            return newValues
+        } catch {
+            print("JSON decode error from URL: \(url.absoluteString)")
+            throw error
         }
-        return newValues
     }
 
     // MARK: Private
@@ -345,12 +357,25 @@ do {
     """
     async let fetterResp = URLSession.shared.data(from: fetterURLStr.asURL)
     async let rewardResp = URLSession.shared.data(from: rewardURLStr.asURL)
-    let fetterEntries = try JSONDecoder().decode(
-        [FetterCharacterCardEntry].self, from: try await fetterResp.0
-    )
-    let rewardEntries = try JSONDecoder().decode(
-        [RewardEntry].self, from: try await rewardResp.0
-    )
+
+    let fetterData = try await fetterResp.0
+    let rewardData = try await rewardResp.0
+
+    let fetterEntries: [FetterCharacterCardEntry]
+    do {
+        fetterEntries = try JSONDecoder().decode([FetterCharacterCardEntry].self, from: fetterData)
+    } catch {
+        print("JSON decode error from URL: \(fetterURLStr)")
+        throw error
+    }
+
+    let rewardEntries: [RewardEntry]
+    do {
+        rewardEntries = try JSONDecoder().decode([RewardEntry].self, from: rewardData)
+    } catch {
+        print("JSON decode error from URL: \(rewardURLStr)")
+        throw error
+    }
 
     // Build rewardId → first non-zero itemId lookup.
     let rewardToItemId: [Int: Int] = Dictionary(
@@ -480,9 +505,14 @@ func makeLanguageMeta() async throws {
                 for url in locale.urls {
                     print("// Fetching: \(url.absoluteString)")
                     let (data, _) = try await URLSession.shared.data(from: url)
-                    let dict = try JSONDecoder().decode([String: String].self, from: data)
-                    dict.forEach { key, value in
-                        finalDict[key] = value
+                    do {
+                        let dict = try JSONDecoder().decode([String: String].self, from: data)
+                        dict.forEach { key, value in
+                            finalDict[key] = value
+                        }
+                    } catch {
+                        print("JSON decode error from URL: \(url.absoluteString)")
+                        throw error
                     }
                 }
                 let keysToRemove = await Set<String>(finalDict.keys).subtracting(allNameTextMapHashesNeeded)

@@ -424,6 +424,7 @@ public enum DataType: String, CaseIterable {
                 }
             }
         } catch {
+            print("JSON decode error from URL: \(sourceURL.absoluteString)")
             print(String(data: data, encoding: .utf8) ?? "NOT_A_STRING")
             throw error
         }

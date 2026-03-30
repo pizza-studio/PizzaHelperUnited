@@ -384,16 +384,63 @@ extension GIMaterialDBGenerator {
             from: URL(string: urlBase + "WeaponPromoteExcelConfigData.json")!
         )
 
-        let avatarEntries = try JSONDecoder().decode([AvatarEntry].self, from: try await avatarData.0)
-        let depotEntries = try JSONDecoder().decode([SkillDepotEntry].self, from: try await depotData.0)
-        let skillEntries = try JSONDecoder().decode([SkillEntry].self, from: try await skillData.0)
-        let proudEntries = try JSONDecoder().decode([ProudSkillEntry].self, from: try await proudData.0)
-        let wpnExcelEntries = try JSONDecoder().decode(
-            [WeaponExcelEntry].self, from: try await wpnExcelData.0
-        )
-        let wpnPromEntries = try JSONDecoder().decode(
-            [WeaponPromoteEntry].self, from: try await wpnPromData.0
-        )
+        let avatarEntries: [AvatarEntry]
+        do {
+            avatarEntries = try JSONDecoder().decode([AvatarEntry].self, from: try await avatarData.0)
+        } catch {
+            print("❌ JSON Decoding Error for URL: \(urlBase)AvatarExcelConfigData.json")
+            print("Error details: \(error)")
+            throw error
+        }
+
+        let depotEntries: [SkillDepotEntry]
+        do {
+            depotEntries = try JSONDecoder().decode([SkillDepotEntry].self, from: try await depotData.0)
+        } catch {
+            print("❌ JSON Decoding Error for URL: \(urlBase)AvatarSkillDepotExcelConfigData.json")
+            print("Error details: \(error)")
+            throw error
+        }
+
+        let skillEntries: [SkillEntry]
+        do {
+            skillEntries = try JSONDecoder().decode([SkillEntry].self, from: try await skillData.0)
+        } catch {
+            print("❌ JSON Decoding Error for URL: \(urlBase)AvatarSkillExcelConfigData.json")
+            print("Error details: \(error)")
+            throw error
+        }
+
+        let proudEntries: [ProudSkillEntry]
+        do {
+            proudEntries = try JSONDecoder().decode([ProudSkillEntry].self, from: try await proudData.0)
+        } catch {
+            print("❌ JSON Decoding Error for URL: \(urlBase)ProudSkillExcelConfigData.json")
+            print("Error details: \(error)")
+            throw error
+        }
+
+        let wpnExcelEntries: [WeaponExcelEntry]
+        do {
+            wpnExcelEntries = try JSONDecoder().decode(
+                [WeaponExcelEntry].self, from: try await wpnExcelData.0
+            )
+        } catch {
+            print("❌ JSON Decoding Error for URL: \(urlBase)WeaponExcelConfigData.json")
+            print("Error details: \(error)")
+            throw error
+        }
+
+        let wpnPromEntries: [WeaponPromoteEntry]
+        do {
+            wpnPromEntries = try JSONDecoder().decode(
+                [WeaponPromoteEntry].self, from: try await wpnPromData.0
+            )
+        } catch {
+            print("❌ JSON Decoding Error for URL: \(urlBase)WeaponPromoteExcelConfigData.json")
+            print("Error details: \(error)")
+            throw error
+        }
 
         // 构建查找表。
         let avatarToDepot = Dictionary(
