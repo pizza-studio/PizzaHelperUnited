@@ -246,7 +246,7 @@ struct ProfileManagerPageContent: View {
             profile.asIcon4SUI().frame(width: 48).padding(.trailing, 4)
             VStack(alignment: .leading, spacing: 3) {
                 Text(profile.name)
-                    .foregroundColor(.primary)
+                    .foregroundTint(.primary)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 let uidView = Text(profile.uidWithGame).fontDesign(.monospaced)
                 VStack(alignment: .leading) {
@@ -259,7 +259,7 @@ struct ProfileManagerPageContent: View {
                 }
                 .font(.caption2)
                 .fontWidth(.condensed)
-                .foregroundColor(.secondary)
+                .foregroundTint(.secondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             .frame(maxWidth: .infinity, alignment: .leading)

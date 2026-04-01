@@ -47,7 +47,7 @@ extension View {
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
         } else {
-            font(.footnote).foregroundColor(.primary.opacity(0.8))
+            font(.footnote).foregroundTint(.primary.opacity(0.8))
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }

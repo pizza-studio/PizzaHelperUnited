@@ -111,7 +111,7 @@ extension ProfileConfigViewContents {
                 Text(
                     "settings.requireLoginView.loginViaMiyousheOrHoyoLab.relogin".i18nPZHelper
                 )
-                .foregroundColor(.accentColor)
+                .foregroundTint(.accentColor)
             }
         }
 

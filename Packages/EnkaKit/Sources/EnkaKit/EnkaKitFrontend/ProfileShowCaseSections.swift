@@ -140,7 +140,7 @@ public struct ProfileShowCaseSections<AppendedContent: View, QueryDB: EnkaDBProt
                                 .lineLimit(1)
                             if let signature = rawInfo?.signature {
                                 Text(verbatim: signature)
-                                    .foregroundColor(.secondary)
+                                    .foregroundTint(.secondary)
                                     .font(.footnote)
                                     .lineLimit(2)
                                     .fixedSize(

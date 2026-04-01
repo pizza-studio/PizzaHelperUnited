@@ -219,7 +219,7 @@ public struct ContentView4iOS14: View {
             Text("refugee.footer.exportInstructions", bundle: .currentSPM)
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .foregroundColor(.accentColor)
+                .foregroundTint(.accentColor)
             if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
                 Text("refugee.footer.whyServiceTerminatedInPublic", bundle: .currentSPM)
                     .multilineTextAlignment(.leading)
@@ -325,7 +325,7 @@ public struct ContentView4iOS14: View {
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(verbatim: theVM.localProfileEntriesCount.description)
-                    .foregroundColor(.secondary)
+                    .foregroundTint(.secondary)
                     .padding(.leading)
             }
         }
@@ -336,7 +336,7 @@ public struct ContentView4iOS14: View {
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text(verbatim: theVM.gachaEntriesCountModern.description)
-                        .foregroundColor(.secondary)
+                        .foregroundTint(.secondary)
                         .padding(.leading)
                 }
             }
@@ -347,17 +347,17 @@ public struct ContentView4iOS14: View {
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(verbatim: theVM.gachaEntriesCount.description)
-                    .foregroundColor(.secondary)
+                    .foregroundTint(.secondary)
                     .padding(.leading)
             }
         }
         if !hasData {
             if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
                 Text("refugee.noDataExportable.refugeeMigratingToLatteHelper", bundle: .currentSPM)
-                    .foregroundColor(.secondary)
+                    .foregroundTint(.secondary)
             } else {
                 Text("refugee.noDataExportable.iOS16AndEarlier", bundle: .currentSPM)
-                    .foregroundColor(.secondary)
+                    .foregroundTint(.secondary)
             }
         }
     }

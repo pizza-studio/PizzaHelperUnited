@@ -584,7 +584,7 @@ extension GachaFetchView4Game {
                 Text(verbatim: "\(error.localizedDescription)" + "\n\(error)")
             } icon: {
                 Image(systemSymbol: .exclamationmarkCircle)
-                    .foregroundColor(.red)
+                    .foregroundTint(.red)
             }
             Button {
                 retry()
@@ -629,7 +629,7 @@ extension GachaFetchView4Game {
                     Text("gachaKit.getRecord.finished.succeeded", bundle: .currentSPM)
                 } icon: {
                     Image(systemSymbol: .checkmarkCircle)
-                        .foregroundColor(.green)
+                        .foregroundTint(.green)
                 }
                 Button {
                     reinit()

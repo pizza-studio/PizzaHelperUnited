@@ -55,11 +55,11 @@ extension DesktopWidgets {
                 Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: nil)) {
                     Image(systemSymbol: .arrowClockwiseCircle)
                         .font(.title3)
-                        .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+                        .foregroundTint(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                         .clipShape(.circle)
                 }
                 .buttonStyle(.plain)
-                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+                .foregroundTint(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
             }
             let leadingPadding: CGFloat? = !showLeadingBorder ? 0 : 7
             ViewThatFits(in: .vertical) {
@@ -92,7 +92,7 @@ extension DesktopWidgets {
                 }
             }
             .legibilityShadow(isText: true)
-            .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+            .foregroundTint(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
         }
 
         @ViewBuilder

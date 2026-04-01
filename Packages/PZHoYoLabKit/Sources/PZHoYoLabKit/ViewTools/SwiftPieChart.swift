@@ -120,10 +120,10 @@ public struct PieChartView: View {
                         )
                         .font(.headline)
                         #if os(iOS) || targetEnvironment(macCatalyst)
-                            .foregroundColor(Color(uiColor: .secondaryLabel))
+                            .foregroundTint(Color(uiColor: .secondaryLabel))
                             .shadow(color: .init(uiColor: .systemBackground), radius: 3)
                         #else
-                            .foregroundColor(Color(nsColor: NSColor.secondaryLabelColor))
+                            .foregroundTint(Color(nsColor: NSColor.secondaryLabelColor))
                             .shadow(color: .init(nsColor: NSColor.controlBackgroundColor), radius: 3)
                         #endif
                         Text(
@@ -154,7 +154,7 @@ public struct PieChartView: View {
                 )
             }
             .background(backgroundColor)
-            .foregroundColor(Color.primary)
+            .foregroundTint(Color.primary)
         }
     }
 
@@ -246,9 +246,9 @@ struct PieChartRows: View {
                         Text(valueSet.value)
                         Text(valueSet.percent)
                         #if os(iOS) || targetEnvironment(macCatalyst)
-                            .foregroundColor(Color(uiColor: .secondaryLabel))
+                            .foregroundTint(Color(uiColor: .secondaryLabel))
                         #else
-                            .foregroundColor(Color(nsColor: NSColor.secondaryLabelColor))
+                            .foregroundTint(Color(nsColor: NSColor.secondaryLabelColor))
                         #endif
                     }
                 }
@@ -322,7 +322,7 @@ struct PieSlice: View {
                                 .height * 0.5 *
                                 CGFloat(1.0 - 0.78 * sin(midRadians))
                         )
-                        .foregroundColor(Color.white)
+                        .foregroundTint(Color.white)
                         .shadow(color: .black, radius: 3)
                 }
             }

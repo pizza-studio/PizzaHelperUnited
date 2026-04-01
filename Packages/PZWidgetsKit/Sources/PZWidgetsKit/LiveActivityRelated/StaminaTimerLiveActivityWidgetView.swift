@@ -60,7 +60,7 @@ public struct StaminaTimerLiveActivityWidgetView<
                         label
                     }
                 }
-                .foregroundColor(useNoBackground ? .primary : .white)
+                .foregroundTint(useNoBackground ? .primary : .white)
                 .padding()
             }
         #endif
@@ -144,7 +144,7 @@ public struct StaminaTimerLiveActivityWidgetView<
                 }
             }
         }
-        .foregroundColor(useNoBackground ? .primary : .white)
+        .foregroundTint(useNoBackground ? .primary : .white)
         .padding()
     }
 

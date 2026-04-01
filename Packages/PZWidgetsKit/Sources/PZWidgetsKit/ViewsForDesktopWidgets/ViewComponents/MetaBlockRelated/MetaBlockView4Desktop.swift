@@ -41,7 +41,7 @@ extension DesktopWidgets {
                     AnyView(
                         currentMetaBar
                             .body
-                            .foregroundColor(.primary)
+                            .foregroundTint(.primary)
                             .environment(\.colorScheme, .dark)
                     )
                     .frame(maxHeight: lineHeightMax)

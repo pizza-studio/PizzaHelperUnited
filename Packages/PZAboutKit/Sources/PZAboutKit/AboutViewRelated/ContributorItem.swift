@@ -99,7 +99,7 @@ struct ContributorItem: View {
                         let dateText = dateFormatter.string(from: retireDate)
                         Text("aboutKit.contributor.retiredOn:\(dateText)", bundle: .currentSPM)
                             .font(.caption2)
-                            .foregroundColor(.red)
+                            .foregroundTint(.red)
                             .fontWeight(.medium)
                             .fontWidth(.condensed)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -109,7 +109,7 @@ struct ContributorItem: View {
                     if !subtitle.isEmpty {
                         Text(verbatim: subtitle)
                             .font(.caption2)
-                            .foregroundColor(.secondary)
+                            .foregroundTint(.secondary)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .multilineTextAlignment(.leading)
                     }
@@ -144,7 +144,7 @@ struct ContributorItem: View {
                     if !subtitle.isEmpty {
                         Text(verbatim: subtitle)
                             .font(.caption2)
-                            .foregroundColor(.secondary)
+                            .foregroundTint(.secondary)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .multilineTextAlignment(.leading)
                     }

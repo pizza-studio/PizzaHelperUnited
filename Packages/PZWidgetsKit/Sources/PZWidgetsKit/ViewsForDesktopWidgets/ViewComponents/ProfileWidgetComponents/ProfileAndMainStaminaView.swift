@@ -91,7 +91,7 @@ extension DesktopWidgets {
                     staminaLabelCompact
                 }
             }
-            .foregroundColor(.primary)
+            .foregroundTint(.primary)
             .environment(\.colorScheme, .dark)
         }
 

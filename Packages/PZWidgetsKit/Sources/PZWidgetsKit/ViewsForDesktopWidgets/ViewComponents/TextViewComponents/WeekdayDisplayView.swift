@@ -23,11 +23,11 @@ extension DesktopWidgets {
                         weight: .regular,
                         design: .rounded
                     ))
-                    .foregroundColor(.primary)
+                    .foregroundTint(.primary)
                 Text(weekday)
                     .font(.caption)
-                    .foregroundColor(.red)
                     .bold()
+                    .foregroundTint(.red)
             }
             .legibilityShadow()
         }

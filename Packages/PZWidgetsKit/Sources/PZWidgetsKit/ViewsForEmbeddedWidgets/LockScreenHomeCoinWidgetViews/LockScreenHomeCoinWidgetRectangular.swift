@@ -46,7 +46,7 @@ extension EmbeddedWidgets {
                                             design: .rounded
                                         ))
                                 }
-                                .foregroundColor(PZWidgetsSPM.Colors.IconColor.Resin.accented.suiColor)
+                                .foregroundTint(PZWidgetsSPM.Colors.IconColor.Resin.accented.suiColor)
                                 Spacer()
                                 HStack(alignment: .lastTextBaseline, spacing: 2) {
                                     let iconSize: CGFloat = size * 8 / 9
@@ -59,7 +59,7 @@ extension EmbeddedWidgets {
                                             design: .rounded
                                         ))
                                 }
-                                .foregroundColor(PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor)
+                                .foregroundTint(PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor)
                                 Spacer()
                             }
                             GridRow(alignment: .lastTextBaseline) {
@@ -80,7 +80,7 @@ extension EmbeddedWidgets {
                                 Spacer()
                             }
                             .fixedSize()
-                            .foregroundColor(.primary)
+                            .foregroundTint(.primary)
                             .widgetAccentable()
                             GridRow(alignment: .lastTextBaseline) {
                                 if data.resinInfo.currentResinDynamic >= data.resinInfo
@@ -99,7 +99,7 @@ extension EmbeddedWidgets {
                                 Spacer()
                             }
                             .font(.footnote)
-                            .foregroundColor(.secondary)
+                            .foregroundTint(.secondary)
                         }
                     default: EmptyView()
                     }
@@ -133,14 +133,14 @@ extension EmbeddedWidgets {
                             }
                         }
                         .fixedSize()
-                        .foregroundColor(.primary)
+                        .foregroundTint(.primary)
                         .widgetAccentable()
                         GridRow(alignment: .lastTextBaseline) {
                             Text(verbatim: "…")
                             Text(verbatim: "…")
                         }
                         .font(.footnote)
-                        .foregroundColor(.secondary)
+                        .foregroundTint(.secondary)
                     }
                 }
             default:
@@ -195,7 +195,7 @@ extension EmbeddedWidgets {
                                 Spacer()
                             }
                             .fixedSize()
-                            .foregroundColor(.primary)
+                            .foregroundTint(.primary)
                             .widgetAccentable()
                             GridRow(alignment: .lastTextBaseline) {
                                 if data.resinInfo.currentResinDynamic >= data.resinInfo
@@ -214,7 +214,7 @@ extension EmbeddedWidgets {
                                 Spacer()
                             }
                             .font(.footnote)
-                            .foregroundColor(.secondary)
+                            .foregroundTint(.secondary)
                         }
                     default:
                         let staminaIntel = data.staminaIntel
@@ -246,7 +246,7 @@ extension EmbeddedWidgets {
                                 Spacer()
                             }
                             .fixedSize()
-                            .foregroundColor(.primary)
+                            .foregroundTint(.primary)
                             .widgetAccentable()
                             GridRow(alignment: .lastTextBaseline) {
                                 if staminaIntel.isAccomplished {
@@ -257,7 +257,7 @@ extension EmbeddedWidgets {
                                 Spacer()
                             }
                             .font(.footnote)
-                            .foregroundColor(.secondary)
+                            .foregroundTint(.secondary)
                         }
                     }
                 case .failure:
@@ -308,7 +308,7 @@ extension EmbeddedWidgets {
                             Spacer()
                         }
                         .fixedSize()
-                        .foregroundColor(.primary)
+                        .foregroundTint(.primary)
                         .widgetAccentable()
                         GridRow(alignment: .lastTextBaseline) {
                             Text(verbatim: "…")
@@ -317,7 +317,7 @@ extension EmbeddedWidgets {
                             Spacer()
                         }
                         .font(.footnote)
-                        .foregroundColor(.secondary)
+                        .foregroundTint(.secondary)
                     }
                 }
             }

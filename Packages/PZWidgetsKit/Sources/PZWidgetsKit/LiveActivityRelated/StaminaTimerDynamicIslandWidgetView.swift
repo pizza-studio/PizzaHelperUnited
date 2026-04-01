@@ -47,7 +47,7 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
                 Image(systemSymbol: .personFill)
                 Text(context.attributes.profileName)
             }
-            .foregroundColor(PZWidgetsSPM.Colors.TextColor.appIconLike.suiColor)
+            .foregroundTint(PZWidgetsSPM.Colors.TextColor.appIconLike.suiColor)
             .font(.caption2)
             .padding(.leading)
         }
@@ -60,7 +60,7 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                     .frame(width: 15)
                 Text(Pizza.appTitleLocalizedShort)
-                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.appIconLike.suiColor)
+                    .foregroundTint(PZWidgetsSPM.Colors.TextColor.appIconLike.suiColor)
                     .font(.caption2)
             }
             .padding(.trailing)
@@ -74,7 +74,7 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
                     expandedContentWhenStaminaIsFull
                 }
             }
-            .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+            .foregroundTint(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
         }
     }
 
@@ -88,7 +88,7 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
                 Text(verbatim: context.state.currentPrimaryStamina.description)
                     .multilineTextAlignment(.leading)
                     .font(.system(.title, design: .rounded))
-                    .foregroundColor(
+                    .foregroundTint(
                         PZWidgetsSPM.Colors.TextColor.originResin.suiColor
                     )
                     .gridColumnAlignment(.leading)
@@ -99,14 +99,14 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
                 Text(verbatim: "100%")
                     .multilineTextAlignment(.trailing)
                     .font(.system(.title, design: .rounded))
-                    .foregroundColor(
+                    .foregroundTint(
                         PZWidgetsSPM.Colors.TextColor.originResin.suiColor
                     )
                     .gridColumnAlignment(.trailing)
                 Image(systemSymbol: .checkmarkCircle)
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(.green)
+                    .foregroundTint(.green)
                     .frame(height: 30)
             }
             .frame(height: 40)
@@ -134,7 +134,7 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
                         )
                         .multilineTextAlignment(.leading)
                         .font(.system(.title2, design: .rounded))
-                        .foregroundColor(
+                        .foregroundTint(
                             PZWidgetsSPM.Colors.TextColor.originResin.suiColor
                         )
                     }
@@ -164,7 +164,7 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
                         )
                         .multilineTextAlignment(.leading)
                         .font(.system(.title2, design: .rounded))
-                        .foregroundColor(
+                        .foregroundTint(
                             PZWidgetsSPM.Colors.TextColor.originResin.suiColor
                         )
                     }
@@ -191,10 +191,10 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
             .monospacedDigit()
             .multilineTextAlignment(.center)
             .frame(width: 60)
-            .foregroundColor(PZWidgetsSPM.Colors.TextColor.activityBlueText.suiColor)
+            .foregroundTint(PZWidgetsSPM.Colors.TextColor.activityBlueText.suiColor)
         } else {
             Image(systemSymbol: .checkmarkCircle)
-                .foregroundColor(.green)
+                .foregroundTint(.green)
                 .frame(width: 20)
         }
     }

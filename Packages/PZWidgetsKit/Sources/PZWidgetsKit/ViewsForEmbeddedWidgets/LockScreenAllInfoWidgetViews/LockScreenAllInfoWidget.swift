@@ -52,7 +52,7 @@ extension EmbeddedWidgets {
                     .frame(maxWidth: .infinity)
                 case .failure:
                     Image(systemSymbol: .ellipsis)
-                        .foregroundColor(.gray)
+                        .foregroundTint(.gray)
                 }
             }
             .widgetURL(url)
@@ -102,7 +102,7 @@ extension EmbeddedWidgets {
                         .minimumScaleFactor(0.2)
                         .frame(maxWidth: 18, maxHeight: 18)
                         .widgetAccentable(isFullColor)
-                        .foregroundColor(
+                        .foregroundTint(
                             isFullColor ? PZWidgetsSPM.Colors.IconColor.Resin.accented.suiColor : nil
                         )
                 }
@@ -125,7 +125,7 @@ extension EmbeddedWidgets {
                             .frame(maxWidth: 18, maxHeight: 18)
                             .rotationEffect(.degrees(90))
                             .widgetAccentable(isFullColor)
-                            .foregroundColor(
+                            .foregroundTint(
                                 isFullColor
                                     ? PZWidgetsSPM.Colors.IconColor.Resin.accented.suiColor
                                     : nil
@@ -144,7 +144,7 @@ extension EmbeddedWidgets {
                                 .minimumScaleFactor(0.2)
                                 .frame(maxWidth: 18, maxHeight: 18)
                                 .widgetAccentable(isFullColor)
-                                .foregroundColor(isFullColor ? PZWidgetsSPM.Colors.IconColor.expedition.suiColor : nil)
+                                .foregroundTint(isFullColor ? PZWidgetsSPM.Colors.IconColor.expedition.suiColor : nil)
                         }
                     } else {
                         EmptyView()
@@ -168,7 +168,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
-                            .foregroundColor(isFullColor ? PZWidgetsSPM.Colors.IconColor.expedition.suiColor : nil)
+                            .foregroundTint(isFullColor ? PZWidgetsSPM.Colors.IconColor.expedition.suiColor : nil)
                     }
                 }
             }
@@ -196,7 +196,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
-                            .foregroundColor(
+                            .foregroundTint(
                                 isFullColor ? PZWidgetsSPM.Colors.IconColor.dailyTask.suiColor : nil
                             )
                     }
@@ -220,7 +220,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
-                            .foregroundColor(
+                            .foregroundTint(
                                 isFullColor ? PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor : nil
                             )
                     }
@@ -253,7 +253,7 @@ extension EmbeddedWidgets {
                         .minimumScaleFactor(0.2)
                         .frame(maxWidth: 18, maxHeight: 18)
                         .widgetAccentable(isFullColor)
-                        .foregroundColor(
+                        .foregroundTint(
                             isFullColor ? PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor : nil
                         )
                     }
@@ -268,7 +268,7 @@ extension EmbeddedWidgets {
                         data.game.zzzVHSStoreSVGAsInlineText
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
-                            .foregroundColor(
+                            .foregroundTint(
                                 isFullColor ? PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor : nil
                             )
                     }
@@ -305,7 +305,7 @@ extension EmbeddedWidgets {
                                 .minimumScaleFactor(0.2)
                                 .frame(maxWidth: 18, maxHeight: 18)
                                 .widgetAccentable(isFullColor)
-                                .foregroundColor(
+                                .foregroundTint(
                                     isFullColor ? PZWidgetsSPM.Colors.IconColor.weeklyBosses.suiColor : nil
                                 )
                         }
@@ -346,7 +346,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
-                            .foregroundColor(
+                            .foregroundTint(
                                 isFullColor ? PZWidgetsSPM.Colors.IconColor.transformer.suiColor : nil
                             )
                     }
@@ -373,7 +373,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
-                            .foregroundColor(
+                            .foregroundTint(
                                 isFullColor ? PZWidgetsSPM.Colors.IconColor.weeklyBosses.suiColor : nil
                             )
                     }
@@ -401,7 +401,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
-                            .foregroundColor(
+                            .foregroundTint(
                                 isFullColor ? PZWidgetsSPM.Colors.IconColor.transformer.suiColor : nil
                             )
                     }
@@ -423,7 +423,7 @@ extension EmbeddedWidgets {
                             .minimumScaleFactor(0.2)
                             .frame(maxWidth: 18, maxHeight: 18)
                             .widgetAccentable(isFullColor)
-                            .foregroundColor(
+                            .foregroundTint(
                                 isFullColor ? PZWidgetsSPM.Colors.IconColor.weeklyBosses.suiColor : nil
                             )
                     }

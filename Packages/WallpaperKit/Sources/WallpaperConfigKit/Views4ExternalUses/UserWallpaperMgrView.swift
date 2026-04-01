@@ -336,14 +336,14 @@ extension UserWallpaperMgrViewContent {
                     .frame(width: 48).padding(.trailing, 4)
                 VStack(alignment: .leading, spacing: 3) {
                     Text(userWallpaper.name)
-                        .foregroundColor(.primary)
+                        .foregroundTint(.primary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     VStack(alignment: .leading) {
                         Text(userWallpaper.dateString).fontDesign(.monospaced)
                     }
                     .font(.caption2)
                     .fontWidth(.condensed)
-                    .foregroundColor(.secondary)
+                    .foregroundTint(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)

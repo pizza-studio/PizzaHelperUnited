@@ -276,7 +276,7 @@ extension RealTimeNoteCardView {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 } icon: {
                     Image(systemSymbol: .questionmarkCircle)
-                        .foregroundColor(.yellow)
+                        .foregroundTint(.yellow)
                 }
                 rootNavVM.gotoSettingsButtonIfAppropriate
             }
@@ -365,7 +365,7 @@ extension RealTimeNoteCardView {
                         HStack {
                             if !dailyNote.allDailyTasksAccomplished {
                                 Image(systemSymbol: .giftFill)
-                                    .foregroundColor(.orange)
+                                    .foregroundTint(.orange)
                                     .frame(width: 20, height: 20)
                                     .clipShape(.rect)
                                     .help(
@@ -374,7 +374,7 @@ extension RealTimeNoteCardView {
                                     )
                             } else {
                                 Image(systemSymbol: .checkmarkCircle)
-                                    .foregroundColor(.green)
+                                    .foregroundTint(.green)
                                     .frame(width: 20, height: 20)
                                     .clipShape(.rect)
                                     .help(
@@ -411,7 +411,7 @@ extension RealTimeNoteCardView {
                         Spacer()
                         if homeCoin.currentHomeCoin == homeCoin.maxHomeCoin {
                             Image(systemSymbol: .checkmarkCircle)
-                                .foregroundColor(.green)
+                                .foregroundTint(.green)
                                 .frame(width: 20, height: 20)
                         } else {
                             Text(verbatim: "\(homeCoin.currentHomeCoin) / \(homeCoin.maxHomeCoin)")
@@ -433,7 +433,7 @@ extension RealTimeNoteCardView {
                     Spacer()
                     if trounceBlossomIntel.allDiscountsAreUsedUp {
                         Image(systemSymbol: .checkmarkCircle)
-                            .foregroundColor(.green)
+                            .foregroundTint(.green)
                             .frame(width: 20, height: 20)
                     } else {
                         Text(verbatim: trounceBlossomIntel.textDescription)
@@ -454,7 +454,7 @@ extension RealTimeNoteCardView {
                     switch paraTransIntel.isAvailable {
                     case true:
                         Image(systemSymbol: .checkmarkCircle)
-                            .foregroundColor(.green)
+                            .foregroundTint(.green)
                             .frame(width: 20, height: 20)
                     case false:
                         if paraTransIntel.remainingDays > 0 {
@@ -492,7 +492,7 @@ extension RealTimeNoteCardView {
                     let completionIntel = dailyNote.expeditionCompletionStatus
                     if completionIntel.isAccomplished {
                         Image(systemSymbol: .checkmarkCircle)
-                            .foregroundColor(.green)
+                            .foregroundTint(.green)
                             .frame(width: 20, height: 20)
                     } else {
                         Text(verbatim: "\(completionIntel.finished) / \(completionIntel.all)")
@@ -610,7 +610,7 @@ extension RealTimeNoteCardView {
                     Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
                 } else {
                     Image(systemSymbol: .checkmarkCircle)
-                        .foregroundColor(.green)
+                        .foregroundTint(.green)
                         .frame(width: 20, height: 20)
                 }
             }
@@ -627,7 +627,7 @@ extension RealTimeNoteCardView {
                     let maxScore = strifeIntel.all
                     if strifeIntel.isAccomplished {
                         Image(systemSymbol: .checkmarkCircle)
-                            .foregroundColor(.green)
+                            .foregroundTint(.green)
                             .frame(width: 20, height: 20)
                     } else {
                         Text(verbatim: "\(currentScore) / \(maxScore)")
@@ -646,7 +646,7 @@ extension RealTimeNoteCardView {
                     let maxScore = dailyNote.simulatedUniverseInfo.maxScore
                     if currentScore >= maxScore {
                         Image(systemSymbol: .checkmarkCircle)
-                            .foregroundColor(.green)
+                            .foregroundTint(.green)
                             .frame(width: 20, height: 20)
                     } else {
                         Text(verbatim: "\(currentScore) / \(maxScore)")
@@ -664,7 +664,7 @@ extension RealTimeNoteCardView {
                     Spacer()
                     if eowIntel.allRewardsClaimed {
                         Image(systemSymbol: .checkmarkCircle)
-                            .foregroundColor(.green)
+                            .foregroundTint(.green)
                             .frame(width: 20, height: 20)
                     } else {
                         Text(verbatim: eowIntel.textDescription)
@@ -744,7 +744,7 @@ extension RealTimeNoteCardView {
                     Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
                 } else {
                     Image(systemSymbol: .checkmarkCircle)
-                        .foregroundColor(.green)
+                        .foregroundTint(.green)
                         .frame(width: 20, height: 20)
                         .clipShape(.rect)
                 }
@@ -775,7 +775,7 @@ extension RealTimeNoteCardView {
                                 .frame(width: 20, height: 20)
                                 .clipShape(.rect)
                         }
-                        .foregroundColor(.green)
+                        .foregroundTint(.green)
                     } else {
                         Text(verbatim: stateNyet)
                     }
@@ -798,7 +798,7 @@ extension RealTimeNoteCardView {
                         Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
                     } else {
                         Image(systemSymbol: .checkmarkCircle)
-                            .foregroundColor(.green)
+                            .foregroundTint(.green)
                             .frame(width: 20, height: 20)
                     }
                 }
@@ -820,7 +820,7 @@ extension RealTimeNoteCardView {
                         Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
                     } else {
                         Image(systemSymbol: .checkmarkCircle)
-                            .foregroundColor(.green)
+                            .foregroundTint(.green)
                             .frame(width: 20, height: 20)
                     }
                 }
@@ -893,7 +893,7 @@ extension ExpeditionViewSuppliable {
             // Time
             if task.isFinished {
                 Image(systemSymbol: .checkmarkCircle)
-                    .foregroundColor(.green)
+                    .foregroundTint(.green)
                     .padding(.leading, 6)
                     .padding(.trailing, 8)
                     .frame(maxWidth: .infinity, alignment: .leading)

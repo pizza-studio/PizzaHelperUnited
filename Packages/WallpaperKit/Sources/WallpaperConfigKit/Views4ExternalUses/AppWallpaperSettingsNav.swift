@@ -67,14 +67,14 @@ public struct AppWallpaperSettingsNav: View {
             if let wallpaperName = wallpaper?.name {
                 Text(wallpaperName)
                     .multilineTextAlignment(.leading)
-                    .foregroundColor(isChosen ? .accentColor : .primary)
+                    .foregroundTint(isChosen ? .accentColor : .primary)
             } else {
                 Text(
                     "settings.display.appWallpaper.userWallPaper.notSpecified",
                     bundle: .currentSPM
                 )
                 .multilineTextAlignment(.leading)
-                .foregroundColor(isChosen ? .accentColor : .primary)
+                .foregroundTint(isChosen ? .accentColor : .primary)
             }
         }
     }
@@ -93,7 +93,7 @@ public struct AppWallpaperSettingsNav: View {
             .frame(width: 32, height: 32).padding(.trailing, 4)
             Text(wallpaperName(for: wallpaper))
                 .multilineTextAlignment(.leading)
-                .foregroundColor(isChosen ? .accentColor : .primary)
+                .foregroundTint(isChosen ? .accentColor : .primary)
         }
     }
 

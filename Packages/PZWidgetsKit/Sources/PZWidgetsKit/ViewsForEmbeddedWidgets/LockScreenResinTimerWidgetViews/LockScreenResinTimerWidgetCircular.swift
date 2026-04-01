@@ -95,7 +95,7 @@ extension EmbeddedWidgets {
                                             design: .rounded,
                                             weight: .medium
                                         ))
-                                        .foregroundColor(
+                                        .foregroundTint(
                                             PZWidgetsSPM.Colors.TextColor.originResin.suiColor
                                         )
                                         .minimumScaleFactor(0.1)
@@ -107,7 +107,7 @@ extension EmbeddedWidgets {
                                         weight: .medium,
                                         design: .rounded
                                     ))
-                                    .foregroundColor(
+                                    .foregroundTint(
                                         PZWidgetsSPM.Colors.TextColor.originResin.suiColor
                                     )
                             }

@@ -222,7 +222,7 @@ extension OfficialFeed.OfficialFeedAllListView {
                         interactive: true
                     )
                 }
-                .foregroundColor(.primary)
+                .foregroundTint(.primary)
                 .padding()
             }
             .clipShape(theCardShape)

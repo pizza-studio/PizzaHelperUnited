@@ -72,7 +72,7 @@ struct LiveActivitySettingsPageContent: View {
                         Text("settings.staminaTimer.realtimeActivity.notEnabled", bundle: .currentSPM)
                     } icon: {
                         Image(systemSymbol: .exclamationmarkCircle)
-                            .foregroundColor(.red)
+                            .foregroundTint(.red)
                     }
                     osSettingsLink
                 } else {

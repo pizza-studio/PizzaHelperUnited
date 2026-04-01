@@ -251,7 +251,7 @@ extension GachaProfileView {
                 HStack {
                     Text(LocalizedStringKey(stringLiteral: poolType.appraiserDescriptionKey), bundle: .currentSPM)
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundTint(.secondary)
                     Spacer()
                 }
                 HStack {

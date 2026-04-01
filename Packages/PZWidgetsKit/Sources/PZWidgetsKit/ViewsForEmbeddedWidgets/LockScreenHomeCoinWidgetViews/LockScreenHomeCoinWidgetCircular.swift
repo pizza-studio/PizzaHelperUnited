@@ -30,7 +30,7 @@ extension EmbeddedWidgets {
                     .apply { imageView in
                         if widgetRenderingMode == .fullColor {
                             imageView
-                                .foregroundColor(PZWidgetsSPM.Colors.IconColor.HomeCoin.lightBlue.suiColor)
+                                .foregroundTint(PZWidgetsSPM.Colors.IconColor.HomeCoin.lightBlue.suiColor)
                         } else {
                             imageView
                         }

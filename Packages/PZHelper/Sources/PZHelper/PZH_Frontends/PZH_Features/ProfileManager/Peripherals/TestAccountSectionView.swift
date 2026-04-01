@@ -55,15 +55,15 @@ struct TestAccountSectionView: View {
             switch status {
             case .succeeded:
                 Image(systemSymbol: .checkmarkCircle)
-                    .foregroundColor(.green)
+                    .foregroundTint(.green)
             case .failure:
                 Image(systemSymbol: .xmarkCircle)
-                    .foregroundColor(.red)
+                    .foregroundTint(.red)
             case .testing:
                 WinUI3ProgressRing()
             case .verificationNeeded:
                 Image(systemSymbol: .questionmarkCircle)
-                    .foregroundColor(.yellow)
+                    .foregroundTint(.yellow)
             default:
                 EmptyView()
             }

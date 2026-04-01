@@ -283,7 +283,7 @@ private struct StaminaNotificationThresholdConfigView: View {
                 Text("settings.notification.staminaThresholds.add.title", bundle: .currentSPM)
                 Spacer()
                 Text(verbatim: "\(numberToSave)")
-                    .foregroundColor(isNewThresholdValid ? .primary : .red)
+                    .foregroundTint(isNewThresholdValid ? .primary : .red)
             }
             .onTapGesture {
                 withAnimation {
@@ -292,7 +292,7 @@ private struct StaminaNotificationThresholdConfigView: View {
             }
             Slider(value: $newNumber, in: 10.0 ... Double(game.maxPrimaryStamina), step: 5.0) {
                 Text(verbatim: "\(numberToSave)")
-                    .foregroundColor(isNewThresholdValid ? .primary : .red)
+                    .foregroundTint(isNewThresholdValid ? .primary : .red)
             }
             .react(to: game) {
                 newNumber = min(newNumber, Double(game.maxPrimaryStamina))

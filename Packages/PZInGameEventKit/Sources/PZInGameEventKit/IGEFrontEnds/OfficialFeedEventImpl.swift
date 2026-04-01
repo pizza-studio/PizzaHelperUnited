@@ -30,7 +30,7 @@ extension OfficialFeed.FeedEvent {
             }
         }
         .font(.caption)
-        .foregroundColor(.primary)
+        .foregroundTint(.primary)
     }
 
     public func textListItemRaw() -> (title: String, remainingDays: String) {

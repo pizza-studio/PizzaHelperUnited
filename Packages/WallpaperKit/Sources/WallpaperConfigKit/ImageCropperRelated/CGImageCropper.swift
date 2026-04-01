@@ -401,7 +401,7 @@ extension CGImageCropperView {
                         if showOperationHints {
                             tutorialTexts
                                 .multilineTextAlignment(.leading)
-                                .foregroundColor(.white)
+                                .foregroundTint(.white)
                                 .font(.footnote)
                                 .fontWidth(.condensed)
                                 .shadow(color: .black, radius: 1)

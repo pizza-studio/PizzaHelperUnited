@@ -353,7 +353,7 @@ extension OOBEView {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } icon: {
                     netaBar.icon
-                        .foregroundColor(netaBar.color)
+                        .foregroundTint(netaBar.color)
                 }
                 let descriptionText =
                     subText
@@ -373,7 +373,7 @@ extension OOBEView {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 40, height: 40)
-                    .foregroundColor(netaBar.color)
+                    .foregroundTint(netaBar.color)
                 VStack(alignment: .leading) {
                     mainText
                         .multilineTextAlignment(.leading)

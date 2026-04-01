@@ -137,7 +137,7 @@ extension OfficialFeed.OfficialFeedSection {
                                         Spacer()
                                         Text("igev.gameEvents.noCurrentEventInfo", bundle: .currentSPM)
                                             .font(.caption)
-                                            .foregroundColor(.secondary)
+                                            .foregroundTint(.secondary)
                                         Spacer()
                                     }
                                 } else {

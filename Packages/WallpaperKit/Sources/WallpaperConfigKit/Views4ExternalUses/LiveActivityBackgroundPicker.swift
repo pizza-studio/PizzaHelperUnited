@@ -88,11 +88,11 @@ public struct LiveActivityBackgroundPicker: View {
                 .frame(width: 32, height: 32).padding(.trailing, 4)
             Text(wallpaper.name)
                 .multilineTextAlignment(.leading)
-                .foregroundColor(isChosen ? .accentColor : .primary)
+                .foregroundTint(isChosen ? .accentColor : .primary)
             Spacer()
             if isChosen {
                 Text(verbatim: "✔︎")
-                    .foregroundColor(.accentColor)
+                    .foregroundTint(.accentColor)
                     .padding(.horizontal)
             }
         }
@@ -112,11 +112,11 @@ public struct LiveActivityBackgroundPicker: View {
             .frame(width: 32, height: 32).padding(.trailing, 4)
             Text(wallpaperName(for: wallpaper))
                 .multilineTextAlignment(.leading)
-                .foregroundColor(isChosen ? .accentColor : .primary)
+                .foregroundTint(isChosen ? .accentColor : .primary)
             Spacer()
             if isChosen {
                 Text(verbatim: "✔︎")
-                    .foregroundColor(.accentColor)
+                    .foregroundTint(.accentColor)
                     .padding(.horizontal)
             }
         }

@@ -69,7 +69,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
             }
         } header: {
             sectionHeader()
-                .foregroundColor(.primary.opacity(0.75)) // Enhance legibility with background images.
+                .foregroundTint(.primary.opacity(0.75)) // Enhance legibility with background images.
                 .onTapGesture {
                     dropFieldFocus()
                 }
@@ -77,7 +77,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
             sectionFooterWithExplainTexts()
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.footnote)
-                .foregroundColor(.primary.opacity(0.75)) // Enhance legibility with background images.
+                .foregroundTint(.primary.opacity(0.75)) // Enhance legibility with background images.
                 .onTapGesture {
                     dropFieldFocus()
                 }

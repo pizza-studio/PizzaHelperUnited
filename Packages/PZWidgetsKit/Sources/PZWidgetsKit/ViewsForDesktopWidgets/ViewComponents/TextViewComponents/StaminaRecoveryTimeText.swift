@@ -34,7 +34,7 @@ extension DesktopWidgets {
             .font(.caption2)
             .allowsTightening(true)
             .minimumScaleFactor(0.2)
-            .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+            .foregroundTint(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
             .legibilityShadow()
         }
 

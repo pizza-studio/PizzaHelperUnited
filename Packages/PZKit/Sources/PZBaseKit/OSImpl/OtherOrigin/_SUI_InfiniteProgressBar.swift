@@ -14,7 +14,7 @@ public struct InfiniteProgressBar: View {
 
     public var body: some View {
         Rectangle()
-            .foregroundColor(.gray) // change the color as you see fit
+            .foregroundTint(.gray) // change the color as you see fit
             .frame(height: Self.height)
             .overlay(GeometryReader { geo in
                 overlayRect(in: geo.frame(in: .local))
@@ -38,7 +38,7 @@ public struct InfiniteProgressBar: View {
     private func overlayRect(in rect: CGRect) -> some View {
         let width = rect.width * Self.coverPercentage
         Rectangle()
-            .foregroundColor(.blue)
+            .foregroundTint(.blue)
             .frame(width: width)
             .offset(x: width * offset)
             .onAppear {

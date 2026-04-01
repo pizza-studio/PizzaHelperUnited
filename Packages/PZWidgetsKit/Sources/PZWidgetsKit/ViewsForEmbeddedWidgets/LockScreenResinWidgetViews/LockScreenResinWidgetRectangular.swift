@@ -44,7 +44,7 @@ extension EmbeddedWidgets {
                                     .minimumScaleFactor(0.5)
                             }
                             .widgetAccentable()
-                            .foregroundColor(PZWidgetsSPM.Colors.IconColor.Resin.middle.suiColor)
+                            .foregroundTint(PZWidgetsSPM.Colors.IconColor.Resin.middle.suiColor)
                             if staminaIntel.isAccomplished {
                                 Text("pzWidgetsKit.stamina.full", bundle: .currentSPM)
                                     .font(.footnote)
@@ -57,7 +57,7 @@ extension EmbeddedWidgets {
                                 .lineLimit(2)
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
-                                .foregroundColor(.gray)
+                                .foregroundTint(.gray)
                             }
                         }
                         Spacer()
@@ -75,7 +75,7 @@ extension EmbeddedWidgets {
                                     .minimumScaleFactor(0.5)
                             }
                             .widgetAccentable()
-                            .foregroundColor(.cyan)
+                            .foregroundTint(.cyan)
                             Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -98,13 +98,13 @@ extension EmbeddedWidgets {
                                     .font(.system(size: size * 1 / 2))
                                     .minimumScaleFactor(0.5)
                             }
-                            .foregroundColor(.primary)
+                            .foregroundTint(.primary)
                             .widgetAccentable()
                             if staminaIntel.isAccomplished {
                                 Text("pzWidgetsKit.stamina.full", bundle: .currentSPM)
                                     .font(.footnote)
                                     .fixedSize(horizontal: false, vertical: true)
-                                    .foregroundColor(.gray)
+                                    .foregroundTint(.gray)
                             } else {
                                 Text(
                                     "pzWidgetsKit.infoBlock.refilledAt:\(HoYo.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
@@ -113,7 +113,7 @@ extension EmbeddedWidgets {
                                 .lineLimit(2)
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
-                                .foregroundColor(.gray)
+                                .foregroundTint(.gray)
                             }
                         }
                         Spacer()
@@ -134,7 +134,7 @@ extension EmbeddedWidgets {
                             Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaSVGAsInlineText
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
-                                .foregroundColor(.gray)
+                                .foregroundTint(.gray)
                         }
                         Spacer()
                     }

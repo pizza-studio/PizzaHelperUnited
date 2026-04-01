@@ -19,7 +19,7 @@ struct WatchProfileDetailItemView: View {
                         .scaledToFit()
                 }
                 Text(title, bundle: .currentSPM)
-                    .foregroundColor(.gray)
+                    .foregroundTint(.gray)
                     .font(.subheadline)
                     .lineLimit(1)
                     .minimumScaleFactor(0.3)

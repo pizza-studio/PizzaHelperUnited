@@ -33,7 +33,7 @@ public struct GachaChartVertical: View {
             }
         } else {
             Text("gachaKit.chart.noPentaStarsFound", bundle: .currentSPM)
-                .foregroundColor(.secondary)
+                .foregroundTint(.secondary)
         }
     }
 
@@ -105,7 +105,7 @@ extension GachaChartVertical {
                                     avrgCountLabelText
                                         .font(chartFont)
                                         .fixedSize()
-                                        .foregroundColor(.gray)
+                                        .foregroundTint(.gray)
                                         .offset(x: 20)
                                 } else {
                                     Rectangle()
@@ -123,13 +123,13 @@ extension GachaChartVertical {
                                     entry.nameView
                                         .fixedSize()
                                         .font(chartFont)
-                                        .foregroundColor(.gray)
+                                        .foregroundTint(.gray)
                                     HStack {
                                         Rectangle().fill(getColor(for: entry.drawCount))
                                             .frame(width: containerWidth * widthRatio, height: 20)
                                         Text(entry.drawCount.description)
                                             .font(chartFont)
-                                            .foregroundColor(.gray)
+                                            .foregroundTint(.gray)
                                             .fixedSize()
                                         Rectangle().fill(.clear)
                                             .frame(width: 35, height: 20)
@@ -167,7 +167,7 @@ extension GachaChartVertical {
                         }
                         .background(alignment: .leading) {
                             if showRulerValues {
-                                Text(verbatim: "0").font(chartFont).foregroundColor(.gray)
+                                Text(verbatim: "0").font(chartFont).foregroundTint(.gray)
                             }
                         }
                 }
@@ -180,21 +180,7 @@ extension GachaChartVertical {
                         }
                         .background(alignment: .trailing) {
                             if showRulerValues {
-                                Text(verbatim: "25").font(chartFont).foregroundColor(.gray)
-                            }
-                        }
-                }
-            Rectangle().fill(.clear)
-                .overlay(alignment: .trailing) {
-                    Rectangle().fill(.clear).frame(width: 30)
-                        .overlay(alignment: .trailing) {
-                            Rectangle()
-                                .fill(Color.secondary.opacity(showRulerValues ? 0 : 0.1))
-                                .frame(width: 1)
-                        }
-                        .background(alignment: .trailing) {
-                            if showRulerValues {
-                                Text(verbatim: "50").font(chartFont).foregroundColor(.gray)
+                                Text(verbatim: "25").font(chartFont).foregroundTint(.gray)
                             }
                         }
                 }
@@ -208,7 +194,7 @@ extension GachaChartVertical {
                         }
                         .background(alignment: .trailing) {
                             if showRulerValues {
-                                Text(verbatim: "75").font(chartFont).foregroundColor(.gray)
+                                Text(verbatim: "50").font(chartFont).foregroundTint(.gray)
                             }
                         }
                 }
@@ -222,7 +208,21 @@ extension GachaChartVertical {
                         }
                         .background(alignment: .trailing) {
                             if showRulerValues {
-                                Text(verbatim: "100").font(chartFont).foregroundColor(.gray)
+                                Text(verbatim: "75").font(chartFont).foregroundTint(.gray)
+                            }
+                        }
+                }
+            Rectangle().fill(.clear)
+                .overlay(alignment: .trailing) {
+                    Rectangle().fill(.clear).frame(width: 30)
+                        .overlay(alignment: .trailing) {
+                            Rectangle()
+                                .fill(Color.secondary.opacity(showRulerValues ? 0 : 0.1))
+                                .frame(width: 1)
+                        }
+                        .background(alignment: .trailing) {
+                            if showRulerValues {
+                                Text(verbatim: "100").font(chartFont).foregroundTint(.gray)
                             }
                         }
                 }

@@ -26,7 +26,7 @@ extension DesktopWidgets {
                 today: today
             ) {
                 Text("pzWidgetsKit.material.sunday", bundle: .currentSPM)
-                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+                    .foregroundTint(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .font(.caption)
                     .lineLimit(1)
                     .minimumScaleFactor(0.2)

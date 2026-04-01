@@ -172,7 +172,7 @@ private struct DetailNavigator: View {
                         Text(error.localizedDescription)
                     } icon: {
                         Image(systemSymbol: .exclamationmarkCircle)
-                            .foregroundColor(.red)
+                            .foregroundTint(.red)
                     }
                 }
             case .progress:

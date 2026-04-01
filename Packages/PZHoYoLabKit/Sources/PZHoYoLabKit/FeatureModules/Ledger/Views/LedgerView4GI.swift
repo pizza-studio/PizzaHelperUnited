@@ -168,7 +168,7 @@ public struct LedgerView4GI: LedgerView {
                     }
                     if previousValue != nil {
                         HStack {
-                            Text(memo, bundle: .currentSPM).foregroundColor(.secondary)
+                            Text(memo, bundle: .currentSPM).foregroundTint(.secondary)
                             Spacer()
                             switch valueDelta {
                             case 1...: Text(verbatim: "+\(valueDelta)")

@@ -43,7 +43,7 @@ private struct BetaOSNoticeModifier: ViewModifier {
                             .frame(maxWidth: .infinity, alignment: .leading)
                         } icon: {
                             Image(systemSymbol: .exclamationmarkTriangleFill)
-                                .foregroundColor(.red)
+                                .foregroundTint(.red)
                         }
                         Button {
                             isNoticeBypassed.toggle()
@@ -53,7 +53,7 @@ private struct BetaOSNoticeModifier: ViewModifier {
                                     .fill(Color.accentColor)
                                 Text("sys.agree", bundle: .currentSPM)
                                     .bold()
-                                    .foregroundColor(.white)
+                                    .foregroundTint(.white)
                                     .padding()
                             }
                             .frame(maxWidth: .infinity)

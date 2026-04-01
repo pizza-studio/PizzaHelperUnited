@@ -19,7 +19,7 @@ struct WatchStaminaDetailView: View {
                     .scaledToFit()
                     .frame(height: 25)
                 Text("watch.stamina", bundle: .currentSPM)
-                    .foregroundColor(.gray)
+                    .foregroundTint(.gray)
             }
             Text(verbatim: "\(dailyNote.staminaIntel.finished)")
                 .font(.system(size: 40, design: .rounded))
@@ -34,12 +34,12 @@ struct WatchStaminaDetailView: View {
         if timeOnFinish >= Date() {
             Text("watch.infoBlock.refilledAt:\(dateFormatter.string(from: timeOnFinish))", bundle: .currentSPM)
                 .lineLimit(2)
-                .foregroundColor(.gray)
+                .foregroundTint(.gray)
                 .minimumScaleFactor(0.3)
                 .font(.footnote)
         } else {
             Text("watch.stamina.fullyCharged", bundle: .currentSPM)
-                .foregroundColor(.gray)
+                .foregroundTint(.gray)
                 .minimumScaleFactor(0.3)
                 .font(.footnote)
         }

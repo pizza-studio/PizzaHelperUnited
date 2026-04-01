@@ -403,7 +403,7 @@ private struct RequireLoginView: View {
                     Capsule().foregroundStyle(.primary.opacity(0.1))
                 }
         }
-        .foregroundColor(.accentColor)
+        .foregroundTint(.accentColor)
     }
 
     // MARK: Private
@@ -454,11 +454,11 @@ private struct ExplanationView: View {
                 Text(verbatim: beareOfTextHeader)
                     .font(.callout)
                     .bold()
-                    .foregroundColor(.red)
+                    .foregroundTint(.red)
                 ForEach(beareOfTextContents, id: \.self) { currentLine in
                     Text(verbatim: currentLine)
                         .font(.subheadline)
-                        .foregroundColor(.red)
+                        .foregroundTint(.red)
                 }
                 Text("profileMgr.accountLogin.explanation.title.1".i18nPZHelper)
                     .font(.callout)

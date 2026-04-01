@@ -145,7 +145,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                                 .padding(.top, 5)
                                 .lineLimit(1)
                             Text(verbatim: profile.rawInfo.signature)
-                                .foregroundColor(.secondary)
+                                .foregroundTint(.secondary)
                                 .font(.footnote)
                                 .lineLimit(2)
                                 .fixedSize(

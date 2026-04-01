@@ -28,7 +28,7 @@ extension EmbeddedWidgets {
                     .apply { imageView in
                         if widgetRenderingMode == .fullColor {
                             imageView
-                                .foregroundColor(PZWidgetsSPM.Colors.IconColor.dailyTask.suiColor)
+                                .foregroundTint(PZWidgetsSPM.Colors.IconColor.dailyTask.suiColor)
                         } else {
                             imageView
                         }

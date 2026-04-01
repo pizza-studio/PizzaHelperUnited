@@ -68,7 +68,7 @@ struct TodayTabPage: View {
                     Text("app.dailynote.noCard.suggestion".i18nPZHelper)
                 } icon: {
                     Image(systemSymbol: .questionmarkCircle)
-                        .foregroundColor(.yellow)
+                        .foregroundTint(.yellow)
                 }
                 .listRowMaterialBackground()
                 rootNavVM.gotoSettingsButtonIfAppropriate

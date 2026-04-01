@@ -70,7 +70,7 @@ private struct CustomSegmentedPickerItemModifier<Item: Identifiable & Sendable>:
             .fixedSize()
             .frame(maxWidth: .infinity)
             .font(.footnote)
-            .foregroundColor(selected ? .white : .primary)
+            .foregroundTint(selected ? .white : .primary)
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
             .background {

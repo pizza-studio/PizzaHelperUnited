@@ -27,7 +27,7 @@ extension DesktopWidgets {
             HStack(alignment: .top) {
                 let imageLabel = Image(systemSymbol: .arrowClockwiseCircle)
                     .font(.title3)
-                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+                    .foregroundTint(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .clipShape(.circle)
                     .legibilityShadow()
                 Group {
@@ -43,7 +43,7 @@ extension DesktopWidgets {
                 .padding()
                 Text(error.localizedDescription)
                     .bold()
-                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+                    .foregroundTint(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .legibilityShadow()
             }
             .padding(20)

@@ -40,7 +40,7 @@ public struct GachaChartHorizontal: View {
             }
         } else {
             Text("gachaKit.chart.noPentaStarsFound", bundle: .currentSPM)
-                .foregroundColor(.secondary)
+                .foregroundTint(.secondary)
                 .font(.caption)
         }
     }
@@ -108,7 +108,7 @@ extension GachaChartHorizontal {
                             VStack(spacing: 2) {
                                 Text(entry.drawCount.description)
                                     .font(chartFont)
-                                    .foregroundColor(.gray)
+                                    .foregroundTint(.gray)
                                 Rectangle().fill(getColor(for: entry.drawCount))
                                     .frame(width: 25, height: containerHeight * heightRatio)
                             }
@@ -127,7 +127,7 @@ extension GachaChartHorizontal {
                     if entry == nil {
                         Text(verbatim: "0")
                             .font(chartFont)
-                            .foregroundColor(.gray)
+                            .foregroundTint(.gray)
                             .offset(x: -2, y: -6)
                     }
                 }
@@ -148,7 +148,7 @@ extension GachaChartHorizontal {
                         }
                         .background(alignment: .topTrailing) {
                             if showRulerValues {
-                                Text(verbatim: "100").font(chartFont).foregroundColor(.gray)
+                                Text(verbatim: "100").font(chartFont).foregroundTint(.gray)
                             }
                         }
                 }
@@ -162,7 +162,7 @@ extension GachaChartHorizontal {
                         }
                         .background(alignment: .topTrailing) {
                             if showRulerValues {
-                                Text(verbatim: "75").font(chartFont).foregroundColor(.gray)
+                                Text(verbatim: "75").font(chartFont).foregroundTint(.gray)
                             }
                         }
                 }
@@ -176,7 +176,7 @@ extension GachaChartHorizontal {
                         }
                         .background(alignment: .topTrailing) {
                             if showRulerValues {
-                                Text(verbatim: "50").font(chartFont).foregroundColor(.gray)
+                                Text(verbatim: "50").font(chartFont).foregroundTint(.gray)
                             }
                         }
                 }
@@ -198,7 +198,7 @@ extension GachaChartHorizontal {
                         }
                         .background(alignment: .topTrailing) {
                             if showRulerValues {
-                                Text(verbatim: "25").font(chartFont).foregroundColor(.gray)
+                                Text(verbatim: "25").font(chartFont).foregroundTint(.gray)
                             }
                         }
                 }

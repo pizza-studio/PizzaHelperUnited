@@ -39,7 +39,7 @@ public struct GachaEntryBar: View {
                             HStack {
                                 Text(verbatim: entry.id)
                                     .font(.caption2)
-                                    .foregroundColor(.secondary)
+                                    .foregroundTint(.secondary)
                                     .fontWidth(.condensed)
                             }
                         } else {
@@ -64,7 +64,7 @@ public struct GachaEntryBar: View {
                         }
                         if showDate {
                             Text(Self.dateFormatter.string(from: entry.time))
-                                .foregroundColor(.secondary)
+                                .foregroundTint(.secondary)
                                 .font(.caption2)
                         }
                     }
@@ -99,7 +99,7 @@ public struct GachaEntryBar: View {
     @MainActor @ViewBuilder var itemIDText: some View {
         if showDate {
             Text(verbatim: "\(entry.itemID)")
-                .font(.caption2).foregroundColor(.secondary)
+                .font(.caption2).foregroundTint(.secondary)
         }
     }
 

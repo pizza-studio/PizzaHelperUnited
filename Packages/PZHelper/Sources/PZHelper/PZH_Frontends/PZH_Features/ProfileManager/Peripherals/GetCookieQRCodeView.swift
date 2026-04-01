@@ -160,7 +160,7 @@ struct GetCookieQRCodeView: View {
         .overlay(alignment: .bottom) {
             Text("profileMgr.account.qr_code_login.click_qr_to_save".i18nPZHelper).font(.footnote)
                 .padding(4)
-                .background(Capsule().foregroundColor(.primary.opacity(0.05)))
+                .background(Capsule().foregroundTint(.primary.opacity(0.05)))
         }
     }
 

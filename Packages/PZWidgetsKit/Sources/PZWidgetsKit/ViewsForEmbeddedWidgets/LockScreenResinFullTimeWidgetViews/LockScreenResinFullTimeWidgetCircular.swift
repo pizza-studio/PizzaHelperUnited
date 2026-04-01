@@ -81,7 +81,7 @@ extension EmbeddedWidgets {
                                             design: .monospaced
                                         ))
                                         .minimumScaleFactor(0.1)
-                                        .foregroundColor(.secondary)
+                                        .foregroundTint(.secondary)
                                 } else {
                                     Text(verbatim: "\(staminaIntel.finished)")
                                         .font(.system(
