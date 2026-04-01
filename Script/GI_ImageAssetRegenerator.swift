@@ -122,8 +122,7 @@ func cleanWorkspace() {
     do {
         try FileManager.default.removeItem(atPath: "./Assets/AssetTemp")
     } catch {
-        print("AssetTemp Removal Failed from Swift, deferring the removal task to shell:" + error.localizedDescription)
-        // preconditionFailure(error.localizedDescription)
+        preconditionFailure(error.localizedDescription)
     }
 }
 
