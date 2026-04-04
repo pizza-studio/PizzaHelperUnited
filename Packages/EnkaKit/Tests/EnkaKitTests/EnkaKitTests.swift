@@ -35,6 +35,120 @@ struct ArtifactRatingTests {
             decodingTo: ArtifactRating.ModelDB.self
         )
     }
+
+    @available(iOS 17.0, macCatalyst 17.0, *)
+    @MainActor
+    @Test
+    func testAllSubStatsIncludedInScoring() async throws {
+        ArtifactRating.ARSputnik.shared.resetFactoryScoreModel()
+
+        let bundledDB = ArtifactRating.ModelDB.makeBundledDB()
+        let englishDB = try Enka.EnkaDB4GI(locTag: "en")
+        Enka.Sputnik.shared.db4GI = englishDB
+
+        struct SubStatTestCase {
+            let name: String
+            let weightKey: Enka.PropertyType
+            let appraiserParam: ArtifactRating.Appraiser.Param
+            let sampleValue: Double
+        }
+
+        let allSubStats: [SubStatTestCase] = [
+            .init(name: "HP Delta", weightKey: .hpDelta, appraiserParam: .hpDelta, sampleValue: 1),
+            .init(name: "ATK Delta", weightKey: .attackDelta, appraiserParam: .atkDelta, sampleValue: 1),
+            .init(name: "DEF Delta", weightKey: .defenceDelta, appraiserParam: .defDelta, sampleValue: 1),
+            .init(name: "HP%", weightKey: .hpAddedRatio, appraiserParam: .hpAmp, sampleValue: 1),
+            .init(name: "ATK%", weightKey: .attackAddedRatio, appraiserParam: .atkAmp, sampleValue: 1),
+            .init(name: "DEF%", weightKey: .defenceAddedRatio, appraiserParam: .defAmp, sampleValue: 1),
+            .init(name: "Speed", weightKey: .speedDelta, appraiserParam: .spdDelta, sampleValue: 1),
+            .init(name: "Crit Rate", weightKey: .criticalChanceBase, appraiserParam: .critChance, sampleValue: 1),
+            .init(name: "Crit DMG", weightKey: .criticalDamageBase, appraiserParam: .critDamage, sampleValue: 1),
+            .init(name: "Effect Hit", weightKey: .statusProbabilityBase, appraiserParam: .statProb, sampleValue: 1),
+            .init(name: "Effect Res", weightKey: .statusResistanceBase, appraiserParam: .statResis, sampleValue: 1),
+            .init(
+                name: "Break Damage",
+                weightKey: .breakDamageAddedRatioBase,
+                appraiserParam: .breakDmg,
+                sampleValue: 1
+            ),
+            .init(
+                name: "Elemental Mastery",
+                weightKey: .elementalMastery,
+                appraiserParam: .elementalMastery,
+                sampleValue: 1
+            ),
+            .init(
+                name: "Energy Recharge",
+                weightKey: .energyRecoveryBase,
+                appraiserParam: .energyRecovery,
+                sampleValue: 1
+            ),
+        ]
+
+        var testedStats = 0
+        var skippedStats: [String] = []
+
+        for testCase in allSubStats {
+            guard let charEntry = bundledDB.first(where: { entry in
+                (entry.value.weight[testCase.weightKey] ?? 0) > 0
+            }) else {
+                skippedStats.append(testCase.name)
+                continue
+            }
+            let charID = charEntry.key
+
+            let ratingModel = ArtifactRating.CharacterStatScoreModel.getScoreModel(charID: charID)
+            #expect(
+                ratingModel[testCase.appraiserParam] != nil,
+                "\(testCase.name): Rating model should include \(testCase.appraiserParam) parameter"
+            )
+
+            var artifact = ArtifactRating.RatingRequest.Artifact(type: Enka.ArtifactType.giSands)
+            artifact.setID = 15016
+            switch testCase.appraiserParam {
+            case .hpDelta: artifact.subPanel.hpDelta = testCase.sampleValue
+            case .atkDelta: artifact.subPanel.attackDelta = testCase.sampleValue
+            case .defDelta: artifact.subPanel.defenceDelta = testCase.sampleValue
+            case .hpAmp: artifact.subPanel.hpAddedRatio = testCase.sampleValue
+            case .atkAmp: artifact.subPanel.attackAddedRatio = testCase.sampleValue
+            case .defAmp: artifact.subPanel.defenceAddedRatio = testCase.sampleValue
+            case .spdDelta: artifact.subPanel.speedDelta = testCase.sampleValue
+            case .critChance: artifact.subPanel.criticalChanceBase = testCase.sampleValue
+            case .critDamage: artifact.subPanel.criticalDamageBase = testCase.sampleValue
+            case .statProb: artifact.subPanel.statusProbabilityBase = testCase.sampleValue
+            case .statResis: artifact.subPanel.statusResistanceBase = testCase.sampleValue
+            case .breakDmg: artifact.subPanel.breakDamageAddedRatioBase = testCase.sampleValue
+            case .elementalMastery: artifact.subPanel.elementalMastery = testCase.sampleValue
+            case .energyRecovery: artifact.subPanel.energyRecovery = testCase.sampleValue
+            default: continue
+            }
+
+            let request = ArtifactRating.RatingRequest(
+                game: .genshinImpact,
+                charID: charID,
+                characterElement: .electro,
+                headOrFlower: .init(type: .giFlower),
+                handOrPlume: .init(type: .giPlume),
+                bodyOrSands: artifact,
+                footOrGoblet: .init(type: .giGoblet),
+                objectOrCirclet: .init(type: .giCirclet)
+            )
+            let result = try #require(
+                ArtifactRating.Appraiser(request: request).evaluate(),
+                "\(testCase.name): ArtifactRating evaluate failed"
+            )
+            #expect(
+                result.stat3pt > 0,
+                "\(testCase.name): Artifact with \(testCase.name) should have positive score (got \(result.stat3pt), charID=\(charID))"
+            )
+            testedStats += 1
+        }
+
+        if !skippedStats.isEmpty {
+            Issue.record("Skipped stats with no matching character in DB: \(skippedStats.joined(separator: ", "))")
+        }
+        #expect(testedStats > 0, "At least one sub-stat should have been tested")
+    }
 }
 
 // MARK: - EnkaKitTests

@@ -239,7 +239,9 @@ extension ArtifactRating.RatingRequest.Artifact {
             getPt(subPanel.criticalDamageBase, .critDamage),
             getPt(subPanel.statusProbabilityBase, .statProb),
             getPt(subPanel.statusResistanceBase, .statResis),
+            getPt(subPanel.breakDamageAddedRatioBase, .breakDmg),
             getPt(subPanel.elementalMastery, .elementalMastery),
+            getPt(subPanel.energyRecovery, .energyRecovery),
         ]
 
         // 主词条处理。

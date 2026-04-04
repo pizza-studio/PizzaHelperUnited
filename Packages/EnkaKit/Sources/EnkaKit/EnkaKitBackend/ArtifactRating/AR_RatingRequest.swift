@@ -72,5 +72,6 @@ extension ArtifactRating.RatingRequest {
         var statusResistanceBase: Double = 0
         var breakDamageAddedRatioBase: Double = 0
         var elementalMastery: Double = 0
+        var energyRecovery: Double = 0
     }
 }

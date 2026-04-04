@@ -118,7 +118,7 @@ extension Enka.AvatarSummarized {
                 case .breakDmg: result.subPanel.breakDamageAddedRatioBase = valueForRating
                 case .elementalMastery: result.subPanel.elementalMastery = valueForRating
                 case .healAmp: return // 主词条专属项目「治疗量加成」。
-                case .energyRecovery: return // 主词条专属项目「元素充能效率」。
+                case .energyRecovery: result.subPanel.energyRecovery = valueForRating
                 case .dmgAmp: return // 主词条专属项目「元素伤害加成」。
                 }
             }
