@@ -130,9 +130,9 @@ struct EnkaKitTests {
 
     @available(iOS 17.0, macCatalyst 17.0, *)
     @Test
-    func testEnkaOnlineProfileQueryRAW() async throws {
-        let hsrQueried = try await Enka.QueriedResultHSR.queryRAW(uid: "114514810")
-        let giQueried = try await Enka.QueriedResultGI.queryRAW(uid: "114514810")
+    func testEnkaOnlineProfileQuery() async throws {
+        let hsrQueried = try await Enka.QueriedResultHSR.queryProfile(uid: "114514810")
+        let giQueried = try await Enka.QueriedResultGI.queryProfile(uid: "114514810")
         #expect(hsrQueried.uid == giQueried.uid)
     }
 
