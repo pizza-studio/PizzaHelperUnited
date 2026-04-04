@@ -65,19 +65,26 @@ struct EnkaKitTests {
         "2003":0,"2004":0,"2005":0,"3006":0,"3045":0,"3046":1
         }
         """
-        guard let data1 = jsonStr1.data(using: .utf8),
-              let data2 = jsonStr2.data(using: .utf8),
-              let data3 = jsonStr3.data(using: .utf8),
-              let data4 = jsonStr4.data(using: .utf8),
-              let data5 = jsonStr5.data(using: .utf8)
-        else {
-            preconditionFailure("Data Failure.")
-        }
-        let decoded1 = try JSONDecoder().decode([String: Enka.PropertyType].self, from: data1)
-        let decoded2 = try JSONDecoder().decode([String: Enka.GameElement].self, from: data2)
-        let decoded3 = try JSONDecoder().decode([String: Enka.PropertyType].self, from: data3)
-        let decoded4 = try JSONDecoder().decode([Enka.PropertyType: Double].self, from: data4)
-        let decoded5 = try JSONDecoder().decode([Enka.PropertyType: Double].self, from: data5)
+        let data1 = try #require(jsonStr1.data(using: .utf8), "jsonStr1 is nil")
+        let data2 = try #require(jsonStr2.data(using: .utf8), "jsonStr2 is nil")
+        let data3 = try #require(jsonStr3.data(using: .utf8), "jsonStr3 is nil")
+        let data4 = try #require(jsonStr4.data(using: .utf8), "jsonStr4 is nil")
+        let data5 = try #require(jsonStr5.data(using: .utf8), "jsonStr5 is nil")
+        let decoded1 = try #require(
+            try? JSONDecoder().decode([String: Enka.PropertyType].self, from: data1), "jsonStr1 is not decodable"
+        )
+        let decoded2 = try #require(
+            try? JSONDecoder().decode([String: Enka.GameElement].self, from: data2), "jsonStr2 is not decodable"
+        )
+        let decoded3 = try #require(
+            try? JSONDecoder().decode([String: Enka.PropertyType].self, from: data3), "jsonStr3 is not decodable"
+        )
+        let decoded4 = try #require(
+            try? JSONDecoder().decode([Enka.PropertyType: Double].self, from: data4), "jsonStr4 is not decodable"
+        )
+        let decoded5 = try #require(
+            try? JSONDecoder().decode([Enka.PropertyType: Double].self, from: data5), "jsonStr5 is not decodable"
+        )
         #expect(decoded1.values.first == .dendroAddedRatio)
         #expect(decoded2.values.first == .dendro)
         #expect(decoded3.values.first == .criticalChance)
@@ -108,9 +115,12 @@ struct EnkaKitTests {
     func testEnkaQueryFileDecoding() throws {
         let hsrDecoded = try Enka.QueriedResultHSR.exampleData()
         let giDecoded = try Enka.QueriedResultGI.exampleData()
-        guard let hsrProfile = hsrDecoded.detailInfo, let giProfile = giDecoded.detailInfo else {
-            throw TestError.error(msg: "No Profile found in the decoded results.")
-        }
+        let hsrProfile = try #require(
+            hsrDecoded.detailInfo, "No HSR Profile found in decoded results."
+        )
+        let giProfile = try #require(
+            giDecoded.detailInfo, "No GI Profile found in decoded results."
+        )
         #expect(hsrProfile.uid == giProfile.uid)
         let giDecodedHYL = try HYQueriedModels.HYLAvatarDetail4GI.exampleData()
         let hsrDecodedHYL = try HYQueriedModels.HYLAvatarDetail4HSR.exampleData()
@@ -122,7 +132,7 @@ struct EnkaKitTests {
     @Test
     func testEnkaOnlineProfileQueryRAW() async throws {
         let hsrQueried = try await Enka.QueriedResultHSR.queryRAW(uid: "114514810")
-        let giQueried = try await Enka.QueriedResultHSR.queryRAW(uid: "114514810")
+        let giQueried = try await Enka.QueriedResultGI.queryRAW(uid: "114514810")
         #expect(hsrQueried.uid == giQueried.uid)
     }
 
@@ -133,12 +143,14 @@ struct EnkaKitTests {
         Enka.Sputnik.shared.db4HSR = englishDB
         ArtifactRating.ARSputnik.shared.resetFactoryScoreModel()
         let hsrDecoded = try Enka.QueriedResultHSR.exampleData()
-        guard let profile = hsrDecoded.detailInfo, let firstAvatar = profile.avatarDetailList.first else {
-            throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
-        }
-        guard let summarized = firstAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
-            throw TestError.error(msg: "Failed in summarizing Raiden Mei's character build.")
-        }
+        let profile = try #require(hsrDecoded.detailInfo, "HSR detailInfo is nil.")
+        let firstAvatar = try #require(
+            profile.avatarDetailList.first, "First avatar (Raiden Mei) missing."
+        )
+        let summarized = try #require(
+            firstAvatar.summarize(theDB: englishDB)?.artifactsRated(),
+            "Failed in summarizing Raiden Mei's character build."
+        )
         print(summarized.asText)
         print(summarized.mainInfo.idExpressable.onlineAssetURLStr)
         print(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
@@ -157,17 +169,19 @@ struct EnkaKitTests {
     @Test
     func testEnkaGIProfileSummaryAsText() async throws {
         let englishDB = try Enka.EnkaDB4GI(locTag: "en")
-        Enka.Sputnik.shared.db4GI = englishDB
         ArtifactRating.ARSputnik.shared.resetFactoryScoreModel()
         let giDecoded = try Enka.QueriedResultGI.exampleData()
-        guard let profile = giDecoded.detailInfo, profile.avatarDetailList.count == 12 else {
-            throw TestError.error(msg: "Avatar detail list not completely decoded. Expecting 12 avatars.")
-        }
+        let profile = try #require(giDecoded.detailInfo, "GI detailInfo is nil.")
+        #expect(profile.avatarDetailList.count == 12, "Expecting 12 avatars in detail list.")
         // Test Manekina.
-        let manekinaRAW = profile.avatarDetailList[9]
-        guard let manekina = manekinaRAW.summarize(theDB: englishDB)?.artifactsRated() else {
-            throw TestError.error(msg: "Failed in summarizing Manekina.")
-        }
+        let manekinaRAW = try #require(
+            profile.avatarDetailList.dropFirst(9).first,
+            "Manekina avatar missing (index 9 out of range)."
+        )
+        let manekina = try #require(
+            manekinaRAW.summarize(theDB: englishDB)?.artifactsRated(),
+            "Failed in summarizing Manekina."
+        )
         #expect(manekina.mainInfo.element == .pyro)
         print(manekina.asText)
         print(manekina.asText)
@@ -182,10 +196,14 @@ struct EnkaKitTests {
         let x4Manekina = manekina.artifactRatingResult
         print(x4Manekina ?? "Result Rating Failed for Manekina.")
         // Test Hutao with costume.
-        let ninthAvatar = profile.avatarDetailList[8]
-        guard let hutao = ninthAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
-            throw TestError.error(msg: "Failed in summarizing Hutao character build (with costume).")
-        }
+        let ninthAvatar = try #require(
+            profile.avatarDetailList.dropFirst(8).first,
+            "Hutao avatar missing (index 8 out of range)."
+        )
+        let hutao = try #require(
+            ninthAvatar.summarize(theDB: englishDB)?.artifactsRated(),
+            "Failed in summarizing Hutao character build (with costume)."
+        )
         print(hutao.asText)
         print(hutao.mainInfo.idExpressable.onlineAssetURLStr)
         print(hutao.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
@@ -239,14 +257,13 @@ struct EnkaKitWithHoYoQueryResultTests {
     @Test
     func testHoYoGIProfileSummaryAsText() async throws {
         let giDecoded = try HYQueriedModels.HYLAvatarDetail4GI.exampleData()
-        guard let firstAvatar = giDecoded.avatarList.first else {
-            throw TestError.error(msg: "First avatar (Raiden Ei) missing.")
-        }
+        let firstAvatar = try #require(giDecoded.avatarList.first, "First avatar (Raiden Ei) missing.")
         let chtDB = try Enka.EnkaDB4GI(locTag: "zh-Hant")
         Enka.Sputnik.shared.db4GI = chtDB
-        guard let summarized = firstAvatar.summarize(theDB: chtDB)?.artifactsRated() else {
-            throw TestError.error(msg: "Failed in summarizing Keqing's character build.")
-        }
+        let summarized = try #require(
+            firstAvatar.summarize(theDB: chtDB)?.artifactsRated(),
+            "Failed in summarizing Keqing's character build."
+        )
         print(summarized.asText)
         print(summarized.mainInfo.idExpressable.onlineAssetURLStr)
         print(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
@@ -254,22 +271,23 @@ struct EnkaKitWithHoYoQueryResultTests {
         print(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
         if let weapon = summarized.equippedWeapon { print(weapon.onlineAssetURLStr) }
         summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
-        let x = summarized.artifactRatingResult
-        print(x ?? "Result Rating Failed.")
+        let x4Keqing = summarized.artifactRatingResult
+        print(x4Keqing ?? "Result Rating Failed for Keqing.")
     }
 
     @available(iOS 17.0, macCatalyst 17.0, *)
     @Test
     func testHoYoHSRProfileSummaryAsText() async throws {
         let hsrDecoded = try HYQueriedModels.HYLAvatarDetail4HSR.exampleData()
-        guard let firstAvatar = hsrDecoded.avatarList.first else {
-            throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
-        }
+        let firstAvatar = try #require(
+            hsrDecoded.avatarList.first, "First HSR avatar (Seele) missing."
+        )
         let chtDB = try Enka.EnkaDB4HSR(locTag: "zh-Hant")
         Enka.Sputnik.shared.db4HSR = chtDB
-        guard let summarized = firstAvatar.summarize(theDB: chtDB)?.artifactsRated() else {
-            throw TestError.error(msg: "Failed in summarizing Yomi(Acheron)'s character build.")
-        }
+        let summarized = try #require(
+            firstAvatar.summarize(theDB: chtDB)?.artifactsRated(),
+            "Failed in summarizing Seele's character build."
+        )
         print(summarized.asText)
         print(summarized.mainInfo.idExpressable.onlineAssetURLStr)
         print(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
@@ -277,13 +295,7 @@ struct EnkaKitWithHoYoQueryResultTests {
         print(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
         if let weapon = summarized.equippedWeapon { print(weapon.onlineAssetURLStr) }
         summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
-        let x = summarized.artifactRatingResult
-        print(x ?? "Result Rating Failed.")
+        let x4Seele = summarized.artifactRatingResult
+        print(x4Seele ?? "Result Rating Failed for Seele.")
     }
-}
-
-// MARK: - TestError
-
-enum TestError: Error {
-    case error(msg: String)
 }
