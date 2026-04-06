@@ -269,7 +269,11 @@
     "210271" : "Nod-Krai – Laterne der langen Nächte",
     "210272" : "Erlebnispass – Laternenlicht",
     "210273" : "Varka – Leitwolf",
-    "210274" : "Erlebnispass – Nordwind"
+    "210274" : "Erlebnispass – Nordwind",
+    "210275" : "Linnea – Rasselnde Resonanz",
+    "210276" : "Mondstadt – Wachturm",
+    "210277" : "Leerer Tempel – Erinnerungen in Hülle und Fülle",
+    "210278" : "Erlebnispass – Rückkehr"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -541,7 +545,11 @@
     "210271" : "Nod-Krai: Lantern of Longest Night",
     "210272" : "Travel Notes: Lanternlit Ode",
     "210273" : "Varka: Lead Wolf",
-    "210274" : "Travel Notes: Northerly Winds"
+    "210274" : "Travel Notes: Northerly Winds",
+    "210275" : "Linnea: Rattling Resonance",
+    "210276" : "Mondstadt: Watchtower",
+    "210277" : "Empty Temple: Overflowing Memories",
+    "210278" : "Travel Notes: Homecoming"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -813,7 +821,11 @@
     "210271" : "Nod Krai - Faro de largas noches",
     "210272" : "PB - Oda de las linternas",
     "210273" : "Varka - Lobo alfa",
-    "210274" : "PB - Viento del Norte"
+    "210274" : "PB - Viento del Norte",
+    "210275" : "Linnéa - Eco susurrante",
+    "210276" : "Mondstadt - Atalaya",
+    "210277" : "Templo vacío - Recuerdos desbordantes",
+    "210278" : "#PB{NON_BREAK_SPACE}-{NON_BREAK_SPACE}Retorno"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -1085,7 +1097,11 @@
     "210271" : "Nod-Krai - Longue nuit",
     "210272" : "PB - Ode sous la lanterne",
     "210273" : "Varka - Chef de meute",
-    "210274" : "PB - Vents du nord"
+    "210274" : "PB - Vents du nord",
+    "210275" : "Linnea - Résonance de cliquetis",
+    "210276" : "Mondstadt - Tour de guet",
+    "210277" : "Temple vide - Souvenirs débordants",
+    "210278" : "PB - Retour"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1357,7 +1373,11 @@
     "210271" : "Nod-Krai: Lentera di Malam Terpanjang",
     "210272" : "Catatan Perjalanan: Di Bawah Lentera",
     "210273" : "Varka: Lead Wolf",
-    "210274" : "Catatan Perjalanan: Angin Utara"
+    "210274" : "Catatan Perjalanan: Angin Utara",
+    "210275" : "Linnea: Rattling Resonance",
+    "210276" : "Mondstadt: Menara Pengawas",
+    "210277" : "Empty Temple: Overflowing Memories",
+    "210278" : "Catatan Perjalanan: Pulang Kampung"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1629,7 +1649,11 @@
     "210271" : "Nod-Krai: Lanterna della notte più lunga",
     "210272" : "Appunti di viaggio: Ode illuminata alla lanterna",
     "210273" : "Varka: Capobranco",
-    "210274" : "Appunti di viaggio: Venti del Nord"
+    "210274" : "Appunti di viaggio: Venti del Nord",
+    "210275" : "Linnea: Risonanza crepitante",
+    "210276" : "Mondstadt: Torre di guardia",
+    "210277" : "Tempio vuoto: Ricordi straripanti",
+    "210278" : "Appunti di viaggio: Ritorno a casa"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1901,7 +1925,11 @@
     "210271" : "ナド・クライ・長灯",
     "210272" : "紀行・天翔",
     "210273" : "ファルカ・群狼の長",
-    "210274" : "紀行・北風"
+    "210274" : "紀行・北風",
+    "210275" : "リンネア・砂の音",
+    "210276" : "モンド・望楼",
+    "210277" : "空殿・溢れる記憶",
+    "210278" : "紀行・帰逢"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -2173,7 +2201,11 @@
     "210271" : "노드크라이·등대",
     "210272" : "기행·봄 마차",
     "210273" : "바르카·우두머리 늑대",
-    "210274" : "기행·북풍"
+    "210274" : "기행·북풍",
+    "210275" : "린네아·모래 소리",
+    "210276" : "몬드·망루",
+    "210277" : "공간의 신전·기억",
+    "210278" : "기행·귀환"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2445,7 +2477,11 @@
     "210271" : "Nod-Krai: Lâmpada das Noites Longas",
     "210272" : "Passe de Batalha: À Luz de Lanternas",
     "210273" : "Varka: Lobo Líder",
-    "210274" : "Passe de Batalha: Vento Norte"
+    "210274" : "Passe de Batalha: Vento Norte",
+    "210275" : "Linnea: Ressonância Ruidosa",
+    "210276" : "Mondstadt: Torre de Vigia",
+    "210277" : "Templo Vazio: Memórias Transbordantes",
+    "210278" : "Passe de Batalha: Retorno ao Lar"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2717,7 +2753,11 @@
     "210271" : "Ночной фонарь",
     "210272" : "Сияние фонарей",
     "210273" : "Вожак стаи",
-    "210274" : "Северный ветер"
+    "210274" : "Северный ветер",
+    "210275" : "Грохочущий резонанс",
+    "210276" : "Сторожевая башня",
+    "210277" : "Воспоминания",
+    "210278" : "Возвращение"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -2989,7 +3029,11 @@
     "210271" : "Nod-Krai - ตะเกียงแห่งค่ำคืนอันยาวนาน",
     "210272" : "บันทึก - พราวประทีป",
     "210273" : "Varka - จ่าฝูงหมาป่า",
-    "210274" : "บันทึก - ลมเหนือ"
+    "210274" : "บันทึก - ลมเหนือ",
+    "210275" : "Linnea - เสียงกังวาน",
+    "210276" : "Mondstadt - หอคอยสังเกตการณ์",
+    "210277" : "วิหารร้าง - เปี่ยมความทรงจำ",
+    "210278" : "บันทึก - การหวนคืน"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -3261,7 +3305,11 @@
     "210271" : "Nod-Krai: En Uzun Gecenin Feneri",
     "210272" : "Gezi Notları: Fener Işığında Övgüler",
     "210273" : "Varka: Lider Kurt",
-    "210274" : "Gezi Notları: Kuzey Rüzgarları"
+    "210274" : "Gezi Notları: Kuzey Rüzgarları",
+    "210275" : "Linnea: Çıngırdayan Tını",
+    "210276" : "Mondstadt: Gözetleme Kulesi",
+    "210277" : "Boş Tapınak: Taşan Anılar",
+    "210278" : "Gezi Notları: Eve Dönüş"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3533,7 +3581,11 @@
     "210271" : "Nod-Krai - Đèn Đêm Dài",
     "210272" : "Nhật Ký Hành Trình - Bôn Tiêu",
     "210273" : "Varka - Sói Đầu Đàn",
-    "210274" : "Nhật Ký Hành Trình - Bắc Phong"
+    "210274" : "Nhật Ký Hành Trình - Bắc Phong",
+    "210275" : "Linnea - Âm Vang Lách Cách",
+    "210276" : "Mondstadt - Tháp Canh",
+    "210277" : "Không Điện - Ký Ức Ngập Tràn",
+    "210278" : "Nhật Ký Hành Trình - Trở Về"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3805,7 +3857,11 @@
     "210271" : "挪德卡莱·长灯",
     "210272" : "纪行·奔霄",
     "210273" : "法尔伽·头狼",
-    "210274" : "纪行·北风"
+    "210274" : "纪行·北风",
+    "210275" : "莉奈娅·娑响",
+    "210276" : "蒙德·望楼",
+    "210277" : "空殿·满忆",
+    "210278" : "纪行·逢归"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -4077,6 +4133,10 @@
     "210271" : "挪德卡萊·長燈",
     "210272" : "紀行·奔霄",
     "210273" : "法爾伽·頭狼",
-    "210274" : "紀行·北風"
+    "210274" : "紀行·北風",
+    "210275" : "莉奈婭·娑響",
+    "210276" : "蒙德·望樓",
+    "210277" : "空殿·滿憶",
+    "210278" : "紀行·逢歸"
   }
 }
