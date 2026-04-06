@@ -130,6 +130,10 @@ public enum GenshinLang: String, CaseIterable, Sendable, Identifiable {
         rawValue.replacingOccurrences(of: "lang", with: "TextMap").appending(".json")
     }
 
+    public var mediumFilename: String {
+        rawValue.replacingOccurrences(of: "lang", with: "TextMap_Medium").appending(".json")
+    }
+
     public var urls: [URL] {
         filenamesForChunks.compactMap { currentFileName in
             URL(string: """
@@ -145,8 +149,10 @@ public enum GenshinLang: String, CaseIterable, Sendable, Identifiable {
         case .langRU, .langTH: [
                 rawValue.replacingOccurrences(of: "lang", with: "TextMap").appending("_0.json"),
                 rawValue.replacingOccurrences(of: "lang", with: "TextMap").appending("_1.json"),
+                rawValue.replacingOccurrences(of: "lang", with: "TextMap_Medium").appending("_0.json"),
+                rawValue.replacingOccurrences(of: "lang", with: "TextMap_Medium").appending("_1.json"),
             ]
-        default: [filename]
+        default: [filename, mediumFilename]
         }
     }
 }
