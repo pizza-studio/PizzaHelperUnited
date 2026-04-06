@@ -1480,5 +1480,26 @@
     "game" : "GI",
     "id" : "210274",
     "officialFileNameStem" : "UI_NameCardPic_Bp48_P"
+  },
+  {
+    "bindedCharID" : "10000130",
+    "game" : "GI",
+    "id" : "210275",
+    "officialFileNameStem" : "UI_NameCardPic_Linnea_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210276",
+    "officialFileNameStem" : "UI_NameCardPic_Kzsd_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210277",
+    "officialFileNameStem" : "UI_NameCardPic_KzsdOffering_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210278",
+    "officialFileNameStem" : "UI_NameCardPic_Bp49_P"
   }
 ]
