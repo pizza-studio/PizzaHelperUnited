@@ -22,6 +22,20 @@ public actor Debouncer {
             // Set exclusive state synchronously within the actor's
             // serial execution so subsequent calls see it before this method returns.
             isInExclusiveState = true
+            // Leading-edge lock prevents subsequent trailing-edge calls
+            // from bypassing the exclusive window. Without this, the second tap's
+            // single-click handler (which fires simultaneously with double-click via
+            // .simultaneously gesture) would cancel the leading-edge task, wait its
+            // own delay, and then undo the leading-edge action (e.g. toggle expansion
+            // back to nil).
+            isLeadingEdgeLocked = true
+        } else {
+            // Suppress trailing-edge calls while a leading-edge exclusive
+            // window is active. This only blocks trailing-edge vs leading-edge
+            // conflicts — trailing-edge vs trailing-edge sequences are unaffected
+            // because trailing-edge sets isInExclusiveState inside the Task body
+            // (not here), leaving isLeadingEdgeLocked == false.
+            guard !isLeadingEdgeLocked else { return }
         }
         task?.cancel()
         task = Task { @MainActor [weak self] in
@@ -41,6 +55,7 @@ public actor Debouncer {
             }
             // Always reset exclusive state, even on cancellation.
             await setExclusiveState(false)
+            await clearLeadingEdgeLock()
             guard sleepSucceeded, !Task.isCancelled else { return }
             if !keepFirstAttemptInstead {
                 await action()
@@ -64,6 +79,7 @@ public actor Debouncer {
     public func cancel() async {
         task?.cancel()
         isInExclusiveState = false
+        isLeadingEdgeLocked = false
     }
 
     nonisolated public func cancelOnMain() {
@@ -76,9 +92,14 @@ public actor Debouncer {
 
     private var task: Task<Void, Error>?
     private var isInExclusiveState: Bool = false
+    private var isLeadingEdgeLocked: Bool = false
     private let delay: TimeInterval
 
     private func setExclusiveState(_ newValue: Bool) {
         isInExclusiveState = newValue
+    }
+
+    private func clearLeadingEdgeLock() {
+        isLeadingEdgeLocked = false
     }
 }
