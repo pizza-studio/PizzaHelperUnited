@@ -275,14 +275,15 @@ extension DailyNoteProtocol {
         guard let simulatedUniverseIntel else { return nil }
         let currencyWarsInfo = currencyWarsIntel
         let currencyWarsCompleted = currencyWarsInfo?.currentScore ?? 0
-        // 先默认官方会一直用 18000 当上限分。
+        // 先默认官方会一直用 18000 当作货币战争满分。
         let currencyWarsMaxVal = currencyWarsInfo?.maxScore ?? 18000
-        let maxSummed = currencyWarsMaxVal + simulatedUniverseIntel.maxScore
-        let currSummed = currencyWarsCompleted + simulatedUniverseIntel.currentScore
+        // 星穹铁道 4.2 开始，旷宇纷争各个类目奖励每周轮替，总上限最大 18000。
+        let maxFinal = Swift.max(currencyWarsMaxVal, simulatedUniverseIntel.maxScore)
+        let currFinal = Swift.max(currencyWarsCompleted, simulatedUniverseIntel.currentScore)
         return FieldCompletionIntel<Int>(
-            pending: maxSummed - currSummed,
-            finished: currSummed,
-            all: maxSummed
+            pending: maxFinal - currFinal,
+            finished: currFinal,
+            all: maxFinal
         )
     }
 }
