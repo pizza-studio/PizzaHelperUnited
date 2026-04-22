@@ -18,10 +18,10 @@ let package = Package(
         .package(path: "../PZKit"),
         .package(path: "../WallpaperKit"),
         .package(
-            url: "https://github.com/pizza-studio/EnkaDBGenerator", .upToNextMajor(from: "2.0.1")
+            url: "https://github.com/pizza-studio/EnkaDBGenerator", .upToNextMajor(from: "2.0.2")
         ),
         .package(
-            url: "https://github.com/pizza-studio/ArtifactRatingDB", .upToNextMajor(from: "1.3.1")
+            url: "https://github.com/pizza-studio/ArtifactRatingDB", .upToNextMajor(from: "1.3.2")
         ),
     ],
     targets: [
