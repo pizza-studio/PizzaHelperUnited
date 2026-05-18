@@ -127,9 +127,9 @@ public enum DimbreathMaterialRAW {
 
         public enum CodingKeysAlt: String, CodingKey {
             case id
-            case monday = "IHBBOCOEKPA"
-            case tuesday = "IDPEDOECHGL"
-            case wednesday = "CIEFMBLGADN"
+            case monday = "CHJAFKGEOCO"
+            case tuesday = "MOAMLPMGMFE"
+            case wednesday = "DJPBIGNGMIC"
         }
 
         public var id: Int
