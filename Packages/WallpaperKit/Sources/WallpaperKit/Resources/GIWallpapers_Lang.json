@@ -273,7 +273,11 @@
     "210275" : "Linnea – Rasselnde Resonanz",
     "210276" : "Mondstadt – Wachturm",
     "210277" : "Leerer Tempel – Erinnerungen in Hülle und Fülle",
-    "210278" : "Erlebnispass – Rückkehr"
+    "210278" : "Erlebnispass – Rückkehr",
+    "210279" : "Nicole – Himmelstreppe",
+    "210280" : "Lohen – Güte",
+    "210281" : "Prune – Urteil",
+    "210283" : "Erlebnispass – Geschenk der Pracht"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -549,7 +553,11 @@
     "210275" : "Linnea: Rattling Resonance",
     "210276" : "Mondstadt: Watchtower",
     "210277" : "Empty Temple: Overflowing Memories",
-    "210278" : "Travel Notes: Homecoming"
+    "210278" : "Travel Notes: Homecoming",
+    "210279" : "Nicole: Heavenly Stairway",
+    "210280" : "Lohen: Benevolence",
+    "210281" : "Prune: Judgment",
+    "210283" : "Travel Notes: Gift of Splendor"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -825,7 +833,11 @@
     "210275" : "Linnéa - Eco susurrante",
     "210276" : "Mondstadt - Atalaya",
     "210277" : "Templo vacío - Recuerdos desbordantes",
-    "210278" : "#PB{NON_BREAK_SPACE}-{NON_BREAK_SPACE}Retorno"
+    "210278" : "#PB{NON_BREAK_SPACE}-{NON_BREAK_SPACE}Retorno",
+    "210279" : "Nicole - Escalinata celestial",
+    "210280" : "Lohen - Magnánimo",
+    "210281" : "Prune - Castigo",
+    "210283" : "PB - Obsequios fantásticos"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -1101,7 +1113,11 @@
     "210275" : "Linnea - Résonance de cliquetis",
     "210276" : "Mondstadt - Tour de guet",
     "210277" : "Temple vide - Souvenirs débordants",
-    "210278" : "PB - Retour"
+    "210278" : "PB - Retour",
+    "210279" : "Nicole - Marche céleste",
+    "210280" : "Lohen - Bienveillance",
+    "210281" : "Prune - Jugement",
+    "210283" : "PB - Don de splendeur"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1377,7 +1393,11 @@
     "210275" : "Linnea: Rattling Resonance",
     "210276" : "Mondstadt: Menara Pengawas",
     "210277" : "Empty Temple: Overflowing Memories",
-    "210278" : "Catatan Perjalanan: Pulang Kampung"
+    "210278" : "Catatan Perjalanan: Pulang Kampung",
+    "210279" : "Nicole: Heavenly Stairway",
+    "210280" : "Lohen: Benevolence",
+    "210281" : "Prune: Judgment",
+    "210283" : "Catatan Perjalanan: Hadiah Kemegahan"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1653,7 +1673,11 @@
     "210275" : "Linnea: Risonanza crepitante",
     "210276" : "Mondstadt: Torre di guardia",
     "210277" : "Tempio vuoto: Ricordi straripanti",
-    "210278" : "Appunti di viaggio: Ritorno a casa"
+    "210278" : "Appunti di viaggio: Ritorno a casa",
+    "210279" : "Nicole: Scala celestiale",
+    "210280" : "Lohen: Benevolenza",
+    "210281" : "Prune: Giudizio",
+    "210283" : "Appunti di viaggio: Dono dello splendore"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1929,7 +1953,11 @@
     "210275" : "リンネア・砂の音",
     "210276" : "モンド・望楼",
     "210277" : "空殿・溢れる記憶",
-    "210278" : "紀行・帰逢"
+    "210278" : "紀行・帰逢",
+    "210279" : "ニコ・天の階段",
+    "210280" : "ローエン・仁愛",
+    "210281" : "プルーネ・制裁",
+    "210283" : "紀行・綺夢"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -2205,7 +2233,11 @@
     "210275" : "린네아·모래 소리",
     "210276" : "몬드·망루",
     "210277" : "공간의 신전·기억",
-    "210278" : "기행·귀환"
+    "210278" : "기행·귀환",
+    "210279" : "니콜·하늘 계단",
+    "210280" : "로엔·인애",
+    "210281" : "프루네·망치",
+    "210283" : "기행·선물"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2481,7 +2513,11 @@
     "210275" : "Linnea: Ressonância Ruidosa",
     "210276" : "Mondstadt: Torre de Vigia",
     "210277" : "Templo Vazio: Memórias Transbordantes",
-    "210278" : "Passe de Batalha: Retorno ao Lar"
+    "210278" : "Passe de Batalha: Retorno ao Lar",
+    "210279" : "Nicole: Descida Celestial",
+    "210280" : "Lohen: Benevolência",
+    "210281" : "Prune: Julgamento",
+    "210283" : "Passe de Batalha: Dádiva do Esplendor."
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2757,7 +2793,11 @@
     "210275" : "Грохочущий резонанс",
     "210276" : "Сторожевая башня",
     "210277" : "Воспоминания",
-    "210278" : "Возвращение"
+    "210278" : "Возвращение",
+    "210279" : "Дворцовая лестница",
+    "210280" : "Милосердие",
+    "210281" : "Наказание",
+    "210283" : "Великолепный подарок"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -3033,7 +3073,11 @@
     "210275" : "Linnea - เสียงกังวาน",
     "210276" : "Mondstadt - หอคอยสังเกตการณ์",
     "210277" : "วิหารร้าง - เปี่ยมความทรงจำ",
-    "210278" : "บันทึก - การหวนคืน"
+    "210278" : "บันทึก - การหวนคืน",
+    "210279" : "Nicole - บันไดสวรรค์",
+    "210280" : "Lohen - ผู้เมตตา",
+    "210281" : "Prune - ลงทัณฑ์",
+    "210283" : "บันทึก - ของขวัญอันงดงาม"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -3309,7 +3353,11 @@
     "210275" : "Linnea: Çıngırdayan Tını",
     "210276" : "Mondstadt: Gözetleme Kulesi",
     "210277" : "Boş Tapınak: Taşan Anılar",
-    "210278" : "Gezi Notları: Eve Dönüş"
+    "210278" : "Gezi Notları: Eve Dönüş",
+    "210279" : "Nicole: Semavi Merdiven",
+    "210280" : "Lohen: İyilikseverlik",
+    "210281" : "Prune: Yargı",
+    "210283" : "Gezi Notları: Görkemli Armağan"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3585,7 +3633,11 @@
     "210275" : "Linnea - Âm Vang Lách Cách",
     "210276" : "Mondstadt - Tháp Canh",
     "210277" : "Không Điện - Ký Ức Ngập Tràn",
-    "210278" : "Nhật Ký Hành Trình - Trở Về"
+    "210278" : "Nhật Ký Hành Trình - Trở Về",
+    "210279" : "Nicole - Thang Trời",
+    "210280" : "Lohen - Nhân Ái",
+    "210281" : "Prune - Trừng Phạt",
+    "210283" : "Nhật Ký Hành Trình - Quà Đẹp"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3861,7 +3913,11 @@
     "210275" : "莉奈娅·娑响",
     "210276" : "蒙德·望楼",
     "210277" : "空殿·满忆",
-    "210278" : "纪行·逢归"
+    "210278" : "纪行·逢归",
+    "210279" : "尼可·天阶",
+    "210280" : "洛恩·仁蔼",
+    "210281" : "布伦妮·制裁",
+    "210283" : "纪行·赠绮"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -4137,6 +4193,10 @@
     "210275" : "莉奈婭·娑響",
     "210276" : "蒙德·望樓",
     "210277" : "空殿·滿憶",
-    "210278" : "紀行·逢歸"
+    "210278" : "紀行·逢歸",
+    "210279" : "尼可·天階",
+    "210280" : "洛恩·仁藹",
+    "210281" : "布倫妮·制裁",
+    "210283" : "紀行·贈綺"
   }
 }
