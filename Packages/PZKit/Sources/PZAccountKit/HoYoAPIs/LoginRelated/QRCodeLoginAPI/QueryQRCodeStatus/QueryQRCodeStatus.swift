@@ -9,7 +9,7 @@ import Foundation
 public enum QueryQRCodeStatus: Decodable, Sendable {
     case unscanned
     case scanned
-    case confirmed(accountId: String, token: String)
+    case confirmed(accountId: String, stoken: String, mid: String)
 
     // MARK: Lifecycle
 
@@ -17,19 +17,19 @@ public enum QueryQRCodeStatus: Decodable, Sendable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let statusKeys: StatusCodingKeys = try container.decode(StatusCodingKeys.self, forKey: .status)
         switch statusKeys {
-        case .unscanned:
+        case .created, .unscanned:
             self = .unscanned
         case .scanned:
             self = .scanned
         case .confirmed:
-            let payload = try container.decode(Payload.self, forKey: .payload)
-            let jsonString = payload.raw
-            let decoder = JSONDecoder()
-            let decodedConfirmedData = try decoder.decode(
-                ConfirmedDataDecodeHelper.self,
-                from: jsonString.data(using: .utf8) ?? .init([])
+            let tokens = try container.decodeIfPresent([TokenItem].self, forKey: .tokens) ?? []
+            let userInfo = try container.decode(UserInfo.self, forKey: .userInfo)
+            let stoken = tokens.first?.token ?? ""
+            self = .confirmed(
+                accountId: userInfo.aid ?? userInfo.uid ?? userInfo.accountId ?? "",
+                stoken: stoken,
+                mid: userInfo.mid ?? ""
             )
-            self = .confirmed(accountId: decodedConfirmedData.uid, token: decodedConfirmedData.token)
         }
     }
 
@@ -43,51 +43,53 @@ public enum QueryQRCodeStatus: Decodable, Sendable {
     }
 
     public func parsed() async throws -> ParsedResult? {
-        guard case let .confirmed(accountId, gameToken) = self else { return nil }
-        let stokenResult = try await HoYo.gameToken2StokenV2(
-            accountId: accountId,
-            gameToken: gameToken
-        )
-        let stoken = stokenResult.stoken
-        let mid = stokenResult.mid
-
-        let ltoken = try await HoYo.stoken2LTokenV1(
-            mid: mid,
-            stoken: stoken
-        ).ltoken
+        guard case let .confirmed(accountId, stoken, mid) = self else { return nil }
+        // 新版 API 直接返回 stoken，ltoken 同 stoken（参照 TRSS-Plugin 实作）
         return .init(
             accountId: accountId,
             stoken: stoken,
-            ltoken: ltoken,
+            ltoken: stoken,
             mid: mid
         )
     }
 
     // MARK: Internal
 
-    // decode helper
-    struct Payload: Decodable {
-        let proto: String
-
-        // json data for "comfirmed"
-        let raw: String
-        let ext: String
-    }
-
     enum CodingKeys: String, CodingKey {
-        case status = "stat"
-        case payload
+        case status
+        case tokens
+        case userInfo = "user_info"
     }
 
     enum StatusCodingKeys: String, Decodable {
         case unscanned = "Init"
         case scanned = "Scanned"
         case confirmed = "Confirmed"
+        case created = "Created"
     }
 
-    struct ConfirmedDataDecodeHelper: Decodable {
-        let uid: String
+    struct TokenItem: Decodable {
+        enum CodingKeys: String, CodingKey {
+            case tokenType = "token_type"
+            case token
+        }
+
+        let tokenType: Int
         let token: String
+    }
+
+    struct UserInfo: Decodable {
+        enum CodingKeys: String, CodingKey {
+            case aid
+            case uid
+            case accountId = "account_id"
+            case mid
+        }
+
+        let aid: String?
+        let uid: String?
+        let accountId: String?
+        let mid: String?
     }
 }
 

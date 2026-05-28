@@ -7,24 +7,33 @@ import CoreImage
 import Foundation
 import PZBaseKit
 
+/// Ref: https://github.com/TimeRainStarSky/TRSS-Plugin (commit 33b6ed7)
+/// 米哈游护照 App API (ma-cn-passport/app/*)，直接返回 stoken 无需 gameToken 转换链。
+
+enum QRCodeShared {
+    static let appID = "ddxf5dufpuyo"
+    static let clientType = "3"
+    static let userAgent = "HYPContainer/1.3.3.182"
+    static let url4Create = URL(string: "https://passport-api.mihoyo.com/account/ma-cn-passport/app/createQRLogin")!
+    static let url4Query = URL(string: "https://passport-api.mihoyo.com/account/ma-cn-passport/app/queryQRLoginStatus")!
+}
+
 extension HoYo {
     public static func generateQRCodeURL(deviceId: UUID) async throws -> (url: URL, ticket: String) {
-        struct Body: Encodable {
-            let appId: String
-            let device: String
-        }
-
-        let parameters = Body(appId: QRCodeShared.appID, device: deviceId.uuidString)
+        let headers: HTTPHeaders = [
+            "x-rpc-app_id": QRCodeShared.appID,
+            "x-rpc-client_type": QRCodeShared.clientType,
+            "x-rpc-device_id": deviceId.uuidString,
+            "User-Agent": QRCodeShared.userAgent,
+            "Content-Type": "application/json",
+        ]
 
         let data = try await AF.request(
-            QRCodeShared.url4Fetch,
+            QRCodeShared.url4Create,
             method: .post,
-            parameters: parameters,
-            encoder: JSONParameterEncoder(encoder: {
-                let encoder = JSONEncoder()
-                encoder.keyEncodingStrategy = .convertToSnakeCase
-                return encoder
-            }())
+            parameters: EmptyBody(),
+            encoder: JSONParameterEncoder.default,
+            headers: headers
         ).serializingData().value
 
         let resultData = try GenerateQRCodeURLData.decodeFromMiHoYoAPIJSONResult(
@@ -32,15 +41,7 @@ extension HoYo {
             debugTag: "HoYo.generateQRCodeURL()"
         )
 
-        let resultURL = resultData.url
-        let urlComponents = URLComponents(url: resultURL, resolvingAgainstBaseURL: false)
-        let ticket = urlComponents?.queryItems?.first(where: { item in
-            item.name == "ticket"
-        })?.value
-
-        guard let ticket else { throw MiHoYoAPIError.other(retcode: -999, message: "Invalid URL \(resultURL)") }
-
-        return (url: resultURL, ticket: ticket)
+        return (url: resultData.url, ticket: resultData.ticket)
     }
 
     public static func generateLoginQRCode(deviceId: UUID) async throws -> (qrCode: CGImage, ticket: String) {
@@ -52,6 +53,8 @@ extension HoYo {
         }
     }
 }
+
+private struct EmptyBody: Encodable {}
 
 private func generateQRCode(from string: String) -> CGImage? {
     let context = CIContext()

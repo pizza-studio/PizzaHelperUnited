@@ -8,6 +8,7 @@ import Foundation
 
 public struct GenerateQRCodeURLData: Decodable, Hashable {
     let url: URL
+    let ticket: String
 }
 
 // MARK: DecodableFromMiHoYoAPIJSONResult

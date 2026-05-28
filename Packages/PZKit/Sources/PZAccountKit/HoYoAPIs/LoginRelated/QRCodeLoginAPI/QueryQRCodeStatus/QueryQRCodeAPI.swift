@@ -54,19 +54,20 @@ extension HoYo {
 
     static public func queryQRCodeStatus(deviceId: UUID, ticket: String) async throws -> QueryQRCodeStatus {
         struct Body: Encodable {
-            let appId: String
-            let device: String
             let ticket: String
         }
 
-        let parameters = Body(appId: QRCodeShared.appID, device: deviceId.uuidString, ticket: ticket)
+        let parameters = Body(ticket: ticket)
         let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
 
         // 创建请求
         var request = URLRequest(url: QRCodeShared.url4Query)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(QRCodeShared.appID, forHTTPHeaderField: "x-rpc-app_id")
+        request.setValue(QRCodeShared.clientType, forHTTPHeaderField: "x-rpc-client_type")
+        request.setValue(deviceId.uuidString, forHTTPHeaderField: "x-rpc-device_id")
+        request.setValue(QRCodeShared.userAgent, forHTTPHeaderField: "User-Agent")
         request.httpBody = try encoder.encode(parameters)
 
         // 使用基于代理的方法进行后台请求
@@ -81,21 +82,26 @@ extension HoYo {
     // 新增前台轮询版本，用于 View 中的定期检查，添加错误处理
     static public func queryQRCodeStatusForeground(deviceId: UUID, ticket: String) async throws -> QueryQRCodeStatus {
         struct Body: Encodable {
-            let appId: String
-            let device: String
             let ticket: String
         }
 
-        let parameters = Body(appId: QRCodeShared.appID, device: deviceId.uuidString, ticket: ticket)
+        let parameters = Body(ticket: ticket)
         let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
+
+        let headers: HTTPHeaders = [
+            "x-rpc-app_id": QRCodeShared.appID,
+            "x-rpc-client_type": QRCodeShared.clientType,
+            "x-rpc-device_id": deviceId.uuidString,
+            "User-Agent": QRCodeShared.userAgent,
+        ]
 
         do {
             let data = try await foregroundSession4QRCodeStatus.request(
                 QRCodeShared.url4Query,
                 method: .post,
                 parameters: parameters,
-                encoder: JSONParameterEncoder(encoder: encoder)
+                encoder: JSONParameterEncoder(encoder: encoder),
+                headers: headers
             )
             .validate()
             .serializingData()

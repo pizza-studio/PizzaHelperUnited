@@ -22,6 +22,7 @@ struct ProfileConfigViewContents: View {
 
     public var body: some View {
         RequireLoginView(
+            game: $profile.game,
             unsavedCookie: $profile.cookie,
             unsavedFP: $profile.deviceFingerPrint,
             deviceID: $profile.deviceID,
@@ -98,6 +99,7 @@ extension ProfileConfigViewContents {
     private struct RequireLoginView: View {
         // MARK: Internal
 
+        @Binding var game: Pizza.SupportedGame
         @Binding var unsavedCookie: String
         @Binding var unsavedFP: String
         @Binding var deviceID: String
@@ -127,7 +129,12 @@ extension ProfileConfigViewContents {
                         region: region
                     )
                 case .miyoushe:
-                    GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP, deviceID: $deviceID)
+                    GetCookieQRCodeView(
+                        game: game,
+                        cookie: $unsavedCookie,
+                        deviceFP: $unsavedFP,
+                        deviceID: $deviceID
+                    )
                 }
             }
             // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。

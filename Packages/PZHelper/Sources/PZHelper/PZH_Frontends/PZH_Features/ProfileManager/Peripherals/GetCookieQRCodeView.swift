@@ -11,158 +11,16 @@ import SwiftUI
 
 @available(iOS 16.2, macCatalyst 16.2, *)
 struct GetCookieQRCodeView: View {
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    @StateObject var viewModel = GetCookieQRCodeViewModel.shared
-    @Binding var cookie: String
-    @Binding var deviceFP: String
-    @Binding var deviceID: String
+    // MARK: Lifecycle
 
-    private var qrWidth: CGFloat {
-        OS.type == .macOS ? 340 : 280
+    init(game: Pizza.SupportedGame, cookie: Binding<String>, deviceFP: Binding<String>, deviceID: Binding<String>) {
+        self.game = game
+        self._cookie = cookie
+        self._deviceFP = deviceFP
+        self._deviceID = deviceID
     }
 
-    private var qrImage: Image? {
-        guard let qrCodeAndTicket = viewModel.qrCodeAndTicket else { return nil }
-        let newSize = CGSize(width: qrWidth, height: qrWidth)
-        guard let imgResized = qrCodeAndTicket.qrCode.directResized(
-            size: newSize,
-            quality: .none
-        ) else { return nil } // 应该不会出现这种情况。
-        return Image(decorative: imgResized, scale: 1)
-    }
-
-    private static var isMiyousheInstalled: Bool {
-        #if !canImport(UIKit)
-        false
-        #else
-        UIApplication.shared.canOpenURL(URL(string: miyousheHeader)!)
-        #endif
-    }
-
-    private static var miyousheHeader: String { "mihoyobbs://" }
-
-    private static var miyousheStorePage: String {
-        "https://apps.apple.com/cn/app/id1470182559"
-    }
-
-    private var shouldShowRetryButton: Bool {
-        viewModel.qrCodeAndTicket != nil || viewModel.error != nil
-    }
-
-    private func fireAutoCheckScanningConfirmationStatus() async {
-        guard !viewModel.scanningConfirmationStatus.isBusy else { return }
-        guard let ticket = viewModel.qrCodeAndTicket?.ticket else { return }
-        let task = Task { @MainActor [weak viewModel] in
-            var counter = 0
-            loopTask: while case let .automatically(task) = viewModel?.scanningConfirmationStatus, !task.isCancelled {
-                guard let viewModel = viewModel else { break loopTask }
-                do {
-                    let status = try await HoYo.queryQRCodeStatusForeground(
-                        deviceId: viewModel.taskId,
-                        ticket: ticket
-                    )
-                    if let parsedResult = try await status.parsed() {
-                        try await parseGameToken(from: parsedResult, dismiss: true)
-                        break loopTask
-                    }
-                    try await Task.sleep(nanoseconds: 3 * 1_000_000_000) // 3sec.
-                } catch {
-                    if error._code != NSURLErrorNetworkConnectionLost || counter >= 20 {
-                        viewModel.error = error
-                        counter = 0
-                        break loopTask
-                    } else {
-                        counter += 1
-                    }
-                }
-            }
-            viewModel?.scanningConfirmationStatus = .idle
-        }
-        // 注册任务并保存ID
-        viewModel.pollingTaskId = HoYo.registerQRCodePollingTask(task)
-        viewModel.scanningConfirmationStatus = .automatically(task)
-    }
-
-    private func loginCheckScannedButtonDidPress(ticket: String) async {
-        viewModel.cancelAllConfirmationTasks(resetState: false)
-        let task = Task { @MainActor in
-            do {
-                let status = try await HoYo.queryQRCodeStatusForeground(
-                    deviceId: viewModel.taskId,
-                    ticket: ticket
-                )
-                if let parsedResult = try await status.parsed() {
-                    try await parseGameToken(from: parsedResult, dismiss: true)
-                } else {
-                    viewModel.isNotScannedAlertShown = true
-                }
-            } catch {
-                viewModel.error = error
-            }
-            viewModel.scanningConfirmationStatus = .idle
-        }
-        // 注册任务并保存ID
-        viewModel.pollingTaskId = HoYo.registerQRCodePollingTask(task)
-        viewModel.scanningConfirmationStatus = .manually(task)
-    }
-
-    private func parseGameToken(
-        from parsedResult: QueryQRCodeStatus.ParsedResult,
-        dismiss shouldDismiss: Bool = true
-    ) async throws {
-        var cookie = ""
-        cookie += "stuid=" + parsedResult.accountId + "; "
-        cookie += "stoken=" + parsedResult.stoken + "; "
-        cookie += "ltuid=" + parsedResult.accountId + "; "
-        cookie += "ltoken=" + parsedResult.ltoken + "; "
-        cookie += "mid=" + parsedResult.mid + "; "
-        try await extraCookieProcess(cookie: &cookie)
-        self.cookie = cookie
-        if shouldDismiss {
-            presentationMode.wrappedValue.dismiss()
-        }
-    }
-
-    @ViewBuilder
-    private func errorView() -> some View {
-        if let error = viewModel.error {
-            Label {
-                Text(error.localizedDescription)
-            } icon: {
-                Image(systemSymbol: .exclamationmarkCircle)
-                    .foregroundStyle(.red)
-            }.onAppear {
-                viewModel.qrCodeAndTicket = nil
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func qrImageView(_ image: Image) -> some View {
-        HStack(alignment: .center) {
-            Spacer()
-            ShareLink(
-                item: image,
-                preview: SharePreview(
-                    "profileMgr.account.qr_code_login.shared_qr_code_title".i18nPZHelper,
-                    image: image
-                )
-            ) {
-                image
-                    .interpolation(.none)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: qrWidth, height: qrWidth + 12, alignment: .top)
-                    .padding()
-            }
-            Spacer()
-        }
-        .overlay(alignment: .bottom) {
-            Text("profileMgr.account.qr_code_login.click_qr_to_save".i18nPZHelper).font(.footnote)
-                .padding(4)
-                .background(Capsule().foregroundTint(.primary.opacity(0.05)))
-        }
-    }
+    // MARK: Public
 
     public var body: some View {
         NavigationStack {
@@ -179,10 +37,6 @@ struct GetCookieQRCodeView: View {
                                     await loginCheckScannedButtonDidPress(
                                         ticket: qrCodeAndTicket.ticket
                                     )
-                                }
-                            }.onAppear {
-                                Task {
-                                    await fireAutoCheckScanningConfirmationStatus()
                                 }
                             }
                         }
@@ -227,6 +81,9 @@ struct GetCookieQRCodeView: View {
                 }
             }
             .onAppear {
+                viewModel.onQRCodeConfirmed = { parsedResult in
+                    try await parseGameToken(game: game, from: parsedResult, dismiss: true)
+                }
                 viewModel.onAppear()
             }
             .onDisappear {
@@ -234,6 +91,141 @@ struct GetCookieQRCodeView: View {
                 viewModel.cancelAllConfirmationTasks(resetState: true)
                 viewModel.onDisappear()
             }
+        }
+    }
+
+    // MARK: Internal
+
+    @StateObject var viewModel = GetCookieQRCodeViewModel.shared
+    @Binding var cookie: String
+    @Binding var deviceFP: String
+    @Binding var deviceID: String
+
+    let game: Pizza.SupportedGame
+
+    // MARK: Private
+
+    private static var isMiyousheInstalled: Bool {
+        #if !canImport(UIKit)
+        false
+        #else
+        UIApplication.shared.canOpenURL(URL(string: miyousheHeader)!)
+        #endif
+    }
+
+    private static var miyousheHeader: String { "mihoyobbs://" }
+
+    private static var miyousheStorePage: String {
+        "https://apps.apple.com/cn/app/id1470182559"
+    }
+
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+
+    private var qrWidth: CGFloat {
+        OS.type == .macOS ? 340 : 280
+    }
+
+    private var qrImage: Image? {
+        guard let qrCodeAndTicket = viewModel.qrCodeAndTicket else { return nil }
+        let newSize = CGSize(width: qrWidth, height: qrWidth)
+        guard let imgResized = qrCodeAndTicket.qrCode.directResized(
+            size: newSize,
+            quality: .none
+        ) else { return nil } // 应该不会出现这种情况。
+        return Image(decorative: imgResized, scale: 1)
+    }
+
+    private var shouldShowRetryButton: Bool {
+        viewModel.qrCodeAndTicket != nil || viewModel.error != nil
+    }
+
+    @ViewBuilder
+    private func errorView() -> some View {
+        if let error = viewModel.error {
+            Label {
+                Text(error.localizedDescription)
+            } icon: {
+                Image(systemSymbol: .exclamationmarkCircle)
+                    .foregroundStyle(.red)
+            }.onAppear {
+                viewModel.qrCodeAndTicket = nil
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func qrImageView(_ image: Image) -> some View {
+        HStack(alignment: .center) {
+            Spacer()
+            ShareLink(
+                item: image,
+                preview: SharePreview(
+                    "profileMgr.account.qr_code_login.shared_qr_code_title".i18nPZHelper,
+                    image: image
+                )
+            ) {
+                image
+                    .interpolation(.none)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: qrWidth, height: qrWidth + 12, alignment: .top)
+                    .padding()
+            }
+            Spacer()
+        }
+        .overlay(alignment: .bottom) {
+            Text("profileMgr.account.qr_code_login.click_qr_to_save".i18nPZHelper).font(.footnote)
+                .padding(4)
+                .background(Capsule().foregroundTint(.primary.opacity(0.05)))
+        }
+    }
+
+    private func loginCheckScannedButtonDidPress(ticket: String) async {
+        viewModel.cancelAllConfirmationTasks(resetState: false)
+        let task = Task { @MainActor in
+            do {
+                let status = try await HoYo.queryQRCodeStatusForeground(
+                    deviceId: viewModel.taskId,
+                    ticket: ticket
+                )
+                if let parsedResult = try await status.parsed() {
+                    try await parseGameToken(game: game, from: parsedResult, dismiss: true)
+                } else {
+                    viewModel.isNotScannedAlertShown = true
+                }
+            } catch {
+                viewModel.error = error
+            }
+            viewModel.scanningConfirmationStatus = .idle
+        }
+        // 注册任务并保存ID
+        viewModel.pollingTaskId = HoYo.registerQRCodePollingTask(task)
+        viewModel.scanningConfirmationStatus = .manually(task)
+    }
+
+    private func parseGameToken(
+        game: Pizza.SupportedGame,
+        from parsedResult: QueryQRCodeStatus.ParsedResult,
+        dismiss shouldDismiss: Bool = true
+    ) async throws {
+        var cookie = ""
+        cookie += "stuid=" + parsedResult.accountId + "; "
+        cookie += "stoken=" + parsedResult.stoken + "; "
+        cookie += "ltuid=" + parsedResult.accountId + "; "
+        cookie += "ltoken=" + parsedResult.ltoken + "; "
+        cookie += "mid=" + parsedResult.mid + "; "
+        // 新版 passport API 需透过 getCookieAccountInfoBySToken 获取 cookie_token
+        let stokenCookie = "stuid=\(parsedResult.accountId); stoken=\(parsedResult.stoken); mid=\(parsedResult.mid)"
+        let cookieTokenResult = try await HoYo.cookieToken(
+            game: game,
+            cookie: stokenCookie
+        )
+        cookie += "cookie_token=" + cookieTokenResult.cookieToken + "; "
+        cookie += "account_id=" + cookieTokenResult.uid + "; "
+        try await extraCookieProcess(cookie: &cookie)
+        self.cookie = cookie
+        if shouldDismiss {
+            presentationMode.wrappedValue.dismiss()
         }
     }
 }
@@ -248,7 +240,6 @@ final class GetCookieQRCodeViewModel: ObservableObject {
 
     init() {
         self.taskId = .init()
-        reCreateQRCode()
     }
 
     // MARK: Public
@@ -267,10 +258,13 @@ final class GetCookieQRCodeViewModel: ObservableObject {
 
     public func reCreateQRCode() {
         taskId = .init()
+        cancelAllConfirmationTasks(resetState: true)
         Task { @MainActor in
             do {
                 self.qrCodeAndTicket = try await HoYo.generateLoginQRCode(deviceId: self.taskId)
                 self.error = nil
+                guard let ticket = self.qrCodeAndTicket?.ticket else { return }
+                startAutoPolling(ticket: ticket)
             } catch {
                 self.error = error
             }
@@ -302,6 +296,8 @@ final class GetCookieQRCodeViewModel: ObservableObject {
     @Published var isNotScannedAlertShown: Bool = false
     @Published var pollingTaskId: UUID? // 新增：跟踪注册的轮询任务ID
 
+    var onQRCodeConfirmed: ((QueryQRCodeStatus.ParsedResult) async throws -> Void)?
+
     @Published var error: Error? {
         didSet {
             if error != nil {
@@ -314,7 +310,6 @@ final class GetCookieQRCodeViewModel: ObservableObject {
         switch scanningConfirmationStatus {
         case let .automatically(task), let .manually(task):
             task.cancel()
-            // 确保取消在HoYo中注册的任务
             if let pollingTaskId = pollingTaskId {
                 HoYo.cancelQRCodePollingTask(taskId: pollingTaskId)
                 self.pollingTaskId = nil
@@ -324,6 +319,41 @@ final class GetCookieQRCodeViewModel: ObservableObject {
             }
         case .idle: return
         }
+    }
+
+    // MARK: Private
+
+    private func startAutoPolling(ticket: String) {
+        cancelAllConfirmationTasks(resetState: true)
+        let task = Task { @MainActor [weak self] in
+            var counter = 0
+            loopTask: while case let .automatically(task) = self?.scanningConfirmationStatus, !task.isCancelled {
+                guard let self else { break loopTask }
+                do {
+                    let status = try await HoYo.queryQRCodeStatusForeground(
+                        deviceId: taskId,
+                        ticket: ticket
+                    )
+                    if let parsedResult = try await status.parsed() {
+                        try await onQRCodeConfirmed?(parsedResult)
+                        break loopTask
+                    }
+                    try await Task.sleep(nanoseconds: 3 * 1_000_000_000) // 3sec.
+                } catch {
+                    if error is CancellationError { break loopTask }
+                    if error._code != NSURLErrorNetworkConnectionLost || counter >= 20 {
+                        self.error = error
+                        counter = 0
+                        break loopTask
+                    } else {
+                        counter += 1
+                    }
+                }
+            }
+            self?.scanningConfirmationStatus = .idle
+        }
+        pollingTaskId = HoYo.registerQRCodePollingTask(task)
+        scanningConfirmationStatus = .automatically(task)
     }
 }
 

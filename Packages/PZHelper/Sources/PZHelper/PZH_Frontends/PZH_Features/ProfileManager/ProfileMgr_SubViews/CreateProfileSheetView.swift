@@ -430,7 +430,12 @@ private struct RequireLoginView: View {
                     region: region.withGame(game)
                 )
             case .miyoushe:
-                GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP, deviceID: $deviceID)
+                GetCookieQRCodeView(
+                    game: game,
+                    cookie: $unsavedCookie,
+                    deviceFP: $unsavedFP,
+                    deviceID: $deviceID
+                )
             }
         }
         // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
