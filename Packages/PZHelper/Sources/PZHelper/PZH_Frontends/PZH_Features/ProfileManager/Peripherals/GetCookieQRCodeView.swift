@@ -245,8 +245,13 @@ final class GetCookieQRCodeViewModel: ObservableObject {
     // MARK: Public
 
     public func onAppear() {
-        taskId = .init()
-        reCreateQRCode()
+        if let ticket = qrCodeAndTicket?.ticket, error == nil {
+            // 恢复前台：沿用现有 QR 码继续轮询，避免更换 ticket 导致米游社扫码结果作废
+            startAutoPolling(ticket: ticket)
+        } else {
+            taskId = .init()
+            reCreateQRCode()
+        }
     }
 
     public func onDisappear() {
