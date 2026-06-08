@@ -96,7 +96,8 @@ public final class ScreenVM {
         var newResult = windowSizeObserved
         guard splitViewVisibility != .detailOnly else { return newResult }
         newResult.width -= actualSidebarWidthObserved
-        if OS.liquidGlassThemeSuspected {
+        // macOS 26 傻逼透顶的 sidebar padding 在 macOS 27 被消灭了。
+        if OS.liquidGlassThemeSuspected, OS.sidebarHasPadding {
             newResult.width -= 10
         }
         guard newResult.width > 0 else { return windowSizeObserved }

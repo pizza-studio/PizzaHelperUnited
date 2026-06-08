@@ -306,8 +306,11 @@ public enum OS: Int, Sendable {
             let verStr = (infoDict["DTPlatformVersion"] as? String)?.prefix(4) ?? "_"
             if let verDouble = Double(verStr) {
                 if verDouble < 26 { return false }
-                let uiCompat = infoDict["UIDesignRequiresCompatibility"] as? Bool
-                if uiCompat == true { return false }
+                // UIDesignRequiresCompatibility 在 OS 27+ / SDK 27+ 無效。
+                if verDouble < 27 {
+                    let uiCompat = infoDict["UIDesignRequiresCompatibility"] as? Bool
+                    if uiCompat == true { return false }
+                }
             }
         }
         #if os(macOS)
@@ -346,6 +349,25 @@ public enum OS: Int, Sendable {
         }
         return false
     }()
+
+    public static var sidebarHasPadding: Bool {
+        guard liquidGlassThemeSuspected else { return false }
+        #if os(macOS)
+        return if #unavailable(macOS 27) { true } else { false }
+        #elseif os(watchOS)
+        return if #unavailable(watchOS 27) { true } else { false }
+        #elseif os(tvOS)
+        return if #unavailable(tvOS 27) { true } else { false }
+        #elseif os(iOS)
+        #if targetEnvironment(simulator)
+        return if #unavailable(iOS 27) { true } else { false }
+        #elseif targetEnvironment(macCatalyst)
+        return if #unavailable(macCatalyst 27) { true } else { false }
+        #else
+        return if #unavailable(iOS 27) { true } else { false }
+        #endif
+        #endif
+    }
 
     /// 當前作業系統類型。此值在首次存取時會自動初始化（需從 MainActor 上下文首次呼叫）。
     /// 初始化後可從任何執行緒安全存取。
