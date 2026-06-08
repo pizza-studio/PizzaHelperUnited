@@ -257,7 +257,8 @@ public struct BattleReportView4HSR: BattleReportView {
                             bundle: .currentSPM
                         )
                         Spacer()
-                        if let challengeTime = floorData.node1.challengeTime {
+                        if let challengeTime = floorData.node1.challengeTime ?? floorData.node2
+                            .challengeTime ?? floorData.node3?.challengeTime {
                             Text(verbatim: challengeTime.description)
                         }
                         let starNumInt = Int(floorData.starNum) ?? 0
@@ -286,16 +287,15 @@ public struct BattleReportView4HSR: BattleReportView {
         if floorData.isSkipped {
             Text("hylKit.battleReport.floor.thisFloorIsSkipped".i18nHYLKit)
         } else {
+            let nodeMap = Array(floorData.allNodes.enumerated())
             let theContent = Group {
-                drawBattleNode(
-                    floorData.node1,
-                    label: hasLabel ? "hylKit.battleReport.floor.1stHalf".i18nHYLKit : ""
-                )
-                if hasSpacers, !vertical { Spacer() }
-                drawBattleNode(
-                    floorData.node2,
-                    label: hasLabel ? "hylKit.battleReport.floor.2ndHalf".i18nHYLKit : ""
-                )
+                ForEach(nodeMap, id: \.offset) { idx, currentNode in
+                    let nodeLabelStr = String(
+                        localized: "hylKit.battleReport.room.title:\((idx + 1).description)", bundle: .currentSPM
+                    )
+                    drawBattleNode(currentNode, label: hasLabel ? nodeLabelStr : "")
+                    if idx < nodeMap.count - 1, hasSpacers, !vertical { Spacer() }
+                }
             }
             if vertical {
                 VStack { theContent }
@@ -316,16 +316,15 @@ public struct BattleReportView4HSR: BattleReportView {
         if floorData.isSkipped {
             Text("hylKit.battleReport.floor.thisFloorIsSkipped".i18nHYLKit)
         } else {
+            let nodeMap = Array(floorData.allNodes.enumerated())
             let theContent = Group {
-                drawBattleNode(
-                    floorData.node1,
-                    label: hasLabel ? "hylKit.battleReport.floor.1stHalf".i18nHYLKit : ""
-                )
-                if hasSpacers, !vertical { Spacer() }
-                drawBattleNode(
-                    floorData.node2,
-                    label: hasLabel ? "hylKit.battleReport.floor.2ndHalf".i18nHYLKit : ""
-                )
+                ForEach(nodeMap, id: \.offset) { idx, currentNode in
+                    let nodeLabelStr = String(
+                        localized: "hylKit.battleReport.room.title:\((idx + 1).description)", bundle: .currentSPM
+                    )
+                    drawBattleNode(currentNode, label: hasLabel ? nodeLabelStr : "")
+                    if idx < nodeMap.count - 1, hasSpacers, !vertical { Spacer() }
+                }
             }
             if vertical {
                 VStack { theContent }
@@ -346,18 +345,17 @@ public struct BattleReportView4HSR: BattleReportView {
         if floorData.isSkipped {
             Text("hylKit.battleReport.floor.thisFloorIsSkipped".i18nHYLKit)
         } else {
+            let nodeMap = Array(floorData.allNodes.enumerated())
             let theContent = Group {
-                drawBattleNode(
-                    floorData.node1,
-                    label: hasLabel ? "hylKit.battleReport.floor.1stHalf".i18nHYLKit : ""
-                )
-                if hasSpacers, !vertical { Spacer() }
-                drawBattleNode(
-                    floorData.node2,
-                    label: hasLabel ? "hylKit.battleReport.floor.2ndHalf".i18nHYLKit : ""
-                )
+                ForEach(nodeMap, id: \.offset) { idx, currentNode in
+                    let nodeLabelStr = String(
+                        localized: "hylKit.battleReport.room.title:\((idx + 1).description)", bundle: .currentSPM
+                    )
+                    drawBattleNode(currentNode, label: hasLabel ? nodeLabelStr : "")
+                    if idx < nodeMap.count - 1, hasSpacers, !vertical { Spacer() }
+                }
             }
-            if vertical {
+            if vertical || nodeMap.count > 2 {
                 VStack { theContent }
             } else {
                 HStack { theContent }

@@ -29,9 +29,7 @@ extension HoYo.BattleReport4HSR {
         }
 
         public var allNodes: [FHNode] {
-            allFloorDetail.compactMap {
-                [$0.node1, $0.node2]
-            }.reduce([], +)
+            allFloorDetail.flatMap(\.allNodes)
         }
 
         // MARK: Internal
@@ -76,11 +74,16 @@ extension HoYo.BattleReport4HSR {
         public let starNum: Int
         public let node1: FHNode
         public let node2: FHNode
+        public let node3: FHNode?
         public let isChaos: Bool
         public let mazeID: Int
 
+        public var allNodes: [FHNode] {
+            [node1, node2, node3].compactMap(\.self)
+        }
+
         public var isSkipped: Bool {
-            _isFast || (node1.avatars.isEmpty && node2.avatars.isEmpty)
+            _isFast || allNodes.allSatisfy(\.avatars.isEmpty)
         }
 
         public var floorNumStr: String {
@@ -95,6 +98,7 @@ extension HoYo.BattleReport4HSR {
             case starNum = "star_num"
             case node1 = "node_1"
             case node2 = "node_2"
+            case node3 = "node_3"
             case isChaos = "is_chaos"
             case mazeID = "maze_id"
             case _isFast = "is_fast"
