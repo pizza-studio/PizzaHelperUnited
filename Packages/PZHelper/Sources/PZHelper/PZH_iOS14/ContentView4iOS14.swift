@@ -81,6 +81,7 @@ public struct ContentView4iOS14: View {
             }
         }
         .disableFocusable()
+        .scrollEdgeSoftened()
         .navigationTitle(navTitle)
         .navBarTitleDisplayMode(.large)
         .toolbar {

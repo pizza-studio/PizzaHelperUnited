@@ -27,6 +27,7 @@ public struct ContentView: View {
         ) {
             NavigationStack {
                 TodayTabPage(wrappedByNavStack: false)
+                    .scrollEdgeSoftened()
                     .scrollContentBackground(.hidden)
                     .listRowMaterialBackground()
                     .listContainerBackground(thickMaterial: true)
@@ -47,6 +48,7 @@ public struct ContentView: View {
                 }
         } detail: {
             AppRootPageViewWrapper(tab: rootNavVM.rootPageNav)
+                .scrollEdgeSoftened()
                 .appTabBarVisibility(.visible)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
