@@ -343,7 +343,7 @@ final class GetCookieQRCodeViewModel: ObservableObject {
                         try await onQRCodeConfirmed?(parsedResult)
                         break loopTask
                     }
-                    try await Task.sleep(nanoseconds: 3 * 1_000_000_000) // 3sec.
+                    try? await Task.sleep(nanoseconds: 3 * 1_000_000_000) // 3sec.
                 } catch {
                     if error is CancellationError { break loopTask }
                     if error._code != NSURLErrorNetworkConnectionLost || counter >= 20 {

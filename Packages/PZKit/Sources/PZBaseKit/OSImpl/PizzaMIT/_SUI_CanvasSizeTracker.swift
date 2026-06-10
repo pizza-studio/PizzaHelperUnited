@@ -109,7 +109,7 @@ private class SizeState {
         task?.cancel()
         task = Task { @MainActor [weak self] in
             guard let self else { return }
-            try await Task.sleep(nanoseconds: UInt64(debounceDelay * 1_000_000_000))
+            try? await Task.sleep(nanoseconds: UInt64(debounceDelay * 1_000_000_000))
             try Task.checkCancellation()
             action(size)
         }

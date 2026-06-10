@@ -7,6 +7,7 @@
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
+import WidgetKit
 
 @available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)

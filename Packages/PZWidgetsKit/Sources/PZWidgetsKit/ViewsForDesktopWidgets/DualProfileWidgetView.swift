@@ -46,6 +46,9 @@ extension DesktopWidgets {
                                 .frame(maxWidth: 300)
                         }
                     }
+                #if compiler(>=6.4)
+                case .systemExtraLargePortrait: EmptyView()
+                #endif
                 case .accessoryCorner: EmptyView()
                 case .accessoryCircular: EmptyView()
                 case .accessoryRectangular: EmptyView()

@@ -48,8 +48,8 @@ public final class ScreenVM {
                     return nil
                 }()
                 guard let newOrientation else { continue }
-                try await Task.sleep(nanoseconds: 100_000_000) // 100ms 去抖动
-                try Task.checkCancellation()
+                try? await Task.sleep(nanoseconds: 100_000_000) // 100ms 去抖动
+                try? Task.checkCancellation()
                 self.orientation = newOrientation
                 print("方向更新: \(newOrientation), windowSizeObserved: \(windowSizeObserved)")
                 self.updateHash4Tracking()
@@ -191,7 +191,7 @@ public final class ScreenVM {
             _ = isHorizontallyCompact
             _ = actualSidebarWidthObserved
             _ = windowSizeObserved.hashValue
-        } onChange: {
+        } onChange: { [weak self] in
             Task { @MainActor [weak self] in
                 guard let this = self else { return }
                 this.updateHash4Tracking()

@@ -121,10 +121,10 @@ public final class FolderMonitor: ObservableObject {
                         }
 
                         // Wait before next check (0.5s)
-                        try await Task.sleep(nanoseconds: 500_000_000)
+                        try? await Task.sleep(nanoseconds: 500_000_000)
                     } catch {
                         // Handle errors silently or log them
-                        try await Task.sleep(nanoseconds: 500_000_000)
+                        try? await Task.sleep(nanoseconds: 500_000_000)
                     }
                 }
 

@@ -95,7 +95,7 @@ public struct AvatarStatCollectionTabView: View {
             withAnimation(.easeIn(duration: 0.1)) {
                 showTabViewIndex = true
                 Task {
-                    try await Task.sleep(nanoseconds: 1_700_000_000) // Sleep 1.7s
+                    try? await Task.sleep(nanoseconds: 1_700_000_000) // Sleep 1.7s
                     withAnimation {
                         showTabViewIndex = false
                     }

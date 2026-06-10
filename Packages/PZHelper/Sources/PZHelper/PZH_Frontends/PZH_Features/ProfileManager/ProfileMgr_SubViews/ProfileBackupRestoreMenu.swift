@@ -90,71 +90,69 @@ struct ProfileBackupRestoreMenu<T: View>: View {
 
     // MARK: Private
 
-    @StateObject private var vm4ProfileExchange = Coordinator()
+    @StateObject private var vm4ProfileExchange = ProfileBackupRestoreMenuCoordinator()
     @StateObject private var vm4ProfileMgmt: ProfileManagerVM = .shared
 
     private let importCompletionHandler: (Result<URL, any Error>) -> Void
     private let extraItem: (() -> T)?
 }
 
-// MARK: ProfileBackupRestoreMenu.Coordinator
+// MARK: - ProfileBackupRestoreMenuCoordinator
 
 @available(iOS 16.2, macCatalyst 16.2, *)
-extension ProfileBackupRestoreMenu {
-    @MainActor
-    internal final class Coordinator: ObservableObject {
-        // MARK: Lifecycle
+@MainActor
+internal final class ProfileBackupRestoreMenuCoordinator: ObservableObject {
+    // MARK: Lifecycle
 
-        public init() {}
+    public init() {}
 
-        // MARK: Internal
+    // MARK: Internal
 
-        @Published var fileSaveActionResult: Result<URL, any Error>?
-        @Published var currentExportableDocument: Result<PZProfilesDocument, Error>?
-        @Published var isImporterVisible: Bool = false
+    @Published var fileSaveActionResult: Result<URL, any Error>?
+    @Published var currentExportableDocument: Result<PZProfilesDocument, Error>?
+    @Published var isImporterVisible: Bool = false
 
-        var fileSaveActionResultMessagePack: (title: String, message: String) {
-            switch fileSaveActionResult {
-            case let .success(url):
-                (
-                    "profileMgr.exchange.export.succeededInSavingToFile".i18nPZHelper,
-                    "profileMgr.exchange.export.fileSavedTo:".i18nPZHelper + "\n\n\(url)"
-                )
-            case let .failure(message):
-                ("profileMgr.exchange.export.failedInSavingToFile".i18nPZHelper, "⚠︎ \(message)")
-            case nil: ("", "")
+    var fileSaveActionResultMessagePack: (title: String, message: String) {
+        switch fileSaveActionResult {
+        case let .success(url):
+            (
+                "profileMgr.exchange.export.succeededInSavingToFile".i18nPZHelper,
+                "profileMgr.exchange.export.fileSavedTo:".i18nPZHelper + "\n\n\(url)"
+            )
+        case let .failure(message):
+            ("profileMgr.exchange.export.failedInSavingToFile".i18nPZHelper, "⚠︎ \(message)")
+        case nil: ("", "")
+        }
+    }
+
+    var isExporterVisible: Binding<Bool> {
+        .init(get: {
+            switch self.currentExportableDocument {
+            case .success: true
+            case .failure, .none: false
             }
-        }
-
-        var isExporterVisible: Binding<Bool> {
-            .init(get: {
-                switch self.currentExportableDocument {
-                case .success: true
-                case .failure, .none: false
-                }
-            }, set: { result in
-                if !result {
-                    self.currentExportableDocument = nil
-                }
-            })
-        }
-
-        var isExportResultAvailable: Binding<Bool> {
-            .init(get: { self.fileSaveActionResult != nil }, set: { _ in })
-        }
-
-        var defaultFileName: String? {
-            switch currentExportableDocument {
-            case let .success(document): document.fileNameStem
-            case .failure, .none: nil
+        }, set: { result in
+            if !result {
+                self.currentExportableDocument = nil
             }
-        }
+        })
+    }
 
-        func getCurrentExportableDocument() -> PZProfilesDocument? {
-            switch currentExportableDocument {
-            case let .success(document): document
-            case .failure, .none: nil
-            }
+    var isExportResultAvailable: Binding<Bool> {
+        .init(get: { self.fileSaveActionResult != nil }, set: { _ in })
+    }
+
+    var defaultFileName: String? {
+        switch currentExportableDocument {
+        case let .success(document): document.fileNameStem
+        case .failure, .none: nil
+        }
+    }
+
+    func getCurrentExportableDocument() -> PZProfilesDocument? {
+        switch currentExportableDocument {
+        case let .success(document): document
+        case .failure, .none: nil
         }
     }
 }

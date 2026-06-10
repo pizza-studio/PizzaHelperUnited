@@ -459,7 +459,7 @@ private actor URLAsyncTaskStack {
 
     public static func waitFor200ms() async {
         await Self.taskBuffer.addTask {
-            try await Task.sleep(nanoseconds: 200_000_000) // 300ms sleep
+            try? await Task.sleep(nanoseconds: 200_000_000) // 300ms sleep
         }
     }
 

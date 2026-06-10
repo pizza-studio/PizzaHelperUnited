@@ -41,7 +41,7 @@ extension HoYo {
     public static func waitFor300ms() async {
         guard !Pizza.isNotMainApp else { return }
         await Self.taskBuffer.addTask {
-            try await Task.sleep(nanoseconds: 300_000_000) // 300ms sleep
+            try? await Task.sleep(nanoseconds: 300_000_000) // 300ms sleep
         }
     }
 }

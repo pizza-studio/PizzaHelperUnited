@@ -185,7 +185,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                                 if transactionCounter >= 16 {
                                     try await GachaActor.shared.asyncSave()
                                     transactionCounter = 0
-                                    try await Task.sleep(for: .seconds(1))
+                                    try? await Task.sleep(for: .seconds(1))
                                 }
                             }
                             for item in result.listConverted {
@@ -203,17 +203,17 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                                 withAnimation {
                                     self.savedTypeFetchedCount[.init(rawValue: item.gachaType)]! += 1
                                 }
-                                try await Task.sleep(for: .seconds(0.5 / 20.0))
+                                try? await Task.sleep(for: .seconds(0.5 / 20.0))
                             }
                             try await saveDataPer16PagesOfTransactions()
                         }
                         try await GachaActor.shared.asyncSave()
-                        try await Task.sleep(for: .seconds(1))
+                        try? await Task.sleep(for: .seconds(1))
                         if isBleachingModeEnabled {
                             bleachCounter += await GachaActor.shared.bleach(
                                 against: validTransactionIDMap, uid: uid, game: GachaType.game
                             ) // This will do asyncSave at the end of its transaction block.
-                            try await Task.sleep(for: .seconds(1))
+                            try? await Task.sleep(for: .seconds(1))
                         }
                         GachaVM.shared.isDoingBatchInsertionAction = false
                         await GachaVM.shared.updateAllCachedGPIDs()

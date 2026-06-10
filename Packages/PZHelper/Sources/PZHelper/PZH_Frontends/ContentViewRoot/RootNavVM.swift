@@ -189,8 +189,8 @@ final class RootNavVM {
                 let isChosen: Bool = navCase == self.rootPageNav
                 if navCase.isExposed {
                     Button {
-                        Task { @MainActor [weak self] in
-                            self?.rootPageNav = navCase
+                        Task { [weak nullableSelf = self] in
+                            nullableSelf?.rootPageNav = navCase
                         }
                     } label: {
                         VStack(spacing: 0) {

@@ -220,7 +220,7 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
     nonisolated internal func didObserveChangesFromSwiftData() {
         Task { @MainActor in
             if Defaults[.automaticallyDeduplicatePZProfiles] {
-                try await self.profileActor?.deduplicate()
+                _ = try? await self.profileActor?.deduplicate()
             }
             await self.profileActor?.syncAllDataToUserDefaults()
             ProfileManagerVM.shared.profiles = Defaults[.pzProfiles].values.sorted {

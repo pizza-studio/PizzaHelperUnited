@@ -94,7 +94,7 @@ struct UserWallpaperExchangeMenu<T: View>: View {
 
     // MARK: Private
 
-    @State private var theVM = Coordinator()
+    @State private var theVM = UserWallpaperExchangeMenuCoordinator()
     @StateObject private var broadcaster = Broadcaster.shared
 
     private let importCompletionHandler: (Result<URL, any Error>) -> Void
@@ -104,55 +104,53 @@ struct UserWallpaperExchangeMenu<T: View>: View {
 // MARK: UserWallpaperExchangeMenu.Coordinator
 
 @available(iOS 17.0, macCatalyst 17.0, *)
-extension UserWallpaperExchangeMenu {
-    @Observable
-    private final class Coordinator: TaskManagedVM {
-        var fileSaveActionResult: Result<URL, any Error>?
-        var currentExportableDocument: Result<UserWallpaperPack, Error>?
-        var isImporterVisible: Bool = false
+@Observable
+private final class UserWallpaperExchangeMenuCoordinator: TaskManagedVM {
+    var fileSaveActionResult: Result<URL, any Error>?
+    var currentExportableDocument: Result<UserWallpaperPack, Error>?
+    var isImporterVisible: Bool = false
 
-        var fileSaveActionResultMessagePack: (title: String, message: String) {
-            switch fileSaveActionResult {
-            case let .success(url):
-                (
-                    "userWallpaperMgr.exchange.export.succeededInSavingToFile".i18nWPConfKit,
-                    "userWallpaperMgr.exchange.export.fileSavedTo:".i18nWPConfKit + "\n\n\(url)"
-                )
-            case let .failure(message):
-                ("userWallpaperMgr.exchange.export.failedInSavingToFile".i18nWPConfKit, "⚠︎ \(message)")
-            case nil: ("", "")
+    var fileSaveActionResultMessagePack: (title: String, message: String) {
+        switch fileSaveActionResult {
+        case let .success(url):
+            (
+                "userWallpaperMgr.exchange.export.succeededInSavingToFile".i18nWPConfKit,
+                "userWallpaperMgr.exchange.export.fileSavedTo:".i18nWPConfKit + "\n\n\(url)"
+            )
+        case let .failure(message):
+            ("userWallpaperMgr.exchange.export.failedInSavingToFile".i18nWPConfKit, "⚠︎ \(message)")
+        case nil: ("", "")
+        }
+    }
+
+    var isExporterVisible: Binding<Bool> {
+        .init(get: {
+            switch self.currentExportableDocument {
+            case .success: true
+            case .failure, .none: false
             }
-        }
-
-        var isExporterVisible: Binding<Bool> {
-            .init(get: {
-                switch self.currentExportableDocument {
-                case .success: true
-                case .failure, .none: false
-                }
-            }, set: { result in
-                if !result {
-                    self.currentExportableDocument = nil
-                }
-            })
-        }
-
-        var isExportResultAvailable: Binding<Bool> {
-            .init(get: { self.fileSaveActionResult != nil }, set: { _ in })
-        }
-
-        var defaultFileName: String? {
-            switch currentExportableDocument {
-            case let .success(document): document.fileNameStem
-            case .failure, .none: nil
+        }, set: { result in
+            if !result {
+                self.currentExportableDocument = nil
             }
-        }
+        })
+    }
 
-        func getCurrentExportableDocument() -> UserWallpaperPack? {
-            switch currentExportableDocument {
-            case let .success(document): document
-            case .failure, .none: nil
-            }
+    var isExportResultAvailable: Binding<Bool> {
+        .init(get: { self.fileSaveActionResult != nil }, set: { _ in })
+    }
+
+    var defaultFileName: String? {
+        switch currentExportableDocument {
+        case let .success(document): document.fileNameStem
+        case .failure, .none: nil
+        }
+    }
+
+    func getCurrentExportableDocument() -> UserWallpaperPack? {
+        switch currentExportableDocument {
+        case let .success(document): document
+        case .failure, .none: nil
         }
     }
 }
