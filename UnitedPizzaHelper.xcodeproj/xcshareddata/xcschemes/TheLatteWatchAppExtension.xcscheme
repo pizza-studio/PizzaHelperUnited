@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "2610"
+   LastUpgradeVersion = "2700"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -76,7 +76,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5B703A1A2F041DA500EA8295"
             BuildableName = "TheLatteWatchApp.app"
-            BlueprintName = "TheLatteWatchApp"
             ReferencedContainer = "container:UnitedPizzaHelper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -110,7 +109,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5B703A2B2F041DA700EA8295"
             BuildableName = "TheLatteWatchAppExtension.appex"
-            BlueprintName = "TheLatteWatchAppExtension"
             ReferencedContainer = "container:UnitedPizzaHelper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
