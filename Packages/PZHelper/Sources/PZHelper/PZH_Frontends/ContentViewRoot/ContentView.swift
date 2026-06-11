@@ -64,6 +64,14 @@ public struct ContentView: View {
                         mainColumnContent
                     }
                 }
+                .trackCanvasSize(debounceDelay: 0.3) {
+                    var newSize = $0
+                    newSize.width.round(.up)
+                    newSize.height.round(.up)
+                    let oldSize = screenVM.mainColumnCanvasSizeObserved
+                    guard oldSize.width != newSize.width || oldSize.height != newSize.height else { return }
+                    screenVM.mainColumnCanvasSizeObserved = newSize
+                }
         }
         .navigationSplitViewStyle(.balanced)
         .tint(tintForCurrentTab)
