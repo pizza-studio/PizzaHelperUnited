@@ -107,6 +107,48 @@ struct PFMgrAdvancedOptionsView: View {
                     bundle: .currentSPM
                 )
             }
+
+            #if targetEnvironment(simulator)
+            Section {
+                TextEditor(text: $clipboardJSONText)
+                    .fontDesign(.monospaced)
+                    .autocorrectionDisabled(true)
+                #if !(os(macOS) || targetEnvironment(macCatalyst))
+                    .keyboardType(.asciiCapable)
+                #endif
+                    .frame(minHeight: 100)
+                Button {
+                    let text = clipboardJSONText.trimmingCharacters(in: .whitespacesAndNewlines)
+                    guard !text.isEmpty, let jsonData = text.data(using: .utf8) else {
+                        simpleTaptic(type: .error)
+                        alertToastEventStatus.isFailureSituationTriggered.toggle()
+                        return
+                    }
+                    Task {
+                        do {
+                            var decodedProfiles = try JSONDecoder().decode(
+                                [PZProfileSendable].self, from: jsonData
+                            )
+                            decodedProfiles.fixPrioritySettings(
+                                respectExistingPriority: true, delta: theVM.profiles.count
+                            )
+                            try await theVM.profileActor?.addOrUpdateProfiles(Set(decodedProfiles))
+                            clipboardJSONText = ""
+                            simpleTaptic(type: .success)
+                            alertToastEventStatus.isProfileTaskSucceeded.toggle()
+                        } catch {
+                            simpleTaptic(type: .error)
+                            alertToastEventStatus.isFailureSituationTriggered.toggle()
+                        }
+                    }
+                } label: {
+                    Text(verbatim: "Read JSON from Clipboard")
+                }
+                .disabled(clipboardJSONText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            } header: {
+                Text(verbatim: "Batch Import via Clipboard (Simulator Only)")
+            }
+            #endif
         }
         .formStyle(.grouped).disableFocusable()
         .navigationTitle(Self.navTitle)
@@ -116,6 +158,20 @@ struct PFMgrAdvancedOptionsView: View {
                 displayMode: .alert,
                 type: .complete(.green),
                 title: "profileMgr.toast.taskSucceeded".i18nPZHelper
+            )
+        }
+        .toast(isPresenting: $alertToastEventStatus.isProfileTaskSucceeded) {
+            AlertToast(
+                displayMode: .alert,
+                type: .complete(.green),
+                title: "profileMgr.toast.taskSucceeded".i18nPZHelper
+            )
+        }
+        .toast(isPresenting: $alertToastEventStatus.isFailureSituationTriggered) {
+            AlertToast(
+                displayMode: .alert,
+                type: .error(.red),
+                title: "profileMgr.toast.taskFailed".i18nPZHelper
             )
         }
     }
@@ -128,6 +184,7 @@ struct PFMgrAdvancedOptionsView: View {
     @EnvironmentObject private var alertToastEventStatus: AlertToastEventStatus
     @StateObject private var theVM: ProfileManagerVM = .shared
     @State private var alertPresented: Bool = false
+    @State private var clipboardJSONText: String = ""
 
     private func formatDeviceFingerprint() {
         let pattern = "[^a-z0-9]+"
