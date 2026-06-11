@@ -25,6 +25,8 @@ extension ProfileProtocol {
                     case .zenlessZone: .orange
                     }
                 }())
+                .compositingGroup()
+                .drawingGroup()
         }
     }
 
