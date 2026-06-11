@@ -302,32 +302,53 @@ public enum OS: Int, Sendable {
     }()
 
     public static let liquidGlassThemeSuspected: Bool = {
-        if let infoDict = Bundle.main.infoDictionary {
-            let verStr = (infoDict["DTPlatformVersion"] as? String)?.prefix(4) ?? "_"
-            if let verDouble = Double(verStr) {
-                if verDouble < 26 { return false }
-                // UIDesignRequiresCompatibility 在 OS 27+ / SDK 27+ 無效。
-                if verDouble < 27 {
-                    let uiCompat = infoDict["UIDesignRequiresCompatibility"] as? Bool
-                    if uiCompat == true { return false }
-                }
+        // 1. 讀取 Solarium 系統開關（僅對原生 AppKit 生效，僅讀一次）。
+        //    /Library/Preferences/FeatureFlags/Domain/SwiftUI.plist
+        //    該檔案失蹤時，該參數的缺省值為 false。
+        //    Solarium.Enabled == false 表示系統全局停用 LiquidGlass。
+        //    該設定需重新開機方可生效。
+        let isSolariumExplicitlyDisabled: Bool = {
+            #if canImport(AppKit) && !targetEnvironment(macCatalyst)
+            // 無須判斷 UIKit importability。
+            let solariumPlistPath = "/Library/Preferences/FeatureFlags/Domain/SwiftUI.plist"
+            if let solariumDict = NSDictionary(contentsOfFile: solariumPlistPath),
+               let solarium = solariumDict["Solarium"] as? [String: Any],
+               let enabled = solarium["Enabled"] as? Bool,
+               enabled == false {
+                return true
             }
+            #endif
+            return false
+        }()
+
+        // 2. 取得執行期系統版本。
+        let osVersion = ProcessInfo.processInfo.operatingSystemVersion
+        let majorVersion = osVersion.majorVersion
+
+        switch majorVersion {
+        case 28...:
+            // 未來 OS 版本：假設屆時僅 Solarium 有作用。
+            return true
+        case 27:
+            // UIDesignRequiresCompatibility 在 OS 27 無效。
+            return !isSolariumExplicitlyDisabled
+        case 26:
+            // SDK >= 26 時，系統會讀取 UIDesignRequiresCompatibility。
+            if let infoDict = Bundle.main.infoDictionary,
+               let sdkVerStr = infoDict["DTPlatformVersion"] as? String,
+               let sdkVerDouble = Double(sdkVerStr.prefix(4)),
+               sdkVerDouble >= 26 {
+                // UIDesignRequiresCompatibility == true 表示 App 要求兼容模式，
+                // 此時應停用 LiquidGlass。
+                return !(infoDict["UIDesignRequiresCompatibility"] as? Bool ?? false)
+                    && !isSolariumExplicitlyDisabled
+            }
+            // SDK < 26：LiquidGlass API 在編譯期不存在。
+            return false
+        default:
+            // OS < 26：無 LiquidGlass。
+            return false
         }
-        #if os(macOS)
-        return if #unavailable(macOS 26) { false } else { true }
-        #elseif os(watchOS)
-        return if #unavailable(watchOS 26) { false } else { true }
-        #elseif os(tvOS)
-        return if #unavailable(tvOS 26) { false } else { true }
-        #elseif os(iOS)
-        #if targetEnvironment(simulator)
-        return if #unavailable(iOS 26) { false } else { true }
-        #elseif targetEnvironment(macCatalyst)
-        return if #unavailable(macCatalyst 26) { false } else { true }
-        #else
-        return if #unavailable(iOS 26) { false } else { true }
-        #endif
-        #endif
     }()
 
     public static let isCatalyst: Bool = {
