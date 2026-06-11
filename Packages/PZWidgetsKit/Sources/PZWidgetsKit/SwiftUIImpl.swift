@@ -34,3 +34,40 @@ extension View {
         }
     }
 }
+
+#if !os(watchOS)
+@available(iOS 16.2, macCatalyst 16.2, *)
+extension Widget {
+    public var extraLargePortraitFamilies: [WidgetFamily] {
+        #if compiler(>=6.4)
+        if #available(iOS 27.0, macCatalyst 27.0, *) {
+            return [.systemExtraLargePortrait]
+        }
+        return []
+        #else
+        return []
+        #endif
+    }
+}
+
+extension WidgetFamily {
+    public var isSystemExtraLargePortrait: Bool {
+        #if compiler(>=6.4)
+        if #available(iOS 27.0, macCatalyst 27.0, *) {
+            return self == .systemExtraLargePortrait
+        }
+        return false
+        #else
+        return false
+        #endif
+    }
+
+    public var isExtraLargeOrExtraLargePortrait: Bool {
+        if #available(iOS 15.0, macCatalyst 15.0, *) {
+            return isSystemExtraLargePortrait || self == .systemExtraLarge
+        }
+        return isSystemExtraLargePortrait
+    }
+}
+
+#endif

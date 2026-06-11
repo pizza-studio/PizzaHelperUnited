@@ -30,7 +30,10 @@ struct OfficialFeedWidget: Widget {
         }
         .configurationDisplayName("pzWidgetsKit.officialFeed.title".i18nWidgets)
         .description("pzWidgetsKit.officialFeed.description".i18nWidgets)
-        .supportedFamilies([.systemMedium, .systemLarge, .systemExtraLarge])
+        .supportedFamilies(
+            [.systemMedium, .systemLarge, .systemExtraLarge]
+                + extraLargePortraitFamilies
+        )
         .containerBackgroundRemovable(false)
     }
 }

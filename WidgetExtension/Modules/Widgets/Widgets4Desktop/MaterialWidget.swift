@@ -30,7 +30,7 @@ struct MaterialWidget: Widget {
         }
         .configurationDisplayName("pzWidgetsKit.material.title".i18nWidgets)
         .description("pzWidgetsKit.material.description".i18nWidgets)
-        .supportedFamilies([.systemMedium])
+        .supportedFamilies([.systemMedium] + extraLargePortraitFamilies)
         .containerBackgroundRemovable(false)
     }
 }

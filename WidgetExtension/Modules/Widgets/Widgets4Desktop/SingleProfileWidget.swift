@@ -28,7 +28,10 @@ struct SingleProfileWidget: Widget {
         }
         .configurationDisplayName("pzWidgetsKit.status.title".i18nWidgets)
         .description("pzWidgetsKit.status.enquiry.title".i18nWidgets)
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
+        .supportedFamilies(
+            [.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge]
+                + extraLargePortraitFamilies
+        )
         .containerBackgroundRemovable(false)
     }
 }

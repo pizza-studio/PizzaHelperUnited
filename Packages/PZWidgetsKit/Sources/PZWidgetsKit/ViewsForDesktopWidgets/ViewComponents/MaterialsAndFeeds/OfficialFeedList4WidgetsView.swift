@@ -45,7 +45,15 @@ extension DesktopWidgets {
             case .systemSmall: Array(4 ... 5).reversed()
             case .systemMedium: Array(4 ... 12).reversed()
             case .systemExtraLarge, .systemLarge: Array(4 ... 15).reversed()
-            default: Array(4 ... 5).reversed()
+            #if compiler(>=6.4)
+            case .systemExtraLargePortrait: Array(4 ... 30).reversed()
+            #endif
+            default:
+                if family.isExtraLargeOrExtraLargePortrait {
+                    Array(4 ... 30).reversed()
+                } else {
+                    Array(4 ... 5).reversed()
+                }
             }
         }
 

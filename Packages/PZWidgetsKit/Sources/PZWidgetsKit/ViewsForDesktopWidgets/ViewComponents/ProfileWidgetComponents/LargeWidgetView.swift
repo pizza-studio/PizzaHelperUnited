@@ -83,7 +83,8 @@ extension DesktopWidgets {
                 useSpacer: false
             )
 
-            Grid {
+            let gridContent = Grid {
+                // Grid Row A，由左右两大区段组成。
                 GridRow {
                     HStack {
                         VStack(alignment: .leading) {
@@ -143,19 +144,8 @@ extension DesktopWidgets {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .gridCellAnchor(.topLeading)
-
-                    if family == .systemExtraLarge {
-                        OfficialFeedList4WidgetsView(
-                            events: entry.events,
-                            showLeadingBorder: false
-                        )
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 10)
-                        .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
-                        .frame(maxHeight: .infinity, alignment: .top)
-                        .gridCellAnchor(.topTrailing)
-                    }
                 }
+                // Grid Row B，由左右两大区段组成。
                 GridRow {
                     mainInfoView.staminaLabelCompact
                         .frame(maxWidth: .infinity, alignment: .bottomLeading)
@@ -166,19 +156,30 @@ extension DesktopWidgets {
                             }
                         }
                         .gridCellAnchor(.bottomLeading)
-                    if family == .systemExtraLarge {
-                        WeekdayDisplayView()
-                            .padding(.horizontal, 10)
-                            .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
-                            .gridCellAnchor(.bottomTrailing)
-                    }
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+            if family == .systemExtraLarge {
+                HStack {
+                    gridContent
+                    officialFeedBlock()
+                        .frame(maxWidth: 300)
+                }
+            } else if family.isSystemExtraLargePortrait {
+                VStack {
+                    gridContent
+                    officialFeedBlock()
+                        .padding(.top)
+                }
+                .frame(maxHeight: .infinity)
+            } else {
+                gridContent
+            }
         }
 
         @ViewBuilder private var viewWhenTinyGlassModeIsOff: some View {
-            HStack {
+            let mainContent = Group {
                 Spacer()
                 VStack(alignment: .leading) {
                     ProfileAndMainStaminaView(
@@ -227,26 +228,68 @@ extension DesktopWidgets {
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-                if family == .systemExtraLarge {
-                    trailingPaneForNonGlassViewMode()
+            }
+
+            if family == .systemExtraLarge {
+                HStack {
+                    mainContent
+                    officialFeedBlock()
                         .frame(width: 300)
+                    Spacer()
                 }
-                Spacer()
+            } else if family.isSystemExtraLargePortrait {
+                VStack {
+                    HStack {
+                        mainContent
+                        Spacer()
+                    }
+                    .frame(maxHeight: .infinity)
+                    officialFeedBlock()
+                        .padding(.top)
+                }
+                .frame(maxHeight: .infinity)
+            } else {
+                HStack {
+                    mainContent
+                    Spacer()
+                }
             }
         }
 
+        // MARK: - officialFeedBlock (news feed module)
+
         @ViewBuilder
-        private func trailingPaneForNonGlassViewMode() -> some View {
+        private func officialFeedBlock() -> some View {
             VStack(alignment: .trailing) {
-                OfficialFeedList4WidgetsView(
+                let officialFeedList = OfficialFeedList4WidgetsView(
                     events: entry.events,
-                    showLeadingBorder: false
+                    showLeadingBorder: family.isSystemExtraLargePortrait
                 )
-                .padding(.leading, 20)
-                .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
-                Spacer()
-                WeekdayDisplayView()
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                .frame(maxHeight: .infinity, alignment: .top)
+                switch viewConfig.useTinyGlassDisplayStyle {
+                case false:
+                    if family.isSystemExtraLargePortrait {
+                        Spacer()
+                    }
+                    officialFeedList
+                        .contentShape(.rect)
+                        .padding(.leading, 14)
+                    Spacer()
+                    WeekdayDisplayView()
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                case true:
+                    officialFeedList
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 10)
+                        .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
+                    if !family.isSystemExtraLargePortrait {
+                        Spacer()
+                    }
+                    WeekdayDisplayView()
+                        .padding(.horizontal, 10)
+                        .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
             }
             .frame(maxWidth: .infinity)
         }

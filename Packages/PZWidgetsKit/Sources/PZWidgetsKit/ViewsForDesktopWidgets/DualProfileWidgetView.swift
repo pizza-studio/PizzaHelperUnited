@@ -41,19 +41,39 @@ extension DesktopWidgets {
                             contents
                         }
                         .frame(maxWidth: .infinity)
-                        if family == .systemExtraLarge {
-                            officialFeedBlock()
-                                .frame(maxWidth: 300)
-                        }
+                        officialFeedBlock()
+                            .frame(maxWidth: 300)
                     }
-                #if compiler(>=6.4)
-                case .systemExtraLargePortrait: EmptyView()
-                #endif
                 case .accessoryCorner: EmptyView()
                 case .accessoryCircular: EmptyView()
                 case .accessoryRectangular: EmptyView()
                 case .accessoryInline: EmptyView()
-                @unknown default: EmptyView()
+                #if compiler(>=6.4)
+                case .systemExtraLargePortrait:
+                    // 得与下文 unknown default 的对应区段同步。
+                    VStack {
+                        VStack {
+                            contents
+                        }
+                        officialFeedBlock()
+                            .padding(.top)
+                    }
+                    .frame(maxHeight: .infinity)
+                #endif
+                @unknown default:
+                    if !family.isSystemExtraLargePortrait {
+                        EmptyView()
+                    } else {
+                        // 得与上文 compiler(>=6.4) `systemExtraLargePortrait` 的对应区段同步。
+                        VStack {
+                            VStack {
+                                contents
+                            }
+                            officialFeedBlock()
+                                .padding(.top)
+                        }
+                        .frame(maxHeight: .infinity)
+                    }
                 }
             }
             .padding()
@@ -104,11 +124,12 @@ extension DesktopWidgets {
         }
 
         @ViewBuilder private var contents: some View {
-            if !viewConfig.useTinyGlassDisplayStyle { Spacer(minLength: 0) }
+            let useSpacer = !viewConfig.useTinyGlassDisplayStyle && !family.isSystemExtraLargePortrait
+            if useSpacer { Spacer(minLength: 0) }
             drawSingleEntry(subEntry1)
             overlayDivider(isVertical: family != .systemMedium)
             drawSingleEntry(subEntry2)
-            if !viewConfig.useTinyGlassDisplayStyle { Spacer(minLength: 0) }
+            if useSpacer { Spacer(minLength: 0) }
         }
 
         @ViewBuilder
@@ -116,10 +137,14 @@ extension DesktopWidgets {
             VStack(alignment: .trailing) {
                 let officialFeedList = OfficialFeedList4WidgetsView(
                     events: entry.events,
-                    showLeadingBorder: false
+                    showLeadingBorder: family.isSystemExtraLargePortrait
                 )
+                .frame(maxHeight: .infinity, alignment: .top)
                 switch viewConfig.useTinyGlassDisplayStyle {
                 case false:
+                    if family.isSystemExtraLargePortrait {
+                        Spacer()
+                    }
                     officialFeedList
                         .contentShape(.rect)
                         .padding(.leading, 14)
@@ -131,7 +156,9 @@ extension DesktopWidgets {
                         .padding(.horizontal, 10)
                         .padding(.vertical, 10)
                         .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
-                    Spacer()
+                    if !family.isSystemExtraLargePortrait {
+                        Spacer()
+                    }
                     WeekdayDisplayView()
                         .padding(.horizontal, 10)
                         .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)

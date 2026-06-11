@@ -127,8 +127,28 @@ extension DesktopWidgets {
                             events: entry.events
                         )
                     }
+                #if compiler(>=6.4)
+                case .systemExtraLargePortrait:
+                    // 得与下文 default 的对应区段同步。
+                    LargeWidgetView4SingleProfile(
+                        entry: entry,
+                        dailyNote: dailyNote,
+                        viewConfig: viewConfig,
+                        events: entry.events
+                    )
+                #endif
                 default:
-                    Text(verbatim: "Layout not supported yet.")
+                    // 得与上文 compiler(>=6.4) `systemExtraLargePortrait` 的对应区段同步。
+                    if family.isSystemExtraLargePortrait {
+                        LargeWidgetView4SingleProfile(
+                            entry: entry,
+                            dailyNote: dailyNote,
+                            viewConfig: viewConfig,
+                            events: entry.events
+                        )
+                    } else {
+                        Text(verbatim: "Layout not supported yet.")
+                    }
                 }
             }
             .padding()

@@ -28,7 +28,10 @@ struct DualProfileWidget: Widget {
         }
         .configurationDisplayName("pzWidgetsKit.statusDualProfile.title".i18nWidgets)
         .description("pzWidgetsKit.statusDualProfile.enquiry.title".i18nWidgets)
-        .supportedFamilies([.systemMedium, .systemLarge, .systemExtraLarge])
+        .supportedFamilies(
+            [.systemMedium, .systemLarge, .systemExtraLarge]
+                + extraLargePortraitFamilies
+        )
         .containerBackgroundRemovable(false)
     }
 }
