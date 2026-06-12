@@ -127,7 +127,9 @@ struct UserWallpaperMakerView: View {
             currentContent
                 .fileImporter(
                     isPresented: $isComDlg32Visible,
-                    allowedContentTypes: [.jpeg, .gif, .heic, .bmp, .webP, .tiff],
+                    allowedContentTypes: [
+                        .jpeg, .png, .gif, .heic, .bmp, .webP, .tiff, .init(filenameExtension: "avif"),
+                    ].compactMap(\.self),
                     allowsMultipleSelection: false
                 ) { result in
                     switch result {
