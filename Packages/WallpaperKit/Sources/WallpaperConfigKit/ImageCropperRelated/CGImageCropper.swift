@@ -319,14 +319,14 @@ extension CGImageCropperView {
             let stepValue = 1.0
             Stepper(value: $originX, in: 0 ... maxOriginXGuarded, step: stepValue) {
                 if OS.type == .macOS {
-                    Text(verbatim: Int(originX).description)
-                        .monospacedDigit()
+                    MacSafeSlider(value: $originX, in: 0 ... maxOriginXGuarded)
                 } else {
                     Slider(value: $originX, in: 0 ... maxOriginXGuarded)
                 }
             }
         } label: {
             Image(systemSymbol: .arrowLeftAndRightCircle)
+                .padding(.horizontal)
         }
         .disabled(sourceCGImage == nil || maxOrigin.x <= 0)
 
@@ -335,14 +335,14 @@ extension CGImageCropperView {
             let stepValue = 1.0
             Stepper(value: $originY, in: 0 ... maxOriginYGuarded, step: stepValue) {
                 if OS.type == .macOS {
-                    Text(verbatim: Int(originY).description)
-                        .monospacedDigit()
+                    MacSafeSlider(value: $originY, in: 0 ... maxOriginYGuarded)
                 } else {
                     Slider(value: $originY, in: 0 ... maxOriginYGuarded)
                 }
             }
         } label: {
             Image(systemSymbol: .arrowUpAndDownCircle)
+                .padding(.horizontal)
         }
         .disabled(sourceCGImage == nil || maxOrigin.y <= 0)
     }
@@ -352,14 +352,14 @@ extension CGImageCropperView {
         LabeledContent {
             Stepper(value: $scaleFactor, in: minimumScaleFactor ... maxScaleFactor, step: 0.1) {
                 if OS.type == .macOS {
-                    Text(verbatim: scaleFactor.roundToPlaces(places: 1, round: .towardZero).description)
-                        .monospacedDigit()
+                    MacSafeSlider(value: $scaleFactor, in: minimumScaleFactor ... maxScaleFactor)
                 } else {
                     Slider(value: $scaleFactor, in: minimumScaleFactor ... maxScaleFactor)
                 }
             }
         } label: {
             Image(systemSymbol: .magnifyingglass)
+                .padding(.horizontal)
         }
         .react(to: scaleFactor) { _, _ in
             fixOriginIfNeeded()
