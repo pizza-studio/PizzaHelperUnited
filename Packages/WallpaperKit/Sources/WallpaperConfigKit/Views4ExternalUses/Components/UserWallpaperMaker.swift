@@ -81,7 +81,7 @@ struct UserWallpaperMakerView: View {
                 }
             case let .crop4Horizontal(cgImage):
                 CGImageCropperView(
-                    .init(width: 420, height: 200),
+                    .init(width: 420 * Self.sizeFactor, height: 200 * Self.sizeFactor),
                     sourceImage: cgImage
                 ) { cgImage4Horizontal in
                     currentStep = .crop4Squared(
@@ -91,7 +91,7 @@ struct UserWallpaperMakerView: View {
                 }
             case let .crop4Squared(cgImage, cgImage4Horizontal):
                 CGImageCropperView(
-                    .init(width: 420, height: 420),
+                    .init(width: 420 * Self.sizeFactor, height: 420 * Self.sizeFactor),
                     sourceImage: cgImage
                 ) { cgImage4Squared in
                     currentStep = .crop4Vertical(
@@ -102,7 +102,7 @@ struct UserWallpaperMakerView: View {
                 }
             case let .crop4Vertical(cgImage, cgImage4Horizontal, cgImage4Squared):
                 CGImageCropperView(
-                    .init(width: 200, height: 420),
+                    .init(width: 200 * Self.sizeFactor, height: 420 * Self.sizeFactor),
                     sourceImage: cgImage
                 ) { cgImage4Vertical in
                     let wallpaper = UserWallpaper(
@@ -169,6 +169,10 @@ struct UserWallpaperMakerView: View {
         case crop4Squared(raw: CGImage, horizontal: CGImage)
         case crop4Vertical(raw: CGImage, horizontal: CGImage, squared: CGImage)
     }
+
+    private static let sizeFactor: Double = {
+        ThisDevice.deviceBannedForUIGlassDecorations ? 1 : 2
+    }()
 
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State private var currentStep: OperationStep = .chooseImage

@@ -506,7 +506,7 @@ extension CGImageCropperView {
     public static func makeTestView() -> some View {
         let cgImage = BundledWallpaper.queryImageAsset(for: "PZWP110000")!
         CGImageCropperView(
-            .init(width: 420, height: 200),
+            .init(width: 840, height: 400),
             sourceImage: cgImage
         )
     }
