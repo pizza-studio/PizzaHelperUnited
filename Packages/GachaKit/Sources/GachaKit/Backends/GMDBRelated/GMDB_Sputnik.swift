@@ -36,17 +36,14 @@ extension GachaMeta {
             UserDefaults.baseSuite.removeObject(forKey: "localGachaMetaDB4GI")
             UserDefaults.baseSuite.removeObject(forKey: "localGachaMetaDB4HSR")
             UserDefaults.baseSuite.removeObject(forKey: "localGachaMetaDBReversed4GI")
-            Task {
-                do {
-                    await self.mainDBMonitor4HSR.saveData()
-                    await self.mainDBMonitor4GI.saveData()
-                    await self.reversedDBMonitor4GI.saveData()
-                    try await self.mainDBMonitor4HSR.startMonitoring()
-                    try await self.mainDBMonitor4GI.startMonitoring()
-                    try await self.reversedDBMonitor4GI.startMonitoring()
-                } catch {
-                    print("[GachaMeta.sharedDB] Init error: \(error)")
-                }
+            Task { await startAllMonitors() }
+
+            // Pause file monitoring when app enters background to avoid watchdog kills.
+            self.lifecycleBGToken = AppLifecycleMonitor.onEnterBackground { [weak self] in
+                await self?.stopAllMonitors()
+            }
+            self.lifecycleFGToken = AppLifecycleMonitor.onEnterForeground { [weak self] in
+                await self?.startAllMonitors()
             }
         }
 
@@ -97,6 +94,9 @@ extension GachaMeta {
 
         // MARK: Private
 
+        private var lifecycleBGToken: AppLifecycleMonitor.ObserverToken?
+        private var lifecycleFGToken: AppLifecycleMonitor.ObserverToken?
+
         /// 星穹铁道的抽卡专用中继资料库。
         private let mainDBMonitor4HSR = PlistCodableFileMonitor(
             fileURL: FileManager.default.urls(
@@ -133,6 +133,25 @@ extension GachaMeta {
             defaultValue: try! GachaMeta.MetaDB.getBundledDefault(for: .genshinImpact)!
                 .generateHotReverseQueryDict(for: "zh-cn")!
         )
+
+        private func startAllMonitors() async {
+            do {
+                await mainDBMonitor4HSR.saveData()
+                await mainDBMonitor4GI.saveData()
+                await reversedDBMonitor4GI.saveData()
+                try await mainDBMonitor4HSR.startMonitoring()
+                try await mainDBMonitor4GI.startMonitoring()
+                try await reversedDBMonitor4GI.startMonitoring()
+            } catch {
+                print("[GachaMeta.sharedDB] Init error: \(error)")
+            }
+        }
+
+        private func stopAllMonitors() async {
+            await mainDBMonitor4HSR.stopMonitoring()
+            await mainDBMonitor4GI.stopMonitoring()
+            await reversedDBMonitor4GI.stopMonitoring()
+        }
     }
 }
 

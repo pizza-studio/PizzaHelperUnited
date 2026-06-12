@@ -12,22 +12,21 @@ import PZBaseKit
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating {
     @Observable
-    public final class ARSputnik: Sendable {
+    public final class ARSputnik: @unchecked Sendable {
         // MARK: Lifecycle
 
         private init() {
             // Cleanup old UserDefaults keys that have been moved to filesystem
             UserDefaults.enkaSuite.removeObject(forKey: "artifactRatingDB")
             UserDefaults.enkaSuite.removeObject(forKey: "artifactCountDB4GI")
-            Task {
-                do {
-                    await self.artifactRatingDBMonitor.saveData()
-                    await self.artifactCountDBMonitor4GI.saveData()
-                    try await self.artifactRatingDBMonitor.startMonitoring()
-                    try await self.artifactCountDBMonitor4GI.startMonitoring()
-                } catch {
-                    print("[ArtifactRating.ARSputnik] Init error: \(error)")
-                }
+            Task { await startAllMonitors() }
+
+            // Pause file monitoring when app enters background to avoid watchdog kills.
+            self.lifecycleBGToken = AppLifecycleMonitor.onEnterBackground { [weak self] in
+                await self?.stopAllMonitors()
+            }
+            self.lifecycleFGToken = AppLifecycleMonitor.onEnterForeground { [weak self] in
+                await self?.startAllMonitors()
             }
         }
 
@@ -55,6 +54,9 @@ extension ArtifactRating {
 
         // MARK: Private
 
+        @ObservationIgnored private var lifecycleBGToken: AppLifecycleMonitor.ObserverToken?
+        @ObservationIgnored private var lifecycleFGToken: AppLifecycleMonitor.ObserverToken?
+
         /// Artifact rating database stored in filesystem instead of UserDefaults
         private let artifactRatingDBMonitor = PlistCodableFileMonitor(
             fileURL: FileManager.default.urls(
@@ -78,6 +80,22 @@ extension ArtifactRating {
                 .appending(component: "artifactCountDB4GI.plist"),
             defaultValue: ArtifactRating.initBundledCountDB()
         )
+
+        private func startAllMonitors() async {
+            do {
+                await artifactRatingDBMonitor.saveData()
+                await artifactCountDBMonitor4GI.saveData()
+                try await artifactRatingDBMonitor.startMonitoring()
+                try await artifactCountDBMonitor4GI.startMonitoring()
+            } catch {
+                print("[ArtifactRating.ARSputnik] Init error: \(error)")
+            }
+        }
+
+        private func stopAllMonitors() async {
+            await artifactRatingDBMonitor.stopMonitoring()
+            await artifactCountDBMonitor4GI.stopMonitoring()
+        }
     }
 }
 

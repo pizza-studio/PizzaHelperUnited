@@ -13,7 +13,7 @@ import PZBaseKit
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
     @Observable
-    public final class Sputnik: Sendable {
+    public final class Sputnik: @unchecked Sendable {
         // MARK: Lifecycle
 
         private init() {
@@ -25,15 +25,14 @@ extension Enka {
 
             /// Both db4GI and db4HSR are `@ObservationTracked` by the `@Observable` macro
             /// applied to this class, hence no worries.
-            Task {
-                do {
-                    await self.enkaDBMonitor4GI.saveData()
-                    await self.enkaDBMonitor4HSR.saveData()
-                    try await self.enkaDBMonitor4GI.startMonitoring()
-                    try await self.enkaDBMonitor4HSR.startMonitoring()
-                } catch {
-                    print("[Enka.Sputnik] Init error: \(error)")
-                }
+            Task { await startAllMonitors() }
+
+            // Pause file monitoring when app enters background to avoid watchdog kills.
+            self.lifecycleBGToken = AppLifecycleMonitor.onEnterBackground { [weak self] in
+                await self?.stopAllMonitors()
+            }
+            self.lifecycleFGToken = AppLifecycleMonitor.onEnterForeground { [weak self] in
+                await self?.startAllMonitors()
             }
             Task {
                 for await _ in Defaults.updates(.artifactRatingRules) {
@@ -128,6 +127,25 @@ extension Enka {
         )
 
         private let arSputnik: ArtifactRating.ARSputnik
+
+        private var lifecycleBGToken: AppLifecycleMonitor.ObserverToken?
+        private var lifecycleFGToken: AppLifecycleMonitor.ObserverToken?
+
+        private func startAllMonitors() async {
+            do {
+                await enkaDBMonitor4GI.saveData()
+                await enkaDBMonitor4HSR.saveData()
+                try await enkaDBMonitor4GI.startMonitoring()
+                try await enkaDBMonitor4HSR.startMonitoring()
+            } catch {
+                print("[Enka.Sputnik] Init error: \(error)")
+            }
+        }
+
+        private func stopAllMonitors() async {
+            await enkaDBMonitor4GI.stopMonitoring()
+            await enkaDBMonitor4HSR.stopMonitoring()
+        }
     }
 }
 
