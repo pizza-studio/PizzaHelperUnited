@@ -376,25 +376,6 @@ public enum OS: Int, Sendable {
         return false
     }()
 
-    public static var sidebarHasPadding: Bool {
-        guard liquidGlassThemeSuspected else { return false }
-        #if os(macOS)
-        return if #unavailable(macOS 27) { true } else { false }
-        #elseif os(watchOS)
-        return if #unavailable(watchOS 27) { true } else { false }
-        #elseif os(tvOS)
-        return if #unavailable(tvOS 27) { true } else { false }
-        #elseif os(iOS)
-        #if targetEnvironment(simulator)
-        return if #unavailable(iOS 27) { true } else { false }
-        #elseif targetEnvironment(macCatalyst)
-        return if #unavailable(macCatalyst 27) { true } else { false }
-        #else
-        return if #unavailable(iOS 27) { true } else { false }
-        #endif
-        #endif
-    }
-
     /// 當前作業系統類型。此值在首次存取時會自動初始化（需從 MainActor 上下文首次呼叫）。
     /// 初始化後可從任何執行緒安全存取。
     public static var type: OS { OSTypeCache.shared.value }
