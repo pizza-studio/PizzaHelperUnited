@@ -94,9 +94,21 @@ struct UserWallpaperMakerView: View {
                     .init(width: 420, height: 420),
                     sourceImage: cgImage
                 ) { cgImage4Squared in
+                    currentStep = .crop4Vertical(
+                        raw: cgImage,
+                        horizontal: cgImage4Horizontal,
+                        squared: cgImage4Squared
+                    )
+                }
+            case let .crop4Vertical(cgImage, cgImage4Horizontal, cgImage4Squared):
+                CGImageCropperView(
+                    .init(width: 200, height: 420),
+                    sourceImage: cgImage
+                ) { cgImage4Vertical in
                     let wallpaper = UserWallpaper(
                         imageHorizontal: cgImage4Horizontal,
-                        imageSquared: cgImage4Squared
+                        imageSquared: cgImage4Squared,
+                        imageVertical: cgImage4Vertical
                     )
                     if let wallpaper {
                         presentationMode.wrappedValue.dismiss()
@@ -155,6 +167,7 @@ struct UserWallpaperMakerView: View {
         case chooseImage
         case crop4Horizontal(raw: CGImage)
         case crop4Squared(raw: CGImage, horizontal: CGImage)
+        case crop4Vertical(raw: CGImage, horizontal: CGImage, squared: CGImage)
     }
 
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
@@ -170,6 +183,7 @@ struct UserWallpaperMakerView: View {
         case .chooseImage: Text("userWPCropper.navTitle.step1.chooseImage", bundle: .currentSPM)
         case .crop4Horizontal: Text("userWPCropper.navTitle.step2.cropHorizontal", bundle: .currentSPM)
         case .crop4Squared: Text("userWPCropper.navTitle.step3.cropSquared", bundle: .currentSPM)
+        case .crop4Vertical: Text("userWPCropper.navTitle.step4.cropVertical", bundle: .currentSPM)
         }
     }
 }

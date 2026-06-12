@@ -34,7 +34,8 @@ public struct UserWallpaper: Identifiable, AbleToCodeSendHash {
     public init?(
         name givenName: String? = nil,
         imageHorizontal: CGImage,
-        imageSquared: CGImage
+        imageSquared: CGImage,
+        imageVertical: CGImage? = nil
     ) {
         let data4Horizontal = imageHorizontal.encodeToFileData(as: .jpeg(quality: 0.9))
         let data4Squared = imageSquared.encodeToFileData(as: .jpeg(quality: 0.9))
@@ -44,6 +45,12 @@ public struct UserWallpaper: Identifiable, AbleToCodeSendHash {
         self.name = givenName ?? ""
         self.b64Data4Horizontal = data4Horizontal.base64EncodedString()
         self.b64Data4Squared = data4Squared.base64EncodedString()
+        if let imageVertical {
+            let data4Vertical = imageVertical.encodeToFileData(as: .jpeg(quality: 0.9))
+            self.b64Data4Vertical = data4Vertical?.base64EncodedString()
+        } else {
+            self.b64Data4Vertical = nil
+        }
         if givenName == nil {
             self.name = dateString
         }
@@ -56,6 +63,7 @@ public struct UserWallpaper: Identifiable, AbleToCodeSendHash {
     public let timestamp: Double
     public let b64Data4Horizontal: String
     public let b64Data4Squared: String
+    public let b64Data4Vertical: String?
 }
 
 extension UserWallpaper {
@@ -70,6 +78,21 @@ extension UserWallpaper {
     }
 
     public var dateString: String { Self.makeDateString(timestamp: timestamp) }
+
+    /// Vertical crop (200×420) for `systemExtraLargePortrait` desktop widgets.
+    /// For wallpapers created before this field was introduced, this returns
+    /// a center-cropped 200×420 portion of the squared image, computed at runtime.
+    public var imageVertical: CGImage? {
+        if let b64Data4Vertical,
+           let data = Data(base64Encoded: b64Data4Vertical),
+           let cgImage = CGImage.instantiate(data: data) {
+            return cgImage
+        }
+        // Auto-fallback: center-crop 200×420 from the 420×420 squared image.
+        guard let squared = imageSquared else { return nil }
+        let originX = Double(squared.width - 200) / 2.0
+        return squared.crop(to: CGRect(x: originX, y: 0, width: 200, height: 420))
+    }
 
     public var isImageDataValid: Bool {
         imageSquared != nil && imageHorizontal != nil

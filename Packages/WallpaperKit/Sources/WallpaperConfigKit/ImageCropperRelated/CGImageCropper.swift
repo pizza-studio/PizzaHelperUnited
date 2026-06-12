@@ -372,6 +372,7 @@ extension CGImageCropperView {
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(8)
                     .frame(width: previewBlockWidth)
+                    .frame(maxHeight: screenVM.mainColumnCanvasSizeObserved.height * 0.4)
                     .background {
                         GeometryReader { geometry in
                             Color.clear
