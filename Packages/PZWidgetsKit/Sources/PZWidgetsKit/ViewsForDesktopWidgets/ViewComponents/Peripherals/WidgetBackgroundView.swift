@@ -59,17 +59,6 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
     private let background: WidgetBackground
     private let darkModeOn: Bool
 
-    private var viewRefreshHash: Int {
-        Set(
-            [
-                broadcaster.eventForUserWallpaperDidSave.hashValue,
-                folderMonitor.stateHash.hashValue,
-            ]
-        ).hashValue
-    }
-
-    private var shouldEnforceDark: Bool { colorScheme == .dark && darkModeOn }
-
     private var userSuppliedWallpaperLayer: Image? {
         guard let userWP = background.userSuppliedWallpaper else { return nil }
         switchFamily: switch widgetFamily {
@@ -81,10 +70,33 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
             if let cgImage = userWP.imageHorizontal {
                 return Image(decorative: cgImage, scale: 1, orientation: .up)
             }
-        default: break switchFamily
+        #if compiler(>=6.4)
+        case .systemExtraLargePortrait:
+            // 得与下文 default 的对应区段同步。
+            if let cgImage = userWP.imageVertical {
+                return Image(decorative: cgImage, scale: 1, orientation: .up)
+            }
+        #endif
+        default:
+            guard widgetFamily.isSystemExtraLargePortrait else { break switchFamily }
+            // 得与上文 compiler(>=6.4) `systemExtraLargePortrait` 的对应区段同步。
+            if let cgImage = userWP.imageVertical {
+                return Image(decorative: cgImage, scale: 1, orientation: .up)
+            }
         }
         return nil
     }
+
+    private var viewRefreshHash: Int {
+        Set(
+            [
+                broadcaster.eventForUserWallpaperDidSave.hashValue,
+                folderMonitor.stateHash.hashValue,
+            ]
+        ).hashValue
+    }
+
+    private var shouldEnforceDark: Bool { colorScheme == .dark && darkModeOn }
 
     private var cachedOnlineBundledImageAsset: Image? {
         background.cachedOnlineBundledImageAsset
