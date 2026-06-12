@@ -88,10 +88,15 @@ extension UserWallpaper {
            let cgImage = CGImage.instantiate(data: data) {
             return cgImage
         }
-        // Auto-fallback: center-crop 200×420 from the 420×420 squared image.
+        // Auto-fallback: largest possible 1:2 (w:h) center crop from squared image.
         guard let squared = imageSquared else { return nil }
-        let originX = Double(squared.width - 200) / 2.0
-        return squared.crop(to: CGRect(x: originX, y: 0, width: 200, height: 420))
+        let squaredWidth = Double(squared.width)
+        let squaredHeight = Double(squared.height)
+        let maxCropWidth = squaredHeight / 2.0
+        let cropWidth = min(maxCropWidth, squaredWidth).rounded(.down)
+        let cropHeight = cropWidth * 2.0
+        let originX = (squaredWidth - cropWidth).rounded(.down) / 2.0
+        return squared.crop(to: CGRect(x: originX, y: 0, width: cropWidth, height: cropHeight))
     }
 
     public var isImageDataValid: Bool {
