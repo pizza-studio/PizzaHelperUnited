@@ -13,8 +13,8 @@ private struct CanvasSizeTracker: ViewModifier {
     // MARK: Lifecycle
 
     public init(handler: @escaping (CGSize) -> Void, debounceDelay: TimeInterval = 0.1) {
+        self.debounceDelay = debounceDelay
         self.handler = handler
-        self._sizeState = .init(wrappedValue: SizeState(debounceDelay: debounceDelay))
     }
 
     // MARK: Public
@@ -22,31 +22,33 @@ private struct CanvasSizeTracker: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .background {
-                SizeReadingLayout(onChange: { size in
-                    // 使用 Task 异步更新，避免在布局过程中直接修改状态
+                SizeReadingLayout(onChange: { [weak sizeState] size in
                     Task { @MainActor in
+                        guard let sizeState else { return }
                         sizeState.update(width: size.width, height: size.height)
-                        dispatchHandlerIfValid()
+                        sizeState.debounce(handler: handler)
                     }
                 }) {
                     Color.clear
+                }
+            }
+            .onAppear {
+                // 确保 SizeState 的 debounceDelay 与当前参数保持一致。
+                // 正常情况下 debounceDelay 不变，@State 会保留原有 SizeState；
+                // 若 SwiftUI 因 view identity 变更而重建了 @State，这里至少保证
+                // 新 SizeState 拿到正确的 debounceDelay。
+                if sizeState.debounceDelay != debounceDelay {
+                    sizeState = SizeState(debounceDelay: debounceDelay)
                 }
             }
     }
 
     // MARK: Private
 
-    @State private var sizeState: SizeState
+    @State private var sizeState: SizeState = .init(debounceDelay: 0.1)
 
     private let handler: (CGSize) -> Void
-
-    private func dispatchHandlerIfValid() {
-        if sizeState.size.width > 0, sizeState.size.height > 0 {
-            sizeState.debounce { size in
-                handler(size)
-            }
-        }
-    }
+    private let debounceDelay: TimeInterval
 }
 
 // MARK: - SizeReadingLayout
@@ -94,6 +96,7 @@ private class SizeState {
 
     // MARK: Internal
 
+    private(set) var debounceDelay: TimeInterval
     var size: CGSize = .zero
 
     func update(width: CGFloat? = nil, height: CGFloat? = nil) {
@@ -105,20 +108,20 @@ private class SizeState {
         }
     }
 
-    func debounce(_ action: @escaping @MainActor (CGSize) -> Void) {
+    func debounce(handler: @escaping (CGSize) -> Void) {
+        guard size.width > 0, size.height > 0 else { return }
         task?.cancel()
         task = Task { @MainActor [weak self] in
             guard let self else { return }
             try? await Task.sleep(nanoseconds: UInt64(debounceDelay * 1_000_000_000))
             try Task.checkCancellation()
-            action(size)
+            handler(size)
         }
     }
 
     // MARK: Private
 
     private var task: Task<Void, Error>?
-    private let debounceDelay: TimeInterval
 }
 
 @available(iOS 16.0, macCatalyst 16.0, *)
