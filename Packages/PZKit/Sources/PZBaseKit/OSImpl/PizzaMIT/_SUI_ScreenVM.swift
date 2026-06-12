@@ -88,10 +88,26 @@ public final class ScreenVM {
     public var isHorizontallyCompact: Bool = OS.type == .iPhoneOS
     public var actualSidebarWidthObserved: CGFloat = 0
     public var windowSizeObserved: CGSize = ScreenVM.getKeyWindowSize()
-    public var mainColumnCanvasSizeObserved: CGSize = ScreenVM.getKeyWindowSize()
     public var splitViewVisibility: NavigationSplitViewVisibility
 
+    /// Sidebar padding 偏移量。经由 CanvasSizeTracker 直接量取校准。
+    /// 初始值为 0（假设无 padding）；由 ContentView 中的 tracker 实际量取后修正。
+    /// 该值恒为非负数。
+    public var mainColumnSidebarPaddingOffset: CGFloat = 0
+
     public private(set) var hashForTracking: Int = 0
+
+    /// Main Column 的画布尺寸。
+    /// 从 `windowSizeObserved` — `actualSidebarWidthObserved` — `mainColumnSidebarPaddingOffset` 推算。
+    /// 由于读取了三个 @Observable stored property，它们任一变化都会触发依赖方重绘。
+    public var mainColumnCanvasSizeObserved: CGSize {
+        var newResult = windowSizeObserved
+        guard splitViewVisibility != .detailOnly else { return newResult }
+        newResult.width -= actualSidebarWidthObserved
+        newResult.width -= mainColumnSidebarPaddingOffset
+        guard newResult.width > 0 else { return windowSizeObserved }
+        return newResult
+    }
 
     // iPhone Portrait Display mode or similar canvas size.
     // 440 是 iPhone 16 Pro Max 的荧幕画布尺寸。
@@ -108,6 +124,26 @@ public final class ScreenVM {
         var isSidebarVisibleNow = splitViewVisibility == .all
         isSidebarVisibleNow = isSidebarVisibleNow && !isHorizontallyCompact
         return isSidebarVisibleNow
+    }
+
+    public func handleTrackedMainColumnCanvasSize(_ trackedSize: CGSize) {
+        let measuredWidth = trackedSize.width.rounded(.up)
+        let sidebarWidth = actualSidebarWidthObserved.rounded(.up)
+        let windowWidth = windowSizeObserved.width.rounded(.up)
+        let computedWidth = windowWidth - sidebarWidth
+        guard computedWidth > 0 else { return }
+        let offset = (computedWidth - measuredWidth).rounded(.up)
+        let clampedOffset = max(0, offset)
+        if mainColumnSidebarPaddingOffset != clampedOffset {
+            mainColumnSidebarPaddingOffset = clampedOffset
+        }
+    }
+
+    public func handleTrackedSidebarCanvasSize(_ trackedSize: CGSize) {
+        let existingWidth = actualSidebarWidthObserved
+        let newValue = trackedSize.width.rounded(.up)
+        guard existingWidth != newValue else { return }
+        actualSidebarWidthObserved = newValue
     }
 
     // MARK: Private
@@ -171,8 +207,7 @@ public final class ScreenVM {
         hasher.combine(actualSidebarWidthObserved)
         hasher.combine(windowSizeObserved.width)
         hasher.combine(windowSizeObserved.height)
-        hasher.combine(mainColumnCanvasSizeObserved.width)
-        hasher.combine(mainColumnCanvasSizeObserved.height)
+        hasher.combine(mainColumnSidebarPaddingOffset)
         hashForTracking = hasher.finalize()
     }
 
@@ -182,7 +217,7 @@ public final class ScreenVM {
             _ = isHorizontallyCompact
             _ = actualSidebarWidthObserved
             _ = windowSizeObserved.hashValue
-            _ = mainColumnCanvasSizeObserved.hashValue
+            _ = mainColumnSidebarPaddingOffset
         } onChange: { [weak self] in
             Task { @MainActor [weak self] in
                 guard let this = self else { return }

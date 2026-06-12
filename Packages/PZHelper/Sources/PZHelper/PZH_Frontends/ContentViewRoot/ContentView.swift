@@ -41,10 +41,7 @@ public struct ContentView: View {
                 .fontWidth(screenVM.actualSidebarWidthObserved < 350 ? .compressed : nil)
                 .frame(width: OS.isAppKit ? sideBarWidth : nil)
                 .trackCanvasSize(debounceDelay: 0.3) {
-                    let existingWidth = screenVM.actualSidebarWidthObserved
-                    let newValue = $0.width.rounded(.up)
-                    guard existingWidth != newValue else { return }
-                    screenVM.actualSidebarWidthObserved = newValue
+                    screenVM.handleTrackedSidebarCanvasSize($0)
                 }
         } detail: {
             AppRootPageViewWrapper(tab: rootNavVM.rootPageNav)
@@ -65,12 +62,7 @@ public struct ContentView: View {
                     }
                 }
                 .trackCanvasSize(debounceDelay: 0.3) {
-                    var newSize = $0
-                    newSize.width.round(.up)
-                    newSize.height.round(.up)
-                    let oldSize = screenVM.mainColumnCanvasSizeObserved
-                    guard oldSize.width != newSize.width || oldSize.height != newSize.height else { return }
-                    screenVM.mainColumnCanvasSizeObserved = newSize
+                    screenVM.handleTrackedMainColumnCanvasSize($0)
                 }
         }
         .navigationSplitViewStyle(.balanced)
