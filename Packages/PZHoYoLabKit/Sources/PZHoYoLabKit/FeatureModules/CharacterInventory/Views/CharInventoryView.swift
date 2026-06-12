@@ -200,7 +200,7 @@ public struct CharacterInventoryView: View {
                     .buttonStyle(.plain)
                     .id(avatar.id)
                 }
-                .frame(width: screenVM.mainColumnCanvasSizeObserved.width - 64)
+                .frame(width: containerWidth)
                 .overlay(alignment: .topLeading) {
                     Color(cgColor: currentElement.themeColor)
                         .frame(width: 8, height: 8)
