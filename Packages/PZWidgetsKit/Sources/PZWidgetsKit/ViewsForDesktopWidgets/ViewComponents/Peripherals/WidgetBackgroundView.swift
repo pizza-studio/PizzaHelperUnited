@@ -128,7 +128,11 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
             let wallpaper = (wpMaybe ?? .defaultValue())
             let isGenshinImpact = wallpaper.game == .genshinImpact
             let backgroundImage: Image = {
-                if !isGenshinImpact { return wallpaper.image4LiveActivity }
+                if !isGenshinImpact {
+                    return widgetFamily.isSystemExtraLargePortrait
+                        ? wallpaper.image4CellphoneWallpaper
+                        : wallpaper.image4LiveActivity
+                }
                 return cachedOnlineBundledImageAsset ?? wallpaper.image4LiveActivity
             }()
 
