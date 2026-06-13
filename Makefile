@@ -1,5 +1,5 @@
 SHELL := /bin/sh
-.PHONY: clean gitclean format lint archive
+.PHONY: clean gitclean format lint archive xcode-info
 
 # 定义日期和时间变量
 DATE_DIR := $(shell date +%Y-%m-%d)
@@ -8,6 +8,13 @@ TIME_FILE := $(shell date +%H.%M)
 ARCHIVE_DIR := $(HOME)/Library/Developer/Xcode/Archives/$(DATE_DIR)
 ARCHIVE_NAME := ThePizzaHelper-$(DATE_FILE)-$(TIME_FILE).xcarchive
 ARCHIVE_PATH := $(ARCHIVE_DIR)/$(ARCHIVE_NAME)
+
+# 自動選取最高版本的 non-beta Xcode 供所有 xcodebuild 命令使用
+export DEVELOPER_DIR := $(shell ./Script/find-nonbeta-xcode.swift 2>/dev/null)
+
+xcode-info:
+	@echo "Xcode: $$(xcodebuild -version 2>&1 | tr '\n' ' ')"
+	@xcodebuild -showsdks 2>&1 | grep -E '(iOS|macOS) SDKs:' -A 3
 
 clean:
 	@echo "Cleaning build artifacts for ThePizzaHelper..."
@@ -37,6 +44,9 @@ lint:
 # Interactive archive target
 archive:
 	@echo "========================================"; \
+	echo "  當前封存環境："; \
+	echo "  $$(xcodebuild -version 2>&1 | tr '\n' ' ')"; \
+	echo "========================================"; \
 	echo "  請選擇要封存的目標 App："; \
 	echo "========================================"; \
 	echo "  1) The Latte Helper  (Latte)"; \
