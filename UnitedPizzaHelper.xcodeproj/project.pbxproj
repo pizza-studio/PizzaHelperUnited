@@ -1105,7 +1105,7 @@
 																																													);
 																																													runOnlyForDeploymentPostprocessing = 0;
 																																													shellPath = /bin/sh;
-																																													shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint >/dev/null; then\n  make lint\nelse\n  echo \"warning: Realm SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\nif which swiftformat >/dev/null; then\n  make format\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+																																													shellScript = "if [[ \"$CI_XCODE_CLOUD\" == \"TRUE\" ]]; then\n  echo \"note: Skipping lint/format in Xcode Cloud\"\nelse\n  if [[ \"$(uname -m)\" == arm64 ]]; then\n      export PATH=\"/opt/homebrew/bin:$PATH\"\n  fi\n\n  if which swiftlint >/dev/null; then\n    make lint\n  else\n    echo \"warning: Realm SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  fi\n\n  if which swiftformat >/dev/null; then\n    make format\n  else\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n  fi\nfi\n";
 			};
 			5B2CEBD42E22742200942A6D /* Run Script (Assets Cleanup) */ = {
 				isa = PBXShellScriptBuildPhase;
@@ -1143,7 +1143,7 @@
 																																													);
 																																													runOnlyForDeploymentPostprocessing = 0;
 																																													shellPath = /bin/sh;
-																																													shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint >/dev/null; then\n  make lint\nelse\n  echo \"warning: Realm SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\nif which swiftformat >/dev/null; then\n  make format\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+																																													shellScript = "if [[ \"$CI_XCODE_CLOUD\" == \"TRUE\" ]]; then\n  echo \"note: Skipping lint/format in Xcode Cloud\"\nelse\n  if [[ \"$(uname -m)\" == arm64 ]]; then\n      export PATH=\"/opt/homebrew/bin:$PATH\"\n  fi\n\n  if which swiftlint >/dev/null; then\n    make lint\n  else\n    echo \"warning: Realm SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  fi\n\n  if which swiftformat >/dev/null; then\n    make format\n  else\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n  fi\nfi\n";
 			};
 			5B9669002F0417AA00C24B11 /* Run Script (Assets Cleanup) */ = {
 				isa = PBXShellScriptBuildPhase;
@@ -1181,7 +1181,7 @@
 																																													);
 																																													runOnlyForDeploymentPostprocessing = 0;
 																																													shellPath = /bin/sh;
-																																													shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint >/dev/null; then\n  make lint\nelse\n  echo \"warning: Realm SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\nif which swiftformat >/dev/null; then\n  make format\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+																																													shellScript = "if [[ \"$CI_XCODE_CLOUD\" == \"TRUE\" ]]; then\n  echo \"note: Skipping lint/format in Xcode Cloud\"\nelse\n  if [[ \"$(uname -m)\" == arm64 ]]; then\n      export PATH=\"/opt/homebrew/bin:$PATH\"\n  fi\n\n  if which swiftlint >/dev/null; then\n    make lint\n  else\n    echo \"warning: Realm SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  fi\n\n  if which swiftformat >/dev/null; then\n    make format\n  else\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n  fi\nfi\n";
 			};
 		/* End PBXShellScriptBuildPhase section */
 
