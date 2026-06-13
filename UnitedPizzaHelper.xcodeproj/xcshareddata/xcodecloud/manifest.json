@@ -1,0 +1,9 @@
+{
+  "id" : "b22c93a8-4638-42c3-b2dd-bb22e1d03b48",
+  "targets" : [
+    {
+      "id" : "f0d7f18f-39fc-448d-a615-6f77d001070b",
+      "name" : "TheLatteHelper"
+    }
+  ]
+}
