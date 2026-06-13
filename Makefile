@@ -15,6 +15,8 @@ clean:
 	@echo "Cleaning build artifacts for UnitedPizzaHelperEngine..."
 	@xcodebuild clean -project UnitedPizzaHelper.xcodeproj -scheme UnitedPizzaHelperEngine -configuration Release
 	@echo "Clean completed."
+	@echo "Cleaning build artifacts for TheLatteHelper..."
+	@xcodebuild clean -project UnitedPizzaHelper.xcodeproj -scheme TheLatteHelper -configuration Release
 
 gitclean:
 	git clean -ffdx
