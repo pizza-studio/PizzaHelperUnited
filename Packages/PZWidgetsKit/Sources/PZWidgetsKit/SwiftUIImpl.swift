@@ -43,9 +43,9 @@ extension Widget {
         if #available(iOS 27.0, macCatalyst 27.0, *) {
             return [.systemExtraLargePortrait]
         }
-        return []
+        return [WidgetFamily(rawValue: 4)].compactMap(\.self)
         #else
-        return []
+        return [WidgetFamily(rawValue: 4)].compactMap(\.self)
         #endif
     }
 }
@@ -56,9 +56,9 @@ extension WidgetFamily {
         if #available(iOS 27.0, macCatalyst 27.0, *) {
             return self == .systemExtraLargePortrait
         }
-        return false
+        return rawValue == 4
         #else
-        return false
+        return rawValue == 4
         #endif
     }
 
