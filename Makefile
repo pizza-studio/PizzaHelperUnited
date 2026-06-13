@@ -1,5 +1,5 @@
 SHELL := /bin/sh
-.PHONY: clean gitclean format lint
+.PHONY: clean gitclean format lint archive
 
 # 定义日期和时间变量
 DATE_DIR := $(shell date +%Y-%m-%d)
@@ -32,10 +32,46 @@ lint:
 		xargs -0 swiftlint lint --fix --autocorrect --config .swiftlint.yml --; \
 	fi
 
-# Archive (App Store version - The Pizza Helper)
-archive: archive-iOS archive-macOS
+# Interactive archive target
+archive:
+	@echo "========================================"; \
+	echo "  請選擇要封存的目標 App："; \
+	echo "========================================"; \
+	echo "  1) The Latte Helper  (Latte)"; \
+	echo "  2) The Pizza Helper  (Pizza)"; \
+	echo "  3) United Pizza Engine (Engine)"; \
+	echo "========================================"; \
+	printf "請輸入數字 (1/2/3): "; \
+	read app_choice; \
+	case "$$app_choice" in \
+		1|Latte|latte) APP=Latte ;; \
+		2|Pizza|pizza) APP=Pizza ;; \
+		3|Engine|engine) APP=Engine ;; \
+		*) echo "❌ 無效的選擇：$$app_choice"; exit 1 ;; \
+	esac; \
+	echo ""; \
+	echo "========================================"; \
+	echo "  請選擇目標平台："; \
+	echo "========================================"; \
+	echo "  1) iOS"; \
+	echo "  2) macOS"; \
+	echo "========================================"; \
+	printf "請輸入數字 (1/2): "; \
+	read os_choice; \
+	case "$$os_choice" in \
+		1|iOS|ios) OS=iOS ;; \
+		2|macOS|macos) OS=macOS ;; \
+		*) echo "❌ 無效的選擇：$$os_choice"; exit 1 ;; \
+	esac; \
+	echo ""; \
+	echo "→ 即將執行：make archive$$APP-$$OS"; \
+	echo ""; \
+	$(MAKE) "archive$$APP-$$OS"
 
-archive-iOS:
+# Archive (App Store version - The Pizza Helper)
+archivePizza: archivePizza-iOS archivePizza-macOS
+
+archivePizza-iOS:
 	@ARCHIVE_NAME=ThePizzaHelper-iOS-$(DATE_FILE)-$(TIME_FILE).xcarchive; \
 	ARCHIVE_PATH=$(ARCHIVE_DIR)/$$ARCHIVE_NAME; \
 	echo "Creating directory: $(ARCHIVE_DIR)"; \
@@ -49,7 +85,7 @@ archive-iOS:
 		-archivePath "$$ARCHIVE_PATH" \
 		-allowProvisioningUpdates
 
-archive-macOS:
+archivePizza-macOS:
 	@ARCHIVE_NAME=ThePizzaHelper-macOS-$(DATE_FILE)-$(TIME_FILE).xcarchive; \
 	ARCHIVE_PATH=$(ARCHIVE_DIR)/$$ARCHIVE_NAME; \
 	echo "Creating directory: $(ARCHIVE_DIR)"; \
