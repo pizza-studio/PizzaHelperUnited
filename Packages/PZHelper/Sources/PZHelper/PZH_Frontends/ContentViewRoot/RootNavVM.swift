@@ -185,12 +185,12 @@ final class RootNavVM {
     @ViewBuilder
     private func classicBottomTabBar(effectiveCases: [AppRootPage]) -> some View {
         HStack(spacing: 0) {
-            ForEach(effectiveCases, id: \.self) { navCase in
-                let isChosen: Bool = navCase == self.rootPageNav
+            ForEach(effectiveCases, id: \.self) { [weak self] navCase in
+                let isChosen: Bool = navCase == self?.rootPageNav
                 if navCase.isExposed {
                     Button {
-                        Task { [weak nullableSelf = self] in
-                            nullableSelf?.rootPageNav = navCase
+                        Task { @MainActor [weak self] in
+                            self?.rootPageNav = navCase
                         }
                     } label: {
                         VStack(spacing: 0) {
