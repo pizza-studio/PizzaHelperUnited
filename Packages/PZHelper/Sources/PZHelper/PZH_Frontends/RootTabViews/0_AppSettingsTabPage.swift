@@ -24,7 +24,9 @@ struct AppSettingsTabPage: View {
                 ASUpdateNoticeView()
                     .font(.footnote)
                 Section {
-                    NavigationLink(destination: ProfileManagerPageContent.init) {
+                    NavigationLink {
+                        ProfileManagerPageContent(wrappedByNavStack: false)
+                    } label: {
                         Label("profileMgr.manage.title".i18nPZHelper, systemSymbol: .personTextRectangleFill)
                     }
                     NavigationLink(destination: FAQView.init) {

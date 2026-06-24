@@ -21,24 +21,19 @@ import SwiftUI
 struct ProfileManagerPageContent: View {
     // MARK: Lifecycle
 
-    public init() {}
+    public init(wrappedByNavStack: Bool = true) {
+        self.wrappedByNavStack = wrappedByNavStack
+    }
 
     // MARK: Public
 
     public var body: some View {
-        NavigationStack {
-            coreBody
-                .disabled(isBusy)
-                .saturation(isBusy ? 0 : 1)
-                .overlay {
-                    if isBusy {
-                        Color.clear
-                            .frame(width: 128, height: 128)
-                            .background(.regularMaterial)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                            .overlay { WinUI3ProgressRing().frame(width: 100, height: 100) }
-                    }
-                }
+        if wrappedByNavStack {
+            NavigationStack {
+                coreBodyWithModifiers
+            }
+        } else {
+            coreBodyWithModifiers
         }
     }
 
@@ -183,6 +178,8 @@ struct ProfileManagerPageContent: View {
     @State private var sheetType: SheetType?
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
+    private let wrappedByNavStack: Bool
+
     @Default(.lastTimeResetLocalProfileDB) private var lastTimeResetLocalProfileDB: Date?
 
     private var isSheetVisible: Binding<Bool> {
@@ -217,6 +214,21 @@ struct ProfileManagerPageContent: View {
 
     private var isBusy: Bool {
         theVM.taskState == .busy
+    }
+
+    @ViewBuilder private var coreBodyWithModifiers: some View {
+        coreBody
+            .disabled(isBusy)
+            .saturation(isBusy ? 0 : 1)
+            .overlay {
+                if isBusy {
+                    Color.clear
+                        .frame(width: 128, height: 128)
+                        .background(.regularMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .overlay { WinUI3ProgressRing().frame(width: 100, height: 100) }
+                }
+            }
     }
 
     @ViewBuilder

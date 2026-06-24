@@ -168,7 +168,9 @@ public struct ContentView4iOS14: View {
     @ViewBuilder
     func renderAvailableFeaturesAtThisPage() -> some View {
         Section {
-            NavigationLink(destination: ProfileManagerPageContent.init) {
+            NavigationLink {
+                ProfileManagerPageContent(wrappedByNavStack: true)
+            } label: {
                 Label(
                     "profileMgr.manage.title".i18nPZHelper,
                     systemSymbol: .personTextRectangleFill
