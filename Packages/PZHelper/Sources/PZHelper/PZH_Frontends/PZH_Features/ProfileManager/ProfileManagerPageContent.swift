@@ -455,10 +455,14 @@ struct ProfileManagerPageContent: View {
     }
 
     private func bleachInvalidProfiles() {
+        String.printDebug("[PZHelper] bleachInvalidProfiles: onAppear triggered, calling fireTask...")
         theVM.fireTask(
             cancelPreviousTask: false,
             givenTask: {
+                String.printDebug("[PZHelper] bleachInvalidProfiles: starting actor call...")
                 let removedSet = try await theVM.profileActor?.bleachInvalidProfiles()
+                String
+                    .printDebug("[PZHelper] bleachInvalidProfiles: actor call done, removed=\(removedSet?.count ?? -1)")
                 // 注：PZProfileActor 会自动将 SwiftData 内容变更同步到 UserDefaults。
                 PZNotificationCenter.batchDeleteDailyNoteNotification(
                     profiles: removedSet ?? [],
@@ -466,6 +470,7 @@ struct ProfileManagerPageContent: View {
                 )
             },
             errorHandler: { error in
+                String.printDebug("[PZHelper] bleachInvalidProfiles: error=\(error.localizedDescription)")
                 errorMessage = error.localizedDescription
             }
         )

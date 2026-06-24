@@ -240,13 +240,23 @@ extension PZProfileActor {
     @discardableResult
     public func bleachInvalidProfiles() throws -> Set<PZProfileSendable> {
         var deletedProfiles = Set<PZProfileSendable>()
+        String.printDebug("[PZProfileActor] bleachInvalidProfiles: entering transaction...")
         try modelContext.transaction {
+            String.printDebug("[PZProfileActor] bleachInvalidProfiles: inside transaction, enumerating...")
             try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
                 guard currentMO.isInvalid else { return }
                 modelContext.delete(currentMO)
                 deletedProfiles.insert(currentMO.asSendable)
             }
+            String
+                .printDebug(
+                    "[PZProfileActor] bleachInvalidProfiles: enumeration done, deleted=\(deletedProfiles.count)"
+                )
         }
+        String
+            .printDebug(
+                "[PZProfileActor] bleachInvalidProfiles: transaction done, total deleted=\(deletedProfiles.count)"
+            )
         return deletedProfiles
     }
 }
