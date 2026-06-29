@@ -10,56 +10,124 @@ import Foundation
 
 public enum GIMaterialDBGenerator {}
 
-private let materialNameTags: [String] = [
-    "talentFreedom",
-    "talentResistance",
-    "talentBallad",
-    "talentProsperity",
-    "talentDiligence",
-    "talentGold",
-    "talentTransience",
-    "talentElegance",
-    "talentLight",
-    "talentAdmonition",
-    "talentIngenuity",
-    "talentPraxis",
-    "talentEquity",
-    "talentJustice",
-    "talentOrder",
-    "talentContention",
-    "talentKindling",
-    "talentConflict",
-    "talentMoonlight",
-    "talentElysium",
-    "talentVagrancy",
+/// 天赋材料 nameTag 以 raw itemID (104301 起、步长 3) 为索引。
+/// 104319 是「智識之冕」，無 dungeon，用 nil 占位。
+private let talentMaterialTags: [String?] = [
+    "talentFreedom", // raw 104301
+    "talentResistance", // raw 104304
+    "talentBallad", // raw 104307
+    "talentProsperity", // raw 104310
+    "talentDiligence", // raw 104313
+    "talentGold", // raw 104316
+    nil, // raw 104319（智識之冕，無 dungeon）
+    "talentTransience", // raw 104322
+    "talentElegance", // raw 104325
+    "talentLight", // raw 104328
+    "talentAdmonition", // raw 104331
+    "talentIngenuity", // raw 104334
+    "talentPraxis", // raw 104337
+    "talentEquity", // raw 104340
+    "talentJustice", // raw 104343
+    "talentOrder", // raw 104346
+    "talentContention", // raw 104349
+    "talentKindling", // raw 104352
+    "talentConflict", // raw 104355
+    "talentMoonlight", // raw 104358
+    "talentElysium", // raw 104361
+    "talentVagrancy", // raw 104364
     // 此处插入原神今后大版本的新的天赋突破材料的命名。
-    "weaponDecarabian",
-    "weaponBorealWolf",
-    "weaponGladiator",
-    "weaponGuyun",
-    "weaponElixir",
-    "weaponAerosiderite",
-    "weaponDistantSea",
-    "weaponNarukami",
-    "weaponKijinMask",
-    "weaponTalisman",
-    "weaponOasisGarden",
-    "weaponScorchingMight",
-    "weaponAncientChord",
-    "weaponDewdrop",
-    "weaponPristineSea",
-    "weaponSacrificialHeart",
-    "weaponSacredLord",
-    "weaponNightWind",
-    "weaponArtfulDevice",
-    "weaponLongNightFlint",
-    "weaponFarNorthScions",
+]
+/// 武器突破材料 nameTag 以 raw itemID (114001 起、步长 4) 为索引。
+private let weaponMaterialTags: [String] = [
+    "weaponDecarabian", // raw 114001
+    "weaponBorealWolf", // raw 114005
+    "weaponGladiator", // raw 114009
+    "weaponGuyun", // raw 114013
+    "weaponElixir", // raw 114017
+    "weaponAerosiderite", // raw 114021
+    "weaponDistantSea", // raw 114025
+    "weaponNarukami", // raw 114029
+    "weaponKijinMask", // raw 114033
+    "weaponTalisman", // raw 114037
+    "weaponOasisGarden", // raw 114041
+    "weaponScorchingMight", // raw 114045
+    "weaponAncientChord", // raw 114049
+    "weaponDewdrop", // raw 114053
+    "weaponPristineSea", // raw 114057
+    "weaponSacrificialHeart", // raw 114061
+    "weaponSacredLord", // raw 114065
+    "weaponNightWind", // raw 114069
+    "weaponArtfulDevice", // raw 114073
+    "weaponLongNightFlint", // raw 114077
+    "weaponFarNorthScions", // raw 114081
     // 此处插入原神今后大版本的新的武器突破材料的命名。
 ]
+
+/// 天赋材料对应的游戏内 itemID（固定值，不随版本 rawID 变更而变化）。
+/// 索引规则同 talentMaterialTags：index = (rawID - 104301) / 3。
+private let talentInGameItemIDs: [Int?] = [
+    104303, // index 0: talentFreedom
+    104306, // index 1: talentResistance
+    104309, // index 2: talentBallad
+    104312, // index 3: talentProsperity
+    104315, // index 4: talentDiligence
+    104318, // index 5: talentGold
+    nil, // index 6: raw 104319（智識之冕，無 dungeon）
+    104322, // index 7: talentTransience
+    104325, // index 8: talentElegance
+    104328, // index 9: talentLight
+    104331, // index10: talentAdmonition
+    104334, // index11: talentIngenuity
+    104337, // index12: talentPraxis
+    104340, // index13: talentEquity
+    104343, // index14: talentJustice
+    104346, // index15: talentOrder
+    104349, // index16: talentContention
+    104352, // index17: talentKindling
+    104355, // index18: talentConflict
+    104358, // index19: talentMoonlight
+    104361, // index20: talentElysium
+    104364, // index21: talentVagrancy
+    // 此处插入原神今后大版本的新的天赋突破材料的游戏内 itemID。
+]
+
+/// 根据 raw itemID 推导 nameTag。raw itemID 步长：天赋=3，武器=4。
+private func materialNameTag(for rawItemID: Int) -> String {
+    if rawItemID >= 110000 {
+        let index = (rawItemID - 114001) / 4
+        guard index >= 0, index < weaponMaterialTags.count else {
+            fatalError("Unknown weapon raw itemID: \(rawItemID)")
+        }
+        return weaponMaterialTags[index]
+    } else {
+        let index = (rawItemID - 104301) / 3
+        guard index >= 0, index < talentMaterialTags.count,
+              let tag = talentMaterialTags[index] else {
+            fatalError("Unknown talent raw itemID: \(rawItemID)")
+        }
+        return tag
+    }
+}
+
+/// 根据 raw itemID 取得游戏内 itemID（天赋为固定值，武器为 rawID + 3）。
+private func inGameItemID(for rawItemID: Int, isWeapon: Bool) -> Int {
+    if isWeapon {
+        return rawItemID + 3
+    } else {
+        let index = (rawItemID - 104301) / 3
+        guard index >= 0, index < talentInGameItemIDs.count,
+              let itemID = talentInGameItemIDs[index] else {
+            fatalError("Unknown talent raw itemID: \(rawItemID)")
+        }
+        return itemID
+    }
+}
 
 // MARK: - DimbreathMaterialRAW
 
 public enum DimbreathMaterialRAW {
+    // MARK: Public
+
     public struct MaterialSourceDataExcelConfigDatum: Codable, Hashable, Sendable {
         // MARK: Lifecycle
 
@@ -76,7 +144,7 @@ public enum DimbreathMaterialRAW {
         public var dungeonGroup: [Int]
         public var dungeonList: [Int]
 
-        public var isValid: Bool { !dungeonGroup.isEmpty && dungeonGroup.first == dungeonList.first }
+        public var isValid: Bool { !dungeonGroup.isEmpty }
 
         public var validSelf: Self? { isValid ? self : nil }
 
@@ -94,6 +162,9 @@ public enum DimbreathMaterialRAW {
     public struct DailyDungeonConfigDatum: Codable, Hashable, Sendable {
         // MARK: Lifecycle
 
+        /// 负责解码任何结构的每日副本资料。
+        /// - 先尝试用可读栏位名称（旧版 Dimbreath 资料）。
+        /// - 若失败则用 DynamicCodingKeys 遍历所有混淆栏位，依据值特征（长度 ≥ 3 的 [Int] 阵列）自动判定当天的副本清单。
         public init(from decoder: any Decoder) throws {
             do {
                 let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -105,14 +176,41 @@ public enum DimbreathMaterialRAW {
                 self.friday = tuesday
                 self.saturday = wednesday
             } catch {
-                let container = try decoder.container(keyedBy: CodingKeysAlt.self)
-                self.id = try container.decode(Int.self, forKey: .id)
-                self.monday = try container.decode([Int].self, forKey: .monday)
-                self.tuesday = try container.decode([Int].self, forKey: .tuesday)
-                self.wednesday = try container.decode([Int].self, forKey: .wednesday)
-                self.thursday = monday
-                self.friday = tuesday
-                self.saturday = wednesday
+                // 混淆栏位备援：使用 DynamicCodingKeys 遍历所有 key。
+                // 6.7+ 须并集所有阵列（去重）才能拿到该条目全部副本 ID。
+                let container = try decoder.container(keyedBy: DynamicCodingKeys.self)
+                var idFound: Int?
+                var allDungeonIDs = Set<Int>()
+                var loops = 0
+                for key in container.allKeys {
+                    loops += 1
+                    precondition(
+                        loops < 200,
+                        "DailyDungeonConfigDatum decoding exceeded 200 key iterations; possible infinite loop."
+                    )
+                    if key.stringValue == "id" {
+                        idFound = try container.decode(Int.self, forKey: key)
+                        continue
+                    }
+                    guard let candidate = try? container.decode([Int].self, forKey: key),
+                          !candidate.isEmpty
+                    else { continue }
+                    allDungeonIDs.formUnion(candidate)
+                }
+                guard let id = idFound, !allDungeonIDs.isEmpty else {
+                    throw DecodingError.dataCorrupted(.init(
+                        codingPath: decoder.codingPath,
+                        debugDescription: "Cannot decode DailyDungeonConfig: no readable keys nor valid array fields found."
+                    ))
+                }
+                let merged = Array(allDungeonIDs)
+                self.id = id
+                self.monday = merged
+                self.tuesday = merged
+                self.wednesday = merged
+                self.thursday = merged
+                self.friday = merged
+                self.saturday = merged
             }
         }
 
@@ -125,21 +223,44 @@ public enum DimbreathMaterialRAW {
             case wednesday
         }
 
-        public enum CodingKeysAlt: String, CodingKey {
-            case id
-            case monday = "CHJAFKGEOCO"
-            case tuesday = "MOAMLPMGMFE"
-            case wednesday = "DJPBIGNGMIC"
-        }
-
         public var id: Int
         public var monday, tuesday, wednesday: [Int]
         public var thursday, friday, saturday: [Int]
+
+        // MARK: Private
+
+        /// 接受任意 string value 的 CodingKey，用于遍历混淆栏位。
+        private struct DynamicCodingKeys: CodingKey {
+            // MARK: Lifecycle
+
+            init?(stringValue: String) { self.stringValue = stringValue }
+            init?(intValue: Int) { nil }
+
+            // MARK: Internal
+
+            var stringValue: String
+
+            var intValue: Int? { nil }
+        }
     }
 
     public typealias DailyDungeonConfigData = [DailyDungeonConfigDatum]
 
     public static let urlPrefix = "https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/refs/heads/master/"
+    public static var localPath: String?
+
+    // MARK: Fileprivate
+
+    /// 统一从本机路径或线上 URL 读取资料。relativePath 即 ExcelBinOutput/xxx.json。
+    fileprivate static func fetchData(relativePath: String) async throws -> Data {
+        if let localPath {
+            let url = URL(fileURLWithPath: localPath).appendingPathComponent(relativePath)
+            return try Data(contentsOf: url)
+        }
+        let url = URL(string: urlPrefix + relativePath)!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return data
+    }
 }
 
 extension DimbreathMaterialRAW.MaterialSourceDataExcelConfigData {
@@ -152,17 +273,17 @@ extension DimbreathMaterialRAW.DailyDungeonConfigData {
 
 extension DimbreathMaterialRAW {
     public static func assembleMaterialWeekdayDB() async throws -> [Int: Int] {
-        let urlAllMaterials = URL(string: urlPrefix + MaterialSourceDataExcelConfigData.urlSuffix)!
-        let urlAllDungeons = URL(string: urlPrefix + DailyDungeonConfigData.urlSuffix)!
-        let (data4Materials, _) = try await URLSession.shared.data(from: urlAllMaterials)
-        let (data4Dungeons, _) = try await URLSession.shared.data(from: urlAllDungeons)
+        fputs("// [1/3] Fetching MaterialSource + DailyDungeon...\n", stderr); fflush(stderr)
+        let data4Materials = try await fetchData(relativePath: MaterialSourceDataExcelConfigData.urlSuffix)
+        let data4Dungeons = try await fetchData(relativePath: DailyDungeonConfigData.urlSuffix)
+        fputs("// [2/3] Decoding...\n", stderr); fflush(stderr)
 
         let obj4Materials: MaterialSourceDataExcelConfigData
         do {
             obj4Materials = try JSONDecoder().decode(MaterialSourceDataExcelConfigData.self, from: data4Materials)
                 .compactMap(\.validSelf)
         } catch {
-            print("❌ JSON Decoding Error for URL: \(urlAllMaterials.absoluteString)")
+            print("❌ JSON Decoding Error for MaterialSourceData")
             print("Error details: \(error)")
             throw error
         }
@@ -171,7 +292,7 @@ extension DimbreathMaterialRAW {
         do {
             obj4Dungeons = try JSONDecoder().decode(DailyDungeonConfigData.self, from: data4Dungeons)
         } catch {
-            print("❌ JSON Decoding Error for URL: \(urlAllDungeons.absoluteString)")
+            print("❌ JSON Decoding Error for DailyDungeonConfig")
             print("Error details: \(error)")
             throw error
         }
@@ -190,24 +311,27 @@ extension DimbreathMaterialRAW {
         assert(!allValidDungeons.isEmpty)
         print("AllValidDungeons: \(allValidDungeons)")
         print("Obj4Dungeons: \(obj4Dungeons)")
-        obj4Dungeons.forEach { dungeon in
-            dungeon.monday.forEach {
-                print("Cheking \($0)...")
-                guard allValidDungeons.contains($0) else { return }
-                dungeonWeekdayMap[$0] = 0
-                print("\($0) is set on MR")
+        // 6.7+ 每日副本资料已改为按天分条目的格式。
+        // 多元素条目（≥3 dungeon）按出现顺序轮转星期（0=MR, 1=TF, 2=WS）。
+        // 单元素条目紧跟在多元素条目之后，继承前一组轮转的星期，不推进轮转计数。
+        let dayNames = ["MR", "TF", "WS"]
+        var rotationIndex = 0
+        for dungeon in obj4Dungeons {
+            let isMultiDay = dungeon.monday.count >= 3
+            let weekday: Int
+            if isMultiDay {
+                weekday = rotationIndex % dayNames.count
+                rotationIndex += 1
+            } else {
+                // 单元素条目沿用前一组轮转的星期（代表周四/周五/周六与周一/周二/周三对应）。
+                weekday = (rotationIndex - 1) % dayNames.count
             }
-            dungeon.tuesday.forEach {
-                print("Cheking \($0)...")
-                guard allValidDungeons.contains($0) else { return }
-                dungeonWeekdayMap[$0] = 1
-                print("\($0) is set on TF")
-            }
-            dungeon.wednesday.forEach {
-                print("Cheking \($0)...")
-                guard allValidDungeons.contains($0) else { return }
-                dungeonWeekdayMap[$0] = 2
-                print("\($0) is set on WS")
+            dungeon.monday.forEach { dungeonID in
+                guard dungeonID != 0, allValidDungeons.contains(dungeonID) else { return }
+                if dungeonWeekdayMap[dungeonID] == nil {
+                    dungeonWeekdayMap[dungeonID] = weekday
+                    print("\(dungeonID) is set on \(dayNames[weekday])")
+                }
             }
         }
         assert(!dungeonWeekdayMap.isEmpty)
@@ -251,14 +375,12 @@ extension GIMaterialDBGenerator {
         /// 从 `ExcelBinOutput/AvatarExcelConfigData.json` 取得所有角色 ID。
         /// 过滤掉主角 ID 和超出有效区间的 ID。
         struct AvatarEntry: Decodable { let id: Int }
-        let urlString = DimbreathMaterialRAW.urlPrefix + "ExcelBinOutput/AvatarExcelConfigData.json"
-        guard let url = URL(string: urlString) else { return [] }
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let data = try await DimbreathMaterialRAW.fetchData(relativePath: "ExcelBinOutput/AvatarExcelConfigData.json")
         let entries: [AvatarEntry]
         do {
             entries = try JSONDecoder().decode([AvatarEntry].self, from: data)
         } catch {
-            print("❌ JSON Decoding Error for URL: \(urlString)")
+            print("❌ JSON Decoding Error for AvatarExcelConfigData")
             print("Error details: \(error)")
             throw error
         }
@@ -283,14 +405,12 @@ extension GIMaterialDBGenerator {
                 return (skillAffix?.first ?? 0) != 0
             }
         }
-        let urlString = DimbreathMaterialRAW.urlPrefix + "ExcelBinOutput/WeaponExcelConfigData.json"
-        guard let url = URL(string: urlString) else { return [] }
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let data = try await DimbreathMaterialRAW.fetchData(relativePath: "ExcelBinOutput/WeaponExcelConfigData.json")
         let entries: [WeaponEntry]
         do {
             entries = try JSONDecoder().decode([WeaponEntry].self, from: data)
         } catch {
-            print("❌ JSON Decoding Error for URL: \(urlString)")
+            print("❌ JSON Decoding Error for WeaponExcelConfigData")
             print("Error details: \(error)")
             throw error
         }
@@ -362,31 +482,24 @@ extension GIMaterialDBGenerator {
             }
         }
 
-        let urlBase = DimbreathMaterialRAW.urlPrefix + "ExcelBinOutput/"
-
-        // 并行加载所有 ExcelBinOutput 数据。
-        async let avatarData = URLSession.shared.data(
-            from: URL(string: urlBase + "AvatarExcelConfigData.json")!
-        )
-        async let depotData = URLSession.shared.data(
-            from: URL(string: urlBase + "AvatarSkillDepotExcelConfigData.json")!
-        )
-        async let skillData = URLSession.shared.data(
-            from: URL(string: urlBase + "AvatarSkillExcelConfigData.json")!
-        )
-        async let proudData = URLSession.shared.data(
-            from: URL(string: urlBase + "ProudSkillExcelConfigData.json")!
-        )
-        async let wpnExcelData = URLSession.shared.data(
-            from: URL(string: urlBase + "WeaponExcelConfigData.json")!
-        )
-        async let wpnPromData = URLSession.shared.data(
-            from: URL(string: urlBase + "WeaponPromoteExcelConfigData.json")!
-        )
+        let urlBase = "ExcelBinOutput/"
+        // 顺序加载所有 ExcelBinOutput 资料。
+        let avatarData = try await DimbreathMaterialRAW
+            .fetchData(relativePath: "ExcelBinOutput/AvatarExcelConfigData.json")
+        let depotData = try await DimbreathMaterialRAW
+            .fetchData(relativePath: "ExcelBinOutput/AvatarSkillDepotExcelConfigData.json")
+        let skillData = try await DimbreathMaterialRAW
+            .fetchData(relativePath: "ExcelBinOutput/AvatarSkillExcelConfigData.json")
+        let proudData = try await DimbreathMaterialRAW
+            .fetchData(relativePath: "ExcelBinOutput/ProudSkillExcelConfigData.json")
+        let wpnExcelData = try await DimbreathMaterialRAW
+            .fetchData(relativePath: "ExcelBinOutput/WeaponExcelConfigData.json")
+        let wpnPromData = try await DimbreathMaterialRAW
+            .fetchData(relativePath: "ExcelBinOutput/WeaponPromoteExcelConfigData.json")
 
         let avatarEntries: [AvatarEntry]
         do {
-            avatarEntries = try JSONDecoder().decode([AvatarEntry].self, from: try await avatarData.0)
+            avatarEntries = try JSONDecoder().decode([AvatarEntry].self, from: try await avatarData)
         } catch {
             print("❌ JSON Decoding Error for URL: \(urlBase)AvatarExcelConfigData.json")
             print("Error details: \(error)")
@@ -395,7 +508,7 @@ extension GIMaterialDBGenerator {
 
         let depotEntries: [SkillDepotEntry]
         do {
-            depotEntries = try JSONDecoder().decode([SkillDepotEntry].self, from: try await depotData.0)
+            depotEntries = try JSONDecoder().decode([SkillDepotEntry].self, from: try await depotData)
         } catch {
             print("❌ JSON Decoding Error for URL: \(urlBase)AvatarSkillDepotExcelConfigData.json")
             print("Error details: \(error)")
@@ -404,7 +517,7 @@ extension GIMaterialDBGenerator {
 
         let skillEntries: [SkillEntry]
         do {
-            skillEntries = try JSONDecoder().decode([SkillEntry].self, from: try await skillData.0)
+            skillEntries = try JSONDecoder().decode([SkillEntry].self, from: try await skillData)
         } catch {
             print("❌ JSON Decoding Error for URL: \(urlBase)AvatarSkillExcelConfigData.json")
             print("Error details: \(error)")
@@ -413,7 +526,7 @@ extension GIMaterialDBGenerator {
 
         let proudEntries: [ProudSkillEntry]
         do {
-            proudEntries = try JSONDecoder().decode([ProudSkillEntry].self, from: try await proudData.0)
+            proudEntries = try JSONDecoder().decode([ProudSkillEntry].self, from: try await proudData)
         } catch {
             print("❌ JSON Decoding Error for URL: \(urlBase)ProudSkillExcelConfigData.json")
             print("Error details: \(error)")
@@ -423,7 +536,7 @@ extension GIMaterialDBGenerator {
         let wpnExcelEntries: [WeaponExcelEntry]
         do {
             wpnExcelEntries = try JSONDecoder().decode(
-                [WeaponExcelEntry].self, from: try await wpnExcelData.0
+                [WeaponExcelEntry].self, from: try await wpnExcelData
             )
         } catch {
             print("❌ JSON Decoding Error for URL: \(urlBase)WeaponExcelConfigData.json")
@@ -434,7 +547,7 @@ extension GIMaterialDBGenerator {
         let wpnPromEntries: [WeaponPromoteEntry]
         do {
             wpnPromEntries = try JSONDecoder().decode(
-                [WeaponPromoteEntry].self, from: try await wpnPromData.0
+                [WeaponPromoteEntry].self, from: try await wpnPromData
             )
         } catch {
             print("❌ JSON Decoding Error for URL: \(urlBase)WeaponPromoteExcelConfigData.json")
@@ -524,22 +637,56 @@ extension GIMaterialDBGenerator {
         }
 
         let materialWeekdayDB = try await DimbreathMaterialRAW.assembleMaterialWeekdayDB()
-        guard materialNameTags.count == materialWeekdayDB.count else {
-            print(materialWeekdayDB)
-            print("!!! ERROR: materialNameTags needs update!!!!")
-            exit(1)
+        // materialWeekdayDB 包含所有稀有度；只取金稀有度（天赋步长=3、武器步长=4）。
+        let primaryMaterials: [(Int, Int, Bool)] = materialWeekdayDB.compactMap { itemID, weekday in
+            let isWeapon = itemID >= 110000
+            let isPrimary: Bool = if isWeapon {
+                (itemID - 114001) % 4 == 0
+            } else {
+                (itemID - 104301) % 3 == 0
+            }
+            guard isPrimary else { return nil }
+            _ = materialNameTag(for: itemID)
+            return (itemID, weekday, isWeapon)
+        }
+        // 按 itemID 升序排列（天赋先、武器后），与旧版输出顺序一致。
+        let sortedMaterials = primaryMaterials.sorted { a, b in
+            if a.2 != b.2 { return !a.2 }
+            return a.0 < b.0
+        }
+
+        // 匹配整个素材系列（所有稀有度）而非仅当前 itemID。
+        func findUsers4Family(rawItemID: Int, isWeapon: Bool) -> [String] {
+            let familyBase: Int
+            let familyCount: Int
+            if isWeapon {
+                familyBase = 114001 + ((rawItemID - 114001) / 4) * 4
+                familyCount = 4
+            } else {
+                let step3base = 104301 + ((rawItemID - 104301) / 3) * 3
+                // 6.7: 104319 之前 primary 为家族首元素；之后 primary 为末元素（偏移 -2）。
+                familyBase = step3base < 104320 ? step3base : step3base - 2
+                familyCount = 3
+            }
+            let familyItems = Set((0 ..< familyCount).map { familyBase + $0 })
+            var results = [String]()
+            userMaterialMap.forEach { userID, itemIDSet in
+                guard !itemIDSet.isDisjoint(with: familyItems) else { return }
+                results.append(userID)
+            }
+            return results.sorted()
         }
 
         var allObjs = [GITodayMaterialEncoded]()
         var enumID = 0
-        materialWeekdayDB.sorted { $0.key < $1.key }.forEach { itemID, _ in
+        sortedMaterials.forEach { itemID, _, isWeapon in
             defer { enumID += 1 }
             let obj = GITodayMaterialEncoded(
                 id: enumID,
-                itemID: itemID + (itemID >= 110000 ? 3 : 2),
-                isWeapon: itemID >= 110000,
-                nameTag: materialNameTags[enumID],
-                costedBy: findUsers(itemID: itemID)
+                itemID: inGameItemID(for: itemID, isWeapon: isWeapon),
+                isWeapon: isWeapon,
+                nameTag: materialNameTag(for: itemID),
+                costedBy: findUsers4Family(rawItemID: itemID, isWeapon: isWeapon)
             )
             allObjs.append(obj)
         }
@@ -549,7 +696,21 @@ extension GIMaterialDBGenerator {
 
 // MARK: - Compilation process
 
-let targetJSONPath =
+var targetJSONPath =
     "./Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/BundledGIDailyMaterialsData.json"
+
+// Parse optional -localPath argument.
+if let idx = CommandLine.arguments.firstIndex(of: "-localPath"), CommandLine.arguments.count > idx + 1 {
+    DimbreathMaterialRAW.localPath = CommandLine.arguments[idx + 1]
+    fputs("// Using local data: \(CommandLine.arguments[idx + 1])\n", stderr)
+}
+
+// Parse optional -output arg.
+if let idx = CommandLine.arguments.firstIndex(of: "-output"), CommandLine.arguments.count > idx + 1 {
+    targetJSONPath = CommandLine.arguments[idx + 1]
+}
+
+print("// Compiling GI Material DB...")
 let encoded = try await GIMaterialDBGenerator.compileMaterialDB().printEncoded()
 try encoded.write(to: URL(fileURLWithPath: targetJSONPath), options: .atomic)
+print("// Done. Written to \(targetJSONPath)")
