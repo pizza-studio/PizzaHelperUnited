@@ -275,7 +275,8 @@
     "costedBy" : [
       "10000120",
       "10000124",
-      "10000130"
+      "10000130",
+      "10000133"
     ],
     "id" : 20,
     "isWeapon" : false,
@@ -434,31 +435,6 @@
   },
   {
     "costedBy" : [
-      "11306",
-      "11407",
-      "11519",
-      "12306",
-      "12406",
-      "12409",
-      "12412",
-      "13303",
-      "13402",
-      "13406",
-      "13501",
-      "13504",
-      "14407",
-      "14504",
-      "15407",
-      "15411",
-      "15426"
-    ],
-    "id" : 26,
-    "isWeapon" : true,
-    "itemID" : 114024,
-    "nameTag" : "weaponAerosiderite"
-  },
-  {
-    "costedBy" : [
       "11414",
       "11509",
       "11514",
@@ -467,10 +443,10 @@
       "14415",
       "14506"
     ],
-    "id" : 27,
+    "id" : 26,
     "isWeapon" : true,
     "itemID" : 114028,
-    "nameTag" : "weaponDistantSea"
+    "nameTag" : "weaponAerosiderite"
   },
   {
     "costedBy" : [
@@ -484,10 +460,10 @@
       "15416",
       "15509"
     ],
-    "id" : 28,
+    "id" : 27,
     "isWeapon" : true,
     "itemID" : 114032,
-    "nameTag" : "weaponNarukami"
+    "nameTag" : "weaponDistantSea"
   },
   {
     "costedBy" : [
@@ -500,10 +476,10 @@
       "14509",
       "15507"
     ],
-    "id" : 29,
+    "id" : 28,
     "isWeapon" : true,
     "itemID" : 114036,
-    "nameTag" : "weaponKijinMask"
+    "nameTag" : "weaponNarukami"
   },
   {
     "costedBy" : [
@@ -515,10 +491,10 @@
       "13426",
       "15419"
     ],
-    "id" : 30,
+    "id" : 29,
     "isWeapon" : true,
     "itemID" : 114040,
-    "nameTag" : "weaponTalisman"
+    "nameTag" : "weaponKijinMask"
   },
   {
     "costedBy" : [
@@ -530,10 +506,10 @@
       "14511",
       "14521"
     ],
-    "id" : 31,
+    "id" : 30,
     "isWeapon" : true,
     "itemID" : 114044,
-    "nameTag" : "weaponOasisGarden"
+    "nameTag" : "weaponTalisman"
   },
   {
     "costedBy" : [
@@ -545,10 +521,10 @@
       "15424",
       "15511"
     ],
-    "id" : 32,
+    "id" : 31,
     "isWeapon" : true,
     "itemID" : 114048,
-    "nameTag" : "weaponScorchingMight"
+    "nameTag" : "weaponOasisGarden"
   },
   {
     "costedBy" : [
@@ -562,10 +538,10 @@
       "15432",
       "15512"
     ],
-    "id" : 33,
+    "id" : 32,
     "isWeapon" : true,
     "itemID" : 114052,
-    "nameTag" : "weaponAncientChord"
+    "nameTag" : "weaponScorchingMight"
   },
   {
     "costedBy" : [
@@ -577,10 +553,10 @@
       "14514",
       "15513"
     ],
-    "id" : 34,
+    "id" : 33,
     "isWeapon" : true,
     "itemID" : 114056,
-    "nameTag" : "weaponDewdrop"
+    "nameTag" : "weaponAncientChord"
   },
   {
     "costedBy" : [
@@ -593,10 +569,10 @@
       "13513",
       "14513"
     ],
-    "id" : 35,
+    "id" : 34,
     "isWeapon" : true,
     "itemID" : 114060,
-    "nameTag" : "weaponPristineSea"
+    "nameTag" : "weaponDewdrop"
   },
   {
     "costedBy" : [
@@ -608,10 +584,10 @@
       "14430",
       "14516"
     ],
-    "id" : 36,
+    "id" : 35,
     "isWeapon" : true,
     "itemID" : 114064,
-    "nameTag" : "weaponSacrificialHeart"
+    "nameTag" : "weaponPristineSea"
   },
   {
     "costedBy" : [
@@ -624,10 +600,10 @@
       "14517",
       "14519"
     ],
-    "id" : 37,
+    "id" : 36,
     "isWeapon" : true,
     "itemID" : 114068,
-    "nameTag" : "weaponSacredLord"
+    "nameTag" : "weaponSacrificialHeart"
   },
   {
     "costedBy" : [
@@ -640,10 +616,10 @@
       "15434",
       "15514"
     ],
-    "id" : 38,
+    "id" : 37,
     "isWeapon" : true,
     "itemID" : 114072,
-    "nameTag" : "weaponNightWind"
+    "nameTag" : "weaponSacredLord"
   },
   {
     "costedBy" : [
@@ -653,10 +629,10 @@
       "14520",
       "14523"
     ],
-    "id" : 39,
+    "id" : 38,
     "isWeapon" : true,
     "itemID" : 114076,
-    "nameTag" : "weaponArtfulDevice"
+    "nameTag" : "weaponNightWind"
   },
   {
     "costedBy" : [
@@ -666,21 +642,22 @@
       "15433",
       "15516"
     ],
-    "id" : 40,
+    "id" : 39,
     "isWeapon" : true,
     "itemID" : 114080,
-    "nameTag" : "weaponLongNightFlint"
+    "nameTag" : "weaponArtfulDevice"
   },
   {
     "costedBy" : [
       "11434",
       "12433",
+      "12516",
       "14432",
       "14522"
     ],
-    "id" : 41,
+    "id" : 40,
     "isWeapon" : true,
     "itemID" : 114084,
-    "nameTag" : "weaponFarNorthScions"
+    "nameTag" : "weaponLongNightFlint"
   }
 ]
