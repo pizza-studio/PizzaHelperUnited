@@ -19,7 +19,7 @@ let package = Package(
         .package(path: "../EnkaKit"),
         .package(path: "../PZCoreDataKit"),
         .package(
-            url: "https://github.com/pizza-studio/GachaMetaGenerator", .upToNextMajor(from: "3.0.4")
+            url: "https://github.com/pizza-studio/GachaMetaGenerator", .upToNextMajor(from: "3.0.5")
         ),
         .package(
             url: "https://github.com/CoreOffice/CoreXLSX", .upToNextMajor(from: "0.14.2")
