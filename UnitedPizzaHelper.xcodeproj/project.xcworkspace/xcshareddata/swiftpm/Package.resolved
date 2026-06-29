@@ -1,5 +1,5 @@
 {
-  "originHash" : "db83a629d1a9445b7d0456ae34e3bd37f5d65c8ea7851c55fd60f7d5528d9294",
+  "originHash" : "241fdf96ace80d156c6db29a85a883f9a722fb58f3f08b0423b17863d9f7db2a",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pizza-studio/ArtifactRatingDB.git",
       "state" : {
-        "revision" : "7aaeb31dcea1fc45a8c9dbc9d8cc7f7394eec9cc",
-        "version" : "1.3.4"
+        "revision" : "255c084b0c35c33519d554c2532054fec57119cf",
+        "version" : "1.3.5"
       }
     },
     {
@@ -60,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pizza-studio/EnkaDBGenerator",
       "state" : {
-        "revision" : "2f589519262e9806158be53f9e0eaf97574abd0c",
-        "version" : "2.0.4"
+        "revision" : "514a53a11d499b2f9effe7a8896a174d83638556",
+        "version" : "2.0.5"
       }
     },
     {
@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pizza-studio/GachaMetaGenerator",
       "state" : {
-        "revision" : "b1ead0a6556dba9645da0ef58391bee6f6724116",
-        "version" : "3.0.4"
+        "revision" : "422f90a48fa02688edd44b050ba266aae4d5e5d0",
+        "version" : "3.0.5"
       }
     },
     {
