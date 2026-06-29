@@ -437,7 +437,7 @@ public enum DataType: String, CaseIterable {
 
     // MARK: Internal
 
-    static let agdBasePath = "https://gitlab.com/Dimbreath/AnimeGameData/-/raw/master/ExcelBinOutput/"
+    static let agdBasePath = "https://gitlab.com/Dimbreath/AnimeGameData2/-/raw/main/ExcelBinOutput/"
     static let enkaResHeader = "https://enka.network/ui/"
     static let yattaMoeHeader = "https://gi.yatta.moe/assets/UI/"
 
