@@ -1352,6 +1352,7 @@
     "officialFileNameStem" : "UI_NameCardPic_Natlan4_P"
   },
   {
+    "bindedCharID" : "10000107_210701",
     "game" : "GI",
     "id" : "210251",
     "officialFileNameStem" : "UI_NameCardPic_Bp43_P"
@@ -1524,5 +1525,22 @@
     "game" : "GI",
     "id" : "210283",
     "officialFileNameStem" : "UI_NameCardPic_Bp50_P"
+  },
+  {
+    "bindedCharID" : "10000133",
+    "game" : "GI",
+    "id" : "210284",
+    "officialFileNameStem" : "UI_NameCardPic_MarionetteNew_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210285",
+    "officialFileNameStem" : "UI_NameCardPic_Moon_P"
+  },
+  {
+    "bindedCharID" : "10000088_208801",
+    "game" : "GI",
+    "id" : "210286",
+    "officialFileNameStem" : "UI_NameCardPic_Bp51_P"
   }
 ]

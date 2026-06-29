@@ -277,7 +277,10 @@
     "210279" : "Nicole – Himmelstreppe",
     "210280" : "Lohen – Güte",
     "210281" : "Prune – Urteil",
-    "210283" : "Erlebnispass – Geschenk der Pracht"
+    "210283" : "Erlebnispass – Geschenk der Pracht",
+    "210284" : "Sandrone – Teepäuschen",
+    "210285" : "Nod-Krai – Mondhell",
+    "210286" : "Erlebnispass – Sommerfilm"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -557,7 +560,10 @@
     "210279" : "Nicole: Heavenly Stairway",
     "210280" : "Lohen: Benevolence",
     "210281" : "Prune: Judgment",
-    "210283" : "Travel Notes: Gift of Splendor"
+    "210283" : "Travel Notes: Gift of Splendor",
+    "210284" : "Sandrone: Tea Break",
+    "210285" : "Nod-Krai: Moonbright",
+    "210286" : "Travel Notes: Sunny Summer"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -837,7 +843,10 @@
     "210279" : "Nicole - Escalinata celestial",
     "210280" : "Lohen - Magnánimo",
     "210281" : "Prune - Castigo",
-    "210283" : "PB - Obsequios fantásticos"
+    "210283" : "PB - Obsequios fantásticos",
+    "210284" : "Sandrone - Descanso para el té",
+    "210285" : "Nod Krai - Esplendor lunar",
+    "210286" : "PB - Verano soleado"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -1117,7 +1126,10 @@
     "210279" : "Nicole - Marche céleste",
     "210280" : "Lohen - Bienveillance",
     "210281" : "Prune - Jugement",
-    "210283" : "PB - Don de splendeur"
+    "210283" : "PB - Don de splendeur",
+    "210284" : "Sandrone - Pause thé",
+    "210285" : "Nod-Krai - Clair de lune",
+    "210286" : "PB - Été au soleil"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1397,7 +1409,10 @@
     "210279" : "Nicole: Heavenly Stairway",
     "210280" : "Lohen: Benevolence",
     "210281" : "Prune: Judgment",
-    "210283" : "Catatan Perjalanan: Hadiah Kemegahan"
+    "210283" : "Catatan Perjalanan: Hadiah Kemegahan",
+    "210284" : "Sandrone: Istirahat Minum Teh",
+    "210285" : "Nod-Krai: Cahaya Bulan",
+    "210286" : "Catatan Perjalanan: Musim Panas yang Cerah"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1677,7 +1692,10 @@
     "210279" : "Nicole: Scala celestiale",
     "210280" : "Lohen: Benevolenza",
     "210281" : "Prune: Giudizio",
-    "210283" : "Appunti di viaggio: Dono dello splendore"
+    "210283" : "Appunti di viaggio: Dono dello splendore",
+    "210284" : "Sandrone: Pausa tè",
+    "210285" : "Nod-Krai: Luna splendente",
+    "210286" : "Appunti di viaggio: Estate soleggiata"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1957,7 +1975,10 @@
     "210279" : "ニコ・天の階段",
     "210280" : "ローエン・仁愛",
     "210281" : "プルーネ・制裁",
-    "210283" : "紀行・綺夢"
+    "210283" : "紀行・綺夢",
+    "210284" : "サンドローネ・ティータイム",
+    "210285" : "ナド・クライ・皓月",
+    "210286" : "紀行・帰夏"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -2237,7 +2258,10 @@
     "210279" : "니콜·하늘 계단",
     "210280" : "로엔·인애",
     "210281" : "프루네·망치",
-    "210283" : "기행·선물"
+    "210283" : "기행·선물",
+    "210284" : "산드로네·티타임",
+    "210285" : "노드크라이·밝은 달",
+    "210286" : "기행·영화"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2517,7 +2541,10 @@
     "210279" : "Nicole: Descida Celestial",
     "210280" : "Lohen: Benevolência",
     "210281" : "Prune: Julgamento",
-    "210283" : "Passe de Batalha: Dádiva do Esplendor."
+    "210283" : "Passe de Batalha: Dádiva do Esplendor.",
+    "210284" : "Sandrone: Pausa Para o Chá",
+    "210285" : "Nod-Krai: Brilho da Lua",
+    "210286" : "Passe de Batalha: Verão Ensolarado"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2797,7 +2824,10 @@
     "210279" : "Дворцовая лестница",
     "210280" : "Милосердие",
     "210281" : "Наказание",
-    "210283" : "Великолепный подарок"
+    "210283" : "Великолепный подарок",
+    "210284" : "Чаепитие",
+    "210285" : "Лунное сияние",
+    "210286" : "Солнечное лето"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -3077,7 +3107,10 @@
     "210279" : "Nicole - บันไดสวรรค์",
     "210280" : "Lohen - ผู้เมตตา",
     "210281" : "Prune - ลงทัณฑ์",
-    "210283" : "บันทึก - ของขวัญอันงดงาม"
+    "210283" : "บันทึก - ของขวัญอันงดงาม",
+    "210284" : "Sandrone - พักจิบชา",
+    "210285" : "Nod-Krai - พร่างพราย",
+    "210286" : "บันทึก - พราวคิมหันต์"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -3357,7 +3390,10 @@
     "210279" : "Nicole: Semavi Merdiven",
     "210280" : "Lohen: İyilikseverlik",
     "210281" : "Prune: Yargı",
-    "210283" : "Gezi Notları: Görkemli Armağan"
+    "210283" : "Gezi Notları: Görkemli Armağan",
+    "210284" : "Sandrone: Çay Molası",
+    "210285" : "Nod-Krai: Parlak Ay",
+    "210286" : "Gezi Notları: Yaz Esintisi"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3637,7 +3673,10 @@
     "210279" : "Nicole - Thang Trời",
     "210280" : "Lohen - Nhân Ái",
     "210281" : "Prune - Trừng Phạt",
-    "210283" : "Nhật Ký Hành Trình - Quà Đẹp"
+    "210283" : "Nhật Ký Hành Trình - Quà Đẹp",
+    "210284" : "Sandrone - Tiệc Trà",
+    "210285" : "Nod-Krai - Vằng Vặc",
+    "210286" : "Nhật Ký Hành Trình - Nắng Hạ"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3917,7 +3956,10 @@
     "210279" : "尼可·天阶",
     "210280" : "洛恩·仁蔼",
     "210281" : "布伦妮·制裁",
-    "210283" : "纪行·赠绮"
+    "210283" : "纪行·赠绮",
+    "210284" : "桑多涅·茶歇",
+    "210285" : "挪德卡莱·皎皎",
+    "210286" : "纪行·映夏"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -4197,6 +4239,9 @@
     "210279" : "尼可·天階",
     "210280" : "洛恩·仁藹",
     "210281" : "布倫妮·制裁",
-    "210283" : "紀行·贈綺"
+    "210283" : "紀行·贈綺",
+    "210284" : "桑多涅·茶歇",
+    "210285" : "挪德卡萊·皎皎",
+    "210286" : "紀行·映夏"
   }
 }
