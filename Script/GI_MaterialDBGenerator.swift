@@ -183,10 +183,12 @@ public enum DimbreathMaterialRAW {
 
     public typealias DailyDungeonConfigData = [DailyDungeonConfigDatum]
 
-    public static let urlPrefix = "https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/refs/heads/master/"
     public static var localPath: String?
 
     // MARK: Fileprivate
+
+    fileprivate static let remoteBaseURL =
+        "https://gitlab.com/Dimbreath/AnimeGameData2/-/raw/main/"
 
     /// 统一从本机路径或线上 URL 读取资料。relativePath 即 ExcelBinOutput/xxx.json。
     fileprivate static func fetchData(relativePath: String) async throws -> Data {
@@ -194,7 +196,7 @@ public enum DimbreathMaterialRAW {
             let url = URL(fileURLWithPath: localPath).appendingPathComponent(relativePath)
             return try Data(contentsOf: url)
         }
-        let url = URL(string: urlPrefix + relativePath)!
+        let url = URL(string: remoteBaseURL + relativePath)!
         let (data, _) = try await URLSession.shared.data(from: url)
         return data
     }
