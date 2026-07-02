@@ -418,6 +418,26 @@
         }
       }
     },
+    "pizza.notice.prematureBetaOSDetected.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device is running a Beta version of the operating system that predates the first public stable release.\n\nBeta versions of operating systems (especially those that predate the first public stable release) may contain unresolved system-level bugs that can cause applications to become unstable or crash. To ensure the best experience, please upgrade your OS to a public stable release. Please don’t forget to turn off Beta channel before retrieving OS updates.\n\nPlease acknowledge: Any software crashes occurring on your current system shalt not constitute grounds for leaving negative reviews or low ratings for this software on the App Store.\n\nPlease also ensure your compliance with Apple's End User License Agreement (EULA) regarding Pre-Release OS Software."
+          }
+        }
+      }
+    },
+    "pizza.notice.prematureBetaOSDetected.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premature Beta OS Detected"
+          }
+        }
+      }
+    },
     "sys.add" : {
       "extractionState" : "manual",
       "localizations" : {

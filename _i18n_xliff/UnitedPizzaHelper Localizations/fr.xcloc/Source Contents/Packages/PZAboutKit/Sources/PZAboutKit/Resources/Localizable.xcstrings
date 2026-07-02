@@ -782,6 +782,16 @@
         }
       }
     },
+    "aboutKit.ZeroLeaksPledge.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pledge on Zero Use & Zero Leaks of NDA-Protected Game Test Client Content"
+          }
+        }
+      }
+    },
     "oobe.button.next" : {
       "localizations" : {
         "en" : {

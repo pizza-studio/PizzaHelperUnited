@@ -8,7 +8,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "WatchExtension"
+            "value" : "WidgetExtension"
           }
         }
       }
@@ -20,7 +20,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "PizzaWatchAppExtension"
+            "value" : "ThePizzaWidgetExtension"
           }
         }
       }
@@ -38,5 +38,5 @@
       }
     }
   },
-  "version" : "1.1"
+  "version" : "1.3"
 }

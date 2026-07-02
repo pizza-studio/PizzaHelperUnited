@@ -669,7 +669,18 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 3rd-party sign-in services like Google, Facebook, Twitter, Sign-in-with-Apple, etc. ARE NOT TECHNICALLY SUPPORTABLE IN THIS APP, please sign in with your username & password."
+            "value" : "⚠️ Third-party sign-in services such as Google, Facebook, and Twitter (X) are not technically supported in this app. Please sign in with other methods."
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.instruction.specialWarning.exceptionallyAllowedMethods" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ℹ️ Sign-in-with-Apple works except that PassKey login is not supported. Before attempting to log in via Sign-in-with-Apple here, **⚠️ you MUST manually bind your Apple account to your HoYoLAB account through HoYoVerse game apps on iOS** to avoid accidentally creating a new blank HoYoVerse account. We recommend enabling Apple's strongest account security settings for your Apple ID, including but not limited to two-factor authentication."
           }
         }
       }
@@ -1481,6 +1492,28 @@
         }
       }
     },
+    "setting.display.useDesktopWidgetsLayoutInTodayNoteCards" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Desktop Widgets Layout In Real-Time Note Cards"
+          }
+        }
+      }
+    },
+    "setting.display.useDesktopWidgetsLayoutInTodayNoteCards.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This restores the layout behavior used by Pizza Helper 4 Genshin v3.x and earlier. You can still tap the cards individually to expand them to the modern list-based layout."
+          }
+        }
+      }
+    },
     "settings.appLanguage.title" : {
       "comment" : "App UI Language",
       "extractionState" : "manual",
@@ -1666,7 +1699,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Genshin Impact and Star Rail only."
+            "value" : "* Genshin Impact only."
           }
         }
       }

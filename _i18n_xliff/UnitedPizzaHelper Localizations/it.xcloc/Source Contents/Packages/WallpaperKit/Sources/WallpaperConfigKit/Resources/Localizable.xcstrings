@@ -16,7 +16,17 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You may also use mouse gestures on the preview image."
+            "value" : "You may also use mouse gestures on the preview image:\n- Wheel-only: Scroll vertically.\n- Wheel+Shift: Scroll horizontally.\n- Wheel+Command: Change zoom ratio."
+          }
+        }
+      }
+    },
+    "imageCropper.toggle.hint.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Operation Hints"
           }
         }
       }
@@ -300,6 +310,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crop (Squared)"
+          }
+        }
+      }
+    },
+    "userWPCropper.navTitle.step4.cropVertical" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crop (Vertical)"
           }
         }
       }

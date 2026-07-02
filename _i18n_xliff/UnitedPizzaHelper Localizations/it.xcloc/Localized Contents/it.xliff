@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="INIntents4iOS16/en.lproj/PZProfileIntentBackports.strings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="appEntity_localProfile" xml:space="preserve">
@@ -237,28 +237,9 @@
       </trans-unit>
     </body>
   </file>
-  <file original="INIntents4iOS16/Info-INIntent-Latte-InfoPlist.xcstrings" source-language="en" target-language="it" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
-    </header>
-    <body>
-      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
-        <source>INIntents4iOS16</source>
-        <note>Bundle display name</note>
-      </trans-unit>
-      <trans-unit id="CFBundleName" xml:space="preserve">
-        <source>INIntents4iOS16Latte</source>
-        <note>Bundle name</note>
-      </trans-unit>
-      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
-        <source/>
-        <note>Copyright (human-readable)</note>
-      </trans-unit>
-    </body>
-  </file>
   <file original="INIntents4iOS16/InfoPlist.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -277,7 +258,7 @@
   </file>
   <file original="INIntents4iOS16/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
@@ -296,7 +277,7 @@
   </file>
   <file original="Packages/EnkaKit/Sources/EnkaKit/Resources/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="enka.ASCV.scrollingGuide.appKit" xml:space="preserve">
@@ -568,7 +549,7 @@ Tocca ovunque per chiudere.</target>
   </file>
   <file original="Packages/GachaKit/Sources/GachaKit/Resources/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="gachaKit.EntryException.timeRawValueNotParsable" xml:space="preserve">
@@ -1120,7 +1101,7 @@ Nessuna selezione indica che verranno importati tutti i tiratori gacha.</target>
       </trans-unit>
       <trans-unit id="gachaKit.poolType.giBeginnersWish" xml:space="preserve">
         <source>Beginners’ Wish</source>
-        <target state="translated">Desiderio dei principianti</target>
+        <target state="translated">Desiderio Dei Principianti</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolType.giCharacterEventWish" xml:space="preserve">
@@ -1129,13 +1110,13 @@ Nessuna selezione indica che verranno importati tutti i tiratori gacha.</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolType.giChronicledWish" xml:space="preserve">
-        <source>Chronicled Wish</source>
-        <target state="translated">Desiderio Cronacato</target>
+        <source>Chronicled Wish &amp; Lightrace Wish</source>
+        <target state="translated">Desiderio Cronacato &amp; Desideri Traccialuce</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolType.giStandardWish" xml:space="preserve">
         <source>Standard Wish</source>
-        <target state="translated">Desiderio standard</target>
+        <target state="translated">Desiderio Standard</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolType.giUnknown" xml:space="preserve">
@@ -1160,17 +1141,17 @@ Nessuna selezione indica che verranno importati tutti i tiratori gacha.</target>
       </trans-unit>
       <trans-unit id="gachaKit.poolType.srCollabWarpFateUBWLightCone" xml:space="preserve">
         <source>Collab. Light Cone Warp</source>
-        <target state="translated">Varco Collaborazione Cono di Luce</target>
+        <target state="translated">Varco Collaborazione Cono Di Luce</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolType.srDepartureWarp" xml:space="preserve">
         <source>Departure Warp</source>
-        <target state="translated">Varco di Partenza</target>
+        <target state="translated">Varco Di Partenza</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolType.srLightConeEventWarp" xml:space="preserve">
         <source>Light Cone Event Warp</source>
-        <target state="translated">Varco Evento Cono di Luce</target>
+        <target state="translated">Varco Evento Cono Di Luce</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolType.srStellarWarp" xml:space="preserve">
@@ -1195,12 +1176,12 @@ Nessuna selezione indica che verranno importati tutti i tiratori gacha.</target>
       </trans-unit>
       <trans-unit id="gachaKit.poolType.zzStableChannel" xml:space="preserve">
         <source>Stable Channel</source>
-        <target state="translated">Canale stabile</target>
+        <target state="translated">Canale Stabile</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolType.zzUnknown" xml:space="preserve">
         <source>Unknown Channel</source>
-        <target state="translated">Canale sconosciuto</target>
+        <target state="translated">Canale Sconosciuto</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.poolType.zzWEngineChannel" xml:space="preserve">
@@ -1343,7 +1324,7 @@ Nota: Anche quando viene visualizzata "Alta affidabilità", i diritti di interpr
   </file>
   <file original="Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="todayMaterialsKit.character.short" xml:space="preserve">
@@ -1385,7 +1366,7 @@ Nota: Anche quando viene visualizzata "Alta affidabilità", i diritti di interpr
   </file>
   <file original="Packages/GITodayMaterialsKit/Sources/GITodayMaterialsKit/Resources/MaterialNames.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="asset.dailyMaterial:talentAdmonition" xml:space="preserve">
@@ -1602,7 +1583,7 @@ Nota: Anche quando viene visualizzata "Alta affidabilità", i diritti di interpr
   </file>
   <file original="Packages/PZAboutKit/Sources/PZAboutKit/Resources/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="aboutKit.3rdParty.headline" xml:space="preserve">
@@ -1628,6 +1609,11 @@ Nota: Anche quando viene visualizzata "Alta affidabilità", i diritti di interpr
       <trans-unit id="aboutKit.PrivacyPolicy.title" xml:space="preserve">
         <source>Privacy Policy</source>
         <target state="translated">Informativa sulla Privacy</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="aboutKit.ZeroLeaksPledge.title" xml:space="preserve">
+        <source>Pledge on Zero Use &amp; Zero Leaks of NDA-Protected Game Test Client Content</source>
+        <target state="translated">Impegno su Zero Uso e Zero Fughe di Contenuti del Client di Test del Gioco Protetti da NDA</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.aboutView.navTitle.LatteHelper" xml:space="preserve">
@@ -2064,7 +2050,7 @@ Illustrazione Icona App, The Pizza Helper (v5.0)</target>
   </file>
   <file original="Packages/PZHelper-Watch/Sources/PZHelper-Watch/Resources/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="watch.dailyNote.card.cosmicStrife.label" xml:space="preserve">
@@ -2193,7 +2179,7 @@ Illustrazione Icona App, The Pizza Helper (v5.0)</target>
   </file>
   <file original="Packages/PZHelper/Sources/PZHelper/Resources/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="Error: %@" xml:space="preserve">
@@ -2495,12 +2481,17 @@ Retrieved</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.passwordInputSafetyExplanation" xml:space="preserve">
         <source>To ensure you feel safe with this, here’s how it works: Your password input is protected by macOS built-in SecureEventInputAPI (or its equivalent on iOS), and then it will be directly handled by HoYoLAB login webpage. This is the nature of how WKWebView gets designed by Apple. Nobody else can interfere / intercept this process, nor this app. You can see that you cannot switch to 3rd-party input methods while the password is receiving inputs from the user.</source>
-        <target state="translated">Per garantirti la sicurezza, ecco come funziona: L'input della tua password è protetto dall'API SecureEventInputAPI integrata in macOS (o il suo equivalente su iOS), e verrà gestito direttamente dalla pagina di login di HoYoLAB. Questa è la natura di come WKWebView è progettato da Apple. Nessun altro può interferire o intercettare questo processo, né questa app. Puoi notare che non puoi passare a metodi di input di terze parti mentre la password riceve input dall'utente.</target>
+        <target state="translated">Per garantirti la sicurezza, ecco come funziona: l'inserimento della tua password è protetto dall'API SecureEventInput integrata in macOS (o dal suo equivalente su iOS), e viene gestito direttamente dalla pagina di accesso di HoYoLAB. Questa è la caratteristica fondamentale di WKWebView, così come progettato da Apple. Nessuno può interferire o intercettare questo processo, nemmeno questa app. Puoi notare che non è possibile passare a metodi di input di terze parti mentre si sta inserendo la password.</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.specialWarning" xml:space="preserve">
-        <source>⚠️ 3rd-party sign-in services like Google, Facebook, Twitter, Sign-in-with-Apple, etc. ARE NOT TECHNICALLY SUPPORTABLE IN THIS APP, please sign in with your username &amp; password.</source>
-        <target state="translated">⚠️ I servizi di accesso di terze parti come Google, Facebook, Twitter, Sign-in-with-Apple, ecc. NON SONO TECNICAMENTE SUPPORTABILI IN QUESTA APP. Accedi con il tuo nome utente e password.</target>
+        <source>⚠️ Third-party sign-in services such as Google, Facebook, and Twitter (X) are not technically supported in this app. Please sign in with other methods.</source>
+        <target state="translated">⚠️ I servizi di accesso di terze parti come Google, Facebook e Twitter (X) non sono tecnicamente supportati in questa app. Utilizza altri metodi di accesso.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="profileMgr.accountLogin.instruction.specialWarning.exceptionallyAllowedMethods" xml:space="preserve">
+        <source>ℹ️ Sign-in-with-Apple works except that PassKey login is not supported. Before attempting to log in via Sign-in-with-Apple here, **⚠️ you MUST manually bind your Apple account to your HoYoLAB account through HoYoVerse game apps on iOS** to avoid accidentally creating a new blank HoYoVerse account. We recommend enabling Apple's strongest account security settings for your Apple ID, including but not limited to two-factor authentication.</source>
+        <target state="translated">ℹ️ Sign-in-with-Apple funziona tranne che l'accesso a PassKey non è supportato. Prima di tentare di accedere tramite Sign-in-with-Apple qui, **⚠️ DEVI collegare manualmente il tuo account Apple al tuo account HoYoLAB tramite le app di gioco HoYoVerse su iOS** per evitare di creare accidentalmente un nuovo account HoYoVerse vuoto. Ti consigliamo di abilitare le impostazioni di sicurezza dell'account più forti di Apple per il tuo ID Apple, inclusa, tra l'altro, l'autenticazione a due fattori.</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.notice.bewareof" xml:space="preserve">
@@ -2933,6 +2924,16 @@ Il successore di questa app sarà disponibile sull’App Store con il nuovo nome
         <target state="translated">Ripristina la scheda precedente all'avvio</target>
         <note/>
       </trans-unit>
+      <trans-unit id="setting.display.useDesktopWidgetsLayoutInTodayNoteCards" xml:space="preserve">
+        <source>Use Desktop Widgets Layout In Real-Time Note Cards</source>
+        <target state="translated">Usa il layout dei widget desktop nelle schede note in tempo reale</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="setting.display.useDesktopWidgetsLayoutInTodayNoteCards.explanation" xml:space="preserve">
+        <source>This restores the layout behavior used by Pizza Helper 4 Genshin v3.x and earlier. You can still tap the cards individually to expand them to the modern list-based layout.</source>
+        <target state="translated">Questo ripristina il comportamento del layout utilizzato da Pizza Helper 4 Genshin v3.x e versioni precedenti. Puoi ancora toccare le schede singolarmente per espanderle al moderno layout basato su elenco.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="settings.appLanguage.title" xml:space="preserve">
         <source>Language</source>
         <target state="translated">Lingua</target>
@@ -3019,8 +3020,8 @@ Il successore di questa app sarà disponibile sull’App Store con il nuovo nome
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.expedition.footer" xml:space="preserve">
-        <source>* Genshin Impact and Star Rail only.</source>
-        <target state="translated">* Solo Genshin Impact e Star Rail.</target>
+        <source>* Genshin Impact only.</source>
+        <target state="translated">* Solo Genshin Impact.</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.expedition.header" xml:space="preserve">
@@ -3481,7 +3482,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZHoYoLabKit/Sources/PZHoYoLabKit/Resources/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="hylKit.battleReport.floor.1stHalf" xml:space="preserve">
@@ -3878,7 +3879,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZInGameEventKit/Sources/PZInGameEventKit/Resources/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="igev.gameEvents.daysLeft:%lld" xml:space="preserve">
@@ -3935,7 +3936,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZAccountKit/Resources/HoYoLangNames.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="hoyo.lang.chs" xml:space="preserve">
@@ -4017,7 +4018,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZAccountKit/Resources/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="MiHoYoAPIError.countryRegionRestriction" xml:space="preserve">
@@ -4254,7 +4255,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZKit/Sources/PZBaseKit/Resources/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="app.language.de" xml:space="preserve">
@@ -4447,6 +4448,28 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <target state="translated">Usa la rotella del mouse (Shift+) per scorrere i contenuti.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="pizza.notice.prematureBetaOSDetected.description" xml:space="preserve">
+        <source>This device is running a Beta version of the operating system that predates the first public stable release.
+
+Beta versions of operating systems (especially those that predate the first public stable release) may contain unresolved system-level bugs that can cause applications to become unstable or crash. To ensure the best experience, please upgrade your OS to a public stable release. Please don’t forget to turn off Beta channel before retrieving OS updates.
+
+Please acknowledge: Any software crashes occurring on your current system shalt not constitute grounds for leaving negative reviews or low ratings for this software on the App Store.
+
+Please also ensure your compliance with Apple's End User License Agreement (EULA) regarding Pre-Release OS Software.</source>
+        <target state="translated">Questo dispositivo sta eseguendo una versione Beta del sistema operativo che precede la prima release stabile pubblica.
+
+Le versioni Beta dei sistemi operativi (soprattutto quelle che precedono la prima release stabile pubblica) possono contenere bug non risolti a livello di sistema che possono causare instabilità o crash delle applicazioni. Per garantire la migliore esperienza, aggiorna il tuo OS a una release stabile pubblica. Non dimenticare di disattivare il canale Beta prima di recuperare gli aggiornamenti OS.
+
+Riconosci: Qualsiasi crash del software che si verifica sul tuo sistema attuale non costituirà motivo per lasciare recensioni negative o valutazioni basse per questo software sull'App Store.
+
+Assicurati anche di rispettare l'Accordo di Licenza per l'Utente Finale di Apple (EULA) riguardo al Software OS di Pre-Rilascio.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="pizza.notice.prematureBetaOSDetected.title" xml:space="preserve">
+        <source>Premature Beta OS Detected</source>
+        <target state="translated">OS Beta Prematuro Rilevato</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="sys.add" xml:space="preserve">
         <source>Add</source>
         <target state="translated">Aggiungi</target>
@@ -4586,7 +4609,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
   </file>
   <file original="Packages/PZWidgetsKit/Sources/PZWidgetsKit/Resources/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="%@" translate="no" xml:space="preserve">
@@ -4876,7 +4899,7 @@ sono disponibili domenica</target>
   </file>
   <file original="Packages/WallpaperKit/Sources/WallpaperConfigKit/Resources/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="imageCropper.hint.fingerGestures" xml:space="preserve">
@@ -4885,8 +4908,19 @@ sono disponibili domenica</target>
         <note/>
       </trans-unit>
       <trans-unit id="imageCropper.hint.mouseGesture" xml:space="preserve">
-        <source>You may also use mouse gestures on the preview image.</source>
-        <target state="translated">Puoi anche applicare gesti del mouse sull'immagine di anteprima.</target>
+        <source>You may also use mouse gestures on the preview image:
+- Wheel-only: Scroll vertically.
+- Wheel+Shift: Scroll horizontally.
+- Wheel+Command: Change zoom ratio.</source>
+        <target state="translated">Puoi anche applicare gesti del mouse sull'immagine di anteprima:
+- Solo rotella: Scorri verticalmente.
+- Rotella+Maiusc: Scorri orizzontalmente.
+- Rotella+Comando: Cambia rapporto zoom.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="imageCropper.toggle.hint.label" xml:space="preserve">
+        <source>Show Operation Hints</source>
+        <target state="translated">Mostra suggerimenti operativi</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.appBackground" xml:space="preserve">
@@ -4932,6 +4966,11 @@ sono disponibili domenica</target>
       <trans-unit id="userWPCropper.navTitle.step3.cropSquared" xml:space="preserve">
         <source>Crop (Squared)</source>
         <target state="translated">Ritaglia (Quadrato)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="userWPCropper.navTitle.step4.cropVertical" xml:space="preserve">
+        <source>Crop (Vertical)</source>
+        <target state="translated">Ritaglia (Verticale)</target>
         <note/>
       </trans-unit>
       <trans-unit id="userWPCropper.step1.button.pickImageUsingFileImporter" xml:space="preserve">
@@ -5073,7 +5112,7 @@ sono disponibili domenica</target>
   </file>
   <file original="SharedBundles/Settings.bundle/en.lproj/Settings.strings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="Please go to 📱 [Settings] -&gt; [General] -&gt; [Language &amp; Region] and add the language you wish to set as the second language. " xml:space="preserve">
@@ -5111,7 +5150,7 @@ sono disponibili domenica</target>
   </file>
   <file original="TheLatteHelper/InfoPlist.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -5138,7 +5177,7 @@ sono disponibili domenica</target>
   </file>
   <file original="TheLatteHelper/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -5150,7 +5189,7 @@ sono disponibili domenica</target>
   </file>
   <file original="ThePizzaHelper/InfoPlist.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -5177,7 +5216,7 @@ sono disponibili domenica</target>
   </file>
   <file original="ThePizzaHelper/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -5189,7 +5228,7 @@ sono disponibili domenica</target>
   </file>
   <file original="UnitedPizzaHelperEngine/InfoPlist.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -5216,7 +5255,7 @@ sono disponibili domenica</target>
   </file>
   <file original="UnitedPizzaHelperEngine/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -5228,7 +5267,7 @@ sono disponibili domenica</target>
   </file>
   <file original="WatchApp/Localization-Watch-Latte/InfoPlist.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -5255,7 +5294,7 @@ sono disponibili domenica</target>
   </file>
   <file original="WatchApp/Localization-Watch-Latte/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -5267,7 +5306,7 @@ sono disponibili domenica</target>
   </file>
   <file original="WatchApp/Localization-Watch-Pizza/InfoPlist.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -5294,7 +5333,7 @@ sono disponibili domenica</target>
   </file>
   <file original="WatchApp/Localization-Watch-Pizza/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="_" translate="no" xml:space="preserve">
@@ -5306,7 +5345,7 @@ sono disponibili domenica</target>
   </file>
   <file original="WidgetExtension/Info-TheLatteWatchAppExtension-InfoPlist.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -5325,7 +5364,7 @@ sono disponibili domenica</target>
   </file>
   <file original="WidgetExtension/Info-TheLatteWidgetExtension-InfoPlist.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
@@ -5344,15 +5383,15 @@ sono disponibili domenica</target>
   </file>
   <file original="WidgetExtension/InfoPlist.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
-        <source>WidgetExtension</source>
+        <source>WatchExtension</source>
         <note>Bundle display name</note>
       </trans-unit>
       <trans-unit id="CFBundleName" xml:space="preserve">
-        <source>ThePizzaWidgetExtension</source>
+        <source>PizzaWatchAppExtension</source>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
@@ -5363,7 +5402,7 @@ sono disponibili domenica</target>
   </file>
   <file original="WidgetExtension/Localizable.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="%@" translate="no" xml:space="preserve">
@@ -5784,15 +5823,15 @@ sono disponibili domenica</target>
   </file>
   <file original="WidgetExtension/Resources/InfoPlist.xcstrings" source-language="en" target-language="it" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.3" build-num="17C519"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.0" build-num="27A5194q"/>
     </header>
     <body>
       <trans-unit id="CFBundleDisplayName" xml:space="preserve">
-        <source>WatchExtension</source>
+        <source>WidgetExtension</source>
         <note>Bundle display name</note>
       </trans-unit>
       <trans-unit id="CFBundleName" xml:space="preserve">
-        <source>PizzaWatchAppExtension</source>
+        <source>ThePizzaWidgetExtension</source>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
