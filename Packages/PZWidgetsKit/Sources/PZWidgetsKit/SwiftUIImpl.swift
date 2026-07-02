@@ -40,12 +40,8 @@ extension View {
 extension Widget {
     public var extraLargePortraitFamilies: [WidgetFamily] {
         if #available(iOS 27.0, macCatalyst 27.0, *) {
-            #if compiler(>=6.4)
-            return [.systemExtraLargePortrait]
-            #else
             // 直接藉由 rawValue 構築，繞過 OS26 SDK 的限制。
             return [WidgetFamily(rawValue: 4)].compactMap(\.self)
-            #endif
         }
         // `WidgetFamily(rawValue: 4)` 在 OS26 不是 nil，會出現「假陽性」的問題。
         // 使用者看到 ExtraLargePortrait 尺寸可以選，但選了之後小工具不會切換到該尺寸。
@@ -56,11 +52,6 @@ extension Widget {
 
 extension WidgetFamily {
     public var isSystemExtraLargePortrait: Bool {
-        #if compiler(>=6.4)
-        if #available(iOS 27.0, macCatalyst 27.0, *) {
-            return self == .systemExtraLargePortrait
-        }
-        #endif
         // 直接藉由 rawValue 構築，繞過 OS26 SDK 的限制。
         return rawValue == 4
         // 上述操作不會讓 OS26 錯誤地出現對 ExtraLargePortrait 的假陽性支援。
