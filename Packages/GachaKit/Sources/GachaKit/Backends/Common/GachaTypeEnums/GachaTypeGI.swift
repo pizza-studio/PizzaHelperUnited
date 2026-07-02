@@ -14,7 +14,7 @@ public enum GachaTypeGI: GachaTypeProtocol {
     case characterEventWish1
     case weaponEventWish
     case characterEventWish2
-    case chronicledWish
+    case chronicledWish // Lightrace Wish records belong to Chronicled Wish.
     case unknown(rawValue: String)
 
     // MARK: Lifecycle

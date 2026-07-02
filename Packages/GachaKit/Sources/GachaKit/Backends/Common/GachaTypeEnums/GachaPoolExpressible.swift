@@ -14,7 +14,7 @@ public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sen
     case giUnknown
     case giCharacterEventWish // 两个限定池合并显示
     case giWeaponEventWish
-    case giChronicledWish
+    case giChronicledWish // Lightrace Wish records belong to Chronicled Wish.
     case giStandardWish
     case giBeginnersWish
     case srUnknown

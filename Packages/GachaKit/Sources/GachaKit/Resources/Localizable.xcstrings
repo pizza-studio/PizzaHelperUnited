@@ -8322,25 +8322,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deseo de principiantes"
+            "value" : "Deseo De Principiantes"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pagka-loob ng Baguhan"
+            "value" : "Pagka-Loob Ng Baguhan"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bannière des débutants"
+            "value" : "Bannière Des Débutants"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desiderio dei principianti"
+            "value" : "Desiderio Dei Principianti"
           }
         },
         "ja" : {
@@ -8358,7 +8358,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пожелание новичка"
+            "value" : "Пожелание Новичка"
           }
         },
         "vi" : {
@@ -8399,19 +8399,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Evento de Deseos de Personajes"
+            "value" : "Evento De Deseos De Personajes"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sabayang Dasal para sa Kaganapang Tauhan"
+            "value" : "Sabayang Dasal Para Sa Kaganapang Tauhan"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bannière de personnage"
+            "value" : "Bannière De Personnage"
           }
         },
         "it" : {
@@ -8435,7 +8435,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Молитва на событие с персонажем"
+            "value" : "Молитва На Событие С Персонажем"
           }
         },
         "vi" : {
@@ -8464,73 +8464,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chronik-Wunsch"
+            "value" : "Chronik-Wunsch & Lichtspurgebet"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chronicled Wish"
+            "value" : "Chronicled Wish & Lightrace Wish"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deseo Crónico"
+            "value" : "Deseo Crónico & Gachapón Reminiscente"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Itinalangin na Naitala"
+            "value" : "Itinalangin Na Naitala & Lightrace Wish"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bannière nostalgie"
+            "value" : "Bannière Nostalgie & Vœux Lumineux"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desiderio Cronacato"
+            "value" : "Desiderio Cronacato & Desideri Traccialuce"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "集録祈願"
+            "value" : "集録祈願&追憶祈願"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "기록된 소원"
+            "value" : "기록된 소원 & 귀환 기원"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Хроники желаний"
+            "value" : "Хроники Желаний & Молитва Света"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lời Chúc Được Ghi Nhận"
+            "value" : "Lời Chúc Được Ghi Nhận & Cầu Nguyện Vệt Sáng"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "集录祈愿"
+            "value" : "集录祈愿&溯光祈愿"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "集錄祈願"
+            "value" : "集錄祈願&溯光祈願"
           }
         }
       }
@@ -8553,7 +8553,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deseo estándar"
+            "value" : "Deseo Estándar"
           }
         },
         "fil" : {
@@ -8565,13 +8565,13 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bannière standard"
+            "value" : "Bannière Standard"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desiderio standard"
+            "value" : "Desiderio Standard"
           }
         },
         "ja" : {
@@ -8589,7 +8589,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Стандартное желание"
+            "value" : "Стандартное Желание"
           }
         },
         "vi" : {
@@ -8642,7 +8642,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bannière inconnue"
+            "value" : "Bannière Inconnue"
           }
         },
         "it" : {
@@ -8666,13 +8666,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Неизвестное желание"
+            "value" : "Неизвестное Желание"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Điều ước không xác định"
+            "value" : "Điều Ước Không Xác Định"
           }
         },
         "zh-Hans" : {
@@ -8707,19 +8707,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deseo de evento de armas"
+            "value" : "Deseo De Evento De Armas"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pag-asam ng Kaganapan ng Sandata"
+            "value" : "Pag-Asam Ng Kaganapan Ng Sandata"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bannière d'arme"
+            "value" : "Bannière D'Arme"
           }
         },
         "it" : {
@@ -8743,7 +8743,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Молитва события оружия"
+            "value" : "Молитва События Оружия"
           }
         },
         "vi" : {
@@ -8784,19 +8784,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deformación de Evento de Personaje"
+            "value" : "Deformación De Evento De Personaje"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pangyayari ng Pagwarp ng Tauhan"
+            "value" : "Pangyayari Ng Pagwarp Ng Tauhan"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bannière de personnage"
+            "value" : "Bannière De Personnage"
           }
         },
         "it" : {
@@ -8861,7 +8861,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp de Colaboración de Personaje"
+            "value" : "Warp De Colaboración De Personaje"
           }
         },
         "fil" : {
@@ -8873,7 +8873,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp de collaboration personnage"
+            "value" : "Warp De Collaboration Personnage"
           }
         },
         "it" : {
@@ -8897,13 +8897,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Коллаборационный варп персонажа"
+            "value" : "Коллаборационный Варп Персонажа"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp hợp tác nhân vật"
+            "value" : "Warp Hợp Tác Nhân Vật"
           }
         },
         "zh-Hans" : {
@@ -8938,7 +8938,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp de Cono de Luz de Colaboración"
+            "value" : "Warp De Cono De Luz De Colaboración"
           }
         },
         "fil" : {
@@ -8950,13 +8950,13 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp de cône de lumière collaboration"
+            "value" : "Warp De Cône De Lumière Collaboration"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Varco Collaborazione Cono di Luce"
+            "value" : "Varco Collaborazione Cono Di Luce"
           }
         },
         "ja" : {
@@ -8974,7 +8974,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Коллаборационный варп светового конуса"
+            "value" : "Коллаборационный Варп Светового Конуса"
           }
         },
         "vi" : {
@@ -9021,19 +9021,19 @@
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pag-alis Warp"
+            "value" : "Pag-Alis Warp"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bannière de départ"
+            "value" : "Bannière De Départ"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Varco di Partenza"
+            "value" : "Varco Di Partenza"
           }
         },
         "ja" : {
@@ -9051,13 +9051,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Прыжок на вылет"
+            "value" : "Прыжок На Вылет"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dịch chuyển khởi hành"
+            "value" : "Dịch Chuyển Khởi Hành"
           }
         },
         "zh-Hans" : {
@@ -9092,25 +9092,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deformación del Evento de Cono de Luz"
+            "value" : "Deformación Del Evento De Cono De Luz"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kaganapan ng Light Cone Warp"
+            "value" : "Kaganapan Ng Light Cone Warp"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bannière de cône de lumière"
+            "value" : "Bannière De Cône De Lumière"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Varco Evento Cono di Luce"
+            "value" : "Varco Evento Cono Di Luce"
           }
         },
         "ja" : {
@@ -9128,7 +9128,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Искажение события светового конуса"
+            "value" : "Искажение События Светового Конуса"
           }
         },
         "vi" : {
@@ -9181,7 +9181,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bannière standard"
+            "value" : "Bannière Standard"
           }
         },
         "it" : {
@@ -9246,7 +9246,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp desconocido"
+            "value" : "Warp Desconocido"
           }
         },
         "fil" : {
@@ -9258,7 +9258,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bannière inconnue"
+            "value" : "Bannière Inconnue"
           }
         },
         "it" : {
@@ -9282,13 +9282,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Неизвестный переход"
+            "value" : "Неизвестный Переход"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Không xác định Warp"
+            "value" : "Không Xác Định Warp"
           }
         },
         "zh-Hans" : {
@@ -9329,7 +9329,7 @@
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Channel ng Bangboo"
+            "value" : "Channel Ng Bangboo"
           }
         },
         "fr" : {
@@ -9412,7 +9412,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Canal exclusif"
+            "value" : "Canal Exclusif"
           }
         },
         "it" : {
@@ -9436,13 +9436,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Эксклюзивный канал"
+            "value" : "Эксклюзивный Канал"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kênh độc quyền"
+            "value" : "Kênh Độc Quyền"
           }
         },
         "zh-Hans" : {
@@ -9483,7 +9483,7 @@
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matatag na Channel"
+            "value" : "Matatag Na Channel"
           }
         },
         "fr" : {
@@ -9495,7 +9495,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Canale stabile"
+            "value" : "Canale Stabile"
           }
         },
         "ja" : {
@@ -9513,13 +9513,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Стабильный канал"
+            "value" : "Стабильный Канал"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kênh ổn định"
+            "value" : "Kênh Ổn Định"
           }
         },
         "zh-Hans" : {
@@ -9554,7 +9554,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Canal desconocido"
+            "value" : "Canal Desconocido"
           }
         },
         "fil" : {
@@ -9566,13 +9566,13 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bannière inconnue"
+            "value" : "Bannière Inconnue"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Canale sconosciuto"
+            "value" : "Canale Sconosciuto"
           }
         },
         "ja" : {
@@ -9590,13 +9590,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Неизвестный канал"
+            "value" : "Неизвестный Канал"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kênh không xác định"
+            "value" : "Kênh Không Xác Định"
           }
         },
         "zh-Hans" : {
@@ -9631,13 +9631,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Canal del motor W"
+            "value" : "Canal Del Motor W"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Channel ng W-Engine"
+            "value" : "Channel Ng W-Engine"
           }
         },
         "fr" : {
