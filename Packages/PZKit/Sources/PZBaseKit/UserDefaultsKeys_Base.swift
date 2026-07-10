@@ -7,7 +7,12 @@ import Foundation
 
 extension UserDefaults {
     // 此处的 suiteName 得与 container ID 一致。
-    public static let baseSuite = UserDefaults(suiteName: appGroupID) ?? .standard
+    // 注意：不能用 static let，因为 Widget 在 cold boot 时 App Group container
+    // 可能尚未挂载，若此时 UserDefaults(suiteName:) 返回 nil 并 fallback 到
+    // .standard，该值会被永久快取，导致 Widget 再也读不到主 App 写入的资料。
+    public static var baseSuite: UserDefaults {
+        UserDefaults(suiteName: appGroupID) ?? .standard
+    }
 }
 
 extension Defaults.Keys {

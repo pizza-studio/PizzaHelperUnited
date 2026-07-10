@@ -5,7 +5,8 @@
 import Foundation
 import PZBaseKit
 extension UserDefaults {
-    public static let profileSuite = UserDefaults.baseSuite
+    /// 不能用 static let，Widget cold boot 时可能 App Group 尚未挂载导致被快取为 .standard。
+    public static var profileSuite: UserDefaults { .baseSuite }
 }
 
 extension Defaults.Keys {
@@ -34,16 +35,21 @@ extension Defaults.Keys {
         default: "",
         suite: .standard
     )
-    public static let pzProfiles = Key<[String: PZProfileSendable]>(
-        "pzProfiles",
-        default: [:],
-        suite: .profileSuite // !! IMPORTANT !!
-    )
-    public static let cachedDailyNotes = Key<[String: CachedJSON]>(
-        "cachedDailyNotes",
-        default: [:],
-        suite: .profileSuite // !! IMPORTANT !!
-    )
+    public static var pzProfiles: Key<[String: PZProfileSendable]> {
+        Key<[String: PZProfileSendable]>(
+            "pzProfiles",
+            default: [:],
+            suite: .profileSuite // !! IMPORTANT !!
+        )
+    }
+
+    public static var cachedDailyNotes: Key<[String: CachedJSON]> {
+        Key<[String: CachedJSON]>(
+            "cachedDailyNotes",
+            default: [:],
+            suite: .profileSuite // !! IMPORTANT !!
+        )
+    }
 }
 
 // MARK: - PZProfileSendable + Defaults.Serializable
