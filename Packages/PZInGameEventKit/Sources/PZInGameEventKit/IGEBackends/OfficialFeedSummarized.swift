@@ -5,7 +5,8 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
-@available(iOS 16.0, macCatalyst 16.0, *)
+
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension OfficialFeed {
     public struct FeedEvent: AbleToCodeSendHash, Identifiable, Defaults.Serializable {
         public let game: Pizza.SupportedGame
@@ -54,7 +55,7 @@ extension OfficialFeed {
     }
 }
 
-@available(iOS 16.0, macCatalyst 16.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension OfficialFeed {
     public static func getAllFeedEventsOnline(
         game givenGame: Pizza.SupportedGame? = nil,

@@ -9,7 +9,7 @@ import UserNotifications
 
 // MARK: - NotificationSettingsPageContent
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct NotificationSettingsPageContent: View {
     // MARK: Public
 
@@ -85,7 +85,7 @@ struct NotificationSettingsPageContent: View {
 
 // MARK: - ProfilesNotificationPermissionView
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct ProfilesNotificationPermissionView: View {
     // MARK: Public
 
@@ -122,7 +122,7 @@ private struct ProfilesNotificationPermissionView: View {
 
     // MARK: Private
 
-    @StateObject private var profileManagerVM: ProfileManagerVM = .shared
+    @State private var profileManagerVM: ProfileManagerVM = .shared
 
     @ViewBuilder
     private static func drawLocalProfile(
@@ -344,7 +344,7 @@ private struct StaminaNotificationThresholdConfigView: View {
 
 // MARK: - NotificationSettingDetailContent
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct NotificationSettingDetailContent: View {
     // MARK: Public
 

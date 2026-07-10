@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - GetCookieQRCodeView
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct GetCookieQRCodeView: View {
     // MARK: Lifecycle
 
@@ -96,7 +96,7 @@ struct GetCookieQRCodeView: View {
 
     // MARK: Internal
 
-    @StateObject var viewModel = GetCookieQRCodeViewModel.shared
+    @State var viewModel = GetCookieQRCodeViewModel.shared
     @Binding var cookie: String
     @Binding var deviceFP: String
     @Binding var deviceID: String
@@ -233,9 +233,9 @@ struct GetCookieQRCodeView: View {
 // MARK: - GetCookieQRCodeViewModel
 
 // Credit: Bill Haku for the fix.
-@available(iOS 16.2, macCatalyst 16.2, *)
-@MainActor
-final class GetCookieQRCodeViewModel: ObservableObject {
+@available(iOS 17.0, macCatalyst 17.0, *)
+@Observable @MainActor
+final class GetCookieQRCodeViewModel {
     // MARK: Lifecycle
 
     init() {
@@ -295,15 +295,15 @@ final class GetCookieQRCodeViewModel: ObservableObject {
 
     static var shared: GetCookieQRCodeViewModel = .init()
 
-    @Published var qrCodeAndTicket: (qrCode: CGImage, ticket: String)?
-    @Published var taskId: UUID
-    @Published var scanningConfirmationStatus: ScanningConfirmationStatus = .idle
-    @Published var isNotScannedAlertShown: Bool = false
-    @Published var pollingTaskId: UUID? // 新增：跟踪注册的轮询任务ID
+    var qrCodeAndTicket: (qrCode: CGImage, ticket: String)?
+    var taskId: UUID
+    var scanningConfirmationStatus: ScanningConfirmationStatus = .idle
+    var isNotScannedAlertShown: Bool = false
+    var pollingTaskId: UUID? // 新增：跟踪注册的轮询任务ID
 
-    var onQRCodeConfirmed: ((QueryQRCodeStatus.ParsedResult) async throws -> Void)?
+    @ObservationIgnored var onQRCodeConfirmed: ((QueryQRCodeStatus.ParsedResult) async throws -> Void)?
 
-    @Published var error: Error? {
+    var error: Error? {
         didSet {
             if error != nil {
                 qrCodeAndTicket = nil

@@ -3,14 +3,14 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import AppIntents
-#if ENABLE_ININTENTS_BACKPORTS
-import Intents
-#endif
+// #if ENABLE_ININTENTS_BACKPORTS
+// import Intents
+// #endif
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Pizza.SupportedGame {
     public init?(intentConfig: some AppIntent) {
         let uuid: String?
@@ -28,23 +28,24 @@ extension Pizza.SupportedGame {
         self = profile.game
     }
 
-    #if ENABLE_ININTENTS_BACKPORTS
-    public init?(intentConfigIN: some INIntent) {
-        let uuid: String?
-        switch intentConfigIN {
-        case let intentConfig as SelectOnlyAccountIntent:
-            uuid = intentConfig.account?.identifier
-        case let intentConfig as SelectAccountIntent:
-            uuid = intentConfig.accountIntent?.identifier
-        case let intentConfig as SelectAccountAndShowWhichInfoIntent:
-            uuid = intentConfig.account?.identifier
-        default:
-            uuid = nil
-        }
-        guard let uuid, let profile = Defaults[.pzProfiles][uuid] else { return nil }
-        self = profile.game
-    }
-    #endif
+//
+//    #if ENABLE_ININTENTS_BACKPORTS
+//    public init?(intentConfigIN: some INIntent) {
+//        let uuid: String?
+//        switch intentConfigIN {
+//        case let intentConfig as SelectOnlyAccountIntent:
+//            uuid = intentConfig.account?.identifier
+//        case let intentConfig as SelectAccountIntent:
+//            uuid = intentConfig.accountIntent?.identifier
+//        case let intentConfig as SelectAccountAndShowWhichInfoIntent:
+//            uuid = intentConfig.account?.identifier
+//        default:
+//            uuid = nil
+//        }
+//        guard let uuid, let profile = Defaults[.pzProfiles][uuid] else { return nil }
+//        self = profile.game
+//    }
+//    #endif
 
     public static func initFromDualProfileConfig(
         intent: PZDesktopIntent4DualProfiles

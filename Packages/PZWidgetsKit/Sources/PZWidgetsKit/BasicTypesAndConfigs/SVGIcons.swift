@@ -15,7 +15,7 @@ import AppKit
 
 // MARK: - SVGIconAsset
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
     case infoUnavailable = "icon.info.unavailable"
     case resin = "icon.resin"
@@ -138,7 +138,7 @@ public enum SVGIconAsset: String, CaseIterable, Identifiable, Sendable {
 
 // MARK: - SVGIconImageCache
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @MainActor
 final class SVGIconImageCache {
     // MARK: Lifecycle
@@ -168,7 +168,7 @@ final class SVGIconImageCache {
 
 // MARK: - SVGIconsCompiler
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public actor SVGIconsCompiler {
     // MARK: Public
 
@@ -296,7 +296,7 @@ public actor SVGIconsCompiler {
 
 // MARK: - SVGIconPrewarmCoordinator
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public actor SVGIconPrewarmCoordinator {
     // MARK: Public
 
@@ -337,7 +337,7 @@ public actor SVGIconPrewarmCoordinator {
 
 // MARK: - Syntax Sugar for Asset Icons (SVG)
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Pizza.SupportedGame? {
     @MainActor public var unavailableAssetSVG: Image {
         SVGIconAsset.infoUnavailable.resolvedImage()
@@ -372,7 +372,7 @@ extension Pizza.SupportedGame? {
     }
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Pizza.SupportedGame {
     /// 主要玩家体力。
     @MainActor public var primaryStaminaAssetSVG: Image {
@@ -516,7 +516,7 @@ extension Pizza.SupportedGame {
     }
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Pizza.SupportedGame {
     fileprivate var primaryStaminaIcon: SVGIconAsset {
         switch self {

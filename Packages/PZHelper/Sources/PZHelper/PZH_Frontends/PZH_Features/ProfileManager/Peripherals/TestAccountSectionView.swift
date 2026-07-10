@@ -6,11 +6,11 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct TestAccountSectionView: View {
     // MARK: Internal
 
-    @StateObject var profile: PZProfileRef
+    @State var profile: PZProfileRef
 
     var body: some View {
         Section {

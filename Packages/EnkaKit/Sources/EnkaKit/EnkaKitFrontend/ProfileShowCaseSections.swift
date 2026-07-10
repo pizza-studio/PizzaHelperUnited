@@ -176,7 +176,7 @@ public struct ProfileShowCaseSections<AppendedContent: View, QueryDB: EnkaDBProt
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
     @State private var delegate: CaseProfileVM<QueryDB>
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
 
     private let appendedContent: () -> AppendedContent
     private let onTapGestureAction: (() -> Void)?

@@ -12,7 +12,9 @@ import WatchConnectivity
 
 // MARK: - AppleWatchSputnik
 
-public final class AppleWatchSputnik: NSObject, ObservableObject {
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@Observable
+public final class AppleWatchSputnik: NSObject {
     // MARK: Lifecycle
 
     private override init() {
@@ -37,7 +39,7 @@ public final class AppleWatchSputnik: NSObject, ObservableObject {
         WCSession.isSupported()
     }
 
-    @Published public var notificationMessage: NotificationMessage?
+    public var notificationMessage: NotificationMessage?
 
     // var sharedAccounts = [PZProfileMO]() // 完全沒用到。
 
@@ -97,6 +99,7 @@ public final class AppleWatchSputnik: NSObject, ObservableObject {
 
 // MARK: WCSessionDelegate
 
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension AppleWatchSputnik: WCSessionDelegate {
     public func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
         #if os(watchOS)

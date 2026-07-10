@@ -93,5 +93,5 @@ public struct CharInventoryNav: View {
     // MARK: Private
 
     @Environment(DetailPortalViewModel.self) private var theVM
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
 }

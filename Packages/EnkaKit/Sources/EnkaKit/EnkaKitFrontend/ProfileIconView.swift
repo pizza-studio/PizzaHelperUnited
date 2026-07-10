@@ -83,7 +83,7 @@ extension Enka {
         // MARK: Private
 
         @State private var sharedDB: Enka.Sputnik = .shared
-        @StateObject private var broadcaster = Broadcaster.shared
+        @State private var broadcaster = Broadcaster.shared
 
         private var uidWithGame: String { "\(game.uidPrefix)-\(uid)" }
 

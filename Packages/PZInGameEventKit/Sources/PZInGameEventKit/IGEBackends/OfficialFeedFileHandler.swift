@@ -7,10 +7,9 @@ import PZBaseKit
 
 // MARK: - OfficialFeedFileHandler
 
-@available(iOS 16.0, macCatalyst 16.0, *)
 public enum OfficialFeedFileHandler {}
 
-@available(iOS 16.0, macCatalyst 16.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension OfficialFeedFileHandler {
     @MainActor public static let folderMonitor: FolderMonitor = .init(url: contentFolderURL)
 

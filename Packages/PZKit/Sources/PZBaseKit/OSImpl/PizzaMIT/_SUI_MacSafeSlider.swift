@@ -13,7 +13,7 @@ import SwiftUI
 ///
 /// Intended as a drop-in replacement for `Slider` on macOS; on iOS
 /// the system `Slider` is preferred for its native look and feel.
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct MacSafeSlider: View {
     // MARK: Lifecycle
 

@@ -6,7 +6,7 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct WatchDataPusherButton: View {
     // MARK: Lifecycle
 
@@ -52,5 +52,5 @@ struct WatchDataPusherButton: View {
 
     // MARK: Private
 
-    @StateObject private var theVM: ProfileManagerVM = .shared
+    @State private var theVM: ProfileManagerVM = .shared
 }

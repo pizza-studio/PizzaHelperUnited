@@ -15,7 +15,7 @@ extension View {
         thickMaterial: Bool = false
     )
         -> some View {
-        if #available(iOS 16.0, macCatalyst 16.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
             background {
                 AppWallpaperView(thickMaterial: thickMaterial)
             }

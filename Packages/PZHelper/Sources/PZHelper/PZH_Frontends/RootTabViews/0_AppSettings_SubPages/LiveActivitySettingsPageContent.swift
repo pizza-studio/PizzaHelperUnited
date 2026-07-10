@@ -12,7 +12,7 @@ import WallpaperKit
 
 // MARK: - LiveActivitySettingNavigator
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 struct LiveActivitySettingNavigator: View {
     // MARK: Lifecycle
 
@@ -39,7 +39,7 @@ struct LiveActivitySettingNavigator: View {
 
 // MARK: - LiveActivitySettingsPageContent
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct LiveActivitySettingsPageContent: View {
     // MARK: Internal
 

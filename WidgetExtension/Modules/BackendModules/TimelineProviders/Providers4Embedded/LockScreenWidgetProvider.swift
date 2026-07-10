@@ -17,7 +17,7 @@ import WidgetKit
 @available(macOS, unavailable)
 extension LockScreenWidgetProvider: AppIntentTimelineProvider {}
 
-@available(iOS 16.2, *)
+@available(iOS 17.0, watchOS 10.0, visionOS 26.0, *)
 @available(macCatalyst, unavailable)
 @available(macOS, unavailable)
 struct LockScreenWidgetProvider: CrossGenServiceableTimelineProvider {

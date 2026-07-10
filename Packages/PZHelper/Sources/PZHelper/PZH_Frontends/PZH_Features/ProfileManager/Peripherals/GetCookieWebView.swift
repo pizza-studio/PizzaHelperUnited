@@ -60,7 +60,7 @@ private func getHTTPHeaderFields(region: HoYo.AccountRegion) -> [String: String]
 
 // MARK: - GetCookieWebView
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct GetCookieWebView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
@@ -680,7 +680,7 @@ extension CookieGetterWebView: NSViewRepresentable {
 }
 
 #elseif canImport(UIKit)
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension CookieGetterWebView: UIViewRepresentable {
     static func dismantleUIView(_ uiView: OPWebView, coordinator: Coordinator) {
         coordinator.cleanupPopup()
@@ -697,6 +697,6 @@ extension CookieGetterWebView: UIViewRepresentable {
 #endif
 
 #if os(iOS) && !targetEnvironment(macCatalyst)
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GetCookieWebView: KeyboardReadable {}
 #endif

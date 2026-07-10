@@ -12,7 +12,7 @@ private struct FocusableModifier: ViewModifier {
     let enabled: Bool
 
     func body(content: Content) -> some View {
-        if #unavailable(iOS 17.0, macCatalyst 17.0, macOS 14.0) {
+        if #unavailable(iOS 17.0, macCatalyst 17.0) {
             content
         } else {
             #if os(watchOS)

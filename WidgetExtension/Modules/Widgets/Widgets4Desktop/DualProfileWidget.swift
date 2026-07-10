@@ -35,32 +35,32 @@ struct DualProfileWidget: Widget {
         .containerBackgroundRemovable(false)
     }
 }
-
-#if ENABLE_ININTENTS_BACKPORTS
-
-@available(iOS 16.2, macCatalyst 16.2, *)
-@available(watchOS, unavailable)
-struct INDualProfileWidget: Widget {
-    let kind: String = "DualProfileWidget".asBackportedWidgetKindName
-
-    var body: some WidgetConfiguration {
-        IntentConfiguration(
-            kind: kind,
-            intent: INDualProfileWidgetProvider.Intent.self,
-            provider: INDualProfileWidgetProvider()
-        ) { entry in
-            DesktopWidgets
-                .DualProfileWidgetView(entry: entry)
-        }
-        .configurationDisplayName("pzWidgetsKit.statusDualProfile.title".i18nWidgets)
-        .description("pzWidgetsKit.statusDualProfile.enquiry.title".i18nWidgets)
-        .supportedFamilies(
-            [.systemMedium, .systemLarge, .systemExtraLarge].backportsOnly
-        )
-        .containerBackgroundRemovable(false)
-    }
-}
-
-#endif
+//
+// #if ENABLE_ININTENTS_BACKPORTS
+//
+// @available(iOS 16.2, macCatalyst 16.2, *)
+// @available(watchOS, unavailable)
+// struct INDualProfileWidget: Widget {
+//    let kind: String = "DualProfileWidget".asBackportedWidgetKindName
+//
+//    var body: some WidgetConfiguration {
+//        IntentConfiguration(
+//            kind: kind,
+//            intent: INDualProfileWidgetProvider.Intent.self,
+//            provider: INDualProfileWidgetProvider()
+//        ) { entry in
+//            DesktopWidgets
+//                .DualProfileWidgetView(entry: entry)
+//        }
+//        .configurationDisplayName("pzWidgetsKit.statusDualProfile.title".i18nWidgets)
+//        .description("pzWidgetsKit.statusDualProfile.enquiry.title".i18nWidgets)
+//        .supportedFamilies(
+//            [.systemMedium, .systemLarge, .systemExtraLarge].backportsOnly
+//        )
+//        .containerBackgroundRemovable(false)
+//    }
+// }
+//
+// #endif
 
 #endif

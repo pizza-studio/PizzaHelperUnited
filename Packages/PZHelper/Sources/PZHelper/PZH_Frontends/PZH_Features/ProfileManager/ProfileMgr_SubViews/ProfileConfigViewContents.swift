@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - ProfileConfigViewContents
 
 /// 就是原先的 EditAccountView。
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct ProfileConfigViewContents: View {
     // MARK: Lifecycle
 
@@ -73,7 +73,7 @@ struct ProfileConfigViewContents: View {
 
     // MARK: Private
 
-    @StateObject private var profile: PZProfileRef
+    @State private var profile: PZProfileRef
     @State private var validate: String = ""
     @State private var fetchedAccounts: [FetchedAccount]?
 
@@ -94,7 +94,7 @@ struct ProfileConfigViewContents: View {
 
 // MARK: ProfileConfigViewContents.RequireLoginView
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ProfileConfigViewContents {
     private struct RequireLoginView: View {
         // MARK: Internal
@@ -158,7 +158,7 @@ extension ProfileConfigViewContents {
 
         // MARK: Internal
 
-        @StateObject var profile: PZProfileRef
+        @State var profile: PZProfileRef
 
         let fetchedAccounts: [FetchedAccount]
 

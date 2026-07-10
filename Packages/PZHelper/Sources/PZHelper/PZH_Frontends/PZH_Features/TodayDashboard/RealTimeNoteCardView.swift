@@ -109,7 +109,7 @@ struct RealTimeNoteCardView: View {
     // MARK: Private
 
     @Environment(DailyNoteViewModel.self) private var theVM
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
     @State private var isExpanded: Bool = !Defaults[.useDesktopWidgetsLayoutInTodayNoteCards]
 
     @Default(.cachedDailyNotes) private var dailyNoteCache: [String: CachedJSON]

@@ -14,7 +14,7 @@ extension BundledWallpaper {
 // MARK: - AppWallpaperView
 
 #if !os(watchOS)
-@available(iOS 16.0, macCatalyst 16.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 public struct AppWallpaperView: View {
     // MARK: Lifecycle
 
@@ -89,8 +89,8 @@ public struct AppWallpaperView: View {
 
     @Environment(\.colorScheme) private var colorScheme
 
-    @StateObject private var broadcaster = Broadcaster.shared
-    @StateObject private var folderMonitor = UserWallpaperFileHandler.folderMonitor
+    @State private var broadcaster = Broadcaster.shared
+    @State private var folderMonitor = UserWallpaperFileHandler.folderMonitor
     @State private var processedBlurredImage: Image?
     @State private var cacheCleaner = CacheCleaner()
 

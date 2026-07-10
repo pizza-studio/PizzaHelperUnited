@@ -155,10 +155,10 @@ struct DetailPortalTabPage: View {
     @State private var showProfileSwitcher: Bool
     @State private var sharedDB: Enka.Sputnik = .shared
     @State private var vmDPV: DetailPortalViewModel = .shared
-    @StateObject private var pfMgrVM: ProfileManagerVM = .shared
+    @State private var pfMgrVM: ProfileManagerVM = .shared
     @State private var rootNavVM = RootNavVM.shared
     @State private var screenVM: ScreenVM = .shared
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
     @FocusState private var uidInputFieldFocus: Bool
     @State private var isKeyboardVisible = false
 

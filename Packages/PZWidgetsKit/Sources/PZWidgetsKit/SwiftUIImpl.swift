@@ -7,7 +7,7 @@ import WidgetKit
 
 // MARK: - WidgetAccessibilityBackground
 
-@available(iOS 16.2, macCatalyst 16.2, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 private struct WidgetAccessibilityBackground: ViewModifier {
     let enabled: Bool
 
@@ -27,7 +27,7 @@ private struct WidgetAccessibilityBackground: ViewModifier {
 extension View {
     @ViewBuilder
     public func widgetAccessibilityBackground(enabled: Bool) -> some View {
-        if #available(iOS 16.2, macCatalyst 16.2, watchOS 10.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
             modifier(WidgetAccessibilityBackground(enabled: enabled))
         } else {
             self
@@ -36,7 +36,7 @@ extension View {
 }
 
 #if !os(watchOS)
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Widget {
     public var extraLargePortraitFamilies: [WidgetFamily] {
         if #available(iOS 27.0, macCatalyst 27.0, *) {
@@ -53,7 +53,7 @@ extension Widget {
 extension WidgetFamily {
     public var isSystemExtraLargePortrait: Bool {
         // 直接藉由 rawValue 構築，繞過 OS26 SDK 的限制。
-        return rawValue == 4
+        rawValue == 4
         // 上述操作不會讓 OS26 錯誤地出現對 ExtraLargePortrait 的假陽性支援。
         // 詳見 `extraLargePortraitFamilies` 的內文註解。
     }

@@ -7,7 +7,7 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ProfileManagerVM {
     func profilesFilteredByGame(
         _ games: Set<Pizza.SupportedGame> = []
@@ -85,12 +85,8 @@ extension ProfileManagerVM {
                 let dimension: CGFloat = 30
                 Group {
                     if let profile: PZProfileSendable = target.wrappedValue {
-                        if #available(iOS 17.0, *) {
-                            Enka.ProfileIconView(uid: profile.uid, game: profile.game)
-                                .frame(width: dimension)
-                        } else {
-                            profile.asIcon4SUI()
-                        }
+                        Enka.ProfileIconView(uid: profile.uid, game: profile.game)
+                            .frame(width: dimension)
                     } else {
                         Image(systemSymbol: .personCircleFill)
                             .resizable()

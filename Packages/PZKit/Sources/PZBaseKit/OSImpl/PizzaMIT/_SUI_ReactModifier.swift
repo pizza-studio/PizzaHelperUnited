@@ -64,7 +64,7 @@ extension View {
         _ action: @escaping (V, V) -> Void
     )
         -> some View where V: Equatable {
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
             onChange(of: value, initial: initial, action)
         } else {
             modifier(
@@ -124,7 +124,7 @@ extension View {
         _ action: @escaping () -> Void
     )
         -> some View where V: Equatable {
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
             onChange(of: value, initial: initial, action)
         } else {
             modifier(

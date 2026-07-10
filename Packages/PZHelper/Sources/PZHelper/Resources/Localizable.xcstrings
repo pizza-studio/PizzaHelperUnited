@@ -9232,6 +9232,7 @@
       }
     },
     "refugee.limitedServiceCategory4iOS16.footer" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -9308,6 +9309,7 @@
       }
     },
     "refugee.limitedServiceCategory4iOS16.header" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -9384,6 +9386,7 @@
       }
     },
     "refugee.limitedServiceCategory4iOS17.footer" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -9460,6 +9463,7 @@
       }
     },
     "refugee.limitedServiceCategory4iOS17.header" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -9612,6 +9616,7 @@
       }
     },
     "refugee.liveActivity.featureLabel" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -9688,6 +9693,7 @@
       }
     },
     "refugee.liveActivity.tapHereToInitiate" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

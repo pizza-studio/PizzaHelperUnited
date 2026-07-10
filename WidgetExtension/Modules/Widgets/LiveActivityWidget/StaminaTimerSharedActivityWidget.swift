@@ -15,7 +15,7 @@ import WidgetKit
 // NOTE: 所有 AppIntent Conformation 都需要在 SPM 外部（也就是 Xcode Target 内）就地实作。
 // 任何基于 Protocols 的抽象工作都会妨碍到 AppIntent 的实际可用性。
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct StaminaTimerIntent4Redraw: AppIntent {
     // MARK: Lifecycle
 
@@ -45,7 +45,7 @@ public struct StaminaTimerIntent4Redraw: AppIntent {
     }
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct StaminaTimerIntent4Refetch: AppIntent {
     // MARK: Lifecycle
 
@@ -75,7 +75,7 @@ public struct StaminaTimerIntent4Refetch: AppIntent {
     }
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct StaminaTimerSharedActivityWidget: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(

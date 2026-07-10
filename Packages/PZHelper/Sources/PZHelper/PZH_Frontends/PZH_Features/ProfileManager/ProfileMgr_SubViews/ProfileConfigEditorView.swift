@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - ProfileConfigEditorView
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct ProfileConfigEditorView: View {
     // MARK: Lifecycle
 
@@ -18,7 +18,7 @@ struct ProfileConfigEditorView: View {
 
     // MARK: Internal
 
-    @StateObject var unsavedProfile: PZProfileRef
+    @State var unsavedProfile: PZProfileRef
 
     var body: some View {
         Form {
@@ -105,7 +105,7 @@ struct ProfileConfigEditorView: View {
     // MARK: Private
 
     private static var isOS24OrNewer: Bool {
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) { return true }
+        if #available(iOS 17.0, macCatalyst 17.0, *) { return true }
         return false
     }
 
@@ -133,7 +133,7 @@ struct ProfileConfigEditorView: View {
 
 // MARK: - RegenerateDeviceFingerPrintButton
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct RegenerateDeviceFingerPrintButton: View {
     // MARK: Lifecycle
 
@@ -150,7 +150,7 @@ private struct RegenerateDeviceFingerPrintButton: View {
         case fail(Error)
     }
 
-    @StateObject var profile: PZProfileRef
+    @State var profile: PZProfileRef
 
     @State var isErrorAlertShown: Bool = false
     @State var error: AnyLocalizedError?

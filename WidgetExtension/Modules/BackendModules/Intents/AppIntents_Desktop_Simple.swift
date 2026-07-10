@@ -9,13 +9,13 @@ import PZWidgetsKit
 
 // MARK: - PZDesktopIntent4GameOnly + WidgetConfigurationIntent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension PZDesktopIntent4GameOnly: WidgetConfigurationIntent {}
 
 // MARK: - PZDesktopIntent4GameOnly
 
 /// Used in those game-specifiable widgets irrelevant to a profile.
-@available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *)
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct PZDesktopIntent4GameOnly: AppIntent, CustomIntentMigratedAppIntent {
     // MARK: Lifecycle
 

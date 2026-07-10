@@ -15,9 +15,8 @@ import WallpaperKit
 // MARK: - ContentView4iOS14
 
 /// 业务逻辑：
-/// iOS 16.1 为止的系统：仅允许导出资料。
-/// iOS 16.2 开始的 iOS 16 系统：允许导出资料、使用小工具、体力通知、Apple Watch。
-/// iOS 17+：仅允许导出资料，但该画面允许关闭。用户关闭该画面之后可继续照常使用 App，只是所有功能全部放弃维护。
+/// iOS 16 仅允许导出资料。
+/// iOS 17+：披萨小助手仅允许导出资料，但该画面允许关闭。用户关闭该画面之后可继续照常使用 App，只是所有功能全部放弃维护。
 public struct ContentView4iOS14: View {
     // MARK: Lifecycle
 
@@ -51,13 +50,11 @@ public struct ContentView4iOS14: View {
     @ViewBuilder var contentsInsideNavigationContainer: some View {
         List {
             errorBanner
-            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+            if #available(iOS 17.0, macCatalyst 17.0, *) {
                 Text("refugee.crossAppMigrationNotice.headerText", bundle: .currentSPM)
                     .font(.body)
                     .bold()
                     .foregroundStyle(.red)
-            } else if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) {
-                renderAvailableFeaturesAtThisPage()
             }
             Section {
                 refugeeContentCounterSectionContent
@@ -106,7 +103,7 @@ public struct ContentView4iOS14: View {
             }
         }
         .apply { coreContent in
-            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+            if #available(iOS 17.0, macCatalyst 17.0, *) {
                 coreContent.modifier(
                     RefugeeExportModifier(
                         theVM: theVM,
@@ -134,88 +131,6 @@ public struct ContentView4iOS14: View {
         .saturation(theVM.taskState == .busy ? 0 : 1)
     }
 
-    @available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *)
-    @ViewBuilder
-    func drawLiveActivityCallerRow() -> some View {
-        LabeledContent {
-            Menu {
-                ForEach(pzProfilesSorted, id: \.uuid) { profile in
-                    Button(profile.asTinyMenuLabelText()) {
-                        theVM.fireTask(
-                            givenTask: {
-                                let dailyNote = try await profile.getDailyNote(cached: true)
-                                try await StaminaLiveActivityController.shared.createResinRecoveryTimerActivity(
-                                    for: profile,
-                                    data: dailyNote
-                                )
-                            }
-                        )
-                    }
-                }
-            } label: {
-                Text("refugee.liveActivity.tapHereToInitiate", bundle: .currentSPM)
-            }
-        } label: {
-            Label {
-                Text("refugee.liveActivity.featureLabel", bundle: .currentSPM)
-            } icon: {
-                Image(systemSymbol: .timerSquare)
-            }
-        }
-    }
-
-    @available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *)
-    @ViewBuilder
-    func renderAvailableFeaturesAtThisPage() -> some View {
-        Section {
-            NavigationLink {
-                ProfileManagerPageContent(wrappedByNavStack: true)
-            } label: {
-                Label(
-                    "profileMgr.manage.title".i18nPZHelper,
-                    systemSymbol: .personTextRectangleFill
-                )
-            }
-            NavigationLink(destination: NotificationSettingsPageContent.init) {
-                Label(NotificationSettingsPageContent.navTitle, systemSymbol: .bellBadge)
-            }
-            LiveActivitySettingNavigator()
-            if !pzProfilesMap.isEmpty {
-                drawLiveActivityCallerRow()
-            }
-            AppLanguageSwitcher()
-            NavigationLink(
-                destination: AboutView.init,
-                label: {
-                    Label {
-                        Text(verbatim: AboutView.navTitle)
-                    } icon: {
-                        AboutView.navIcon
-                    }
-                }
-            )
-        } header: {
-            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-                Text("refugee.limitedServiceCategory4iOS17.header", bundle: .currentSPM)
-                    .textCase(.none)
-            } else {
-                Text("refugee.limitedServiceCategory4iOS16.header", bundle: .currentSPM)
-                    .textCase(.none)
-            }
-        } footer: {
-            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
-                Text("refugee.limitedServiceCategory4iOS17.footer", bundle: .currentSPM)
-                    .textCase(.none)
-            } else {
-                Text("refugee.limitedServiceCategory4iOS16.footer", bundle: .currentSPM)
-                    .textCase(.none)
-            }
-        }
-        .fontWidth(.condensed)
-        WatchDataPusherButton()
-            .fontWidth(.condensed)
-    }
-
     @ViewBuilder
     func renderBottomFooterContents() -> some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -223,7 +138,7 @@ public struct ContentView4iOS14: View {
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundTint(.accentColor)
-            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+            if #available(iOS 17.0, macCatalyst 17.0, *) {
                 Text("refugee.footer.whyServiceTerminatedInPublic", bundle: .currentSPM)
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -262,11 +177,6 @@ public struct ContentView4iOS14: View {
         Array(pzProfilesMap.values.sorted { $0.priority < $1.priority })
     }
 
-    private var isOS23OrNewer: Bool {
-        if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) { return true }
-        return false
-    }
-
     private var isExportResultAvailable: Binding<Bool> {
         .init(get: { exportResult != nil }, set: { _ in })
     }
@@ -279,7 +189,7 @@ public struct ContentView4iOS14: View {
         switch exportResult {
         case let .success(url):
             var description = ""
-            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+            if #available(iOS 17.0, macCatalyst 17.0, *) {
                 switch theVM.lastExportedDocumentKind {
                 case .refugee:
                     description += "refugee.export.fileType.refugee".i18nPZHelper + "\n\n"
@@ -306,7 +216,7 @@ public struct ContentView4iOS14: View {
     }
 
     private var navTitle: Text {
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, *) {
             Text("refugee.navTitle.noticingEndOfMaintenance", bundle: .currentSPM)
         } else {
             Text(verbatim: Pizza.appTitleLocalizedFull)
@@ -332,7 +242,7 @@ public struct ContentView4iOS14: View {
                     .padding(.leading)
             }
         }
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, *) {
             if theVM.gachaEntriesCountModern > 0 {
                 HStack {
                     Text("refugee.exportableCount.gachaEntries", bundle: .currentSPM)
@@ -355,7 +265,7 @@ public struct ContentView4iOS14: View {
             }
         }
         if !hasData {
-            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+            if #available(iOS 17.0, macCatalyst 17.0, *) {
                 Text("refugee.noDataExportable.refugeeMigratingToLatteHelper", bundle: .currentSPM)
                     .foregroundTint(.secondary)
             } else {
@@ -366,7 +276,7 @@ public struct ContentView4iOS14: View {
     }
 
     @ViewBuilder private var exportButtonAtTrailingToolbar: some View {
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, *) {
             Menu {
                 // Local Profiles
                 Button {
@@ -428,7 +338,7 @@ public struct ContentView4iOS14: View {
 // MARK: - RefugeeExportModifier
 
 /// 統一的匯出處理 ViewModifier，用於避免 SwiftUI 多個 fileExporter 只有最後一個生效的 bug。
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct RefugeeExportModifier: ViewModifier {
     // MARK: Internal
 

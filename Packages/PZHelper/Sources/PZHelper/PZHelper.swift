@@ -53,7 +53,7 @@ extension PZHelper {
                 // Refs: https://kyleye.top/posts/swiftui-textfield-memory-leak/
                 .autocorrectionDisabled(true)
                 .apply { mainContents in
-                    if #available(iOS 16.2, macCatalyst 16.2, *) {
+                    if #available(iOS 17.0, macCatalyst 17.0, *) {
                         mainContents
                             .onAppear {
                                 startupTasks()
@@ -111,7 +111,7 @@ extension PZHelper {
     @MainActor static var isApplicationBooted = false
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZHelper {
     @MainActor
     static func startupTasks() {
@@ -121,19 +121,15 @@ extension PZHelper {
                 .tryAutoInheritOldLocalAccounts(resetNotifications: true)
         }
         PZHelper.setupSpotlightSearch()
-        if #available(iOS 17.0, *) {
-            GachaRootView.getFAQView = { AnyView(FAQView()) }
-            Enka.Sputnik.migrateCachedProfilesFromUserDefaultsToFiles()
-        } else {
-            // Fallback on earlier versions
-        }
+        GachaRootView.getFAQView = { AnyView(FAQView()) }
+        Enka.Sputnik.migrateCachedProfilesFromUserDefaultsToFiles()
         UserWallpaperFileHandler.migrateUserWallpapersFromUserDefaultsToFiles()
     }
 }
 
 // MARK: - AppInitializer
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct AppInitializer: ViewModifier {
     // MARK: Lifecycle
 
@@ -160,7 +156,7 @@ private struct AppInitializer: ViewModifier {
 extension View {
     @ViewBuilder
     func initializeApp() -> some View {
-        if #available(iOS 16.2, *) {
+        if #available(iOS 17.0, *) {
             modifier(AppInitializer())
         } else {
             self

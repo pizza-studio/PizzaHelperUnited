@@ -37,33 +37,33 @@ struct OfficialFeedWidget: Widget {
         .containerBackgroundRemovable(false)
     }
 }
-
-#if ENABLE_ININTENTS_BACKPORTS
-
-@available(iOS 16.2, macCatalyst 16.2, *)
-@available(watchOS, unavailable)
-struct INOfficialFeedWidget: Widget {
-    let kind: String = "OfficialFeedWidget".asBackportedWidgetKindName
-
-    var body: some WidgetConfiguration {
-        IntentConfiguration(
-            kind: "OfficialFeedWidget",
-            intent: INOfficialFeedWidgetProvider.Intent.self,
-            provider: INOfficialFeedWidgetProvider()
-        ) { entry in
-            DesktopWidgets.OfficialFeedWidgetView(
-                entry: entry,
-                showLeadingBorder: true
-            )
-        }
-        .configurationDisplayName("pzWidgetsKit.officialFeed.title".i18nWidgets)
-        .description("pzWidgetsKit.officialFeed.description".i18nWidgets)
-        .supportedFamilies(
-            [.systemMedium, .systemLarge, .systemExtraLarge].backportsOnly
-        )
-        .containerBackgroundRemovable(false)
-    }
-}
-#endif
+//
+// #if ENABLE_ININTENTS_BACKPORTS
+//
+// @available(iOS 16.2, macCatalyst 16.2, *)
+// @available(watchOS, unavailable)
+// struct INOfficialFeedWidget: Widget {
+//    let kind: String = "OfficialFeedWidget".asBackportedWidgetKindName
+//
+//    var body: some WidgetConfiguration {
+//        IntentConfiguration(
+//            kind: "OfficialFeedWidget",
+//            intent: INOfficialFeedWidgetProvider.Intent.self,
+//            provider: INOfficialFeedWidgetProvider()
+//        ) { entry in
+//            DesktopWidgets.OfficialFeedWidgetView(
+//                entry: entry,
+//                showLeadingBorder: true
+//            )
+//        }
+//        .configurationDisplayName("pzWidgetsKit.officialFeed.title".i18nWidgets)
+//        .description("pzWidgetsKit.officialFeed.description".i18nWidgets)
+//        .supportedFamilies(
+//            [.systemMedium, .systemLarge, .systemExtraLarge].backportsOnly
+//        )
+//        .containerBackgroundRemovable(false)
+//    }
+// }
+// #endif
 
 #endif

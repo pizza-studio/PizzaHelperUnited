@@ -9,13 +9,13 @@ import PZWidgetsKit
 
 // MARK: - PZEmbeddedIntent4ProfileOnly + WidgetConfigurationIntent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension PZEmbeddedIntent4ProfileOnly: WidgetConfigurationIntent {}
 
 // MARK: - PZEmbeddedIntent4ProfileOnly
 
 // Only for watchOS and iOS_Lock_Screen.
-@available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 public struct PZEmbeddedIntent4ProfileOnly: AppIntent, CustomIntentMigratedAppIntent,
     ProfileWidgetIntentProtocol {
     // MARK: Lifecycle
@@ -63,13 +63,13 @@ public struct PZEmbeddedIntent4ProfileOnly: AppIntent, CustomIntentMigratedAppIn
 
 // MARK: - PZEmbeddedIntent4ProfileMisc + WidgetConfigurationIntent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension PZEmbeddedIntent4ProfileMisc: WidgetConfigurationIntent {}
 
 // MARK: - PZEmbeddedIntent4ProfileMisc
 
 // Only for watchOS and iOS_Lock_Screen.
-@available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 public struct PZEmbeddedIntent4ProfileMisc: AppIntent, CustomIntentMigratedAppIntent,
     ProfileWidgetIntentProtocol {
     // MARK: Lifecycle

@@ -17,7 +17,7 @@ import SwiftUI
 /// 所以只能放弃使用与后者有关的 Environment 层面的 SwiftData API。
 /// 不然的话，在 iOS 26 / macOS 26 系统下会崩溃。
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct ProfileManagerPageContent: View {
     // MARK: Lifecycle
 
@@ -50,7 +50,7 @@ struct ProfileManagerPageContent: View {
                     NavigationLink {
                         let newProfile = PZProfileRef.makeDefaultInstance()
                         CreateProfileSheetView(profile: newProfile, isVisible: isSheetVisible)
-                            .environmentObject(alertToastEventStatus)
+                            .environment(alertToastEventStatus)
                     } label: {
                         Label("profileMgr.new".i18nPZHelper, systemSymbol: .plusCircle)
                     }
@@ -79,7 +79,7 @@ struct ProfileManagerPageContent: View {
                             if Self.isOS25OrNewer {
                                 NavigationLink {
                                     EditProfileSheetView(profile: profileRef, isVisible: isSheetVisible)
-                                        .environmentObject(alertToastEventStatus)
+                                        .environment(alertToastEventStatus)
                                 } label: {
                                     label
                                 }
@@ -172,8 +172,8 @@ struct ProfileManagerPageContent: View {
         return false
     }
 
-    @StateObject private var theVM: ProfileManagerVM = .shared
-    @StateObject private var alertToastEventStatus: AlertToastEventStatus = .init()
+    @State private var theVM: ProfileManagerVM = .shared
+    @State private var alertToastEventStatus: AlertToastEventStatus = .init()
     @State private var errorMessage: String?
     @State private var sheetType: SheetType?
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
@@ -238,11 +238,11 @@ struct ProfileManagerPageContent: View {
                 switch currentSheetType {
                 case let .createNewProfile(newProfile):
                     CreateProfileSheetView(profile: newProfile, isVisible: isSheetVisible)
-                        .environmentObject(alertToastEventStatus)
+                        .environment(alertToastEventStatus)
                         .interactiveDismissDisabled(true)
                 case let .editExistingProfile(existingProfile):
                     EditProfileSheetView(profile: existingProfile, isVisible: isSheetVisible)
-                        .environmentObject(alertToastEventStatus)
+                        .environment(alertToastEventStatus)
                         .interactiveDismissDisabled(true)
                 }
             }
@@ -333,7 +333,7 @@ struct ProfileManagerPageContent: View {
         Divider()
         NavigationLink {
             PFMgrAdvancedOptionsView()
-                .environmentObject(alertToastEventStatus)
+                .environment(alertToastEventStatus)
         } label: {
             Label {
                 Text(verbatim: PFMgrAdvancedOptionsView.navTitle)
@@ -403,25 +403,23 @@ struct ProfileManagerPageContent: View {
                     // 特殊处理：当且仅当当前删掉的账号不是重复的本地账号的时候，才清空展柜缓存與通知。
                     guard !remainingUIDs.contains(currentProfile.uidWithGame) else { return }
                     PZNotificationCenter.deleteDailyNoteNotification(for: currentProfile)
-                    if #available(iOS 17.0, macCatalyst 17.0, *) {
-                        if clearShowCaseCache {
-                            switch currentProfile.game {
-                            case .genshinImpact:
-                                Enka.Sputnik.shared.db4GI.removeCachedProfileRAW(
-                                    uid: currentProfile.uid
-                                )
-                                Enka.EnkaDB4GI.HYLAvatarDetailType.purgeCachedLocalAvatarRaws(
-                                    uid: currentProfile.uid
-                                )
-                            case .starRail:
-                                Enka.Sputnik.shared.db4HSR.removeCachedProfileRAW(
-                                    uid: currentProfile.uid
-                                )
-                                Enka.EnkaDB4HSR.HYLAvatarDetailType.purgeCachedLocalAvatarRaws(
-                                    uid: currentProfile.uid
-                                )
-                            case .zenlessZone: break // 临时设定。
-                            }
+                    if clearShowCaseCache {
+                        switch currentProfile.game {
+                        case .genshinImpact:
+                            Enka.Sputnik.shared.db4GI.removeCachedProfileRAW(
+                                uid: currentProfile.uid
+                            )
+                            Enka.EnkaDB4GI.HYLAvatarDetailType.purgeCachedLocalAvatarRaws(
+                                uid: currentProfile.uid
+                            )
+                        case .starRail:
+                            Enka.Sputnik.shared.db4HSR.removeCachedProfileRAW(
+                                uid: currentProfile.uid
+                            )
+                            Enka.EnkaDB4HSR.HYLAvatarDetailType.purgeCachedLocalAvatarRaws(
+                                uid: currentProfile.uid
+                            )
+                        case .zenlessZone: break // 临时设定。
                         }
                     }
                 }
@@ -538,7 +536,7 @@ struct ProfileManagerPageContent: View {
 
 // MARK: ProfileManagerPageContent.SheetType
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ProfileManagerPageContent {
     typealias SheetType = ProfileManagerVM.SheetType
 }

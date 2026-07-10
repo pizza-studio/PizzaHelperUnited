@@ -4,7 +4,8 @@
 
 import Foundation
 import PZBaseKit
-@available(iOS 16.0, macCatalyst 16.0, *)
+
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Defaults.Keys {
     public static let officialFeedMostRecentFetchDate = Key<[String: Date]>(
         "officialFeedMostRecentFetchDate",

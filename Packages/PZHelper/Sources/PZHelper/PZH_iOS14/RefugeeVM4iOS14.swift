@@ -44,7 +44,7 @@ public final class RefugeeVM4iOS14: TaskManagedVMBackported {
 
     // MARK: Internal
 
-    @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) var isExportDialogVisible: Binding<Bool> {
+    @available(iOS 17.0, macCatalyst 17.0, *) var isExportDialogVisible: Binding<Bool> {
         .init(get: {
             self.currentExportDocumentType != nil
         }, set: { newValue in
@@ -94,21 +94,26 @@ public final class RefugeeVM4iOS14: TaskManagedVMBackported {
 
 extension RefugeeVM4iOS14 {
     /// 舊版系統（iOS 16.x 及更早）使用的匯出方法。
-    /// 由於這些系統不支援本次新增的統一匯出功能，故保留此方法。
+    /// 從 CDProfileMOActor 與 CDAccountMOActor 拉取資料，
+    /// Game-UID 相同時優先使用 CDProfileMOActor 的資料。
     public func startDocumentationPreparationTask(forced: Bool) {
         fireTask(
             cancelPreviousTask: forced, givenTask: {
                 var result = PZRefugeeFile()
                 result.oldGachaEntries4GI = try await CDGachaMOActor.shared?.getAllGenshinDataEntriesVanilla() ?? []
-                if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) {
-                    result.newProfiles = ProfileManagerVM.shared.profiles
-                } else {
-                    result.oldProfiles4GI = try await CDAccountMOActor.shared?.allAccountDataForGenshin() ?? []
-                }
+
+                // CDProfileMOActor（現代格式）優先。
+                let modernProfiles = await CDProfileMOActor.shared?.getSendableProfiles() ?? []
+                result.newProfiles = modernProfiles.sorted { $0.priority < $1.priority }
+
+                // CDAccountMOActor（舊格式）：僅保留 CDProfileMOActor 未涵蓋的 (uid, game) 組合。
+                // 注意不同遊戲的 UID 可能重複，故必須以 UID + Game 作為去重依據。
+                let modernGIUIDs = Set(modernProfiles.filter { $0.game == .genshinImpact }.map { $0.uid })
+                let oldAccounts = try await CDAccountMOActor.shared?.allAccountDataForGenshin() ?? []
+                result.oldProfiles4GI = oldAccounts.filter { !modernGIUIDs.contains($0.uid) }
+
                 return result
             }, completionHandler: { [weak self] _ in
-                // 舊版系統的匯出邏輯在此不處理，因為舊版本沒有對應的 UI 處理。
-                // 但這個方法需要存在以避免編譯錯誤。
                 self?.forceStopTheTask()
             }
         )
@@ -119,12 +124,16 @@ extension RefugeeVM4iOS14 {
             cancelPreviousTask: forced, givenTask: {
                 var (intGacha, intGachaModern, intProfile) = (0, 0, 0)
                 intGacha = try await CDGachaMOActor.shared?.countAllDataEntries(for: .genshinImpact) ?? 0
-                if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) {
-                    intProfile = ProfileManagerVM.shared.profiles.count
-                } else {
-                    intProfile = try await CDAccountMOActor.shared?.countAllAccountData(for: .genshinImpact) ?? 0
-                }
-                if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+
+                // 從 CDProfileMOActor 與 CDAccountMOActor 合併計數，CDProfileMOActor 優先。
+                // 不同遊戲的 UID 可能重複，故以 UID + Game 作為去重依據。
+                let modernProfiles = await CDProfileMOActor.shared?.getSendableProfiles() ?? []
+                let modernGIUIDs = Set(modernProfiles.filter { $0.game == .genshinImpact }.map { $0.uid })
+                let oldAccounts = try await CDAccountMOActor.shared?.allAccountDataForGenshin() ?? []
+                let uniqueOldCount = oldAccounts.filter { !modernGIUIDs.contains($0.uid) }.count
+                intProfile = modernProfiles.count + uniqueOldCount
+
+                if #available(iOS 17.0, macCatalyst 17.0, *) {
                     intGachaModern = try await GachaActor.shared.countAllDataEntries(.init())
                 }
                 return (intGacha, intGachaModern, intProfile)
@@ -140,7 +149,7 @@ extension RefugeeVM4iOS14 {
         )
     }
 
-    @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+    @available(iOS 17.0, macCatalyst 17.0, *)
     public func prepareRefugeeExportDocument(forced: Bool) {
         fireTask(
             cancelPreviousTask: forced, givenTask: {
@@ -158,7 +167,7 @@ extension RefugeeVM4iOS14 {
         )
     }
 
-    @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+    @available(iOS 17.0, macCatalyst 17.0, *)
     public func prepareProfilesExportDocument() {
         let profiles = ProfileManagerVM.shared.profiles
         guard !profiles.isEmpty else { return }
@@ -167,7 +176,7 @@ extension RefugeeVM4iOS14 {
         }
     }
 
-    @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+    @available(iOS 17.0, macCatalyst 17.0, *)
     public func prepareWallpapersExportDocument() {
         let wallpapers = UserWallpaperFileHandler.getAllUserWallpapers()
         guard !wallpapers.isEmpty else { return }
@@ -206,7 +215,7 @@ extension RefugeeVM4iOS14 {
         public var defaultFileName: String {
             switch self {
             case .refugee:
-                if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+                if #available(iOS 17.0, macCatalyst 17.0, *) {
                     return "ThePizzaHelper_RefugeeMigrationData"
                 } else {
                     return "PizzaHelper4Genshin_RefugeeMigrationData"
@@ -230,7 +239,7 @@ extension RefugeeVM4iOS14 {
 // MARK: - RefugeeUnifiedExportDocument
 
 /// 統一的匯出文檔包裝，封裝多種匯出類型。
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct RefugeeUnifiedExportDocument: FileDocument {
     // MARK: Lifecycle
 

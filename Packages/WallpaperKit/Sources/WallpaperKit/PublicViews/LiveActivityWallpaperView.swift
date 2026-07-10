@@ -14,7 +14,7 @@ extension BundledWallpaper {
 
 // MARK: - LiveActivityWallpaperView
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 public struct LiveActivityWallpaperView: View {
     // MARK: Lifecycle
 
@@ -50,8 +50,8 @@ public struct LiveActivityWallpaperView: View {
 
     @Environment(\.colorScheme) private var colorScheme
 
-    @StateObject private var broadcaster = Broadcaster.shared
-    @StateObject private var folderMonitor = UserWallpaperFileHandler.folderMonitor
+    @State private var broadcaster = Broadcaster.shared
+    @State private var folderMonitor = UserWallpaperFileHandler.folderMonitor
 
     private let game: Pizza.SupportedGame?
     private let wallpaper: Wallpaper?

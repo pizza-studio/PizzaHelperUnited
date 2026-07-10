@@ -7,7 +7,7 @@ import SwiftUI
 import WidgetKit
 
 #if !os(watchOS)
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Font {
     public static func customWidgetFont(size: CGFloat) -> Font? {
         switch Defaults[.widgetStaminaFontPref] {
@@ -26,7 +26,7 @@ extension Font {
     }
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Defaults.Keys {
     public static let widgetStaminaFontPref = Key<WidgetStaminaFontStyle>(
         "widgetStaminaFontPref",
@@ -47,7 +47,7 @@ extension Defaults.Keys {
     )
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZWidgetsSPM {
     public struct WidgetSharedSettingsView: View {
         // MARK: Lifecycle

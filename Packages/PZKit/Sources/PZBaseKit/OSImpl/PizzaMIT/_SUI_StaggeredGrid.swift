@@ -7,8 +7,11 @@
 import Combine
 import SwiftUI
 
+#if !os(watchOS)
+
 // MARK: - StaggeredGrid
 
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendable>: View {
     // MARK: Lifecycle
 
@@ -71,7 +74,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
 
     // MARK: Private
 
-    @StateObject private var vm: StaggeredGridVM<T>
+    @State private var vm: StaggeredGridVM<T>
 
     private let columns: Int
     private let scrollAxis: Axis.Set
@@ -101,8 +104,9 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
 
 // MARK: - StaggeredGridVM
 
-@MainActor
-final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableObject {
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@Observable @MainActor
+final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
     // MARK: Lifecycle
 
     // MARK: - Initialization
@@ -115,7 +119,7 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableO
 
     // MARK: Internal
 
-    @Published var gridArray: [[T]] = []
+    var gridArray: [[T]] = []
 
     // MARK: - Methods
 
@@ -141,7 +145,7 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableO
 
     // MARK: Private
 
-    private var updateTask: Task<Void, Never>?
+    @ObservationIgnored private var updateTask: Task<Void, Never>?
 
     // 异步计算方法，会彻底打碎排序。慎用。
     private func computeGridArrayAsync(list: [T], columns: Int) async -> [[T]] {
@@ -178,6 +182,7 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableO
 
 // MARK: - API Compatibility
 
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension StaggeredGrid {
     public init(
         columns: Int,
@@ -203,3 +208,5 @@ extension StaggeredGrid {
         )
     }
 }
+
+#endif

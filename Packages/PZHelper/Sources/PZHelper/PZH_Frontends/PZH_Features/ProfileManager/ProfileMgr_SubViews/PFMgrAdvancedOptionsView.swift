@@ -7,13 +7,14 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct PFMgrAdvancedOptionsView: View {
     // MARK: Public
 
     public static let navTitle = "settings.profile.advanced.navTitle".i18nPZHelper
 
     public var body: some View {
+        @Bindable var alertToastEventStatus = alertToastEventStatus
         Form {
             Section {
                 Picker(selection: $situatePZProfileDBIntoGroupContainer) {
@@ -181,8 +182,8 @@ struct PFMgrAdvancedOptionsView: View {
     @Default(.automaticallyDeduplicatePZProfiles) private var automaticallyDeduplicatePZProfiles: Bool
     @Default(.situatePZProfileDBIntoGroupContainer) private var situatePZProfileDBIntoGroupContainer: Bool
     @Default(.recentlyPropagatedDeviceFingerprint) private var recentlyPropagatedDeviceFingerprint
-    @EnvironmentObject private var alertToastEventStatus: AlertToastEventStatus
-    @StateObject private var theVM: ProfileManagerVM = .shared
+    @Environment(AlertToastEventStatus.self) private var alertToastEventStatus: AlertToastEventStatus
+    @State private var theVM: ProfileManagerVM = .shared
     @State private var alertPresented: Bool = false
     @State private var clipboardJSONText: String = ""
 

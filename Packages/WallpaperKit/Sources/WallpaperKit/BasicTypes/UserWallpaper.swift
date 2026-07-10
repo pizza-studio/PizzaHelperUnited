@@ -22,13 +22,17 @@ public struct UserWallpaper: Identifiable, AbleToCodeSendHash {
 
     public init?(defaultsValueID: String?, validateImageData: Bool = false) {
         guard let defaultsValueID else { return nil }
-        guard let uuid = UUID(uuidString: defaultsValueID) else { return nil }
-        let matched = UserWallpaperFileHandler.getUserWallpaper(uuid: uuid)
-        guard let matched else { return nil }
-        if validateImageData {
-            guard matched.isImageDataValid else { return nil }
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
+            guard let uuid = UUID(uuidString: defaultsValueID) else { return nil }
+            let matched = UserWallpaperFileHandler.getUserWallpaper(uuid: uuid)
+            guard let matched else { return nil }
+            if validateImageData {
+                guard matched.isImageDataValid else { return nil }
+            }
+            self = matched
+        } else {
+            return nil
         }
-        self = matched
     }
 
     public init?(

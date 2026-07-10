@@ -12,7 +12,7 @@ import UniformTypeIdentifiers
 
 // MARK: - ProfileBackupRestoreMenu
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct ProfileBackupRestoreMenu<T: View>: View {
     // MARK: Lifecycle
 
@@ -90,8 +90,8 @@ struct ProfileBackupRestoreMenu<T: View>: View {
 
     // MARK: Private
 
-    @StateObject private var vm4ProfileExchange = ProfileBackupRestoreMenuCoordinator()
-    @StateObject private var vm4ProfileMgmt: ProfileManagerVM = .shared
+    @State private var vm4ProfileExchange = ProfileBackupRestoreMenuCoordinator()
+    @State private var vm4ProfileMgmt: ProfileManagerVM = .shared
 
     private let importCompletionHandler: (Result<URL, any Error>) -> Void
     private let extraItem: (() -> T)?
@@ -99,18 +99,18 @@ struct ProfileBackupRestoreMenu<T: View>: View {
 
 // MARK: - ProfileBackupRestoreMenuCoordinator
 
-@available(iOS 16.2, macCatalyst 16.2, *)
-@MainActor
-internal final class ProfileBackupRestoreMenuCoordinator: ObservableObject {
+@available(iOS 17.0, macCatalyst 17.0, *)
+@Observable @MainActor
+internal final class ProfileBackupRestoreMenuCoordinator {
     // MARK: Lifecycle
 
     public init() {}
 
     // MARK: Internal
 
-    @Published var fileSaveActionResult: Result<URL, any Error>?
-    @Published var currentExportableDocument: Result<PZProfilesDocument, Error>?
-    @Published var isImporterVisible: Bool = false
+    var fileSaveActionResult: Result<URL, any Error>?
+    var currentExportableDocument: Result<PZProfilesDocument, Error>?
+    var isImporterVisible: Bool = false
 
     var fileSaveActionResultMessagePack: (title: String, message: String) {
         switch fileSaveActionResult {

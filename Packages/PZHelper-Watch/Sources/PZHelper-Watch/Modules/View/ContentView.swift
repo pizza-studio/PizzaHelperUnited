@@ -39,7 +39,7 @@ public struct ContentView: View {
                     ForEach(profiles, id: \.uuid) { profile in
                         if let dailyNoteVM = multiNoteVM.vmMap[profile.uuid.uuidString] {
                             DetailNavigator()
-                                .environmentObject(dailyNoteVM)
+                                .environment(dailyNoteVM)
                         }
                     }
                     Section {
@@ -96,9 +96,9 @@ public struct ContentView: View {
     // MARK: Private
 
     @State private var lastRefreshDate: Date = .distantPast
-    @StateObject private var connectivityManager = AppleWatchSputnik.shared
-    @StateObject private var broadcaster = Broadcaster.shared
-    @StateObject private var multiNoteVM = MultiNoteViewModel.shared
+    @State private var connectivityManager = AppleWatchSputnik.shared
+    @State private var broadcaster = Broadcaster.shared
+    @State private var multiNoteVM = MultiNoteViewModel.shared
 
     @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
 
@@ -192,6 +192,6 @@ private struct DetailNavigator: View {
 
     // MARK: Private
 
-    @EnvironmentObject private var dailyNoteViewModel: DailyNoteViewModel
-    @StateObject private var broadcaster = Broadcaster.shared
+    @Environment(DailyNoteViewModel.self) private var dailyNoteViewModel: DailyNoteViewModel
+    @State private var broadcaster = Broadcaster.shared
 }

@@ -11,9 +11,9 @@ import Sworm
 public typealias CDProfileMOActor = PZCoreDataKit.CDProfileMOActor
 
 extension CDProfileMOActor {
-    @MainActor static var shared: CDProfileMOActor? {
+    @MainActor public static var shared: CDProfileMOActor? {
         guard !Pizza.isAppStoreReleaseAsLatteHelper else { return nil }
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
             return nil
         }
         guard !Pizza.isNotMainApp else { return nil }
@@ -90,6 +90,7 @@ extension CDProfileMOActor: PZProfileActorProtocol {
             self.syncAllDataToUserDefaults()
             if resetNotifications, profilesMigratedCount > 0 {
                 Task {
+                    guard #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) else { return }
                     await Broadcaster.shared.requireOSNotificationCenterAuthorization()
                     await Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
                 }

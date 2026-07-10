@@ -9,11 +9,15 @@ import PZBaseKit
 
 public enum UserWallpaperFileHandler {}
 
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension UserWallpaperFileHandler {
     @MainActor public static let folderMonitor: FolderMonitor = .init(url: userWallpaperFolderURL)
+}
 
+extension UserWallpaperFileHandler {
     /// 如果已经迁移过的话，这个函式不会有任何作用。
     public static func migrateUserWallpapersFromUserDefaultsToFiles() {
+        guard #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) else { return }
         UserDefaults.baseSuite.removeObject(forKey: "backgrounds4LiveActivity")
         UserDefaults.baseSuite.removeObject(forKey: "background4App")
         UserDefaults.baseSuite.removeObject(forKey: "userWallpapers4LiveActivity")
@@ -62,6 +66,7 @@ extension UserWallpaperFileHandler {
             removeWallpaper(uuid: $0, broadcastChanges: false)
         }
         Task { @MainActor in
+            guard #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) else { return }
             Broadcaster.shared.userWallpaperEntryChangesDidSave()
         }
     }
@@ -72,6 +77,7 @@ extension UserWallpaperFileHandler {
             try FileManager.default.removeItem(at: fileURL)
             if broadcastChanges {
                 Task { @MainActor in
+                    guard #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) else { return }
                     Broadcaster.shared.userWallpaperEntryChangesDidSave()
                 }
             }
@@ -88,6 +94,7 @@ extension UserWallpaperFileHandler {
         }
         if results == [true] {
             Task { @MainActor in
+                guard #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) else { return }
                 Broadcaster.shared.userWallpaperEntryChangesDidSave()
             }
         }
@@ -108,6 +115,7 @@ extension UserWallpaperFileHandler {
             )
             if broadcastNotificationChanges {
                 Task { @MainActor in
+                    guard #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) else { return }
                     Broadcaster.shared.userWallpaperEntryChangesDidSave()
                 }
             }

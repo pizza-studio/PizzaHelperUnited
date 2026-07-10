@@ -8,8 +8,8 @@ import PZBaseKit
 import PZCoreDataKit4LocalAccounts
 import SwiftData
 
-@available(iOS 16.0, macCatalyst 16.0, *)
-public final class ProfileManagerVM: TaskManagedVMBackported {
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+public final class ProfileManagerVM: TaskManagedVM {
     // MARK: Lifecycle
 
     public override init() {
@@ -56,22 +56,22 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
 
     public static let shared = ProfileManagerVM()
 
-    @Published public internal(set) var hasOldAccountDataDetected: Bool = false
+    public internal(set) var hasOldAccountDataDetected: Bool = false
 
     /// 此处沿用 PZProfileRef 作为指针格式，但不用于对 SwiftData 的写入。
-    @Published public internal(set) var profileRefMap: [String: PZProfileRef]
+    public internal(set) var profileRefMap: [String: PZProfileRef]
 
-    @Published public var sheetType: SheetType?
+    public var sheetType: SheetType?
 
     // 当前的所有 Profile 列表
-    @Published public internal(set) var profiles: [PZProfileSendable] {
+    public internal(set) var profiles: [PZProfileSendable] {
         didSet {
             discardUncommittedChanges()
         }
     }
 
     public var profileActor: (any PZProfileActorProtocol)? {
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
             PZProfileActor.shared
         } else {
             CDProfileMOActor.shared

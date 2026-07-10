@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - ProfileWidgetIntentProtocol
 
-@available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public protocol ProfileWidgetIntentProtocol {
     var showStaminaOnly: Bool { get }
     var useTinyGlassDisplayStyle: Bool { get }
@@ -24,12 +24,12 @@ public protocol ProfileWidgetIntentProtocol {
 
 // MARK: - PZDesktopIntent4SingleProfile + WidgetConfigurationIntent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension PZDesktopIntent4SingleProfile: WidgetConfigurationIntent {}
 
 // MARK: - PZDesktopIntent4SingleProfile
 
-@available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct PZDesktopIntent4SingleProfile: AppIntent, CustomIntentMigratedAppIntent,
     ProfileWidgetIntentProtocol {
     // MARK: Lifecycle
@@ -124,7 +124,7 @@ public struct PZDesktopIntent4SingleProfile: AppIntent, CustomIntentMigratedAppI
 
 // MARK: - PZDesktopIntent4DualProfiles + WidgetConfigurationIntent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension PZDesktopIntent4DualProfiles: WidgetConfigurationIntent {}
 
 // MARK: - PZDesktopIntent4DualProfiles
@@ -132,7 +132,7 @@ extension PZDesktopIntent4DualProfiles: WidgetConfigurationIntent {}
 // Only for iOS Springboard Widgets and macOS Desktop Widgets.
 // 该 Intent 允许指定两个本地帐号。
 
-@available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct PZDesktopIntent4DualProfiles: AppIntent, CustomIntentMigratedAppIntent,
     ProfileWidgetIntentProtocol {
     // MARK: Lifecycle

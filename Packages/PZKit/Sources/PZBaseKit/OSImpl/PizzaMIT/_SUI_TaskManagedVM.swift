@@ -12,8 +12,7 @@ import SwiftUI
 // MARK: - TaskManagedVM
 
 @available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
-@Observable
-@MainActor
+@Observable @MainActor
 open class TaskManagedVM: TaskManagedVMProtocol {
     // MARK: Lifecycle
 

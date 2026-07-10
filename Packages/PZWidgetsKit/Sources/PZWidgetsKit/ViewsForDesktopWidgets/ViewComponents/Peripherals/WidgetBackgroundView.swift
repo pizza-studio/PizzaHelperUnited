@@ -9,7 +9,7 @@ import WidgetKit
 
 #if !os(watchOS)
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
     public typealias WidgetBackgroundView = WidgetBackgroundView4DesktopWidgets
@@ -17,7 +17,7 @@ extension DesktopWidgets {
 
 // MARK: - WidgetBackgroundView4DesktopWidgets
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
 public struct WidgetBackgroundView4DesktopWidgets: View {
     // MARK: Lifecycle
@@ -53,8 +53,8 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
 
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
     @Environment(\.widgetFamily) private var widgetFamily: WidgetFamily
-    @StateObject private var broadcaster = Broadcaster.shared
-    @StateObject private var folderMonitor = UserWallpaperFileHandler.folderMonitor
+    @State private var broadcaster = Broadcaster.shared
+    @State private var folderMonitor = UserWallpaperFileHandler.folderMonitor
 
     private let background: WidgetBackground
     private let darkModeOn: Bool
@@ -158,7 +158,7 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
 
 // MARK: - ContainerBackgroundModifier
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension View {
     #if !os(watchOS)
     @available(watchOS, unavailable)
@@ -180,11 +180,7 @@ extension View {
         viewConfig: WidgetViewConfig
     )
         -> some View {
-        if #available(iOS 17.0, macCatalyst 17.0, *) {
-            modifier(ContainerBackgroundStandbyDetector(viewConfig: viewConfig))
-        } else {
-            self
-        }
+        modifier(ContainerBackgroundStandbyDetector(viewConfig: viewConfig))
     }
     #endif
 
@@ -196,19 +192,13 @@ extension View {
 
 // MARK: - SmartStackWidgetContainerBackground
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
     let background: () -> B
 
     func body(content: Content) -> some View {
-        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
-            content.containerBackground(for: .widget) {
-                background()
-            }
-        } else {
-            content.background {
-                background()
-            }
+        content.containerBackground(for: .widget) {
+            background()
         }
     }
 }
@@ -217,23 +207,13 @@ private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
 
 // MARK: - ContainerBackgroundModifier
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
 private struct ContainerBackgroundModifier: ViewModifier {
     var viewConfig: WidgetViewConfig
 
     func body(content: Content) -> some View {
-        if #available(iOS 17, *) {
-            content.containerBackgroundStandbyDetector(viewConfig: viewConfig)
-        } else {
-            WidgetBackgroundView4DesktopWidgets(
-                background: viewConfig.background,
-                darkModeOn: viewConfig.isDarkModeRespected
-            )
-            .overlay {
-                content
-            }
-        }
+        content.containerBackgroundStandbyDetector(viewConfig: viewConfig)
     }
 }
 

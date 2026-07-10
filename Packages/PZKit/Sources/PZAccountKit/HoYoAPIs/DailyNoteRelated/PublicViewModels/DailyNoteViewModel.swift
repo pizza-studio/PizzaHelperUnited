@@ -10,8 +10,7 @@ import SwiftUI
 
 // MARK: - MultiNoteViewModel
 
-#if !os(watchOS)
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 @Observable @MainActor
 public final class MultiNoteViewModel {
     // MARK: Lifecycle
@@ -31,35 +30,8 @@ public final class MultiNoteViewModel {
 
     public var vmMap: [String: DailyNoteViewModel] = [:]
 }
-#else
-@MainActor
-public final class MultiNoteViewModel: ObservableObject {
-    // MARK: Lifecycle
 
-    public init() {
-        updateVMInstances()
-        Task { [weak self] in
-            for await _ in Defaults.updates(.pzProfiles) {
-                self?.updateVMInstances()
-            }
-        }
-    }
-
-    // MARK: Public
-
-    public static let shared: MultiNoteViewModel = .init()
-
-    @Published public var vmMap: [String: DailyNoteViewModel] = [:] {
-        didSet {
-            objectWillChange.send()
-        }
-    }
-}
-#endif
-
-#if !os(watchOS)
-@available(iOS 17.0, macCatalyst 17.0, *)
-#endif
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension MultiNoteViewModel {
     public func updateVMInstances() {
         let dailyNoteVMMapKeys = Set(vmMap.keys)
@@ -85,9 +57,7 @@ extension MultiNoteViewModel {
 
 // 因为该 VM 也用于 Apple Watch，所以塞到 PZAccountKit 里面。
 
-#if !os(watchOS)
-
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 @Observable @MainActor
 public final class DailyNoteViewModel: TaskManagedVM {
     // MARK: Lifecycle
@@ -118,43 +88,7 @@ public final class DailyNoteViewModel: TaskManagedVM {
     @ObservationIgnored private let extraTask: ((any DailyNoteProtocol) -> Void)?
 }
 
-#else
-
-@MainActor
-public final class DailyNoteViewModel: TaskManagedVMBackported {
-    // MARK: Lifecycle
-
-    /// Initializes a new instance of the view model.
-    ///
-    /// - Parameter account: The account for which the daily note will be fetched.
-    public init(profile: PZProfileSendable, extraTaskAfterFetch: ((any DailyNoteProtocol) -> Void)? = nil) {
-        self.profile = profile
-        self.extraTask = extraTaskAfterFetch
-        super.init()
-        getDailyNoteUncheck(getCachedResult: true)
-    }
-
-    // MARK: Public
-
-    /// The fetched daily note result.
-    @Published public private(set) var dailyNote: (any DailyNoteProtocol)?
-
-    /// The date when the daily note was last refreshed.
-    @Published public private(set) var refreshDate: Date?
-
-    /// The account for which the daily note is being fetched.
-    @Published public var profile: PZProfileSendable
-
-    // MARK: Private
-
-    private let extraTask: ((any DailyNoteProtocol) -> Void)?
-}
-
-#endif
-
-#if !os(watchOS)
-@available(iOS 17.0, macCatalyst 17.0, *)
-#endif
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension DailyNoteViewModel {
     public enum Status: Sendable {
         case succeed(dailyNote: any DailyNoteProtocol, refreshDate: Date)

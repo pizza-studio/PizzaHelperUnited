@@ -105,7 +105,7 @@ extension GeetestValidateView: NSViewRepresentable {
 }
 
 #elseif canImport(UIKit)
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GeetestValidateView: UIViewRepresentable {
     @MainActor
     func makeUIView(context: Context) -> WKWebView {

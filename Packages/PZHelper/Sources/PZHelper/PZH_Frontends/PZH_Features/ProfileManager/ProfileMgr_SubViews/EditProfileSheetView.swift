@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - ProfileManagerPageContent.EditProfileSheetView
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ProfileManagerPageContent {
     struct EditProfileSheetView: View {
         // MARK: Lifecycle
@@ -69,12 +69,12 @@ extension ProfileManagerPageContent {
             return false
         }
 
-        @StateObject private var profile: PZProfileRef
+        @State private var profile: PZProfileRef
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
-        @StateObject private var theVM: ProfileManagerVM = .shared
+        @State private var theVM: ProfileManagerVM = .shared
         @Binding private var isVisible: Bool
-        @EnvironmentObject private var alertToastEventStatus: AlertToastEventStatus
+        @Environment(AlertToastEventStatus.self) private var alertToastEventStatus: AlertToastEventStatus
         @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
         private let profileBeforeEdit: PZProfileSendable

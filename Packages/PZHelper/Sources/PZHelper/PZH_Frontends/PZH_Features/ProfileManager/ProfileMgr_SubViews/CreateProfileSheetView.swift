@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - ProfileManagerPageContent.CreateProfileSheetView
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ProfileManagerPageContent {
     struct CreateProfileSheetView: View {
         // MARK: Lifecycle
@@ -318,7 +318,7 @@ extension ProfileManagerPageContent {
             return false
         }
 
-        @StateObject private var profile: PZProfileRef
+        @State private var profile: PZProfileRef
         @State private var importAllUIDs: Bool = true
         @State private var isGetAccountFailAlertShown: Bool = false
         @State private var getAccountError: GetAccountError?
@@ -328,15 +328,15 @@ extension ProfileManagerPageContent {
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
         @Binding private var isVisible: Bool
-        @StateObject private var theVM: ProfileManagerVM = .shared
-        @EnvironmentObject private var alertToastEventStatus: AlertToastEventStatus
+        @State private var theVM: ProfileManagerVM = .shared
+        @Environment(AlertToastEventStatus.self) private var alertToastEventStatus: AlertToastEventStatus
         @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     }
 }
 
 // MARK: - RequireLoginView
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct RequireLoginView: View {
     // MARK: Lifecycle
 
@@ -449,7 +449,7 @@ private struct RequireLoginView: View {
 
 // MARK: - ExplanationView
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct ExplanationView: View {
     // MARK: Internal
 

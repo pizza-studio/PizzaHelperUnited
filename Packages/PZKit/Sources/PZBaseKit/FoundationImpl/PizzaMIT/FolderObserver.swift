@@ -5,8 +5,9 @@
 import Combine
 import Foundation
 
-@MainActor
-public final class FolderMonitor: ObservableObject {
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@Observable @MainActor
+public final class FolderMonitor {
     // MARK: Lifecycle
 
     // MARK: - Initialization
@@ -19,9 +20,11 @@ public final class FolderMonitor: ObservableObject {
 
     deinit {
         // Synchronously cancel monitoring task
-        isMonitoring = false
-        monitoringTask?.cancel()
-        monitoringTask = nil
+        DispatchQueue.main.sync {
+            isMonitoring = false
+            monitoringTask?.cancel()
+            monitoringTask = nil
+        }
     }
 
     // MARK: Public
@@ -29,7 +32,7 @@ public final class FolderMonitor: ObservableObject {
     /// URL for the directory being monitored.
     public let url: URL
 
-    @Published public private(set) var stateHash: UUID = .init()
+    public private(set) var stateHash: UUID = .init()
 
     // MARK: - Monitoring
 
