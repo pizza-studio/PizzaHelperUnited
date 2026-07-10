@@ -3,9 +3,6 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import AppIntents
-// #if ENABLE_ININTENTS_BACKPORTS
-// import Intents
-// #endif
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
@@ -27,25 +24,6 @@ extension Pizza.SupportedGame {
         guard let uuid, let profile = Defaults[.pzProfiles][uuid] else { return nil }
         self = profile.game
     }
-
-//
-//    #if ENABLE_ININTENTS_BACKPORTS
-//    public init?(intentConfigIN: some INIntent) {
-//        let uuid: String?
-//        switch intentConfigIN {
-//        case let intentConfig as SelectOnlyAccountIntent:
-//            uuid = intentConfig.account?.identifier
-//        case let intentConfig as SelectAccountIntent:
-//            uuid = intentConfig.accountIntent?.identifier
-//        case let intentConfig as SelectAccountAndShowWhichInfoIntent:
-//            uuid = intentConfig.account?.identifier
-//        default:
-//            uuid = nil
-//        }
-//        guard let uuid, let profile = Defaults[.pzProfiles][uuid] else { return nil }
-//        self = profile.game
-//    }
-//    #endif
 
     public static func initFromDualProfileConfig(
         intent: PZDesktopIntent4DualProfiles

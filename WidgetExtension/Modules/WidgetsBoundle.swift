@@ -5,14 +5,6 @@
 import PZBaseKit
 import SwiftUI
 import WidgetKit
-//
-// #if ENABLE_ININTENTS_BACKPORTS
-// extension Array where Element == WidgetFamily {
-//    @MainActor var backportsOnly: Self {
-//        PZWidgets.useBackports ? self : []
-//    }
-// }
-// #endif
 
 extension PZWidgets {
     @WidgetBundleBuilder @MainActor public static var widgets: some Widget {
@@ -28,11 +20,6 @@ extension PZWidgets {
         SingleProfileWidget()
         DualProfileWidget()
         OfficialFeedWidget()
-//        #if ENABLE_ININTENTS_BACKPORTS
-//        INSingleProfileWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        INDualProfileWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        INOfficialFeedWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        #endif
         MaterialWidget()
         #endif
         #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
@@ -56,33 +43,8 @@ extension PZWidgets {
         LockScreenDailyTaskWidget()
         LockScreenExpeditionWidget()
         AlternativeLockScreenResinWidget()
-//        #if ENABLE_ININTENTS_BACKPORTS
-//        INLockScreenResinWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        INLockScreenLoopWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        INLockScreenAllInfoWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        INLockScreenResinTimerWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        INLockScreenResinFullTimeWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        INLockScreenHomeCoinWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        #if !os(watchOS)
-//        // 洞天宝钱的环形进度条。这厮在 watchOS 系统下有莫名其妙的排版八哥，暂时排除。
-//        INAlternativeLockScreenHomeCoinWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        #endif
-//        INLockScreenDailyTaskWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        INLockScreenExpeditionWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        INAlternativeLockScreenResinWidget() // 系统版本是 iOS 17+ 时，自动隐藏。
-//        #endif
         #endif
     }
-
-//    #if ENABLE_ININTENTS_BACKPORTS
-//    @MainActor public static let useBackports: Bool = {
-//        guard !Pizza.isAppStoreReleaseAsLatteHelper else { return false }
-//        if #available(iOS 17.0, macCatalyst 17.0, *, watchOS 10.0, *) {
-//            return false
-//        }
-//        return true
-//    }()
-//    #endif
 }
 
 // MARK: - WidgetExtensionBundle
