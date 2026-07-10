@@ -304,6 +304,9 @@ extension ScreenVM {
                     }
                 }
                 .task {
+                    // 立即重讀 window size：macOS / macCatalyst 初始化時 keyWindow 可能尚未就緒，
+                    // 導致 windowSizeObserved 降級為 iPhone SE 的 375×667。
+                    screenVM.windowSizeObserved = ScreenVM.getKeyWindowSize()
                     await pushTrackedPropertiesToScreenVM() // 立即执行
                 }
                 .react(to: combinedHash, initial: true) { _, _ in
