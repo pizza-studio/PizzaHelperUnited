@@ -82,6 +82,7 @@ extension ProfileManagerPageContent {
                         PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
                         isVisible.toggle() // 该行为必须发生在 trailingTasks (completionHandler) 内！！！
                         alertToastEventStatus.isProfileTaskSucceeded.toggle()
+                        dismiss()
                     },
                     errorHandler: { error in
                         saveProfileError = .saveDataError(error)
