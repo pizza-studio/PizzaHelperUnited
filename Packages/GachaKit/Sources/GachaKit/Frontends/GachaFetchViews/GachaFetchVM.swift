@@ -188,22 +188,51 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                                     try? await Task.sleep(for: .seconds(1))
                                 }
                             }
+                            // 批次累積器：避免逐筆改動 @Observable 屬性導致 SwiftUI layout feedback loop。
+                            // 每處理 10 筆記錄才推送一次 UI 更新。
+                            var batchCounter = 0
+                            let batchSize = 10
+                            var batchDateCountDeltas: [PZGachaEntrySendable] = []
+                            var batchSavedTypeCountDeltas: [GachaType: Int] = [:]
                             for item in result.listConverted {
                                 if uid == nil { uid = item.uid }
-                                withAnimation {
-                                    self.updateCachedItems(item)
-                                    self.updateGachaDateCounts(item)
-                                }
+                                batchDateCountDeltas.append(item)
+                                batchSavedTypeCountDeltas[.init(rawValue: item.gachaType), default: 0] += 1
                                 if isBleachingModeEnabled {
                                     validTransactionIDMap[item.time, default: []].append(item.id)
                                 }
                                 try await GachaActor.shared.insertRawEntrySansCommission(
                                     item, forceOverride: isForceOverrideModeEnabled
                                 )
-                                withAnimation {
-                                    self.savedTypeFetchedCount[.init(rawValue: item.gachaType)]! += 1
+                                batchCounter += 1
+                                if batchCounter >= batchSize {
+                                    // 批次推送 UI 更新，僅在批次邊界使用 withAnimation。
+                                    withAnimation {
+                                        for batchedItem in batchDateCountDeltas {
+                                            self.updateCachedItems(batchedItem)
+                                            self.updateGachaDateCounts(batchedItem)
+                                        }
+                                        for (key, delta) in batchSavedTypeCountDeltas {
+                                            self.savedTypeFetchedCount[key]! += delta
+                                        }
+                                    }
+                                    batchCounter = 0
+                                    batchDateCountDeltas = []
+                                    batchSavedTypeCountDeltas = [:]
+                                    try? await Task.sleep(for: .seconds(0.1))
                                 }
-                                try? await Task.sleep(for: .seconds(0.5 / 20.0))
+                            }
+                            // 處理當前 Page 的剩餘未推送項目。
+                            if !batchDateCountDeltas.isEmpty {
+                                withAnimation {
+                                    for batchedItem in batchDateCountDeltas {
+                                        self.updateCachedItems(batchedItem)
+                                        self.updateGachaDateCounts(batchedItem)
+                                    }
+                                    for (key, delta) in batchSavedTypeCountDeltas {
+                                        self.savedTypeFetchedCount[key]! += delta
+                                    }
+                                }
                             }
                             try await saveDataPer16PagesOfTransactions()
                         }
