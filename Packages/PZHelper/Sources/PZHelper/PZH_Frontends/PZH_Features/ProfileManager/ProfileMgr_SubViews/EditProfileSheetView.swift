@@ -27,38 +27,33 @@ extension ProfileManagerPageContent {
         // MARK: Internal
 
         var body: some View {
-            NavigationStack {
-                Form {
-                    ProfileConfigViewContents(profile: profile)
-                }
-                .formStyle(.grouped).disableFocusable()
-                .saturation(theVM.taskState == .busy ? 0 : 1)
-                .disabled(theVM.taskState == .busy)
-                .navigationTitle("profileMgr.edit.title".i18nPZHelper)
-                // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
-                .appTabBarVisibility(.hidden)
-                // 逼着用户改用自订的后退按钮。
-                // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
-                // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
-                .navigationBarBackButtonHidden(true)
-                .navBarTitleDisplayMode(.large)
-                .toolbar {
-                    ToolbarItem(placement: .primaryAction) {
-                        Button("sys.done".i18nBaseKit) {
-                            saveButtonDidTap()
-                        }
-                        .saturation(theVM.taskState == .busy ? 0 : 1)
-                        .disabled(theVM.taskState == .busy)
+            Form {
+                ProfileConfigViewContents(profile: profile)
+            }
+            .formStyle(.grouped).disableFocusable()
+            .saturation(theVM.taskState == .busy ? 0 : 1)
+            .disabled(theVM.taskState == .busy)
+            .navigationTitle("profileMgr.edit.title".i18nPZHelper)
+            .appTabBarVisibility(.hidden)
+            .navigationBarBackButtonHidden(true)
+            .navBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button("sys.done".i18nBaseKit) {
+                        saveButtonDidTap()
                     }
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button("sys.cancel".i18nBaseKit) {
-                            isVisible.toggle()
-                        }
+                    .saturation(theVM.taskState == .busy ? 0 : 1)
+                    .disabled(theVM.taskState == .busy)
+                }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("sys.cancel".i18nBaseKit) {
+                        isVisible.toggle()
+                        dismiss()
                     }
                 }
-                .react(to: isVisible) { _, newValue in
-                    if Self.isOS25OrNewer, !newValue { presentationMode.wrappedValue.dismiss() }
-                }
+            }
+            .react(to: isVisible) { _, newValue in
+                if Self.isOS25OrNewer, !newValue { dismiss() }
             }
         }
 
@@ -75,7 +70,7 @@ extension ProfileManagerPageContent {
         @State private var theVM: ProfileManagerVM = .shared
         @Binding private var isVisible: Bool
         @Environment(AlertToastEventStatus.self) private var alertToastEventStatus: AlertToastEventStatus
-        @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+        @Environment(\.dismiss) private var dismiss: DismissAction
 
         private let profileBeforeEdit: PZProfileSendable
 
@@ -96,6 +91,7 @@ extension ProfileManagerPageContent {
             } else {
                 isVisible.toggle()
                 alertToastEventStatus.isProfileTaskSucceeded.toggle()
+                dismiss()
             }
         }
     }

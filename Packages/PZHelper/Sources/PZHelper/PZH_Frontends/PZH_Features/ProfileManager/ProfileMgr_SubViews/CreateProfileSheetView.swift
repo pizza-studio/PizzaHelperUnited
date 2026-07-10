@@ -26,78 +26,72 @@ extension ProfileManagerPageContent {
         // MARK: Internal
 
         var body: some View {
-            NavigationStack {
-                Form {
-                    Group {
-                        switch status {
-                        case .pending:
-                            pendingView()
-                        case .gotCookie:
-                            gotCookieView()
-                        case .gotProfile:
-                            gotProfileView()
-                        }
-                    }
-                    .saturation(theVM.taskState == .busy ? 0 : 1)
-                    .disabled(theVM.taskState == .busy)
-                }
-                .formStyle(.grouped).disableFocusable()
-                .navigationTitle("profileMgr.new".i18nPZHelper)
-                // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
-                .appTabBarVisibility(.hidden)
-                // 逼着用户改用自订的后退按钮。
-                // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
-                // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
-                .navigationBarBackButtonHidden(true)
-                .toolbar {
-                    if status != .pending {
-                        ToolbarItem(placement: .primaryAction) {
-                            Button("sys.done".i18nBaseKit) {
-                                saveProfile()
-                                // globalDailyNoteCardRefreshSubject.send(())
-                                alertToastEventStatus.isProfileTaskSucceeded.toggle()
-                            }
-                            .disabled(status != .gotProfile)
-                        }
-                    } else {
-                        ToolbarItem(placement: .primaryAction) {
-                            menuForManagingHoYoLabProfiles()
-                        }
-                    }
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button("sys.cancel".i18nBaseKit) {
-                            isVisible.toggle()
-                        }
-                    }
-                }
-                .alert(isPresented: $isSaveProfileFailAlertShown, error: saveProfileError) {
-                    Button("sys.ok".i18nBaseKit) {
-                        isSaveProfileFailAlertShown.toggle()
-                    }
-                }
-                .alert(isPresented: $isGetAccountFailAlertShown, error: getAccountError) {
-                    Button("sys.ok".i18nBaseKit) {
-                        isGetAccountFailAlertShown.toggle()
-                    }
-                }
-                .react(to: status) { _, newValue in
-                    switch newValue {
+            Form {
+                Group {
+                    switch status {
+                    case .pending:
+                        pendingView()
                     case .gotCookie:
-                        if importAllUIDs {
-                            getAllAccountsFetched()
-                        } else {
-                            getAccountForSelected()
-                        }
-                    default:
-                        return
+                        gotCookieView()
+                    case .gotProfile:
+                        gotProfileView()
                     }
                 }
-                .react(to: isVisible) { _, newValue in
-                    if Self.isOS25OrNewer, !newValue { presentationMode.wrappedValue.dismiss() }
+                .saturation(theVM.taskState == .busy ? 0 : 1)
+                .disabled(theVM.taskState == .busy)
+            }
+            .formStyle(.grouped).disableFocusable()
+            .navigationTitle("profileMgr.new".i18nPZHelper)
+            .appTabBarVisibility(.hidden)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                if status != .pending {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button("sys.done".i18nBaseKit) {
+                            saveProfile()
+                            alertToastEventStatus.isProfileTaskSucceeded.toggle()
+                        }
+                        .disabled(status != .gotProfile)
+                    }
+                } else {
+                    ToolbarItem(placement: .primaryAction) {
+                        menuForManagingHoYoLabProfiles()
+                    }
                 }
-                .react(to: profile.game) { _, newValue in
-                    region.changeGame(to: newValue)
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("sys.cancel".i18nBaseKit) {
+                        isVisible.toggle()
+                        dismiss()
+                    }
                 }
+            }
+            .alert(isPresented: $isSaveProfileFailAlertShown, error: saveProfileError) {
+                Button("sys.ok".i18nBaseKit) {
+                    isSaveProfileFailAlertShown.toggle()
+                }
+            }
+            .alert(isPresented: $isGetAccountFailAlertShown, error: getAccountError) {
+                Button("sys.ok".i18nBaseKit) {
+                    isGetAccountFailAlertShown.toggle()
+                }
+            }
+            .react(to: status) { _, newValue in
+                switch newValue {
+                case .gotCookie:
+                    if importAllUIDs {
+                        getAllAccountsFetched()
+                    } else {
+                        getAccountForSelected()
+                    }
+                default:
+                    return
+                }
+            }
+            .react(to: isVisible) { _, newValue in
+                if Self.isOS25OrNewer, !newValue { dismiss() }
+            }
+            .react(to: profile.game) { _, newValue in
+                region.changeGame(to: newValue)
             }
         }
 
@@ -330,7 +324,7 @@ extension ProfileManagerPageContent {
         @Binding private var isVisible: Bool
         @State private var theVM: ProfileManagerVM = .shared
         @Environment(AlertToastEventStatus.self) private var alertToastEventStatus: AlertToastEventStatus
-        @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+        @Environment(\.dismiss) private var dismiss: DismissAction
     }
 }
 
