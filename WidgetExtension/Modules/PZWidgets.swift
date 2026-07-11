@@ -16,8 +16,10 @@ public enum PZWidgets {}
 extension PZWidgets {
     @MainActor
     public static func startupTask() {
-        // 不能再让小工具有权限存取 CoreData / SwiftData 了，已经炸了至少一万多起案例了。
-        UserWallpaperFileHandler.migrateUserWallpapersFromUserDefaultsToFiles()
+        if !Pizza.isAppStoreReleaseAsLatteHelper {
+            // 不能再让小工具有权限存取 CoreData / SwiftData 了，已经炸了至少一万多起案例了。
+            UserWallpaperFileHandler.migrateUserWallpapersFromUserDefaultsToFiles()
+        }
     }
 
     public static func getAllProfiles(sortByGame: Bool = false) -> [PZProfileSendable] {
