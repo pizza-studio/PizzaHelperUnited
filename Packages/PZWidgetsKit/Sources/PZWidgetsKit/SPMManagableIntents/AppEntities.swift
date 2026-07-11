@@ -6,7 +6,6 @@ import AppIntents
 import Foundation
 import PZAccountKit
 import PZBaseKit
-import PZWidgetsKit
 
 // MARK: - AccountIntentAppEntity
 
@@ -33,7 +32,7 @@ public struct AccountIntentAppEntity: AppEntity {
 
         public func entities(for identifiers: [Self.Entity.ID]) async throws -> [Self.Entity] {
             print("[AppEntity] entities(for:) identifiers: \(identifiers)")
-            let accounts = PZWidgets.getAllProfiles()
+            let accounts = PZWidgetsSPM.getAllProfiles()
             print(
                 "[AppEntity] getAllProfiles returned \(accounts.count) profiles, UUIDs: \(accounts.map(\.uuid.uuidString))"
             )
@@ -51,7 +50,7 @@ public struct AccountIntentAppEntity: AppEntity {
         }
 
         public func suggestedEntities() async throws -> Self.Result {
-            PZWidgets.getAllProfiles().map {
+            PZWidgetsSPM.getAllProfiles().map {
                 Self.Entity(
                     id: $0.uuid.uuidString,
                     displayString: $0.name + "\n(\($0.uidWithGame))"
@@ -64,7 +63,10 @@ public struct AccountIntentAppEntity: AppEntity {
         }
     }
 
-    public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "appEntity.localProfile")
+    public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: LocalizedStringResource(
+        "appEntity.localProfile",
+        bundle: .currentSPM
+    ))
 
     public static let defaultQuery = AccountIntentAppEntityQuerier()
 
@@ -72,7 +74,9 @@ public struct AccountIntentAppEntity: AppEntity {
     public var displayString: String
 
     public var displayRepresentation: DisplayRepresentation {
-        DisplayRepresentation(title: "\(displayString)")
+        DisplayRepresentation(
+            title: "\(displayString)"
+        )
     }
 }
 
@@ -116,7 +120,10 @@ public struct WidgetBackgroundAppEntity: AppEntity {
         }
     }
 
-    public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "appEntity.widgetBackground")
+    public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: LocalizedStringResource(
+        "appEntity.widgetBackground",
+        bundle: .currentSPM
+    ))
 
     public static let defaultQuery = WidgetBackgroundAppEntityQuerier()
 
@@ -124,7 +131,9 @@ public struct WidgetBackgroundAppEntity: AppEntity {
     public var displayString: String
 
     public var displayRepresentation: DisplayRepresentation {
-        DisplayRepresentation(title: "\(displayString)")
+        DisplayRepresentation(
+            title: "\(displayString)"
+        )
     }
 }
 

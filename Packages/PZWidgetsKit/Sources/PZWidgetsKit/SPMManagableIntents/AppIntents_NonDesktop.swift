@@ -5,7 +5,6 @@
 import AppIntents
 import Foundation
 import PZBaseKit
-import PZWidgetsKit
 
 // MARK: - PZEmbeddedIntent4ProfileOnly
 
@@ -21,14 +20,17 @@ public struct PZEmbeddedIntent4ProfileOnly: AppIntent, CustomIntentMigratedAppIn
 
     public static let intentClassName = "SelectOnlyAccountIntent"
 
-    public static let title: LocalizedStringResource = "intent.name.selectLocalProfile4Peripherals"
-    public static let description = IntentDescription("intent.description.pickTheLocalProfileForThisWidget")
+    public static let title = LocalizedStringResource("intent.name.selectLocalProfile4Peripherals", bundle: .currentSPM)
+    public static let description = IntentDescription(
+        LocalizedStringResource("intent.description.pickTheLocalProfileForThisWidget", bundle: .currentSPM)
+    )
 
     public static var isDiscoverable: Bool { false }
 
     public static var parameterSummary: some ParameterSummary { Summary() }
 
-    @Parameter(title: "intent.field.localProfile") public var account: AccountIntentAppEntity?
+    @Parameter(title: LocalizedStringResource("intent.field.localProfile", bundle: .currentSPM))
+    public var account: AccountIntentAppEntity?
 
     public var showStaminaOnly: Bool { false }
 
@@ -70,23 +72,38 @@ public struct PZEmbeddedIntent4ProfileMisc: AppIntent, CustomIntentMigratedAppIn
 
     public static let intentClassName = "SelectAccountAndShowWhichInfoIntent"
 
-    public static let title: LocalizedStringResource = "intent.name.selectLocalProfile4PeripheralsWithExtraConfig"
-    public static let description = IntentDescription("intent.description.pickTheLocalProfileForThisWidget")
+    public static let title = LocalizedStringResource(
+        "intent.name.selectLocalProfile4PeripheralsWithExtraConfig",
+        bundle: .currentSPM
+    )
+    public static let description = IntentDescription(
+        LocalizedStringResource("intent.description.pickTheLocalProfileForThisWidget", bundle: .currentSPM)
+    )
 
     public static var isDiscoverable: Bool { false }
 
     public static var parameterSummary: some ParameterSummary { Summary() }
 
-    @Parameter(title: "intent.field.localProfile") public var account: AccountIntentAppEntity?
+    @Parameter(title: LocalizedStringResource("intent.field.localProfile", bundle: .currentSPM))
+    public var account: AccountIntentAppEntity?
 
-    @Parameter(title: "intent.field.echoOfWarDisplayMethod", default: true) public var showEchoOfWar: Bool
+    @Parameter(
+        title: LocalizedStringResource("intent.field.echoOfWarDisplayMethod", bundle: .currentSPM),
+        default: true
+    ) public var showEchoOfWar: Bool
 
-    @Parameter(title: "intent.field.trounceBlossomDisplayMethod", default: true) public var showTrounceBlossom: Bool
+    @Parameter(
+        title: LocalizedStringResource("intent.field.trounceBlossomDisplayMethod", bundle: .currentSPM),
+        default: true
+    ) public var showTrounceBlossom: Bool
 
-    @Parameter(title: "intent.field.showTransformer", default: true) public var showTransformer: Bool
+    @Parameter(title: LocalizedStringResource("intent.field.showTransformer", bundle: .currentSPM), default: true)
+    public var showTransformer: Bool
 
-    @Parameter(title: "intent.field.staminaDisplayStyle", default: .byDefault)
-    public var usingResinStyle: StaminaContentRevolverStyleAppEnum
+    @Parameter(
+        title: LocalizedStringResource("intent.field.staminaDisplayStyle", bundle: .currentSPM),
+        default: .byDefault
+    ) public var usingResinStyle: StaminaContentRevolverStyleAppEnum
 
     public var showStaminaOnly: Bool { false }
 

@@ -26,13 +26,4 @@ extension PZWidgets {
         // 主動要求 reload 以確保 entity 能被重新 resolve。
         WidgetCenter.shared.reloadAllTimelines()
     }
-
-    public static func getAllProfiles(sortByGame: Bool = false) -> [PZProfileSendable] {
-        Defaults[.pzProfiles].values.sorted {
-            if sortByGame {
-                return $0.game.caseIndex < $1.game.caseIndex && $0.priority < $1.priority
-            }
-            return $0.priority < $1.priority
-        }
-    }
 }

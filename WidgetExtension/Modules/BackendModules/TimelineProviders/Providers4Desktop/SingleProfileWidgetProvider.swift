@@ -141,7 +141,7 @@ struct SingleProfileWidgetProvider: CrossGenServiceableTimelineProvider {
     }
 
     private static func findProfile(for configuration: Intent) -> Result<PZProfileSendable, WidgetError> {
-        let allProfiles = PZWidgets.getAllProfiles()
+        let allProfiles = PZWidgetsSPM.getAllProfiles()
         guard let firstProfile = allProfiles.first else {
             print("Config is empty")
             return .failure(.noProfileFound)

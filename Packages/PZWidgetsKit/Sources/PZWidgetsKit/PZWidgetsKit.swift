@@ -9,4 +9,20 @@ import PZBaseKit
 
 // MARK: - PZWidgetsSPM
 
-public enum PZWidgetsSPM {}
+@available(iOS 17.0, macCatalyst 17.0, *)
+public struct PZWidgetsSPM: AppIntentsPackage {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
+
+    public static func getAllProfiles(sortByGame: Bool = false) -> [PZProfileSendable] {
+        Defaults[.pzProfiles].values.sorted {
+            if sortByGame {
+                return $0.game.caseIndex < $1.game.caseIndex && $0.priority < $1.priority
+            }
+            return $0.priority < $1.priority
+        }
+    }
+}

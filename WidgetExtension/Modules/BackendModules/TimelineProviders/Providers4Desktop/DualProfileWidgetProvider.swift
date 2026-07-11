@@ -101,7 +101,7 @@ struct DualProfileWidgetProvider: CrossGenServiceableTimelineProvider {
         print(
             "[DualProfileWidget] slot1 entity: \(intentEntity1?.id ?? "nil"), slot2 entity: \(intentEntity2?.id ?? "nil")"
         )
-        print("[DualProfileWidget] getAllProfiles count: \(PZWidgets.getAllProfiles().count)")
+        print("[DualProfileWidget] getAllProfiles count: \(PZWidgetsSPM.getAllProfiles().count)")
 
         let findProfileResult1 = findProfile(for: intentEntity1)
         let findProfileResult2 = findProfile(for: intentEntity2)
@@ -213,7 +213,7 @@ struct DualProfileWidgetProvider: CrossGenServiceableTimelineProvider {
     }
 
     private static func findProfile(for entity: AccountIntentAppEntity?) -> Result<PZProfileSendable, WidgetError> {
-        let allProfiles = PZWidgets.getAllProfiles()
+        let allProfiles = PZWidgetsSPM.getAllProfiles()
         guard let firstProfile = allProfiles.first else {
             print("Config is empty")
             return .failure(.noProfileFound)

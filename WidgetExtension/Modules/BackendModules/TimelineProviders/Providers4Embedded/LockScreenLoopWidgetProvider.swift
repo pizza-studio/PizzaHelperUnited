@@ -47,7 +47,7 @@ struct LockScreenLoopWidgetProvider: CrossGenServiceableTimelineProvider {
     @available(iOS 17.0, watchOS 10.0, *)
     func recommendations() -> [AppIntentRecommendation<Intent>] {
         #if os(watchOS)
-        return PZWidgets.getAllProfiles().compactMap { config in
+        return PZWidgetsSPM.getAllProfiles().compactMap { config in
             let intent = Intent()
             intent.account = .init(
                 id: config.uuid.uuidString,
@@ -156,7 +156,7 @@ struct LockScreenLoopWidgetProvider: CrossGenServiceableTimelineProvider {
     }
 
     private static func findProfile(for configuration: Intent) -> Result<PZProfileSendable, WidgetError> {
-        let allProfiles = PZWidgets.getAllProfiles()
+        let allProfiles = PZWidgetsSPM.getAllProfiles()
         guard let firstProfile = allProfiles.first else {
             print("Config is empty")
             return .failure(.noProfileFound)

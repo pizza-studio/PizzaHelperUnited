@@ -68,6 +68,15 @@ public struct WidgetExtensionBundle: WidgetBundle {
     }
 }
 
+// MARK: - WidgetIntentPackage
+
+@available(iOS 17.0, macCatalyst 17.0, *)
+public struct WidgetIntentPackage: AppIntentsPackage {
+    public static var includedPackages: [AppIntentsPackage.Type] {
+        [PZWidgetsSPM.self]
+    }
+}
+
 // import Defaults
 // import PZInGameEventKit
 // import PZWidgetsKit

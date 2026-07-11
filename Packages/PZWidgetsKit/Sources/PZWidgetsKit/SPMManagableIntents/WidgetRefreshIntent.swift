@@ -19,7 +19,7 @@ public struct WidgetRefreshIntent: AppIntent {
 
     // MARK: Public
 
-    public static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
+    public static let title = LocalizedStringResource("pzWidgetsKit.WidgetRefreshIntent.Refresh", bundle: .currentSPM)
 
     public static var isDiscoverable: Bool { false }
 

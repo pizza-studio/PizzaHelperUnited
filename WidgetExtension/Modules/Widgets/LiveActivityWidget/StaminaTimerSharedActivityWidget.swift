@@ -30,7 +30,7 @@ public struct StaminaTimerIntent4Redraw: AppIntent {
 
     public func perform() async throws -> some IntentResult {
         let activities = StaminaLiveActivityController.shared.currentActivities
-        let profiles = PZWidgets.getAllProfiles()
+        let profiles = PZWidgetsSPM.getAllProfiles()
         for activity in activities {
             let profile = profiles.first(where: { profile in
                 profile.uuid == activity.attributes.profileUUID
@@ -60,7 +60,7 @@ public struct StaminaTimerIntent4Refetch: AppIntent {
 
     public func perform() async throws -> some IntentResult {
         let activities = StaminaLiveActivityController.shared.currentActivities
-        let profiles = PZWidgets.getAllProfiles()
+        let profiles = PZWidgetsSPM.getAllProfiles()
         for activity in activities {
             let profile = profiles.first(where: { profile in
                 profile.uuid == activity.attributes.profileUUID

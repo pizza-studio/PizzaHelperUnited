@@ -5,7 +5,6 @@
 import AppIntents
 import Foundation
 import PZBaseKit
-import PZWidgetsKit
 
 // MARK: - PZDesktopIntent4GameOnly
 
@@ -20,19 +19,22 @@ public struct PZDesktopIntent4GameOnly: AppIntent, CustomIntentMigratedAppIntent
 
     public static let intentClassName: String = "SelectOnlyGameIntent"
 
-    public static let title: LocalizedStringResource = "intent.name.selectGameOnly"
-    public static let description = IntentDescription("intent.description.chooseTheGame")
+    public static let title = LocalizedStringResource("intent.name.selectGameOnly", bundle: .currentSPM)
+    public static let description = IntentDescription(
+        LocalizedStringResource("intent.description.chooseTheGame", bundle: .currentSPM)
+    )
 
     public static var isDiscoverable: Bool { false }
 
     public static var parameterSummary: some ParameterSummary { Summary() }
 
     @Parameter(
-        title: "intent.field.game",
+        title: LocalizedStringResource("intent.field.game", bundle: .currentSPM),
         default: WidgetSupportedGameAppEnum.allGames
     ) public var game: WidgetSupportedGameAppEnum
 
-    @Parameter(title: "intent.field.inverseSelectMode", default: false) public var inverseSelectMode: Bool
+    @Parameter(title: LocalizedStringResource("intent.field.inverseSelectMode", bundle: .currentSPM), default: false)
+    public var inverseSelectMode: Bool
 
     public func perform() async throws -> some IntentResult {
         // TODO: Place your refactored intent handler code here.

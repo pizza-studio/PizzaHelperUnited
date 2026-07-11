@@ -5,6 +5,7 @@
 import AppIntents
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 
 @available(iOS 17.0, macCatalyst 17.0, *)
