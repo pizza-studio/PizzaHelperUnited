@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - LiveActivityBackgroundValueParser
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct LiveActivityBackgroundValueParser: Sendable {
     // MARK: Lifecycle
 
@@ -68,7 +68,7 @@ public struct LiveActivityBackgroundValueParser: Sendable {
 
 // MARK: - LiveActivityBackgroundValueParsed
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct LiveActivityBackgroundValueParsed: Sendable {
     // MARK: Lifecycle
 

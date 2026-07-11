@@ -2,11 +2,11 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import AppIntents
 import Foundation
 import PZAccountKit
 import PZBaseKit
 
 // MARK: - PZWidgetsSPM
 
-@available(iOS 16.2, macCatalyst 16.2, *)
 public enum PZWidgetsSPM {}

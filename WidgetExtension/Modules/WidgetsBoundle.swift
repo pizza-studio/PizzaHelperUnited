@@ -2,7 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import AppIntents
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -50,18 +52,18 @@ extension PZWidgets {
 // MARK: - WidgetExtensionBundle
 
 @main
-struct WidgetExtensionBundle: WidgetBundle {
+public struct WidgetExtensionBundle: WidgetBundle {
     // MARK: Lifecycle
 
-    init() {
+    public init() {
         if #available(iOS 17.0, macCatalyst 17.0, *) {
             PZWidgets.startupTask()
         }
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    var body: some Widget {
+    public var body: some Widget {
         PZWidgets.widgets
     }
 }

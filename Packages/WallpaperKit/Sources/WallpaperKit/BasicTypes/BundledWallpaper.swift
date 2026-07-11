@@ -274,7 +274,7 @@ extension Locale {
     ]
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension BundledWallpaper {
     public func saveOnlineBackgroundAsset(skip: Bool = false) async {
         await BackgroundSavingActor.shared.saveOnlineBackgroundAsset(
@@ -285,7 +285,7 @@ extension BundledWallpaper {
 
 // MARK: - BackgroundSavingActor
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private actor BackgroundSavingActor {
     // MARK: Lifecycle
 
