@@ -98,6 +98,10 @@ struct DualProfileWidgetProvider: CrossGenServiceableTimelineProvider {
         await viewConfig.saveOnlineBackgroundAsset()
         let intentEntity1 = configuration.profileSlot1
         let intentEntity2 = configuration.profileSlot2
+        print(
+            "[DualProfileWidget] slot1 entity: \(intentEntity1?.id ?? "nil"), slot2 entity: \(intentEntity2?.id ?? "nil")"
+        )
+        print("[DualProfileWidget] getAllProfiles count: \(PZWidgets.getAllProfiles().count)")
 
         let findProfileResult1 = findProfile(for: intentEntity1)
         let findProfileResult2 = findProfile(for: intentEntity2)
