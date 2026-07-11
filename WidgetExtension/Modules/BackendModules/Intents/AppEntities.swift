@@ -32,14 +32,21 @@ public struct AccountIntentAppEntity: AppEntity {
         public typealias Entity = AccountIntentAppEntity
 
         public func entities(for identifiers: [Self.Entity.ID]) async throws -> [Self.Entity] {
-            let accounts = PZWidgets.getAllProfiles().filter {
-                identifiers.contains($0.uuid.uuidString)
-            }
-            return accounts.map {
-                Self.Entity(
-                    id: $0.uuid.uuidString,
-                    displayString: $0.name + "\n(\($0.uidWithGame))"
-                )
+            print("[AppEntity] entities(for:) identifiers: \(identifiers)")
+            let accounts = PZWidgets.getAllProfiles()
+            print(
+                "[AppEntity] getAllProfiles returned \(accounts.count) profiles, UUIDs: \(accounts.map(\.uuid.uuidString))"
+            )
+            return identifiers.map { id in
+                if let matched = accounts.first(where: { $0.uuid.uuidString == id }) {
+                    return Self.Entity(
+                        id: matched.uuid.uuidString,
+                        displayString: matched.name + "\n(\(matched.uidWithGame))"
+                    )
+                }
+                // Cold boot fallback: App Group 可能尚未 ready 導致 getAllProfiles() 為空，
+                // 但仍需回傳 entity 以避免 Widget configuration 被 WidgetKit 判定為無效。
+                return Self.Entity(id: id, displayString: id)
             }
         }
 
