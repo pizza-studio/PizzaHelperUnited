@@ -12,15 +12,10 @@ import WidgetKit
 
 // MARK: - LockScreenWidgetProvider
 
-@available(iOS 17.0, watchOS 10.0, *)
-@available(macCatalyst, unavailable)
-@available(macOS, unavailable)
-extension LockScreenWidgetProvider: AppIntentTimelineProvider {}
-
 @available(iOS 17.0, watchOS 10.0, visionOS 26.0, *)
 @available(macCatalyst, unavailable)
 @available(macOS, unavailable)
-struct LockScreenWidgetProvider: CrossGenServiceableTimelineProvider {
+struct LockScreenWidgetProvider: AppIntentTimelineProvider {
     // MARK: Lifecycle
 
     public init(
@@ -68,7 +63,7 @@ struct LockScreenWidgetProvider: CrossGenServiceableTimelineProvider {
         #endif
     }
 
-    func placeholder() -> Entry {
+    func placeholder(in context: Context) -> Entry {
         Entry(
             date: Date(),
             result: .success(Pizza.SupportedGame.genshinImpact.exampleDailyNoteData),
@@ -78,7 +73,8 @@ struct LockScreenWidgetProvider: CrossGenServiceableTimelineProvider {
     }
 
     func snapshot(
-        for configuration: Intent
+        for configuration: Intent,
+        in context: Context
     ) async
         -> Entry {
         await SVGIconPrewarmCoordinator.shared.ensurePrecompiled()
@@ -93,7 +89,8 @@ struct LockScreenWidgetProvider: CrossGenServiceableTimelineProvider {
     }
 
     func timeline(
-        for configuration: Intent
+        for configuration: Intent,
+        in context: Context
     ) async
         -> Timeline<Entry> {
         await SVGIconPrewarmCoordinator.shared.ensurePrecompiled()

@@ -15,17 +15,13 @@ import WidgetKit
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
-extension DualProfileWidgetProvider: AppIntentTimelineProvider {}
-
-@available(iOS 17.0, macCatalyst 17.0, *)
-@available(watchOS, unavailable)
-struct DualProfileWidgetProvider: CrossGenServiceableTimelineProvider {
+struct DualProfileWidgetProvider: AppIntentTimelineProvider {
     // MARK: Internal
 
     typealias Entry = ProfileWidgetEntry
     typealias Intent = PZDesktopIntent4DualProfiles
 
-    func placeholder() -> Entry {
+    func placeholder(in context: Context) -> Entry {
         let sampleData1 = Pizza.SupportedGame.genshinImpact.exampleDailyNoteData
         let sampleData2 = Pizza.SupportedGame.starRail.exampleDailyNoteData
         let assetMap = [sampleData1, sampleData2].prepareAssetMapImmediately()
@@ -45,7 +41,8 @@ struct DualProfileWidgetProvider: CrossGenServiceableTimelineProvider {
     }
 
     func snapshot(
-        for configuration: Intent
+        for configuration: Intent,
+        in context: Context
     ) async
         -> Entry {
         let gameCases4Feeds = Pizza.SupportedGame.allCases.filter { $0 != .zenlessZone }
@@ -77,7 +74,8 @@ struct DualProfileWidgetProvider: CrossGenServiceableTimelineProvider {
     }
 
     func timeline(
-        for configuration: Intent
+        for configuration: Intent,
+        in context: Context
     ) async
         -> Timeline<Entry> {
         let result: (entries: [Entry], refreshTime: Date) = await Task(priority: .userInitiated) {

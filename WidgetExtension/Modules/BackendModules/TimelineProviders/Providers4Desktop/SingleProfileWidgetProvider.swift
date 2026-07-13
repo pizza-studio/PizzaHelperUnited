@@ -15,17 +15,13 @@ import WidgetKit
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
-extension SingleProfileWidgetProvider: AppIntentTimelineProvider {}
-
-@available(iOS 17.0, macCatalyst 17.0, *)
-@available(watchOS, unavailable)
-struct SingleProfileWidgetProvider: CrossGenServiceableTimelineProvider {
+struct SingleProfileWidgetProvider: AppIntentTimelineProvider {
     // MARK: Internal
 
     typealias Entry = ProfileWidgetEntry
     typealias Intent = PZDesktopIntent4SingleProfile
 
-    func placeholder() -> Entry {
+    func placeholder(in context: Context) -> Entry {
         let sampleData = Pizza.SupportedGame.genshinImpact.exampleDailyNoteData
         let assetMap = sampleData.getExpeditionAssetMapImmediately()
         return Entry(
@@ -41,7 +37,8 @@ struct SingleProfileWidgetProvider: CrossGenServiceableTimelineProvider {
     }
 
     func snapshot(
-        for configuration: Intent
+        for configuration: Intent,
+        in context: Context
     ) async
         -> Entry {
         let eventResults = OfficialFeedFileHandler.getAllCachedFeeds(
@@ -68,7 +65,8 @@ struct SingleProfileWidgetProvider: CrossGenServiceableTimelineProvider {
     }
 
     func timeline(
-        for configuration: Intent
+        for configuration: Intent,
+        in context: Context
     ) async
         -> Timeline<Entry> {
         let result: (entries: [Entry], refreshTime: Date) = await Task(priority: .userInitiated) {

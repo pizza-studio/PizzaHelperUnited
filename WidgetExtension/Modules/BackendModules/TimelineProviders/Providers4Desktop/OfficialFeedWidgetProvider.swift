@@ -17,29 +17,22 @@ import WidgetKit
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
-extension OfficialFeedWidgetProvider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> PZWidgetsKit.OfficialFeedWidgetEntry {
-        Entry(
-            games: .init(Pizza.SupportedGame.allCases),
-            events: OfficialFeedFileHandler.getAllCachedFeeds()
-        )
-    }
-}
-
-@available(iOS 17.0, macCatalyst 17.0, *)
-@available(watchOS, unavailable)
-struct OfficialFeedWidgetProvider: CrossGenServiceableTimelineProvider {
+struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
     typealias Entry = OfficialFeedWidgetEntry
     typealias Intent = PZDesktopIntent4GameOnly
 
-    func placeholder() -> Entry {
+    func placeholder(in context: Context) -> Entry {
         Entry(
             games: .init(Pizza.SupportedGame.allCases),
             events: OfficialFeedFileHandler.getAllCachedFeeds()
         )
     }
 
-    func snapshot(for configuration: Intent) async -> Entry {
+    func snapshot(
+        for configuration: Intent,
+        in context: Context
+    ) async
+        -> Entry {
         let game = configuration.game.realValue
         let games = configuration.inverseSelectMode
             ? configuration.game.inverseSelectedValues
@@ -54,7 +47,11 @@ struct OfficialFeedWidgetProvider: CrossGenServiceableTimelineProvider {
         return entry
     }
 
-    func timeline(for configuration: Intent) async -> Timeline<Entry> {
+    func timeline(
+        for configuration: Intent,
+        in context: Context
+    ) async
+        -> Timeline<Entry> {
         let game = configuration.game.realValue
         let games = configuration.inverseSelectMode
             ? configuration.game.inverseSelectedValues
