@@ -138,12 +138,16 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                     )
                 }
         }
+        .onChange(of: scenePhase, initial: true) { _, newPhase in
+            gachaVM4Fetch.isBackgrounded = newPhase != .active
+        }
     }
 
     // MARK: Private
 
     @State private var gachaVM4Fetch: VMType = .init()
     @State private var gachaRootVM: GachaVM = .shared
+    @Environment(\.scenePhase) private var scenePhase
 }
 
 // MARK: GachaFetchView4Game.WaitingForURLView

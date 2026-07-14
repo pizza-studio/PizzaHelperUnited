@@ -101,6 +101,11 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     public var showSucceededAlertToast: Bool = false
     public private(set) var bleachCounter = 0
 
+    /// Set by the host view via `@Environment(\.scenePhase)`.
+    /// When `true`, all `withAnimation` wrappers in status transitions are skipped
+    /// to avoid the main thread getting stuck in a layout loop during background exit.
+    public var isBackgrounded = false
+
     public private(set) var client: GachaClient<GachaType>?
 
     public func load(urlString: String) throws {
@@ -178,6 +183,9 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                         }
                         for try await (gachaType, result) in client {
                             setGot(page: Int(result.page) ?? 0, gachaType: gachaType)
+                            // 讓 page 切換動畫先落地，避免與後續資料更新動畫疊加。
+                            await Task.yield()
+                            try? await Task.sleep(for: .seconds(0.1))
                             var transactionCounter = 0
                             // 每隔一个小保底，就存盘一次。
                             func saveDataPer16PagesOfTransactions() async throws {
@@ -188,8 +196,10 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                                     try? await Task.sleep(for: .seconds(1))
                                 }
                             }
-                            // 批次累積器：避免逐筆改動 @Observable 屬性導致 SwiftUI layout feedback loop。
-                            // 每處理 10 筆記錄才推送一次 UI 更新。
+                            // 批次累積器：每 10 筆記錄才推送一次 UI 更新。
+                            // 不帶 withAnimation —— @Observable 本身就會觸發 SwiftUI 重繪，
+                            // withAnimation 會強制 animated transaction 導致與 UICollectionView batch update
+                            // 動畫疊加，造成 layout feedback loop。
                             var batchCounter = 0
                             let batchSize = 10
                             var batchDateCountDeltas: [PZGachaEntrySendable] = []
@@ -206,34 +216,31 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                                 )
                                 batchCounter += 1
                                 if batchCounter >= batchSize {
-                                    // 批次推送 UI 更新，僅在批次邊界使用 withAnimation。
-                                    withAnimation {
-                                        for batchedItem in batchDateCountDeltas {
-                                            self.updateCachedItems(batchedItem)
-                                            self.updateGachaDateCounts(batchedItem)
-                                        }
-                                        for (key, delta) in batchSavedTypeCountDeltas {
-                                            self.savedTypeFetchedCount[key]! += delta
-                                        }
+                                    for batchedItem in batchDateCountDeltas {
+                                        updateCachedItems(batchedItem)
+                                        updateGachaDateCounts(batchedItem)
+                                    }
+                                    for (key, delta) in batchSavedTypeCountDeltas {
+                                        savedTypeFetchedCount[key]! += delta
                                     }
                                     batchCounter = 0
                                     batchDateCountDeltas = []
                                     batchSavedTypeCountDeltas = [:]
-                                    try? await Task.sleep(for: .seconds(0.1))
+                                    await Task.yield()
+                                    try? await Task.sleep(for: .seconds(0.15))
                                 }
                             }
                             // 處理當前 Page 的剩餘未推送項目。
                             if !batchDateCountDeltas.isEmpty {
-                                withAnimation {
-                                    for batchedItem in batchDateCountDeltas {
-                                        self.updateCachedItems(batchedItem)
-                                        self.updateGachaDateCounts(batchedItem)
-                                    }
-                                    for (key, delta) in batchSavedTypeCountDeltas {
-                                        self.savedTypeFetchedCount[key]! += delta
-                                    }
+                                for batchedItem in batchDateCountDeltas {
+                                    updateCachedItems(batchedItem)
+                                    updateGachaDateCounts(batchedItem)
+                                }
+                                for (key, delta) in batchSavedTypeCountDeltas {
+                                    savedTypeFetchedCount[key]! += delta
                                 }
                             }
+                            await Task.yield()
                             try await saveDataPer16PagesOfTransactions()
                         }
                         try await GachaActor.shared.asyncSave()
@@ -284,8 +291,21 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
         }
     }
 
+    /// 背景安全 + 低 RAM 機種版 withAnimation：背景或低 RAM 機種時跳過動畫以避免 watchdog kill。
+    private func animating<Result>(
+        _ animation: Animation? = .default,
+        _ body: () throws -> Result
+    ) rethrows
+        -> Result {
+        if isBackgrounded && ThisDevice.isLegacyDeviceOrInsufficientRAM && OS.type != .macOS {
+            try body()
+        } else {
+            try withAnimation(animation, body)
+        }
+    }
+
     private func setFinished() {
-        withAnimation {
+        animating {
             self.status = .finished(
                 typeFetchedCount: self.savedTypeFetchedCount,
                 dataBleachedCount: self.bleachCounter,
@@ -298,7 +318,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
         if let task, task.isCancelled {
             setFinished()
         } else {
-            withAnimation {
+            animating {
                 self.status = .failFetching(
                     page: page,
                     gachaType: gachaType,
@@ -312,7 +332,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     }
 
     private func setGot(page: Int, gachaType: GachaType) {
-        withAnimation {
+        animating {
             self.status = .got(
                 page: page,
                 gachaType: gachaType,
@@ -325,19 +345,19 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     }
 
     private func setWaitingForURL() {
-        withAnimation {
+        animating {
             self.status = .waitingForURL
         }
     }
 
     private func setPending() {
-        withAnimation {
+        animating {
             self.status = .readyToFire(start: { self.startFetching() }, reinit: { self.initialize() })
         }
     }
 
     private func setInProgress() {
-        withAnimation {
+        animating {
             self.status = .inProgress(cancel: { self.cancel() })
         }
     }
