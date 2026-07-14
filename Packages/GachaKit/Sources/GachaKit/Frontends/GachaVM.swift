@@ -12,6 +12,11 @@ import PZBaseKit
 import PZCoreDataKit4GachaEntries
 import SwiftData
 import SwiftUI
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 // MARK: - GachaVM
 
@@ -25,6 +30,43 @@ public final class GachaVM: TaskManagedVM {
         super.assignableErrorHandlingTask = { _ in
             Task {
                 await GachaActor.shared.asyncRollback()
+            }
+        }
+        // 監聽 app 前後台狀態，避免 inactive 期間因 SwiftData 通知產生 pending UI update
+        // 導致回到前景時系統 flush 觸發 watchdog kill（尤其 iPhone SE2 等低 RAM 機種）。
+        #if canImport(UIKit)
+        let willResignActiveNotification = UIApplication.willResignActiveNotification
+        let didBecomeActiveNotification = UIApplication.didBecomeActiveNotification
+        #elseif canImport(AppKit)
+        let willResignActiveNotification = NSApplication.willResignActiveNotification
+        let didBecomeActiveNotification = NSApplication.didBecomeActiveNotification
+        #endif
+        NotificationCenter.default.addObserver(
+            forName: willResignActiveNotification,
+            object: nil, queue: .main
+        ) { [weak self] _ in
+            Task { @MainActor [weak self] in
+                self?.isAppActive = false
+            }
+        }
+        NotificationCenter.default.addObserver(
+            forName: didBecomeActiveNotification,
+            object: nil, queue: .main
+        ) { [weak self] _ in
+            Task { @MainActor [weak self] in
+                guard let self else { return }
+                self.isAppActive = true
+                // 若 inactive 期間有 SwiftData 變更被標記 dirty，此時一次性處理。
+                let needsBackendRefresh = pendingBackendChangesDirty
+                let needsGPIDRefresh = pendingGPIDChanges
+                self.pendingBackendChangesDirty = false
+                self.pendingGPIDChanges = false
+                if needsBackendRefresh {
+                    self.backendChangesAvailable = true
+                }
+                if needsGPIDRefresh {
+                    scheduleGPIDRefresh()
+                }
             }
         }
         fireTask(
@@ -43,6 +85,8 @@ public final class GachaVM: TaskManagedVM {
     public static let shared = GachaVM()
 
     @ObservationIgnored public var isDoingBatchInsertionAction = false
+    /// 由 NotificationCenter 自動維護，反映 UIApplication 是否處於 active 狀態。
+    @ObservationIgnored public var isAppActive = true
     public var backendChangesAvailable = false
     public var hasInheritableGachaEntries: Bool = false
     public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
@@ -74,11 +118,28 @@ public final class GachaVM: TaskManagedVM {
     }
 
     public func updateAllCachedGPIDs() async {
-        allGPIDs = await GachaActor.shared.fetchAllGPIDs()
+        guard isAppActive else {
+            pendingBackendChangesDirty = true
+            pendingGPIDChanges = true
+            return
+        }
+        let fetchedGPIDs = await GachaActor.shared.fetchAllGPIDs()
+        guard isAppActive else {
+            pendingBackendChangesDirty = true
+            pendingGPIDChanges = true
+            return
+        }
+        allGPIDs = fetchedGPIDs
         updateNameIDMap()
     }
 
     // MARK: Private
+
+    /// Inactive 期間的 SwiftData 變更不會立即處理，而是標記 dirty；
+    /// 等 app 回到 active 時再一次性處理，避免在 scene transition 期間
+    /// 觸發系統的 dispatchImmediately 導致低 RAM 機種 watchdog kill。
+    @ObservationIgnored private var pendingBackendChangesDirty = false
+    @ObservationIgnored private var pendingGPIDChanges = false
 
     private let debouncer: Debouncer = .init(delay: 0.5)
 
@@ -102,6 +163,15 @@ public final class GachaVM: TaskManagedVM {
                 await MainActor.run {
                     postUpdate()
                 }
+            }
+        }
+    }
+
+    private func scheduleGPIDRefresh() {
+        Task { @MainActor [weak self] in
+            guard let self else { return }
+            await debouncer.debounce {
+                await self.updateAllCachedGPIDs()
             }
         }
     }
@@ -151,18 +221,19 @@ public final class GachaVM: TaskManagedVM {
         }
     }
 
-    nonisolated private func didObserveChangesFromSwiftData(changesInvolveGPID: Bool) {
-        Task { @MainActor in
-            if !self.backendChangesAvailable {
-                self.backendChangesAvailable = true
-            }
+    private func didObserveChangesFromSwiftData(changesInvolveGPID: Bool) {
+        guard isAppActive else {
+            // Inactive 期間不直接改動 @Observable 屬性，僅標記 dirty。
+            // 等 app 回到 active 時由 didBecomeActiveNotification 統一處理。
+            pendingBackendChangesDirty = true
+            if changesInvolveGPID { pendingGPIDChanges = true }
+            return
+        }
+        if !backendChangesAvailable {
+            backendChangesAvailable = true
         }
         if changesInvolveGPID {
-            Task {
-                await debouncer.debounce {
-                    await self.updateAllCachedGPIDs()
-                }
-            }
+            scheduleGPIDRefresh()
         }
     }
 }
