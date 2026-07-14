@@ -111,6 +111,11 @@ let package = Package(
             name: "PZAccountKitTests",
             dependencies: ["PZAccountKit"]
         )
+
+        Target.testTarget(
+            name: "PZBaseKitTests",
+            dependencies: ["PZBaseKit"]
+        )
     }
 )
 

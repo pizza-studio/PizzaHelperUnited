@@ -656,16 +656,18 @@ enum OSBuild {
 
         guard size > 0 else { return nil }
 
-        var machine = [UInt8](repeating: 0, count: size)
+        var machine = [CChar](repeating: 0, count: size)
         sysctlbyname("kern.osversion", &machine, &size, nil, 0)
 
-        return String(decoding: Data(machine), as: UTF8.self)
+        // sysctlbyname 回傳的 C string 包含 null terminator，需手動截斷
+        let nullTerminatedIndex = machine.firstIndex(of: 0) ?? machine.endIndex
+        return String(decoding: machine[..<nullTerminatedIndex].map(UInt8.init), as: UTF8.self)
     }
 
-    // MARK: Fileprivate
+    // MARK: Internal
 
     /// 判断当前系统是否是 Beta 版本 (基于 Build Number 结尾是否为字母)
-    fileprivate static func isUnstableBetaBuild() -> Bool {
+    static func isUnstableBetaBuild() -> Bool {
         // 1. 获取系统 Build 版本号 (例如: "21A5277g")
         guard let buildString = getSystemBuildString() else { return false }
 
