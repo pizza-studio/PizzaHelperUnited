@@ -75,7 +75,9 @@ final class RootNavVM {
         let maxLabelLength = effectiveCases.map(\.labelNameTextRaw.count).max()
         let forceMenu: Bool? = (maxLabelLength ?? 0) > 8 ? true : nil
         let isOverCompact = screenVM.isPhonePortraitSituation
-        let placeAtTop = OS.isBuggyOS25Build || !isOverCompact || OS.type == .macOS
+        // Early major OS betas have a SwiftUI bottomBar/UICollectionView teardown regression.
+        let avoidBottomToolbar = OS.isBuggyOS25Build || OS.isBetaOSBeforeFirstMajorPublicRelease
+        let placeAtTop = avoidBottomToolbar || !isOverCompact || OS.type == .macOS
         #if os(macOS)
         let actualPlacement: ToolbarItemPlacement = .cancellationAction
         #else
@@ -89,9 +91,7 @@ final class RootNavVM {
                 )
             }
             .removeSharedBackgroundVisibility(bypassWhen: forceMenu ?? false)
-        } else if OS.isBuggyOS25Build {
-            /// iOS 18.0 ~ 18.3 这四个版本号段对 bottom toolbar 的支援有问题，只能放弃处理。
-            /// (此前试过 safeAreaInset 替代方案，仍无效。)
+        } else if avoidBottomToolbar {
             ToolbarItem(placement: actualPlacement) {
                 sharedToolbarNavPicker(
                     allCases: !screenVM.isSidebarVisible,
