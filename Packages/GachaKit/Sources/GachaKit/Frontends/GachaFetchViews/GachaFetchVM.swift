@@ -297,7 +297,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
         _ body: () throws -> Result
     ) rethrows
         -> Result {
-        if isBackgrounded && ThisDevice.isLegacyDeviceOrInsufficientRAM && OS.type != .macOS {
+        if (isBackgrounded && OS.type != .macOS) || ThisDevice.isLegacyDeviceOrInsufficientRAM {
             try body()
         } else {
             try withAnimation(animation, body)
