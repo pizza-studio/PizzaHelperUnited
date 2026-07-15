@@ -28,56 +28,66 @@ private struct BetaOSNoticeModifier: ViewModifier {
         if isNoticeBypassed {
             content
         } else {
-            NavigationView {
-                List {
-                    Section {
-                        Label {
-                            VStack(alignment: .leading) {
-                                Text("pizza.notice.prematureBetaOSDetected.title", bundle: .currentSPM)
-                                    .bold()
-                                    .multilineTextAlignment(.leading)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                Text("pizza.notice.prematureBetaOSDetected.description", bundle: .currentSPM)
-                                    .asInlineTextDescription()
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        } icon: {
-                            Image(systemSymbol: .exclamationmarkTriangleFill)
-                                .foregroundTint(.red)
-                        }
-                        Button {
-                            isNoticeBypassed.toggle()
-                        } label: {
-                            ZStack {
-                                Capsule()
-                                    .fill(Color.accentColor)
-                                Text("sys.agree", bundle: .currentSPM)
-                                    .bold()
-                                    .foregroundTint(.white)
-                                    .padding()
-                            }
-                            .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(BrighteningPressButtonStyle())
-                    } header: {
-                        if let buildString = OSBuild.getSystemBuildString() {
-                            HStack {
-                                Text(verbatim: "OSBuild: \(buildString)")
-                            }
-                        }
-                    }
+            if #available(iOS 17, macCatalyst 17, *) {
+                NavigationStack {
+                    listedContentAsList
                 }
-                .navigationTitle(Pizza.appTitleLocalizedFull)
+            } else {
+                NavigationView {
+                    listedContentAsList
+                }
+                #if !os(macOS) && !targetEnvironment(macCatalyst)
+                .navigationViewStyle(.stack)
+                #endif
             }
-            #if !os(macOS) && !targetEnvironment(macCatalyst)
-            .navigationViewStyle(.stack)
-            #endif
         }
     }
 
     // MARK: Private
 
     @State private var isNoticeBypassed: Bool
+
+    @ViewBuilder private var listedContentAsList: some View {
+        List {
+            Section {
+                Label {
+                    VStack(alignment: .leading) {
+                        Text("pizza.notice.prematureBetaOSDetected.title", bundle: .currentSPM)
+                            .bold()
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("pizza.notice.prematureBetaOSDetected.description", bundle: .currentSPM)
+                            .asInlineTextDescription()
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                } icon: {
+                    Image(systemSymbol: .exclamationmarkTriangleFill)
+                        .foregroundTint(.red)
+                }
+                Button {
+                    isNoticeBypassed.toggle()
+                } label: {
+                    ZStack {
+                        Capsule()
+                            .fill(Color.accentColor)
+                        Text("sys.agree", bundle: .currentSPM)
+                            .bold()
+                            .foregroundTint(.white)
+                            .padding()
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(BrighteningPressButtonStyle())
+            } header: {
+                if let buildString = OSBuild.getSystemBuildString() {
+                    HStack {
+                        Text(verbatim: "OSBuild: \(buildString)")
+                    }
+                }
+            }
+        }
+        .navigationTitle(Pizza.appTitleLocalizedFull)
+    }
 }
 
 // MARK: - BrighteningPressButtonStyle
