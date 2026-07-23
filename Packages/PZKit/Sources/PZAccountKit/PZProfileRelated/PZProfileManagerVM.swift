@@ -104,7 +104,7 @@ public final class ProfileManagerVM: TaskManagedVM {
     public func moveItems(
         from source: IndexSet,
         to destination: Int,
-        errorHandler: ((any Error) -> Void)? = nil
+        errorHandler: SendableErrorHandler? = nil
     ) {
         var newProfiles = profiles
         fireTask(
@@ -116,7 +116,7 @@ public final class ProfileManagerVM: TaskManagedVM {
             },
             shouldAnimatePreparationTask: false,
             cancelPreviousTask: false,
-            givenTask: {
+            givenTask: { [newProfiles] in
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 do {
                     if await !assertion.state.isReleased {
@@ -138,7 +138,7 @@ public final class ProfileManagerVM: TaskManagedVM {
     public func updateProfile(
         _ profile: PZProfileSendable,
         trailingTasks: (() -> Void)? = nil,
-        errorHandler: ((any Error) -> Void)? = nil
+        errorHandler: SendableErrorHandler? = nil
     ) {
         fireTask(
             preparationTask: {
@@ -150,11 +150,11 @@ public final class ProfileManagerVM: TaskManagedVM {
                 // self.profileRefMap 会通过 self.profiles 的 didSet 同步更新。
             },
             cancelPreviousTask: false,
-            givenTask: {
+            givenTask: { [profile, currentProfiles = self.profiles] in
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 do {
                     if await !assertion.state.isReleased {
-                        if let fixed = self.profiles.priorityIssuesSolvedForm {
+                        if let fixed = currentProfiles.priorityIssuesSolvedForm {
                             try await self.profileActor?.addOrUpdateProfiles(Set(fixed))
                         } else {
                             try await self.profileActor?.addOrUpdateProfile(profile)
@@ -176,7 +176,7 @@ public final class ProfileManagerVM: TaskManagedVM {
     public func deleteProfiles(
         uuids uuidsToDrop: Set<UUID>,
         completionHandler: ((Set<PZProfileSendable>?) -> Void)? = nil,
-        errorHandler: ((any Error) -> Void)? = nil
+        errorHandler: SendableErrorHandler? = nil
     ) {
         guard !profiles.isEmpty, !profileRefMap.isEmpty else { return }
         var droppedProfiles: [PZProfileSendable] = []
@@ -192,12 +192,12 @@ public final class ProfileManagerVM: TaskManagedVM {
                 // self.profileRefMap 会通过 self.profiles 的 didSet 同步更新。
             },
             cancelPreviousTask: false,
-            givenTask: {
+            givenTask: { [droppedProfiles, currentProfiles = self.profiles] in
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 do {
                     if await !assertion.state.isReleased {
                         try await self.profileActor?.addOrUpdateProfilesWithDeletion(
-                            Set(self.profiles),
+                            Set(currentProfiles),
                             uuidsToDelete: uuidsToDrop
                         )
                     }
