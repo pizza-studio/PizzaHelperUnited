@@ -33,20 +33,21 @@ public struct WinUI3ProgressRing: View {
             // Optional background track
             if let trackColor {
                 Circle()
-                    .stroke(trackColor.opacity(0.2), lineWidth: lineWidth)
+                    .strokeBorder(trackColor.opacity(0.2), lineWidth: lineWidth)
             }
 
             // Animated arc
             Circle()
+                .inset(by: lineWidth / 2)
                 .trim(from: trimStart, to: trimEnd)
                 .stroke(
                     color,
                     style: StrokeStyle(lineWidth: lineWidth, lineCap: .round)
                 )
-                .rotationEffect(.degrees(rotation - 90))
         }
-        .padding(lineWidth / 2)
         .frame(width: size, height: size)
+        .compositingGroup()
+        .rotationEffect(.degrees(rotation - 90))
         .onAppear {
             startAnimation()
         }
