@@ -452,26 +452,19 @@ struct ProfileManagerPageContent: View {
         )
     }
 
+    /// Bleach 是纯本地操作，不需要 busy indicator。
+    /// 不走 `fireTask` 以避免 rapid state flip 在 `@Observable` 上的潜在 race condition。
     private func bleachInvalidProfiles() {
-        String.printDebug("[PZHelper] bleachInvalidProfiles: onAppear triggered, calling fireTask...")
-        theVM.fireTask(
-            cancelPreviousTask: false,
-            givenTask: {
-                String.printDebug("[PZHelper] bleachInvalidProfiles: starting actor call...")
-                let removedSet = try await theVM.profileActor?.bleachInvalidProfiles()
-                String
-                    .printDebug("[PZHelper] bleachInvalidProfiles: actor call done, removed=\(removedSet?.count ?? -1)")
-                // 注：PZProfileActor 会自动将 SwiftData 内容变更同步到 UserDefaults。
+        Task {
+            let removedSet = try? await theVM.profileActor?.bleachInvalidProfiles()
+            // 注：PZProfileActor 会自动将 SwiftData 内容变更同步到 UserDefaults。
+            if let removedSet {
                 PZNotificationCenter.batchDeleteDailyNoteNotification(
-                    profiles: removedSet ?? [],
+                    profiles: removedSet,
                     onlyDeleteIfDisabled: false
                 )
-            },
-            errorHandler: { error in
-                String.printDebug("[PZHelper] bleachInvalidProfiles: error=\(error.localizedDescription)")
-                errorMessage = error.localizedDescription
             }
-        )
+        }
     }
 
     private func handleImportProfilePackResult(_ result: Result<URL, any Error>) {
