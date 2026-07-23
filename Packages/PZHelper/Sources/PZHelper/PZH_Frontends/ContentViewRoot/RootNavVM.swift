@@ -76,7 +76,7 @@ final class RootNavVM {
         let forceMenu: Bool? = (maxLabelLength ?? 0) > 8 ? true : nil
         let isOverCompact = screenVM.isPhonePortraitSituation
         // Early major OS betas have a SwiftUI bottomBar/UICollectionView teardown regression.
-        let avoidBottomToolbar = OS.isBuggyOS25Build || OS.isBetaOSBeforeFirstMajorPublicRelease
+        let avoidBottomToolbar = OS.isBuggyOS25Build // || OS.isBetaOSBeforeFirstMajorPublicRelease
         let placeAtTop = avoidBottomToolbar || !isOverCompact || OS.type == .macOS
         #if os(macOS)
         let actualPlacement: ToolbarItemPlacement = .cancellationAction
