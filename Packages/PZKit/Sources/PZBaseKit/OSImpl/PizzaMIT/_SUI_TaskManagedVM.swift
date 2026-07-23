@@ -156,12 +156,19 @@ extension TaskManagedVMProtocol {
                 }
                 guard let self else { return }
                 defer {
-                    Task { @MainActor [weak self] in
-                        guard let this = self else { return }
-                        withAnimation {
-                            this.taskState = .standby
+                    Task { [weak self] in
+                        // 在 iOS 27+ 真机上，过快的 state flip 会使 @Observable 的
+                        // observation 漏掉最后的 .standby 变更。硬控 100ms 最低 busy 时长。
+                        if #available(iOS 27.0, macCatalyst 27.0, *) {
+                            try? await Task.sleep(nanoseconds: 100_000_000)
                         }
-                        this.task = nil
+                        await MainActor.run { [weak self] in
+                            guard let this = self else { return }
+                            withAnimation {
+                                this.taskState = .standby
+                            }
+                            this.task = nil
+                        }
                     }
                 }
                 do {
