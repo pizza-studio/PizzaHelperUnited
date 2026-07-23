@@ -58,6 +58,7 @@ extension ProfileManagerVM {
                     Image(systemSymbol: .magnifyingglassCircleFill)
                         .frame(width: 48)
                         .clipShape(.circle)
+                        .drawingGroup()
                         .padding(.trailing, 4)
                 }
             }
@@ -116,9 +117,9 @@ extension ProfileManagerVM {
                 Text("dpv.query.menuCommandTitle".i18nPZHelper)
             }
         }
-        .padding(OS.liquidGlassThemeSuspected ? 0 : 4).padding(.leading, 12)
+        .padding(4).padding(.leading, 12)
         .blurMaterialBackground(
-            enabled: !OS.liquidGlassThemeSuspected,
+            enabled: true,
             shape: .capsule,
             interactive: true
         )
