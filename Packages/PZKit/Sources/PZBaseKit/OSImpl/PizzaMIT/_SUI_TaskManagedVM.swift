@@ -9,6 +9,60 @@ import Foundation
 import Observation
 import SwiftUI
 
+// MARK: - JobExecutor
+
+/// 序列化任务执行器。确保同一 VM 上一次只跑一个任务，
+/// 且 `.busy` → `.standby` 状态转换严格由本物件控制。
+///
+/// 命名避让 Swift 标准库的 `TaskExecutor` protocol。
+@available(iOS 14.0, macCatalyst 14.0, *)
+public final class JobExecutor: @unchecked Sendable {
+    // MARK: Internal
+
+    func enqueue(
+        cancelPrevious: Bool,
+        operation: @escaping @Sendable () async throws -> Void,
+        onError: @MainActor @escaping @Sendable (Error) -> Void,
+        onFinalize: @MainActor @escaping @Sendable () -> Void
+    ) async {
+        if cancelPrevious {
+            queue.sync { currentJob?.cancel() }
+        } else {
+            let previousJob = queue.sync { currentJob }
+            await previousJob?.value
+        }
+
+        let newJob = Task {
+            defer { queue.sync { currentJob = nil } }
+            do {
+                try await operation()
+            } catch {
+                await MainActor.run { onError(error) }
+            }
+        }
+        queue.sync { currentJob = newJob }
+        await newJob.value
+
+        // 保证最小 busy 时长，让 SwiftUI observation 有足够时间窗反映 .busy 状态。
+        if #available(iOS 27.0, macCatalyst 27.0, *) {
+            try? await Task.sleep(nanoseconds: 100_000_000)
+        }
+        await MainActor.run(body: onFinalize)
+    }
+
+    func cancelAll() {
+        queue.sync {
+            currentJob?.cancel()
+            currentJob = nil
+        }
+    }
+
+    // MARK: Private
+
+    private let queue = DispatchQueue(label: "com.pizzastudio.JobExecutor")
+    private var currentJob: Task<Void, Never>?
+}
+
 // MARK: - TaskManagedVM
 
 @available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
@@ -23,21 +77,18 @@ open class TaskManagedVM: TaskManagedVMProtocol {
     public var taskState: ManagedTaskState = .standby
     public var currentError: Error?
 
-    /// 可被子类赋值的 error handler
-    @ObservationIgnored public var assignableErrorHandlingTask: ((Error) -> Void) = { _ in }
+    /// 可被子类赋值的 error handler。
+    @ObservationIgnored public var assignableErrorHandlingTask: @Sendable (Error) -> Void = { _ in }
 
-    /// 唯一保留的业务 Task
-    public var task: Task<Void, Never>? {
-        didSet {
-            withAnimation {
-                taskState = task == nil ? .standby : .busy
-            }
-        }
-    }
+    /// 保留以维持 public API 兼容。状态管理已移交 `JobExecutor`。
+    @ObservationIgnored public var task: Task<Void, Never>?
+
+    @ObservationIgnored public let executor = JobExecutor()
 }
 
 // MARK: - TaskManagedVMBackported
 
+@available(iOS 14.0, macCatalyst 14.0, *)
 @MainActor
 open class TaskManagedVMBackported: TaskManagedVMProtocol, ObservableObject {
     // MARK: Lifecycle
@@ -49,26 +100,27 @@ open class TaskManagedVMBackported: TaskManagedVMProtocol, ObservableObject {
     @Published public var taskState: ManagedTaskState = .standby
     @Published public var currentError: Error?
 
-    /// 可被子类赋值的 error handler
-    public var assignableErrorHandlingTask: ((Error) -> Void) = { _ in }
+    /// 可被子类赋值的 error handler。
+    public var assignableErrorHandlingTask: @Sendable (Error) -> Void = { _ in }
 
-    /// 唯一保留的业务 Task
-    public var task: Task<Void, Never>? {
-        didSet {
-            taskState = task == nil ? .standby : .busy
-        }
-    }
+    /// 保留以维持 public API 兼容。状态管理已移交 `JobExecutor`。
+    public var task: Task<Void, Never>?
+
+    public let executor = JobExecutor()
 }
 
 // MARK: - TaskManagedVMProtocol
 
+@available(iOS 14.0, macCatalyst 14.0, *)
 @MainActor
-public protocol TaskManagedVMProtocol: AnyObject {
+public protocol TaskManagedVMProtocol: AnyObject, Sendable {
     typealias State = ManagedTaskState
+    typealias SendableErrorHandler = @MainActor @Sendable (any Error) -> Void
     var taskState: State { get set }
     var currentError: Error? { get set }
-    var assignableErrorHandlingTask: (Error) -> Void { get set }
+    var assignableErrorHandlingTask: @Sendable (Error) -> Void { get set }
     var task: Task<Void, Never>? { get set }
+    var executor: JobExecutor { get }
 
     func forceStopTheTask()
     func handleError(_ error: Error)
@@ -77,9 +129,9 @@ public protocol TaskManagedVMProtocol: AnyObject {
         preparationTask: (() -> Void)?,
         shouldAnimatePreparationTask: Bool,
         cancelPreviousTask: Bool,
-        givenTask: @escaping () async throws -> (repeat each T)?,
-        completionHandler: (((repeat each T)?) -> Void)?,
-        errorHandler: ((Error) -> Void)?
+        givenTask: @escaping @MainActor @Sendable () async throws -> (repeat each T)?,
+        completionHandler: (@MainActor @Sendable ((repeat each T)?) -> Void)?,
+        errorHandler: SendableErrorHandler?
     )
 }
 
@@ -95,9 +147,9 @@ public enum ManagedTaskState: String, Sendable, Hashable, Identifiable {
 }
 
 extension TaskManagedVMProtocol {
-    /// 兼容旧接口，强制取消任务
+    /// 兼容旧接口，强制取消任务。
     public func forceStopTheTask() {
-        task?.cancel()
+        executor.cancelAll()
         taskState = .standby
     }
 
@@ -114,7 +166,7 @@ extension TaskManagedVMProtocol {
             taskState = .standby
         }
         assignableErrorHandlingTask(error)
-        task?.cancel()
+        executor.cancelAll()
         task = nil
     }
 
@@ -123,76 +175,51 @@ extension TaskManagedVMProtocol {
         preparationTask: (() -> Void)? = nil,
         shouldAnimatePreparationTask: Bool = true,
         cancelPreviousTask: Bool = true,
-        givenTask: @escaping () async throws -> (repeat each T)?,
-        completionHandler: (((repeat each T)?) -> Void)? = nil,
-        errorHandler: ((Error) -> Void)? = nil
+        givenTask: @escaping @MainActor @Sendable () async throws -> (repeat each T)?,
+        completionHandler: (@MainActor @Sendable ((repeat each T)?) -> Void)? = nil,
+        errorHandler: SendableErrorHandler? = nil
     ) {
         if let prerequisite, !prerequisite.condition {
             if let notMetHandler = prerequisite.notMetHandler {
-                withAnimation {
-                    notMetHandler()
-                }
+                withAnimation { notMetHandler() }
             }
             return
         }
         withAnimation {
             currentError = nil
             taskState = .busy
-            if shouldAnimatePreparationTask {
-                preparationTask?()
-            }
+            if shouldAnimatePreparationTask { preparationTask?() }
         }
-        if !shouldAnimatePreparationTask {
-            preparationTask?()
-        }
+        if !shouldAnimatePreparationTask { preparationTask?() }
+
         Task { [weak self] in
             guard let self else { return }
-            let previousTask = task
-            let newTask = Task(priority: .background) { [weak self] in
-                if cancelPreviousTask {
-                    previousTask?.cancel() // 按需取消既有任务。
-                } else {
-                    await previousTask?.value // 等待既有任务执行完毕。
-                }
-                guard let self else { return }
-                defer {
-                    Task { [weak self] in
-                        // 在 iOS 27+ 真机上，过快的 state flip 会使 @Observable 的
-                        // observation 漏掉最后的 .standby 变更。硬控 100ms 最低 busy 时长。
-                        if #available(iOS 27.0, macCatalyst 27.0, *) {
-                            try? await Task.sleep(nanoseconds: 100_000_000)
-                        }
-                        await MainActor.run { [weak self] in
-                            guard let this = self else { return }
-                            withAnimation {
-                                this.taskState = .standby
-                            }
-                            this.task = nil
-                        }
-                    }
-                }
-                do {
+            await executor.enqueue(
+                cancelPrevious: cancelPreviousTask,
+                operation: {
                     let retrieved = try await givenTask()
                     await MainActor.run { [weak self] in
-                        guard let this = self else { return }
+                        guard let self else { return }
                         withAnimation {
-                            if let retrieved {
-                                completionHandler?(retrieved)
-                            }
-                            this.currentError = nil
+                            if let retrieved { completionHandler?(retrieved) }
+                            currentError = nil
                         }
                     }
-                } catch {
-                    await MainActor.run { [weak self] in
-                        guard let this = self else { return }
-                        // Ensure handleError is called on the main actor
-                        (errorHandler ?? { error in this.handleError(error) })(error)
+                },
+                onError: { [weak self] error in
+                    guard let self else { return }
+                    if let errorHandler {
+                        errorHandler(error)
+                    } else {
+                        handleError(error)
                     }
+                },
+                onFinalize: { [weak self] in
+                    guard let self else { return }
+                    withAnimation { taskState = .standby }
+                    task = nil
                 }
-            }
-            await MainActor.run {
-                task = newTask
-            }
+            )
         }
     }
 }
