@@ -114,7 +114,7 @@ public struct GachaExportToolbarButton: View {
 
     var defaultFileName: String? {
         switch theVM.currentExportableDocument {
-        case let .success(document): document.fileNameStem
+        case let .success(document): document.fileNameStem + ".json"
         case .failure, .none: nil
         }
     }

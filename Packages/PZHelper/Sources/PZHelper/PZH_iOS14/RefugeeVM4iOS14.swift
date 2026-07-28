@@ -215,15 +215,16 @@ extension RefugeeVM4iOS14 {
         public var defaultFileName: String {
             switch self {
             case .refugee:
-                if #available(iOS 17.0, macCatalyst 17.0, *) {
-                    return "ThePizzaHelper_RefugeeMigrationData"
+                let stem = if #available(iOS 17.0, macCatalyst 17.0, *) {
+                    "ThePizzaHelper_RefugeeMigrationData"
                 } else {
-                    return "PizzaHelper4Genshin_RefugeeMigrationData"
+                    "PizzaHelper4Genshin_RefugeeMigrationData"
                 }
+                return stem + ".plist"
             case let .profiles(doc):
-                return doc.fileNameStem
+                return doc.fileNameStem + ".json"
             case let .wallpapers(doc):
-                return doc.fileNameStem
+                return doc.fileNameStem + ".json"
             }
         }
     }

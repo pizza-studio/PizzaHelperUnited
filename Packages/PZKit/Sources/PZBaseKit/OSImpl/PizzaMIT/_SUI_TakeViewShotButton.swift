@@ -58,7 +58,7 @@ public struct TakeViewShotButton<Content: View, SubLabelContent: View>: View {
             isPresented: taskVM.isFileExporterVisible,
             document: taskVM.finishedHEICImage,
             contentType: .heic,
-            defaultFilename: "Image_\(Int(Date().timeIntervalSince1970))"
+            defaultFilename: "Image_\(Int(Date().timeIntervalSince1970)).heic"
         ) { _ in
         }
     }

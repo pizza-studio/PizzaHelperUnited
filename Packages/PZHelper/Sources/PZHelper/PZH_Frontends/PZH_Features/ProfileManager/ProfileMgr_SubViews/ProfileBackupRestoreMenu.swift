@@ -144,7 +144,7 @@ internal final class ProfileBackupRestoreMenuCoordinator {
 
     var defaultFileName: String? {
         switch currentExportableDocument {
-        case let .success(document): document.fileNameStem
+        case let .success(document): document.fileNameStem + ".json"
         case .failure, .none: nil
         }
     }
