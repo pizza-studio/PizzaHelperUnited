@@ -117,7 +117,9 @@ struct ProfileManagerPageContent: View {
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
         .apply(hookSheet)
-        .onAppear(perform: bleachInvalidProfiles)
+        .onAppear { @MainActor in
+            bleachInvalidProfiles()
+        }
         .apply { content in
             content
                 .toolbar {
@@ -181,6 +183,8 @@ struct ProfileManagerPageContent: View {
     private let wrappedByNavStack: Bool
 
     @Default(.lastTimeResetLocalProfileDB) private var lastTimeResetLocalProfileDB: Date?
+
+    private let bleachDebouncer = Debouncer(delay: 1.5)
 
     private var isSheetVisible: Binding<Bool> {
         .init {
@@ -454,26 +458,35 @@ struct ProfileManagerPageContent: View {
         )
     }
 
-    private func bleachInvalidProfiles() {
-        String.printDebug("[PZHelper] bleachInvalidProfiles: onAppear triggered, calling fireTask...")
-        theVM.fireTask(
-            cancelPreviousTask: false,
-            givenTask: {
-                String.printDebug("[PZHelper] bleachInvalidProfiles: starting actor call...")
-                let removedSet = try await theVM.profileActor?.bleachInvalidProfiles()
-                String
-                    .printDebug("[PZHelper] bleachInvalidProfiles: actor call done, removed=\(removedSet?.count ?? -1)")
-                // 注：PZProfileActor 会自动将 SwiftData 内容变更同步到 UserDefaults。
-                PZNotificationCenter.batchDeleteDailyNoteNotification(
-                    profiles: removedSet ?? [],
-                    onlyDeleteIfDisabled: false
-                )
-            },
-            errorHandler: { error in
-                String.printDebug("[PZHelper] bleachInvalidProfiles: error=\(error.localizedDescription)")
-                errorMessage = error.localizedDescription
-            }
-        )
+    private func bleachInvalidProfiles(viaDebouncer: Bool = true) {
+        let task = { @MainActor [theVM] in
+            String.printDebug("[PZHelper] bleachInvalidProfiles: triggered")
+            theVM.fireTask(
+                cancelPreviousTask: false,
+                givenTask: {
+                    String.printDebug("[PZHelper] bleachInvalidProfiles: starting actor call...")
+                    let removedSet = try await theVM.profileActor?.bleachInvalidProfiles()
+                    String
+                        .printDebug(
+                            "[PZHelper] bleachInvalidProfiles: actor call done, removed=\(removedSet?.count ?? -1)"
+                        )
+                    // 注：PZProfileActor 会自动将 SwiftData 内容变更同步到 UserDefaults。
+                    PZNotificationCenter.batchDeleteDailyNoteNotification(
+                        profiles: removedSet ?? [],
+                        onlyDeleteIfDisabled: false
+                    )
+                },
+                errorHandler: { error in
+                    String.printDebug("[PZHelper] bleachInvalidProfiles: error=\(error.localizedDescription)")
+                }
+            )
+        }
+        if viaDebouncer {
+            bleachDebouncer.debounceOnMain(keepFirstAttemptInstead: false, task)
+        } else {
+            bleachDebouncer.cancelOnMain()
+            task()
+        }
     }
 
     private func handleImportProfilePackResult(_ result: Result<URL, any Error>) {
