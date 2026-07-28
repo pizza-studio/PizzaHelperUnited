@@ -158,11 +158,13 @@ struct ContributorItem: View {
         }
         if !extraLinks.isEmpty {
             Menu {
-                ForEach(extraLinks) {
-                    if OS.type == .macOS {
-                        $0.asMenuItem4MacOS
-                    } else {
-                        $0.asView
+                ForEach(extraLinks) { link in
+                    VStack {
+                        if OS.type == .macOS {
+                            link.asMenuItem4MacOS
+                        } else {
+                            link.asView
+                        }
                     }
                 }
             } label: {

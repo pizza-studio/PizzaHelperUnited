@@ -112,23 +112,21 @@ final class RootNavVM {
         @Bindable var this = self
         let effectiveCases = !allCases ? AppRootPage.enabledSubCases : AppRootPage.allCases
         Picker("".description, selection: $this.rootPageNav) {
-            ForEach(effectiveCases) { navCase in
-                if navCase.isExposed {
-                    let isChosen: Bool = navCase == self.rootPageNav
-                    switch isMenu {
-                    case true:
-                        VStack(alignment: .center) {
-                            navCase.icon
-                            navCase.labelNameText
-                                .fontWidth(.compressed)
-                                .fontWeight(isChosen ? .bold : .regular)
-                                .textCase(.uppercase)
-                        }
-                        .tag(navCase)
-                    case false:
-                        navCase.label
-                            .tag(navCase)
+            ForEach(effectiveCases.filter(\.isExposed)) { navCase in
+                let isChosen: Bool = navCase == self.rootPageNav
+                switch isMenu {
+                case true:
+                    VStack(alignment: .center) {
+                        navCase.icon
+                        navCase.labelNameText
+                            .fontWidth(.compressed)
+                            .fontWeight(isChosen ? .bold : .regular)
+                            .textCase(.uppercase)
                     }
+                    .tag(navCase)
+                case false:
+                    navCase.label
+                        .tag(navCase)
                 }
             }
         }

@@ -338,21 +338,23 @@ extension CharacterInventoryView {
                         }
                         HStack(spacing: 0) {
                             ForEach(avatar.artifacts, id: \.id) { artifact in
-                                switch game {
-                                case .genshinImpact:
-                                    artifact.localFittingIcon4SUI
-                                        .frame(width: 22.5, height: 22.5)
-                                        .clipped()
-                                        .scaledToFit()
-                                        .frame(width: 20, height: 20)
-                                case .starRail:
-                                    artifact.localFittingIcon4SUI
-                                        .scaledToFit()
-                                        .frame(width: 20, height: 20)
-                                case .zenlessZone:
-                                    artifact.localFittingIcon4SUI
-                                        .scaledToFit()
-                                        .frame(width: 20, height: 20)
+                                VStack {
+                                    switch game {
+                                    case .genshinImpact:
+                                        artifact.localFittingIcon4SUI
+                                            .frame(width: 22.5, height: 22.5)
+                                            .clipped()
+                                            .scaledToFit()
+                                            .frame(width: 20, height: 20)
+                                    case .starRail:
+                                        artifact.localFittingIcon4SUI
+                                            .scaledToFit()
+                                            .frame(width: 20, height: 20)
+                                    case .zenlessZone:
+                                        artifact.localFittingIcon4SUI
+                                            .scaledToFit()
+                                            .frame(width: 20, height: 20)
+                                    }
                                 }
                             }
                             if avatar.artifacts.isEmpty {

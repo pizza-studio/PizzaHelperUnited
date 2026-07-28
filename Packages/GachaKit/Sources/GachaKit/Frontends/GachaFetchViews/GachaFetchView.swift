@@ -648,13 +648,14 @@ extension GachaFetchView4Game {
                 let sortedTypeFechedCount = typeFetchedCount.sorted {
                     $0.key.expressible.rawValue < $1.key.expressible.rawValue
                 }
-                ForEach(sortedTypeFechedCount, id: \.key) { currentPoolType, currentPoolCount in
-                    if !chosenPools.isEmpty, chosenPools.contains(currentPoolType) {
-                        LabeledContent {
-                            Text(verbatim: currentPoolCount.description).fontWidth(.condensed)
-                        } label: {
-                            Text(verbatim: currentPoolType.description).fontWidth(.condensed)
-                        }
+                let displayedCounts: [(key: GachaType, value: Int)] = chosenPools.isEmpty
+                    ? []
+                    : sortedTypeFechedCount.filter { chosenPools.contains($0.key) }
+                ForEach(displayedCounts, id: \.key) { currentPoolType, currentPoolCount in
+                    LabeledContent {
+                        Text(verbatim: currentPoolCount.description).fontWidth(.condensed)
+                    } label: {
+                        Text(verbatim: currentPoolType.description).fontWidth(.condensed)
                     }
                 }
             }

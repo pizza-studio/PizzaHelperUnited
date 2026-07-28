@@ -36,11 +36,12 @@ public struct ContentView: View {
                 List {
                     ASUpdateNoticeView()
                         .font(.footnote)
-                    ForEach(profiles, id: \.uuid) { profile in
-                        if let dailyNoteVM = multiNoteVM.vmMap[profile.uuid.uuidString] {
-                            DetailNavigator()
-                                .environment(dailyNoteVM)
-                        }
+                    let profilesWithVM = profiles.compactMap { profile in
+                        multiNoteVM.vmMap[profile.uuid.uuidString].map { (profile, $0) }
+                    }
+                    ForEach(profilesWithVM, id: \.0.uuid) { _, dailyNoteVM in
+                        DetailNavigator()
+                            .environment(dailyNoteVM)
                     }
                     Section {
                         NavigationLink {

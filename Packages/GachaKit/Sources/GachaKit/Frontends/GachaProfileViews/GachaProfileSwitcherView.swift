@@ -80,38 +80,40 @@ public struct GachaProfileSwitcherView: View {
             let nameIDMap = theVM.nameIDMap
             Menu {
                 ForEach(allGPIDsNested, id: \.offset) { sortedSubGPIDPair in
-                    if let sortedSubGPIDs = sortedSubGPIDPair.element {
-                        ForEach(sortedSubGPIDs) { profileIDObj in
-                            Button {
-                                withAnimation {
-                                    theVM.currentGPID = profileIDObj
-                                }
-                            } label: {
-                                switch OS.type {
-                                case .macOS:
-                                    Group {
-                                        if let name = nameIDMap[profileIDObj.uidWithGame] {
-                                            Text(name + " // \(profileIDObj.uidWithGame)")
-                                        } else {
-                                            Text(profileIDObj.uidWithGame)
+                    VStack {
+                        if let sortedSubGPIDs = sortedSubGPIDPair.element {
+                            ForEach(sortedSubGPIDs) { profileIDObj in
+                                Button {
+                                    withAnimation {
+                                        theVM.currentGPID = profileIDObj
+                                    }
+                                } label: {
+                                    switch OS.type {
+                                    case .macOS:
+                                        Group {
+                                            if let name = nameIDMap[profileIDObj.uidWithGame] {
+                                                Text(name + " // \(profileIDObj.uidWithGame)")
+                                            } else {
+                                                Text(profileIDObj.uidWithGame)
+                                            }
+                                        }
+                                    default:
+                                        Label {
+                                            if let name = nameIDMap[profileIDObj.uidWithGame] {
+                                                Text(name + "\n\(profileIDObj.uidWithGame)")
+                                            } else {
+                                                Text(profileIDObj.uidWithGame)
+                                            }
+                                        } icon: {
+                                            profileIDObj.photoView
                                         }
                                     }
-                                default:
-                                    Label {
-                                        if let name = nameIDMap[profileIDObj.uidWithGame] {
-                                            Text(name + "\n\(profileIDObj.uidWithGame)")
-                                        } else {
-                                            Text(profileIDObj.uidWithGame)
-                                        }
-                                    } icon: {
-                                        profileIDObj.photoView
-                                    }
                                 }
+                                .id(profileIDObj.uidWithGame)
                             }
-                            .id(profileIDObj.uidWithGame)
+                        } else {
+                            Divider()
                         }
-                    } else {
-                        Divider()
                     }
                 }
             } label: {

@@ -151,19 +151,20 @@ public struct AvatarStatCollectionTabView: View {
                     }
                 } else {
                     let allElements = Enka.GameElement.allCases.sorted { $0.tourID < $1.tourID }
-                    ForEach(allElements, id: \.tourID) { currentElement in
-                        if let avatarsOfThisElement = sortedCharIDMap[currentElement] {
-                            Menu {
-                                ForEach(avatarsOfThisElement) { charNameID in
-                                    Button(charNameID.name) {
-                                        withAnimation(.easeIn(duration: 0.1)) {
-                                            showingCharacterIdentifier = charNameID.id
-                                        }
+                    let elementsWithAvatars = allElements.compactMap { element in
+                        sortedCharIDMap[element].map { (element, $0) }
+                    }
+                    ForEach(elementsWithAvatars, id: \.0.tourID) { currentElement, avatarsOfThisElement in
+                        Menu {
+                            ForEach(avatarsOfThisElement) { charNameID in
+                                Button(charNameID.name) {
+                                    withAnimation(.easeIn(duration: 0.1)) {
+                                        showingCharacterIdentifier = charNameID.id
                                     }
                                 }
-                            } label: {
-                                Text(verbatim: currentElement.localizedName)
                             }
+                        } label: {
+                            Text(verbatim: currentElement.localizedName)
                         }
                     }
                 }

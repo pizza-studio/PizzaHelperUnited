@@ -74,13 +74,14 @@ struct TodayTabPage: View {
                 rootNavVM.gotoSettingsButtonIfAppropriate
             }
         } else {
-            ForEach(filteredProfiles) { profile in
-                if let dailyNoteVM = multiNoteVM.vmMap[profile.uuid.uuidString] {
-                    RealTimeNoteCardView()
-                        .environment(dailyNoteVM)
-                        .id(profile)
-                        .listRowMaterialBackground()
-                }
+            let profilesWithVM = filteredProfiles.compactMap { profile in
+                multiNoteVM.vmMap[profile.uuid.uuidString].map { (profile, $0) }
+            }
+            ForEach(profilesWithVM, id: \.0.uuid) { profile, dailyNoteVM in
+                RealTimeNoteCardView()
+                    .environment(dailyNoteVM)
+                    .id(profile)
+                    .listRowMaterialBackground()
             }
         }
     }

@@ -55,23 +55,25 @@ public struct CharInventoryNav: View {
             InformationRowView(Self.navTitle) {
                 let thisLabel = HStack(spacing: 3) {
                     ForEach(data.avatars.prefix(5), id: \.id) { avatar in
-                        if let charIdExp = Enka.AvatarSummarized.CharacterID(
-                            id: avatar.id.description, costumeID: avatar.firstCostumeID?.description
-                        ) {
-                            charIdExp.avatarPhoto(
-                                size: 30, circleClipped: true, clipToHead: true
-                            )
-                        } else {
-                            Color.gray.frame(width: 30, height: 30, alignment: .top).clipShape(Circle())
-                                .overlay(alignment: .top) {
-                                    AsyncImage(url: avatar.icon.asURL) { image in
-                                        image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                    } placeholder: {
-                                        WinUI3ProgressRing()
+                        VStack {
+                            if let charIdExp = Enka.AvatarSummarized.CharacterID(
+                                id: avatar.id.description, costumeID: avatar.firstCostumeID?.description
+                            ) {
+                                charIdExp.avatarPhoto(
+                                    size: 30, circleClipped: true, clipToHead: true
+                                )
+                            } else {
+                                Color.gray.frame(width: 30, height: 30, alignment: .top).clipShape(Circle())
+                                    .overlay(alignment: .top) {
+                                        AsyncImage(url: avatar.icon.asURL) { image in
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                        } placeholder: {
+                                            WinUI3ProgressRing()
+                                        }
                                     }
-                                }
+                            }
                         }
                     }
                 }
