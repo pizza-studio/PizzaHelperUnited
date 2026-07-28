@@ -116,13 +116,14 @@ public final class ProfileManagerVM: TaskManagedVM {
             },
             shouldAnimatePreparationTask: false,
             cancelPreviousTask: false,
-            givenTask: { [newProfiles] in
+            givenTask: {
+                let profilesToWrite = newProfiles
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 do {
                     if await !assertion.state.isReleased {
-                        // 此处的 newProfiles 已经是修过 priority 了的。
+                        // 此处的 profilesToWrite 已经是修过 priority 了的。
                         try await self.profileActor?.replaceProfilesMatchingUUID(
-                            with: Set(newProfiles)
+                            with: Set(profilesToWrite)
                         )
                     }
                     await assertion.release()
@@ -150,7 +151,8 @@ public final class ProfileManagerVM: TaskManagedVM {
                 // self.profileRefMap 会通过 self.profiles 的 didSet 同步更新。
             },
             cancelPreviousTask: false,
-            givenTask: { [profile, currentProfiles = self.profiles] in
+            givenTask: {
+                let currentProfiles = self.profiles
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 do {
                     if await !assertion.state.isReleased {
@@ -192,7 +194,8 @@ public final class ProfileManagerVM: TaskManagedVM {
                 // self.profileRefMap 会通过 self.profiles 的 didSet 同步更新。
             },
             cancelPreviousTask: false,
-            givenTask: { [droppedProfiles, currentProfiles = self.profiles] in
+            givenTask: {
+                let currentProfiles = self.profiles
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 do {
                     if await !assertion.state.isReleased {
