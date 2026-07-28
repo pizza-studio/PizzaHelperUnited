@@ -45,6 +45,15 @@ struct ProfileManagerPageContent: View {
 
     @ViewBuilder var coreBody: some View {
         Form {
+            if needsBleach, !isBusy {
+                Section {
+                    Button {
+                        bleachInvalidProfiles(viaDebouncer: false)
+                    } label: {
+                        Label("profileMgr.bleach.button.title".i18nPZHelper, systemSymbol: .bandageFill)
+                    }
+                }
+            }
             Section {
                 if Self.isOS25OrNewer {
                     NavigationLink {
@@ -117,9 +126,6 @@ struct ProfileManagerPageContent: View {
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
         .apply(hookSheet)
-        .onAppear { @MainActor in
-            bleachInvalidProfiles()
-        }
         .apply { content in
             content
                 .toolbar {
@@ -218,6 +224,10 @@ struct ProfileManagerPageContent: View {
 
     private var isBusy: Bool {
         theVM.taskState == .busy
+    }
+
+    private var needsBleach: Bool {
+        theVM.profiles.contains { $0.isInvalid }
     }
 
     @ViewBuilder private var coreBodyWithModifiers: some View {
