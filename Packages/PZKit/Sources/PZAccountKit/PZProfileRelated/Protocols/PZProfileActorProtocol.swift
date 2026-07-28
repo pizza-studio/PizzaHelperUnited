@@ -49,13 +49,21 @@ extension PZProfileActorProtocol {
 
     @discardableResult
     public func syncAllDataToUserDefaults() -> [PZProfileSendable] {
-        var existingKeys = Set<String>(Defaults[.pzProfiles].keys)
         let profiles = getSendableProfiles()
-        profiles.forEach {
-            Defaults[.pzProfiles][$0.uuid.uuidString] = $0
-            existingKeys.remove($0.uuid.uuidString)
+        var newMap = Defaults[.pzProfiles]
+        let profileUUIDs = Set(profiles.map(\.uuid.uuidString))
+        // Remove obsolete keys no longer in the fetched profiles.
+        newMap.keys.forEach { key in
+            if !profileUUIDs.contains(key) {
+                newMap.removeValue(forKey: key)
+            }
         }
-        existingKeys.forEach { Defaults[.pzProfiles].removeValue(forKey: $0) }
+        // Batch-update all profiles.
+        profiles.forEach {
+            newMap[$0.uuid.uuidString] = $0
+        }
+        // Single atomic write: Defaults.updates observer fires once with complete data.
+        Defaults[.pzProfiles] = newMap
         UserDefaults.profileSuite.synchronize()
         return profiles
     }
