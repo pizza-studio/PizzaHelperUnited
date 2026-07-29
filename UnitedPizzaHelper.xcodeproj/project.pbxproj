@@ -2150,7 +2150,7 @@
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.2;
+				minimumVersion = 9.0.9;
 			};
 		};
 		5B703A332F041DA700EA8295 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
@@ -2174,7 +2174,7 @@
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.2;
+				minimumVersion = 9.0.9;
 			};
 		};
 		5BFCA05B2CCE002700F182C7 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
@@ -2190,7 +2190,7 @@
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.2;
+				minimumVersion = 9.0.9;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

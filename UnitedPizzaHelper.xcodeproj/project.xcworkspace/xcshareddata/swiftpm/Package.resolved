@@ -1,5 +1,5 @@
 {
-  "originHash" : "f0cebdbf487916f540c3ac3d6311093556847c33ccd0bf4e3ea24bf95096bb45",
+  "originHash" : "27238a02927b643731297e98e59d6deacb3d77c88c54134ed93f9461bf19d6c5",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/sindresorhus/Defaults",
       "state" : {
-        "revision" : "00c82eff4550c87cf9c547d7e5493a6a97837061",
-        "version" : "9.0.3"
+        "revision" : "00a7465a0668a87fa159e779b9d80f1f9652357e",
+        "version" : "9.0.9"
       }
     },
     {
