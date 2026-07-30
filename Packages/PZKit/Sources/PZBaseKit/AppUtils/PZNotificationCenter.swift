@@ -43,4 +43,20 @@ public enum PZNotificationCenter {
     public static func authorizationStatus() async -> UNAuthorizationStatus {
         await center.notificationSettings().authorizationStatus
     }
+
+    /// 移除已经送达通知中心、但尚未被使用者手动清除的通知。
+    /// 主要用于在推送新通知前清除相同性质（同游戏同 UID）的旧通知、避免重复。
+    public static func removeDeliveredNotifications(withIdentifiersMatching profileUUID: String, uidWithGame: String) {
+        Task { @MainActor in
+            let identifiersToRemove: [String] = await withCheckedContinuation { continuation in
+                center.getDeliveredNotifications { delivered in
+                    let ids = delivered
+                        .map(\.request.identifier)
+                        .filter { $0.contains(profileUUID) || $0.contains(uidWithGame) }
+                    continuation.resume(returning: ids)
+                }
+            }
+            center.removeDeliveredNotifications(withIdentifiers: identifiersToRemove)
+        }
+    }
 }

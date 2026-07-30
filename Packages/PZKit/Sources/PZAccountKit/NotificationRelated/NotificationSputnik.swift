@@ -127,6 +127,11 @@ extension NotificationSputnik {
             let notificationAllowedByOS = (try? await PZNotificationCenter.requestAuthorization()) ?? false
             // 先清空既有的通知，包括可能已经过期的排定通知。
             PZNotificationCenter.deleteDailyNoteNotification(for: profile)
+            // 同时移除已经送达通知中心的旧通知，避免重复。
+            PZNotificationCenter.removeDeliveredNotifications(
+                withIdentifiersMatching: profile.uuid.uuidString,
+                uidWithGame: profile.uidWithGame
+            )
             // 然后检查此账号是否启用了通知，否则直接中断。
             guard notificationAllowedByOS, profile.allowNotification else { return }
             // STAMINA
