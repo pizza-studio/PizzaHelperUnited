@@ -491,7 +491,7 @@ extension CookieGetterWebView {
                         guard let self, let parentRef, parentReloadScheduleID == scheduleID else { return }
                         let cookieReady = await hasLikelyHoYoAuthCookies()
                         #if DEBUG
-                        print(
+                        PZLog.debug(
                             "[SIWA] parent cookie probe=\(index + 1) reason=\(reason) delay=\(delay) ready=\(cookieReady)"
                         )
                         #endif
@@ -499,7 +499,7 @@ extension CookieGetterWebView {
                         if cookieReady {
                             parentReloadScheduleID += 1
                             #if DEBUG
-                            print("[SIWA] auth cookies settled, reload parent once")
+                            PZLog.debug("[SIWA] auth cookies settled, reload parent once")
                             #endif
                             parentRef.reloadFromOrigin()
                             return
@@ -508,11 +508,11 @@ extension CookieGetterWebView {
                         if index == probeDelays.count - 1 {
                             #if DEBUG
                             let cookieNames = await hoyoCookieNameSnapshot()
-                            print("[SIWA] final cookie names snapshot=\(cookieNames)")
+                            PZLog.debug("[SIWA] final cookie names snapshot=\(cookieNames)")
                             #endif
                             parentReloadScheduleID += 1
                             #if DEBUG
-                            print("[SIWA] auth cookies not detected after probes, perform fallback reload")
+                            PZLog.debug("[SIWA] auth cookies not detected after probes, perform fallback reload")
                             #endif
                             parentRef.reloadFromOrigin()
                         }

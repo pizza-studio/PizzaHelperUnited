@@ -5,6 +5,7 @@
 import Combine
 import Foundation
 import Observation
+import OSLog
 import SwiftUI
 import WidgetKit
 
@@ -77,7 +78,7 @@ extension Broadcaster {
             do {
                 _ = try await PZNotificationCenter.requestAuthorization()
             } catch {
-                print(error)
+                PZLog.error("\(error)")
             }
         }
     }

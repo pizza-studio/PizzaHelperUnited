@@ -64,7 +64,7 @@ public struct CDGachaMODebugView: View {
                 .pickerStyle(.segmented)
                 .fixedSize()
                 .react(to: delegate.game, initial: true) {
-                    print("Action")
+                    PZLog.info("Action")
                 }
             }
             .removeSharedBackgroundVisibility()

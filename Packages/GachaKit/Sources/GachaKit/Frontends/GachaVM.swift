@@ -483,7 +483,7 @@ extension GachaVM {
                             }
                         }
                     } catch {
-                        print(error)
+                        PZLog.error("\(error)")
                         if isHutaoRefugee {
                             throw GachaKit.FileExchangeException.otherError(error)
                         } else {
@@ -542,7 +542,7 @@ extension GachaVM {
                         )
                         break formatProcess
                     } catch let refugeeError {
-                        print(refugeeError)
+                        PZLog.error("\(refugeeError)")
                         if isRefugee {
                             throw GachaKit.FileExchangeException.otherError(refugeeError)
                         } else {

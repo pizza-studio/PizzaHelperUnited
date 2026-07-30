@@ -143,7 +143,7 @@ extension GachaMeta {
                 try await mainDBMonitor4GI.startMonitoring()
                 try await reversedDBMonitor4GI.startMonitoring()
             } catch {
-                print("[GachaMeta.sharedDB] Init error: \(error)")
+                PZLog.error("[GachaMeta.sharedDB] Init error: \(error)")
             }
         }
 
@@ -188,19 +188,19 @@ extension GachaMeta.Sputnik {
                 .serializingDecodable(GachaMeta.MetaDB.self)
                 .value
         } catch {
-            print(error.localizedDescription)
-            print("// [GachaMeta.MetaDB.fetchPreCompiledData] Attempt using alternative JSON server source.")
+            PZLog.error(error.localizedDescription)
+            PZLog.info("// [GachaMeta.MetaDB.fetchPreCompiledData] Attempt using alternative JSON server source.")
             do {
                 let resultObj = try await AF.request(serverType.gmdbServerViceVersa.gachaMetaDBRemoteURL)
                     .serializingDecodable(GachaMeta.MetaDB.self)
                     .value
                 // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
                 let successMsg = "// [GachaMeta.MetaDB.fetchPreCompiledData] 2nd attempt succeeded."
-                print(successMsg)
+                PZLog.info(successMsg)
                 return resultObj
             } catch {
-                print("// [GachaMeta.MetaDB.fetchPreCompiledData] Final attempt failed:")
-                print(error.localizedDescription)
+                PZLog.error("// [GachaMeta.MetaDB.fetchPreCompiledData] Final attempt failed:")
+                PZLog.error(error.localizedDescription)
                 throw error
             }
         }

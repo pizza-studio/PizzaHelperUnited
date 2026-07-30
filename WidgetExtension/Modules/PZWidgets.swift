@@ -23,11 +23,18 @@ extension PZWidgets {
     }
 
     public static func getAllProfiles(sortByGame: Bool = false) -> [PZProfileSendable] {
-        Defaults[.pzProfiles].values.sorted {
+        let rawSuite = UserDefaults(suiteName: appGroupID)
+        let suiteStatus = rawSuite != nil ? "OK" : "NIL(fallback-to-standard)"
+        let profileMap = Defaults[.pzProfiles]
+        let result = profileMap.values.sorted {
             if sortByGame {
                 return $0.game.caseIndex < $1.game.caseIndex && $0.priority < $1.priority
             }
             return $0.priority < $1.priority
         }
+        PZLog.info(
+            "[Widget.getAllProfiles] appGroup=\(appGroupID) suite=\(suiteStatus) profileCount=\(profileMap.count)"
+        )
+        return result
     }
 }

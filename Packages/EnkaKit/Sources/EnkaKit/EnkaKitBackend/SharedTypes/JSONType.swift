@@ -4,6 +4,7 @@
 
 import EnkaDBFiles
 import Foundation
+import PZBaseKit
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
@@ -69,7 +70,7 @@ extension Enka {
                 let data = try Data(contentsOf: url)
                 return try JSONDecoder().decode([String: [String: String]].self, from: data)
             } catch {
-                NSLog("EnkaKit: Cannot access bundledExtraLangTable.json.")
+                PZLog.error("EnkaKit: Cannot access bundledExtraLangTable.json.")
                 return [:]
             }
         }()
@@ -83,7 +84,7 @@ extension Enka {
                 let data = try Data(contentsOf: url)
                 return try JSONDecoder().decode([String: [String: String]].self, from: data)
             } catch {
-                NSLog("EnkaKit: Cannot access RealNameDict.json.")
+                PZLog.error("EnkaKit: Cannot access RealNameDict.json.")
                 return [:]
             }
         }()

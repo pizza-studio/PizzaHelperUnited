@@ -10,7 +10,9 @@ extension HYQueriedModels.HYLAvatarDetail4HSR: HYQueriedAvatarProtocol {
     public func summarize(theDB: Enka.EnkaDB4HSR) -> Enka.AvatarSummarized? {
         let mainInfo = Enka.AvatarSummarized.AvatarMainInfo(hsrDB: theDB, hylRAW: self)
         guard let mainInfo else {
-            print("[HSR-Summarize] AvatarMainInfo init returned nil for charID=\(id) name=\(name)")
+            PZLog.info(
+                "[HSR-Summarize] AvatarMainInfo init returned nil for charID=\(id) name=\(name)"
+            )
             return nil
         }
         let equipInfo = Enka.AvatarSummarized.WeaponPanel(hsrDB: theDB, hylRAW: self)

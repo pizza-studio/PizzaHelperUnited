@@ -32,10 +32,12 @@ extension CDProfileMOActor {
             return .success(result)
         } catch let firstError {
             #if DEBUG
-            print("----------------")
-            print("CDProfileMOActor failed from booting with useGroupContainer: \(useGroupContainer).")
-            print(firstError)
-            print("----------------")
+            PZLog.debug("----------------")
+            PZLog.debug(
+                "CDProfileMOActor failed from booting with useGroupContainer: \(useGroupContainer)."
+            )
+            PZLog.debug("\(firstError)")
+            PZLog.debug("----------------")
             #endif
             guard useGroupContainer else { return .failure(firstError) }
             // Defaults[.situatePZProfileDBIntoGroupContainer] = false
@@ -48,11 +50,11 @@ extension CDProfileMOActor {
                 return .success(result)
             } catch let secondError {
                 #if DEBUG
-                print("----------------")
-                print("CDProfileMOActor failed from final booting.")
-                print("This attempt doesn't use useGroupContainer.")
-                print(secondError)
-                print("----------------")
+                PZLog.debug("----------------")
+                PZLog.debug("CDProfileMOActor failed from final booting.")
+                PZLog.debug("This attempt doesn't use useGroupContainer.")
+                PZLog.debug("\(secondError)")
+                PZLog.debug("----------------")
                 #endif
                 return .failure(secondError)
             }

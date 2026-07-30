@@ -8,6 +8,7 @@
 
 import Foundation
 import ImageIO
+import OSLog
 #if !os(watchOS)
 import CoreImage
 #endif
@@ -19,7 +20,8 @@ import UniformTypeIdentifiers
 @inline(__always)
 private func debugPrint(_ items: Any..., separator: String = " ", terminator: String = "\n") {
     #if DEBUG
-    print(items, separator: separator, terminator: terminator)
+    let msg = items.map { String(describing: $0) }.joined(separator: separator)
+    PZLog.debug(msg)
     #endif
 }
 

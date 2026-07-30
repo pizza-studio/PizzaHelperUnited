@@ -96,10 +96,14 @@ struct DualProfileWidgetProvider: AppIntentTimelineProvider {
         await viewConfig.saveOnlineBackgroundAsset()
         let intentEntity1 = configuration.profileSlot1
         let intentEntity2 = configuration.profileSlot2
-        print(
+        PZLog.info(
             "[DualProfileWidget] slot1 entity: \(intentEntity1?.id ?? "nil"), slot2 entity: \(intentEntity2?.id ?? "nil")"
         )
-        print("[DualProfileWidget] getAllProfiles count: \(PZWidgets.getAllProfiles().count)")
+        PZLog.info("[DualProfileWidget] getAllProfiles count: \(PZWidgets.getAllProfiles().count)")
+
+        PZLog.info(
+            "[DualProfileWidget.timeline] slot1=\(intentEntity1?.id ?? "nil") slot2=\(intentEntity2?.id ?? "nil")"
+        )
 
         let findProfileResult1 = findProfile(for: intentEntity1)
         let findProfileResult2 = findProfile(for: intentEntity2)
@@ -213,26 +217,30 @@ struct DualProfileWidgetProvider: AppIntentTimelineProvider {
     private static func findProfile(for entity: AccountIntentAppEntity?) -> Result<PZProfileSendable, WidgetError> {
         let allProfiles = PZWidgets.getAllProfiles()
         guard let firstProfile = allProfiles.first else {
-            print("Config is empty")
+            PZLog.warning("[Dual.findProfile] allProfiles is EMPTY")
             return .failure(.noProfileFound)
         }
         guard let intent = entity else {
-            print("no account intent got")
+            PZLog.info("[Dual.findProfile] no entity selected; count=\(allProfiles.count)")
             guard allProfiles.count == 1 else {
-                print("Need to choose account")
+                PZLog.info("[Dual.findProfile] multiple profiles but none selected — profileSelectionNeeded")
                 return .failure(.profileSelectionNeeded)
             }
             return .success(firstProfile)
         }
         let selectedAccountUUID = intent.id
-        print("// [SELECTED WIDGET PROFILE] ", selectedAccountUUID, intent)
+        PZLog.info(
+            "[Dual.findProfile] selectedUUID=\(selectedAccountUUID) count=\(allProfiles.count)"
+        )
         let firstMatchedProfile = allProfiles.first {
             $0.uuid.uuidString == selectedAccountUUID
         }
 
         guard let firstMatchedProfile else {
             // 有时候删除账号，Intent没更新就会出现这样的情况
-            print("Need to choose account")
+            PZLog.warning(
+                "[Dual.findProfile] UUID \(selectedAccountUUID) not found in \(allProfiles.count) profiles"
+            )
             return .failure(.profileSelectionNeeded)
         }
         return .success(firstMatchedProfile)

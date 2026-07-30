@@ -81,7 +81,7 @@ extension EventDetailWebView {
             _ userContentController: WKUserContentController,
             didReceive message: WKScriptMessage
         ) {
-            print("message: \(message.name)")
+            PZLog.info("message: \(message.name)")
             switch message.name {
             case "getArticleInfoBeforeLoaded":
                 if let articleData = try? JSONSerialization.data(
@@ -94,7 +94,7 @@ extension EventDetailWebView {
                     )
 
                     let inputJS = "updateArticleInfo(\(articleInfo ?? ""))"
-                    print(inputJS)
+                    PZLog.info(inputJS)
                     webView.evaluateJavaScript(inputJS)
                 }
             case "openURLInSafari":

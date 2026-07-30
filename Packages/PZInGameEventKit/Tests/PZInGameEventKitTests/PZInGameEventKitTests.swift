@@ -16,12 +16,12 @@ func testDecodingOnlineFetchedOfficialFeeds() async throws {
         let urlDataC = game.getOfficialEventFeedURL(.asia(game), lang: .langJP, isContent: true)
         let resultC = try await AF.request(urlDataC).serializingData().value
         let objContent = try HoYoEventPack.HoYoEventContent.decodeFromMiHoYoAPIJSONResult(data: resultC, debugTag: "")
-        print(objContent.total)
+        PZLog.info(objContent.total)
         // Test EventMeta
         let urlDataM = game.getOfficialEventFeedURL(.asia(game), lang: .langJP, isContent: false)
         let resultM = try await AF.request(urlDataM).serializingData().value
         let objMeta = try HoYoEventPack.HoYoEventMeta.decodeFromMiHoYoAPIJSONResult(data: resultM, debugTag: "")
-        print(objMeta.list.count)
+        PZLog.info(objMeta.list.count)
     }
 }
 
@@ -32,11 +32,11 @@ func testDecodingBundledOfficialFeeds() async throws {
         // Test EventContent
         let dataC = game.getTestDataForOfficialEvents(isContent: true)
         let objContent = try HoYoEventPack.HoYoEventContent.decodeFromMiHoYoAPIJSONResult(data: dataC, debugTag: "")
-        print(objContent.total)
+        PZLog.info(objContent.total)
         // Test EventMeta
         let dataM = game.getTestDataForOfficialEvents(isContent: false)
         let objMeta = try HoYoEventPack.HoYoEventMeta.decodeFromMiHoYoAPIJSONResult(data: dataM, debugTag: "")
-        print(objMeta.list.count)
+        PZLog.info(objMeta.list.count)
     }
 }
 
@@ -46,7 +46,7 @@ func testGetAllOfficialFeedEventsOnline() async throws {
     let allData = await OfficialFeed.getAllFeedEventsOnline(bypassCache: true)
     let allZZZResults = allData.filter { $0.game == .zenlessZone }
     #expect(!allZZZResults.isEmpty)
-    print(allZZZResults.count)
+    PZLog.info(allZZZResults.count)
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)
@@ -55,7 +55,7 @@ func testGetAllOfficialFeedEventsOffline() async throws {
     let allData = OfficialFeed.getAllBundledFeedEvents()
     let allZZZResults = allData.filter { $0.game == .zenlessZone }
     #expect(!allZZZResults.isEmpty)
-    print(allZZZResults.count)
+    PZLog.info(allZZZResults.count)
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)

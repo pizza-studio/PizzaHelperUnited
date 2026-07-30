@@ -103,7 +103,7 @@ extension EnkaDBProtocol {
             return newMerged
         } catch {
             let msg = error.localizedDescription + "\n-------\n// \(error)"
-            print(msg)
+            PZLog.error(msg)
             switch error {
             case Enka.EKError.queryFailure: throw error
             default: throw Enka.EKError.queryFailure(uid: uid, game: QueriedResult.game, message: msg)

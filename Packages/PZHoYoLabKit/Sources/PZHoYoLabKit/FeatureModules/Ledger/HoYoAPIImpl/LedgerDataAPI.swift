@@ -69,7 +69,7 @@ extension HoYo {
         -> LedgerData4GI {
         await HoYo.waitFor300ms()
         #if DEBUG
-        print("||| START REQUESTING LEDGER DATA (GI) |||")
+        PZLog.debug("||| START REQUESTING LEDGER DATA (GI) |||")
         #endif
         let cookie = try await { () -> String in
             guard case .miyoushe = server.region else { return cookie }
@@ -119,7 +119,7 @@ extension HoYo {
         -> LedgerData4HSR {
         await HoYo.waitFor300ms()
         #if DEBUG
-        print("||| START REQUESTING LEDGER DATA (HSR) |||")
+        PZLog.debug("||| START REQUESTING LEDGER DATA (HSR) |||")
         #endif
         let cookie = try await { () -> String in
             guard case .miyoushe = server.region else { return cookie }

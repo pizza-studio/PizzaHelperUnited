@@ -224,7 +224,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         .cURLDescription { description in
             // 仅在侦错时输出，避免敏感信息泄漏
             #if DEBUG
-            print(description)
+            PZLog.debug(description)
             #endif
         }
     }

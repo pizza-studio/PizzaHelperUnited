@@ -68,7 +68,9 @@ extension OfficialFeedFileHandler {
             try encodedData.write(to: fileURL, options: .atomic)
             // If we need to broadcast changes in the future, do it here.
         } catch {
-            print("[OfficialFeedFileHandler] Failed to save feed for \(game): \(error)")
+            PZLog.error(
+                "[OfficialFeedFileHandler] Failed to save feed for \(game): \(error)"
+            )
         }
     }
 

@@ -234,24 +234,24 @@ public final class StaminaLiveActivityController: Sendable {
             wallpaperID: wallpaperID
         )
 
-        print(status.currentPrimaryStamina)
-        print(status.next20PrimaryStamina)
-        print(status.showNext20PrimaryStamina)
-        print(status.next20PrimaryStaminaRecoveryTime)
+        PZLog.debug("\(status.currentPrimaryStamina)")
+        PZLog.debug("\(status.next20PrimaryStamina)")
+        PZLog.debug("\(status.showNext20PrimaryStamina)")
+        PZLog.debug("\(status.next20PrimaryStaminaRecoveryTime)")
 
         do {
             let deliveryActivity = try Activity.request(
                 attributes: attributes,
                 content: .init(state: status, staleDate: .now.adding(seconds: 360))
             )
-            print("request activity succeed ID=\(deliveryActivity.id)")
+            PZLog.info("request activity succeed ID=\(deliveryActivity.id)")
             Task {
                 for await state in deliveryActivity.activityStateUpdates {
-                    print(state)
+                    PZLog.debug(String(describing: state))
                 }
             }
         } catch {
-            print(
+            PZLog.error(
                 "Error requesting pizza delivery Live Activity \(error.localizedDescription)."
             )
             throw CreateLiveActivityError

@@ -37,13 +37,13 @@ extension PZHelper {
         )
         CSSearchableIndex.default().indexSearchableItems([searchableItem]) { error in
             if let error = error {
-                print("Failed to index item: \(error.localizedDescription)")
+                PZLog.error("Failed to index item: \(error.localizedDescription)")
             } else {
-                print("Item successfully indexed!")
+                PZLog.info("Item successfully indexed!")
             }
         }
         #else
-        print("// setupSpotlightSearch() is skipped on macOS.")
+        PZLog.debug("// setupSpotlightSearch() is skipped on macOS.")
         #endif
     }
 }

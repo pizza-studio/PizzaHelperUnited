@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `MIT License`.
 
+import PZBaseKit
+
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.QueriedProfileGI.QueriedAvatar {
     /// 计算角色面板（原神）。
@@ -12,7 +14,7 @@ extension Enka.QueriedProfileGI.QueriedAvatar {
             avatar: self
         )
         guard let baseSkillSet = baseSkillSet else {
-            print("BaseSkilSet nulled")
+            PZLog.info("BaseSkilSet nulled")
             return nil
         }
         let mainInfo = Enka.AvatarSummarized.AvatarMainInfo(
@@ -26,7 +28,7 @@ extension Enka.QueriedProfileGI.QueriedAvatar {
             costumeID: costumeId?.description ?? nil
         )
         guard let mainInfo = mainInfo else {
-            print("MainInfo nulled")
+            PZLog.info("MainInfo nulled")
             return nil
         }
         let equipInfo = Enka.AvatarSummarized.WeaponPanel(giDB: theDB, avatar: self)

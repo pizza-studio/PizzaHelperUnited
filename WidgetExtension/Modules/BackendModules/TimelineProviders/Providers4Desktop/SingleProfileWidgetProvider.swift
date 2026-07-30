@@ -141,26 +141,32 @@ struct SingleProfileWidgetProvider: AppIntentTimelineProvider {
     private static func findProfile(for configuration: Intent) -> Result<PZProfileSendable, WidgetError> {
         let allProfiles = PZWidgets.getAllProfiles()
         guard let firstProfile = allProfiles.first else {
-            print("Config is empty")
+            PZLog.warning("[findProfile] allProfiles is EMPTY — no Local Profiles available")
             return .failure(.noProfileFound)
         }
         guard let intent = configuration.accountIntent else {
-            print("no account intent got")
+            PZLog.info(
+                "[findProfile] no accountIntent selected; allProfiles.count=\(allProfiles.count)"
+            )
             guard allProfiles.count == 1 else {
-                print("Need to choose account")
+                PZLog.info("[findProfile] multiple profiles exist but none selected — profileSelectionNeeded")
                 return .failure(.profileSelectionNeeded)
             }
             return .success(firstProfile)
         }
         let selectedAccountUUID = intent.id
-        print("// [SELECTED WIDGET PROFILE] ", selectedAccountUUID, configuration)
+        PZLog.info(
+            "[findProfile] selectedUUID=\(selectedAccountUUID) allProfiles.count=\(allProfiles.count)"
+        )
         let firstMatchedProfile = allProfiles.first {
             $0.uuid.uuidString == selectedAccountUUID
         }
 
         guard let firstMatchedProfile else {
             // 有时候删除账号，Intent没更新就会出现这样的情况
-            print("Need to choose account")
+            PZLog.warning(
+                "[findProfile] UUID \(selectedAccountUUID) not found in \(allProfiles.count) profiles"
+            )
             return .failure(.profileSelectionNeeded)
         }
         return .success(firstMatchedProfile)

@@ -76,7 +76,7 @@ extension Pizza.SupportedGame {
             .init(name: "uid", value: "114514"),
         ]
         #if DEBUG
-        print("[DEBUG] OfficialFeedAPI URL: \(components.url?.absoluteString ?? "nil")")
+        PZLog.debug("[DEBUG] OfficialFeedAPI URL: \(components.url?.absoluteString ?? "nil")")
         #endif
         return components.url!
     }

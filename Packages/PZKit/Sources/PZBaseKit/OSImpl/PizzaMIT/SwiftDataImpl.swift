@@ -6,6 +6,7 @@
 
 import CoreData
 import Foundation
+import OSLog
 import SwiftData
 
 @available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
@@ -50,7 +51,9 @@ extension PersistentIdentifier {
         }
         #if DEBUG
         if let firstEntityName = entityNames.first, !(firstEntityName.hasPrefix("NSCK")) {
-            print("Parsed SwiftData entity names: \(entityNames), from userInfo: \(userInfo)")
+            PZLog.debug(
+                "Parsed SwiftData entity names: \(entityNames), from userInfo: \(userInfo)"
+            )
         }
         #endif
         return entityNames
@@ -82,7 +85,9 @@ extension NSManagedObjectID {
         }
         #if DEBUG
         if let firstEntityName = entityNames.first, !(firstEntityName.hasPrefix("NSCK")) {
-            print("Parsed CoreData entity names: \(entityNames), from userInfo: \(userInfo)")
+            PZLog.debug(
+                "Parsed CoreData entity names: \(entityNames), from userInfo: \(userInfo)"
+            )
         }
         #endif
         return entityNames

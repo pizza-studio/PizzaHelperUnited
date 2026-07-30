@@ -36,7 +36,11 @@ public final class ScreenVM {
             orientation: orientationNow,
             horizontalSizeClass: Self.getInitialHorizontalSizeClass()
         )
-        print("初始方向: \(orientation), splitViewVisibility: \(splitViewVisibility)")
+        let orientationRAW = orientation.rawValue
+        let splitViewVisibilityRAW = String(describing: splitViewVisibility)
+        PZLog.info(
+            "初始方向: \(orientationRAW), splitViewVisibility: \(splitViewVisibilityRAW)"
+        )
         Task { @MainActor in
             for await notification in NotificationCenter.default.notifications(
                 named: UIDevice.orientationDidChangeNotification
@@ -51,7 +55,9 @@ public final class ScreenVM {
                 try? await Task.sleep(nanoseconds: 100_000_000) // 100ms 去抖动
                 try? Task.checkCancellation()
                 self.orientation = newOrientation
-                print("方向更新: \(newOrientation), windowSizeObserved: \(windowSizeObserved)")
+                PZLog.info(
+                    "方向更新: \(newOrientation.rawValue), windowSizeObserved: \(String(describing: self.windowSizeObserved))"
+                )
                 self.updateHash4Tracking()
             }
         }

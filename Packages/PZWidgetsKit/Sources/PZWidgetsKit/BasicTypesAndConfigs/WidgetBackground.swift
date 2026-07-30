@@ -66,10 +66,15 @@ extension WidgetBackground {
         .map(\.asWidgetBackground)
 
     public static var allOptions: [Self] {
-        UserWallpaper.allCases.map(\.asWidgetBackground)
+        let userWPs = UserWallpaper.allCases
+        let result = userWPs.map(\.asWidgetBackground)
             + (Self.colors + Self.elements).map {
                 .init(id: $0, displayString: $0.i18nPZWidgetsKit)
             } + allStaticGalleryWallpaperOptions
+        PZLog.info(
+            "[WidgetBackground.allOptions] userWP=\(userWPs.count) total=\(result.count)"
+        )
+        return result
     }
 
     public static var allOptionsSansPureColors: [Self] {

@@ -44,7 +44,7 @@ public final class AppleWatchSputnik: NSObject {
     // var sharedAccounts = [PZProfileMO]() // 完全沒用到。
 
     public func send(_ message: String) {
-        print("Send message")
+        PZLog.info("Send message")
         guard WCSession.default.activationState == .activated else {
             return
         }
@@ -59,12 +59,12 @@ public final class AppleWatchSputnik: NSObject {
         #endif
 
         WCSession.default.sendMessage([kMessageKey: message], replyHandler: nil) { error in
-            print("Cannot send message: \(String(describing: error))")
+            PZLog.error("Cannot send message: \(String(describing: error))")
         }
     }
 
     public func sendAccounts(_ accounts: [PZProfileSendable], _ message: String) {
-        print("Send account")
+        PZLog.info("Send account")
         guard WCSession.default.activationState == .activated else {
             return
         }
@@ -87,7 +87,7 @@ public final class AppleWatchSputnik: NSObject {
         let nsDictData = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
 
         WCSession.default.sendMessage(nsDictData, replyHandler: nil) { error in
-            print("Cannot send accounts: \(String(describing: error))")
+            PZLog.error("Cannot send accounts: \(String(describing: error))")
         }
     }
 
@@ -110,7 +110,7 @@ extension AppleWatchSputnik: WCSessionDelegate {
             if let notificationText = message[kMessageKey] as? String {
                 notificationMessage = NotificationMessage(text: notificationText)
             }
-            print("Received profiles")
+            PZLog.info("Received profiles")
 
             Task {
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
@@ -123,7 +123,7 @@ extension AppleWatchSputnik: WCSessionDelegate {
                 await assertion.release()
             }
         } catch {
-            print("save profile failed: \(error)")
+            PZLog.error("save profile failed: \(error)")
         }
         #endif
     }
@@ -194,7 +194,7 @@ extension CDProfileMOActor {
             }
             UserDefaults.profileSuite.synchronize()
         } catch {
-            print("save profile failed: \(error)")
+            PZLog.error("save profile failed: \(error)")
         }
     }
 }
@@ -248,7 +248,7 @@ extension PZProfileActor {
             }
             UserDefaults.profileSuite.synchronize()
         } catch {
-            print("save profile failed: \(error)")
+            PZLog.error("save profile failed: \(error)")
         }
     }
 }

@@ -2,6 +2,7 @@
 
 import CryptoKit
 import Foundation
+import OSLog
 
 /// This combination has been used too frequent
 public typealias AbleToCodeSendHash = Codable & Sendable & Hashable
@@ -17,7 +18,8 @@ extension String {
         _ items: Any..., separator: String = " ", terminator: String = "\n"
     ) {
         #if DEBUG
-        print(items, separator: separator, terminator: terminator)
+        let msg = items.map { String(describing: $0) }.joined(separator: separator)
+        PZLog.debug(msg)
         #endif
     }
 
@@ -26,7 +28,8 @@ extension String {
         _ args: any CVarArg...
     ) {
         #if DEBUG
-        NSLog(format, args)
+        let message = String(format: format, arguments: args)
+        PZLog.error(message)
         #endif
     }
 }

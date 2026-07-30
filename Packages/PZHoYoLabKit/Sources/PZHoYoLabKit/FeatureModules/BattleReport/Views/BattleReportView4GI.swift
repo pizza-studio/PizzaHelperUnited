@@ -376,7 +376,7 @@ extension BattleReportView4GI {
         guard let theElement, let idExpressible = Enka.AvatarSummarized.CharacterID(
             id: raw.avatarID.description, costumeID: nil
         ) else {
-            print("idExpressible nulled")
+            PZLog.info("idExpressible nulled")
             return nil
         }
         let skillDepotIDSuffix: String = {

@@ -54,8 +54,8 @@ public func simpleTaptic(type: SimpleTapticType) {
         let selectionGenerator = UISelectionFeedbackGenerator()
         selectionGenerator.selectionChanged()
     }
-    print("Taptic Succeeded")
+    PZLog.info("Taptic Succeeded")
     #else
-    print("Taptic Skipped: the platform does not support UIKit.")
+    PZLog.info("Taptic Skipped: the platform does not support UIKit.")
     #endif
 }

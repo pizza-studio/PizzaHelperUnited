@@ -370,7 +370,7 @@ extension GachaActor {
             let gachaItemMOCount = try modelContext.fetchCount(request)
             return gachaItemMOCount > 0
         } catch {
-            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
+            PZLog.error("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
             return true
         }
     }
@@ -391,7 +391,7 @@ extension GachaActor {
             let gpidMOCount = try modelContext.fetchCount(request)
             return gpidMOCount > 0
         } catch {
-            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
+            PZLog.error("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
             return true
         }
     }
@@ -452,7 +452,7 @@ extension GachaActor {
                 }
             }
         } catch {
-            print("ERROR BLEACHING CONTENTS. \(error.localizedDescription)")
+            PZLog.error("ERROR BLEACHING CONTENTS. \(error.localizedDescription)")
         }
         Task { @MainActor in
             GachaVM.shared.backendChangesAvailable = false

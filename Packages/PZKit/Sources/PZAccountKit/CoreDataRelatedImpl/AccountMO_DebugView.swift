@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 #if !os(watchOS)
+import PZBaseKit
 import PZCoreDataKit4LocalAccounts
 import PZCoreDataKitShared
 import SwiftUI
@@ -98,7 +99,7 @@ public struct AccountMODebugView: View {
                 .pickerStyle(.segmented)
                 .fixedSize()
                 .react(to: game, initial: true) {
-                    print("Action")
+                    PZLog.info("Action")
                 }
             }
             .removeSharedBackgroundVisibility()

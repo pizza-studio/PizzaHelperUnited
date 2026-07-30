@@ -72,7 +72,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
     ) {
         let matchedCharacter = giDB.resolveCharacterEntry(baseID: charID, skillDepotID: skillDepotID)
         guard let theCommonInfo = matchedCharacter?.value else {
-            print("theCommonInfo nulled")
+            PZLog.info("theCommonInfo nulled")
             return nil
         }
         guard let idExpressible = Enka.AvatarSummarized.CharacterID(
@@ -80,11 +80,11 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
             costumeID: costumeID,
             skillDepotID: skillDepotID
         ) else {
-            print("idExpressible nulled")
+            PZLog.info("idExpressible nulled")
             return nil
         }
         guard let theElement = Enka.GameElement(rawValue: theCommonInfo.element) else {
-            print("theElement nulled")
+            PZLog.info("theElement nulled")
             return nil
         }
         self.avatarLevel = avatarLv
@@ -307,11 +307,11 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
     ) {
         let costumeID = hylRAW.costumes.first?.id.description
         guard let theElement = Enka.GameElement(rawValue: hylRAW.base.element) else {
-            print("theElement nulled")
+            PZLog.info("theElement nulled")
             return nil
         }
         guard var idExpressible = Enka.AvatarSummarized.CharacterID(id: hylRAW.avatarIdStr, costumeID: costumeID) else {
-            print("idExpressible nulled")
+            PZLog.info("idExpressible nulled")
             return nil
         }
         let skillDepotIDSuffix: String = {
@@ -323,7 +323,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         if !skillDepotIDSuffix.isEmpty {
             // Update the idExpressible for Protagonist.
             guard let idExpressibleNEO = Enka.AvatarSummarized.CharacterID(id: charID, costumeID: costumeID) else {
-                print("idExpressible nulled")
+                PZLog.info("idExpressible nulled")
                 return nil
             }
             idExpressible = idExpressibleNEO
@@ -333,7 +333,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
             hylRAW: hylRAW,
             charID: charID
         ) else {
-            print("baseSkillSet nulled")
+            PZLog.info("baseSkillSet nulled")
             return nil
         }
         self.avatarLevel = hylRAW.base.level
@@ -362,7 +362,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
         charID: String
     ) {
         guard let character = giDB.characters[charID] else {
-            print("theCommonInfo nulled")
+            PZLog.info("theCommonInfo nulled")
             return nil
         }
         guard character.skillOrder.count == 3 else { return nil } // 原神的角色只有三个可以升级的技能。

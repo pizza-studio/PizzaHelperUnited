@@ -7,6 +7,7 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 import PZWidgetsKit
+import WallpaperKit
 
 // MARK: - AccountIntentAppEntity
 
@@ -35,21 +36,28 @@ public struct AccountIntentAppEntity: AppEntity {
             let accounts = PZWidgets.getAllProfiles().filter {
                 identifiers.contains($0.uuid.uuidString)
             }
-            return accounts.map {
+            let result = accounts.map {
                 Self.Entity(
                     id: $0.uuid.uuidString,
                     displayString: $0.name + "\n(\($0.uidWithGame))"
                 )
             }
+            PZLog.info(
+                "[AccountEntity.entities] requested=\(identifiers.count) matched=\(result.count)"
+            )
+            return result
         }
 
         public func suggestedEntities() async throws -> Self.Result {
-            PZWidgets.getAllProfiles().map {
+            let profiles = PZWidgets.getAllProfiles()
+            let result = profiles.map {
                 Self.Entity(
                     id: $0.uuid.uuidString,
                     displayString: $0.name + "\n(\($0.uidWithGame))"
                 )
             }
+            PZLog.info("[AccountEntity.suggested] count=\(result.count)")
+            return result
         }
 
         public func defaultResult() async -> Entity? {
@@ -93,15 +101,25 @@ public struct WidgetBackgroundAppEntity: AppEntity {
 
         public func entities(for identifiers: [Self.Entity.ID]) async throws -> [Self.Entity] {
             let matched = WidgetBackground.allOptions.filter { identifiers.contains($0.id) }
-            return matched.map {
+            let result: [Self.Entity] = matched.map {
                 .init(id: $0.id, displayString: $0.displayString)
             }
+            PZLog.info(
+                "[WallpaperEntity.entities] requested=\(identifiers.count) matched=\(result.count)"
+            )
+            return result
         }
 
         public func suggestedEntities() async throws -> Self.Result {
-            WidgetBackground.allOptions.map {
+            let userWallpaperCount = UserWallpaper.allCases.count
+            let allOptions = WidgetBackground.allOptions
+            let result: Self.Result = allOptions.map {
                 .init(id: $0.id, displayString: $0.displayString)
             }
+            PZLog.info(
+                "[WallpaperEntity.suggested] userWPCnt=\(userWallpaperCount) totalOptions=\(allOptions.count)"
+            )
+            return result
         }
 
         public func defaultResult() async -> Self.Entity? {

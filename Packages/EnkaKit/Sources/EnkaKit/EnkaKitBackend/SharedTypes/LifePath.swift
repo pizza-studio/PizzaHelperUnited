@@ -92,7 +92,7 @@ extension Enka.GenshinLifePathRecord {
             }
             return result
         } catch {
-            NSLog("EnkaKit: Cannot access RealNameDict.json.")
+            PZLog.error("EnkaKit: Cannot access RealNameDict.json.")
             return [:]
         }
     }()

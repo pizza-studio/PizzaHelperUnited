@@ -23,8 +23,8 @@ extension HoYo {
             lettersAndNumbers.randomElement()!
         })
         let c = "salt=\(s)&t=\(t)&r=\(r)".md5
-        print(t + "," + r + "," + c)
-        print("salt=\(s)&t=\(t)&r=\(r)")
+        PZLog.debug("\(t + "," + r + "," + c)")
+        PZLog.debug("salt=\(s)&t=\(t)&r=\(r)")
         return t + "," + r + "," + c
     }
 }

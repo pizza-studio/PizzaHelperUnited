@@ -58,7 +58,7 @@ extension HoYo {
         ).serializingData().value
 
         #if DEBUG
-        print(String(data: data, encoding: .utf8) ?? "")
+        PZLog.debug("\(String(data: data, encoding: .utf8) ?? "")")
         #endif
 
         let fingerPrint = try DeviceFingerPrintResult

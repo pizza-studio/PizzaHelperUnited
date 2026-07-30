@@ -76,7 +76,7 @@ private actor URLAsyncTaskStack {
                 // Execute the current task
                 try await currentTask()
             } catch let error as NSError {
-                print("Task failed with error: \(error)")
+                PZLog.error("Task failed with error: \(error)")
             }
         }
     }

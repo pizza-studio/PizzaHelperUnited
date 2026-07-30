@@ -138,7 +138,7 @@ extension Enka {
                 try await enkaDBMonitor4GI.startMonitoring()
                 try await enkaDBMonitor4HSR.startMonitoring()
             } catch {
-                print("[Enka.Sputnik] Init error: \(error)")
+                PZLog.error("[Enka.Sputnik] Init error: \(error)")
             }
         }
 
@@ -200,10 +200,10 @@ extension Enka.Sputnik {
             urlFinal4Debug = url
             return try await AF.request(url, method: .get).serializingDecodable(T.self).value
         } catch {
-            print(error)
-            print(error.localizedDescription)
-            print(urlFinalDebugStrLine)
-            print("// [Enka.Sputnik.fetchEnkaDBData] Attempting to use alternative JSON server source.")
+            PZLog.error("\(error)")
+            PZLog.error(error.localizedDescription)
+            PZLog.info(urlFinalDebugStrLine)
+            PZLog.info("// [Enka.Sputnik.fetchEnkaDBData] Attempting to use alternative JSON server source.")
             do {
                 let url2 = serverType.viceVersa.enkaDBSourceURL(type: dataType)
                 urlFinal4Debug = url2
@@ -211,14 +211,14 @@ extension Enka.Sputnik {
                 // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
                 var successMsg = "// [Enka.Sputnik.fetchEnkaDBData] 2nd attempt succeeded."
                 successMsg += " Will use this JSON server source from now on."
-                print(successMsg)
+                PZLog.info(successMsg)
                 Enka.HostType.toggleEnkaDBQueryHost()
                 return objParsed
             } catch {
-                print("// [Enka.Sputnik.fetchEnkaDBData] Final attempt failed:")
-                print(error)
-                print(error.localizedDescription)
-                print(urlFinalDebugStrLine)
+                PZLog.error("// [Enka.Sputnik.fetchEnkaDBData] Final attempt failed:")
+                PZLog.error("\(error)")
+                PZLog.error(error.localizedDescription)
+                PZLog.info(urlFinalDebugStrLine)
                 throw error
             }
         }
@@ -248,15 +248,15 @@ extension Enka.Sputnik {
     ) async throws
         -> (result: T, profile: T.QueriedProfileType) {
         if let date = dateWhenNextRefreshable, date > Date() {
-            print("PLAYER DETAIL FETCH 刷新太快了，请在\(date.coolingDownTimeRemaining)秒后刷新")
+            PZLog.info("PLAYER DETAIL FETCH 刷新太快了，请在\(date.coolingDownTimeRemaining)秒后刷新")
             throw Enka.EKError.queryTooFrequent(dateWhenRefreshable: date)
         }
         var server: Enka.HostType = Defaults[.defaultDBQueryHost]
         do {
             return try await Self.fetchEnkaQueryResultRAWPerServer(uid, type: type, server: server)
         } catch {
-            print(error.localizedDescription)
-            print(
+            PZLog.error(error.localizedDescription)
+            PZLog.info(
                 "// [Enka.Sputnik.fetchEnkaQueryResultRAW] Attempt using alternative profile query server source."
             )
             server = server.viceVersa
@@ -266,8 +266,8 @@ extension Enka.Sputnik {
                 Defaults[.defaultDBQueryHost] = server
                 return result
             } catch {
-                print("// [Enka.Sputnik.fetchEnkaQueryResultRAW] Final attempt failed:")
-                print(error.localizedDescription)
+                PZLog.error("// [Enka.Sputnik.fetchEnkaQueryResultRAW] Final attempt failed:")
+                PZLog.error(error.localizedDescription)
                 throw error
             }
         }
@@ -295,10 +295,10 @@ extension Enka.Sputnik {
             }
             return (resultObj, detailInfo)
         } catch {
-            print(
+            PZLog.debug(
                 "// DEBUG: [Enka.Sputnik.fetchEnkaQueryResultRAW] Profile Query / Parse Failed from \(server.textTag). UID: \(uid) ."
             )
-            print(error.localizedDescription)
+            PZLog.error(error.localizedDescription)
             throw error
         }
     }

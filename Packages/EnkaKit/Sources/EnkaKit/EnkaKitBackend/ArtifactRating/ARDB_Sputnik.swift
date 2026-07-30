@@ -88,7 +88,7 @@ extension ArtifactRating {
                 try await artifactRatingDBMonitor.startMonitoring()
                 try await artifactCountDBMonitor4GI.startMonitoring()
             } catch {
-                print("[ArtifactRating.ARSputnik] Init error: \(error)")
+                PZLog.error("[ArtifactRating.ARSputnik] Init error: \(error)")
             }
         }
 
@@ -145,24 +145,24 @@ extension ArtifactRating.ARSputnik {
             let requestURL = serverType.getRemoteARDBFileURL(type: dataType)
             return try await AF.request(requestURL).serializingDecodable(T.self).value
         } catch {
-            print(debugMsg)
-            print(error)
-            print(error.localizedDescription)
-            print("// [ARDBSputnik.fetchARDBData] Attempting to use alternative JSON server source.")
+            PZLog.debug(debugMsg)
+            PZLog.error("\(error)")
+            PZLog.error(error.localizedDescription)
+            PZLog.info("// [ARDBSputnik.fetchARDBData] Attempting to use alternative JSON server source.")
             do {
                 let requestURL = serverType.viceVersa.getRemoteARDBFileURL(type: dataType)
                 let resultObj = try await AF.request(requestURL).serializingDecodable(T.self).value
                 // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
                 var successMsg = "// [ARDBSputnik.fetchARDBData] 2nd attempt succeeded."
                 successMsg += " Will use this JSON server source from now on."
-                print(successMsg)
+                PZLog.info(successMsg)
                 Enka.HostType.toggleEnkaDBQueryHost()
                 return resultObj
             } catch {
-                print("// [ARDBSputnik.fetchARDBData] Final attempt failed:")
-                print(debugMsg)
-                print(error)
-                print(error.localizedDescription)
+                PZLog.error("// [ARDBSputnik.fetchARDBData] Final attempt failed:")
+                PZLog.debug(debugMsg)
+                PZLog.error("\(error)")
+                PZLog.error(error.localizedDescription)
                 throw error
             }
         }

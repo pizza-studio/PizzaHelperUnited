@@ -4,6 +4,7 @@
 
 import Foundation
 import PZAccountKit
+import PZBaseKit
 import SwiftUI
 import WebKit
 
@@ -31,7 +32,7 @@ class GeetestValidateCoordinator: NSObject, WKNavigationDelegate, WKScriptMessag
     ) {
         if message.name == "callbackHandler" {
             if let messageBody = message.body as? String {
-                print("validate: \(messageBody)")
+                PZLog.info("validate: \(messageBody)")
                 parent.finishWithValidate(messageBody)
             }
         }

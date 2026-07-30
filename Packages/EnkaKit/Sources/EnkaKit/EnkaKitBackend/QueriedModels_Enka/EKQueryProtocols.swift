@@ -141,8 +141,8 @@ extension EKQueriedProfileProtocol {
                 }
             }
         } catch {
-            print(error)
-            print("[FAILURE] Unable to remove cached Enka profile at: \(fileURL)")
+            PZLog.error("\(error)")
+            PZLog.error("[FAILURE] Unable to remove cached Enka profile at: \(fileURL)")
         }
     }
 

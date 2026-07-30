@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - DecodableFromMiHoYoAPIJSONResult
 
@@ -47,9 +48,8 @@ extension DecodableFromMiHoYoAPIJSONResult {
 
     private static func printDebugMsg(_ items: Any..., separator: String = " ", terminator: String = "\n") {
         #if DEBUG
-        print("-----------------------------------")
-        print(items, separator: separator, terminator: terminator)
-        print("-----------------------------------")
+        let message = items.map { String(describing: $0) }.joined(separator: separator)
+        PZLog.debug("-----------------------------------\(message)-----------------------------------")
         #endif
     }
 }

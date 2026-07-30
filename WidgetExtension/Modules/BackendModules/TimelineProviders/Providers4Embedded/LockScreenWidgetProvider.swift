@@ -156,26 +156,28 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
     private static func findProfile(for configuration: Intent) -> Result<PZProfileSendable, WidgetError> {
         let allProfiles = PZWidgets.getAllProfiles()
         guard let firstProfile = allProfiles.first else {
-            print("Config is empty")
+            PZLog.error("Config is empty")
             return .failure(.noProfileFound)
         }
         guard let intent = configuration.account else {
-            print("no account intent got")
+            PZLog.info("no account intent got")
             guard allProfiles.count == 1 else {
-                print("Need to choose account")
+                PZLog.error("Need to choose account")
                 return .failure(.profileSelectionNeeded)
             }
             return .success(firstProfile)
         }
         let selectedAccountUUID = intent.id
-        print("// [SELECTED WIDGET PROFILE] ", selectedAccountUUID, configuration)
+        PZLog.debug(
+            "// [SELECTED WIDGET PROFILE] \(selectedAccountUUID) \(String(describing: configuration))"
+        )
         let firstMatchedProfile = allProfiles.first {
             $0.uuid.uuidString == selectedAccountUUID
         }
 
         guard let firstMatchedProfile else {
             // 有时候删除账号，Intent没更新就会出现这样的情况
-            print("Need to choose account")
+            PZLog.error("Need to choose account")
             return .failure(.profileSelectionNeeded)
         }
         return .success(firstMatchedProfile)

@@ -112,7 +112,7 @@ extension HoYo {
         let type = HoYo.BattleReport4GI.TreasuresStarwardType.spiralAbyss
         await HoYo.waitFor300ms()
         #if DEBUG
-        print("||| START REQUESTING SPIRAL ABYSS DATA (GI - SpiralAbyss) |||")
+        PZLog.debug("||| START REQUESTING SPIRAL ABYSS DATA (GI - SpiralAbyss) |||")
         #endif
         let queryItems: [URLQueryItem] = [
             .init(name: "role_id", value: uid),
@@ -156,7 +156,7 @@ extension HoYo {
         let type = HoYo.BattleReport4GI.TreasuresStarwardType.stygianOnslaught
         await HoYo.waitFor300ms()
         #if DEBUG
-        print("||| START REQUESTING SPIRAL ABYSS DATA (GI - StygianOnslaught) |||")
+        PZLog.debug("||| START REQUESTING SPIRAL ABYSS DATA (GI - StygianOnslaught) |||")
         #endif
         let queryItems: [URLQueryItem] = [
             .init(name: "role_id", value: uid),
@@ -207,7 +207,7 @@ extension HoYo {
         let type = HoYo.BattleReport4HSR.TreasuresLightwardType.forgottenHall
         await HoYo.waitFor300ms()
         #if DEBUG
-        print("||| START REQUESTING SPIRAL ABYSS DATA (HSR - ForgottenHall) |||")
+        PZLog.debug("||| START REQUESTING SPIRAL ABYSS DATA (HSR - ForgottenHall) |||")
         #endif
 
         let queryItems: [URLQueryItem] = [
@@ -264,7 +264,7 @@ extension HoYo {
         let type = HoYo.BattleReport4HSR.TreasuresLightwardType.pureFiction
         await HoYo.waitFor300ms()
         #if DEBUG
-        print("||| START REQUESTING SPIRAL ABYSS DATA (HSR - Pure Fiction) |||")
+        PZLog.debug("||| START REQUESTING SPIRAL ABYSS DATA (HSR - Pure Fiction) |||")
         #endif
 
         let queryItems: [URLQueryItem] = [
@@ -321,7 +321,7 @@ extension HoYo {
         let type = HoYo.BattleReport4HSR.TreasuresLightwardType.apocalypticShadow
         await HoYo.waitFor300ms()
         #if DEBUG
-        print("||| START REQUESTING SPIRAL ABYSS DATA (HSR - Pure Fiction) |||")
+        PZLog.debug("||| START REQUESTING SPIRAL ABYSS DATA (HSR - ApocalypticShadow) |||")
         #endif
 
         let queryItems: [URLQueryItem] = [

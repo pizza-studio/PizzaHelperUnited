@@ -5,6 +5,7 @@
 #if !os(watchOS)
 
 import Foundation
+import PZBaseKit
 
 @available(iOS 15.0, macCatalyst 15.0, *)
 @available(watchOS, unavailable)
@@ -17,7 +18,7 @@ extension GITodayMaterial {
             let data = try Data(contentsOf: url)
             return try JSONDecoder().decode([Self].self, from: data)
         } catch {
-            NSLog("EnkaKit: Cannot access BundledGIDailyMaterialsData.json.")
+            PZLog.error("EnkaKit: Cannot access BundledGIDailyMaterialsData.json.")
             return []
         }
     }()

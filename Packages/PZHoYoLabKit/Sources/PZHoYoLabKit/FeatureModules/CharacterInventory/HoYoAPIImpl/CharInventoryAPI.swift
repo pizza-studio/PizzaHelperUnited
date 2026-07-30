@@ -10,7 +10,7 @@ import PZBaseKit
 extension HoYo {
     public static func getCharacterInventory(for profile: PZProfileSendable) async throws -> (any CharacterInventory)? {
         #if DEBUG
-        print("||| START REQUESTING CHARACTER INVENTORY |||")
+        PZLog.debug("||| START REQUESTING CHARACTER INVENTORY |||")
         #endif
         return switch profile.game {
         case .genshinImpact: try await characterInventory4GI(for: profile)

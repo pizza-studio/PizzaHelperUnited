@@ -82,8 +82,8 @@ extension UserWallpaperFileHandler {
                 }
             }
         } catch {
-            print(error)
-            print("[FAILURE] Unable to remove user wallpaper at: \(fileURL)")
+            PZLog.error("\(error)")
+            PZLog.error("[FAILURE] Unable to remove user wallpaper at: \(fileURL)")
         }
     }
 

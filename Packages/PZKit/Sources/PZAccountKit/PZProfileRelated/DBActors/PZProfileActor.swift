@@ -84,7 +84,7 @@ extension PZProfileActor {
         do {
             return (try ModelContainer(for: Schema([PZProfileMO.self]), configurations: [config]), false)
         } catch {
-            print("[PZProfileActor] Initial ModelContainer creation failed: \(error)")
+            PZLog.error("[PZProfileActor] Initial ModelContainer creation failed: \(error)")
             // 尝试删除损坏的数据库文件及其关联的 WAL/SHM 文件后重建。
             let dbURL = config.url
             // 实际上是 .sqlite-wal，但 config.url 已是完整路径。
@@ -101,7 +101,7 @@ extension PZProfileActor {
             do {
                 return (try ModelContainer(for: Schema([PZProfileMO.self]), configurations: [config]), true)
             } catch {
-                print("[PZProfileActor] Second ModelContainer creation also failed: \(error)")
+                PZLog.error("[PZProfileActor] Second ModelContainer creation also failed: \(error)")
             }
             // 兜底失败。
             preconditionFailure(
@@ -240,23 +240,22 @@ extension PZProfileActor {
     @discardableResult
     public func bleachInvalidProfiles() throws -> Set<PZProfileSendable> {
         var deletedProfiles = Set<PZProfileSendable>()
-        String.printDebug("[PZProfileActor] bleachInvalidProfiles: entering transaction...")
+        PZLog.debug("[PZProfileActor] bleachInvalidProfiles: entering transaction...")
         try modelContext.transaction {
-            String.printDebug("[PZProfileActor] bleachInvalidProfiles: inside transaction, enumerating...")
+            PZLog.debug("[PZProfileActor] bleachInvalidProfiles: inside transaction, enumerating...")
             try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
                 guard currentMO.isInvalid else { return }
                 modelContext.delete(currentMO)
                 deletedProfiles.insert(currentMO.asSendable)
             }
-            String
-                .printDebug(
-                    "[PZProfileActor] bleachInvalidProfiles: enumeration done, deleted=\(deletedProfiles.count)"
-                )
-        }
-        String
-            .printDebug(
-                "[PZProfileActor] bleachInvalidProfiles: transaction done, total deleted=\(deletedProfiles.count)"
+            let countAfterEnum = deletedProfiles.count
+            PZLog.debug(
+                "[PZProfileActor] bleachInvalidProfiles: enumeration done, deleted=\(countAfterEnum)"
             )
+        }
+        PZLog.debug(
+            "[PZProfileActor] bleachInvalidProfiles: transaction done, total deleted=\(deletedProfiles.count)"
+        )
         return deletedProfiles
     }
 }
@@ -279,7 +278,7 @@ extension PZProfileActor {
             backupProfiles.map(\.asMO).forEach(modelContext.insert)
             try modelContext.save()
         } catch {
-            print(error)
+            PZLog.error("\(error)")
         }
     }
 }

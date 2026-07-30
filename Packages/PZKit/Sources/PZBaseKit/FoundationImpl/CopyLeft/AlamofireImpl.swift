@@ -2,6 +2,7 @@
 
 import Alamofire
 import Foundation
+import OSLog
 
 extension Alamofire.DataRequest {
     public func printDebugIntelIfDebugMode() {
@@ -14,14 +15,16 @@ extension Alamofire.DataRequest {
 extension URLRequest {
     public func printDebugIntelIfDebugMode() {
         #if DEBUG
-        print("---------------------------------------------")
-        print(debugDescription)
+        PZLog.debug("---------------------------------------------")
+        PZLog.debug(debugDescription)
         if let headerEX = allHTTPHeaderFields {
             let encoder = JSONEncoder()
             encoder.outputFormatting = [.sortedKeys, .prettyPrinted, .withoutEscapingSlashes]
-            print(String(data: try! encoder.encode(headerEX), encoding: .utf8) ?? "NOT_A_STRING")
+            PZLog.debug(
+                "\(String(data: try! encoder.encode(headerEX), encoding: .utf8) ?? "NOT_A_STRING")"
+            )
         }
-        print("---------------------------------------------")
+        PZLog.debug("---------------------------------------------")
         #endif
     }
 }

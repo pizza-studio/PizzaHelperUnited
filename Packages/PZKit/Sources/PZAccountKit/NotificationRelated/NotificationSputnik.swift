@@ -210,7 +210,7 @@ extension NotificationSputnik {
             switch insertionTask {
             case .success: return
             case let .failure(theError):
-                print("[PZHelper.NotificationException] \(theError)")
+                PZLog.error("[PZHelper.NotificationException] \(theError)")
             }
         }
     }

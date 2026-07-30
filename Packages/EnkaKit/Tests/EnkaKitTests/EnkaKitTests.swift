@@ -4,6 +4,7 @@
 
 @testable import EnkaKit
 import Foundation
+import PZBaseKit
 import Testing
 
 // MARK: - ArtifactRatingTests
@@ -18,7 +19,7 @@ struct ArtifactRatingTests {
         #expect(!dictB.isEmpty)
         try await ArtifactRating.ARSputnik.shared.onlineUpdate()
         let c = ArtifactRating.ARSputnik.shared.countDB4GI
-        print(c)
+        PZLog.info(c)
     }
 
     @available(iOS 17.0, macCatalyst 17.0, *)
@@ -265,18 +266,19 @@ struct EnkaKitTests {
             firstAvatar.summarize(theDB: englishDB)?.artifactsRated(),
             "Failed in summarizing Raiden Mei's character build."
         )
-        print(summarized.asText)
-        print(summarized.mainInfo.idExpressable.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.talent.onlineAssetURLStr)
-        if let weapon = summarized.equippedWeapon { print(weapon.onlineAssetURLStr) }
-        summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
-        print(profile.iconAssetName)
-        print(profile.onlineAssetURLStr)
+        PZLog.info(summarized.asText)
+        PZLog.info(summarized.mainInfo.idExpressable.onlineAssetURLStr)
+        PZLog.info(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
+        PZLog.info(summarized.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
+        PZLog.info(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
+        PZLog.info(summarized.mainInfo.baseSkills.talent.onlineAssetURLStr)
+        if let weapon = summarized
+            .equippedWeapon { PZLog.info(weapon.onlineAssetURLStr) }
+        summarized.artifacts.forEach { PZLog.info($0.onlineAssetURLStr) }
+        PZLog.info(profile.iconAssetName)
+        PZLog.info(profile.onlineAssetURLStr)
         let x = summarized.artifactRatingResult
-        print(x ?? "Result Rating Failed.")
+        PZLog.info("\(x ?? "Result Rating Failed.")")
     }
 
     @available(iOS 17.0, macCatalyst 17.0, *)
@@ -297,18 +299,19 @@ struct EnkaKitTests {
             "Failed in summarizing Manekina."
         )
         #expect(manekina.mainInfo.element == .pyro)
-        print(manekina.asText)
-        print(manekina.asText)
-        print(manekina.mainInfo.idExpressable.onlineAssetURLStr)
-        print(manekina.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
-        print(manekina.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
-        print(manekina.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
-        if let weapon = manekina.equippedWeapon { print(weapon.onlineAssetURLStr) }
-        manekina.artifacts.forEach { print($0.onlineAssetURLStr) }
-        print(profile.iconAssetName)
-        print(profile.onlineAssetURLStr)
+        PZLog.info(manekina.asText)
+        PZLog.info(manekina.asText)
+        PZLog.info(manekina.mainInfo.idExpressable.onlineAssetURLStr)
+        PZLog.info(manekina.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
+        PZLog.info(manekina.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
+        PZLog.info(manekina.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
+        if let weapon = manekina
+            .equippedWeapon { PZLog.info(weapon.onlineAssetURLStr) }
+        manekina.artifacts.forEach { PZLog.info($0.onlineAssetURLStr) }
+        PZLog.info(profile.iconAssetName)
+        PZLog.info(profile.onlineAssetURLStr)
         let x4Manekina = manekina.artifactRatingResult
-        print(x4Manekina ?? "Result Rating Failed for Manekina.")
+        PZLog.info("\(x4Manekina ?? "Result Rating Failed for Manekina.")")
         // Test Hutao with costume.
         let ninthAvatar = try #require(
             profile.avatarDetailList.dropFirst(8).first,
@@ -318,17 +321,18 @@ struct EnkaKitTests {
             ninthAvatar.summarize(theDB: englishDB)?.artifactsRated(),
             "Failed in summarizing Hutao character build (with costume)."
         )
-        print(hutao.asText)
-        print(hutao.mainInfo.idExpressable.onlineAssetURLStr)
-        print(hutao.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
-        print(hutao.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
-        print(hutao.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
-        if let weapon = hutao.equippedWeapon { print(weapon.onlineAssetURLStr) }
-        hutao.artifacts.forEach { print($0.onlineAssetURLStr) }
-        print(profile.iconAssetName)
-        print(profile.onlineAssetURLStr)
+        PZLog.info(hutao.asText)
+        PZLog.info(hutao.mainInfo.idExpressable.onlineAssetURLStr)
+        PZLog.info(hutao.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
+        PZLog.info(hutao.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
+        PZLog.info(hutao.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
+        if let weapon = hutao
+            .equippedWeapon { PZLog.info(weapon.onlineAssetURLStr) }
+        hutao.artifacts.forEach { PZLog.info($0.onlineAssetURLStr) }
+        PZLog.info(profile.iconAssetName)
+        PZLog.info(profile.onlineAssetURLStr)
         let x4Hutao = hutao.artifactRatingResult
-        print(x4Hutao ?? "Result Rating Failed for Hutao.")
+        PZLog.info("\(x4Hutao ?? "Result Rating Failed for Hutao.")")
     }
 }
 
@@ -362,7 +366,7 @@ struct EnkaKitWithHoYoQueryResultTests {
             }
             return summarizedSingle
         }
-        print("failedCharIDs: \(failedCharIDs)")
+        PZLog.info("failedCharIDs: \(failedCharIDs)")
         #expect(failedCharIDs.isEmpty)
         #expect(hsrDecoded.avatarList.count == summarized.count)
     }
@@ -378,15 +382,16 @@ struct EnkaKitWithHoYoQueryResultTests {
             firstAvatar.summarize(theDB: chtDB)?.artifactsRated(),
             "Failed in summarizing Keqing's character build."
         )
-        print(summarized.asText)
-        print(summarized.mainInfo.idExpressable.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
-        if let weapon = summarized.equippedWeapon { print(weapon.onlineAssetURLStr) }
-        summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
+        PZLog.info(summarized.asText)
+        PZLog.info(summarized.mainInfo.idExpressable.onlineAssetURLStr)
+        PZLog.info(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
+        PZLog.info(summarized.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
+        PZLog.info(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
+        if let weapon = summarized
+            .equippedWeapon { PZLog.info(weapon.onlineAssetURLStr) }
+        summarized.artifacts.forEach { PZLog.info($0.onlineAssetURLStr) }
         let x4Keqing = summarized.artifactRatingResult
-        print(x4Keqing ?? "Result Rating Failed for Keqing.")
+        PZLog.info("\(x4Keqing ?? "Result Rating Failed for Keqing.")")
     }
 
     @available(iOS 17.0, macCatalyst 17.0, *)
@@ -402,14 +407,15 @@ struct EnkaKitWithHoYoQueryResultTests {
             firstAvatar.summarize(theDB: chtDB)?.artifactsRated(),
             "Failed in summarizing Seele's character build."
         )
-        print(summarized.asText)
-        print(summarized.mainInfo.idExpressable.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
-        print(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
-        if let weapon = summarized.equippedWeapon { print(weapon.onlineAssetURLStr) }
-        summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
+        PZLog.info(summarized.asText)
+        PZLog.info(summarized.mainInfo.idExpressable.onlineAssetURLStr)
+        PZLog.info(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
+        PZLog.info(summarized.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
+        PZLog.info(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
+        if let weapon = summarized
+            .equippedWeapon { PZLog.info(weapon.onlineAssetURLStr) }
+        summarized.artifacts.forEach { PZLog.info($0.onlineAssetURLStr) }
         let x4Seele = summarized.artifactRatingResult
-        print(x4Seele ?? "Result Rating Failed for Seele.")
+        PZLog.info("\(x4Seele ?? "Result Rating Failed for Seele.")")
     }
 }

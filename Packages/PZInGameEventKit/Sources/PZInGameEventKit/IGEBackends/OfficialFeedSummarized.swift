@@ -89,7 +89,7 @@ extension OfficialFeed {
                 }
                 resultStack.append(contentsOf: summarized)
             case let .failure(error):
-                print("[getAllFeedEventsOnline][\(game)] \(error)")
+                PZLog.error("[getAllFeedEventsOnline][\(game)] \(error)")
                 continue
             }
         }
