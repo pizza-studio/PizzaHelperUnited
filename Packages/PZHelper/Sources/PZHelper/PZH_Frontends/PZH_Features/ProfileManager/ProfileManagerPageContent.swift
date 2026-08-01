@@ -251,16 +251,20 @@ struct ProfileManagerPageContent: View {
     private func hookSheet(_ givenView: some View) -> some View {
         if !Self.isOS25OrNewer {
             givenView.sheet(item: $sheetType) { currentSheetType in
-                switch currentSheetType {
-                case let .createNewProfile(newProfile):
-                    CreateProfileSheetView(profile: newProfile, isVisible: isSheetVisible)
-                        .environment(alertToastEventStatus)
-                        .interactiveDismissDisabled(true)
-                case let .editExistingProfile(existingProfile):
-                    EditProfileSheetView(profile: existingProfile, isVisible: isSheetVisible)
-                        .environment(alertToastEventStatus)
-                        .interactiveDismissDisabled(true)
+                // iOS 17 的 sheet 不继承父级 NavigationStack，必须在此补回，
+                // 否则 sheet 内的 NavigationLink（登录 / 手动配置）会灰化禁用，
+                // 且 toolbar 的取消按钮与 navigationTitle 会被静默丢弃。
+                NavigationStack {
+                    switch currentSheetType {
+                    case let .createNewProfile(newProfile):
+                        CreateProfileSheetView(profile: newProfile, isVisible: isSheetVisible)
+                            .environment(alertToastEventStatus)
+                    case let .editExistingProfile(existingProfile):
+                        EditProfileSheetView(profile: existingProfile, isVisible: isSheetVisible)
+                            .environment(alertToastEventStatus)
+                    }
                 }
+                .interactiveDismissDisabled(true)
             }
         } else {
             givenView
