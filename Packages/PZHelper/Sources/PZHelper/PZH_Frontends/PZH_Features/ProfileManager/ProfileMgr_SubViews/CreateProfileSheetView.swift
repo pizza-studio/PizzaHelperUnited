@@ -160,7 +160,7 @@ extension ProfileManagerPageContent {
                 trailingTasks: {
                     PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
                     isVisible.toggle() // 该行为必须发生在 trailingTasks (completionHandler) 内！！！
-                    alertToastEventStatus.isProfileTaskSucceeded.toggle()
+                    alertToastEventStatus.triggerProfileTaskSucceededAfterTransition()
                     dismiss()
                 },
                 errorHandler: { error in
@@ -258,7 +258,7 @@ extension ProfileManagerPageContent {
                             onlyDeleteIfDisabled: false
                         )
                     }
-                    alertToastEventStatus.isProfileTaskSucceeded.toggle()
+                    alertToastEventStatus.triggerProfileTaskSucceededAfterTransition()
                     isVisible.toggle() // 该行为必须发生在 completionHandler 内！！！
                     dismiss()
                 },
