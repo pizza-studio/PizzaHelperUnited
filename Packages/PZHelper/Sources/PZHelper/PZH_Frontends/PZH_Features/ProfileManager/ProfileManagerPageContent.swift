@@ -55,20 +55,12 @@ struct ProfileManagerPageContent: View {
                 }
             }
             Section {
-                if Self.isOS25OrNewer {
-                    NavigationLink {
-                        let newProfile = PZProfileRef.makeDefaultInstance()
-                        CreateProfileSheetView(profile: newProfile, isVisible: isSheetVisible)
-                            .environment(alertToastEventStatus)
-                    } label: {
-                        Label("profileMgr.new".i18nPZHelper, systemSymbol: .plusCircle)
-                    }
-                } else {
-                    Button {
-                        sheetType = .createNewProfile(PZProfileRef.makeDefaultInstance())
-                    } label: {
-                        Label("profileMgr.new".i18nPZHelper, systemSymbol: .plusCircle)
-                    }
+                NavigationLink {
+                    let newProfile = PZProfileRef.makeDefaultInstance()
+                    CreateProfileSheetView(profile: newProfile, isVisible: isSheetVisible)
+                        .environment(alertToastEventStatus)
+                } label: {
+                    Label("profileMgr.new".i18nPZHelper, systemSymbol: .plusCircle)
                 }
             } footer: {
                 NavigationLink {
@@ -85,19 +77,11 @@ struct ProfileManagerPageContent: View {
                         let profileRef = profile.asRef
                         let label = drawRow(profile: profileRef)
                         if isAppKitOrNotEditing {
-                            if Self.isOS25OrNewer {
-                                NavigationLink {
-                                    EditProfileSheetView(profile: profileRef, isVisible: isSheetVisible)
-                                        .environment(alertToastEventStatus)
-                                } label: {
-                                    label
-                                }
-                            } else {
-                                Button {
-                                    sheetType = .editExistingProfile(profileRef)
-                                } label: {
-                                    label
-                                }
+                            NavigationLink {
+                                EditProfileSheetView(profile: profileRef, isVisible: isSheetVisible)
+                                    .environment(alertToastEventStatus)
+                            } label: {
+                                label
                             }
                         } else {
                             label
@@ -125,7 +109,6 @@ struct ProfileManagerPageContent: View {
         .formStyle(.grouped).disableFocusable()
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
-        .apply(hookSheet)
         .apply { content in
             content
                 .toolbar {
@@ -175,15 +158,9 @@ struct ProfileManagerPageContent: View {
         return formatter
     }()
 
-    private static var isOS25OrNewer: Bool {
-        if #available(iOS 18.0, macCatalyst 18.0, macOS 15.0, *) { return true }
-        return false
-    }
-
     @State private var theVM: ProfileManagerVM = .shared
     @State private var alertToastEventStatus: AlertToastEventStatus = .init()
     @State private var errorMessage: String?
-    @State private var sheetType: SheetType?
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
     private let wrappedByNavStack: Bool
@@ -194,18 +171,10 @@ struct ProfileManagerPageContent: View {
 
     private var isSheetVisible: Binding<Bool> {
         .init {
-            if Self.isOS25OrNewer {
-                theVM.sheetType != nil
-            } else {
-                sheetType != nil
-            }
+            theVM.sheetType != nil
         } set: { newValue in
             if !newValue {
-                if Self.isOS25OrNewer {
-                    theVM.sheetType = nil
-                } else {
-                    sheetType = nil
-                }
+                theVM.sheetType = nil
             }
         }
     }
@@ -248,30 +217,6 @@ struct ProfileManagerPageContent: View {
     }
 
     @ViewBuilder
-    private func hookSheet(_ givenView: some View) -> some View {
-        if !Self.isOS25OrNewer {
-            givenView.sheet(item: $sheetType) { currentSheetType in
-                // iOS 17 的 sheet 不继承父级 NavigationStack，必须在此补回，
-                // 否则 sheet 内的 NavigationLink（登录 / 手动配置）会灰化禁用，
-                // 且 toolbar 的取消按钮与 navigationTitle 会被静默丢弃。
-                NavigationStack {
-                    switch currentSheetType {
-                    case let .createNewProfile(newProfile):
-                        CreateProfileSheetView(profile: newProfile, isVisible: isSheetVisible)
-                            .environment(alertToastEventStatus)
-                    case let .editExistingProfile(existingProfile):
-                        EditProfileSheetView(profile: existingProfile, isVisible: isSheetVisible)
-                            .environment(alertToastEventStatus)
-                    }
-                }
-                .interactiveDismissDisabled(true)
-            }
-        } else {
-            givenView
-        }
-    }
-
-    @ViewBuilder
     private func drawRow(profile: PZProfileRef) -> some View {
         /// LabeledContent 与 iPadOS 18 的某些版本不相容，使得此处需要改用 HStack 应对处理。
         HStack {
@@ -301,9 +246,6 @@ struct ProfileManagerPageContent: View {
             }
         }
         .contextMenu {
-            Button("profileMgr.edit.title".i18nPZHelper) {
-                sheetType = .editExistingProfile(profile)
-            }
             Button(role: .destructive) {
                 deleteItems(uuids: [profile.uuid], clearShowCaseCache: false)
             } label: {
@@ -561,11 +503,4 @@ struct ProfileManagerPageContent: View {
             )
         }
     }
-}
-
-// MARK: ProfileManagerPageContent.SheetType
-
-@available(iOS 17.0, macCatalyst 17.0, *)
-extension ProfileManagerPageContent {
-    typealias SheetType = ProfileManagerVM.SheetType
 }

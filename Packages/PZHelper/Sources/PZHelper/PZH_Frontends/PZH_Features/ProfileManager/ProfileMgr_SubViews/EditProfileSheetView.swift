@@ -17,10 +17,8 @@ extension ProfileManagerPageContent {
             self._profile = .init(wrappedValue: profile)
             self.profileBeforeEdit = profile.asSendable
             self._isVisible = isVisible
-            if Self.isOS25OrNewer {
-                Task { @MainActor in
-                    ProfileManagerVM.shared.sheetType = .editExistingProfile(profile)
-                }
+            Task { @MainActor in
+                ProfileManagerVM.shared.sheetType = .editExistingProfile(profile)
             }
         }
 
@@ -53,16 +51,11 @@ extension ProfileManagerPageContent {
                 }
             }
             .react(to: isVisible) { _, newValue in
-                if Self.isOS25OrNewer, !newValue { dismiss() }
+                if !newValue { dismiss() }
             }
         }
 
         // MARK: Private
-
-        private static var isOS25OrNewer: Bool {
-            if #available(iOS 18.0, macCatalyst 18.0, macOS 15.0, *) { return true }
-            return false
-        }
 
         @State private var profile: PZProfileRef
         @State private var isSaveProfileFailAlertShown: Bool = false

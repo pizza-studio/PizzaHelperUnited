@@ -16,10 +16,8 @@ extension ProfileManagerPageContent {
         init(profile: PZProfileRef, isVisible: Binding<Bool>) {
             self._profile = .init(wrappedValue: profile)
             self._isVisible = isVisible
-            if Self.isOS25OrNewer {
-                Task { @MainActor in
-                    ProfileManagerVM.shared.sheetType = .createNewProfile(profile)
-                }
+            Task { @MainActor in
+                ProfileManagerVM.shared.sheetType = .createNewProfile(profile)
             }
         }
 
@@ -88,7 +86,7 @@ extension ProfileManagerPageContent {
                 }
             }
             .react(to: isVisible) { _, newValue in
-                if Self.isOS25OrNewer, !newValue { dismiss() }
+                if !newValue { dismiss() }
             }
             .react(to: profile.game) { _, newValue in
                 region.changeGame(to: newValue)
@@ -307,11 +305,6 @@ extension ProfileManagerPageContent {
             case pending
             case gotCookie
             case gotProfile
-        }
-
-        private static var isOS25OrNewer: Bool {
-            if #available(iOS 18.0, macCatalyst 18.0, macOS 15.0, *) { return true }
-            return false
         }
 
         @State private var profile: PZProfileRef
