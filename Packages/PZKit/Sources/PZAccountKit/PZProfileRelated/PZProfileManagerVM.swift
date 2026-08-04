@@ -156,11 +156,20 @@ public final class ProfileManagerVM: TaskManagedVM {
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 do {
                     if await !assertion.state.isReleased {
+                        let committedProfiles: [PZProfileSendable]
                         if let fixed = currentProfiles.priorityIssuesSolvedForm {
                             try await self.profileActor?.addOrUpdateProfiles(Set(fixed))
+                            committedProfiles = fixed
                         } else {
                             try await self.profileActor?.addOrUpdateProfile(profile)
+                            committedProfiles = [profile]
                         }
+                        // 直接將剛提交的內容寫入 UserDefaults，
+                        // 不等 SwiftData didSave 通知鏈的事後重新讀取，
+                        // 以免該鏈路吃到過期的 cookie（例如 CloudKit 匯入回滾）。
+                        var newMap = Defaults[.pzProfiles]
+                        committedProfiles.forEach { newMap[$0.uuid.uuidString] = $0 }
+                        Defaults[.pzProfiles] = newMap
                     }
                     await assertion.release()
                 } catch {
@@ -225,6 +234,7 @@ public final class ProfileManagerVM: TaskManagedVM {
             if Defaults[.automaticallyDeduplicatePZProfiles] {
                 _ = try? await self.profileActor?.deduplicate()
             }
+            await self.profileActor?.arbitrateProfilesAgainstUserDefaults()
             await self.profileActor?.syncAllDataToUserDefaults()
             ProfileManagerVM.shared.profiles = Defaults[.pzProfiles].values.sorted {
                 $0.priority < $1.priority

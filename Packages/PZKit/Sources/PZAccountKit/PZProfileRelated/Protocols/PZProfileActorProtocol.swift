@@ -23,6 +23,11 @@ public protocol PZProfileActorProtocol: Actor {
         left: Set<PZProfileSendable>
     )
     func propagateDeviceFingerprint(_ fingerprint: String) throws
+
+    /// 以 UserDefaults 内的副本与各资料最近接受本地修改的时间戳为据，
+    /// 裁决并丢弃过期的资料变动（例如 CloudKit 导入造成的回滚）。
+    func arbitrateProfilesAgainstUserDefaults() async
+
     func acceptMigratedOldAccountProfiles(
         oldData: [PZProfileSendable],
         resetNotifications: Bool,
@@ -34,6 +39,22 @@ public protocol PZProfileActorProtocol: Actor {
 }
 
 extension PZProfileActorProtocol {
+    /// 预设无操作；目前仅 SwiftData 栈（PZProfileActor）实作。
+    public func arbitrateProfilesAgainstUserDefaults() async {}
+
+    func recordLocalEditTimestamp(_ timestamp: Int64, uuidString: String) {
+        var map = Defaults[.pzProfilesLastLocalEditTimestamps]
+        map[uuidString] = timestamp
+        Defaults[.pzProfilesLastLocalEditTimestamps] = map
+    }
+
+    func removeLocalEditTimestamps(uuidStrings: some Collection<String>) {
+        guard !uuidStrings.isEmpty else { return }
+        var map = Defaults[.pzProfilesLastLocalEditTimestamps]
+        uuidStrings.forEach { map.removeValue(forKey: $0) }
+        Defaults[.pzProfilesLastLocalEditTimestamps] = map
+    }
+
     public func replaceProfilesMatchingUUID(
         with profileSendableSet: Set<PZProfileSendable>
     ) throws {
