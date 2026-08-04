@@ -33,9 +33,9 @@ enum PZProfileSwiftData {
                 // 处理资料库被重设的情形。
                 if isReset {
                     await failSafeRestoreAllDataFromUserDefaults()
-                } else {
-                    await syncAllDataToUserDefaults()
                 }
+                await arbitrateProfilesAgainstUserDefaults()
+                await syncAllDataToUserDefaults()
             }
         }
     }
@@ -141,16 +141,19 @@ extension PZProfileActor {
         let allExistingUUIDs: [String] = allExistingPFs.map(\.uuid.uuidString)
         var currentPriorityID = (allExistingPFs.map(\.priority).max() ?? 0) + 1
         var profilesMigratedCount = 0
+        let nowTimestamp = Int64(Date().timeIntervalSince1970)
         try modelContext.transaction {
             oldData.forEach { theEntrySendable in
                 let theEntry = theEntrySendable.asMO
                 theEntry.priority = currentPriorityID
+                theEntry.lastLocalEditTimestamp = nowTimestamp
                 if allExistingUUIDs.contains(theEntry.uuid.uuidString) {
                     guard !isUnattended else { return }
                     theEntry.uuid = .init()
                     theEntry.name += " (Imported)"
                 }
                 modelContext.insert(theEntry)
+                recordLocalEditTimestamp(nowTimestamp, uuidString: theEntry.uuid.uuidString)
                 PZNotificationCenter.bleachNotificationsIfDisabled(for: theEntry.asSendable)
                 profilesMigratedCount += 1
                 currentPriorityID += 1
@@ -177,6 +180,7 @@ extension PZProfileActor {
         var matchedExistingObjs: [PZProfileMO] = existingObjs.filter {
             $0.uuid.uuidString == profileSendable.uuid.uuidString
         }
+        let nowTimestamp = Int64(Date().timeIntervalSince1970)
         var existingDataUpdatedSuccessfully = false
         deduplicateAndUpdate: while let lastObj = matchedExistingObjs.last {
             if matchedExistingObjs.count > 1 {
@@ -184,13 +188,17 @@ extension PZProfileActor {
                 matchedExistingObjs.removeLast()
             } else {
                 lastObj.inherit(from: profileSendable)
+                lastObj.lastLocalEditTimestamp = nowTimestamp
                 existingDataUpdatedSuccessfully = true
                 break deduplicateAndUpdate
             }
         }
         if !existingDataUpdatedSuccessfully {
-            context.insert(profileSendable.asMO)
+            let newMO = profileSendable.asMO
+            newMO.lastLocalEditTimestamp = nowTimestamp
+            context.insert(newMO)
         }
+        recordLocalEditTimestamp(nowTimestamp, uuidString: profileSendable.uuid.uuidString)
     }
 
     /// This will add the profile if it is not already added.
@@ -215,6 +223,10 @@ extension PZProfileActor {
                 try addOrUpdateProfileSansCommission($0, against: modelContext)
             }
         }
+        // 仅清理「被删除且未被重新插入」的 uuid 的时间戳记录。
+        let reinsertedUUIDs = Set(profileSendableSet.map(\.uuid))
+        let pureDeletions = uuidsToDelete.subtracting(reinsertedUUIDs)
+        removeLocalEditTimestamps(uuidStrings: pureDeletions.map(\.uuidString))
     }
 
     public func deleteProfile(uuid: UUID) throws {
@@ -234,6 +246,7 @@ extension PZProfileActor {
                 modelContext.delete(currentMO)
             }
         }
+        removeLocalEditTimestamps(uuidStrings: uuids.map(\.uuidString))
         return remainingProfiles
     }
 
@@ -256,6 +269,7 @@ extension PZProfileActor {
         PZLog.debug(
             "[PZProfileActor] bleachInvalidProfiles: transaction done, total deleted=\(deletedProfiles.count)"
         )
+        removeLocalEditTimestamps(uuidStrings: deletedProfiles.map(\.uuid.uuidString))
         return deletedProfiles
     }
 }
@@ -325,14 +339,98 @@ extension PZProfileActor {
     public func propagateDeviceFingerprint(_ fingerprint: String) throws {
         guard !fingerprint.isEmpty else { return }
         let existingMOs = (try modelContext.fetch(FetchDescriptor<PZProfileMO>()))
+        let nowTimestamp = Int64(Date().timeIntervalSince1970)
+        var stampedUUIDs: [String] = []
         try modelContext.transaction {
             existingMOs.forEach { currentMO in
                 switch currentMO.server.region {
                 case .hoyoLab: return
                 case .miyoushe:
                     currentMO.deviceFingerPrint = fingerprint
+                    currentMO.lastLocalEditTimestamp = nowTimestamp
+                    stampedUUIDs.append(currentMO.uuid.uuidString)
                 }
             }
         }
+        stampedUUIDs.forEach { recordLocalEditTimestamp(nowTimestamp, uuidString: $0) }
     }
 }
+
+// MARK: - Local Edit Timestamp & Stale Data Arbitration.
+
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+extension PZProfileActor {
+    /// 以 UserDefaults 内的副本与各资料最近接受本地修改的时间戳为据，
+    /// 裁决并丢弃过期的资料变动（例如 CloudKit 导入造成的回滚）。
+    ///
+    /// - 本地库里的时间戳较旧：判定为过期资料，以 UserDefaults 副本写回。
+    /// - 本地库里的时间戳较新：判定为他端装置的合法修改，予以接受并让影子表跟进。
+    public func arbitrateProfilesAgainstUserDefaults() async {
+        let shadowMap = Defaults[.pzProfilesLastLocalEditTimestamps]
+        guard !shadowMap.isEmpty else { return }
+        let backupMap = Defaults[.pzProfiles]
+        guard let existingMOs = try? modelContext.fetch(FetchDescriptor<PZProfileMO>()) else { return }
+        var shadowUpdates: [String: Int64] = [:]
+        var needsSave = false
+        for currentMO in existingMOs {
+            let uuidStr = currentMO.uuid.uuidString
+            let localTS = shadowMap[uuidStr] ?? 0
+            let moTS = currentMO.lastLocalEditTimestamp ?? 0
+            if moTS < localTS {
+                // 本地库里的资料已过期（可能被 CloudKit 回滚）：以 UserDefaults 副本写回。
+                guard let backup = backupMap[uuidStr] else { continue }
+                currentMO.inherit(from: backup)
+                let newTS = max(localTS, Int64(Date().timeIntervalSince1970))
+                currentMO.lastLocalEditTimestamp = newTS
+                shadowUpdates[uuidStr] = newTS
+                needsSave = true
+            } else if moTS > localTS {
+                // 本地库里的资料较新（他端装置的合法修改）：影子表跟进即可。
+                shadowUpdates[uuidStr] = moTS
+            }
+        }
+        if !shadowUpdates.isEmpty {
+            var newShadowMap = shadowMap
+            shadowUpdates.forEach { newShadowMap[$0.key] = $0.value }
+            Defaults[.pzProfilesLastLocalEditTimestamps] = newShadowMap
+        }
+        if needsSave {
+            do {
+                try modelContext.save()
+            } catch {
+                PZLog.error("[PZProfileActor] arbitrateProfilesAgainstUserDefaults: \(error)")
+            }
+        }
+    }
+
+    private func recordLocalEditTimestamp(_ timestamp: Int64, uuidString: String) {
+        var map = Defaults[.pzProfilesLastLocalEditTimestamps]
+        map[uuidString] = timestamp
+        Defaults[.pzProfilesLastLocalEditTimestamps] = map
+    }
+
+    private func removeLocalEditTimestamps(uuidStrings: some Collection<String>) {
+        guard !uuidStrings.isEmpty else { return }
+        var map = Defaults[.pzProfilesLastLocalEditTimestamps]
+        uuidStrings.forEach { map.removeValue(forKey: $0) }
+        Defaults[.pzProfilesLastLocalEditTimestamps] = map
+    }
+}
+
+#if DEBUG
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+extension PZProfileActor {
+    /// 仅供单元测试：模拟 CloudKit 将过期资料回滚进本地库的情形（不盖章、不写影子表）。
+    internal func debugSimulateStaleOverwrite(
+        _ profile: PZProfileSendable,
+        timestamp: Int64
+    ) throws {
+        try modelContext.transaction {
+            let existing = try modelContext.fetch(FetchDescriptor<PZProfileMO>())
+            guard let matched = existing.first(where: { $0.uuid == profile.uuid }) else { return }
+            matched.inherit(from: profile)
+            matched.lastLocalEditTimestamp = timestamp
+        }
+    }
+}
+#endif

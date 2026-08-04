@@ -39,6 +39,13 @@ extension Defaults.Keys {
         default: [:],
         suite: .profileSuite // !! IMPORTANT !!
     )
+    /// 各 profile 最近一次接受本地修改的时间戳 (timeIntervalSince1970) 影子表，
+    /// 键为 profile 的 uuid.uuidString。用于裁决 CloudKit 导入的过期资料。
+    public static let pzProfilesLastLocalEditTimestamps = Key<[String: Int64]>(
+        "pzProfilesLastLocalEditTimestamps",
+        default: [:],
+        suite: .profileSuite // !! IMPORTANT !!
+    )
     public static let cachedDailyNotes = Key<[String: CachedJSON]>(
         "cachedDailyNotes",
         default: [:],

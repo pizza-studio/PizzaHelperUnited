@@ -56,7 +56,10 @@ struct DetailPortalTabPage: View {
         )
         .apply(hookToolbar)
         .onAppear {
-            if let profile = vmDPV.currentProfile, !sortedProfiles.contains(profile) {
+            // 此處僅能比對 uuid：若比對整個 PZProfileSendable（含 cookie），
+            // 重新登入後 cookie 變更會導致 currentProfile 被誤置為 nil。
+            if let profile = vmDPV.currentProfile,
+               !sortedProfiles.map(\.uuid).contains(profile.uuid) {
                 vmDPV.currentProfile = nil
             }
         }

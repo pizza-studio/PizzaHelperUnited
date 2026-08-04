@@ -18,6 +18,9 @@ private struct UserDefaultsProfileSynchronizer: ViewModifier {
                 Task { @MainActor in
                     await ProfileManagerVM.shared
                         .profileActor?
+                        .arbitrateProfilesAgainstUserDefaults()
+                    await ProfileManagerVM.shared
+                        .profileActor?
                         .syncAllDataToUserDefaults()
                 }
             }
