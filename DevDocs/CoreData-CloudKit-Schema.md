@@ -75,6 +75,7 @@ DEFINE SCHEMA
         CD_deviceID          STRING QUERYABLE SEARCHABLE SORTABLE,
         CD_entityName        STRING QUERYABLE SEARCHABLE SORTABLE,
         CD_game              BYTES QUERYABLE SORTABLE,
+        CD_lastLocalEditTimestamp INT64 QUERYABLE SORTABLE,
         CD_name              STRING QUERYABLE SEARCHABLE SORTABLE,
         CD_priority          INT64 QUERYABLE SORTABLE,
         CD_sTokenV2          STRING QUERYABLE SEARCHABLE SORTABLE,
@@ -106,3 +107,8 @@ DEFINE SCHEMA
     );
 
 ```
+
+注：
+
+1. CD_PZProfileMO 的 `CD_lastLocalEditTimestamp` 记录该资料最近一次接受本地修改的时间（`timeIntervalSince1970`，GMT+0 绝对时间，无 DST）。nil 与 0 皆视为 distantPast；用于裁决 CloudKit 导入的过期资料（Last-Writer-Wins）。
+2. CD_PZProfileMO 的 `CD_lastLocalEditTimestamp` 在 TheLatteHelper 优先部署。什么时候 ThePizzaHelper 若是需要发新版更新的话，需要 Deploy Schema Changes 到 Production。

@@ -54,6 +54,11 @@ internal final class PZProfileMO: Codable, PZProfileRefProtocol {
     public var sTokenV2: String? = ""
     public var deviceID: String = UUID().uuidString // For cross-device purposes.
 
+    /// 最近一次由本地 ProfileManager 修改的时间 (timeIntervalSince1970, GMT+0 绝对时间)。
+    /// 必须是 nullable，否则既有的 CoreData 资料库无法做自动隐式换代。
+    /// nil 与 0 皆视为 distantPast。仅用于裁决 CloudKit 导入的过期资料。
+    public var lastLocalEditTimestamp: Int64?
+
     public var server: HoYo.Server = HoYo.Server.celestia(.genshinImpact) {
         didSet {
             serverRawValue = server.rawValue
