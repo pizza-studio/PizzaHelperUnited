@@ -32,6 +32,10 @@ public final class DetailPortalViewModel {
                     } else if let currentProfileUpdated = newMap[currentProfile.uuid.uuidString] {
                         self.currentProfile?.inherit(from: currentProfileUpdated)
                     }
+                } else {
+                    // currentProfile 一旦為 nil 也得有機會復原，
+                    // 否則該 ViewModel 會卡死到 App 重開為止。
+                    self.currentProfile = pzProfilesNow.first
                 }
             }
         }

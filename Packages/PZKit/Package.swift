@@ -109,7 +109,11 @@ let package = Package(
 
         Target.testTarget(
             name: "PZAccountKitTests",
-            dependencies: ["PZAccountKit"]
+            dependencies: [
+                "PZAccountKit",
+                .product(name: "PZProfileCDMOBackports", package: "PZCoreDataKit"),
+                .product(name: "PZCoreDataKitShared", package: "PZCoreDataKit"),
+            ]
         )
 
         Target.testTarget(

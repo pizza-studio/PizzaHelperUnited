@@ -76,15 +76,21 @@ extension CDProfileMOActor: PZProfileActorProtocol {
             let allExistingUUIDs: [String] = allExistingCDMOs.map(\.uuid.uuidString)
             var currentPriorityID = (allExistingCDMOs.map(\.priority).max() ?? 0) + 1
             var profilesMigratedCount = 0
+            let nowTimestamp = Int(Date().timeIntervalSince1970)
             try oldData.forEach { theEntrySendable in
                 var theEntry = theEntrySendable.asCDMO
                 theEntry.priority = currentPriorityID
+                theEntry.lastLocalEditTimestamp = nowTimestamp
                 if allExistingUUIDs.contains(theEntry.uuid.uuidString) {
                     guard !isUnattended else { return }
                     theEntry.uuid = .init()
                     theEntry.name += " (Imported)"
                 }
                 try context.insert(theEntry)
+                self.recordLocalEditTimestamp(
+                    Int64(nowTimestamp),
+                    uuidString: theEntry.uuid.uuidString
+                )
                 PZNotificationCenter.bleachNotificationsIfDisabled(for: theEntry.asSendable)
                 profilesMigratedCount += 1
                 currentPriorityID += 1
@@ -119,6 +125,7 @@ extension CDProfileMOActor: PZProfileActorProtocol {
         var matchedExistingObjs: [ManagedObject<PZProfileCDMO>] = existingObjs.filter {
             (try? $0.decode())?.uuid.uuidString == profileSendable.uuid.uuidString
         }
+        let nowTimestamp = Int(Date().timeIntervalSince1970)
         var existingDataUpdatedSuccessfully = false
         deduplicateAndUpdate: while let lastObj = matchedExistingObjs.last {
             if matchedExistingObjs.count > 1 {
@@ -126,13 +133,17 @@ extension CDProfileMOActor: PZProfileActorProtocol {
                 matchedExistingObjs.removeLast()
             } else {
                 lastObj.encode(profileSendable.asCDMO)
+                lastObj.encode(\.lastLocalEditTimestamp, nowTimestamp)
                 existingDataUpdatedSuccessfully = true
                 break deduplicateAndUpdate
             }
         }
         if !existingDataUpdatedSuccessfully {
-            try context.insert(profileSendable.asCDMO)
+            var cdmo = profileSendable.asCDMO
+            cdmo.lastLocalEditTimestamp = nowTimestamp
+            try context.insert(cdmo)
         }
+        recordLocalEditTimestamp(Int64(nowTimestamp), uuidString: profileSendable.uuid.uuidString)
     }
 
     public func addOrUpdateProfile(_ profileSendable: PZProfileSendable) throws {
@@ -157,6 +168,10 @@ extension CDProfileMOActor: PZProfileActorProtocol {
                 try self.addOrUpdateProfileSansCommission(profileSendable, against: context)
             }
         }
+        // 仅清理「被删除且未被重新插入」的 uuid 的时间戳记录。
+        let reinsertedUUIDs = Set(profileSendableSet.map(\.uuid))
+        let pureDeletions = uuidsToDelete.subtracting(reinsertedUUIDs)
+        removeLocalEditTimestamps(uuidStrings: pureDeletions.map(\.uuidString))
     }
 
     public func deleteProfile(uuid: UUID) throws {
@@ -177,6 +192,7 @@ extension CDProfileMOActor: PZProfileActorProtocol {
                 context.delete(currentCDMOObj)
             }
         }
+        removeLocalEditTimestamps(uuidStrings: uuids.map(\.uuidString))
         return remainingProfiles
     }
 
@@ -191,6 +207,7 @@ extension CDProfileMOActor: PZProfileActorProtocol {
                 deletedProfiles.insert(currentCDMO.asSendable)
             }
         }
+        removeLocalEditTimestamps(uuidStrings: deletedProfiles.map(\.uuid.uuidString))
         return deletedProfiles
     }
 
@@ -230,14 +247,82 @@ extension CDProfileMOActor: PZProfileActorProtocol {
 
     public func propagateDeviceFingerprint(_ fingerprint: String) throws {
         guard !fingerprint.isEmpty else { return }
+        let nowTimestamp = Int(Date().timeIntervalSince1970)
+        var stampedUUIDs: [String] = []
         try container.perform { context in
             try context.fetch(PZProfileCDMO.all).forEach { currentCDMOObj in
                 switch try currentCDMOObj.decode().server.region {
                 case .hoyoLab: return
                 case .miyoushe:
                     currentCDMOObj.encode(\.deviceFingerPrint, fingerprint)
+                    currentCDMOObj.encode(\.lastLocalEditTimestamp, nowTimestamp)
+                    if let uuidStr = try? currentCDMOObj.decode().uuid.uuidString {
+                        stampedUUIDs.append(uuidStr)
+                    }
                 }
+            }
+        }
+        stampedUUIDs.forEach { recordLocalEditTimestamp(Int64(nowTimestamp), uuidString: $0) }
+    }
+}
+
+// MARK: - Local Edit Timestamp & Stale Data Arbitration.
+
+extension CDProfileMOActor {
+    /// 以 UserDefaults 内的副本与各资料最近接受本地修改的时间戳为据，
+    /// 裁决并丢弃过期的资料变动（例如 CloudKit 导入造成的回滚）。
+    ///
+    /// - 本地库里的时间戳较旧：判定为过期资料，以 UserDefaults 副本写回。
+    /// - 本地库里的时间戳较新：判定为他端装置的合法修改，予以接受并让影子表跟进。
+    public func arbitrateProfilesAgainstUserDefaults() async {
+        let shadowMap = Defaults[.pzProfilesLastLocalEditTimestamps]
+        guard !shadowMap.isEmpty else { return }
+        let backupMap = Defaults[.pzProfiles]
+        try? container.perform { context in
+            let existingObjs = try context.fetch(PZProfileCDMO.all)
+            var shadowUpdates: [String: Int64] = [:]
+            for currentObj in existingObjs {
+                let currentCDMO = try currentObj.decode()
+                let uuidStr = currentCDMO.uuid.uuidString
+                let localTS = shadowMap[uuidStr] ?? 0
+                let moTS = Int64(currentCDMO.lastLocalEditTimestamp ?? 0)
+                if moTS < localTS {
+                    // 本地库里的资料已过期（可能被 CloudKit 回滚）：以 UserDefaults 副本写回。
+                    guard let backup = backupMap[uuidStr] else { continue }
+                    var restored = backup.asCDMO
+                    let newTS = max(localTS, Int64(Date().timeIntervalSince1970))
+                    restored.lastLocalEditTimestamp = Int(newTS)
+                    currentObj.encode(restored)
+                    shadowUpdates[uuidStr] = newTS
+                } else if moTS > localTS {
+                    // 本地库里的资料较新（他端装置的合法修改）：影子表跟进即可。
+                    shadowUpdates[uuidStr] = moTS
+                }
+            }
+            if !shadowUpdates.isEmpty {
+                var newShadowMap = shadowMap
+                shadowUpdates.forEach { newShadowMap[$0.key] = $0.value }
+                Defaults[.pzProfilesLastLocalEditTimestamps] = newShadowMap
             }
         }
     }
 }
+
+#if DEBUG
+extension CDProfileMOActor {
+    /// 仅供单元测试：模拟 CloudKit 将过期资料回滚进本地库的情形（不盖章、不写影子表）。
+    internal func debugSimulateStaleOverwrite(
+        _ profile: PZProfileSendable,
+        timestamp: Int64
+    ) throws {
+        try container.perform { context in
+            let existing = try context.fetch(PZProfileCDMO.all)
+            guard let matched = try existing.first(where: { try $0.decode().uuid == profile.uuid })
+            else { return }
+            var cdmo = profile.asCDMO
+            cdmo.lastLocalEditTimestamp = Int(timestamp)
+            matched.encode(cdmo)
+        }
+    }
+}
+#endif

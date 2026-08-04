@@ -29,6 +29,7 @@ public struct PZProfileCDMO: Hashable, Sendable, Identifiable, Codable {
     public var deviceID: String = UUID().uuidString
     public var serverBlob: Data = .init([]) // 暂时交给 Swift 自动处理 JSON Codec。
     public var gameBlob: Data = .init([]) // 暂时交给 Swift 自动处理 JSON Codec。
+    public var lastLocalEditTimestamp: Int? = nil
 }
 
 extension PZProfileCDMO {
@@ -67,6 +68,7 @@ extension PZProfileCDMO: ManagedObjectConvertible {
         .init(\.deviceID, "deviceID"),
         .init(\.serverBlob, "server"),
         .init(\.gameBlob, "game"),
+        .init(\.lastLocalEditTimestamp, "lastLocalEditTimestamp"),
     ]
 }
 
