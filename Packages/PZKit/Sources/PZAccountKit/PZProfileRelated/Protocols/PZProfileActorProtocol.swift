@@ -42,6 +42,19 @@ extension PZProfileActorProtocol {
     /// 预设无操作；目前仅 SwiftData 栈（PZProfileActor）实作。
     public func arbitrateProfilesAgainstUserDefaults() async {}
 
+    func recordLocalEditTimestamp(_ timestamp: Int64, uuidString: String) {
+        var map = Defaults[.pzProfilesLastLocalEditTimestamps]
+        map[uuidString] = timestamp
+        Defaults[.pzProfilesLastLocalEditTimestamps] = map
+    }
+
+    func removeLocalEditTimestamps(uuidStrings: some Collection<String>) {
+        guard !uuidStrings.isEmpty else { return }
+        var map = Defaults[.pzProfilesLastLocalEditTimestamps]
+        uuidStrings.forEach { map.removeValue(forKey: $0) }
+        Defaults[.pzProfilesLastLocalEditTimestamps] = map
+    }
+
     public func replaceProfilesMatchingUUID(
         with profileSendableSet: Set<PZProfileSendable>
     ) throws {

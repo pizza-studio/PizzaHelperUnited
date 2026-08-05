@@ -402,19 +402,6 @@ extension PZProfileActor {
             }
         }
     }
-
-    private func recordLocalEditTimestamp(_ timestamp: Int64, uuidString: String) {
-        var map = Defaults[.pzProfilesLastLocalEditTimestamps]
-        map[uuidString] = timestamp
-        Defaults[.pzProfilesLastLocalEditTimestamps] = map
-    }
-
-    private func removeLocalEditTimestamps(uuidStrings: some Collection<String>) {
-        guard !uuidStrings.isEmpty else { return }
-        var map = Defaults[.pzProfilesLastLocalEditTimestamps]
-        uuidStrings.forEach { map.removeValue(forKey: $0) }
-        Defaults[.pzProfilesLastLocalEditTimestamps] = map
-    }
 }
 
 #if DEBUG

@@ -97,6 +97,42 @@ struct PZProfileActorTests {
         #expect(fetchedAgain?.cookie == "NEW_COOKIE")
     }
 
+    /// CoreData 栈（CDProfileMOActor）的仲裁行为应与 SwiftData 栈一致。
+    @Test
+    func staleOverwriteArbitrationCD() async throws {
+        let actor = try CDProfileMOActor(
+            persistence: .inMemory,
+            backgroundContext: true,
+            useGroupContainer: false
+        )
+        Defaults[.pzProfiles] = [:]
+        Defaults[.pzProfilesLastLocalEditTimestamps] = [:]
+        defer {
+            Defaults[.pzProfiles] = [:]
+            Defaults[.pzProfilesLastLocalEditTimestamps] = [:]
+        }
+
+        // 1. 本地修改：写入新 cookie（会盖章），并同步 UserDefaults 副本。
+        var profile = PZProfileSendable.getDummyInstance(for: .genshinImpact)
+        profile.cookie = "NEW_COOKIE"
+        try await actor.addOrUpdateProfile(profile)
+        Defaults[.pzProfiles] = [profile.uuid.uuidString: profile]
+        let stampedTS = Defaults[.pzProfilesLastLocalEditTimestamps][profile.uuid.uuidString]
+        #expect(stampedTS != nil && (stampedTS ?? 0) > 0)
+
+        // 2. 模拟 CloudKit 回滚：旧 cookie + 旧时间戳，绕过盖章路径。
+        var stale = profile
+        stale.cookie = "OLD_COOKIE"
+        try await actor.debugSimulateStaleOverwrite(stale, timestamp: 1)
+        let fetchedStale = await actor.getSendableProfiles().first { $0.uuid == profile.uuid }
+        #expect(fetchedStale?.cookie == "OLD_COOKIE")
+
+        // 3. 仲裁：应以 UserDefaults 副本写回新 cookie。
+        await actor.arbitrateProfilesAgainstUserDefaults()
+        let fetchedRestored = await actor.getSendableProfiles().first { $0.uuid == profile.uuid }
+        #expect(fetchedRestored?.cookie == "NEW_COOKIE")
+    }
+
     /// 他端装置的合法修改（时间戳较新）应被接受，且影子表跟进。
     @Test
     func newerRemoteEditAccepted() async throws {

@@ -6,6 +6,7 @@
         <attribute name="deviceFingerPrint" optional="YES" attributeType="String"/>
         <attribute name="deviceID" optional="YES" attributeType="String"/>
         <attribute name="game" optional="YES" attributeType="Binary"/>
+        <attribute name="lastLocalEditTimestamp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="priority" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="server" optional="YES" attributeType="Binary"/>
