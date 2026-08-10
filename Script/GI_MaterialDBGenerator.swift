@@ -35,6 +35,9 @@ private let talentMaterialTags: [String?] = [
     "talentMoonlight", // raw 104358
     "talentElysium", // raw 104361
     "talentVagrancy", // raw 104364
+    "talentCharity", // raw 104367
+    "talentFortitude", // raw 104370
+    "talentGlory", // raw 104373
     // 此处插入原神今后大版本的新的天赋突破材料的命名。
 ]
 /// 武器突破材料 nameTag 以 raw itemID (114001 起、步长 4) 为索引。
@@ -60,6 +63,9 @@ private let weaponMaterialTags: [String] = [
     "weaponArtfulDevice", // raw 114073
     "weaponLongNightFlint", // raw 114077
     "weaponFarNorthScions", // raw 114081
+    "weaponPaleStarArmy", // raw 114085
+    "weaponCellaredNectar", // raw 114089
+    "weaponFrostEmperor", // raw 114093
     // 此处插入原神今后大版本的新的武器突破材料的命名。
 ]
 
@@ -88,6 +94,9 @@ private let talentInGameItemIDs: [Int?] = [
     104358, // index19: talentMoonlight
     104361, // index20: talentElysium
     104364, // index21: talentVagrancy
+    104367, // index22: talentCharity
+    104370, // index23: talentFortitude
+    104373, // index24: talentGlory
     // 此处插入原神今后大版本的新的天赋突破材料的游戏内 itemID。
 ]
 
@@ -172,6 +181,7 @@ public enum DimbreathMaterialRAW {
                 self.monday = try container.decode([Int].self, forKey: .monday)
                 self.tuesday = try container.decode([Int].self, forKey: .tuesday)
                 self.wednesday = try container.decode([Int].self, forKey: .wednesday)
+                self.maxArrayLength = self.monday.count
                 self.thursday = monday
                 self.friday = tuesday
                 self.saturday = wednesday
@@ -181,6 +191,7 @@ public enum DimbreathMaterialRAW {
                 let container = try decoder.container(keyedBy: DynamicCodingKeys.self)
                 var idFound: Int?
                 var allDungeonIDs = Set<Int>()
+                var maxLen = 0
                 var loops = 0
                 for key in container.allKeys {
                     loops += 1
@@ -196,6 +207,7 @@ public enum DimbreathMaterialRAW {
                           !candidate.isEmpty
                     else { continue }
                     allDungeonIDs.formUnion(candidate)
+                    maxLen = max(maxLen, candidate.count)
                 }
                 guard let id = idFound, !allDungeonIDs.isEmpty else {
                     throw DecodingError.dataCorrupted(.init(
@@ -205,6 +217,7 @@ public enum DimbreathMaterialRAW {
                 }
                 let merged = Array(allDungeonIDs)
                 self.id = id
+                self.maxArrayLength = maxLen
                 self.monday = merged
                 self.tuesday = merged
                 self.wednesday = merged
@@ -226,6 +239,11 @@ public enum DimbreathMaterialRAW {
         public var id: Int
         public var monday, tuesday, wednesday: [Int]
         public var thursday, friday, saturday: [Int]
+
+        /// 该条目单字段的最大长度（主副本清单的元素数）。
+        /// 7.0 的附加条目内含 3 个单元素字段（各组 tier-4 副本汇总），
+        /// 其并集计数 ≥ 3 会被误判为多日条目，故必须以单字段最大长度判定轮转。
+        public var maxArrayLength: Int
 
         // MARK: Private
 
@@ -314,12 +332,13 @@ extension DimbreathMaterialRAW {
         print("AllValidDungeons: \(allValidDungeons)")
         print("Obj4Dungeons: \(obj4Dungeons)")
         // 6.7+ 每日副本资料已改为按天分条目的格式。
-        // 多元素条目（≥3 dungeon）按出现顺序轮转星期（0=MR, 1=TF, 2=WS）。
+        // 多元素条目（单字段长度 ≥ 3）按出现顺序轮转星期（0=MR, 1=TF, 2=WS）。
         // 单元素条目紧跟在多元素条目之后，继承前一组轮转的星期，不推进轮转计数。
+        // 7.0 的附加条目含 3 个单元素字段（各组 tier-4 汇总），须以 maxArrayLength 判定。
         let dayNames = ["MR", "TF", "WS"]
         var rotationIndex = 0
         for dungeon in obj4Dungeons {
-            let isMultiDay = dungeon.monday.count >= 3
+            let isMultiDay = dungeon.maxArrayLength >= 3
             let weekday: Int
             if isMultiDay {
                 weekday = rotationIndex % dayNames.count
@@ -436,7 +455,11 @@ extension GIMaterialDBGenerator {
         struct AvatarEntry: Decodable { let id: Int; let skillDepotId: Int }
         struct SkillDepotEntry: Decodable { let id: Int; let skills: [Int]?; let energySkill: Int? }
         struct SkillEntry: Decodable { let id: Int; let proudSkillGroupId: Int? }
-        struct CostItem: Decodable { let id: Int; let count: Int }
+        struct CostItem: Decodable {
+            /// 7.0 起 costItems 的空槽位为 `{}`，须允许 id/count 缺省。
+            let id: Int?
+            let count: Int?
+        }
         struct ProudSkillEntry: Decodable {
             let proudSkillGroupId: Int; let level: Int; let costItems: [CostItem]?
 
@@ -575,7 +598,7 @@ extension GIMaterialDBGenerator {
         var proudGroupMaterials = [Int: Set<Int>]()
         for entry in proudEntries where entry.level >= 2 {
             guard let items = entry.costItems else { continue }
-            let ids = Set(items.map(\.id).filter { $0 > 0 })
+            let ids = Set(items.compactMap(\.id).filter { $0 > 0 })
             proudGroupMaterials[entry.proudSkillGroupId, default: []].formUnion(ids)
         }
 
@@ -583,7 +606,7 @@ extension GIMaterialDBGenerator {
         var wpnPromoteMaterials = [Int: Set<Int>]()
         for entry in wpnPromEntries {
             guard let items = entry.costItems else { continue }
-            let ids = Set(items.map(\.id).filter { $0 > 0 })
+            let ids = Set(items.compactMap(\.id).filter { $0 > 0 })
             wpnPromoteMaterials[entry.weaponPromoteId, default: []].formUnion(ids)
         }
 

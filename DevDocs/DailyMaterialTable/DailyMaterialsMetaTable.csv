@@ -1,0 +1,49 @@
+﻿SymbolName,Key,Week,en,chs,cht,jp,kr,fr,it,ru,de,vi
+talentFreedom,$asset.dailyMaterial:talentFreedom,MR,Freedom,「自由」,「自由」,「自由」,「자유」,Liberté,Libertà,Книги О Свободе,Freiheit,Tự Do
+talentResistance,$asset.dailyMaterial:talentResistance,TF,Resistance,「抗争」,「抗爭」,「抗争」,「투쟁」,Résistance,Resistenza,Книги О Борьбе,Widerstands,Kháng Chiến
+talentBallad,$asset.dailyMaterial:talentBallad,WS,Ballad,「诗文」,「詩文」,「詩文」,「시문」,Poésie,Poesia,Книги О Поэзии,Poesie,Thơ Văn
+talentProsperity,$asset.dailyMaterial:talentProsperity,MR,Prosperity,「繁荣」,「繁榮」,「繁栄」,「번영」,Prospérité,Prosperità,Книги О Процветании,Wohlstands,Phồn Vinh
+talentDiligence,$asset.dailyMaterial:talentDiligence,TF,Diligence,「勤劳」,「勤勞」,「勤労」,「근면」,Diligence,Diligenza,Книги Об Усердии,Fleißes,Chăm Chỉ
+talentGold,$asset.dailyMaterial:talentGold,WS,Gold,「黄金」,「黃金」,「黄金」,「황금」,Or,Oro,Книги О Золоте,Golds,Hoàng Kim
+talentTransience,$asset.dailyMaterial:talentTransience,MR,Transience,「浮世」,「浮世」,「浮世」,「부세」,Ephémère,Fugacità,Книги О Бренности,Vergänglichkeit,Phù Thế
+talentElegance,$asset.dailyMaterial:talentElegance,TF,Elegance,「风雅」,「風雅」,「風雅」,「풍아」,Elégance,Eleganza,Книги Об Изяществе,Eleganz,Nhã Nhặn
+talentLight,$asset.dailyMaterial:talentLight,WS,Light,「天光」,「天光」,「天光」,「천광」,Lumière,Luce,Книги О Свете,Lichts,Ánh Sáng
+talentAdmonition,$asset.dailyMaterial:talentAdmonition,MR,Admonition,「诤言」,「諍言」,「忠言」,「간언」,Admonaistration,Ammonimento,Книги О Наставлениях,Ermahnung,Khuyên Nhủ
+talentIngenuity,$asset.dailyMaterial:talentIngenuity,TF,Ingenuity,「巧思」,「巧思」,「創意」,「창의」,Ingénuité,Ingegno,Книги Об Остроумии,Findigkeit,Tinh Tế
+talentPraxis,$asset.dailyMaterial:talentPraxis,WS,Praxis,「笃行」,「篤行」,「篤行」,「실천」,Usage,Pragmatica,Книги О Честности,Praxis,Thực Hành
+talentEquity,$asset.dailyMaterial:talentEquity,MR,Equity,「公平」,「公平」,「公平」,「공평」,L'equité,Filosofie Di Equità,Беспристрастии,Fairness,Công Bằng
+talentJustice,$asset.dailyMaterial:talentJustice,TF,Justice,「正义」,「正義」,「正義」,「정의」,La Justice,Giustizia,Справедливости,Gerechtigkeit,Chính Nghĩa
+talentOrder,$asset.dailyMaterial:talentOrder,WS,Order,「秩序」,「秩序」,「秩序」,「질서」,L'ordre,Ordine,Порядке,Ordnung,Trật Tự
+talentContention,$asset.dailyMaterial:talentContention,MR,Contention,「角逐」,「角逐」,「角逐」,「각축」,La Compétition,Disputa,Соперничестве,Wettstreits,Tranh Đấu
+talentKindling,$asset.dailyMaterial:talentKindling,TF,Kindling,「焚燔」,「焚燔」,「焚燼」,「소각」,Petit bois,Combustione,Сжигании,Verbrennung,Thiêu Đốt
+talentConflict,$asset.dailyMaterial:talentConflict,WS,Conflict,「纷争」,「紛爭」,「紛爭」,「분쟁」,Conflit,Conflitto,Раздоре,Zwietracht,Xung Đột
+talentMoonlight,$asset.dailyMaterial:talentMoonlight,MR,Moonlight,「月光」,「月光」,「月光」,「달빛」,La Lune,Chiaro di Luna,Лунном свете,Mondlichts,Ánh Trăng
+talentElysium,$asset.dailyMaterial:talentElysium,TF,Elysium,「乐园」,「樂園」,「楽園」,「낙원」,L'Élysium,Elisio,Рае,Elysiums,Lạc Viên
+talentVagrancy,$asset.dailyMaterial:talentVagrancy,WS,Vagrancy,「浪迹」,「浪跡」,「流浪」,「유랑」,L'Errance,Erranza,Скитании,Wanderschaft,Lang Bạt
+talentCharity,$asset.dailyMaterial:talentCharity,MR,Charity,「慈爱」,「慈愛」,「慈愛」,「자애」,La Charité,Benevolenza,Милосердии,Güte,Yêu Thương
+talentFortitude,$asset.dailyMaterial:talentFortitude,TF,Fortitude,「坚忍」,「堅忍」,「不屈」,「인내」,La Persévérance,Fermezza,Стойкости,Beharrlichkeit,Kiên Nhẫn
+talentGlory,$asset.dailyMaterial:talentGlory,WS,Glory,「荣光」,「榮光」,「栄光」,「영광」,La Gloire,Gloria,Славе,Ruhms,Vinh Quang
+weaponDecarabian,$asset.dailyMaterial:weaponDecarabian,MR,Decarabian,「高塔孤王」,「高塔孤王」,「高塔の王」,고탑 왕의 깨진 꿈,Décabarian,Decarabian,Декабриан,Decarabians,Xác Tàu Tháp Cô Vương
+weaponBorealWolf,$asset.dailyMaterial:weaponBorealWolf,TF,Boreal Wolf,「凛风奔狼」,「凜風奔狼」,「凛風奔狼」,칼바람 울프의 그리운 고향,Loup Boréal,Lupo Boreale,Арктический Волк,Borealischen Wolfs,Nỗi Nhớ Của Sói Bão
+weaponGladiator,$asset.dailyMaterial:weaponGladiator,WS,Dandelion Gladiator,「狮牙斗士」,「獅牙鬥士」,「獅牙戦士」,라이언 투사의 이념,Chevalier Du Croc De Lion,Gladiatore,Львиный Клык,Löwenzahnkriegers,Lí Tưởng Của Đấu Sĩ Nanh Sư Tử
+weaponGuyun,$asset.dailyMaterial:weaponGuyun,MR,Guyun,「孤云寒林」,「孤雲寒林」,「孤雲寒林」,고운한림의 신체,Guyun,Guyun,Гуюнь,Guyun,Thần Thể Rừng Băng Giá
+weaponElixir,$asset.dailyMaterial:weaponElixir,TF,Mist Veiled,「雾海云间」,「霧海雲間」,「霧海雲間」,안개구름 속의 전환,Karstique,Nebbia,Заоблачное Море,Nebelschleiers,Kim Đơn Biển Sương Mù
+weaponAerosiderite,$asset.dailyMaterial:weaponAerosiderite,WS,Aerosiderite,「漆黑陨铁」,「漆黑隕鐵」,「漆黒の隕鉄」,흑운철 덩이,Aérosidérite Noire,Aerosiderite,Чёрный Сидерит,Aerosiderit,Một Góc Thiên Thạch Đen
+weaponDistantSea,$asset.dailyMaterial:weaponDistantSea,MR,Distant Sea,「远海夷地」,「遠海夷地」,「遠海夷地」,먼바다의 금빛 가지,Branche Marine,Mare Lontano,Внешнее Море,Fernen Meeres,Nhánh Quỳnh Ngọc Của Biển Xa
+weaponNarukami,$asset.dailyMaterial:weaponNarukami,TF,Narukami,「鸣神御灵」,「鳴神御靈」,「鳴神御霊」,나루카미 어령의 용맹,Narukami,Narukami,Наруками,Narukami,Tình Yêu Của Narukami
+weaponKijinMask,$asset.dailyMaterial:weaponKijinMask,WS,Mask,「今昔剧画」,「今昔劇畫」,「今昔劇画」,금석극화의 귀인(鬼人),Masque,Maschera,Маска,Maske,Nanh Cọp Của Gekiga
+weaponTalisman,$asset.dailyMaterial:weaponTalisman,MR,Forest Dew,「谧林涓露」,「謐林涓露」,「静謐な森のしずく」,숲의 이슬을 닮은 금 부적,Talisman De La Rosée,Talismano,Ледяная Роса,Talisman,Bùa Rừng Xanh Sương Đọng - Sắt
+weaponOasisGarden,$asset.dailyMaterial:weaponOasisGarden,TF,Oasis Garden,「绿洲花园」,「綠洲花園」,「オアシスガーデン」,오아시스 화원의 진리,Jardin D'oasis,Giardino Dell'oasi,Цветущий Оазис,Oase,Ân Huệ Vườn Hoa Ốc Đảo
+weaponScorchingMight,$asset.dailyMaterial:weaponScorchingMight,WS,Scorching Might,「烈日威权」,「烈日威權」,「烈日権威」,태양 같은 권위의 과거,Pouvoir Brûlant,Possanza Infuocata,Пылающая Мощь,Sengenden Macht,Tia Sáng Của Ánh Nắng Quyền Uy 
+weaponAncientChord,$asset.dailyMaterial:weaponAncientChord,MR,Ancient Chord,「悠古弦音」,「悠古弦音」,「悠久の弦」,오래된 현악의 울림,Accord Ancien,Un Antico Accordo,Древней Струны,Serenade,Cung Đàn Cổ Xưa
+weaponDewdrop,$asset.dailyMaterial:weaponDewdrop,TF,Pure Sacred Dewdrop,「纯圣露滴」,「純聖露滴」,「純聖な雫」,성스러운 이슬의 정수,Rosée Sacrée Pure,Goccia Di Rugiada Sacra Pura,Чистой Капли Росы,Taus,Giọt Sương Thánh Thuần
+weaponPristineSea,$asset.dailyMaterial:weaponPristineSea,WS,Goblet of the Pristine Sea,「无垢之海」,「無垢之海」,「無垢な海」,순결한 바다의 금잔,Gobelet De La Mer Immaculée,Calice Del Mare Immacolato,Чаша Непорочного Моря,Kelch,Của Biển Nguyên Sơ
+weaponSacrificialHeart,$asset.dailyMaterial:weaponSacrificialHeart,MR,Sacrificial Heart,「贡祭炽心」,「貢祭熾心」,「灼心のお捧げ」,뜨거운 심장 공양의,Sacrificiel Flamboyant,Cacrificale ardente,Жертвенного Сердца,Inbrünstigen Opfergabe,Trái Tim Hiến Tế
+weaponSacredLord,$asset.dailyMaterial:weaponSacredLord,TF,Sacred Lord,「谵妄圣主」,「譫妄聖主」,「狂乱の聖主」,실성한 왕의,Seigneur Sacré,Sacro Signore,Святого Мудреца,Wahnsinnigen Fürsten,Thánh Chủ Mê Sảng
+weaponNightWind,$asset.dailyMaterial:weaponNightWind,WS,Night-Wind,「神合秘烟」,「神合秘煙」,「神秘なる煙」,신이 깃든 연기의,Vent Nocturne,Vento della Notte,Ночного Ветра,Vergänglichkeit,Làn Khói Thần Bí
+weaponArtfulDevice,$asset.dailyMaterial:weaponArtfulDevice,MR,Artful Device,「奇巧秘器」,「奇巧秘器」,「珍奇な秘器」,비밀 도구의,D'Appareil Artistique,Dispositivo Ingegnoso,Чудесного Устройства,Raffinierten Geheimgeräte,Khí Cụ Kỳ Diệu
+weaponLongNightFlint,$asset.dailyMaterial:weaponLongNightFlint,TF,Long Night Flint,「长夜燧火」,「長夜燧火」,「長夜の灯火」,긴 밤을 밝히는,Silex de Longue Nuit,Selce della Lunga notte,Кремня Долгой Ночи,Nachtfeuers,Ngọn Lửa Đêm Dài
+weaponFarNorthScions,$asset.dailyMaterial:weaponFarNorthScions,WS,Far-North Scions,「终北遗嗣」,「終北遺嗣」,「極北の末裔」,극북 유민의,Héritiers du Grand Nord,Erede dell'Estremo Nord,Последователей Крайнего Севера,Nachkommen des Hohen Nordens,Của Hậu Duệ Cực Bắc
+weaponPaleStarArmy,$asset.dailyMaterial:weaponPaleStarArmy,MR,Pale Star Army,「苍星军势」,「蒼星軍勢」,「蒼星軍勢」,창백한 별군단의,L'Armée Pâle,Esercito della Candida Stella,Армии Бледной Звезды,Armee des Bleichsterns,Của Quân Sao Nhạt
+weaponCellaredNectar,$asset.dailyMaterial:weaponCellaredNectar,TF,Cellared Spiritual Nectar,「藏窖灵浆」,「藏窖靈漿」,「蔵に眠る霊薬」,요정의,Nectar Spirituel en Cave,Nettare Spirituale Invecchiato,Выдержанного Духовного Нектара,Eingelagerten Spirituellen Nektars,Của Tinh Chất Ủ Hầm
+weaponFrostEmperor,$asset.dailyMaterial:weaponFrostEmperor,WS,Frost Emperor,「凛雪帝皇」,「凜雪帝皇」,「氷の皇帝」,차르의,L'Empereur Glacial,Imperatore del Gelo,Снежного Императора,Frostkaisers,Của Hoàng Đế Băng Giá
