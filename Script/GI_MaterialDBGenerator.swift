@@ -181,7 +181,7 @@ public enum DimbreathMaterialRAW {
                 self.monday = try container.decode([Int].self, forKey: .monday)
                 self.tuesday = try container.decode([Int].self, forKey: .tuesday)
                 self.wednesday = try container.decode([Int].self, forKey: .wednesday)
-                self.maxArrayLength = self.monday.count
+                self.maxArrayLength = monday.count
                 self.thursday = monday
                 self.friday = tuesday
                 self.saturday = wednesday
@@ -524,7 +524,7 @@ extension GIMaterialDBGenerator {
 
         let avatarEntries: [AvatarEntry]
         do {
-            avatarEntries = try JSONDecoder().decode([AvatarEntry].self, from: try await avatarData)
+            avatarEntries = try JSONDecoder().decode([AvatarEntry].self, from: avatarData)
         } catch {
             print("❌ JSON Decoding Error for URL: \(urlBase)AvatarExcelConfigData.json")
             print("Error details: \(error)")
@@ -533,7 +533,7 @@ extension GIMaterialDBGenerator {
 
         let depotEntries: [SkillDepotEntry]
         do {
-            depotEntries = try JSONDecoder().decode([SkillDepotEntry].self, from: try await depotData)
+            depotEntries = try JSONDecoder().decode([SkillDepotEntry].self, from: depotData)
         } catch {
             print("❌ JSON Decoding Error for URL: \(urlBase)AvatarSkillDepotExcelConfigData.json")
             print("Error details: \(error)")
@@ -542,7 +542,7 @@ extension GIMaterialDBGenerator {
 
         let skillEntries: [SkillEntry]
         do {
-            skillEntries = try JSONDecoder().decode([SkillEntry].self, from: try await skillData)
+            skillEntries = try JSONDecoder().decode([SkillEntry].self, from: skillData)
         } catch {
             print("❌ JSON Decoding Error for URL: \(urlBase)AvatarSkillExcelConfigData.json")
             print("Error details: \(error)")
@@ -551,7 +551,7 @@ extension GIMaterialDBGenerator {
 
         let proudEntries: [ProudSkillEntry]
         do {
-            proudEntries = try JSONDecoder().decode([ProudSkillEntry].self, from: try await proudData)
+            proudEntries = try JSONDecoder().decode([ProudSkillEntry].self, from: proudData)
         } catch {
             print("❌ JSON Decoding Error for URL: \(urlBase)ProudSkillExcelConfigData.json")
             print("Error details: \(error)")
@@ -561,7 +561,7 @@ extension GIMaterialDBGenerator {
         let wpnExcelEntries: [WeaponExcelEntry]
         do {
             wpnExcelEntries = try JSONDecoder().decode(
-                [WeaponExcelEntry].self, from: try await wpnExcelData
+                [WeaponExcelEntry].self, from: wpnExcelData
             )
         } catch {
             print("❌ JSON Decoding Error for URL: \(urlBase)WeaponExcelConfigData.json")
@@ -572,7 +572,7 @@ extension GIMaterialDBGenerator {
         let wpnPromEntries: [WeaponPromoteEntry]
         do {
             wpnPromEntries = try JSONDecoder().decode(
-                [WeaponPromoteEntry].self, from: try await wpnPromData
+                [WeaponPromoteEntry].self, from: wpnPromData
             )
         } catch {
             print("❌ JSON Decoding Error for URL: \(urlBase)WeaponPromoteExcelConfigData.json")
