@@ -259,8 +259,10 @@ struct MaterialExcelConfigData: Decodable {
     init(from decoder: any Decoder) throws {
         let container: KeyedDecodingContainer<CodingKeys> = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(Int.self, forKey: .id)
-        self.icon = try container.decode(String.self, forKey: .icon)
-        self.picPath = try container.decode([String].self, forKey: .picPath)
+        // 7.0 起部分虚拟物品没有 icon 字段，须允许缺省。
+        self.icon = try container.decodeIfPresent(String.self, forKey: .icon) ?? ""
+        // 7.0 起部分素材没有 picPath 字段，须允许缺省。
+        self.picPath = try container.decodeIfPresent([String].self, forKey: .picPath) ?? []
         self.materialType = try container.decodeIfPresent(String.self, forKey: .materialType)
         self.nameTextMapHash = try container.decode(Int.self, forKey: .nameTextMapHash)
         self.rankLevel = (try container.decodeIfPresent(Int.self, forKey: .rankLevel)) ?? 4

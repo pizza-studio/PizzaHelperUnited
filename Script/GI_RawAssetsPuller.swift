@@ -290,7 +290,8 @@ struct AvatarExcelConfigData: Hashable, Codable, Identifiable {
 struct AvatarCostumeExcelConfigData: Hashable, Codable, Identifiable {
     let skinId: Int
     let characterId: Int
-    let frontIconName: String
+    /// 默认皮肤（isDefault）没有 frontIconName 字段，须允许缺省。
+    let frontIconName: String?
     let nameTextMapHash: Int
 
     var id: Int { skinId }
@@ -300,8 +301,8 @@ struct AvatarCostumeExcelConfigData: Hashable, Codable, Identifiable {
     }
 
     var isValid: Bool {
-        guard !forbiddenNameTextMapHashes.contains(nameTextMapHash) else { return false }
-        return !frontIconName.isEmpty
+        guard let frontIconName, !frontIconName.isEmpty else { return false }
+        return !forbiddenNameTextMapHashes.contains(nameTextMapHash)
     }
 }
 
@@ -310,19 +311,20 @@ struct AvatarCostumeExcelConfigData: Hashable, Codable, Identifiable {
 struct AvatarSkillExcelConfigData: Hashable, Codable, Identifiable {
     let id: Int
     let nameTextMapHash: Int
-    let skillIcon: String
+    /// 7.0 起部分技能没有 skillIcon 字段，须允许缺省。
+    let skillIcon: String?
 
     var newFileNameStem: String {
-        skillIcon.replacingOccurrences(of: "Skill_", with: "")
+        (skillIcon ?? "").replacingOccurrences(of: "Skill_", with: "")
     }
 
     var isValid: Bool {
-        guard !forbiddenNameTextMapHashes.contains(nameTextMapHash) else { return false }
+        guard let skillIcon, !forbiddenNameTextMapHashes.contains(nameTextMapHash) else { return false }
         return !skillIcon.isEmpty && !isPurgeable
     }
 
     var isPurgeable: Bool {
-        guard skillIcon.hasPrefix("Skill_S_") else { return false }
+        guard let skillIcon, skillIcon.hasPrefix("Skill_S_") else { return false }
         return skillIcon.hasSuffix("_02") && id != 10033 // Jean is a special case.
     }
 }
@@ -363,7 +365,8 @@ struct WeaponExcelConfigData: Hashable, Codable, Identifiable {
 
 struct ProfilePictureExcelConfigData: Hashable, Codable, Identifiable {
     let id: Int
-    let iconPath: String
+    /// 个别条目（如 id 900004）没有 iconPath 字段，须允许缺省。
+    let iconPath: String?
 
     var newFileNameStem: String {
         id.description
@@ -394,7 +397,8 @@ public enum DataType: String, CaseIterable {
             case .profilePicture:
                 let buffer = try decoder.decode([ProfilePictureExcelConfigData].self, from: data)
                 buffer.forEach { obj in
-                    writeKeyValuePair(id: obj.newFileNameStem, dict: &dict, sourceFileName: obj.iconPath)
+                    guard let iconPath = obj.iconPath else { return }
+                    writeKeyValuePair(id: obj.newFileNameStem, dict: &dict, sourceFileName: iconPath)
                 }
             case .skill:
                 let buffer = try decoder.decode([AvatarSkillExcelConfigData].self, from: data)
