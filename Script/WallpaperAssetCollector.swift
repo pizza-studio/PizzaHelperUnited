@@ -346,8 +346,9 @@ struct FetterCharacterCardEntry: Decodable {
 
 struct RewardEntry: Decodable {
     struct RewardItem: Decodable {
-        let itemId: Int
-        let itemCount: Int
+        /// 7.0 起 rewardItemList 的空槽位为 `{}`，须允许缺省。
+        let itemId: Int?
+        let itemCount: Int?
     }
 
     let rewardId: Int
@@ -388,9 +389,9 @@ do {
     // Build rewardId → first non-zero itemId lookup.
     let rewardToItemId: [Int: Int] = Dictionary(
         rewardEntries.compactMap { entry in
-            guard let firstItem = entry.rewardItemList.first(where: { $0.itemId > 0 })
+            guard let firstItem = entry.rewardItemList.first(where: { ($0.itemId ?? 0) > 0 })
             else { return nil }
-            return (entry.rewardId, firstItem.itemId)
+            return (entry.rewardId, firstItem.itemId ?? 0)
         },
         uniquingKeysWith: { a, _ in a }
     )
