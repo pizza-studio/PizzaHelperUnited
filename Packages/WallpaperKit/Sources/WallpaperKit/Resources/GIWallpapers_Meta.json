@@ -1542,5 +1542,47 @@
     "game" : "GI",
     "id" : "210286",
     "officialFileNameStem" : "UI_NameCardPic_Bp51_P"
+  },
+  {
+    "bindedCharID" : "10000150",
+    "game" : "GI",
+    "id" : "210287",
+    "officialFileNameStem" : "UI_NameCardPic_Odette_P"
+  },
+  {
+    "bindedCharID" : "10000148",
+    "game" : "GI",
+    "id" : "210288",
+    "officialFileNameStem" : "UI_NameCardPic_Alyosha_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210289",
+    "officialFileNameStem" : "UI_NameCardPic_Ysxf7_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210290",
+    "officialFileNameStem" : "UI_NameCardPic_Snezhnaya1_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210291",
+    "officialFileNameStem" : "UI_NameCardPic_Csxy7_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210292",
+    "officialFileNameStem" : "UI_NameCardPic_Tps1_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210293",
+    "officialFileNameStem" : "UI_NameCardPic_Shadow_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210294",
+    "officialFileNameStem" : "UI_NameCardPic_Bp52_P"
   }
 ]

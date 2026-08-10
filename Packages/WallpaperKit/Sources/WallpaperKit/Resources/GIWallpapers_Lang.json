@@ -280,7 +280,15 @@
     "210283" : "Erlebnispass – Geschenk der Pracht",
     "210284" : "Sandrone – Teepäuschen",
     "210285" : "Nod-Krai – Mondhell",
-    "210286" : "Erlebnispass – Sommerfilm"
+    "210286" : "Erlebnispass – Sommerfilm",
+    "210287" : "Odette – Die singuläre Schwänin",
+    "210288" : "Alyosha – Sitzen",
+    "210289" : "Errungenschaft – Pracht",
+    "210290" : "Snezhnaya – Lange Nacht",
+    "210291" : "Errungenschaft – Schneewanderung",
+    "210292" : "Snezhnaya – Flüchtige Eindrücke",
+    "210293" : "Errungenschaft – Rätselhafter Kern",
+    "210294" : "Erlebnispass – Frostreise"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -563,7 +571,15 @@
     "210283" : "Travel Notes: Gift of Splendor",
     "210284" : "Sandrone: Tea Break",
     "210285" : "Nod-Krai: Moonbright",
-    "210286" : "Travel Notes: Sunny Summer"
+    "210286" : "Travel Notes: Sunny Summer",
+    "210287" : "Odette: The Singular Swan",
+    "210288" : "Alyosha: Sit",
+    "210289" : "Achievement: Resplendence",
+    "210290" : "Snezhnaya: Long Night",
+    "210291" : "Achievement: Treading Snow",
+    "210292" : "Snezhnaya: Fleeting Glimpses",
+    "210293" : "Achievement: Enigmatic Core",
+    "210294" : "Travel Notes: Frostfarer"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -846,7 +862,15 @@
     "210283" : "PB - Obsequios fantásticos",
     "210284" : "Sandrone - Descanso para el té",
     "210285" : "Nod Krai - Esplendor lunar",
-    "210286" : "PB - Verano soleado"
+    "210286" : "PB - Verano soleado",
+    "210287" : "Odette - Cisne",
+    "210288" : "Aliosha - Siéntate",
+    "210289" : "Logro - Resplandor",
+    "210290" : "Snezhnaya - Noche eterna",
+    "210291" : "Logro - Nieves recorridas",
+    "210292" : "Snezhnaya: Sombra de lanzadera",
+    "210293" : "Logro - Núcleo encubierto",
+    "210294" : "PB - Travesía glacial"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -1129,7 +1153,15 @@
     "210283" : "PB - Don de splendeur",
     "210284" : "Sandrone - Pause thé",
     "210285" : "Nod-Krai - Clair de lune",
-    "210286" : "PB - Été au soleil"
+    "210286" : "PB - Été au soleil",
+    "210287" : "Odette - Cygne singulier",
+    "210288" : "Alyosha - Assis",
+    "210289" : "Succès - Splendeur",
+    "210290" : "Snezhnaya - Longue nuit",
+    "210291" : "Succès - Marcher sur la neige",
+    "210292" : "Snezhnaya - Aperçus fugaces",
+    "210293" : "Succès - Noyau énigmatique",
+    "210294" : "PB - Passe-givre"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1412,7 +1444,15 @@
     "210283" : "Catatan Perjalanan: Hadiah Kemegahan",
     "210284" : "Sandrone: Istirahat Minum Teh",
     "210285" : "Nod-Krai: Cahaya Bulan",
-    "210286" : "Catatan Perjalanan: Musim Panas yang Cerah"
+    "210286" : "Catatan Perjalanan: Musim Panas yang Cerah",
+    "210287" : "Odette: The Singular Swan",
+    "210288" : "Alyosha: Sit",
+    "210289" : "Achievement: Kemegahan",
+    "210290" : "Snezhnaya: Malam Panjang",
+    "210291" : "Achievement: Menerobos Salju",
+    "210292" : "Snezhnaya: Sekilas Pandang",
+    "210293" : "Achievement: Inti Labirin",
+    "210294" : "Catatan Perjalanan: Pengelanaan Beku"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1695,7 +1735,15 @@
     "210283" : "Appunti di viaggio: Dono dello splendore",
     "210284" : "Sandrone: Pausa tè",
     "210285" : "Nod-Krai: Luna splendente",
-    "210286" : "Appunti di viaggio: Estate soleggiata"
+    "210286" : "Appunti di viaggio: Estate soleggiata",
+    "210287" : "Odette: Il cigno diverso dagli altri",
+    "210288" : "Alyosha: Seduto",
+    "210289" : "Obiettivo: Splendore",
+    "210290" : "Snezhnaya: Lunga notte",
+    "210291" : "Obiettivo: Passi nella neve",
+    "210292" : "Snezhnaya: Visioni fugaci",
+    "210293" : "Obiettivo: Nucleo enigmatico",
+    "210294" : "Appunti di viaggio: Viandante del gelo"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1978,7 +2026,15 @@
     "210283" : "紀行・綺夢",
     "210284" : "サンドローネ・ティータイム",
     "210285" : "ナド・クライ・皓月",
-    "210286" : "紀行・帰夏"
+    "210286" : "紀行・帰夏",
+    "210287" : "オデット・孤高の雪鳥",
+    "210288" : "アリョーシャ・お座り",
+    "210289" : "アチーブメント・光輝",
+    "210290" : "スネージナヤ・長夜",
+    "210291" : "アチーブメント・雪行",
+    "210292" : "スネージナヤ・闇を駆ける",
+    "210293" : "アチーブメント・迷核",
+    "210294" : "紀行・遊雪"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -2261,7 +2317,15 @@
     "210283" : "기행·선물",
     "210284" : "산드로네·티타임",
     "210285" : "노드크라이·밝은 달",
-    "210286" : "기행·영화"
+    "210286" : "기행·영화",
+    "210287" : "오데트·백조",
+    "210288" : "알료샤·앉기",
+    "210289" : "업적·꽃",
+    "210290" : "스네즈나야·극야",
+    "210291" : "업적·눈길",
+    "210292" : "스네즈나야·잔영",
+    "210293" : "업적·그림자 코어",
+    "210294" : "기행·서리"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2544,7 +2608,15 @@
     "210283" : "Passe de Batalha: Dádiva do Esplendor.",
     "210284" : "Sandrone: Pausa Para o Chá",
     "210285" : "Nod-Krai: Brilho da Lua",
-    "210286" : "Passe de Batalha: Verão Ensolarado"
+    "210286" : "Passe de Batalha: Verão Ensolarado",
+    "210287" : "Odette: O Cisne Incomparável",
+    "210288" : "Alyosha: Sentar",
+    "210289" : "Conquista: Resplandecência",
+    "210290" : "Snezhnaya: Longa Noite",
+    "210291" : "Conquista - Trilhando a Neve",
+    "210292" : "Snezhnaya: Vislumbres Fugazes",
+    "210293" : "Conquista - Núcleo Enigmático",
+    "210294" : "Passe de Batalha: Desbravador Gélido"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2827,7 +2899,15 @@
     "210283" : "Великолепный подарок",
     "210284" : "Чаепитие",
     "210285" : "Лунное сияние",
-    "210286" : "Солнечное лето"
+    "210286" : "Солнечное лето",
+    "210287" : "Лебедь",
+    "210288" : "Сидеть",
+    "210289" : "Великолепие",
+    "210290" : "Долгая ночь",
+    "210291" : "Снежный путь",
+    "210292" : "Мимолётные мгновения",
+    "210293" : "Таинственное ядро",
+    "210294" : "Морозные странствия"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -3110,7 +3190,15 @@
     "210283" : "บันทึก - ของขวัญอันงดงาม",
     "210284" : "Sandrone - พักจิบชา",
     "210285" : "Nod-Krai - พร่างพราย",
-    "210286" : "บันทึก - พราวคิมหันต์"
+    "210286" : "บันทึก - พราวคิมหันต์",
+    "210287" : "Odette - หงส์",
+    "210288" : "Alyosha - นั่ง",
+    "210289" : "ความสำเร็จ - บุปผาหยก",
+    "210290" : "Snezhnaya - ราตรีอันยาวนาน",
+    "210291" : "ความสำเร็จ - ฝ่าหิมะ",
+    "210292" : "Snezhnaya - เงาพาดผ่าน",
+    "210293" : "ความสำเร็จ - แกนกลางปริศนา",
+    "210294" : "บันทึก - ท่องเหมันต์"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -3265,7 +3353,6 @@
     "210154" : "Gezi Notları: Usta İşi",
     "210155" : "Baizhu: Rahatlama",
     "210156" : "Kaveh: Kubbeli Saray",
-    "210157" : "Başarım: Sonsuz",
     "210158" : "Başarım: Gelip Geçici Alacakaranlık",
     "210159" : "Sumeru: Büyük Rüya",
     "210160" : "Sumeru: Amrita",
@@ -3393,7 +3480,15 @@
     "210283" : "Gezi Notları: Görkemli Armağan",
     "210284" : "Sandrone: Çay Molası",
     "210285" : "Nod-Krai: Parlak Ay",
-    "210286" : "Gezi Notları: Yaz Esintisi"
+    "210286" : "Gezi Notları: Yaz Esintisi",
+    "210287" : "Odette: Eşsiz Kuğu",
+    "210288" : "Alyosha: Otur",
+    "210289" : "Başarım: İhtişam",
+    "210290" : "Snezhnaya: Uzun Gece",
+    "210291" : "Başarım: Karda Yolculuk",
+    "210292" : "Snezhnaya: Gelip Geçici Anlar",
+    "210293" : "Başarım: Gizemli Çekirdek",
+    "210294" : "Gezi Notları: Ayaz Kaşifi"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3676,7 +3771,15 @@
     "210283" : "Nhật Ký Hành Trình - Quà Đẹp",
     "210284" : "Sandrone - Tiệc Trà",
     "210285" : "Nod-Krai - Vằng Vặc",
-    "210286" : "Nhật Ký Hành Trình - Nắng Hạ"
+    "210286" : "Nhật Ký Hành Trình - Nắng Hạ",
+    "210287" : "Odette - Thiên Nga Độc Nhất",
+    "210288" : "Alyosha - Ngồi Xuống",
+    "210289" : "Thành Tựu - Kỳ Hoa",
+    "210290" : "Snezhnaya - Đêm Dài",
+    "210291" : "Thành Tựu - Dạo Bước Trên Tuyết",
+    "210292" : "Snezhnaya - Bóng Dáng Thoi Đưa",
+    "210293" : "Thành Tựu - Lõi Bí Ẩn",
+    "210294" : "Nhật Ký Hành Trình - Sương Du"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3959,7 +4062,15 @@
     "210283" : "纪行·赠绮",
     "210284" : "桑多涅·茶歇",
     "210285" : "挪德卡莱·皎皎",
-    "210286" : "纪行·映夏"
+    "210286" : "纪行·映夏",
+    "210287" : "奥黛塔·鹄鸾",
+    "210288" : "阿罗夏·坐下",
+    "210289" : "成就·琪华",
+    "210290" : "至冬·长夜",
+    "210291" : "成就·涉雪",
+    "210292" : "至冬·梭影",
+    "210293" : "成就·迷核",
+    "210294" : "纪行·霜游"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -4242,6 +4353,14 @@
     "210283" : "紀行·贈綺",
     "210284" : "桑多涅·茶歇",
     "210285" : "挪德卡萊·皎皎",
-    "210286" : "紀行·映夏"
+    "210286" : "紀行·映夏",
+    "210287" : "奧黛塔·鵠鸞",
+    "210288" : "阿羅夏·坐下",
+    "210289" : "成就·琪華",
+    "210290" : "至冬·長夜",
+    "210291" : "成就·涉雪",
+    "210292" : "至冬·梭影",
+    "210293" : "成就·迷核",
+    "210294" : "紀行·霜遊"
   }
 }
