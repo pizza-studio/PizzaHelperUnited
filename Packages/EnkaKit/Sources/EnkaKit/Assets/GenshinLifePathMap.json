@@ -20,6 +20,10 @@
     "path": "Nihility"
   },
   {
+    "id": "10000005-505",
+    "path": "Remembrance"
+  },
+  {
     "id": "10000005-506",
     "path": "Harmony"
   },
@@ -46,6 +50,10 @@
   {
     "id": "10000007-704",
     "path": "Nihility"
+  },
+  {
+    "id": "10000007-705",
+    "path": "Remembrance"
   },
   {
     "id": "10000007-706",
@@ -565,6 +573,14 @@
   },
   {
     "id": "10000133",
+    "path": "Remembrance"
+  },
+  {
+    "id": "10000148",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000150",
     "path": "Remembrance"
   }
 ]
