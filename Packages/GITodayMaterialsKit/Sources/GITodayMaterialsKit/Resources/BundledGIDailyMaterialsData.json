@@ -285,6 +285,33 @@
   },
   {
     "costedBy" : [
+      "10000150"
+    ],
+    "id" : 21,
+    "isWeapon" : false,
+    "itemID" : 104367,
+    "nameTag" : "talentCharity"
+  },
+  {
+    "costedBy" : [
+      "10000148"
+    ],
+    "id" : 22,
+    "isWeapon" : false,
+    "itemID" : 104370,
+    "nameTag" : "talentFortitude"
+  },
+  {
+    "costedBy" : [
+
+    ],
+    "id" : 23,
+    "isWeapon" : false,
+    "itemID" : 104373,
+    "nameTag" : "talentGlory"
+  },
+  {
+    "costedBy" : [
       "11101",
       "11201",
       "11301",
@@ -310,7 +337,7 @@
       "15409",
       "15412"
     ],
-    "id" : 21,
+    "id" : 24,
     "isWeapon" : true,
     "itemID" : 114004,
     "nameTag" : "weaponDecarabian"
@@ -344,7 +371,7 @@
       "15501",
       "15503"
     ],
-    "id" : 22,
+    "id" : 25,
     "isWeapon" : true,
     "itemID" : 114008,
     "nameTag" : "weaponBorealWolf"
@@ -376,7 +403,7 @@
       "15502",
       "15515"
     ],
-    "id" : 23,
+    "id" : 26,
     "isWeapon" : true,
     "itemID" : 114012,
     "nameTag" : "weaponGladiator"
@@ -402,7 +429,7 @@
       "15408",
       "15508"
     ],
-    "id" : 24,
+    "id" : 27,
     "isWeapon" : true,
     "itemID" : 114016,
     "nameTag" : "weaponGuyun"
@@ -428,7 +455,7 @@
       "15305",
       "15406"
     ],
-    "id" : 25,
+    "id" : 28,
     "isWeapon" : true,
     "itemID" : 114020,
     "nameTag" : "weaponElixir"
@@ -451,9 +478,10 @@
       "14504",
       "15407",
       "15411",
-      "15426"
+      "15426",
+      "15435"
     ],
-    "id" : 26,
+    "id" : 29,
     "isWeapon" : true,
     "itemID" : 114024,
     "nameTag" : "weaponAerosiderite"
@@ -468,7 +496,7 @@
       "14415",
       "14506"
     ],
-    "id" : 27,
+    "id" : 30,
     "isWeapon" : true,
     "itemID" : 114028,
     "nameTag" : "weaponDistantSea"
@@ -485,7 +513,7 @@
       "15416",
       "15509"
     ],
-    "id" : 28,
+    "id" : 31,
     "isWeapon" : true,
     "itemID" : 114032,
     "nameTag" : "weaponNarukami"
@@ -501,7 +529,7 @@
       "14509",
       "15507"
     ],
-    "id" : 29,
+    "id" : 32,
     "isWeapon" : true,
     "itemID" : 114036,
     "nameTag" : "weaponKijinMask"
@@ -514,9 +542,10 @@
       "11512",
       "12417",
       "13426",
+      "14435",
       "15419"
     ],
-    "id" : 30,
+    "id" : 33,
     "isWeapon" : true,
     "itemID" : 114040,
     "nameTag" : "weaponTalisman"
@@ -531,7 +560,7 @@
       "14511",
       "14521"
     ],
-    "id" : 31,
+    "id" : 34,
     "isWeapon" : true,
     "itemID" : 114044,
     "nameTag" : "weaponOasisGarden"
@@ -546,7 +575,7 @@
       "15424",
       "15511"
     ],
-    "id" : 32,
+    "id" : 35,
     "isWeapon" : true,
     "itemID" : 114048,
     "nameTag" : "weaponScorchingMight"
@@ -563,7 +592,7 @@
       "15432",
       "15512"
     ],
-    "id" : 33,
+    "id" : 36,
     "isWeapon" : true,
     "itemID" : 114052,
     "nameTag" : "weaponAncientChord"
@@ -573,12 +602,13 @@
       "11425",
       "11427",
       "11513",
+      "12435",
       "13514",
       "14425",
       "14514",
       "15513"
     ],
-    "id" : 34,
+    "id" : 37,
     "isWeapon" : true,
     "itemID" : 114056,
     "nameTag" : "weaponDewdrop"
@@ -594,7 +624,7 @@
       "13513",
       "14513"
     ],
-    "id" : 35,
+    "id" : 38,
     "isWeapon" : true,
     "itemID" : 114060,
     "nameTag" : "weaponPristineSea"
@@ -603,13 +633,14 @@
     "costedBy" : [
       "11430",
       "11431",
+      "11435",
       "12431",
       "12514",
       "13515",
       "14430",
       "14516"
     ],
-    "id" : 36,
+    "id" : 39,
     "isWeapon" : true,
     "itemID" : 114064,
     "nameTag" : "weaponSacrificialHeart"
@@ -625,7 +656,7 @@
       "14517",
       "14519"
     ],
-    "id" : 37,
+    "id" : 40,
     "isWeapon" : true,
     "itemID" : 114068,
     "nameTag" : "weaponSacredLord"
@@ -641,7 +672,7 @@
       "15434",
       "15514"
     ],
-    "id" : 38,
+    "id" : 41,
     "isWeapon" : true,
     "itemID" : 114072,
     "nameTag" : "weaponNightWind"
@@ -654,7 +685,7 @@
       "14520",
       "14523"
     ],
-    "id" : 39,
+    "id" : 42,
     "isWeapon" : true,
     "itemID" : 114076,
     "nameTag" : "weaponArtfulDevice"
@@ -667,7 +698,7 @@
       "15433",
       "15516"
     ],
-    "id" : 40,
+    "id" : 43,
     "isWeapon" : true,
     "itemID" : 114080,
     "nameTag" : "weaponLongNightFlint"
@@ -680,9 +711,41 @@
       "14432",
       "14522"
     ],
-    "id" : 41,
+    "id" : 44,
     "isWeapon" : true,
     "itemID" : 114084,
     "nameTag" : "weaponFarNorthScions"
+  },
+  {
+    "costedBy" : [
+      "11436",
+      "12436",
+      "14436",
+      "15436"
+    ],
+    "id" : 45,
+    "isWeapon" : true,
+    "itemID" : 114088,
+    "nameTag" : "weaponPaleStarArmy"
+  },
+  {
+    "costedBy" : [
+      "11520",
+      "13435"
+    ],
+    "id" : 46,
+    "isWeapon" : true,
+    "itemID" : 114092,
+    "nameTag" : "weaponCellaredNectar"
+  },
+  {
+    "costedBy" : [
+      "11521",
+      "13436"
+    ],
+    "id" : 47,
+    "isWeapon" : true,
+    "itemID" : 114096,
+    "nameTag" : "weaponFrostEmperor"
   }
 ]
