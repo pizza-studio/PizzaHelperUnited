@@ -21,6 +21,7 @@
     "1415": "Kyurene",
     "1501": "Hibana",
     "1507": "Yingxing • Mortenax",
+    "1513": "Kakavasha • Waveflair",
     "10000049": "Naganohara Yoimiya",
     "10000075": "Raiden Kunikuzushi",
     "10000096": "Peruere"
@@ -47,6 +48,7 @@
     "1415": "Kyurene",
     "1501": "Hibana",
     "1507": "Yingxing • Mortenax",
+    "1513": "Kakavasha • Waveflair",
     "10000049": "Naganohara Yoimiya",
     "10000075": "Raiden Kunikuzushi",
     "10000096": "Peruere"
@@ -73,6 +75,7 @@
     "1415": "Kyurene",
     "1501": "Hibana",
     "1507": "Yingxing • Mortenax",
+    "1513": "Kakavasha • Waveflair",
     "10000049": "Naganohara Yoimiya",
     "10000075": "Raiden Kunikuzushi",
     "10000096": "Peruere"
@@ -99,6 +102,7 @@
     "1415": "Kyurene",
     "1501": "Hibana",
     "1507": "Yingxing • Mortenax",
+    "1513": "Kakavasha • Waveflair",
     "10000049": "Naganohara Yoimiya",
     "10000075": "Raiden Kunikuzushi",
     "10000096": "Peruere"
@@ -122,6 +126,7 @@
     "1413": "나가요즈키",
     "1501": "히바나",
     "1507": "응성•천야",
+    "1513": "카카바샤•웨이브",
     "10000049": "나가노하라 요이미야",
     "10000075": "라이덴 쿠니쿠즈시",
     "10000096": "페르엘"
@@ -137,6 +142,7 @@
     "1312": "ミハイル",
     "1321": "コンスタンス",
     "1507": "応星・千冶",
+    "1513": "カカワーシャ・波と戯れる夏",
     "10000049": "長野原宵宮",
     "10000075": "雷電国崩",
     "10000096": "ペルヴェーレ"
@@ -167,6 +173,8 @@
     "1412": "「凯撒」刻律德菈",
     "1415": "「昔涟」邱冽涅",
     "1507": "应星•千冶",
+    "1512": "罗缤•晴歌",
+    "1513": "卡卡瓦夏•戏浪",
     "10000049": "长野原宵宫",
     "10000075": "雷电国崩",
     "10000096": "佩露薇利",
@@ -201,6 +209,8 @@
     "1412": "「凱撒」刻律德菈",
     "1415": "「昔漣」邱冽涅",
     "1507": "應星•千冶",
+    "1512": "羅繽•晴歌",
+    "1513": "卡卡瓦夏•戲浪",
     "11509": "霧切之迴光",
     "10000049": "長野原宵宮",
     "10000075": "雷電國崩",
@@ -232,6 +242,7 @@
     "1415": "Kyurene",
     "1501": "Hibana",
     "1507": "Yingxing • Mortenax",
+    "1513": "Kakavasha - Waveflair",
     "10000049": "Naganohara Yoimiya",
     "10000075": "Raiden Kunikuzushi",
     "10000096": "Peruere"
@@ -258,6 +269,7 @@
     "1415": "Kyurene",
     "1501": "Hibana",
     "1507": "Yingxing • Mortenax",
+    "1513": "Akavasha • Croisette",
     "10000049": "Naganohara Yoimiya",
     "10000075": "Raiden Kunikuzushi",
     "10000096": "Peruere"
@@ -284,6 +296,7 @@
     "1415": "Kyurene",
     "1501": "Hibana",
     "1507": "Yingxing: ผู้ฝ่าบ่วงมฤตยู",
+    "1513": "Kakavasha - คลื่นสำราญ",
     "10000049": "Naganohara Yoimiya",
     "10000075": "Raiden Kunikuzushi",
     "10000096": "Peruere"
@@ -310,6 +323,7 @@
     "1415": "Кюрене",
     "1501": "Хибана",
     "1507": "Инсин: Мортенакс",
+    "1513": "Какавача: Прибой",
     "10000049": "Наганохара Ёимия",
     "10000075": "Куникудзуси",
     "10000096": "Перуэр"
@@ -336,6 +350,7 @@
     "1415": "Kyurene",
     "1501": "Hibana",
     "1507": "Yingxing • Mortenax",
+    "1513": "Akavasha - Veraneio",
     "10000049": "Naganohara Yoimiya",
     "10000075": "Raiden Kunikuzushi",
     "10000096": "Peruere"
@@ -362,6 +377,7 @@
     "1415": "Kyurene",
     "1501": "Hibana",
     "1507": "Yingxing • Mortenax",
+    "1513": "Kakavasha • Waveflair",
     "10000049": "Naganohara Yoimiya",
     "10000075": "Raiden Kunikuzushi",
     "10000096": "Peruere"
@@ -388,6 +404,7 @@
     "1415": "Kyurene",
     "1501": "Hibana",
     "1507": "Yingxing • Mortenax",
+    "1513": "Kakavasha Oleaje",
     "10000049": "Naganohara Yoimiya",
     "10000075": "Raiden Kunikuzushi",
     "10000096": "Peruere"
@@ -414,6 +431,7 @@
     "1415": "Kyurene",
     "1501": "Hibana",
     "1507": "Yingxing • Mortenax",
+    "1513": "Kakavasha – Wellenflair",
     "10000049": "Naganohara Yoimiya",
     "10000075": "Raiden Kunikuzushi",
     "10000096": "Peruere"
