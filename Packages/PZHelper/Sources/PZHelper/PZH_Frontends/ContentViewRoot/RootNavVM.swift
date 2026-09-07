@@ -75,32 +75,21 @@ final class RootNavVM {
         let maxLabelLength = effectiveCases.map(\.labelNameTextRaw.count).max()
         let forceMenu: Bool? = (maxLabelLength ?? 0) > 8 ? true : nil
         let isOverCompact = screenVM.isPhonePortraitSituation
-        // Early major OS betas have a SwiftUI bottomBar/UICollectionView teardown regression.
-        let avoidBottomToolbar = OS.isBuggyOS25Build // || OS.isBetaOSBeforeFirstMajorPublicRelease
-        let placeAtTop = avoidBottomToolbar || !isOverCompact || OS.type == .macOS
-        #if os(macOS)
-        let actualPlacement: ToolbarItemPlacement = .cancellationAction
-        #else
-        let actualPlacement: ToolbarItemPlacement = !placeAtTop ? .bottomBar : .cancellationAction
-        #endif
         if !isOverCompact {
-            ToolbarItem(placement: actualPlacement) {
+            ToolbarItem(placement: .cancellationAction) {
                 sharedToolbarNavPicker(
                     allCases: !screenVM.isSidebarVisible,
                     isMenu: forceMenu ?? false
                 )
             }
             .removeSharedBackgroundVisibility(bypassWhen: forceMenu ?? false)
-        } else if avoidBottomToolbar {
-            ToolbarItem(placement: actualPlacement) {
+        } else {
+            // 仅在 iOS 18.0 ~ 18.3 故障期间触发，其余情形已改由 ContentView 派出 TabView。
+            ToolbarItem(placement: .cancellationAction) {
                 sharedToolbarNavPicker(
                     allCases: !screenVM.isSidebarVisible,
                     isMenu: forceMenu ?? true
                 )
-            }
-        } else {
-            ToolbarItem(placement: actualPlacement) {
-                bottomTabBarForCompactLayout(allCases: !screenVM.isSidebarVisible)
             }
         }
     }
@@ -151,68 +140,5 @@ final class RootNavVM {
         .react(to: rootPageNav) {
             simpleTaptic(type: .medium)
         }
-    }
-
-    /// 该函式不处理 iOS 18.0 ~ 18.3 这个版本号段内的情形。
-    @ViewBuilder
-    private func bottomTabBarForCompactLayout(allCases: Bool) -> some View {
-        let effectiveCases = !allCases ? AppRootPage.enabledSubCases : AppRootPage.allCases
-        if #available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *),
-           OS.liquidGlassThemeSuspected {
-            floatingBottomTabBar(effectiveCases: effectiveCases)
-        } else {
-            classicBottomTabBar(effectiveCases: effectiveCases)
-                .react(to: rootPageNav) {
-                    simpleTaptic(type: .medium)
-                }
-        }
-    }
-
-    /// iOS 26+ Liquid Glass Style 浮動膠囊 Tab Bar
-    @available(iOS 26.0, macCatalyst 26.0, macOS 26.0, watchOS 26.0, *)
-    @ViewBuilder
-    private func floatingBottomTabBar(effectiveCases: [AppRootPage]) -> some View {
-        @Bindable var this = self
-        FloatingGlassTabBar(
-            effectiveCases: effectiveCases,
-            selection: $this.rootPageNav
-        )
-    }
-
-    /// 經典 Tab Bar 樣式（iOS 25 及更早，但 iOS 18.0 ~ 18.3 除外）
-    @ViewBuilder
-    private func classicBottomTabBar(effectiveCases: [AppRootPage]) -> some View {
-        HStack(spacing: 0) {
-            ForEach(effectiveCases, id: \.self) { [weak self] navCase in
-                let isChosen: Bool = navCase == self?.rootPageNav
-                if navCase.isExposed {
-                    Button {
-                        Task { @MainActor [weak self] in
-                            self?.rootPageNav = navCase
-                        }
-                    } label: {
-                        VStack(spacing: 0) {
-                            navCase.icon.frame(width: 28, height: 28)
-                            navCase.labelNameText
-                                .font(.footnote)
-                                .padding(.bottom, 4)
-                        }
-                        .padding(.vertical, 4)
-                        .fixedSize()
-                        .labelStyle(.titleAndIcon)
-                        .fontWidth(.compressed)
-                        .fontWeight(isChosen ? .bold : .regular)
-                        .foregroundStyle(!isChosen ? Color.secondary : Color.accentColor)
-                        .padding()
-                        .contentShape(.rect)
-                        .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.plain)
-                    .id(navCase)
-                }
-            }
-        }
-        .frame(minHeight: 50, maxHeight: 54)
-        .shadow(radius: 4)
     }
 }

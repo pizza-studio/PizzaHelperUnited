@@ -21,6 +21,37 @@ public struct ContentView: View {
     // MARK: Public
 
     public var body: some View {
+        // TabView 不能嵌进 NavigationSplitView 的 detail 插槽——哪怕折叠成单栏，
+        // LiquidGlass Tab Bar 仍会在冷启动时漏画未曾选中过的分页标签文字。
+        // 故手机紧凑直向布局改用完全独立的顶层 TabView，不再共用 NavigationSplitView。
+        if screenVM.isPhonePortraitSituation, !OS.isBuggyOS25Build {
+            phoneTabBarContent
+        } else {
+            splitViewContent
+        }
+    }
+
+    @ViewBuilder
+    private var phoneTabBarContent: some View {
+        nativeTabBarContent
+            .react(to: rootNavVM.rootPageNav) { simpleTaptic(type: .medium) }
+            .scrollEdgeHardened()
+            .appTabBarVisibility(.visible)
+            .tint(tintForCurrentTab)
+            .apply { mainColumnContent in
+                if screenVM.isExtremeCompact {
+                    mainColumnContent
+                        .fontWidth(.compressed)
+                        .navigationTitle(rootNavVM.rootPageNav.labelNameText)
+                } else {
+                    mainColumnContent
+                }
+            }
+            .environment(GachaVM.shared)
+    }
+
+    @ViewBuilder
+    private var splitViewContent: some View {
         NavigationSplitView(
             columnVisibility: $screenVM.splitViewVisibility,
             preferredCompactColumn: $viewColumn
@@ -92,6 +123,52 @@ public struct ContentView: View {
         case .today: Color.accessibilityAccent(colorScheme)
         case .showcaseDetail: Color.accessibilityAccent(colorScheme)
         default: .accentColor
+        }
+    }
+
+    /// `Tab(value:label:content:)` 是 iOS/macCatalyst 18、macOS 15 起才有的写法；
+    /// 部署下限是 iOS 17，故该窄区间仍保留经典 `.tabItem` 写法兜底。
+    @ViewBuilder
+    private var nativeTabBarContent: some View {
+        if #available(iOS 18.0, macCatalyst 18.0, macOS 15.0, *) {
+            TabView(selection: $rootNavVM.rootPageNav) {
+                if AppRootPage.today.isExposed {
+                    Tab(value: AppRootPage.today) {
+                        AppRootPageViewWrapper(tab: .today)
+                    } label: {
+                        AppRootPage.today.label
+                    }
+                }
+                if AppRootPage.showcaseDetail.isExposed {
+                    Tab(value: AppRootPage.showcaseDetail) {
+                        AppRootPageViewWrapper(tab: .showcaseDetail)
+                    } label: {
+                        AppRootPage.showcaseDetail.label
+                    }
+                }
+                if AppRootPage.utils.isExposed {
+                    Tab(value: AppRootPage.utils) {
+                        AppRootPageViewWrapper(tab: .utils)
+                    } label: {
+                        AppRootPage.utils.label
+                    }
+                }
+                if AppRootPage.appSettings.isExposed {
+                    Tab(value: AppRootPage.appSettings) {
+                        AppRootPageViewWrapper(tab: .appSettings)
+                    } label: {
+                        AppRootPage.appSettings.label
+                    }
+                }
+            }
+        } else {
+            TabView(selection: $rootNavVM.rootPageNav) {
+                ForEach(AppRootPage.allCases.filter(\.isExposed)) { navCase in
+                    AppRootPageViewWrapper(tab: navCase)
+                        .tag(navCase)
+                        .tabItem { navCase.label }
+                }
+            }
         }
     }
 

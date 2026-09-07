@@ -99,20 +99,12 @@ struct AppRootPageViewWrapper: View {
         switch tab {
         case .today:
             TodayTabPage()
-                .tag(tab)
-        // .tabItem { tab.label }
         case .showcaseDetail:
             DetailPortalTabPage()
-                .tag(tab)
-        // .tabItem { tab.label }
         case .utils:
             UtilsTabPage()
-                .tag(tab)
-        // .tabItem { tab.label }
         case .appSettings:
             AppSettingsTabPage()
-                .tag(tab)
-            // .tabItem { tab.label }
         }
     }
 
