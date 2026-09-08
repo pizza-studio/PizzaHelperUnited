@@ -19,7 +19,7 @@ private struct BetaOSNoticeModifier: ViewModifier {
     // MARK: Lifecycle
 
     public init() {
-        self.isNoticeBypassed = !OS.isBetaOSBeforeFirstMajorPublicRelease
+        self.isNoticeBypassed = !OS.isBetaOSBeforeFirstMajorPublicRelease || Pizza.isDebug
     }
 
     // MARK: Public
