@@ -5,9 +5,9 @@ import SwiftUI
 
 extension View {
     @ViewBuilder
-    public func scrollEdgeHardened() -> some View {
+    public func scrollEdgeStyleEnforced() -> some View {
         if #available(iOS 26.0, macOS 26.0, macCatalyst 26.0, tvOS 26.0, watchOS 26.0, *) {
-            scrollEdgeEffectStyle(.hard, for: .all)
+            scrollEdgeEffectStyle(.soft, for: .all)
         } else {
             self
         }
