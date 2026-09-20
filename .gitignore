@@ -107,3 +107,6 @@ Package.resolved
 
 # Generated documentation concatenation files
 EndUserPublicDocs/*/_concatResult.md
+
+# Codewhale Assets
+.codewhale/
