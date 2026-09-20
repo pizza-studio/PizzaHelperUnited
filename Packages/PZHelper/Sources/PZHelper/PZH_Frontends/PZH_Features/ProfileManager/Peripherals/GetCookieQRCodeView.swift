@@ -27,17 +27,13 @@ struct GetCookieQRCodeView: View {
             Form {
                 Section {
                     errorView()
-                    if let qrCodeAndTicket = viewModel.qrCodeAndTicket, let qrImage = qrImage {
+                    if viewModel.qrCodeAndTicket != nil, let qrImage = qrImage {
                         qrImageView(qrImage)
-                        if case .manually = viewModel.scanningConfirmationStatus {
+                        if viewModel.isCheckingScannedStatusManually {
                             WinUI3ProgressRing()
                         } else {
                             Button("profileMgr.account.qr_code_login.check_scanned".i18nPZHelper) {
-                                Task {
-                                    await loginCheckScannedButtonDidPress(
-                                        ticket: qrCodeAndTicket.ticket
-                                    )
-                                }
+                                viewModel.checkScannedStatusManually()
                             }
                         }
                     } else {
@@ -88,7 +84,6 @@ struct GetCookieQRCodeView: View {
             }
             .onDisappear {
                 // 确保在视图消失时取消所有任务
-                viewModel.cancelAllConfirmationTasks(resetState: true)
                 viewModel.onDisappear()
             }
         }
@@ -180,29 +175,6 @@ struct GetCookieQRCodeView: View {
         }
     }
 
-    private func loginCheckScannedButtonDidPress(ticket: String) async {
-        viewModel.cancelAllConfirmationTasks(resetState: false)
-        let task = Task { @MainActor in
-            do {
-                let status = try await HoYo.queryQRCodeStatusForeground(
-                    deviceId: viewModel.taskId,
-                    ticket: ticket
-                )
-                if let parsedResult = try await status.parsed() {
-                    try await parseGameToken(game: game, from: parsedResult, dismiss: true)
-                } else {
-                    viewModel.isNotScannedAlertShown = true
-                }
-            } catch {
-                viewModel.error = error
-            }
-            viewModel.scanningConfirmationStatus = .idle
-        }
-        // 注册任务并保存ID
-        viewModel.pollingTaskId = HoYo.registerQRCodePollingTask(task)
-        viewModel.scanningConfirmationStatus = .manually(task)
-    }
-
     private func parseGameToken(
         game: Pizza.SupportedGame,
         from parsedResult: QueryQRCodeStatus.ParsedResult,
@@ -246,8 +218,11 @@ final class GetCookieQRCodeViewModel {
 
     public func onAppear() {
         if let ticket = qrCodeAndTicket?.ticket, error == nil {
-            // 恢复前台：沿用现有 QR 码继续轮询，避免更换 ticket 导致米游社扫码结果作废
-            startAutoPolling(ticket: ticket)
+            // 恢复前台：沿用现有 QR 码继续轮询，避免更换 ticket 导致米游社扫码结果作废。
+            // 轮询若已在进行，则沿用现有轮询任务，不打断其可能正在完成的登入流程。
+            if pollingTask == nil {
+                startAutoPolling(ticket: ticket)
+            }
         } else {
             taskId = .init()
             reCreateQRCode()
@@ -255,15 +230,12 @@ final class GetCookieQRCodeViewModel {
     }
 
     public func onDisappear() {
-        scanningConfirmationStatus = .idle
-        if let pollingTaskId = pollingTaskId {
-            HoYo.cancelQRCodePollingTask(taskId: pollingTaskId)
-        }
+        cancelAllConfirmationTasks()
     }
 
     public func reCreateQRCode() {
         taskId = .init()
-        cancelAllConfirmationTasks(resetState: true)
+        cancelAllConfirmationTasks()
         Task { @MainActor in
             do {
                 self.qrCodeAndTicket = try await HoYo.generateLoginQRCode(deviceId: self.taskId)
@@ -276,28 +248,57 @@ final class GetCookieQRCodeViewModel {
         }
     }
 
-    // MARK: Internal
-
-    enum ScanningConfirmationStatus: Sendable {
-        case manually(Task<Void, Never>)
-        case automatically(Task<Void, Never>)
-        case idle
-
-        // MARK: Internal
-
-        var isBusy: Bool {
-            switch self {
-            case .automatically, .manually: true
-            case .idle: false
+    /// 对应「已扫描，请检查」按钮。
+    ///
+    /// 这里刻意不再取消既有的轮询任务：该任务随时可能在完成登入（换取 cookie_token 与装置指纹），
+    /// 一旦将其取消，原本会成功的登入就会失败、且该轮询自此不再恢复。手动检查只负责立刻多查一次；
+    /// 无论结果是什么，轮询都会照旧持续到登入完成或 QR 码失效为止。
+    public func checkScannedStatusManually() {
+        guard let ticket = qrCodeAndTicket?.ticket else { return }
+        // 同一个按钮的重复触发，沿用手上这一份检查就够了。
+        guard manualCheckTask == nil else { return }
+        // 轮询任务若已不在（例如刚经历过一次错误），则重新建立它。
+        if pollingTask == nil {
+            startAutoPolling(ticket: ticket)
+        }
+        isCheckingScannedStatusManually = true
+        let token = UUID()
+        let task = Task { @MainActor [weak self] in
+            defer {
+                if self?.manualCheckTask?.token == token {
+                    self?.manualCheckTask = nil
+                    self?.isCheckingScannedStatusManually = false
+                }
+            }
+            guard let self else { return }
+            do {
+                let status = try await fetchQRCodeStatusOnce(deviceId: taskId, ticket: ticket)
+                if let parsedResult = try await status.parsed() {
+                    do {
+                        try await fireLogin(with: parsedResult)
+                    } catch {
+                        // 登入失败要立刻让使用者看到，否则这边只会留下一个无声的进度圈。
+                        if !Task.isCancelled { self.error = error }
+                    }
+                } else if case .unscanned = status {
+                    // 米游社那边还没扫到这个 QR 码，给使用者一个明确的提示。
+                    isNotScannedAlertShown = true
+                }
+                // 其余情况（已扫描但尚未在米游社确认）继续等待即可，轮询会接手。
+            } catch {
+                // 查询阶段的暂时性失败不该让整个 QR 码流程报废；持续性的错误由轮询任务负责回报。
             }
         }
+        manualCheckTask = (token: token, task: task)
     }
+
+    // MARK: Internal
 
     static var shared: GetCookieQRCodeViewModel = .init()
 
     var qrCodeAndTicket: (qrCode: CGImage, ticket: String)?
     var taskId: UUID
-    var scanningConfirmationStatus: ScanningConfirmationStatus = .idle
+    var isCheckingScannedStatusManually: Bool = false
     var isNotScannedAlertShown: Bool = false
     var pollingTaskId: UUID? // 新增：跟踪注册的轮询任务ID
 
@@ -311,41 +312,66 @@ final class GetCookieQRCodeViewModel {
         }
     }
 
-    func cancelAllConfirmationTasks(resetState: Bool) {
-        switch scanningConfirmationStatus {
-        case let .automatically(task), let .manually(task):
-            task.cancel()
-            if let pollingTaskId = pollingTaskId {
-                HoYo.cancelQRCodePollingTask(taskId: pollingTaskId)
-                self.pollingTaskId = nil
-            }
-            if resetState {
-                scanningConfirmationStatus = .idle
-            }
-        case .idle: return
+    func cancelAllConfirmationTasks() {
+        ongoingStatusQuery?.task.cancel()
+        ongoingStatusQuery = nil
+        manualCheckTask?.task.cancel()
+        manualCheckTask = nil
+        loginTask?.cancel()
+        loginTask = nil
+        pollingTask?.task.cancel()
+        pollingTask = nil
+        isCheckingScannedStatusManually = false
+        // `lastStatusQueryStart` 刻意不在此时清掉：即便换了 ticket，
+        // 两次真正送出的查询仍要维持最小间隔，免得刚重开流程就立刻再查一次。
+        if let pollingTaskId {
+            HoYo.cancelQRCodePollingTask(taskId: pollingTaskId)
+            self.pollingTaskId = nil
         }
     }
 
     // MARK: Private
 
+    /// 同一张 ticket 上两次状态查询之间的最小间隔。手动检查若来得太密，就在这里补足时间差，
+    /// 免得米游社伺服器把过密的轮询当成异常流量而直接回错。
+    private static let minStatusQueryInterval: Duration = .seconds(1)
+
+    /// 轮询与手动检查的任务都带 token 标记归属，避免收尾中的旧任务盖掉新任务的状态。
+    private var pollingTask: (token: UUID, task: Task<Void, Never>)?
+    private var manualCheckTask: (token: UUID, task: Task<Void, Never>)?
+    private var loginTask: Task<Void, Error>?
+    private var ongoingStatusQuery: (token: UUID, task: Task<QueryQRCodeStatus, Error>)?
+
+    private let clock = ContinuousClock()
+
+    /// 最近一次状态查询的起算时刻。
+    private var lastStatusQueryStart: ContinuousClock.Instant?
+
     private func startAutoPolling(ticket: String) {
-        cancelAllConfirmationTasks(resetState: true)
+        cancelAllConfirmationTasks()
+        let token = UUID()
         let task = Task { @MainActor [weak self] in
+            defer {
+                if self?.pollingTask?.token == token {
+                    self?.pollingTask = nil
+                    if let pollingTaskId = self?.pollingTaskId {
+                        HoYo.cancelQRCodePollingTask(taskId: pollingTaskId)
+                        self?.pollingTaskId = nil
+                    }
+                }
+            }
             var counter = 0
-            loopTask: while case let .automatically(task) = self?.scanningConfirmationStatus, !task.isCancelled {
+            loopTask: while !Task.isCancelled {
                 guard let self else { break loopTask }
                 do {
-                    let status = try await HoYo.queryQRCodeStatusForeground(
-                        deviceId: taskId,
-                        ticket: ticket
-                    )
+                    let status = try await fetchQRCodeStatusOnce(deviceId: taskId, ticket: ticket)
                     if let parsedResult = try await status.parsed() {
-                        try await onQRCodeConfirmed?(parsedResult)
+                        try await fireLogin(with: parsedResult)
                         break loopTask
                     }
-                    try? await Task.sleep(nanoseconds: 3 * 1_000_000_000) // 3sec.
+                    counter = 0
                 } catch {
-                    if error is CancellationError { break loopTask }
+                    if Task.isCancelled || error is CancellationError { break loopTask }
                     if error._code != NSURLErrorNetworkConnectionLost || counter >= 20 {
                         self.error = error
                         counter = 0
@@ -354,11 +380,54 @@ final class GetCookieQRCodeViewModel {
                         counter += 1
                     }
                 }
+                try? await Task.sleep(nanoseconds: 3 * 1_000_000_000) // 3sec.
             }
-            self?.scanningConfirmationStatus = .idle
         }
+        pollingTask = (token: token, task: task)
         pollingTaskId = HoYo.registerQRCodePollingTask(task)
-        scanningConfirmationStatus = .automatically(task)
+    }
+
+    /// 同一个 ticket 的状态查询只会实际送出一份：自动轮询与手动检查共用同一份结果，
+    /// 且两次查询之间保证最小间隔，避免手动检查让轮询频率变得过密。
+    private func fetchQRCodeStatusOnce(deviceId: UUID, ticket: String) async throws -> QueryQRCodeStatus {
+        if let ongoingStatusQuery { return try await ongoingStatusQuery.task.value }
+        try await waitForMinimumStatusQueryInterval()
+        // 等待期间可能已经有别的查询上路（例如轮询刚好轮到），直接沿用它的结果。
+        if let ongoingStatusQuery { return try await ongoingStatusQuery.task.value }
+        lastStatusQueryStart = clock.now
+        let token = UUID()
+        let task = Task { try await HoYo.queryQRCodeStatusForeground(deviceId: deviceId, ticket: ticket) }
+        ongoingStatusQuery = (token: token, task: task)
+        defer {
+            if ongoingStatusQuery?.token == token {
+                ongoingStatusQuery = nil
+            }
+        }
+        return try await task.value
+    }
+
+    /// 补足与上一次状态查询之间的最小间隔。
+    private func waitForMinimumStatusQueryInterval() async throws {
+        guard let lastStatusQueryStart else { return }
+        let remaining = Self.minStatusQueryInterval - (clock.now - lastStatusQueryStart)
+        guard remaining > .zero else { return }
+        try await Task.sleep(for: remaining)
+    }
+
+    /// 登入流程同样只会跑一份：无论自动轮询或手动检查先看到 `Confirmed`，都只会真的登入一次。
+    /// 这份任务会保留到流程重新开始为止，以免稍后的轮询又触发第二次登入。
+    private func fireLogin(with parsedResult: QueryQRCodeStatus.ParsedResult) async throws {
+        if let loginTask {
+            try await loginTask.value
+            return
+        }
+        guard onQRCodeConfirmed != nil else { return }
+        let task = Task { @MainActor [weak self] in
+            guard let self else { return }
+            try await onQRCodeConfirmed?(parsedResult)
+        }
+        loginTask = task
+        try await task.value
     }
 }
 
