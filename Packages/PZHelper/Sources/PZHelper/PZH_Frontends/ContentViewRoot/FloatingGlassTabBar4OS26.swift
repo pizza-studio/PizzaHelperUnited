@@ -290,6 +290,9 @@ internal struct FloatingGlassTabBar: View {
     /// ones underneath.
     @ViewBuilder
     private func tabContentLayer(emphasized: Bool) -> some View {
+        let buttonBarWidthUsed: CGFloat? = {
+            buttonBarWidth > 0 ? buttonBarWidth : nil
+        }()
         HStack(spacing: 0) {
             ForEach(effectiveCases, id: \.self) { page in
                 if page.isExposed {
@@ -297,7 +300,7 @@ internal struct FloatingGlassTabBar: View {
                 }
             }
         }
-        .frame(width: buttonBarWidth, alignment: .center)
+        .frame(width: buttonBarWidthUsed, alignment: .center)
     }
 
     @ViewBuilder
