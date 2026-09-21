@@ -282,13 +282,17 @@
     "210285" : "Nod-Krai – Mondhell",
     "210286" : "Erlebnispass – Sommerfilm",
     "210287" : "Odette – Die singuläre Schwänin",
-    "210288" : "Alyosha – Sitzen",
+    "210288" : "Alyosha – Sitz!",
     "210289" : "Errungenschaft – Pracht",
     "210290" : "Snezhnaya – Lange Nacht",
     "210291" : "Errungenschaft – Schneewanderung",
     "210292" : "Snezhnaya – Flüchtige Eindrücke",
     "210293" : "Errungenschaft – Rätselhafter Kern",
-    "210294" : "Erlebnispass – Frostreise"
+    "210294" : "Erlebnispass – Frostreise",
+    "210295" : "Vesna – Ausgelassenheit",
+    "210296" : "Vodyanitsa – Strudel",
+    "210297" : "Snezhnaya – Eisiger Sturz",
+    "210298" : "Erlebnispass – Zum Mond"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -579,7 +583,11 @@
     "210291" : "Achievement: Treading Snow",
     "210292" : "Snezhnaya: Fleeting Glimpses",
     "210293" : "Achievement: Enigmatic Core",
-    "210294" : "Travel Notes: Frostfarer"
+    "210294" : "Travel Notes: Frostfarer",
+    "210295" : "Vesna: Revelry",
+    "210296" : "Vodyanitsa: Whirlpool",
+    "210297" : "Snezhnaya: Frostfall",
+    "210298" : "Travel Notes: Moontrace"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -868,9 +876,13 @@
     "210289" : "Logro - Resplandor",
     "210290" : "Snezhnaya - Noche eterna",
     "210291" : "Logro - Nieves recorridas",
-    "210292" : "Snezhnaya: Sombra de lanzadera",
+    "210292" : "Snezhnaya - Sombra de lanzadera",
     "210293" : "Logro - Núcleo encubierto",
-    "210294" : "PB - Travesía glacial"
+    "210294" : "PB - Travesía glacial",
+    "210295" : "Vesna - Deleite",
+    "210296" : "Vodyanitsa - Remolino",
+    "210297" : "Snezhnaya - Gotas heladas",
+    "210298" : "PB - En pos de la luna"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -1161,7 +1173,11 @@
     "210291" : "Succès - Marcher sur la neige",
     "210292" : "Snezhnaya - Aperçus fugaces",
     "210293" : "Succès - Noyau énigmatique",
-    "210294" : "PB - Passe-givre"
+    "210294" : "PB - Passe-givre",
+    "210295" : "Vesna - Réjouissance",
+    "210296" : "Vodyanitsa - Tourbillon",
+    "210297" : "Snezhnaya - Chute de givre",
+    "210298" : "PB - Trace lunaire"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1452,7 +1468,11 @@
     "210291" : "Achievement: Menerobos Salju",
     "210292" : "Snezhnaya: Sekilas Pandang",
     "210293" : "Achievement: Inti Labirin",
-    "210294" : "Catatan Perjalanan: Pengelanaan Beku"
+    "210294" : "Catatan Perjalanan: Pengelanaan Beku",
+    "210295" : "Vesna: Revelry",
+    "210296" : "Vodyanitsa: Whirlpool",
+    "210297" : "Snezhnaya: Buih Es",
+    "210298" : "Catatan Perjalanan: Menyusuri Rembulan"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1743,7 +1763,11 @@
     "210291" : "Obiettivo: Passi nella neve",
     "210292" : "Snezhnaya: Visioni fugaci",
     "210293" : "Obiettivo: Nucleo enigmatico",
-    "210294" : "Appunti di viaggio: Viandante del gelo"
+    "210294" : "Appunti di viaggio: Viandante del gelo",
+    "210295" : "Vesna: Festosità",
+    "210296" : "Vodyanitsa: Gorgo",
+    "210297" : "Snezhnaya: Cascata di gelo",
+    "210298" : "Appunti di viaggio: Traccia lunare"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -2034,7 +2058,11 @@
     "210291" : "アチーブメント・雪行",
     "210292" : "スネージナヤ・闇を駆ける",
     "210293" : "アチーブメント・迷核",
-    "210294" : "紀行・遊雪"
+    "210294" : "紀行・遊雪",
+    "210295" : "ヴェスナ・逸楽",
+    "210296" : "ヴォジャニーツァ・渦潮",
+    "210297" : "スネージナヤ・沫雪",
+    "210298" : "紀行・溯月"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -2325,7 +2353,11 @@
     "210291" : "업적·눈길",
     "210292" : "스네즈나야·잔영",
     "210293" : "업적·그림자 코어",
-    "210294" : "기행·서리"
+    "210294" : "기행·서리",
+    "210295" : "베스나·여흥",
+    "210296" : "보댜니차·소용돌이",
+    "210297" : "스네즈나야·녹은 얼음",
+    "210298" : "기행·달맞이"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2616,7 +2648,11 @@
     "210291" : "Conquista - Trilhando a Neve",
     "210292" : "Snezhnaya: Vislumbres Fugazes",
     "210293" : "Conquista - Núcleo Enigmático",
-    "210294" : "Passe de Batalha: Desbravador Gélido"
+    "210294" : "Passe de Batalha: Desbravador Gélido",
+    "210295" : "Vesna: Júbilo",
+    "210296" : "Vodyanitsa: Redemoinho",
+    "210297" : "Snezhnaya: Queda da Geada",
+    "210298" : "Passe de Batalha: Rumo à Lua"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2907,7 +2943,11 @@
     "210291" : "Снежный путь",
     "210292" : "Мимолётные мгновения",
     "210293" : "Таинственное ядро",
-    "210294" : "Морозные странствия"
+    "210294" : "Морозные странствия",
+    "210295" : "Веселье",
+    "210296" : "Водоворот",
+    "210297" : "Ледяная стужа",
+    "210298" : "Восходящая луна"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -3198,7 +3238,11 @@
     "210291" : "ความสำเร็จ - ฝ่าหิมะ",
     "210292" : "Snezhnaya - เงาพาดผ่าน",
     "210293" : "ความสำเร็จ - แกนกลางปริศนา",
-    "210294" : "บันทึก - ท่องเหมันต์"
+    "210294" : "บันทึก - ท่องเหมันต์",
+    "210295" : "Vesna - ความสำราญ",
+    "210296" : "Vodyanitsa - วังวน",
+    "210297" : "Snezhnaya - ฟองน้ำแข็ง",
+    "210298" : "บันทึก - ย้อนรอยจันทรา"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -3353,6 +3397,7 @@
     "210154" : "Gezi Notları: Usta İşi",
     "210155" : "Baizhu: Rahatlama",
     "210156" : "Kaveh: Kubbeli Saray",
+    "210157" : "Başarım: Sonsuz",
     "210158" : "Başarım: Gelip Geçici Alacakaranlık",
     "210159" : "Sumeru: Büyük Rüya",
     "210160" : "Sumeru: Amrita",
@@ -3488,7 +3533,11 @@
     "210291" : "Başarım: Karda Yolculuk",
     "210292" : "Snezhnaya: Gelip Geçici Anlar",
     "210293" : "Başarım: Gizemli Çekirdek",
-    "210294" : "Gezi Notları: Ayaz Kaşifi"
+    "210294" : "Gezi Notları: Ayaz Kaşifi",
+    "210295" : "Vesna: Cümbüş",
+    "210296" : "Vodyanitsa: Girdap",
+    "210297" : "Snezhnaya: Ayaz Düşüşü",
+    "210298" : "Gezi Notları: Ay İzi"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3779,7 +3828,11 @@
     "210291" : "Thành Tựu - Dạo Bước Trên Tuyết",
     "210292" : "Snezhnaya - Bóng Dáng Thoi Đưa",
     "210293" : "Thành Tựu - Lõi Bí Ẩn",
-    "210294" : "Nhật Ký Hành Trình - Sương Du"
+    "210294" : "Nhật Ký Hành Trình - Sương Du",
+    "210295" : "Vesna - Thong Dong Vui Vẻ",
+    "210296" : "Vodyanitsa - Xoáy Nước",
+    "210297" : "Snezhnaya - Bọt Băng",
+    "210298" : "Nhật Ký Hành Trình - Tố Nguyệt"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -4070,7 +4123,11 @@
     "210291" : "成就·涉雪",
     "210292" : "至冬·梭影",
     "210293" : "成就·迷核",
-    "210294" : "纪行·霜游"
+    "210294" : "纪行·霜游",
+    "210295" : "薇斯纳·逸乐",
+    "210296" : "沃雅妮莎·漩涡",
+    "210297" : "至冬·冰沫",
+    "210298" : "纪行·溯月"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -4361,6 +4418,10 @@
     "210291" : "成就·涉雪",
     "210292" : "至冬·梭影",
     "210293" : "成就·迷核",
-    "210294" : "紀行·霜遊"
+    "210294" : "紀行·霜遊",
+    "210295" : "薇斯納·逸樂",
+    "210296" : "沃雅妮莎·漩渦",
+    "210297" : "至冬·冰沫",
+    "210298" : "紀行·溯月"
   }
 }
