@@ -17,20 +17,6 @@ extension Defaults.Keys {
         suite: .standard
     )
 
-    /// 上次已知的折叠装置铰链状态。仅供 App 启动首屏判定当作暂定值；真实状态随后会覆盖它。
-    public static let lastKnownHingeStatus = Key<String?>(
-        "lastKnownHingeStatus",
-        default: nil,
-        suite: .baseSuite
-    )
-
-    /// 上次已知的铰链开阖角度（度）。
-    public static let lastKnownHingeAngleInDegrees = Key<Double?>(
-        "lastKnownHingeAngleInDegrees",
-        default: nil,
-        suite: .baseSuite
-    )
-
     /// App UI language. At least, this works with macOS. This must use the standard container.
     public static let appLanguage = Key<[String]?>(
         AppLanguage.defaultsKeyName,
