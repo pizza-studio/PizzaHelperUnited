@@ -1584,5 +1584,27 @@
     "game" : "GI",
     "id" : "210294",
     "officialFileNameStem" : "UI_NameCardPic_Bp52_P"
+  },
+  {
+    "bindedCharID" : "10000143",
+    "game" : "GI",
+    "id" : "210295",
+    "officialFileNameStem" : "UI_NameCardPic_Vesna_P"
+  },
+  {
+    "bindedCharID" : "10000140",
+    "game" : "GI",
+    "id" : "210296",
+    "officialFileNameStem" : "UI_NameCardPic_Vodyanitsa_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210297",
+    "officialFileNameStem" : "UI_NameCardPic_Queen1_P"
+  },
+  {
+    "game" : "GI",
+    "id" : "210298",
+    "officialFileNameStem" : "UI_NameCardPic_Bp53_P"
   }
 ]
