@@ -186,6 +186,77 @@
 		}
 	</style>
 	<script>
+		// The languages shipped by this document, in the preferred order.
+		const supportedLanguages = ["en-US", "zh-Hant", "zh-Hans", "ja-JP"];
+
+		// Every language which this document does not ship falls back to English.
+		// Never default to Simplified Chinese here: someone who never asked for
+		// Chinese contents must not be greeted with Simplified Chinese ones.
+		const fallbackLanguage = "en-US";
+
+		function normalizeLanguageTag(tag) {
+			return String(tag || "")
+				.trim()
+				.replace(/_/g, "-")
+				.toLowerCase();
+		}
+
+		// Resolves any BCP-47 language tag (e.g. "en-GB", "zh-CN", "zh-Hant-HK")
+		// into one of the languages shipped by this document. Any other language
+		// is reported as `null`, so that the caller uses the English fallback.
+		function resolveSupportedLanguage(tag) {
+			const normalizedTag = normalizeLanguageTag(tag);
+			if (!normalizedTag) return null;
+
+			const exactMatch = supportedLanguages.find(
+				(language) => normalizeLanguageTag(language) === normalizedTag
+			);
+			if (exactMatch) return exactMatch;
+
+			const [primaryLanguage, ...subTags] = normalizedTag.split("-");
+			switch (primaryLanguage) {
+				case "en":
+					return "en-US";
+				case "ja":
+					return "ja-JP";
+				case "zh": {
+					// "zh" alone means Simplified Chinese according to CLDR's likely
+					// subtags, whereas region-specific tags (such as "zh-TW") have to
+					// be normalized into the script-specific tags used by this document.
+					const traditionalTokens = ["hant", "tw", "hk", "mo"];
+					const simplifiedTokens = ["hans", "cn", "sg", "my"];
+					if (subTags.some((token) => traditionalTokens.includes(token))) {
+						return "zh-Hant";
+					}
+					if (subTags.some((token) => simplifiedTokens.includes(token))) {
+						return "zh-Hans";
+					}
+					return "zh-Hans";
+				}
+				default:
+					return null;
+			}
+		}
+
+		// The browser's primary language: the only one which decides the language
+		// of this document. Secondary preferences are ignored on purpose, so a
+		// device whose main language is not shipped here always gets English.
+		function browserPrimaryLanguageTag() {
+			const tags = [];
+			if (Array.isArray(navigator.languages)) tags.push(...navigator.languages);
+			[navigator.language, navigator.userLanguage].forEach((tag) => {
+				if (tag && !tags.includes(tag)) tags.push(tag);
+			});
+			return tags.find((tag) => normalizeLanguageTag(tag)) || "";
+		}
+
+		function detectLanguage() {
+			const language =
+				resolveSupportedLanguage(browserPrimaryLanguageTag()) || fallbackLanguage;
+			document.getElementById("language-selector").value = language;
+			changeLanguage(); // Call changeLanguage to set the correct content visibility
+		}
+
 		function changeLanguage() {
 			const language = document.getElementById("language-selector").value;
 			const contentDivs = document.querySelectorAll(".content");
@@ -193,21 +264,14 @@
 			const selectedContent = document.getElementById(`content-${language}`);
 			if (selectedContent) {
 				selectedContent.classList.add("active");
+				document.documentElement.lang =
+					selectedContent.getAttribute("lang") || language;
 			}
 		}
 
-		function detectLanguage() {
-			const browserLang = navigator.language || navigator.userLanguage;
-			const supportedLanguages = ["en-US", "zh-Hant", "zh-Hans", "ja-JP"];
-			// Default to "zh-Hans" if the browser's language is not supported
-			let language = supportedLanguages.includes(browserLang)
-				? browserLang
-				: "zh-Hans";
-			document.getElementById("language-selector").value = language;
-			changeLanguage(); // Call changeLanguage to set the correct content visibility
-		}
-
-		window.onload = detectLanguage; // Initialize on page load
+		// DOMContentLoaded (instead of window.onload) applies the detected language
+		// before images and any other subresource finishes loading.
+		document.addEventListener("DOMContentLoaded", detectLanguage);
 	</script>
 </head>
 
@@ -222,10 +286,10 @@
 		<span> ← 🌐</span>
 	</header>
 	<main>
-		<div id="content-en-US" class="content" lang="en">
+		<div id="content-en-US" class="content active" lang="en">
 			<!-- [TO COPILOT] en-US contents is expected to be inserted here. -->
 		</div>
-		<div id="content-zh-Hant" class="content active" lang="zh-Hant">
+		<div id="content-zh-Hant" class="content" lang="zh-Hant">
 			<!-- [TO COPILOT] zh-Hant (zh-TW) contents is expected to be inserted here. -->
 		</div>
 		<div id="content-zh-Hans" class="content" lang="zh-Hans">
