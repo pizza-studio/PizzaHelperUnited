@@ -141,6 +141,12 @@ extension HoYo {
         request.printDebugIntelIfDebugMode()
 
         let data = try await request.serializingData().value
+        BattleReportFileHandler.saveRawReportData(
+            data,
+            game: .genshinImpact,
+            reportType: type.rawValue,
+            seasonScope: isPreviousRound ? .previous : .current
+        )
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.battleReportData4GISpiralAbyss()")
     }
@@ -186,6 +192,13 @@ extension HoYo {
         request.printDebugIntelIfDebugMode()
 
         let data = try await request.serializingData().value
+        // 幽境危战会「同时」打包返回当前与上一个赛季的报告，故不区分赛季范围。
+        BattleReportFileHandler.saveRawReportData(
+            data,
+            game: .genshinImpact,
+            reportType: type.rawValue,
+            seasonScope: .bothSeasons
+        )
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.battleReportData4GIStygianOnslaught()")
     }
@@ -248,6 +261,12 @@ extension HoYo {
         request.printDebugIntelIfDebugMode()
 
         let data = try await request.serializingData().value
+        BattleReportFileHandler.saveRawReportData(
+            data,
+            game: .starRail,
+            reportType: type.rawValue,
+            seasonScope: isPreviousRound ? .previous : .current
+        )
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.battleReportData4HSRForgottenHall()")
     }
@@ -305,6 +324,12 @@ extension HoYo {
         request.printDebugIntelIfDebugMode()
 
         let data = try await request.serializingData().value
+        BattleReportFileHandler.saveRawReportData(
+            data,
+            game: .starRail,
+            reportType: type.rawValue,
+            seasonScope: isPreviousRound ? .previous : .current
+        )
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.battleReportData4HSRPureFiction()")
     }
@@ -362,6 +387,12 @@ extension HoYo {
         request.printDebugIntelIfDebugMode()
 
         let data = try await request.serializingData().value
+        BattleReportFileHandler.saveRawReportData(
+            data,
+            game: .starRail,
+            reportType: type.rawValue,
+            seasonScope: isPreviousRound ? .previous : .current
+        )
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.battleReportData4HSRApoShadow()")
     }
