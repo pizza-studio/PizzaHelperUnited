@@ -123,6 +123,10 @@ public final class ScreenVM {
     public var hingeAngleInDegrees: Double?
     public var isHorizontallyCompact: Bool = OS.type == .iPhoneOS
     public var actualSidebarWidthObserved: CGFloat = 0
+    /// App 视窗的尺寸（含 iPhone Duo 展开时尾端 vertical bar 所占的出血边界）。
+    ///
+    /// 初始值为 `getKeyWindowSize()` 的**暂定值**，它在启动阶段可能因 key window 尚未
+    /// 就绪而失真；一旦 `ScreenVM.ViewTracker` 量到尺寸，就会以量测值为准。
     public var windowSizeObserved: CGSize = ScreenVM.getKeyWindowSize()
     public var splitViewVisibility: NavigationSplitViewVisibility
 
@@ -409,7 +413,17 @@ extension ScreenVM {
 
         public func body(content: Content) -> some View {
             content
-                .trackCanvasSize(debounceDelay: debounceDelay) { newSizeRAW in
+                // 本 tracker 维护的是「视窗尺寸」，所以连 `.container` 这类含出血边界的
+                // 安全区也一并计入（`.all` 边）。iPhone Duo 展开时系统会在尾端留一条
+                // vertical bar 安全区（实测 84pt，下缘另有 34pt），若不这么做，
+                // windowSizeObserved 会比视窗窄一整条，导致依赖它的背景出血范围
+                // （例如 AvatarStatCollectionTabView）覆盖不到该区域。
+                // `.keyboard` 刻意不计入：键盘弹出时视窗本身并没有变。
+                .trackCanvasSize(
+                    debounceDelay: debounceDelay,
+                    includingSafeArea: .container,
+                    edges: .all
+                ) { newSizeRAW in
                     var newSize = newSizeRAW
                     newSize.width.round(.up)
                     newSize.height.round(.up)
@@ -429,9 +443,10 @@ extension ScreenVM {
                     }
                 }
                 .task {
-                    // 立即重讀 window size：macOS / macCatalyst 初始化時 keyWindow 可能尚未就緒，
-                    // 導致 windowSizeObserved 降級為 iPhone SE 的 375×667。
-                    screenVM.windowSizeObserved = ScreenVM.getKeyWindowSize()
+                    // 这里只负责立即推一次已追踪的参数，不再用 `getKeyWindowSize()` 覆写
+                    // `windowSizeObserved`：该 API 在启动阶段可能取到尚未就绪的 key window
+                    // 而回传虚假值（375×667 之类），会盖掉 tracker 量到的正确视窗尺寸
+                    // （含安全区的出血边界，见上方 `trackCanvasSize` 的说明）。
                     await pushTrackedPropertiesToScreenVM() // 立即执行
                 }
                 .react(to: combinedHash, initial: true) { _, _ in

@@ -12,9 +12,16 @@ import SwiftUI
 private struct CanvasSizeTracker: ViewModifier {
     // MARK: Lifecycle
 
-    public init(handler: @escaping (CGSize) -> Void, debounceDelay: TimeInterval = 0.1) {
+    public init(
+        handler: @escaping (CGSize) -> Void,
+        debounceDelay: TimeInterval = 0.1,
+        includingSafeArea regions: SafeAreaRegions = [],
+        edges: Edge.Set = []
+    ) {
         self.debounceDelay = debounceDelay
         self.handler = handler
+        self.safeAreaRegions = regions
+        self.safeAreaEdges = edges
     }
 
     // MARK: Public
@@ -22,15 +29,7 @@ private struct CanvasSizeTracker: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .background {
-                SizeReadingLayout(onChange: { [weak sizeState] size in
-                    Task { @MainActor in
-                        guard let sizeState else { return }
-                        sizeState.update(width: size.width, height: size.height)
-                        sizeState.debounce(handler: handler)
-                    }
-                }) {
-                    Color.clear
-                }
+                readingLayout
             }
             .onAppear {
                 // 确保 SizeState 的 debounceDelay 与当前参数保持一致。
@@ -49,6 +48,36 @@ private struct CanvasSizeTracker: ViewModifier {
 
     private let handler: (CGSize) -> Void
     private let debounceDelay: TimeInterval
+    private let safeAreaRegions: SafeAreaRegions
+    private let safeAreaEdges: Edge.Set
+
+    /// 量测用的 background。
+    ///
+    /// 预设（`regions` 与 `edges` 皆为空）量到的是**扣除安全区**之后的「内容」尺寸。
+    /// 传入 `regions` 与 `edges` 时，被指名的那几类安全区（也就是出血边界所占的区域）
+    /// 会一并计入量测。
+    ///
+    /// 之所以要有这层区分：iPhone Duo 展开时，系统会在尾端留一条 vertical bar 的
+    /// 安全区（实测 84pt；下缘另有 34pt），它是以 horizontal safe area inset 的形式
+    /// 抵达的。若把所有安全区一律排除，`ScreenVM.windowSizeObserved` 这类维护「视窗
+    /// 尺寸」的量测就会低估一整个 bar 的宽度，导致依赖它的背景出血范围
+    /// （例如 `AvatarStatCollectionTabView`）覆盖不到该区域。
+    @ViewBuilder private var readingLayout: some View {
+        let coreLayout = SizeReadingLayout(onChange: { [weak sizeState] size in
+            Task { @MainActor in
+                guard let sizeState else { return }
+                sizeState.update(width: size.width, height: size.height)
+                sizeState.debounce(handler: handler)
+            }
+        }) {
+            Color.clear
+        }
+        if safeAreaRegions.isEmpty || safeAreaEdges.isEmpty {
+            coreLayout
+        } else {
+            coreLayout.ignoresSafeArea(safeAreaRegions, edges: safeAreaEdges)
+        }
+    }
 }
 
 // MARK: - SizeReadingLayout
@@ -126,12 +155,31 @@ private class SizeState {
 
 @available(iOS 16.0, macCatalyst 16.0, *)
 extension View {
+    /// 量测 `self` 的画布尺寸，并在尺寸稳定后（去抖）回报。
+    ///
+    /// - Parameters:
+    ///   - debounceDelay: 尺寸稳定后延迟多久才回报。
+    ///   - regions: 要一并计入量测的安全区类型；预设 `[]`＝只量内容尺寸。
+    ///     维护「视窗尺寸」这类含出血边界的量测请传 `.container`；`.keyboard`
+    ///     刻意留给呼叫方自行决定，以免键盘弹出时把视窗尺寸误判成较小值。
+    ///   - edges: 要一并计入量测的边；预设 `[]`。传 `.all` 会连 iPhone Duo 展开时
+    ///     尾端 vertical bar 所占的那一条（实测 84pt）一同计入。
+    ///   - handler: 去抖后的尺寸回报。
     @ViewBuilder
     public func trackCanvasSize(
         debounceDelay: TimeInterval = 0.1,
+        includingSafeArea regions: SafeAreaRegions = [],
+        edges: Edge.Set = [],
         handler: @escaping (CGSize) -> Void
     )
         -> some View {
-        modifier(CanvasSizeTracker(handler: handler, debounceDelay: debounceDelay))
+        modifier(
+            CanvasSizeTracker(
+                handler: handler,
+                debounceDelay: debounceDelay,
+                includingSafeArea: regions,
+                edges: edges
+            )
+        )
     }
 }
