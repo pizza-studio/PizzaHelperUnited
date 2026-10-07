@@ -5,6 +5,7 @@
 #if !os(watchOS)
 
 import AlertToast
+import Foundation
 import PZBaseKit
 import SwiftUI
 import WallpaperKit
@@ -28,6 +29,32 @@ public struct UserWallpaperMgrViewContent: View {
             coreBody
                 .navigationTitle(Self.navTitleTiny)
                 .navBarTitleDisplayMode(.large)
+                .apply { coreContent in
+                    if Pizza.isDebug {
+                        coreContent.alert(
+                            Text(verbatim: "Import wallpaper pack from URL"),
+                            isPresented: $isDebugURLImportAlertPresented,
+                            actions: {
+                                // Use `.description` to suppress the auto-creation of i18n keys.
+                                TextField("file:// or https://".description, text: $debugImportURLInput)
+                                    .autocorrectionDisabled(true)
+                                #if canImport(UIKit)
+                                    .textInputAutocapitalization(.never)
+                                #endif
+                                Button("sys.cancel".i18nBaseKit, role: .cancel) {}
+                                Button("sys.ok".i18nBaseKit) { confirmDebugURLImport() }
+                            },
+                            message: {
+                                Text(
+                                    verbatim: "Enter a file URL, a local file path, or a remote http(s) URL.\n"
+                                        + "// 可输入 file:/// 网址、本机档案路径（/… 或 ~/…）、或远端 http(s):// 网址。"
+                                )
+                            }
+                        )
+                    } else {
+                        coreContent
+                    }
+                }
                 .toolbar {
                     #if os(iOS) || targetEnvironment(macCatalyst)
                     if !userWallpapers.isEmpty {
@@ -63,14 +90,28 @@ public struct UserWallpaperMgrViewContent: View {
                                 alertToastEventStatus4WPMgr.isWallpaperTaskSucceeded.toggle()
                             }
                         } extraItem: {
-                            NavigationLink(destination: callUserWallpaperMakerView) {
-                                Label {
-                                    Text("userWallpaperMgr.menu.addNewWallpaper", bundle: .currentSPM)
-                                } icon: {
-                                    Image(systemSymbol: .photoBadgePlus)
+                            Group {
+                                NavigationLink(destination: callUserWallpaperMakerView) {
+                                    Label {
+                                        Text("userWallpaperMgr.menu.addNewWallpaper", bundle: .currentSPM)
+                                    } icon: {
+                                        Image(systemSymbol: .photoBadgePlus)
+                                    }
+                                }
+                                .disabled(userWallpapers.count >= Self.maxEntriesAmount)
+                                if Pizza.isDebug {
+                                    Button {
+                                        debugImportURLInput = ""
+                                        isDebugURLImportAlertPresented = true
+                                    } label: {
+                                        Label {
+                                            Text(verbatim: "Import wallpaper pack from URL")
+                                        } icon: {
+                                            Image(systemSymbol: .link)
+                                        }
+                                    }
                                 }
                             }
-                            .disabled(userWallpapers.count >= Self.maxEntriesAmount)
                         }
                         .disabled(isEditing)
                     }
@@ -126,6 +167,10 @@ public struct UserWallpaperMgrViewContent: View {
     @State private var isNameEditorVisible: Bool = false
     @State private var currentEditingWallpaper: UserWallpaper?
 
+    /// 仅供 Debug 建置使用：以 URL 为准的 JSON 壁纸包汇入。
+    @State private var isDebugURLImportAlertPresented: Bool = false
+    @State private var debugImportURLInput: String = ""
+
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
     @State private var userWallpapers: Set<UserWallpaper>
@@ -165,6 +210,50 @@ public struct UserWallpaperMgrViewContent: View {
     }
 
     private var labvParser: LiveActivityBackgroundValueParser { .init($liveActivityWallpaperIDs) }
+
+    /// 解析使用者输入的网址或本机路径，并据以汇入 JSON 壁纸包。
+    /// - Note: 手动输入的本机路径不具备 security-scoped 权限，故不调用 `startAccessingSecurityScopedResource()`。
+    private static func importWallpaperPack(fromRawString rawString: String) async -> Bool {
+        guard let url = resolvedWallpaperPackURL(fromRawString: rawString) else { return false }
+        do {
+            if url.isFileURL {
+                try UserWallpaperPack.loadAndParse(url)
+            } else {
+                let (data, response) = try await URLSession.shared.data(from: url)
+                if let httpResponse = response as? HTTPURLResponse,
+                   !(200 ..< 300).contains(httpResponse.statusCode) {
+                    return false
+                }
+                try UserWallpaperPack.loadAndParse(rawData: data)
+            }
+            return true
+        } catch {
+            return false
+        }
+    }
+
+    /// 带 scheme 的字串视为网址，其余视为本机路径（支援 `~` 展开）。
+    private static func resolvedWallpaperPackURL(fromRawString rawString: String) -> URL? {
+        let trimmed = rawString.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return nil }
+        if let url = URL(string: trimmed), let scheme = url.scheme, !scheme.isEmpty {
+            return url
+        }
+        return URL(fileURLWithPath: (trimmed as NSString).expandingTildeInPath)
+    }
+
+    /// 仅供 Debug 建置使用：依据 alert 内的文字栏位来汇入 JSON 壁纸包。
+    private func confirmDebugURLImport() {
+        let rawString = debugImportURLInput
+        Task { @MainActor in
+            let succeeded = await Self.importWallpaperPack(fromRawString: rawString)
+            if succeeded {
+                alertToastEventStatus4WPMgr.isWallpaperTaskSucceeded.toggle()
+            } else {
+                alertToastEventStatus4WPMgr.isWallpaperTaskFailed.toggle()
+            }
+        }
+    }
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)

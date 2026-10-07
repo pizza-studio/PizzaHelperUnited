@@ -66,6 +66,11 @@ extension UserWallpaperPack {
     public static func loadAndParse(_ url: URL?) throws -> Int {
         guard let url else { throw FileParseException.urlNull }
         guard let data = try? Data(contentsOf: url) else { throw FileParseException.dataNotFetchable }
+        return try loadAndParse(rawData: data)
+    }
+
+    @discardableResult
+    public static func loadAndParse(rawData data: Data) throws -> Int {
         do {
             let decoded = try JSONDecoder().decode(Set<UserWallpaper>.self, from: data)
             return loadAndParseANewWallpaperSet(decoded)
