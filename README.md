@@ -10,7 +10,7 @@ This is the new repository for **The Latte Helper** (starting from version 5).
 * It contains all features provided in the `Pizza Helper for HSR`.
 * This repository also maintains the main codebase of the United Pizza Engine.
 
-This project uses Swift 6 and targeting iOS 17.4 and later.
+This project uses Swift 6 and targeting iOS 17.4 and later, requiring at least Xcode 27.1.
 
 > For public documents (e.g., Privacy Policy, EULA, etc.), please check the `EndUserPublicDocs` folder in this repository. The GitHub Wiki of this repository may be outdated in rare circumstances. Public documents are only provided in primary languages (English, Simplified Chinese, Traditional Chinese, and Japanese).
 
