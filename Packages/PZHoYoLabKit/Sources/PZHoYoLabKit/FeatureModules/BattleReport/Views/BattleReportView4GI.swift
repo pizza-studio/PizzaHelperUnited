@@ -46,10 +46,10 @@ public struct BattleReportView4GI: BattleReportView {
     public var body: some View {
         Form {
             if OS.type != .macOS {
-                drawPickerContentForReportType($contentType)
+                drawPickerContentForReportType(contentTypeBinding)
                     .listRowMaterialBackground()
             }
-            if data4SA.hasData || (data4SO?.single.hasData ?? false) {
+            if data4SA.hasData || data4SO != nil {
                 contents
                     .animation(.default, value: screenVM.mainColumnCanvasSizeObserved)
             } else {
@@ -62,7 +62,7 @@ public struct BattleReportView4GI: BattleReportView {
         .toolbar {
             if OS.type == .macOS {
                 ToolbarItem(placement: .principal) {
-                    drawPickerContentForReportType($contentType)
+                    drawPickerContentForReportType(contentTypeBinding)
                         .fixedSize()
                         .labelsHidden()
                         .blurMaterialBackground(shape: .capsule, interactive: true)
@@ -74,11 +74,6 @@ public struct BattleReportView4GI: BattleReportView {
                 withAnimation {
                     summaryMap = Self.getSummaryMap(data: data, profile: profile)
                 }
-            }
-        }
-        .task {
-            if data4SO == nil, contentType == .stygianOnslaught {
-                contentType = .spiralAbyss
             }
         }
     }
@@ -103,13 +98,26 @@ public struct BattleReportView4GI: BattleReportView {
 
     // MARK: Private
 
-    @State private var contentType: TreasuresStarwardType = .stygianOnslaught
+    /// 使用者手动挑选过的战报种类。为 nil 时由 `contentType` 决定预设值。
+    @State private var preferredContentType: TreasuresStarwardType?
+
     @State private var screenVM: ScreenVM = .shared
     @State private var broadcaster = Broadcaster.shared
     @Namespace private var animation
     @State private var summaryMap: [String: SummaryPtr]
 
     private let profile: PZProfileSendable?
+
+    /// 预设落在本赛季真的有战报资料的那一种。
+    /// 幽境危战即使本赛季尚无战绩仍可手动切过去，以便查看该赛季的赛季编号与赛季起讫。
+    private var contentType: TreasuresStarwardType {
+        if let preferredContentType { return preferredContentType }
+        return (data4SO?.single.hasData ?? false) ? .stygianOnslaught : .spiralAbyss
+    }
+
+    private var contentTypeBinding: Binding<TreasuresStarwardType> {
+        .init(get: { contentType }, set: { preferredContentType = $0 })
+    }
 
     private var containerWidth: CGFloat {
         screenVM.mainColumnCanvasSizeObserved.width - 64
@@ -156,33 +164,38 @@ extension BattleReportView4GI {
             blankView
         } else {
             stats4SygianOnslaught
-            floorList4StygianOnslaught(theData: data4SO?.single, isMultiplayer: false)
-                .frame(width: containerWidth)
+            if let singleData = data4SO?.single, singleData.hasData {
+                floorList4StygianOnslaught(theData: singleData, isMultiplayer: false)
+                    .frame(width: containerWidth)
+            }
             if let mpData = data4SO?.mp, mpData.hasData {
-                floorList4StygianOnslaught(theData: data4SO?.mp, isMultiplayer: true)
+                floorList4StygianOnslaught(theData: mpData, isMultiplayer: true)
                     .frame(width: containerWidth)
             }
         }
     }
 
+    /// 本赛季尚无战绩时，仍显示赛季编号与赛季起讫，只是把统计内容换成「暂无资料」。
     @ViewBuilder private var stats4SygianOnslaught: some View {
-        let summarizedCells = data4SO?.single.summarizedIntoCells(
-            oddCellsPerLine: columns % 2 != 0
-        )
+        let singleData = data4SO?.single
         let schedule = data4SO?.schedule
-        if let summarizedCells, !summarizedCells.isEmpty, let schedule {
+        if let schedule {
             Section {
-                StaggeredGrid(
-                    columns: columns,
-                    outerPadding: true,
-                    scroll: false,
-                    list: summarizedCells,
-                    content: { currentCell in
-                        drawAbyssValueCell(currentCell)
-                            .id(currentCell.id)
-                    }
-                )
-                .listRowInsets(.init())
+                if let singleData, singleData.hasData {
+                    StaggeredGrid(
+                        columns: columns,
+                        outerPadding: true,
+                        scroll: false,
+                        list: singleData.summarizedIntoCells(oddCellsPerLine: columns % 2 != 0),
+                        content: { currentCell in
+                            drawAbyssValueCell(currentCell)
+                                .id(currentCell.id)
+                        }
+                    )
+                    .listRowInsets(.init())
+                } else {
+                    Text(verbatim: "hylKit.battleReport.noDataAvailableForThisSeason".i18nHYLKit)
+                }
             } header: {
                 HStack {
                     Text(
@@ -190,8 +203,7 @@ extension BattleReportView4GI {
                             + " (\("hylKit.battleReport.gi.attendanceMethod.singleplayer".i18nHYLKit))"
                     )
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("hylKit.battleReport.stat.seasonID".i18nHYLKit + " \(schedule.scheduleID)")
-                        .frame(maxWidth: .infinity, alignment: .trailing)
+                    BattleReportSeasonIDLabel(seasonID: schedule.scheduleID)
                 }
                 .frame(maxWidth: .infinity)
             } footer: {
@@ -416,8 +428,7 @@ extension BattleReportView4GI {
             HStack {
                 Text("hylKit.battleReport.gi.stat.summary".i18nHYLKit)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("hylKit.battleReport.stat.seasonID".i18nHYLKit + " \(data4SA.scheduleID)")
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                BattleReportSeasonIDLabel(seasonID: data4SA.scheduleID.description)
             }
             .frame(maxWidth: .infinity)
         }

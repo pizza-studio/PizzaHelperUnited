@@ -21,14 +21,13 @@ extension HoYo {
                 deviceID: profile.deviceID
             )
             if stygianOnslaught.isUnlock {
-                if let currentSeasonSO = stygianOnslaught.data.first, currentSeasonSO.single.hasData {
+                // 幽境危战会「同时」打包返回当前与上一个赛季的报告，首笔为当前赛季。
+                // 即便某个赛季尚无战绩也照常挂上，以便画面仍能显示该赛季的赛季编号与赛季起讫。
+                if let currentSeasonSO = stygianOnslaught.data.first {
                     current.stygianOnslaught = currentSeasonSO
                 }
-                if stygianOnslaught.data.count > 1 {
-                    let previousSeasonSO = stygianOnslaught.data.dropFirst().first
-                    if let previousSeasonSO, previousSeasonSO.single.hasData {
-                        previous.stygianOnslaught = previousSeasonSO
-                    }
+                if let previousSeasonSO = stygianOnslaught.data.dropFirst().first {
+                    previous.stygianOnslaught = previousSeasonSO
                 }
             }
             return BattleReportSet4GI(current: current, previous: previous, profile: profile)

@@ -54,9 +54,11 @@ enum BattleReportTestAssets: String {
             .parseAs(HoYo.BattleReport4GI.StygianOnslaughtQueryResult.self)
         var stygianOnslaught: HoYo.BattleReport4GI.StygianOnslaughtData?
         if onslaughtResult.isUnlock {
-            // 幽境危戰會「同時」打包返回當前與上一個賽季的報告。
-            let season = isPrev ? onslaughtResult.data.dropFirst().first : onslaughtResult.data.first
-            if let season, season.single.hasData { stygianOnslaught = season }
+            // 幽境危戰會「同時」打包返回當前與上一個賽季的報告，首筆為當前賽季。
+            // 與 API 相同：即便某個賽季尚無戰績也照常掛上。
+            stygianOnslaught = isPrev
+                ? onslaughtResult.data.dropFirst().first
+                : onslaughtResult.data.first
         }
         return HoYo.BattleReport4GI(
             spiralAbyss: spiralAbyss,

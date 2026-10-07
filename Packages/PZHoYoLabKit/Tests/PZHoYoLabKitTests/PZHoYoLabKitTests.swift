@@ -119,6 +119,35 @@ struct PZHoYoLabKitTests {
         #expect(data4PF.seasonID4Display == "2026")
     }
 
+    /// 幽境危戰當期賽季尚無戰績時，仍要掛在當期戰報上（如此才顯示得出賽季編號），
+    /// 但「最近一次挑戰」不該因此被它搶走。
+    @Test
+    func testGIDatalessStygianOnslaughtSeason() throws {
+        let onslaught = try decode(HoYo.BattleReport4GI.StygianOnslaughtQueryResult.self, from: .giSOCurr)
+        let currentSeason = try #require(onslaught.data.first)
+        let previousSeason = try #require(onslaught.data.dropFirst().first)
+        // 測試素材必須涵蓋「當期賽季尚無戰績、上期賽季有戰績」的狀況。
+        #expect(currentSeason.single.hasData == false)
+        #expect(previousSeason.single.hasData == true)
+        // 兩個賽季各自帶著自己的賽季編號，不能因為沒有戰績就遺失。
+        #expect(currentSeason.schedule.scheduleID == "5269012")
+        #expect(previousSeason.schedule.scheduleID == "5269011")
+
+        // 當期幽境危戰的賽季起始時間比當期深境螺旋還新，
+        // 若沒把「尚無戰績」的賽季排除在比較之外，導航列就會取不到任何戰績。
+        let spiralAbyss = try decode(HoYo.BattleReport4GI.SpiralAbyssData.self, from: .giSACurr)
+        let reportWithDatalessSO = HoYo.BattleReport4GI(
+            spiralAbyss: spiralAbyss,
+            stygianOnslaught: currentSeason
+        )
+        #expect(reportWithDatalessSO.latestChallengeType == .spiralAbyss)
+        #expect(reportWithDatalessSO.latestChallengeIntel?.type == .spiralAbyss)
+
+        // API 側的賽季配對：當期戰報拿首筆、上期戰報拿第二筆。
+        #expect(try BattleReportTestAssets.getReport4GI(isPrev: false).stygianOnslaught == currentSeason)
+        #expect(try BattleReportTestAssets.getReport4GI(isPrev: true).stygianOnslaught == previousSeason)
+    }
+
     /// 战报原始 JSON 必须在尝试解码之前先落地到硬碟，供解码失败时排障。
     @Test
     func testRawBattleReportDumping() throws {
