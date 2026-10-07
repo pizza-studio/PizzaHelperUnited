@@ -58,6 +58,8 @@ public struct GachaImportSections: View {
     @State private var format: GachaExchange.ImportableFormat = .asUIGFv4
     @State private var chosenGPID: Set<GachaProfileID> = []
     @State private var overrideDuplicatedEntriesOnImport: Bool = false
+    @State private var isDebugURLImportAlertPresented: Bool = false
+    @State private var debugURLImportInput: String = ""
 }
 
 // MARK: GachaImportSections.SceneStep
@@ -138,6 +140,8 @@ extension GachaImportSections {
                             }
                         }
                     }
+                    debugClipboardImportButton()
+                    debugURLImportButton()
                 }
 
                 if let error = theVM.currentError, error is GachaKit.FileExchangeException {
@@ -176,6 +180,82 @@ extension GachaImportSections {
                 Text("gachaKit.uigf.affLink.[UIGF](https://uigf.org/)", bundle: .currentSPM)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }.multilineTextAlignment(.leading)
+        }
+    }
+
+    /// 仅限除错：由剪贴板直接读取 JSON 文字。
+    /// 注意：模拟器取不到剪贴板资料，此入口仅适用于真机与 macOS；模拟器请改用 URL 入口。
+    /// Release 建置不会显示此按钮。
+    @ViewBuilder
+    func debugClipboardImportButton() -> some View {
+        if Pizza.isDebug, format != .asGIGFExcel {
+            Button {
+                withAnimation {
+                    theVM.prepareGachaDocumentForImportFromClipboard(format: self.format)
+                }
+            } label: {
+                Label {
+                    Text(verbatim: "Read JSON data from clipboard")
+                } icon: {
+                    Image(systemSymbol: .docOnClipboard)
+                }
+                .fontWeight(.semibold)
+                .fontWidth(.condensed)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity, alignment: .center)
+            }
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.capsule)
+        }
+    }
+
+    /// 仅限除错：以 Alert 向使用者索取档案 URL，再直接由该 URL 读取资料。
+    /// 模拟器无法将外来 JSON 放进文件系统，但可以经由 URL 取得资料（本机档案路径与 http(s) 皆可）。
+    /// Release 建置不会显示此按钮。
+    @ViewBuilder
+    func debugURLImportButton() -> some View {
+        if Pizza.isDebug {
+            Button {
+                debugURLImportInput = ""
+                isDebugURLImportAlertPresented = true
+            } label: {
+                Label {
+                    Text(verbatim: "Read JSON data from URL")
+                } icon: {
+                    Image(systemSymbol: .link)
+                }
+                .fontWeight(.semibold)
+                .fontWidth(.condensed)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity, alignment: .center)
+            }
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.capsule)
+            .alert(
+                Text(verbatim: "Read JSON data from URL"),
+                isPresented: $isDebugURLImportAlertPresented
+            ) {
+                // Use `.description` to suppress the auto-creation of i18n keys.
+                TextField("file:// or https://".description, text: $debugURLImportInput)
+                    .autocorrectionDisabled()
+                #if canImport(UIKit)
+                    .textInputAutocapitalization(.never)
+                #endif
+                Button("sys.cancel".i18nBaseKit, role: .cancel) {}
+                Button("sys.ok".i18nBaseKit) {
+                    withAnimation {
+                        theVM.prepareGachaDocumentForImportFromURL(
+                            debugURLImportInput,
+                            format: self.format
+                        )
+                    }
+                }
+            } message: {
+                Text(
+                    verbatim: "Enter a file URL, a local file path, or a remote http(s) URL.\n"
+                        + "// 可输入 file:/// 网址、本机档案路径（/… 或 ~/…）、或远端 http(s):// 网址。"
+                )
+            }
         }
     }
 }

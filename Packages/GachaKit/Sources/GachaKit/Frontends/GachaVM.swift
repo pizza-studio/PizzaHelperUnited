@@ -441,7 +441,7 @@ extension GachaVM {
         format: GachaExchange.ImportableFormat,
         immediately: Bool = true
     ) {
-        fireTask(
+        fireImportTask(
             prerequisite: (
                 url.startAccessingSecurityScopedResource(), {
                     self.currentError = GachaKit.FileExchangeException.accessFailureComDlg32
@@ -452,129 +452,99 @@ extension GachaVM {
                 defer {
                     url.stopAccessingSecurityScopedResource()
                 }
-                var fetchedFile: UIGFv4
-                let decoder = JSONDecoder()
-                formatProcess: switch format {
-                case .asGIGFExcel:
-                    guard let file = XLSXFile(filepath: url.relativePath) else {
-                        throw GachaKit.FileExchangeException.fileNotExist
-                    }
-                    do {
-                        fetchedFile = try await GachaActor.shared.upgradeToUIGFv4(xlsx: file)
-                    } catch {
-                        throw GachaKit.FileExchangeException.otherError(error)
-                    }
-                case .asUIGFv4:
-                    let data: Data = try Data(contentsOf: url)
+                return try await Self.decodeImportableContent(fromFileURL: url, format: format)
+            }
+        )
+    }
 
-                    // Try Hutao refugee file (SQLite database)
-                    var isHutaoRefugee = false
-                    hutaoRefugeeTask: do {
-                        // Check if it's a SQLite database by looking for SQLite magic number
-                        if data.count >= 16 {
-                            let sqliteHeader = "SQLite format 3\0"
-                            let headerData = data.prefix(16)
-                            if let headerString = String(data: headerData, encoding: .utf8),
-                               headerString.hasPrefix(sqliteHeader) {
-                                isHutaoRefugee = true
-                                let hutaoFile = try HutaoRefugeeFile.fromDatabase(url: url)
-                                fetchedFile = try await hutaoFile.toUIGFv4()
-                                break formatProcess
-                            }
-                        }
-                    } catch {
-                        PZLog.error("\(error)")
-                        if isHutaoRefugee {
-                            throw GachaKit.FileExchangeException.otherError(error)
-                        } else {
-                            break hutaoRefugeeTask
-                        }
-                    }
+    /// 供除错用途：直接以手边的原始资料（例如剪贴板文字）建立导入用文件。
+    public func prepareGachaDocumentForImport(
+        _ data: Data,
+        format: GachaExchange.ImportableFormat,
+        immediately: Bool = true
+    ) {
+        fireImportTask(
+            cancelPreviousTask: immediately,
+            givenTask: {
+                try await Self.decodeImportableContent(fromRawData: data, format: format)
+            }
+        )
+    }
 
-                    var isRefugee = false
-                    refugeeTask: do {
-                        let refugeeData = try PropertyListDecoder().decode(
-                            PZRefugeeFile.self, from: data
-                        )
-                        isRefugee = true
-                        var genshinDataRAW = refugeeData.oldGachaEntries4GI
+    /// 供除错用途：读取剪贴板上的文字、视作导入用文件。
+    /// 注意：模拟器内的 `UIPasteboard.general.string` 取不到资料，此入口仅适用于真机与 macOS。
+    public func prepareGachaDocumentForImportFromClipboard(
+        format: GachaExchange.ImportableFormat
+    ) {
+        #if os(macOS) || os(iOS) || targetEnvironment(macCatalyst)
+        let clipboardText = Clipboard.currentString
+        #else
+        let clipboardText = ""
+        #endif
+        guard let data = clipboardText.data(using: .utf8), !data.isEmpty else {
+            withAnimation {
+                self.currentError = GachaKit.FileExchangeException.otherError(
+                    DebugImportException.clipboardHasNoText
+                )
+            }
+            return
+        }
+        prepareGachaDocumentForImport(data, format: format)
+    }
 
-                        var localGMDBAlreadyReset = false
-                        var redoTask = true
-                        taskRedo: while redoTask {
-                            // Fix Genshin ItemIDs.
-                            genshinDataRAW.fixItemIDs()
-                            if genshinDataRAW.mightHaveNonCHSLanguageTag {
-                                try genshinDataRAW.updateLanguage(.langCHS)
-                            }
-                            for idx in 0 ..< genshinDataRAW.count {
-                                let currentObj = genshinDataRAW[idx]
-                                guard Int(currentObj.itemId) == nil else { continue }
-                                // 读取难民档案时出现 GMDB 匹配错误的可能性非常小，因为旧版披萨的 GMDB 太旧、恐无法获取记录。
-                                // 但这里仍旧按照例行步骤处理，以防万一。
-                                if !localGMDBAlreadyReset {
-                                    GachaMeta.Sputnik.resetLocalGachaMetaDB(for: .genshinImpact)
-                                    localGMDBAlreadyReset = true
-                                    continue taskRedo
-                                } else {
-                                    redoTask = false
-                                    Task { @MainActor in
-                                        try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
-                                    }
-                                    throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
-                                }
-                            }
-                            redoTask = false
-                        }
-
-                        let newUIGFEntries4Genshin = genshinDataRAW.map(\.asPZGachaEntrySendable)
-                        fetchedFile = try UIGFv4(
-                            info: .init(),
-                            entries: newUIGFEntries4Genshin + refugeeData.newGachaEntries,
-                            lang: .langCHS
-                        )
-                        fetchedFile.info = .init(
-                            exportApp: "PizzaHelper4Genshin",
-                            exportAppVersion: "v4",
-                            exportTimestamp: "N/A",
-                            version: "N/A",
-                            previousFormat: "[PLIST] OldPizzaRefugeeData"
-                        )
-                        break formatProcess
-                    } catch let refugeeError {
-                        PZLog.error("\(refugeeError)")
-                        if isRefugee {
-                            throw GachaKit.FileExchangeException.otherError(refugeeError)
-                        } else {
-                            break refugeeTask
-                        }
-                    }
-                    // 正常处理流程。
-                    do {
-                        fetchedFile = try decoder.decode(UIGFv4.self, from: data)
-                    } catch {
-                        throw GachaKit.FileExchangeException.decodingError(error)
-                    }
-                case .asSRGFv1:
-                    let data: Data = try Data(contentsOf: url)
-                    do {
-                        fetchedFile = try await GachaActor.shared
-                            .upgradeToUIGFv4(srgf: decoder.decode(SRGFv1.self, from: data))
-                    } catch {
-                        throw GachaKit.FileExchangeException.decodingError(error)
-                    }
-                case .asGIGFJson:
-                    let data: Data = try Data(contentsOf: url)
-                    do {
-                        fetchedFile = try await GachaActor.shared
-                            .upgradeToUIGFv4(gigf: decoder.decode(GIGF.self, from: data))
-                    } catch {
-                        throw GachaKit.FileExchangeException.decodingError(error)
-                    }
+    /// 供除错用途：读取使用者指定的 URL。支援本机档案路径、`file://` URL、以及远端 http(s) URL。
+    /// Xcode 27 的模拟器无法将外来 JSON 放进文件系统，但可以直接经由 URL 取得资料。
+    public func prepareGachaDocumentForImportFromURL(
+        _ urlString: String,
+        format: GachaExchange.ImportableFormat
+    ) {
+        guard let url = Self.resolvedImportURL(fromRawString: urlString) else {
+            withAnimation {
+                self.currentError = GachaKit.FileExchangeException.otherError(
+                    DebugImportException.invalidURL
+                )
+            }
+            return
+        }
+        fireImportTask(
+            cancelPreviousTask: true,
+            givenTask: {
+                // 使用者直接输入的档案路径没有 security scope，故不经过 startAccessingSecurityScopedResource，
+                // 但仍沿用同一套档案解码管线，以便支援 XLSX 与胡桃难民档案。
+                if url.isFileURL {
+                    return try await Self.decodeImportableContent(fromFileURL: url, format: format)
                 }
-                fetchedFile.zzzProfiles = nil // TODO: 等绝区零的支持实作完毕之后，移除这一行。
-                return fetchedFile
-            },
+                let (data, response) = try await URLSession.shared.data(from: url)
+                if let httpResponse = response as? HTTPURLResponse,
+                   !(200 ..< 300).contains(httpResponse.statusCode) {
+                    throw GachaKit.FileExchangeException.otherError(
+                        DebugImportException.badServerResponse(status: httpResponse.statusCode)
+                    )
+                }
+                return try await Self.decodeImportableContent(fromRawData: data, format: format)
+            }
+        )
+    }
+
+    /// 将使用者输入的字符串转成可读取的 URL。没有 scheme 时视作本机档案路径。
+    private static func resolvedImportURL(fromRawString rawString: String) -> URL? {
+        let trimmed = rawString.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return nil }
+        if let url = URL(string: trimmed), let scheme = url.scheme, !scheme.isEmpty {
+            return url
+        }
+        return URL(fileURLWithPath: (trimmed as NSString).expandingTildeInPath)
+    }
+
+    private func fireImportTask(
+        prerequisite: (condition: Bool, notMetHandler: (() -> Void)?)? = nil,
+        cancelPreviousTask: Bool,
+        givenTask: @escaping @MainActor @Sendable () async throws -> UIGFv4?
+    ) {
+        fireTask(
+            prerequisite: prerequisite,
+            cancelPreviousTask: cancelPreviousTask,
+            givenTask: givenTask,
             completionHandler: { fetchedFile in
                 if let fetchedFile {
                     self.currentSceneStep4Import = .chooseProfiles(fetchedFile)
@@ -593,6 +563,194 @@ extension GachaVM {
                 self.task?.cancel()
             }
         )
+    }
+
+    // MARK: Private
+
+    /// 由档案 URL 解析出可导入的 UIGFv4 文件。
+    private static func decodeImportableContent(
+        fromFileURL url: URL,
+        format: GachaExchange.ImportableFormat
+    ) async throws
+        -> UIGFv4 {
+        switch format {
+        case .asGIGFExcel:
+            guard let file = XLSXFile(filepath: url.relativePath) else {
+                throw GachaKit.FileExchangeException.fileNotExist
+            }
+            do {
+                return sanitizedForImport(try await GachaActor.shared.upgradeToUIGFv4(xlsx: file))
+            } catch {
+                throw GachaKit.FileExchangeException.otherError(error)
+            }
+        case .asUIGFv4:
+            let data: Data = try Data(contentsOf: url)
+            // 胡桃难民档案是 SQLite 资料库，只能直接读取档案本身。
+            if isSQLiteDatabase(data) {
+                return try await decodeHutaoRefugeeFile(at: url)
+            }
+            return try await decodeImportableContent(fromRawData: data, format: format)
+        case .asGIGFJson, .asSRGFv1:
+            let data: Data = try Data(contentsOf: url)
+            return try await decodeImportableContent(fromRawData: data, format: format)
+        }
+    }
+
+    /// 由手边的原始资料解析出可导入的 UIGFv4 文件。
+    private static func decodeImportableContent(
+        fromRawData data: Data,
+        format: GachaExchange.ImportableFormat
+    ) async throws
+        -> UIGFv4 {
+        let decoder = JSONDecoder()
+        var decoded: UIGFv4
+        switch format {
+        case .asGIGFExcel:
+            // Excel (XLSX) 档案无法经由剪贴板之类的手边资料传递。
+            throw GachaKit.FileExchangeException.otherError(
+                DebugImportException.unsupportedFormat
+            )
+        case .asUIGFv4:
+            decoded = try await decodeUIGFv4(from: data)
+        case .asSRGFv1:
+            do {
+                decoded = try await GachaActor.shared
+                    .upgradeToUIGFv4(srgf: decoder.decode(SRGFv1.self, from: data))
+            } catch {
+                throw GachaKit.FileExchangeException.decodingError(error)
+            }
+        case .asGIGFJson:
+            do {
+                decoded = try await GachaActor.shared
+                    .upgradeToUIGFv4(gigf: decoder.decode(GIGF.self, from: data))
+            } catch {
+                throw GachaKit.FileExchangeException.decodingError(error)
+            }
+        }
+        return sanitizedForImport(decoded)
+    }
+
+    /// UIGF v4 的解读流程：优先尝试旧版披萨难民档案（PLIST），否则按 JSON 处理。
+    private static func decodeUIGFv4(from data: Data) async throws -> UIGFv4 {
+        var isRefugee = false
+        do {
+            let refugeeData = try PropertyListDecoder().decode(
+                PZRefugeeFile.self, from: data
+            )
+            isRefugee = true
+            return try await upgradeRefugeeFileToUIGFv4(refugeeData)
+        } catch let refugeeError {
+            PZLog.error("\(refugeeError)")
+            if isRefugee {
+                throw GachaKit.FileExchangeException.otherError(refugeeError)
+            }
+            // 该资料不是旧版难民档案，继续按 JSON 处理。
+        }
+        do {
+            return try JSONDecoder().decode(UIGFv4.self, from: data)
+        } catch {
+            throw GachaKit.FileExchangeException.decodingError(error)
+        }
+    }
+
+    /// 旧版披萨难民档案（PLIST）的格式升级。
+    private static func upgradeRefugeeFileToUIGFv4(_ refugeeData: PZRefugeeFile) async throws -> UIGFv4 {
+        var genshinDataRAW = refugeeData.oldGachaEntries4GI
+
+        var localGMDBAlreadyReset = false
+        var redoTask = true
+        taskRedo: while redoTask {
+            // Fix Genshin ItemIDs.
+            genshinDataRAW.fixItemIDs()
+            if genshinDataRAW.mightHaveNonCHSLanguageTag {
+                try genshinDataRAW.updateLanguage(.langCHS)
+            }
+            for idx in 0 ..< genshinDataRAW.count {
+                let currentObj = genshinDataRAW[idx]
+                guard Int(currentObj.itemId) == nil else { continue }
+                // 读取难民档案时出现 GMDB 匹配错误的可能性非常小，因为旧版披萨的 GMDB 太旧、恐无法获取记录。
+                // 但这里仍旧按照例行步骤处理，以防万一。
+                if !localGMDBAlreadyReset {
+                    GachaMeta.Sputnik.resetLocalGachaMetaDB(for: .genshinImpact)
+                    localGMDBAlreadyReset = true
+                    continue taskRedo
+                } else {
+                    redoTask = false
+                    Task { @MainActor in
+                        try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
+                    }
+                    throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
+                }
+            }
+            redoTask = false
+        }
+
+        let newUIGFEntries4Genshin = genshinDataRAW.map(\.asPZGachaEntrySendable)
+        var fetchedFile = try UIGFv4(
+            info: .init(),
+            entries: newUIGFEntries4Genshin + refugeeData.newGachaEntries,
+            lang: .langCHS
+        )
+        fetchedFile.info = .init(
+            exportApp: "PizzaHelper4Genshin",
+            exportAppVersion: "v4",
+            exportTimestamp: "N/A",
+            version: "N/A",
+            previousFormat: "[PLIST] OldPizzaRefugeeData"
+        )
+        return fetchedFile
+    }
+
+    /// 胡桃难民档案是 SQLite 资料库，只能直接读取档案本身。
+    private static func decodeHutaoRefugeeFile(at url: URL) async throws -> UIGFv4 {
+        do {
+            let hutaoFile = try HutaoRefugeeFile.fromDatabase(url: url)
+            return sanitizedForImport(try await hutaoFile.toUIGFv4())
+        } catch {
+            PZLog.error("\(error)")
+            throw GachaKit.FileExchangeException.otherError(error)
+        }
+    }
+
+    /// 以 SQLite 的魔术数字（magic number）判断资料是否为 SQLite 资料库。
+    private static func isSQLiteDatabase(_ data: Data) -> Bool {
+        guard data.count >= 16 else { return false }
+        let sqliteHeader = "SQLite format 3\0"
+        let headerData = data.prefix(16)
+        guard let headerString = String(data: headerData, encoding: .utf8) else { return false }
+        return headerString.hasPrefix(sqliteHeader)
+    }
+
+    /// 导入前统一清理资料。
+    private static func sanitizedForImport(_ document: UIGFv4) -> UIGFv4 {
+        var result = document
+        result.zzzProfiles = nil // TODO: 等绝区零的支持实作完毕之后，移除这一行。
+        return result
+    }
+
+    // MARK: - DebugImportException
+
+    /// 仅供除错用的导入错误。
+    private enum DebugImportException: Error, CustomStringConvertible {
+        case clipboardHasNoText
+        case unsupportedFormat
+        case invalidURL
+        case badServerResponse(status: Int)
+
+        // MARK: Internal
+
+        var description: String {
+            switch self {
+            case .clipboardHasNoText:
+                "The clipboard does not contain any text data. // 剪贴板上没有可用的文字内容。"
+            case .unsupportedFormat:
+                "XLSX files cannot be read from the clipboard. // Excel (XLSX) 档案无法经由剪贴板读取。"
+            case .invalidURL:
+                "The given URL is invalid. // 输入的 URL 无效。"
+            case let .badServerResponse(status):
+                "The server responded with HTTP status code \(status). // 服务器回传的 HTTP 状态码为 \(status)。"
+            }
+        }
     }
 
     public func importUIGFv4(
