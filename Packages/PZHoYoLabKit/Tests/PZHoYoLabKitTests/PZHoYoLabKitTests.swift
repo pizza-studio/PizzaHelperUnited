@@ -83,6 +83,42 @@ struct PZHoYoLabKitTests {
         }
     }
 
+    /// 三種鐵道戰報都必須拿得到賽季編號：忘卻之庭自帶 `schedule_id`，
+    /// 虛構敘事與末日幻影得從 `groups` 反推（當期取第一筆、上期取前一筆）。
+    @Test
+    func testHSRSeasonIDResolution() throws {
+        #expect(try decode(HoYo.BattleReport4HSR.ForgottenHallData.self, from: .hsrFHCurr).seasonID4Display == "1035")
+        #expect(try decode(HoYo.BattleReport4HSR.ForgottenHallData.self, from: .hsrFHPrev).seasonID4Display == "1034")
+        #expect(try decode(HoYo.BattleReport4HSR.PureFictionData.self, from: .hsrPFCurr).seasonID4Display == "2026")
+        #expect(try decode(HoYo.BattleReport4HSR.PureFictionData.self, from: .hsrPFPrev).seasonID4Display == "2025")
+        #expect(
+            try decode(HoYo.BattleReport4HSR.ApocalypticShadowData.self, from: .hsrASCurr)
+                .seasonID4Display == "3021"
+        )
+        #expect(
+            try decode(HoYo.BattleReport4HSR.ApocalypticShadowData.self, from: .hsrASPrev)
+                .seasonID4Display == "3020"
+        )
+    }
+
+    /// 賽季名稱對不上時，改以樓層 ID 的十位數反推賽季編號。
+    @Test
+    func testHSRSeasonIDFallback() throws {
+        let rawJSON = """
+        {
+          "star_num": 1,
+          "max_floor": "Unknown Season Phase 4",
+          "battle_num": 1,
+          "has_data": true,
+          "max_floor_id": 20264,
+          "all_floor_detail": [],
+          "groups": [{ "schedule_id": 2026, "name_mi18n": "立界開篇" }]
+        }
+        """
+        let data4PF = try JSONDecoder().decode(HoYo.BattleReport4HSR.PureFictionData.self, from: Data(rawJSON.utf8))
+        #expect(data4PF.seasonID4Display == "2026")
+    }
+
     /// 战报原始 JSON 必须在尝试解码之前先落地到硬碟，供解码失败时排障。
     @Test
     func testRawBattleReportDumping() throws {

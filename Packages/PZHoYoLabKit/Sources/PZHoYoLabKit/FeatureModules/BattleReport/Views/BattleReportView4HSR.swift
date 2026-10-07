@@ -85,69 +85,33 @@ public struct BattleReportView4HSR: BattleReportView {
     }
 
     @ViewBuilder var stats: some View {
-        Section {
-            switch contentType {
-            case .forgottenHall:
+        if let statsData {
+            Section {
                 LabeledContent {
-                    Text(verbatim: data4FH.maxFloorNumStr)
+                    Text(verbatim: statsData.maxFloorNumStr)
                 } label: {
                     Text("hylKit.battleReport.hsr.stat.maxFloorConquered".i18nHYLKit)
                 }
                 LabeledContent {
-                    Text(verbatim: data4FH.starNum.description)
+                    Text(verbatim: statsData.starNum.description)
                 } label: {
                     Text("hylKit.battleReport.hsr.stat.starsGained".i18nHYLKit)
                 }
                 LabeledContent {
-                    Text(verbatim: data4FH.battleNum.description)
+                    Text(verbatim: statsData.battleNum.description)
                 } label: {
                     Text("hylKit.battleReport.hsr.stat.numOfBattles".i18nHYLKit)
                 }
-            case .pureFiction:
-                LabeledContent {
-                    Text(verbatim: data4PF.maxFloorNumStr)
-                } label: {
-                    Text("hylKit.battleReport.hsr.stat.maxFloorConquered".i18nHYLKit)
+            } header: {
+                HStack {
+                    Text("hylKit.battleReport.hsr.stats.header".i18nHYLKit)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    BattleReportSeasonIDLabel(seasonID: statsData.seasonID4Display)
                 }
-                LabeledContent {
-                    Text(verbatim: data4PF.starNum.description)
-                } label: {
-                    Text("hylKit.battleReport.hsr.stat.starsGained".i18nHYLKit)
-                }
-                LabeledContent {
-                    Text(verbatim: data4PF.battleNum.description)
-                } label: {
-                    Text("hylKit.battleReport.hsr.stat.numOfBattles".i18nHYLKit)
-                }
-            case .apocalypticShadow:
-                LabeledContent {
-                    Text(verbatim: data4AS.maxFloorNumStr)
-                } label: {
-                    Text("hylKit.battleReport.hsr.stat.maxFloorConquered".i18nHYLKit)
-                }
-                LabeledContent {
-                    Text(verbatim: data4AS.starNum.description)
-                } label: {
-                    Text("hylKit.battleReport.hsr.stat.starsGained".i18nHYLKit)
-                }
-                LabeledContent {
-                    Text(verbatim: data4AS.battleNum.description)
-                } label: {
-                    Text("hylKit.battleReport.hsr.stat.numOfBattles".i18nHYLKit)
-                }
+                .frame(maxWidth: .infinity)
             }
-        } header: {
-            HStack {
-                Text("hylKit.battleReport.hsr.stats.header".i18nHYLKit)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                if contentType == .forgottenHall {
-                    Text("hylKit.battleReport.stat.seasonID".i18nHYLKit + " \(data4FH.scheduleID)")
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
-            }
-            .frame(maxWidth: .infinity)
+            .listRowMaterialBackground()
         }
-        .listRowMaterialBackground()
     }
 
     @ViewBuilder var floorList: some View {
@@ -434,6 +398,14 @@ public struct BattleReportView4HSR: BattleReportView {
     private var data4AS: BattleReportData.ApocalypticShadowData { data.apocalypticShadow }
 
     private var data4PF: BattleReportData.PureFictionData { data.pureFiction }
+
+    private var statsData: (any HSRBattleReportData)? {
+        switch contentType {
+        case .forgottenHall: return data4FH
+        case .pureFiction: return data4PF
+        case .apocalypticShadow: return data4AS
+        }
+    }
 }
 
 #if DEBUG

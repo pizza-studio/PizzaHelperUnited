@@ -48,6 +48,22 @@ struct AbyssValueCell: Identifiable, Hashable {
     }
 }
 
+// MARK: - BattleReportSeasonIDLabel
+
+/// 各戰報的賽季編號統一用這個標籤顯示，掛在 Section 標題列的尾端。
+/// 取不到賽季編號時不佔任何版面。
+@available(iOS 17.0, macCatalyst 17.0, *)
+struct BattleReportSeasonIDLabel: View {
+    let seasonID: String?
+
+    var body: some View {
+        if let seasonID {
+            Text("hylKit.battleReport.stat.seasonID".i18nHYLKit + " \(seasonID)")
+                .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+    }
+}
+
 // MARK: - HoYoBattleReportType
 
 @available(iOS 17.0, macCatalyst 17.0, *)

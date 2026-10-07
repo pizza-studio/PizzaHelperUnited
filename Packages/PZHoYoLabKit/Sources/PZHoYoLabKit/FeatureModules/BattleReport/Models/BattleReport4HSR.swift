@@ -137,6 +137,55 @@ extension HoYo.BattleReport4HSR {
     }
 }
 
+// MARK: - HoYo.BattleReport4HSR.SeasonGroup
+
+@available(iOS 17.0, macCatalyst 17.0, *)
+extension HoYo.BattleReport4HSR {
+    /// 戰報回傳的賽季清單（由新到舊排列，第一筆通常是當前賽季）。
+    public struct SeasonGroup: AbleToCodeSendHash {
+        // MARK: Public
+
+        public let scheduleID: Int
+        public let nameMI18n: String
+
+        // MARK: Internal
+
+        enum CodingKeys: String, CodingKey {
+            case scheduleID = "schedule_id"
+            case nameMI18n = "name_mi18n"
+        }
+    }
+}
+
+@available(iOS 17.0, macCatalyst 17.0, *)
+extension [HoYo.BattleReport4HSR.SeasonGroup] {
+    /// 找出這份戰報所屬的賽季：先比對最深樓層名稱的賽季前綴，
+    /// 比對不到時再以樓層 ID 的十位數反推賽季編號。
+    func matchingSeason(maxFloor: String, maxFloorID: Int?) -> HoYo.BattleReport4HSR.SeasonGroup? {
+        if let matched = first(where: { !$0.nameMI18n.isEmpty && maxFloor.hasPrefix($0.nameMI18n) }) {
+            return matched
+        }
+        guard let maxFloorID else { return nil }
+        return first(where: { $0.scheduleID == maxFloorID / 10 })
+    }
+}
+
+// MARK: - HSRBattleReportData
+
+/// 鐵道三種戰報的統計資料共通介面。忘卻之庭自帶賽季編號，
+/// 虛構敘事與末日幻影則要從 `groups` 反推。
+@available(iOS 17.0, macCatalyst 17.0, *)
+protocol HSRBattleReportData {
+    /// 最深樓層。
+    var maxFloorNumStr: String { get }
+    /// 取得星數。
+    var starNum: Int { get }
+    /// 戰鬥次數。
+    var battleNum: Int { get }
+    /// 顯示用的賽季編號；取不到時為 nil。
+    var seasonID4Display: String? { get }
+}
+
 // MARK: - HSRFloorDetail
 
 /// 鐵道戰報的樓層詳情共通介面。這三種戰報的樓層結構一致，

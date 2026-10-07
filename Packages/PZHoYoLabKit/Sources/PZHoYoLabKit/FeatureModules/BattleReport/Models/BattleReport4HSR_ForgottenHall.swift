@@ -10,7 +10,7 @@ import PZBaseKit
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4HSR {
-    public struct ForgottenHallData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
+    public struct ForgottenHallData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult, HSRBattleReportData {
         // MARK: Public
 
         public let scheduleID: Int
@@ -27,6 +27,8 @@ extension HoYo.BattleReport4HSR {
         public var maxFloorNumStr: String {
             maxFloorID.description.suffix(2).description
         }
+
+        public var seasonID4Display: String? { scheduleID.description }
 
         public var allNodes: [FHNode] {
             allFloorDetail.flatMap(\.allNodes)

@@ -10,7 +10,7 @@ import PZBaseKit
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4HSR {
-    public struct PureFictionData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
+    public struct PureFictionData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult, HSRBattleReportData {
         // MARK: Public
 
         public let starNum: Int
@@ -18,6 +18,8 @@ extension HoYo.BattleReport4HSR {
         public let battleNum: Int
         public let hasData: Bool
         public let allFloorDetail: [PFFloorDetail]
+        public let maxFloorID: Int?
+        public let groups: [SeasonGroup]?
 
         public var maxFloorNumStr: String {
             allFloorDetail.max {
@@ -29,6 +31,10 @@ extension HoYo.BattleReport4HSR {
             allFloorDetail.flatMap(\.allNodes)
         }
 
+        public var seasonID4Display: String? {
+            (groups ?? []).matchingSeason(maxFloor: maxFloor, maxFloorID: maxFloorID)?.scheduleID.description
+        }
+
         // MARK: Internal
 
         enum CodingKeys: String, CodingKey {
@@ -37,6 +43,8 @@ extension HoYo.BattleReport4HSR {
             case battleNum = "battle_num"
             case hasData = "has_data"
             case allFloorDetail = "all_floor_detail"
+            case maxFloorID = "max_floor_id"
+            case groups
         }
     }
 

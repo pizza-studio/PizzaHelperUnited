@@ -82,7 +82,11 @@ extension HoYo.BattleReport4GI {
         var mapTimeAndType: [TreasuresStarwardType: Int] = [:]
         // 此处的时区是随便取的，只要三个时区都雷同就行。
         mapTimeAndType[.spiralAbyss] = Int(spiralAbyss.startTime) ?? 0
-        mapTimeAndType[.stygianOnslaught] = Int(stygianOnslaught?.schedule.startTime ?? "0") ?? 0
+        // 尚无战绩的幽境危战赛季不参与「最近一次挑战」的比较，
+        // 否则导航栏会因此取不到任何战绩可显示。
+        if let stygianOnslaught, stygianOnslaught.single.hasData {
+            mapTimeAndType[.stygianOnslaught] = Int(stygianOnslaught.schedule.startTime) ?? 0
+        }
         let possible = mapTimeAndType.max {
             $0.value < $1.value
         }
