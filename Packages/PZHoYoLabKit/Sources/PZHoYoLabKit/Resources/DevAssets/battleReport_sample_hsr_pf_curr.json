@@ -1,282 +1,480 @@
 {
 	"groups": [
 		{
-			"schedule_id": 2014,
+			"schedule_id": 2026,
 			"begin_time": {
-				"year": 2025,
-				"month": 4,
-				"day": 28,
+				"year": 2026,
+				"month": 9,
+				"day": 14,
 				"hour": 4,
 				"minute": 0
 			},
 			"end_time": {
-				"year": 2025,
-				"month": 6,
-				"day": 9,
+				"year": 2026,
+				"month": 10,
+				"day": 19,
 				"hour": 4,
 				"minute": 0
 			},
 			"status": "Running",
-			"name_mi18n": "结构规律",
+			"name_mi18n": "立界开篇",
 			"upper_boss": null,
-			"lower_boss": null
+			"lower_boss": null,
+			"tierce_boss": null
 		},
 		{
-			"schedule_id": 2013,
+			"schedule_id": 2025,
 			"begin_time": {
-				"year": 2025,
-				"month": 3,
-				"day": 17,
+				"year": 2026,
+				"month": 8,
+				"day": 3,
 				"hour": 4,
 				"minute": 0
 			},
 			"end_time": {
-				"year": 2025,
-				"month": 4,
-				"day": 28,
+				"year": 2026,
+				"month": 9,
+				"day": 14,
 				"hour": 4,
 				"minute": 0
 			},
 			"status": "End",
-			"name_mi18n": "自证预言",
+			"name_mi18n": "构事生意",
 			"upper_boss": null,
-			"lower_boss": null
+			"lower_boss": null,
+			"tierce_boss": null
 		}
 	],
 	"star_num": 12,
-	"max_floor": "结构规律其四",
-	"battle_num": 4,
+	"max_floor": "立界开篇其四",
+	"battle_num": 6,
 	"has_data": true,
 	"all_floor_detail": [
 		{
-			"name": "结构规律其四",
-			"round_num": 6,
-			"star_num": 3,
+			"name": "立界开篇其四星启模式",
+			"round_num": 12,
+			"star_num": 2,
 			"node_1": {
 				"challenge_time": {
-					"year": 2025,
-					"month": 4,
-					"day": 29,
-					"hour": 1,
-					"minute": 25
-				},
-				"avatars": [
-					{
-						"id": 1225,
-						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/86bb244d0449fa3b9f88f9921d21a067.png",
-						"rarity": 5,
-						"element": "fire",
-						"rank": 1
-					},
-					{
-						"id": 1317,
-						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/cb016d7431ef1bcce33f92484b031b39.png",
-						"rarity": 5,
-						"element": "imaginary",
-						"rank": 0
-					},
-					{
-						"id": 1303,
-						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fe294567c21ff52a23a200923a17ec11.png",
-						"rarity": 5,
-						"element": "ice",
-						"rank": 0
-					},
-					{
-						"id": 1217,
-						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/2ff5fae59cafeeee8be7aea4c9f23730.png",
-						"rarity": 5,
-						"element": "wind",
-						"rank": 0
-					}
-				],
-				"buff": {
-					"id": 3031329,
-					"name_mi18n": "空头",
-					"desc_mi18n": "「战意汹涌」期间，敌方目标受到的击破伤害提高30%，我方角色击破敌方目标弱点时，自身行动提前12%。",
-					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/62c6e660f66eebdf567406b14d5060df.png",
-					"simple_desc_mi18m": "我方攻击敌方目标后，每击破1个敌方目标，使我方额外积累3点「战意值」。"
-				},
-				"score": "23200"
-			},
-			"node_2": {
-				"challenge_time": {
-					"year": 2025,
-					"month": 4,
-					"day": 29,
-					"hour": 1,
-					"minute": 25
-				},
-				"avatars": [
-					{
-						"id": 1401,
-						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/88f25ad4d023e7ff26402647db1ecdf8.png",
-						"rarity": 5,
-						"element": "ice",
-						"rank": 0
-					},
-					{
-						"id": 1403,
-						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
-						"rarity": 5,
-						"element": "quantum",
-						"rank": 0
-					},
-					{
-						"id": 1013,
-						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/e31ca957f05def9960b0ef82aed816f0.png",
-						"rarity": 4,
-						"element": "ice",
-						"rank": 6
-					},
-					{
-						"id": 1222,
-						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/59cffd3385546f1a93ebf2268418de1f.png",
-						"rarity": 5,
-						"element": "fire",
-						"rank": 0
-					}
-				],
-				"buff": {
-					"id": 3031327,
-					"name_mi18n": "肤廓",
-					"desc_mi18n": "「战意汹涌」期间，我方全体战技不消耗战技点。角色施放战技或终结技后，每击中1个敌方目标获得1层【热潮】，每层使该角色造成的战技和终结技伤害提高4%，速度提高4%，最多叠加10层。",
-					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/061d7f6092284f2869d3c9e2bd1ca526.png",
-					"simple_desc_mi18m": "我方施放终结技攻击敌方目标后，每击中1个敌方目标，使我方额外积累3点「战意值」。"
-				},
-				"score": "40000"
-			},
-			"maze_id": 20144,
-			"is_fast": false
-		},
-		{
-			"name": "结构规律其三",
-			"round_num": 2,
-			"star_num": 3,
-			"node_1": {
-				"challenge_time": {
-					"year": 2025,
-					"month": 4,
-					"day": 28,
-					"hour": 14,
-					"minute": 19
-				},
-				"avatars": [
-					{
-						"id": 1308,
-						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/4de5041f65cfea8f871e1b5c106bce7e.png",
-						"rarity": 5,
-						"element": "lightning",
-						"rank": 2
-					},
-					{
-						"id": 1218,
-						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7def381794e9c84cf84b975fbe8b68d2.png",
-						"rarity": 5,
-						"element": "fire",
-						"rank": 0
-					},
-					{
-						"id": 1313,
-						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/2f0937fd121b3b91dc6f3d343337c7ea.png",
-						"rarity": 5,
-						"element": "imaginary",
-						"rank": 0
-					},
-					{
-						"id": 1222,
-						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/59cffd3385546f1a93ebf2268418de1f.png",
-						"rarity": 5,
-						"element": "fire",
-						"rank": 0
-					}
-				],
-				"buff": {
-					"id": 3031327,
-					"name_mi18n": "肤廓",
-					"desc_mi18n": "「战意汹涌」期间，我方全体战技不消耗战技点。角色施放战技或终结技后，每击中1个敌方目标获得1层【热潮】，每层使该角色造成的战技和终结技伤害提高4%，速度提高4%，最多叠加10层。",
-					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/061d7f6092284f2869d3c9e2bd1ca526.png",
-					"simple_desc_mi18m": "我方施放终结技攻击敌方目标后，每击中1个敌方目标，使我方额外积累3点「战意值」。"
-				},
-				"score": "40000"
-			},
-			"node_2": {
-				"challenge_time": {
-					"year": 2025,
-					"month": 4,
-					"day": 28,
-					"hour": 14,
-					"minute": 19
+					"year": 2026,
+					"month": 9,
+					"day": 16,
+					"hour": 21,
+					"minute": 41
 				},
 				"avatars": [
 					{
 						"id": 1407,
 						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fd8c0196c17d455650b854dcf7175baa.png",
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/e48346282ea51189d4d9615128a8df2c.png",
 						"rarity": 5,
 						"element": "quantum",
-						"rank": 2
+						"rank": 2,
+						"is_return_assist": false
 					},
 					{
-						"id": 1403,
+						"id": 1409,
 						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/0de55f853bd6234b44b263069996fe90.png",
 						"rarity": 5,
-						"element": "quantum",
-						"rank": 0
+						"element": "wind",
+						"rank": 0,
+						"is_return_assist": false
 					},
 					{
-						"id": 8008,
+						"id": 1415,
 						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fe9974b41b2458729559d3bcfc6e8ed2.png",
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b260f9755b8a839729ae0cd1427ed9f7.png",
 						"rarity": 5,
 						"element": "ice",
-						"rank": 6
+						"rank": 0,
+						"is_return_assist": false
 					},
 					{
-						"id": 1301,
+						"id": 1413,
 						"level": 80,
-						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/d680c706090155fd6fdf3ef693495c09.png",
-						"rarity": 4,
-						"element": "fire",
-						"rank": 6
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/9011bd4477c915342d7f147c0af2c49e.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0,
+						"is_return_assist": false
 					}
 				],
 				"buff": {
-					"id": 3031338,
-					"name_mi18n": "圣显",
-					"desc_mi18n": "「战意汹涌」期间我方全体施放战技时消耗等同于自身20%生命上限的生命值，并在施放战技后回复自身20%生命上限的生命值。",
-					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/ed2f52d5c7b92bb354fd393009c81157.png",
-					"simple_desc_mi18m": "我方全体角色每次受到攻击或损失生命值时，使我方额外积累3点「战意值」。"
+					"id": 3031366,
+					"name_mi18n": "谜狂",
+					"desc_mi18n": "我方忆灵施放攻击后，获得2个笑点；「战意汹涌」期间，我方忆灵造成的伤害提高50%。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/54e7120f82b40be284e4f2e39b8ef70c.png",
+					"simple_desc_mi18m": "忆灵攻击后每击中1个敌方目标，使我方额外积累3点「战意值」。"
+				},
+				"score": "30080"
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2026,
+					"month": 9,
+					"day": 16,
+					"hour": 21,
+					"minute": 50
+				},
+				"avatars": [
+					{
+						"id": 1502,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b4e1b81f473a32daa793e7bdd4ad60ca.png",
+						"rarity": 5,
+						"element": "physical",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1217,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/17e024b801e2376cc0c3995a729ce195.png",
+						"rarity": 5,
+						"element": "wind",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1506,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/8eb097320f7889d54876a6773777e1cd.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 8010,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/4fb7be0a120781ebb6bb7694c15795b7.png",
+						"rarity": 5,
+						"element": "lightning",
+						"rank": 6,
+						"is_return_assist": false
+					}
+				],
+				"buff": {
+					"id": 3031354,
+					"name_mi18n": "狂想",
+					"desc_mi18n": "我方目标施放普攻或战技后，获得1个笑点；「战意汹涌」期间，我方目标造成的伤害提高50%。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/acfd375c6847735d068789cc72005127.png",
+					"simple_desc_mi18m": "普攻或战技每击中1个敌方目标，使我方额外积累3点「战意值」。"
+				},
+				"score": "27480"
+			},
+			"maze_id": 20264,
+			"is_fast": false,
+			"node_3": {
+				"challenge_time": {
+					"year": 2026,
+					"month": 9,
+					"day": 16,
+					"hour": 22,
+					"minute": 4
+				},
+				"avatars": [
+					{
+						"id": 1510,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/6d99ffc12859c0efc80b60b6e92d5a39.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1313,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/59d6571087b696861b948d635c6ae068.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1004,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/0cde6ca45059f8d7ad4d941a638c6f1c.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 2,
+						"is_return_assist": false
+					},
+					{
+						"id": 1414,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/9f71813faa8c3d8b2f517e696aa446f1.png",
+						"rarity": 5,
+						"element": "physical",
+						"rank": 0,
+						"is_return_assist": false
+					}
+				],
+				"buff": {
+					"id": 3031354,
+					"name_mi18n": "狂想",
+					"desc_mi18n": "我方目标施放普攻或战技后，获得1个笑点；「战意汹涌」期间，我方目标造成的伤害提高50%。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/acfd375c6847735d068789cc72005127.png",
+					"simple_desc_mi18m": "普攻或战技每击中1个敌方目标，使我方额外积累3点「战意值」。"
+				},
+				"score": "24160"
+			},
+			"extra_star_num": 0,
+			"is_tierce": true
+		},
+		{
+			"name": "立界开篇其四常规模式",
+			"round_num": 8,
+			"star_num": 3,
+			"node_1": {
+				"challenge_time": {
+					"year": 2026,
+					"month": 10,
+					"day": 2,
+					"hour": 15,
+					"minute": 8
+				},
+				"avatars": [
+					{
+						"id": 1415,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b260f9755b8a839729ae0cd1427ed9f7.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1407,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/e48346282ea51189d4d9615128a8df2c.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 2,
+						"is_return_assist": false
+					},
+					{
+						"id": 1409,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/0de55f853bd6234b44b263069996fe90.png",
+						"rarity": 5,
+						"element": "wind",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1413,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/9011bd4477c915342d7f147c0af2c49e.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0,
+						"is_return_assist": false
+					}
+				],
+				"buff": {
+					"id": 3031366,
+					"name_mi18n": "谜狂",
+					"desc_mi18n": "我方忆灵施放攻击后，获得2个笑点；「战意汹涌」期间，我方忆灵造成的伤害提高50%。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/54e7120f82b40be284e4f2e39b8ef70c.png",
+					"simple_desc_mi18m": "忆灵攻击后每击中1个敌方目标，使我方额外积累3点「战意值」。"
+				},
+				"score": "30560"
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2026,
+					"month": 10,
+					"day": 2,
+					"hour": 15,
+					"minute": 8
+				},
+				"avatars": [
+					{
+						"id": 1503,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/229d7c4d2b7bf95506ac3818b448de5f.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1502,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b4e1b81f473a32daa793e7bdd4ad60ca.png",
+						"rarity": 5,
+						"element": "physical",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1506,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/8eb097320f7889d54876a6773777e1cd.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 8010,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/4fb7be0a120781ebb6bb7694c15795b7.png",
+						"rarity": 5,
+						"element": "lightning",
+						"rank": 6,
+						"is_return_assist": false
+					}
+				],
+				"buff": {
+					"id": 3031353,
+					"name_mi18n": "狂欢",
+					"desc_mi18n": "「战意汹涌」期间，敌方目标受到的欢愉伤害提高30%，阿哈时刻的速度额外提高20点。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/998023bb0fd9f0902ac9ddf788e7ba09.png",
+					"simple_desc_mi18m": ""
+				},
+				"score": "31640"
+			},
+			"maze_id": 20264,
+			"is_fast": false,
+			"node_3": null,
+			"extra_star_num": 0,
+			"is_tierce": false
+		},
+		{
+			"name": "立界开篇其三",
+			"round_num": 5,
+			"star_num": 3,
+			"node_1": {
+				"challenge_time": {
+					"year": 2026,
+					"month": 9,
+					"day": 14,
+					"hour": 19,
+					"minute": 55
+				},
+				"avatars": [
+					{
+						"id": 1013,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/3594aa4e986a98eeae27914a7ed49dd5.png",
+						"rarity": 4,
+						"element": "ice",
+						"rank": 6,
+						"is_return_assist": false
+					},
+					{
+						"id": 1401,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/6ccdd1f4edb65ce365d62eb48f110772.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1317,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/1e2c2bc57b78c54bdd052a64789d0347.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1203,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/29329f0329d9c2461ba997108f09272e.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0,
+						"is_return_assist": false
+					}
+				],
+				"buff": {
+					"id": 3031354,
+					"name_mi18n": "狂想",
+					"desc_mi18n": "我方目标施放普攻或战技后，获得1个笑点；「战意汹涌」期间，我方目标造成的伤害提高50%。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/acfd375c6847735d068789cc72005127.png",
+					"simple_desc_mi18m": "普攻或战技每击中1个敌方目标，使我方额外积累3点「战意值」。"
+				},
+				"score": "26480"
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2026,
+					"month": 9,
+					"day": 14,
+					"hour": 19,
+					"minute": 55
+				},
+				"avatars": [
+					{
+						"id": 1506,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/8eb097320f7889d54876a6773777e1cd.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1502,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b4e1b81f473a32daa793e7bdd4ad60ca.png",
+						"rarity": 5,
+						"element": "physical",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1414,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/9f71813faa8c3d8b2f517e696aa446f1.png",
+						"rarity": 5,
+						"element": "physical",
+						"rank": 0,
+						"is_return_assist": false
+					},
+					{
+						"id": 1222,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/28bb29f18dd193760b75ddae96f282af.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0,
+						"is_return_assist": false
+					}
+				],
+				"buff": {
+					"id": 3031353,
+					"name_mi18n": "狂欢",
+					"desc_mi18n": "「战意汹涌」期间，敌方目标受到的欢愉伤害提高30%，阿哈时刻的速度额外提高20点。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/998023bb0fd9f0902ac9ddf788e7ba09.png",
+					"simple_desc_mi18m": ""
 				},
 				"score": "40000"
 			},
-			"maze_id": 20143,
-			"is_fast": false
+			"maze_id": 20263,
+			"is_fast": false,
+			"node_3": null,
+			"extra_star_num": 0,
+			"is_tierce": false
 		},
 		{
-			"name": "结构规律其二",
+			"name": "立界开篇其二",
 			"round_num": 0,
 			"star_num": 3,
 			"node_1": {
 				"challenge_time": {
-					"year": 2025,
-					"month": 4,
-					"day": 28,
-					"hour": 14,
-					"minute": 19
+					"year": 2026,
+					"month": 9,
+					"day": 14,
+					"hour": 19,
+					"minute": 55
 				},
 				"avatars": [],
 				"buff": null,
@@ -284,30 +482,33 @@
 			},
 			"node_2": {
 				"challenge_time": {
-					"year": 2025,
-					"month": 4,
-					"day": 28,
-					"hour": 14,
-					"minute": 19
+					"year": 2026,
+					"month": 9,
+					"day": 14,
+					"hour": 19,
+					"minute": 55
 				},
 				"avatars": [],
 				"buff": null,
 				"score": "0"
 			},
-			"maze_id": 20142,
-			"is_fast": true
+			"maze_id": 20262,
+			"is_fast": true,
+			"node_3": null,
+			"extra_star_num": 0,
+			"is_tierce": false
 		},
 		{
-			"name": "结构规律其一",
+			"name": "立界开篇其一",
 			"round_num": 0,
 			"star_num": 3,
 			"node_1": {
 				"challenge_time": {
-					"year": 2025,
-					"month": 4,
-					"day": 28,
-					"hour": 14,
-					"minute": 19
+					"year": 2026,
+					"month": 9,
+					"day": 14,
+					"hour": 19,
+					"minute": 55
 				},
 				"avatars": [],
 				"buff": null,
@@ -315,19 +516,23 @@
 			},
 			"node_2": {
 				"challenge_time": {
-					"year": 2025,
-					"month": 4,
-					"day": 28,
-					"hour": 14,
-					"minute": 19
+					"year": 2026,
+					"month": 9,
+					"day": 14,
+					"hour": 19,
+					"minute": 55
 				},
 				"avatars": [],
 				"buff": null,
 				"score": "0"
 			},
-			"maze_id": 20141,
-			"is_fast": true
+			"maze_id": 20261,
+			"is_fast": true,
+			"node_3": null,
+			"extra_star_num": 0,
+			"is_tierce": false
 		}
 	],
-	"max_floor_id": 20144
+	"max_floor_id": 20264,
+	"extra_star_num": 0
 }

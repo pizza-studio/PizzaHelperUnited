@@ -11,6 +11,7 @@ import PZBaseKit
 enum BattleReportTestAssets: String {
     case giSACurr = "battleReport_sample_gi_sa_curr"
     case giSAPrev = "battleReport_sample_gi_sa_prev"
+    case giSOCurr = "battleReport_sample_gi_so_curr"
     case hsrFHCurr = "battleReport_sample_hsr_fh_curr"
     case hsrFHPrev = "battleReport_sample_hsr_fh_prev"
     case hsrASCurr = "battleReport_sample_hsr_as_curr"
@@ -33,28 +34,30 @@ enum BattleReportTestAssets: String {
     }
 
     static func getReport4HSR(isPrev: Bool = false) throws -> HoYo.BattleReport4HSR {
-        var step = 0
-        do {
-            let dataForgottenHall = try hsrFHCurr.rawData.parseAs(HoYo.BattleReport4HSR.ForgottenHallData.self)
-            step += 1
-            let dataPureFiction = try hsrPFCurr.rawData.parseAs(HoYo.BattleReport4HSR.PureFictionData.self)
-            step += 1
-            let dataApocalypticShadow = try hsrASCurr.rawData.parseAs(HoYo.BattleReport4HSR.ApocalypticShadowData.self)
-            step += 1
-            let result = HoYo.BattleReport4HSR(
-                forgottenHall: dataForgottenHall,
-                pureFiction: dataPureFiction,
-                apocalypticShadow: dataApocalypticShadow
-            )
-            return result
-        } catch {
-            throw error
-        }
+        let dataForgottenHall = try (isPrev ? hsrFHPrev : hsrFHCurr).rawData
+            .parseAs(HoYo.BattleReport4HSR.ForgottenHallData.self)
+        let dataPureFiction = try (isPrev ? hsrPFPrev : hsrPFCurr).rawData
+            .parseAs(HoYo.BattleReport4HSR.PureFictionData.self)
+        let dataApocalypticShadow = try (isPrev ? hsrASPrev : hsrASCurr).rawData
+            .parseAs(HoYo.BattleReport4HSR.ApocalypticShadowData.self)
+        return HoYo.BattleReport4HSR(
+            forgottenHall: dataForgottenHall,
+            pureFiction: dataPureFiction,
+            apocalypticShadow: dataApocalypticShadow
+        )
     }
 
     static func getReport4GI(isPrev: Bool = false) throws -> HoYo.BattleReport4GI {
-        let spiralAbyss = try giSACurr.rawData.parseAs(HoYo.BattleReport4GI.SpiralAbyssData.self)
-        let stygianOnslaught = try hsrFHCurr.rawData.parseAs(HoYo.BattleReport4GI.StygianOnslaughtData.self)
+        let spiralAbyss = try (isPrev ? giSAPrev : giSACurr).rawData
+            .parseAs(HoYo.BattleReport4GI.SpiralAbyssData.self)
+        let onslaughtResult = try giSOCurr.rawData
+            .parseAs(HoYo.BattleReport4GI.StygianOnslaughtQueryResult.self)
+        var stygianOnslaught: HoYo.BattleReport4GI.StygianOnslaughtData?
+        if onslaughtResult.isUnlock {
+            // 幽境危戰會「同時」打包返回當前與上一個賽季的報告。
+            let season = isPrev ? onslaughtResult.data.dropFirst().first : onslaughtResult.data.first
+            if let season, season.single.hasData { stygianOnslaught = season }
+        }
         return HoYo.BattleReport4GI(
             spiralAbyss: spiralAbyss,
             stygianOnslaught: stygianOnslaught

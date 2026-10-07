@@ -36,7 +36,10 @@ let package = Package(
         ),
         .testTarget(
             name: "PZHoYoLabKitTests",
-            dependencies: ["PZHoYoLabKit"]
+            dependencies: [
+                "PZHoYoLabKit",
+                .product(name: "PZAccountKit", package: "PZKit"),
+            ]
         ),
     ]
 )

@@ -40,15 +40,18 @@ extension HoYo.BattleReport4HSR {
         }
     }
 
-    public struct PFFloorDetail: AbleToCodeSendHash {
+    public struct PFFloorDetail: AbleToCodeSendHash, HSRFloorDetail {
         // MARK: Public
 
         public let name: String
         public let starNum: Int
-        public let node1: FHNode
-        public let node2: FHNode
+        // node_1 / node_2 都可能為 null。
+        public let node1: FHNode?
+        public let node2: FHNode?
         public let node3: FHNode?
         public let mazeID: Int
+
+        public var starNumInt: Int { starNum }
 
         public var allNodes: [FHNode] {
             [node1, node2, node3].compactMap(\.self)

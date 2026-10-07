@@ -153,7 +153,7 @@ public struct BattleReportView4HSR: BattleReportView {
     @ViewBuilder var floorList: some View {
         switch contentType {
         case .forgottenHall:
-            ForEach(data4FH.allFloorDetail.trimmed, id: \.mazeID) { floorData in
+            ForEach(data4FH.allFloorDetail.bestAttemptsPerFloor.trimmed, id: \.mazeID) { floorData in
                 Section {
                     if floorData.isSkipped {
                         Text("hylKit.battleReport.floor.thisFloorIsSkipped".i18nHYLKit)
@@ -177,7 +177,7 @@ public struct BattleReportView4HSR: BattleReportView {
                             bundle: .currentSPM
                         )
                         Spacer()
-                        if let challengeTime = floorData.node1.challengeTime {
+                        if let challengeTime = floorData.allNodes.first?.challengeTime {
                             Text(verbatim: challengeTime.description)
                         }
                         if floorData.starNum > 0 {
@@ -192,7 +192,7 @@ public struct BattleReportView4HSR: BattleReportView {
                 .listRowMaterialBackground()
             }
         case .pureFiction:
-            ForEach(data4PF.allFloorDetail.trimmed, id: \.mazeID) { floorData in
+            ForEach(data4PF.allFloorDetail.bestAttemptsPerFloor.trimmed, id: \.mazeID) { floorData in
                 Section {
                     if floorData.isSkipped {
                         Text("hylKit.battleReport.floor.thisFloorIsSkipped".i18nHYLKit)
@@ -216,7 +216,7 @@ public struct BattleReportView4HSR: BattleReportView {
                             bundle: .currentSPM
                         )
                         Spacer()
-                        if let challengeTime = floorData.node1.challengeTime {
+                        if let challengeTime = floorData.allNodes.first?.challengeTime {
                             Text(verbatim: challengeTime.description)
                         }
 
@@ -233,7 +233,7 @@ public struct BattleReportView4HSR: BattleReportView {
                 .listRowMaterialBackground()
             }
         case .apocalypticShadow:
-            ForEach(data4AS.allFloorDetail.trimmed, id: \.mazeID) { floorData in
+            ForEach(data4AS.allFloorDetail.bestAttemptsPerFloor.trimmed, id: \.mazeID) { floorData in
                 Section {
                     if floorData.isSkipped {
                         Text("hylKit.battleReport.floor.thisFloorIsSkipped".i18nHYLKit)
@@ -257,11 +257,10 @@ public struct BattleReportView4HSR: BattleReportView {
                             bundle: .currentSPM
                         )
                         Spacer()
-                        if let challengeTime = floorData.node1.challengeTime ?? floorData.node2
-                            .challengeTime ?? floorData.node3?.challengeTime {
+                        if let challengeTime = floorData.allNodes.first?.challengeTime {
                             Text(verbatim: challengeTime.description)
                         }
-                        let starNumInt = Int(floorData.starNum) ?? 0
+                        let starNumInt = floorData.starNumInt
                         if starNumInt > 0 {
                             HStack(spacing: 0) {
                                 ForEach(1 ... starNumInt, id: \.self) { _ in

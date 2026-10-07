@@ -1,608 +1,666 @@
 {
-  "all_floor_detail": [
-    {
-      "is_chaos": true,
-      "is_fast": false,
-      "maze_id": 3610,
-      "name": "长眠不醒其十",
-      "node_1": {
-        "avatars": [
-          {
-            "element": "imaginary",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/f8b8940d423b34bebd551a1a268e82d7.png",
-            "id": 1203,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "wind",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/d7d87f1a47a90c624e7badda918eacc5.png",
-            "id": 1101,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "fire",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/59e55d0376104a2468d75871196fe41a.png",
-            "id": 1218,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "lightning",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/ae4b50a5d109bc5a2b971aa0c4f6dfed.png",
-            "id": 1308,
-            "level": 80,
-            "rank": 2,
-            "rarity": 5
-          }
-        ],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 49,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "node_2": {
-        "avatars": [
-          {
-            "element": "fire",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/385607447905342110e5f08eaa17f08c.png",
-            "id": 1009,
-            "level": 80,
-            "rank": 6,
-            "rarity": 4
-          },
-          {
-            "element": "imaginary",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/cab53a25efea59eab52527ba903eb5d0.png",
-            "id": 1304,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "fire",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/2e82c946e5ccb45e7a358da478067151.png",
-            "id": 1301,
-            "level": 80,
-            "rank": 6,
-            "rarity": 4
-          },
-          {
-            "element": "fire",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/b1ad0b0cde57a8ff91f66c20720151a4.png",
-            "id": 1310,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          }
-        ],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 49,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "round_num": 9,
-      "star_num": 3
-    },
-    {
-      "is_chaos": true,
-      "is_fast": false,
-      "maze_id": 3609,
-      "name": "长眠不醒其九",
-      "node_1": {
-        "avatars": [
-          {
-            "element": "ice",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/aaa8a185f3767344c4d692abc2de6881.png",
-            "id": 1212,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "ice",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/8e2fc5fb6de865010293b92220eeee25.png",
-            "id": 1303,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "imaginary",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/f8b8940d423b34bebd551a1a268e82d7.png",
-            "id": 1203,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "imaginary",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/cab53a25efea59eab52527ba903eb5d0.png",
-            "id": 1304,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          }
-        ],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 37,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "node_2": {
-        "avatars": [
-          {
-            "element": "lightning",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/ae4b50a5d109bc5a2b971aa0c4f6dfed.png",
-            "id": 1308,
-            "level": 80,
-            "rank": 2,
-            "rarity": 5
-          },
-          {
-            "element": "fire",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/59e55d0376104a2468d75871196fe41a.png",
-            "id": 1218,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "ice",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/33fad3910559231e3a4a9018dabc80e4.png",
-            "id": 1106,
-            "level": 80,
-            "rank": 6,
-            "rarity": 4
-          },
-          {
-            "element": "fire",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/2e82c946e5ccb45e7a358da478067151.png",
-            "id": 1301,
-            "level": 80,
-            "rank": 6,
-            "rarity": 4
-          }
-        ],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 37,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "round_num": 4,
-      "star_num": 3
-    },
-    {
-      "is_chaos": true,
-      "is_fast": false,
-      "maze_id": 3608,
-      "name": "长眠不醒其八",
-      "node_1": {
-        "avatars": [
-          {
-            "element": "quantum",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/bdc386af5196c82ea20b6c662b54bd7a.png",
-            "id": 1208,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "ice",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/33fad3910559231e3a4a9018dabc80e4.png",
-            "id": 1106,
-            "level": 80,
-            "rank": 6,
-            "rarity": 4
-          },
-          {
-            "element": "fire",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/59e55d0376104a2468d75871196fe41a.png",
-            "id": 1218,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "lightning",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/ae4b50a5d109bc5a2b971aa0c4f6dfed.png",
-            "id": 1308,
-            "level": 80,
-            "rank": 2,
-            "rarity": 5
-          }
-        ],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 30,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "node_2": {
-        "avatars": [
-          {
-            "element": "ice",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/aaa8a185f3767344c4d692abc2de6881.png",
-            "id": 1212,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "imaginary",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/cab53a25efea59eab52527ba903eb5d0.png",
-            "id": 1304,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "imaginary",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/f8b8940d423b34bebd551a1a268e82d7.png",
-            "id": 1203,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "ice",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/8e2fc5fb6de865010293b92220eeee25.png",
-            "id": 1303,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          }
-        ],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 30,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "round_num": 6,
-      "star_num": 3
-    },
-    {
-      "is_chaos": true,
-      "is_fast": false,
-      "maze_id": 3607,
-      "name": "长眠不醒其七",
-      "node_1": {
-        "avatars": [
-          {
-            "element": "fire",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/b1ad0b0cde57a8ff91f66c20720151a4.png",
-            "id": 1310,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "fire",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/2e82c946e5ccb45e7a358da478067151.png",
-            "id": 1301,
-            "level": 80,
-            "rank": 6,
-            "rarity": 4
-          },
-          {
-            "element": "physical",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/516559caf928813af14b827e10db0634.png",
-            "id": 1309,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "imaginary",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/cab53a25efea59eab52527ba903eb5d0.png",
-            "id": 1304,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          }
-        ],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "node_2": {
-        "avatars": [
-          {
-            "element": "lightning",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/ae4b50a5d109bc5a2b971aa0c4f6dfed.png",
-            "id": 1308,
-            "level": 80,
-            "rank": 2,
-            "rarity": 5
-          },
-          {
-            "element": "fire",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/59e55d0376104a2468d75871196fe41a.png",
-            "id": 1218,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "wind",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/d7d87f1a47a90c624e7badda918eacc5.png",
-            "id": 1101,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          },
-          {
-            "element": "wind",
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/bcab6d5356a6e91172c27fbae9d63250.png",
-            "id": 1217,
-            "level": 80,
-            "rank": 0,
-            "rarity": 5
-          }
-        ],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "round_num": 6,
-      "star_num": 3
-    },
-    {
-      "is_chaos": true,
-      "is_fast": true,
-      "maze_id": 3606,
-      "name": "长眠不醒其六",
-      "node_1": {
-        "avatars": [],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "node_2": {
-        "avatars": [],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "round_num": 0,
-      "star_num": 3
-    },
-    {
-      "is_chaos": true,
-      "is_fast": true,
-      "maze_id": 3605,
-      "name": "长眠不醒其五",
-      "node_1": {
-        "avatars": [],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "node_2": {
-        "avatars": [],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "round_num": 0,
-      "star_num": 3
-    },
-    {
-      "is_chaos": true,
-      "is_fast": true,
-      "maze_id": 3604,
-      "name": "长眠不醒其四",
-      "node_1": {
-        "avatars": [],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "node_2": {
-        "avatars": [],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "round_num": 0,
-      "star_num": 3
-    },
-    {
-      "is_chaos": true,
-      "is_fast": true,
-      "maze_id": 3603,
-      "name": "长眠不醒其三",
-      "node_1": {
-        "avatars": [],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "node_2": {
-        "avatars": [],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "round_num": 0,
-      "star_num": 3
-    },
-    {
-      "is_chaos": true,
-      "is_fast": true,
-      "maze_id": 3602,
-      "name": "长眠不醒其二",
-      "node_1": {
-        "avatars": [],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "node_2": {
-        "avatars": [],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "round_num": 0,
-      "star_num": 3
-    },
-    {
-      "is_chaos": true,
-      "is_fast": true,
-      "maze_id": 3601,
-      "name": "长眠不醒其一",
-      "node_1": {
-        "avatars": [],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "node_2": {
-        "avatars": [],
-        "challenge_time": {
-          "day": 3,
-          "hour": 13,
-          "minute": 22,
-          "month": 9,
-          "year": 2024
-        }
-      },
-      "round_num": 0,
-      "star_num": 3
-    }
-  ],
-  "battle_num": 5,
+  "schedule_id": 1035,
   "begin_time": {
-    "day": 2,
-    "hour": 4,
-    "minute": 0,
+    "year": 2026,
     "month": 9,
-    "year": 2024
+    "day": 28,
+    "hour": 6,
+    "minute": 0
   },
   "end_time": {
-    "day": 14,
+    "year": 2026,
+    "month": 11,
+    "day": 2,
     "hour": 4,
-    "minute": 0,
-    "month": 10,
-    "year": 2024
+    "minute": 0
   },
-  "groups": [
+  "star_num": 36,
+  "max_floor": "来生泅渡其十二",
+  "battle_num": 3,
+  "has_data": true,
+  "max_floor_detail": null,
+  "all_floor_detail": [
     {
-      "begin_time": {
-        "day": 2,
-        "hour": 4,
-        "minute": 0,
-        "month": 9,
-        "year": 2024
+      "name": "来生泅渡其十二常规模式",
+      "round_num": 4,
+      "star_num": 3,
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 16,
+          "minute": 21
+        },
+        "avatars": [
+          {
+            "id": 1502,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b4e1b81f473a32daa793e7bdd4ad60ca.png",
+            "rarity": 5,
+            "element": "physical",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1503,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/229d7c4d2b7bf95506ac3818b448de5f.png",
+            "rarity": 5,
+            "element": "ice",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1506,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/8eb097320f7889d54876a6773777e1cd.png",
+            "rarity": 5,
+            "element": "imaginary",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 8010,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/4fb7be0a120781ebb6bb7694c15795b7.png",
+            "rarity": 5,
+            "element": "lightning",
+            "rank": 6,
+            "is_return_assist": false
+          }
+        ]
       },
-      "end_time": {
-        "day": 14,
-        "hour": 4,
-        "minute": 0,
-        "month": 10,
-        "year": 2024
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 16,
+          "minute": 21
+        },
+        "avatars": [
+          {
+            "id": 1407,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/e48346282ea51189d4d9615128a8df2c.png",
+            "rarity": 5,
+            "element": "quantum",
+            "rank": 2,
+            "is_return_assist": false
+          },
+          {
+            "id": 1409,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/0de55f853bd6234b44b263069996fe90.png",
+            "rarity": 5,
+            "element": "wind",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1413,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/9011bd4477c915342d7f147c0af2c49e.png",
+            "rarity": 5,
+            "element": "ice",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1415,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b260f9755b8a839729ae0cd1427ed9f7.png",
+            "rarity": 5,
+            "element": "ice",
+            "rank": 0,
+            "is_return_assist": false
+          }
+        ]
       },
-      "name_mi18n": "长眠不醒",
-      "schedule_id": 1017,
-      "status": "New"
+      "is_chaos": true,
+      "maze_id": 5412,
+      "is_fast": false,
+      "node_3": null,
+      "extra_star_num": 0,
+      "is_tierce": false
     },
     {
-      "begin_time": {
-        "day": 22,
-        "hour": 4,
-        "minute": 0,
-        "month": 7,
-        "year": 2024
+      "name": "来生泅渡其十一",
+      "round_num": 5,
+      "star_num": 3,
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 51
+        },
+        "avatars": [
+          {
+            "id": 1509,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/cb0a1c3447350f953c99ad9ce8c721fd.png",
+            "rarity": 5,
+            "element": "lightning",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1014,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b00f1c0ce0a5f013ecf533ec6157c5f2.png",
+            "rarity": 5,
+            "element": "wind",
+            "rank": 1,
+            "is_return_assist": false
+          },
+          {
+            "id": 1313,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/59d6571087b696861b948d635c6ae068.png",
+            "rarity": 5,
+            "element": "imaginary",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1409,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/0de55f853bd6234b44b263069996fe90.png",
+            "rarity": 5,
+            "element": "wind",
+            "rank": 0,
+            "is_return_assist": false
+          }
+        ]
       },
-      "end_time": {
-        "day": 2,
-        "hour": 4,
-        "minute": 0,
-        "month": 9,
-        "year": 2024
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 51
+        },
+        "avatars": [
+          {
+            "id": 1506,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/8eb097320f7889d54876a6773777e1cd.png",
+            "rarity": 5,
+            "element": "imaginary",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1502,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b4e1b81f473a32daa793e7bdd4ad60ca.png",
+            "rarity": 5,
+            "element": "physical",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1414,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/9f71813faa8c3d8b2f517e696aa446f1.png",
+            "rarity": 5,
+            "element": "physical",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1304,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/d66652fd01dd5a6e2faa7eee982f3477.png",
+            "rarity": 5,
+            "element": "imaginary",
+            "rank": 0,
+            "is_return_assist": false
+          }
+        ]
       },
-      "name_mi18n": "曲尽梦散",
-      "schedule_id": 1016,
-      "status": "End"
+      "is_chaos": true,
+      "maze_id": 5411,
+      "is_fast": false,
+      "node_3": null,
+      "extra_star_num": 0,
+      "is_tierce": false
+    },
+    {
+      "name": "来生泅渡其十",
+      "round_num": 5,
+      "star_num": 3,
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": [
+          {
+            "id": 1204,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/5e6960aeae3b2994debc77fdf99641aa.png",
+            "rarity": 5,
+            "element": "lightning",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1401,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/6ccdd1f4edb65ce365d62eb48f110772.png",
+            "rarity": 5,
+            "element": "ice",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1313,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/59d6571087b696861b948d635c6ae068.png",
+            "rarity": 5,
+            "element": "imaginary",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1409,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/0de55f853bd6234b44b263069996fe90.png",
+            "rarity": 5,
+            "element": "wind",
+            "rank": 0,
+            "is_return_assist": false
+          }
+        ]
+      },
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": [
+          {
+            "id": 1225,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/69bad83799a812e7558b0660bc8847b5.png",
+            "rarity": 5,
+            "element": "fire",
+            "rank": 1,
+            "is_return_assist": false
+          },
+          {
+            "id": 1310,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/22725364977bb7be8f919902fd64a99d.png",
+            "rarity": 5,
+            "element": "fire",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1321,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/5c6a7b9a4acf8970431d93f9c10d8730.png",
+            "rarity": 5,
+            "element": "fire",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1303,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/db3f8a1fa4486028d02d7f153a925d68.png",
+            "rarity": 5,
+            "element": "ice",
+            "rank": 1,
+            "is_return_assist": false
+          }
+        ]
+      },
+      "is_chaos": true,
+      "maze_id": 5410,
+      "is_fast": false,
+      "node_3": null,
+      "extra_star_num": 0,
+      "is_tierce": false
+    },
+    {
+      "name": "来生泅渡其九",
+      "round_num": 0,
+      "star_num": 3,
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "is_chaos": true,
+      "maze_id": 5409,
+      "is_fast": true,
+      "node_3": null,
+      "extra_star_num": 0,
+      "is_tierce": false
+    },
+    {
+      "name": "来生泅渡其八",
+      "round_num": 0,
+      "star_num": 3,
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "is_chaos": true,
+      "maze_id": 5408,
+      "is_fast": true,
+      "node_3": null,
+      "extra_star_num": 0,
+      "is_tierce": false
+    },
+    {
+      "name": "来生泅渡其七",
+      "round_num": 0,
+      "star_num": 3,
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "is_chaos": true,
+      "maze_id": 5407,
+      "is_fast": true,
+      "node_3": null,
+      "extra_star_num": 0,
+      "is_tierce": false
+    },
+    {
+      "name": "来生泅渡其六",
+      "round_num": 0,
+      "star_num": 3,
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "is_chaos": true,
+      "maze_id": 5406,
+      "is_fast": true,
+      "node_3": null,
+      "extra_star_num": 0,
+      "is_tierce": false
+    },
+    {
+      "name": "来生泅渡其五",
+      "round_num": 0,
+      "star_num": 3,
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "is_chaos": true,
+      "maze_id": 5405,
+      "is_fast": true,
+      "node_3": null,
+      "extra_star_num": 0,
+      "is_tierce": false
+    },
+    {
+      "name": "来生泅渡其四",
+      "round_num": 0,
+      "star_num": 3,
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "is_chaos": true,
+      "maze_id": 5404,
+      "is_fast": true,
+      "node_3": null,
+      "extra_star_num": 0,
+      "is_tierce": false
+    },
+    {
+      "name": "来生泅渡其三",
+      "round_num": 0,
+      "star_num": 3,
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "is_chaos": true,
+      "maze_id": 5403,
+      "is_fast": true,
+      "node_3": null,
+      "extra_star_num": 0,
+      "is_tierce": false
+    },
+    {
+      "name": "来生泅渡其二",
+      "round_num": 0,
+      "star_num": 3,
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "is_chaos": true,
+      "maze_id": 5402,
+      "is_fast": true,
+      "node_3": null,
+      "extra_star_num": 0,
+      "is_tierce": false
+    },
+    {
+      "name": "来生泅渡其一",
+      "round_num": 0,
+      "star_num": 3,
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 10,
+          "day": 2,
+          "hour": 3,
+          "minute": 38
+        },
+        "avatars": []
+      },
+      "is_chaos": true,
+      "maze_id": 5401,
+      "is_fast": true,
+      "node_3": null,
+      "extra_star_num": 0,
+      "is_tierce": false
     }
   ],
-  "has_data": true,
-  "max_floor": "长眠不醒其十",
-  "max_floor_id": 3610,
-  "schedule_id": 1017,
-  "star_num": 30
+  "max_floor_id": 5412,
+  "groups": [
+    {
+      "schedule_id": 1035,
+      "begin_time": {
+        "year": 2026,
+        "month": 9,
+        "day": 28,
+        "hour": 6,
+        "minute": 0
+      },
+      "end_time": {
+        "year": 2026,
+        "month": 11,
+        "day": 2,
+        "hour": 4,
+        "minute": 0
+      },
+      "status": "Running",
+      "name_mi18n": "来生泅渡",
+      "upper_boss": null,
+      "lower_boss": null,
+      "tierce_boss": null
+    },
+    {
+      "schedule_id": 1034,
+      "begin_time": {
+        "year": 2026,
+        "month": 8,
+        "day": 17,
+        "hour": 4,
+        "minute": 0
+      },
+      "end_time": {
+        "year": 2026,
+        "month": 9,
+        "day": 28,
+        "hour": 6,
+        "minute": 0
+      },
+      "status": "End",
+      "name_mi18n": "扫除风暴",
+      "upper_boss": null,
+      "lower_boss": null,
+      "tierce_boss": null
+    }
+  ],
+  "extra_star_num": 0
 }

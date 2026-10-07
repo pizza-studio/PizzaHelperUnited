@@ -1,309 +1,513 @@
 {
   "groups": [
     {
-      "schedule_id": 3009,
+      "schedule_id": 3021,
       "begin_time": {
-        "year": 2025,
-        "month": 5,
-        "day": 26,
+        "year": 2026,
+        "month": 10,
+        "day": 5,
         "hour": 4,
         "minute": 0
       },
       "end_time": {
-        "year": 2025,
-        "month": 7,
-        "day": 7,
+        "year": 2026,
+        "month": 11,
+        "day": 16,
         "hour": 4,
         "minute": 0
       },
       "status": "New",
-      "name_mi18n": "冽风支配",
+      "name_mi18n": "支配遗忘",
       "upper_boss": {
-        "id": 100401401,
-        "name_mi18n": "无望冽风的幻灭者",
-        "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/3c28789ce4e81edf484e55002c2f4778.png"
+        "id": 200401404,
+        "name_mi18n": "勾魂摄魄的支配者",
+        "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/0c244800371eabbf149e6e77c0317e68.png"
       },
       "lower_boss": {
-        "id": 200401401,
-        "name_mi18n": "勾魂摄魄的支配者",
-        "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c2e6b95f422c5a62babbd2e00bb08a2.png"
+        "id": 406401204,
+        "name_mi18n": "迷惘之渊的裁定者",
+        "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/16b7e3e76c93273a888e8174c5f6dfaa.png"
       },
-      "tierce_boss": null
+      "tierce_boss": {
+        "id": 203401404,
+        "name_mi18n": "雷奔云谲的恶狼主",
+        "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/a4f6f2013730fc18dddb6551799d37fb.png"
+      }
     },
     {
-      "schedule_id": 3008,
+      "schedule_id": 3020,
       "begin_time": {
-        "year": 2025,
-        "month": 4,
-        "day": 14,
+        "year": 2026,
+        "month": 8,
+        "day": 31,
         "hour": 4,
         "minute": 0
       },
       "end_time": {
-        "year": 2025,
-        "month": 5,
-        "day": 26,
+        "year": 2026,
+        "month": 10,
+        "day": 5,
         "hour": 4,
         "minute": 0
       },
       "status": "End",
-      "name_mi18n": "螟蝗战首",
+      "name_mi18n": "仙客天狼",
       "upper_boss": {
-        "id": 802501101,
-        "name_mi18n": "遮天蔽日的噬星蠹",
-        "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/a0a946f54a4db3d4fc03fe03d4b1a579.png"
+        "id": 202401604,
+        "name_mi18n": "弗有垂暮的不老仙",
+        "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/c90033a73732c0f9f57011474e1cd038.png"
       },
       "lower_boss": {
-        "id": 203401401,
-        "name_mi18n": "雷奔云谲的恶狼主",
-        "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/21865da151e17554db53a872a033d854.png"
+        "id": 203302204,
+        "name_mi18n": "蛊言妄念的蚀心兽",
+        "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/580fa6418ee3f2aa5042ee8bbde1e2df.png"
       },
-      "tierce_boss": null
+      "tierce_boss": {
+        "id": 501401404,
+        "name_mi18n": "万众瞩目的超偶像",
+        "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/d6011038a33ef25c72842ff33c3379d8.png"
+      }
     }
   ],
   "star_num": 12,
-  "max_floor": "螟蝗战首·难度04",
-  "battle_num": 2,
+  "max_floor": "仙客天狼·难度04",
+  "battle_num": 22,
   "has_data": true,
   "all_floor_detail": [
     {
-      "name": "螟蝗战首·难度04",
-      "star_num": "3",
+      "name": "仙客天狼·难度04星启模式",
+      "star_num": "1",
       "node_1": {
         "challenge_time": {
-          "year": 2025,
-          "month": 4,
-          "day": 14,
-          "hour": 14,
-          "minute": 30
+          "year": 2026,
+          "month": 9,
+          "day": 7,
+          "hour": 21,
+          "minute": 51
         },
         "avatars": [
           {
-            "id": 1401,
+            "id": 1415,
             "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/88f25ad4d023e7ff26402647db1ecdf8.png",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b260f9755b8a839729ae0cd1427ed9f7.png",
             "rarity": 5,
             "element": "ice",
-            "rank": 0
+            "rank": 0,
+            "is_return_assist": false
           },
           {
-            "id": 1013,
+            "id": 1413,
             "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/e31ca957f05def9960b0ef82aed816f0.png",
-            "rarity": 4,
-            "element": "ice",
-            "rank": 6
-          },
-          {
-            "id": 1303,
-            "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fe294567c21ff52a23a200923a17ec11.png",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/9011bd4477c915342d7f147c0af2c49e.png",
             "rarity": 5,
             "element": "ice",
-            "rank": 0
+            "rank": 0,
+            "is_return_assist": false
           },
           {
-            "id": 1304,
+            "id": 1407,
             "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/f1686b37cab2dc9feb750ecffcefc975.png",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/e48346282ea51189d4d9615128a8df2c.png",
             "rarity": 5,
-            "element": "imaginary",
-            "rank": 0
+            "element": "quantum",
+            "rank": 2,
+            "is_return_assist": false
+          },
+          {
+            "id": 1409,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/0de55f853bd6234b44b263069996fe90.png",
+            "rarity": 5,
+            "element": "wind",
+            "rank": 0,
+            "is_return_assist": false
           }
         ],
         "buff": {
-          "id": 3111047,
-          "name_mi18n": "智圆行方",
-          "desc_mi18n": "我方队伍中存在智识命途的角色时，我方全体全属性抗性穿透提高15%。",
-          "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/caf499e4320e348b7c923473be0e9dd4.png"
+          "id": 3111065,
+          "name_mi18n": "攻无不克",
+          "desc_mi18n": "忆灵造成伤害时无视目标20%的防御力。",
+          "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/911e049c7e44e67db0f829b84d936d46.png"
         },
-        "score": "3267",
+        "score": "3355",
         "boss_defeated": true
       },
       "node_2": {
         "challenge_time": {
-          "year": 2025,
-          "month": 4,
-          "day": 14,
-          "hour": 14,
-          "minute": 35
+          "year": 2026,
+          "month": 9,
+          "day": 7,
+          "hour": 22,
+          "minute": 44
+        },
+        "avatars": [
+          {
+            "id": 1509,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/cb0a1c3447350f953c99ad9ce8c721fd.png",
+            "rarity": 5,
+            "element": "lightning",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1014,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b00f1c0ce0a5f013ecf533ec6157c5f2.png",
+            "rarity": 5,
+            "element": "wind",
+            "rank": 1,
+            "is_return_assist": false
+          },
+          {
+            "id": 1403,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/8f43a374f32a8a2518eec995d59e6af0.png",
+            "rarity": 5,
+            "element": "quantum",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1217,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/17e024b801e2376cc0c3995a729ce195.png",
+            "rarity": 5,
+            "element": "wind",
+            "rank": 0,
+            "is_return_assist": false
+          }
+        ],
+        "buff": {
+          "id": 3111093,
+          "name_mi18n": "才藻富赡",
+          "desc_mi18n": "敌方全体的风属性抗性和雷属性抗性降低40%。",
+          "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/6b0f3c170c099ca0c2ba4abaa92f5072.png"
+        },
+        "score": "3337",
+        "boss_defeated": true
+      },
+      "maze_id": 30204,
+      "is_fast": false,
+      "last_update_time": {
+        "year": 2026,
+        "month": 9,
+        "day": 7,
+        "hour": 22,
+        "minute": 44
+      },
+      "node_3": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 9,
+          "day": 7,
+          "hour": 22,
+          "minute": 27
+        },
+        "avatars": [
+          {
+            "id": 1502,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b4e1b81f473a32daa793e7bdd4ad60ca.png",
+            "rarity": 5,
+            "element": "physical",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1506,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/8eb097320f7889d54876a6773777e1cd.png",
+            "rarity": 5,
+            "element": "imaginary",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 8010,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/4fb7be0a120781ebb6bb7694c15795b7.png",
+            "rarity": 5,
+            "element": "lightning",
+            "rank": 6,
+            "is_return_assist": false
+          },
+          {
+            "id": 1414,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/9f71813faa8c3d8b2f517e696aa446f1.png",
+            "rarity": 5,
+            "element": "physical",
+            "rank": 0,
+            "is_return_assist": false
+          }
+        ],
+        "buff": {
+          "id": 3111089,
+          "name_mi18n": "喜上眉梢",
+          "desc_mi18n": "敌方全体受到的欢愉伤害提高30%。我方队伍中存在欢愉命途的角色时，我方全体的弱点击破效率提高50%。",
+          "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/08d4c312a956cbd3841c53f9a0f8bf3a.png"
+        },
+        "score": "1039",
+        "boss_defeated": false
+      },
+      "extra_star_num": "0",
+      "is_tierce": true
+    },
+    {
+      "name": "仙客天狼·难度04常规模式",
+      "star_num": "3",
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 9,
+          "day": 7,
+          "hour": 23,
+          "minute": 2
+        },
+        "avatars": [
+          {
+            "id": 1413,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/9011bd4477c915342d7f147c0af2c49e.png",
+            "rarity": 5,
+            "element": "ice",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1407,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/e48346282ea51189d4d9615128a8df2c.png",
+            "rarity": 5,
+            "element": "quantum",
+            "rank": 2,
+            "is_return_assist": false
+          },
+          {
+            "id": 1409,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/0de55f853bd6234b44b263069996fe90.png",
+            "rarity": 5,
+            "element": "wind",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1415,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b260f9755b8a839729ae0cd1427ed9f7.png",
+            "rarity": 5,
+            "element": "ice",
+            "rank": 0,
+            "is_return_assist": false
+          }
+        ],
+        "buff": {
+          "id": 3111065,
+          "name_mi18n": "攻无不克",
+          "desc_mi18n": "忆灵造成伤害时无视目标20%的防御力。",
+          "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/911e049c7e44e67db0f829b84d936d46.png"
+        },
+        "score": "3348",
+        "boss_defeated": true
+      },
+      "node_2": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 9,
+          "day": 7,
+          "hour": 23,
+          "minute": 7
+        },
+        "avatars": [
+          {
+            "id": 1509,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/cb0a1c3447350f953c99ad9ce8c721fd.png",
+            "rarity": 5,
+            "element": "lightning",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1014,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b00f1c0ce0a5f013ecf533ec6157c5f2.png",
+            "rarity": 5,
+            "element": "wind",
+            "rank": 1,
+            "is_return_assist": false
+          },
+          {
+            "id": 1403,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/8f43a374f32a8a2518eec995d59e6af0.png",
+            "rarity": 5,
+            "element": "quantum",
+            "rank": 0,
+            "is_return_assist": false
+          },
+          {
+            "id": 1217,
+            "level": 80,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/17e024b801e2376cc0c3995a729ce195.png",
+            "rarity": 5,
+            "element": "wind",
+            "rank": 0,
+            "is_return_assist": false
+          }
+        ],
+        "buff": {
+          "id": 3111093,
+          "name_mi18n": "才藻富赡",
+          "desc_mi18n": "敌方全体的风属性抗性和雷属性抗性降低40%。",
+          "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/6b0f3c170c099ca0c2ba4abaa92f5072.png"
+        },
+        "score": "3399",
+        "boss_defeated": true
+      },
+      "maze_id": 30204,
+      "is_fast": false,
+      "last_update_time": {
+        "year": 2026,
+        "month": 9,
+        "day": 7,
+        "hour": 23,
+        "minute": 7
+      },
+      "node_3": null,
+      "extra_star_num": "0",
+      "is_tierce": false
+    },
+    {
+      "name": "仙客天狼·难度03",
+      "star_num": "3",
+      "node_1": {
+        "challenge_time": {
+          "year": 2026,
+          "month": 9,
+          "day": 2,
+          "hour": 22,
+          "minute": 0
         },
         "avatars": [
           {
             "id": 1407,
             "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fd8c0196c17d455650b854dcf7175baa.png",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/e48346282ea51189d4d9615128a8df2c.png",
             "rarity": 5,
             "element": "quantum",
-            "rank": 0
+            "rank": 2,
+            "is_return_assist": false
           },
           {
-            "id": 1006,
+            "id": 1409,
             "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/89a549568b2b468cd1c44583e78994bb.png",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/0de55f853bd6234b44b263069996fe90.png",
             "rarity": 5,
-            "element": "quantum",
-            "rank": 0
+            "element": "wind",
+            "rank": 0,
+            "is_return_assist": false
           },
           {
-            "id": 1403,
+            "id": 1413,
             "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/9011bd4477c915342d7f147c0af2c49e.png",
             "rarity": 5,
-            "element": "quantum",
-            "rank": 0
+            "element": "ice",
+            "rank": 0,
+            "is_return_assist": false
           },
           {
-            "id": 1301,
+            "id": 1415,
             "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/d680c706090155fd6fdf3ef693495c09.png",
-            "rarity": 4,
-            "element": "fire",
-            "rank": 6
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b260f9755b8a839729ae0cd1427ed9f7.png",
+            "rarity": 5,
+            "element": "ice",
+            "rank": 0,
+            "is_return_assist": false
           }
         ],
         "buff": {
-          "id": 3111051,
-          "name_mi18n": "枯木逢春",
-          "desc_mi18n": "任意我方目标被消耗生命值后，回复60%的消耗生命值，每回合最多通过该方式回复50%生命值。",
-          "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/26c2b7f7a97f197eb0fea701a01378c6.png"
+          "id": 3111065,
+          "name_mi18n": "攻无不克",
+          "desc_mi18n": "忆灵造成伤害时无视目标20%的防御力。",
+          "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/911e049c7e44e67db0f829b84d936d46.png"
         },
-        "score": "3388",
-        "boss_defeated": true
-      },
-      "maze_id": 30084,
-      "is_fast": false,
-      "last_update_time": {
-        "year": 2025,
-        "month": 4,
-        "day": 14,
-        "hour": 14,
-        "minute": 35
-      },
-      "node_3": null,
-      "extra_star_num": "0",
-      "is_tierce": false
-    },
-    {
-      "name": "螟蝗战首·难度03",
-      "star_num": "3",
-      "node_1": {
-        "challenge_time": {
-          "year": 2025,
-          "month": 4,
-          "day": 14,
-          "hour": 14,
-          "minute": 17
-        },
-        "avatars": [
-          {
-            "id": 1401,
-            "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/88f25ad4d023e7ff26402647db1ecdf8.png",
-            "rarity": 5,
-            "element": "ice",
-            "rank": 0
-          },
-          {
-            "id": 1013,
-            "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/e31ca957f05def9960b0ef82aed816f0.png",
-            "rarity": 4,
-            "element": "ice",
-            "rank": 6
-          },
-          {
-            "id": 1303,
-            "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fe294567c21ff52a23a200923a17ec11.png",
-            "rarity": 5,
-            "element": "ice",
-            "rank": 0
-          },
-          {
-            "id": 1304,
-            "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/f1686b37cab2dc9feb750ecffcefc975.png",
-            "rarity": 5,
-            "element": "imaginary",
-            "rank": 0
-          }
-        ],
-        "buff": {
-          "id": 3111047,
-          "name_mi18n": "智圆行方",
-          "desc_mi18n": "我方队伍中存在智识命途的角色时，我方全体全属性抗性穿透提高15%。",
-          "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/caf499e4320e348b7c923473be0e9dd4.png"
-        },
-        "score": "3576",
+        "score": "3817",
         "boss_defeated": true
       },
       "node_2": {
         "challenge_time": {
-          "year": 2025,
-          "month": 4,
-          "day": 14,
-          "hour": 14,
-          "minute": 22
+          "year": 2026,
+          "month": 9,
+          "day": 2,
+          "hour": 22,
+          "minute": 5
         },
         "avatars": [
           {
-            "id": 1407,
+            "id": 1509,
             "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fd8c0196c17d455650b854dcf7175baa.png",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/cb0a1c3447350f953c99ad9ce8c721fd.png",
             "rarity": 5,
-            "element": "quantum",
-            "rank": 0
+            "element": "lightning",
+            "rank": 0,
+            "is_return_assist": false
           },
           {
-            "id": 1006,
+            "id": 1014,
             "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/89a549568b2b468cd1c44583e78994bb.png",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/b00f1c0ce0a5f013ecf533ec6157c5f2.png",
             "rarity": 5,
-            "element": "quantum",
-            "rank": 0
+            "element": "wind",
+            "rank": 1,
+            "is_return_assist": false
           },
           {
             "id": 1403,
             "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/8f43a374f32a8a2518eec995d59e6af0.png",
             "rarity": 5,
             "element": "quantum",
-            "rank": 0
+            "rank": 0,
+            "is_return_assist": false
           },
           {
-            "id": 1301,
+            "id": 1222,
             "level": 80,
-            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/d680c706090155fd6fdf3ef693495c09.png",
-            "rarity": 4,
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/28bb29f18dd193760b75ddae96f282af.png",
+            "rarity": 5,
             "element": "fire",
-            "rank": 6
+            "rank": 0,
+            "is_return_assist": false
           }
         ],
         "buff": {
-          "id": 3111051,
-          "name_mi18n": "枯木逢春",
-          "desc_mi18n": "任意我方目标被消耗生命值后，回复60%的消耗生命值，每回合最多通过该方式回复50%生命值。",
-          "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/26c2b7f7a97f197eb0fea701a01378c6.png"
+          "id": 3111093,
+          "name_mi18n": "才藻富赡",
+          "desc_mi18n": "敌方全体的风属性抗性和雷属性抗性降低40%。",
+          "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u064oe/6b0f3c170c099ca0c2ba4abaa92f5072.png"
         },
-        "score": "3548",
+        "score": "3690",
         "boss_defeated": true
       },
-      "maze_id": 30083,
+      "maze_id": 30203,
       "is_fast": false,
       "last_update_time": {
-        "year": 2025,
-        "month": 4,
-        "day": 14,
-        "hour": 14,
-        "minute": 22
+        "year": 2026,
+        "month": 9,
+        "day": 2,
+        "hour": 22,
+        "minute": 5
       },
       "node_3": null,
       "extra_star_num": "0",
       "is_tierce": false
     },
     {
-      "name": "螟蝗战首·难度02",
+      "name": "仙客天狼·难度02",
       "star_num": "3",
       "node_1": {
         "challenge_time": null,
@@ -319,21 +523,21 @@
         "score": "0",
         "boss_defeated": false
       },
-      "maze_id": 30082,
+      "maze_id": 30202,
       "is_fast": true,
       "last_update_time": {
-        "year": 2025,
-        "month": 4,
-        "day": 14,
-        "hour": 14,
-        "minute": 22
+        "year": 2026,
+        "month": 9,
+        "day": 2,
+        "hour": 22,
+        "minute": 8
       },
       "node_3": null,
       "extra_star_num": "0",
       "is_tierce": false
     },
     {
-      "name": "螟蝗战首·难度01",
+      "name": "仙客天狼·难度01",
       "star_num": "3",
       "node_1": {
         "challenge_time": null,
@@ -349,20 +553,20 @@
         "score": "0",
         "boss_defeated": false
       },
-      "maze_id": 30081,
+      "maze_id": 30201,
       "is_fast": true,
       "last_update_time": {
-        "year": 2025,
-        "month": 4,
-        "day": 14,
-        "hour": 14,
-        "minute": 22
+        "year": 2026,
+        "month": 9,
+        "day": 2,
+        "hour": 22,
+        "minute": 8
       },
       "node_3": null,
       "extra_star_num": "0",
       "is_tierce": false
     }
   ],
-  "max_floor_id": 30084,
+  "max_floor_id": 30204,
   "extra_star_num": 0
 }

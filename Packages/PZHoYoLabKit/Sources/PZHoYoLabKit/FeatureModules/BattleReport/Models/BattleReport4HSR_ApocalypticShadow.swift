@@ -42,17 +42,20 @@ extension HoYo.BattleReport4HSR {
         }
     }
 
-    public struct ASFloorDetail: AbleToCodeSendHash {
+    public struct ASFloorDetail: AbleToCodeSendHash, HSRFloorDetail {
         // MARK: Public
 
         public let name: String
         public let starNum: String
-        public let node1: FHNode
-        public let node2: FHNode
+        // node_1 / node_2 都可能為 null（例如「星啟模式」只有 node_1 與 node_3）。
+        public let node1: FHNode?
+        public let node2: FHNode?
         public let node3: FHNode?
         public let mazeID: Int
         public let isTierce: Bool?
         public let extraStarNum: String?
+
+        public var starNumInt: Int { Int(starNum) ?? 0 }
 
         public var allNodes: [FHNode] {
             [node1, node2, node3].compactMap(\.self)
