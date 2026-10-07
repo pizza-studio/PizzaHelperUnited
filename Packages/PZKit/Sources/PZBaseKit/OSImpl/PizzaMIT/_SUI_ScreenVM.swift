@@ -527,6 +527,7 @@ extension ScreenVM.HingeStatus {
     }
 
     /// 由 UIKit 的 `UIHinge` 映射而来；`nil` 表示该层级不提供铰链资讯。
+    @MainActor
     init?(hinge: UIHinge?) {
         guard let hinge else { return nil }
         switch hinge.status {
