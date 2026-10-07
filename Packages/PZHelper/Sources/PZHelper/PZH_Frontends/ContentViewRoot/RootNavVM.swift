@@ -73,7 +73,8 @@ final class RootNavVM {
         let allCases = !screenVM.isSidebarVisible
         let effectiveCases = !allCases ? AppRootPage.enabledSubCases : AppRootPage.allCases
         let maxLabelLength = effectiveCases.map(\.labelNameTextRaw.count).max()
-        let forceMenu: Bool? = (maxLabelLength ?? 0) > 8 ? true : nil
+        let maxLabelLengthDelta = screenVM.isHingeOpen ? 5 : 0
+        let forceMenu: Bool? = (maxLabelLength ?? 0) + maxLabelLengthDelta > 8 ? true : nil
         let isOverCompact = screenVM.isPhonePortraitSituation
         // Early major OS betas have a SwiftUI bottomBar/UICollectionView teardown regression.
         let avoidBottomToolbar = OS.isBuggyOS25Build // || OS.isBetaOSBeforeFirstMajorPublicRelease
