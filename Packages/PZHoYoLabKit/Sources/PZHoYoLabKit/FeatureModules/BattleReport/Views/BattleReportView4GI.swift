@@ -81,12 +81,15 @@ public struct BattleReportView4GI: BattleReportView {
     // MARK: Internal
 
     @ViewBuilder var contents: some View {
-        switch contentType {
-        case .spiralAbyss:
-            formContents4SpiralAbyss
-        case .stygianOnslaught:
-            formContents4StygianOnslaught
+        Group {
+            switch contentType {
+            case .spiralAbyss:
+                formContents4SpiralAbyss
+            case .stygianOnslaught:
+                formContents4StygianOnslaught
+            }
         }
+        .reportListRowContentWidth()
     }
 
     @ViewBuilder var blankView: some View {
@@ -98,6 +101,13 @@ public struct BattleReportView4GI: BattleReportView {
 
     // MARK: Private
 
+    /// 首帧（尚未量到真实行宽）时，单行内容相对「清单列可用宽」被内缩的保守估计：
+    /// 被 pushed 的畫面实测导航边距 71pt ＋ `Form` 行内缩 40pt。
+    private static let listRowContentInsetDelta: CGFloat = 111
+
+    /// 保证的单行内容左右内距。取 1 而非 0：0 会让系统把原厂 margin 一并撤掉，反而贴齐边缘。
+    private static let listRowHorizontalMargin: CGFloat = 1
+
     /// 使用者手动挑选过的战报种类。为 nil 时由 `contentType` 决定预设值。
     @State private var preferredContentType: TreasuresStarwardType?
 
@@ -105,6 +115,7 @@ public struct BattleReportView4GI: BattleReportView {
     @State private var broadcaster = Broadcaster.shared
     @Namespace private var animation
     @State private var summaryMap: [String: SummaryPtr]
+    @Environment(\.listRowContentWidth) private var listRowContentWidth: CGFloat?
 
     private let profile: PZProfileSendable?
 
@@ -119,8 +130,12 @@ public struct BattleReportView4GI: BattleReportView {
         .init(get: { contentType }, set: { preferredContentType = $0 })
     }
 
+    /// 优先采用 `ScreenVM` 已提交的实测行内容宽；尚未量到（首帧）才退回
+    /// 「清单列可用宽 − `listRowContentInsetDelta`」的保守推算值（单翼状态下该推算值会高估）。
     private var containerWidth: CGFloat {
-        screenVM.mainColumnCanvasSizeObserved.width - 64
+        if let listRowContentWidth, listRowContentWidth > 0 { return listRowContentWidth }
+        let derived = screenVM.mainColumnCanvasSizeObserved.width - Self.listRowContentInsetDelta
+        return Swift.max(derived, 0)
     }
 
     private var columns: Int { min(max(Int(floor(containerWidth / 200)), 2), 4) }
@@ -166,11 +181,11 @@ extension BattleReportView4GI {
             stats4SygianOnslaught
             if let singleData = data4SO?.single, singleData.hasData {
                 floorList4StygianOnslaught(theData: singleData, isMultiplayer: false)
-                    .frame(width: containerWidth)
+                    .padding(.horizontal, Self.listRowHorizontalMargin)
             }
             if let mpData = data4SO?.mp, mpData.hasData {
                 floorList4StygianOnslaught(theData: mpData, isMultiplayer: true)
-                    .frame(width: containerWidth)
+                    .padding(.horizontal, Self.listRowHorizontalMargin)
             }
         }
     }
@@ -408,7 +423,7 @@ extension BattleReportView4GI {
     @ViewBuilder private var formContents4SpiralAbyss: some View {
         stats4SpiralAbyss
         floorList4SpiralAbyss
-            .frame(width: containerWidth)
+            .padding(.horizontal, Self.listRowHorizontalMargin)
     }
 
     @ViewBuilder private var stats4SpiralAbyss: some View {

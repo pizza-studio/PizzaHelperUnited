@@ -200,12 +200,14 @@ public struct CharacterInventoryView: View {
                     .buttonStyle(.plain)
                     .id(avatar.id)
                 }
-                .frame(width: containerWidth)
+                .frame(maxWidth: containerWidth)
+                .reportListRowContentWidth()
                 .overlay(alignment: .topLeading) {
                     Color(cgColor: currentElement.themeColor)
                         .frame(width: 8, height: 8)
                         .clipShape(.circle)
                 }
+                .padding(.horizontal, Self.listRowHorizontalMargin)
                 .padding(.top, 5)
                 .listRowSeparatorTint(.secondary.opacity(0.7))
             }
@@ -213,6 +215,13 @@ public struct CharacterInventoryView: View {
     }
 
     // MARK: Private
+
+    /// 首帧（尚未量到真实行宽）时，单行内容相对「清单列可用宽」被内缩的保守估计：
+    /// 被 pushed 的畫面实测导航边距 71pt ＋ `Form` 行内缩 40pt。
+    private static let listRowContentInsetDelta: CGFloat = 111
+
+    /// 保证的单行内容左右内距。取 1 而非 0：0 会让系统把原厂 margin 一并撤掉，反而贴齐边缘。
+    private static let listRowHorizontalMargin: CGFloat = 1
 
     @State private var summaries: [SummaryPtr]
     @State private var sortedSummariesMap: [Enka.GameElement: [SummaryPtr]]
@@ -222,17 +231,22 @@ public struct CharacterInventoryView: View {
     @State private var screenVM: ScreenVM = .shared
     @State private var broadcaster = Broadcaster.shared
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.listRowContentWidth) private var listRowContentWidth: CGFloat?
 
     private let profile: PZProfileSendable
 
     private let game: Pizza.SupportedGame
 
+    /// 优先采用 `ScreenVM` 已提交的实测行内容宽；尚未量到（首帧）才退回
+    /// 「清单列可用宽 − `listRowContentInsetDelta`」的保守推算值（单翼状态下该推算值会高估）。
     private var containerWidth: CGFloat {
-        screenVM.mainColumnCanvasSizeObserved.width - 64
+        if let listRowContentWidth, listRowContentWidth > 0 { return listRowContentWidth }
+        let derived = screenVM.mainColumnCanvasSizeObserved.width - Self.listRowContentInsetDelta
+        return Swift.max(derived, 0)
     }
 
     private var lineCapacity: Int {
-        Int(floor((containerWidth - 20) / 70))
+        Swift.max(Int(floor((containerWidth - 20) / 70)), 1)
     }
 
     private static func getRawSummaries(profile: PZProfileSendable) -> [SummaryPtr] {

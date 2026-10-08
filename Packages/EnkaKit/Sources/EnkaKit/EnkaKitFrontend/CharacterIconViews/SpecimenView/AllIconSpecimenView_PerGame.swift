@@ -112,33 +112,82 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
 
     // MARK: Private
 
+    private struct GridMetrics {
+        let columns: Int
+        let singleSize: Double
+        let gridHeight: CGFloat
+    }
+
+    /// 首帧（尚未量到真实行宽）时，单行内容相对「清单列可用宽」被内缩的保守估计：
+    /// 被 pushed 的畫面实测导航边距 71pt ＋ `Form` 行内缩 40pt。
+    /// 单翼状态下实测可达 144pt（导航边距 84 ＋ 尾随 20 ＋ 行内缩 40），
+    /// 故仅作首帧的保守值；真实值一律以 `reportListRowContentWidth()` 的实测结果为准。
+    private static let listRowContentInsetDelta: CGFloat = 111
+
+    /// 保证的单行内容左右内距。取 1 而非 0：0 会让系统把原厂 margin 一并撤掉，反而贴齐边缘。
+    private static let listRowHorizontalMargin: CGFloat = 1
+
+    /// `StaggeredGrid`（`outerPadding: true`）的内建间距与四周 padding 都是 10pt。
+    private static let gridSpacing: CGFloat = 10
+
+    /// 每一栏的理想最小宽度：用来决定栏数（沿用既有行为）。
+    private static let idealColumnWidth: CGFloat = 120
+
     @State private var screenVM: ScreenVM = .shared
+    @Environment(\.listRowContentWidth) private var listRowContentWidth: CGFloat?
     @State private var scroll: Bool
     @State private var game: Enka.GameType
     @State private var supplementalIDs: [String]
 
-    private var containerWidth: CGFloat {
-        screenVM.mainColumnCanvasSizeObserved.width - 48 - 36
+    private var specimenCount: Int {
+        CharSpecimen.allSpecimens(for: game, supplementalIDs: supplementalIDs).count
     }
 
-    private var columns: Int {
-        max(Int((containerWidth / 120).rounded(.down)), 1)
+    /// 首帧的保守估计（真实值由 `reportListRowContentWidth()` 量到后经 `ScreenVM` 提交回来）。
+    private var fallbackRowWidth: CGFloat {
+        let derived = (screenVM.mainColumnCanvasSizeObserved.width) - Self.listRowContentInsetDelta
+        return Swift.max(derived, 0)
     }
 
-    private var singleSize: Double {
-        ((containerWidth / Double(columns)) - 8.0).rounded(.down)
+    /// 当前可用的行内容宽：优先用 `ScreenVM` 已提交的实测值，尚未量到（首帧）才用保守估计。
+    private var currentRowWidth: CGFloat {
+        if let listRowContentWidth, listRowContentWidth > 0 { return listRowContentWidth }
+        return fallbackRowWidth
     }
 
+    /// 以 `reportListRowContentWidth()` 就地实测行内容宽度：它用贪心的零高 marker 量到「上级给的提案宽」，
+    /// 不受网格自身溢出影响，因此不会形成测量回授；量到的值先 stage 进 `ScreenVM`，与该栏的
+    /// `NavigationSplitView` 可见性在同一次排版状态提交里落定，所以旋转 / 铰链开合只会让本视图重排一次。
     @ViewBuilder private var coreBodyView: some View {
+        let metrics = gridMetrics(rowWidth: currentRowWidth)
         CharSpecimen.renderAllSpecimen(
             for: game,
             scroll: scroll,
-            columns: columns
+            columns: metrics.columns
         ) {
             supplementalIDs
         } viewRenderer: { specimen in
-            specimen.render(size: singleSize, cutType: .cutShoulder)
+            specimen.render(size: metrics.singleSize, cutType: .cutShoulder)
         }
+        .padding(.horizontal, Self.listRowHorizontalMargin)
+        .frame(height: metrics.gridHeight)
+        .reportListRowContentWidth()
+    }
+
+    /// 单个 specimen 的边长：必须与 `StaggeredGrid` 实际分配给每一栏的宽度完全相等，
+    /// 否则固定尺寸的 specimen 会溢出自己的栏位、与邻栏的 specimen 互相重叠。
+    private func gridMetrics(rowWidth: CGFloat) -> GridMetrics {
+        let contentWidth = Swift.max(rowWidth - 2 * Self.listRowHorizontalMargin, 0)
+        let columns = Swift.max(Int((contentWidth / Self.idealColumnWidth).rounded(.down)), 1)
+        let usable = Swift.max(contentWidth - 2 * Self.gridSpacing, 0)
+        let slots = CGFloat(columns)
+        let slotWidth = (usable - Self.gridSpacing * (slots - 1)) / slots
+        let singleSize = Swift.max(Double(slotWidth.rounded(.down)), 1)
+        let rows = Swift.max(Int((Double(specimenCount) / Double(columns)).rounded(.up)), 1)
+        let innerHeight = CGFloat(rows) * CGFloat(singleSize) + CGFloat(rows - 1) * Self.gridSpacing
+        let extraPadding: CGFloat = scroll ? 16 * 2 : 0
+        let gridHeight = innerHeight + 2 * Self.gridSpacing + extraPadding
+        return .init(columns: columns, singleSize: singleSize, gridHeight: gridHeight)
     }
 }
 

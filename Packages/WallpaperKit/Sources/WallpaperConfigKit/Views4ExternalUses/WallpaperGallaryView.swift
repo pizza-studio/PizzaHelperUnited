@@ -206,11 +206,15 @@ extension WallpaperGalleryViewContent {
         // MARK: Private
 
         @State private var screenVM: ScreenVM = .shared
+        @Environment(\.listRowContentWidth) private var listRowContentWidth: CGFloat?
 
         private let columnsDebouncer = Debouncer(delay: 0.15)
 
+        /// `StaggeredGrid` 自身可用宽度：导航边距 71 ＋ `Form` 行内缩 40 ＋ 本视图横向 padding 32。
+        /// TODO: 此画面的横向 padding 待另行验收（使用者表示先不论），数值暂沿用旧行为。
         private var containerWidth: CGFloat {
-            screenVM.mainColumnCanvasSizeObserved.width - 48
+            let derived = (listRowContentWidth ?? (screenVM.mainColumnCanvasSizeObserved.width - 16)) - 111
+            return Swift.max(derived, 0)
         }
 
         private var calculatedColumns: Int {

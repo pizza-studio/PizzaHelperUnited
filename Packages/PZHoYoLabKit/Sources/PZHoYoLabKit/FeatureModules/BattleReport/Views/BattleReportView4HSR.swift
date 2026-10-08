@@ -49,7 +49,7 @@ public struct BattleReportView4HSR: BattleReportView {
             }
             if data4FH.hasData || data4AS.hasData || data4PF.hasData {
                 contents
-                    .frame(width: containerWidth)
+                    .padding(.horizontal, Self.listRowHorizontalMargin)
                     .animation(.default, value: screenVM.mainColumnCanvasSizeObserved)
             } else {
                 blankView
@@ -386,12 +386,11 @@ public struct BattleReportView4HSR: BattleReportView {
 
     // MARK: Private
 
+    /// 保证的单行内容左右内距。取 1 而非 0：0 会让系统把原厂 margin 一并撤掉，反而贴齐边缘。
+    private static let listRowHorizontalMargin: CGFloat = 1
+
     @State private var contentType: TreasuresLightwardType = .forgottenHall
     @State private var screenVM: ScreenVM = .shared
-
-    private var containerWidth: CGFloat {
-        screenVM.mainColumnCanvasSizeObserved.width - 64
-    }
 
     private var data4FH: BattleReportData.ForgottenHallData { data.forgottenHall }
 

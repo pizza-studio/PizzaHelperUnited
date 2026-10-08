@@ -22,14 +22,17 @@ public struct GachaBigChartView: View {
             Form {
                 contentFilterSection
                     .disabled(gachaVM.taskState == .busy)
-                GachaChartVertical(
+                if let gachaChart = GachaChartVertical(
                     gpid: gachaVM.currentGPID,
                     poolType: gachaVM.currentPoolType
-                )?.frame(width: containerWidth)
+                ) {
+                    gachaChart
+                        .padding(.horizontal, Self.listRowHorizontalMargin)
+                }
             }
             .formStyle(.grouped).disableFocusable()
             .environment(gachaVM)
-            .animation(.easeIn(duration: 0.2), value: screenVM.mainColumnCanvasSizeObserved.width)
+            .animation(.easeIn(duration: 0.2), value: containerWidth)
             .saturation(gachaVM.taskState == .busy ? 0 : 1)
             .navBarTitleDisplayMode(.large)
             .navigationTitle(gachaVM.currentGPIDTitle ?? Self.navTitle)
@@ -56,11 +59,21 @@ public struct GachaBigChartView: View {
 
     // MARK: Private
 
+    /// 单行内容相对「清单列基准宽」被内缩的量：被 pushed 的畫面实测导航边距 71pt ＋ `Form` 行内缩 40pt。
+    private static let listRowContentInsetDelta: CGFloat = 111
+
+    /// 保证的单行内容左右内距。取 1 而非 0：0 会让系统把原厂 margin 一并撤掉，反而贴齐边缘。
+    private static let listRowHorizontalMargin: CGFloat = 1
+
     @State private var gachaVM: GachaVM = .shared
     @State private var screenVM: ScreenVM = .shared
+    @Environment(\.listRowContentWidth) private var listRowContentWidth: CGFloat?
 
+    /// 清单列可用宽 − `listRowContentInsetDelta`。只用于 :35 的动画触发值：图表自身内含 `GeometryReader` 会就地量宽，
+    /// 因此本视图不该对图表再加上限（rotation 后上限会停留在旧方向，反而把图表夹窄）。
     private var containerWidth: CGFloat {
-        screenVM.mainColumnCanvasSizeObserved.width - 64
+        let base = listRowContentWidth ?? (screenVM.mainColumnCanvasSizeObserved.width - Self.listRowContentInsetDelta)
+        return Swift.max(base, 0)
     }
 
     @ViewBuilder private var contentFilterSection: some View {
