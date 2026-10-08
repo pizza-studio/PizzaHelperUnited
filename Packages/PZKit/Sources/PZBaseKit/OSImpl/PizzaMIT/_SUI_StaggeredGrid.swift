@@ -181,20 +181,30 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
     /// **leading-edge ＋ trailing-edge 合并**：静默够久之后的第一次变动**立刻**重排（单一次
     /// 栏数变动不留任何尺寸／结构不一致的空窗）；只有紧接着又来变动（真的连续变动）才改成
     /// 等 `delay` 静默后做一次，把多段动画并成一段。
+    ///
+    /// 另外给连续变动设了上界：静默若一直不来（例如持续拖曳分割线，画布一直在变），最多延后
+    /// `maxDeferral` 就先重排一次，免得旧栏数被无限期沿用。正常的一次折叠／旋转里连续变动总长
+    /// 不超过这个上界，因此行为与纯「等静默」一致。
     func scheduleGridArrayUpdate(list: [T], columns: Int, delay: TimeInterval = 0.7) {
         let now = Date()
         // 与上一次栏数变动相隔够久 ⇒ 这是一次独立的变动，立刻重排。
         let isIsolatedChange = lastColumnsChangeAt.map { now.timeIntervalSince($0) >= delay } ?? true
+        // 这一串连续变动已经拖太久了 ⇒ 不再等静默，先排一次并重新起算。
+        let burstStartedAt = columnsBurstStartedAt ?? now
+        let hasDeferredTooLong = now.timeIntervalSince(burstStartedAt) >= maxDeferral
         columnsUpdateTask?.cancel()
         columnsUpdateTask = nil
         lastColumnsChangeAt = now
-        guard !isIsolatedChange else {
+        guard !isIsolatedChange, !hasDeferredTooLong else {
+            columnsBurstStartedAt = nil
             updateGridArray(list: list, columns: columns)
             return
         }
+        columnsBurstStartedAt = burstStartedAt
         columnsUpdateTask = Task { @MainActor [weak self] in
             try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
             guard !Task.isCancelled else { return }
+            self?.columnsBurstStartedAt = nil
             self?.lastColumnsChangeAt = Date()
             self?.updateGridArray(list: list, columns: columns)
         }
@@ -205,6 +215,11 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
     @ObservationIgnored private var updateTask: Task<Void, Never>?
     @ObservationIgnored private var columnsUpdateTask: Task<Void, Never>?
     @ObservationIgnored private var lastColumnsChangeAt: Date?
+
+    /// 这一串连续变动是从何时开始的；静默迟迟不来时，用它给延后设上界。
+    @ObservationIgnored private var columnsBurstStartedAt: Date?
+    /// 连续变动的最大延后时长（对齐 `ScreenVM` settle window 的 `maxDelay`）。
+    @ObservationIgnored private let maxDeferral: TimeInterval = 3.0
 
     // 同步计算方法，`nonisolated`：只读参数、不碰隔离状态，所以 `updateGridArray()` 的
     // `Task.detached` 能真的把这段分堆丢到背景跑（否则 `await` 会先跳回主执行绪再算）。
