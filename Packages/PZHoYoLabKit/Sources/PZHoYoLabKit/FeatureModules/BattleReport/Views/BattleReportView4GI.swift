@@ -130,12 +130,13 @@ public struct BattleReportView4GI: BattleReportView {
         .init(get: { contentType }, set: { preferredContentType = $0 })
     }
 
-    /// 优先采用 `ScreenVM` 已提交的实测行内容宽；尚未量到（首帧）才退回
-    /// 「清单列可用宽 − `listRowContentInsetDelta`」的保守推算值（单翼状态下该推算值会高估）。
+    /// 优先采用本页实测的行内容宽，其次用 `ScreenVM` 已提交的实测值；尚未量到（首帧）
+    /// 才退回「清单列可用宽 − `listRowContentInsetDelta`」的保守推算值。
     private var containerWidth: CGFloat {
-        if let listRowContentWidth, listRowContentWidth > 0 { return listRowContentWidth }
-        let derived = screenVM.mainColumnCanvasSizeObserved.width - Self.listRowContentInsetDelta
-        return Swift.max(derived, 0)
+        screenVM.resolvedListRowContentWidth(
+            injected: listRowContentWidth,
+            canvasInset: Self.listRowContentInsetDelta
+        )
     }
 
     private var columns: Int { min(max(Int(floor(containerWidth / 200)), 2), 4) }

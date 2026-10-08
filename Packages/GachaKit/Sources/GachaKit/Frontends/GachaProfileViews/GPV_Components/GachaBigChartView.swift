@@ -69,11 +69,13 @@ public struct GachaBigChartView: View {
     @State private var screenVM: ScreenVM = .shared
     @Environment(\.listRowContentWidth) private var listRowContentWidth: CGFloat?
 
-    /// 清单列可用宽 − `listRowContentInsetDelta`。只用于 :35 的动画触发值：图表自身内含 `GeometryReader` 会就地量宽，
+    /// 本页可用的行内容宽。只用于 :35 的动画触发值：图表自身内含 `GeometryReader` 会就地量宽，
     /// 因此本视图不该对图表再加上限（rotation 后上限会停留在旧方向，反而把图表夹窄）。
     private var containerWidth: CGFloat {
-        let base = listRowContentWidth ?? (screenVM.mainColumnCanvasSizeObserved.width - Self.listRowContentInsetDelta)
-        return Swift.max(base, 0)
+        screenVM.resolvedListRowContentWidth(
+            injected: listRowContentWidth,
+            canvasInset: Self.listRowContentInsetDelta
+        )
     }
 
     @ViewBuilder private var contentFilterSection: some View {

@@ -34,6 +34,7 @@ public struct CharSpecimen: Identifiable, Hashable, Sendable {
         for game: Enka.GameType?,
         scroll: Bool,
         columns: Int,
+        renderedColumnCount: Binding<Int>? = nil,
         supplementalIDs: (() -> [String])? = nil,
         viewRenderer: @escaping (CharSpecimen) -> some View
     )
@@ -44,6 +45,7 @@ public struct CharSpecimen: Identifiable, Hashable, Sendable {
             showsIndicators: !scroll,
             outerPadding: true,
             scroll: scroll,
+            renderedColumnCount: renderedColumnCount,
             list: specimens
         ) { specimen in
             viewRenderer(specimen)
@@ -113,7 +115,6 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
     // MARK: Private
 
     private struct GridMetrics {
-        let columns: Int
         let singleSize: Double
         let gridHeight: CGFloat
     }
@@ -139,6 +140,9 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
     @State private var game: Enka.GameType
     @State private var supplementalIDs: [String]
 
+    /// `StaggeredGrid` 当下**实际已经摆出来**的栏数（由它回报，见其 `renderedColumnCount`）。
+    @State private var renderedColumns: Int = 0
+
     private var specimenCount: Int {
         CharSpecimen.allSpecimens(for: game, supplementalIDs: supplementalIDs).count
     }
@@ -149,21 +153,41 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
         return Swift.max(derived, 0)
     }
 
-    /// 当前可用的行内容宽：优先用 `ScreenVM` 已提交的实测值，尚未量到（首帧）才用保守估计。
+    /// 当前可用的行内容宽：优先用环境注入的实测值，其次用本页自己量到、已由 `ScreenVM` 提交回来的值，
+    /// 都还没有（首帧）才用保守估计。
+    ///
+    /// 之所以要多一层退路：`\.listRowColumn` 的默认值恰好就是 `.mainColumn`，所以「本页回报到 main」
+    /// 并不能证明本页确实落在该栏的环境子树内；实测（2026-10-08，iPhone Duo）本页的
+    /// `\.listRowContentWidth` 恒为 nil，一律走 `fallbackRowWidth`，于是把固定内缩估计当成真实行宽。
+    /// 该固定值在满版时偏窄（无碍），但在单翼／外萤幕等内缩变大的状态下会高估 30–50pt，
+    /// 网格便以过宽的栏宽摆放固定尺寸的卡片，与邻栏重叠、并被画面右缘裁掉。
     private var currentRowWidth: CGFloat {
         if let listRowContentWidth, listRowContentWidth > 0 { return listRowContentWidth }
+        if screenVM.mainColumnRowContentWidth > 0 { return screenVM.mainColumnRowContentWidth }
         return fallbackRowWidth
+    }
+
+    /// 依现在的行宽，应该分成几栏（交给 `StaggeredGrid`）。
+    private var requestedColumns: Int {
+        let contentWidth = Swift.max(currentRowWidth - 2 * Self.listRowHorizontalMargin, 0)
+        return Swift.max(Int((contentWidth / Self.idealColumnWidth).rounded(.down)), 1)
+    }
+
+    /// 算卡片边长时该用的栏数：跟着「已摆出来的」结构走，而不是「将要摆的」。
+    private var effectiveColumns: Int {
+        renderedColumns > 0 ? renderedColumns : requestedColumns
     }
 
     /// 以 `reportListRowContentWidth()` 就地实测行内容宽度：它用贪心的零高 marker 量到「上级给的提案宽」，
     /// 不受网格自身溢出影响，因此不会形成测量回授；量到的值先 stage 进 `ScreenVM`，与该栏的
     /// `NavigationSplitView` 可见性在同一次排版状态提交里落定，所以旋转 / 铰链开合只会让本视图重排一次。
     @ViewBuilder private var coreBodyView: some View {
-        let metrics = gridMetrics(rowWidth: currentRowWidth)
+        let metrics = gridMetrics(columns: effectiveColumns)
         CharSpecimen.renderAllSpecimen(
             for: game,
             scroll: scroll,
-            columns: metrics.columns
+            columns: requestedColumns,
+            renderedColumnCount: $renderedColumns
         ) {
             supplementalIDs
         } viewRenderer: { specimen in
@@ -176,18 +200,22 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
 
     /// 单个 specimen 的边长：必须与 `StaggeredGrid` 实际分配给每一栏的宽度完全相等，
     /// 否则固定尺寸的 specimen 会溢出自己的栏位、与邻栏的 specimen 互相重叠。
-    private func gridMetrics(rowWidth: CGFloat) -> GridMetrics {
-        let contentWidth = Swift.max(rowWidth - 2 * Self.listRowHorizontalMargin, 0)
-        let columns = Swift.max(Int((contentWidth / Self.idealColumnWidth).rounded(.down)), 1)
+    ///
+    /// `columns` 收的是 `effectiveColumns` 而非 `requestedColumns`：`StaggeredGrid` 的重排是
+    /// 异步的（`Task.detached` 算完才回主线程），中间至少会有一帧仍是旧栏数。若边长跟着
+    /// `requestedColumns` 先换，网格就会以旧栏数摆新尺寸的卡片而互相重叠；跟着「已摆出来的」
+    /// 栏数算，边长永远落后或等于结构，最坏只是暂时留白。
+    private func gridMetrics(columns: Int) -> GridMetrics {
+        let contentWidth = Swift.max(currentRowWidth - 2 * Self.listRowHorizontalMargin, 0)
         let usable = Swift.max(contentWidth - 2 * Self.gridSpacing, 0)
-        let slots = CGFloat(columns)
+        let slots = CGFloat(Swift.max(columns, 1))
         let slotWidth = (usable - Self.gridSpacing * (slots - 1)) / slots
         let singleSize = Swift.max(Double(slotWidth.rounded(.down)), 1)
-        let rows = Swift.max(Int((Double(specimenCount) / Double(columns)).rounded(.up)), 1)
+        let rows = Swift.max(Int((Double(specimenCount) / Double(slots)).rounded(.up)), 1)
         let innerHeight = CGFloat(rows) * CGFloat(singleSize) + CGFloat(rows - 1) * Self.gridSpacing
         let extraPadding: CGFloat = scroll ? 16 * 2 : 0
         let gridHeight = innerHeight + 2 * Self.gridSpacing + extraPadding
-        return .init(columns: columns, singleSize: singleSize, gridHeight: gridHeight)
+        return .init(singleSize: singleSize, gridHeight: gridHeight)
     }
 }
 

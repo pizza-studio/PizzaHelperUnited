@@ -25,6 +25,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
         verticalSpacing: CGFloat = 10,
         padding: EdgeInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10),
         alignment: VerticalAlignment = .top,
+        renderedColumnCount: Binding<Int>? = nil,
         list: [T],
         @ViewBuilder content: @escaping (T) -> Content
     ) {
@@ -37,6 +38,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
         self.alignment = alignment
         self.content = content
         self.list = list
+        self.renderedColumnCount = renderedColumnCount
         self._vm = .init(wrappedValue: StaggeredGridVM(list: list, columns: columns))
     }
 
@@ -70,6 +72,9 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
                 vm.updateGridArray(list: list, columns: columns)
             }
         }
+        .onChange(of: vm.gridArray.count, initial: true) { _, newCount in
+            renderedColumnCount?.wrappedValue = newCount
+        }
     }
 
     // MARK: Private
@@ -85,6 +90,15 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
     private let alignment: VerticalAlignment
     private let content: (T) -> Content
     private let list: [T]
+
+    /// 回报**当下实际摆出来的栏数**（`vm.gridArray.count`）。
+    ///
+    /// 呼叫方通常用同一个「清单列可用宽」同时算出栏数与卡片边长，于是尺寸与结构必须同步。
+    /// 但重排是异步的（`Task.detached` 算完才回主线程），中间至少会有一帧还是旧栏数；此时若
+    /// 卡片已换成新尺寸，网格就是以**旧栏数**摆放**新尺寸**的固定尺寸卡片，卡片会溢出栏位、
+    /// 与邻栏重叠。有了这个回报，呼叫方可以让边长跟着**已摆出来的**栏数走：尺寸永远落后或
+    /// 等于结构，最坏只是暂时留白，不可能重叠。
+    private let renderedColumnCount: Binding<Int>?
 
     private var scroll: Bool { scrollAxis.isEmpty }
 
@@ -225,6 +239,7 @@ extension StaggeredGrid {
         outerPadding: Bool = true,
         scroll: Bool = true,
         spacing: CGFloat = 10,
+        renderedColumnCount: Binding<Int>? = nil,
         list: [T],
         @ViewBuilder content: @escaping (T) -> Content
     ) {
@@ -238,6 +253,7 @@ extension StaggeredGrid {
                 ? .init(top: spacing, leading: spacing, bottom: spacing, trailing: spacing)
                 : .init(top: 0, leading: 0, bottom: 0, trailing: 0),
             alignment: .top,
+            renderedColumnCount: renderedColumnCount,
             list: list,
             content: content
         )

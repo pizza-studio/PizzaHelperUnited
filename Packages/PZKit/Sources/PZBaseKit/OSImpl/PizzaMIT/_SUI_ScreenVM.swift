@@ -389,19 +389,35 @@ public final class ScreenVM {
             // 比较对象用**同一世代**的 pending 画布，而不是已提交的画布：后者本身可能还停在
             // 上一世代，拿它当门槛会把这一世代正确的量测也一并丢掉。
             let canvas = pendingSidebarWidth ?? stagedSidebarWidth ?? actualSidebarWidthObserved
-            guard !isStaleRowWidthMeasurement(rounded, canvasWidth: canvas, columnName: "sidebar") else { return }
+            if isStaleRowWidthMeasurement(rounded, canvasWidth: canvas, columnName: "sidebar") {
+                // 丢掉但记着：栏位画布一更新就重投（见 `retryRejectedRowContentWidths()`）。
+                rejectedSidebarRowContentWidth = rounded
+                return
+            }
+            rejectedSidebarRowContentWidth = nil
             guard (pendingSidebarRowContentWidth ?? stagedSidebarRowContentWidth ?? sidebarRowContentWidth) != rounded
             else { return }
             lastReportedSidebarRowContentWidth = rounded
             pendingSidebarRowContentWidth = rounded
             didChange = true
         case .mainColumn:
-            let canvas = (pendingMainColumnSansBleed ?? stagedMainColumnSansBleed ?? mainColumnSizeObservedSansBleed)
-                .width
-            guard !isStaleRowWidthMeasurement(rounded, canvasWidth: canvas, columnName: "mainColumn") else { return }
+            // - Important: 残量判定用的画布必须是**即时**主栏可用宽，不能是主栏实测宽。
+            //
+            // 实测主栏宽只在主栏真的重测时才更新；铰链 halfOpen ↔ fullyOpen 这类「窗口 / 侧栏变了、
+            // 主栏没重测」的转换里它是旧世代的残量（实测恒为 372）。拿它当画布，会把「窗变宽之后
+            // 量到的新内容宽」一律判成残量而丢弃，而 `reportListRowContentWidth()` 只在宽度**变化**
+            // 时才被叫用，丢掉就没人回来补发 —— 消费端（`CharInventoryView` 的每行格数）于是永远不更新。
+            let canvas = mainColumnRowWidthCanvas
+            if isStaleRowWidthMeasurement(rounded, canvasWidth: canvas, columnName: "mainColumn") {
+                rejectedMainColumnRowContentWidth = rounded
+                return
+            }
             guard (pendingMainColumnRowContentWidth ?? stagedMainColumnRowContentWidth ?? mainColumnRowContentWidth) !=
                 rounded
             else { return }
+            // 清掉待重投的量测要在「确认这一笔真的被受理」之后：否则当前值的重复回报会把一笔
+            // 更宽、只是暂时比旧画布宽的量测顺手抹掉（实测：一笔 309 的重报把 pending 的 485 抹掉）。
+            rejectedMainColumnRowContentWidth = nil
             lastReportedMainColumnRowContentWidth = rounded
             pendingMainColumnRowContentWidth = rounded
             didChange = true
@@ -427,6 +443,7 @@ public final class ScreenVM {
         let newValue = trackedSize.width.rounded(.up)
         guard (pendingSidebarWidth ?? stagedSidebarWidth ?? actualSidebarWidthObserved) != newValue else { return }
         pendingSidebarWidth = newValue
+        retryRejectedRowContentWidths()
         reportLayoutStateObservation()
     }
 
@@ -464,6 +481,8 @@ public final class ScreenVM {
             guard (pendingMainColumnSansBleed ?? stagedMainColumnSansBleed ?? mainColumnSizeObservedSansBleed)
                 != newSize else { return }
             pendingMainColumnSansBleed = newSize
+            // 画布刚变了：把先前被误判为残量的内容宽量测重投一次（铰链开合主要靠这一步）。
+            retryRejectedRowContentWidths()
         }
         reportLayoutStateObservation()
     }
@@ -515,6 +534,17 @@ public final class ScreenVM {
     private var lastReportedSidebarRowContentWidth: CGFloat?
     private var lastReportedMainColumnRowContentWidth: CGFloat?
 
+    /// 被判定为「上一世代残量」而丢弃的量测，留着等栏位画布更新后重投。
+    ///
+    /// 必须有它们：`reportListRowContentWidth()` 只在**量到的宽度确实变化**时才会被呼叫
+    /// （`SizeState` 以 `isDirty` 去重），所以一笔被丢掉的量测不会被自动重试。而栏位画布
+    /// 与内容宽是同一轮排版里、由不同层级的追踪器分别回报的，两者到达顺序不保证：内容宽的
+    /// 量测可能先到、被拿**还没更新的旧画布**判成残量而丢掉，随后画布才变大，但那一代
+    /// 正确的宽度再也不会有人重报——消费者的每行容量就永久停在旧值上。
+    /// 铰链的「close ↔ open」「halfOpen ↔ fullyOpen」正是这种情形：主机尺寸变了、内容宽却一直不更新。
+    @ObservationIgnored private var rejectedSidebarRowContentWidth: CGFloat?
+    @ObservationIgnored private var rejectedMainColumnRowContentWidth: CGFloat?
+
     /// 「原始观测」的记录静默窗：**记录本身也要去抖**。
     ///
     /// 一次旋转 / 铰链开合期间，pending 槽会被同一场排版的中间世代反复覆写。0.7s 是实测足以跨越
@@ -562,6 +592,26 @@ public final class ScreenVM {
     @ObservationIgnored private var hingeInteraction: (any UIInteraction)?
     @ObservationIgnored private var hingeTrackingObserver: (any NSObjectProtocol)?
     #endif
+
+    /// 主栏内容宽的残量判定与作废共用的「主栏画布」。
+    ///
+    /// - Important: 必须把**尚未落定**的窗口 / 侧栏观测一并算进来，而不是只读已提交值。
+    ///
+    ///   侧栏 / 整窗的量测总是**先于**主栏内容重排抵达：铰链摊平那一刻，侧栏由 456 变 320，
+    ///   页面随即量到 485 并回报，而 `mainColumnCanvasSizeObserved` 要等 0.7 秒后的提交才会
+    ///   由 372 变成 508。若这里只读已提交值，485 会被旧世代的 372 判成残量丢弃；侧栏回报时
+    ///   触发的那次重投（`retryRejectedRowContentWidths()`）会读同一个旧值再丢一次，于是
+    ///   「每行格数」永远不更新——实测连续六笔 `485.0 > canvas 372.0` 全部被弃。
+    ///
+    ///   画布偏宽只会让判定变宽松（接受一笔将被证实的量测），偏窄才会误杀，因此这里一律取
+    ///   「pending 优先」的较宽值。
+    private var mainColumnRowWidthCanvas: CGFloat {
+        guard splitViewVisibility != .detailOnly else { return windowSizeObserved.width }
+        let sidebarWidth = pendingSidebarWidth ?? stagedSidebarWidth ?? actualSidebarWidthObserved
+        let windowWidth = (pendingWindowSize ?? stagedWindowSize ?? windowSizeObserved).width
+        let derived = windowWidth - sidebarWidth - mainColumnSidebarPaddingOffset
+        return derived > 0 ? derived : windowSizeObserved.width
+    }
 
     // MARK: Static Helpers
 
@@ -619,6 +669,22 @@ public final class ScreenVM {
         return isStale
     }
 
+    /// 重新投递先前因「比当世代画布还宽」而被丢弃的内容宽量测。
+    ///
+    /// 呼叫时机：任一个「栏位画布」观测更新之后。画布一变宽，先前那笔量测就不再是残量，
+    /// 而这个时机是唯一能补救它的场合——`reportListRowContentWidth()` 只在宽度变化时才被叫用，
+    /// 不会自己再回来重试。
+    private func retryRejectedRowContentWidths() {
+        if let rejected = rejectedSidebarRowContentWidth {
+            rejectedSidebarRowContentWidth = nil
+            reportListRowContentWidth(rejected, for: .sidebar)
+        }
+        if let rejected = rejectedMainColumnRowContentWidth {
+            rejectedMainColumnRowContentWidth = nil
+            reportListRowContentWidth(rejected, for: .mainColumn)
+        }
+    }
+
     /// 作废「比刚提交的栏位画布还宽」的已发布内容宽。
     ///
     /// 已发布的宽度可能是在「栏位还比较宽」的排版世代量到的：侧栏之后若出现（画布由整窗缩到栏内），
@@ -626,14 +692,22 @@ public final class ScreenVM {
     /// （ID Photo Specimen 页曾如此卡住）。作废之后消费端会退用自己的保守估值（画布减固定内缩量），
     /// 等新的量测落定再发布一次。
     private func invalidateRowContentWidthsExceedingCanvas() {
-        let sidebarCanvas = actualSidebarWidthObserved
+        // 比较对象必须与 `reportListRowContentWidth()` 的残量判定用**同一个**量：即时主栏可用宽。
+        //
+        // 这里一度改用主栏实测宽（`mainColumnSizeObservedSansBleed`），理由是它才代表 detail 栏的
+        // 真实宽度。但那个值只在主栏真的重测时才更新，铰链开合时它停在旧世代（实测恒为 372），
+        // 于是一笔刚发布、实际装得下的内容宽会在同一次提交末尾被作废成 0。而
+        // `reportListRowContentWidth()` 只在量到的宽度变化时才被叫用，作废后没人回来补发，
+        // 消费端便永远停在「画布减固定内缩量」的退路估值上——ID Photo Specimen 的栏数不更新、
+        // 卡片互相重叠即源于此。两侧统一用即时画布后，误判作废的通道就不存在了。
+        let sidebarCanvas = pendingSidebarWidth ?? stagedSidebarWidth ?? actualSidebarWidthObserved
         if sidebarCanvas > 0, sidebarRowContentWidth > sidebarCanvas {
             #if DEBUG
             PZLog.info("invalidated sidebar row width \(sidebarRowContentWidth) > canvas \(sidebarCanvas)")
             #endif
             sidebarRowContentWidth = 0
         }
-        let mainCanvas = mainColumnCanvasSizeObserved.width
+        let mainCanvas = mainColumnRowWidthCanvas
         if mainCanvas > 0, mainColumnRowContentWidth > mainCanvas {
             #if DEBUG
             PZLog.info("invalidated mainColumn row width \(mainColumnRowContentWidth) > canvas \(mainCanvas)")
@@ -697,6 +771,9 @@ public final class ScreenVM {
             pendingWindowSizeSansBleed = nil
         }
         if let value = pendingSidebarWidth { stagedSidebarWidth = value; pendingSidebarWidth = nil }
+        // 这一世代是否真的重测了主栏宽。必须在清空 pending 之前取，见
+        // `recordSidebarPaddingOffset(didMeasureMainColumn:)`。
+        let didMeasureMainColumn = pendingMainColumnSansBleed != nil
         if let value = pendingMainColumnSansBleed {
             stagedMainColumnSansBleed = value
             pendingMainColumnSansBleed = nil
@@ -713,7 +790,7 @@ public final class ScreenVM {
             stagedMainColumnRowContentWidth = value
             pendingMainColumnRowContentWidth = nil
         }
-        recordSidebarPaddingOffset()
+        recordSidebarPaddingOffset(didMeasureMainColumn: didMeasureMainColumn)
         await commitLayoutState()
     }
 
@@ -723,12 +800,21 @@ public final class ScreenVM {
     /// （启动阶段曾因此得到 404，进而让 `mainColumnCanvasSizeObserved` 只有 227）。
     /// 窗口宽必须用**整窗**值：`windowSizeObservedSansBleed` 已经扣掉出血（951 → 867），
     /// 拿它减侧栏宽会算出 0 这种假 offset。
-    private func recordSidebarPaddingOffset() {
+    ///
+    /// - Parameter didMeasureMainColumn: 这一世代的主栏宽是否**重新量测过**。
+    ///
+    ///   - Important: offset 只在主栏真的重测时才重算。否则 `mainColumn` 是旧世代的残量，
+    ///     重算只会把「窗口 / 侧栏」的变化整包吸收进 offset，而
+    ///     `mainColumnCanvasSizeObserved ≡ 窗口宽 − 侧栏宽 − offset` 又会把它们还原回去——
+    ///     两者互为逆运算，画布于是恒等于**上一次主栏实测宽**，任何几何变化都传不到消费端
+    ///     （铰链 halfOpen ↔ fullyOpen 时 `CharInventoryView` 的每行格数不更新即源于此）。
+    private func recordSidebarPaddingOffset(didMeasureMainColumn: Bool) {
         guard let mainColumn = stagedMainColumnSansBleed else { return }
         let sidebarWidth = (stagedSidebarWidth ?? actualSidebarWidthObserved).rounded(.up)
         let windowWidth = (stagedWindowSize ?? windowSizeObserved).width.rounded(.up)
         let computedWidth = windowWidth - sidebarWidth
         guard computedWidth > 0, sidebarWidth > 0 else { return }
+        guard didMeasureMainColumn || stagedSidebarPaddingOffset == nil else { return }
         stagedSidebarPaddingOffset = max(0, (computedWidth - mainColumn.width.rounded(.up)).rounded(.up))
     }
 
@@ -779,6 +865,12 @@ public final class ScreenVM {
         // 重排，追踪器随之回报），因此这段不一致是有界的。
         if !deferredRowContentWidth {
             invalidateRowContentWidthsExceedingCanvas()
+            // 画布刚落定：把先前被误判为残量的内容宽重投一次。
+            //
+            // 这个时机才是对的。栏位量测当下（`handleTrackedSidebarCanvasSize()` 等）触发的那次重投
+            // 读到的仍是**旧世代**画布，必然再被丢弃一次；只有等本次提交把新的窗口 / 侧栏写进去之后
+            // 重投，那笔更宽的量测才会被受理（见 `mainColumnRowWidthCanvas`）。
+            retryRejectedRowContentWidths()
         }
         #if DEBUG
         // 诊断用：一次旋转 / 铰链开合到底触发了几次提交、每次提交消费端看到的值是什么。
@@ -1227,6 +1319,28 @@ extension ScreenVM {
         hingeInteraction = interaction
         let windowSizeRAW = String(describing: window.bounds.size)
         PZLog.info("已在启动阶段挂上铰链观察器（key window: \(windowSizeRAW)）")
+    }
+}
+
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+extension ScreenVM {
+    /// 解析「本页清单列可用的内容宽」，供所有 `StaggeredGrid` 消费端使用。
+    ///
+    /// 依序采用：
+    /// 1. `injected`：`\.listRowContentWidth` 环境值，即本页由 `reportListRowContentWidth()` 量到、
+    ///    并经 `ScreenVM` 提交回来的同一世代实测值；
+    /// 2. `mainColumnRowContentWidth`：主栏已提交的实测值；
+    /// 3. 由主栏画布扣掉 `canvasInset` 的保守推算值（只有首帧才会用到）。
+    ///
+    /// 之所以需要 (2)：`\.listRowColumn` 的默认值恰好就是 `.mainColumn`，所以「本页回报到 main」
+    /// 并不能证明本页确实落在该栏的环境子树内。实测（iPhone Duo，2026-10-08）`\.listRowContentWidth`
+    /// 在 `SpecimenView` 与 `CharInventoryView` 上恒为 nil，消费端于是长期只能用 (3) 的固定内缩推算；
+    /// 而该固定内缩在铰链半开 / 全开之间并不守恒——实测真实行宽 485 / 309，推算值却只有 436 / 384，
+    /// `CharInventoryView.lineCapacity` 因此两边都算出 5，看起来就像「容量不随铰链状态更新」。
+    public func resolvedListRowContentWidth(injected: CGFloat?, canvasInset: CGFloat) -> CGFloat {
+        if let injected, injected > 0 { return injected }
+        if mainColumnRowContentWidth > 0 { return mainColumnRowContentWidth }
+        return Swift.max(mainColumnCanvasSizeObserved.width - canvasInset, 0)
     }
 }
 #endif
