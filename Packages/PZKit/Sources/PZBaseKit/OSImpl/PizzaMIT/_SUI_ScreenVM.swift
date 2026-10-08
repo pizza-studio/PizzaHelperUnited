@@ -32,6 +32,11 @@ public final class ScreenVM {
         // 使用 UIWindowScene.interfaceOrientation 作为回退
         let orientationNow = Self.getInitialOrientation()
         self.orientation = orientationNow
+        // 以下都是「已提交值」的种子：先放暂定值，第一次排版状态提交后由观测值取代。
+        self.isHorizontallyCompact = Self.getInitialHorizontalSizeClass() == .compact
+        self.actualSidebarWidthObserved = 0
+        self.windowSizeObserved = Self.getKeyWindowSize()
+        self.mainColumnSidebarPaddingOffset = 0
         // 先用上次启动时记下的铰链状态当暂定值：铰链 API 的首次回呼要等约 0.9 秒才到，
         // 不等它的话，首屏的 splitViewVisibility 会用未经反相的方向判定。
         let cachedHingeStatus = Defaults[.lastKnownHingeStatus].flatMap(HingeStatus.init(rawValue:))
@@ -64,17 +69,20 @@ public final class ScreenVM {
                     return nil
                 }()
                 guard let newOrientation else { continue }
-                try? await Task.sleep(nanoseconds: 100_000_000) // 100ms 去抖动
-                try? Task.checkCancellation()
-                self.orientation = newOrientation
+                // 不再自带去抖：只写 pending，记录与落定交给 `reportLayoutStateObservation()`
+                // （见 `reportOrientation(_:)` 与 `recordPendingObservations()`）。
+                self.reportOrientation(newOrientation)
                 PZLog.info(
                     "方向更新: \(newOrientation.rawValue), windowSizeObserved: \(String(describing: self.windowSizeObserved))"
                 )
-                self.updateHash4Tracking()
             }
         }
         #else
         self.orientation = .landscape
+        self.isHorizontallyCompact = false
+        self.actualSidebarWidthObserved = 0
+        self.windowSizeObserved = Self.getKeyWindowSize()
+        self.mainColumnSidebarPaddingOffset = 0
         self.splitViewVisibility = .all // macOS 默认显示侧边栏
         #endif
         updateHash4Tracking() // 初始化 hashForTracking
@@ -114,32 +122,66 @@ public final class ScreenVM {
         case unknown
     }
 
+    /// 清单列所属的栏位。供 `View.reportListRowContentWidth(for:)` 决定量到的宽度该回报给哪一栏。
+    public enum ListRowColumn: Sendable, Hashable {
+        case sidebar
+        case mainColumn
+    }
+
     public static let shared = ScreenVM()
 
-    public var orientation: Orientation
-    public var hingeStatus: HingeStatus?
+    /// 当前方向。**已提交值**：方向通知只做 stage，落定于 `commitLayoutState()`。
+    public private(set) var orientation: Orientation
+    /// 折叠装置的铰链状态。**已提交值**，语义见 `HingeStatus`。
+    public private(set) var hingeStatus: HingeStatus?
     /// 折叠装置铰链的开阖角度（度数）。`nil` 的含义与 `hingeStatus` 相同。
-    /// 铰链掀动时此值会高频更新；需要订阅的视图直接读它即可（`ScreenVM` 是 @Observable）。
-    public var hingeAngleInDegrees: Double?
-    public var isHorizontallyCompact: Bool = OS.type == .iPhoneOS
-    public var actualSidebarWidthObserved: CGFloat = 0
+    /// **已提交值**：铰链在扳动时会高频回报，但消费端只会在一次提交里看到新的值。
+    public private(set) var hingeAngleInDegrees: Double?
+    public private(set) var isHorizontallyCompact: Bool
+    public private(set) var actualSidebarWidthObserved: CGFloat
     /// App 视窗的尺寸（含 iPhone Duo 展开时尾端 vertical bar 所占的出血边界）。
     ///
     /// 初始值为 `getKeyWindowSize()` 的**暂定值**，它在启动阶段可能因 key window 尚未
     /// 就绪而失真；一旦 `ScreenVM.ViewTracker` 量到尺寸，就会以量测值为准。
-    public var windowSizeObserved: CGSize = ScreenVM.getKeyWindowSize()
+    public private(set) var windowSizeObserved: CGSize
     public var splitViewVisibility: NavigationSplitViewVisibility
 
     /// Sidebar padding 偏移量。经由 CanvasSizeTracker 直接量取校准。
-    /// 初始值为 0（假设无 padding）；由 ContentView 中的 tracker 实际量取后修正。
-    /// 该值恒为非负数。
-    public var mainColumnSidebarPaddingOffset: CGFloat = 0
+    /// 该值恒为非负数。**已提交值**。
+    public private(set) var mainColumnSidebarPaddingOffset: CGFloat
 
     public private(set) var hashForTracking: Int = 0
 
+    /// 视窗尺寸（**不含**出血边界）：由 `ContentView` 的 tracker 直接量取。
+    /// 与 `windowSizeObserved`（含出血）成对存在，供需要「实际可用排版宽度」的场合使用。
+    public private(set) var windowSizeObservedSansBleed: CGSize = .zero
+
+    /// Main Column（detail 栏）尺寸（**不含**出血边界）：由 `ContentView` 的 tracker 直接量取。
+    public private(set) var mainColumnSizeObservedSansBleed: CGSize = .zero
+
+    /// Main Column（detail 栏）尺寸（**含**出血边界）：由 `ContentView` 的 tracker 直接量取。
+    public private(set) var mainColumnSizeObservedWithBleed: CGSize = .zero
+
+    /// 清单列（`Form` / `List` 的单行内容区）的**可用内容宽**：Sidebar 栏。
+    ///
+    /// 这是该栏位某一列的 `ListRowWidthMarker` 跑出的**原始实测值**（见
+    /// `View.reportListRowContentWidth(for:)`），且只在「量测静下来之后」才更新一次：
+    /// 每个新的量测都会把落定去抖器重新计时，所以一次旋转 / 铰链开合过程中那些中途的提案宽
+    /// 一律不会发布出去，消费端（`StaggeredGrid` 等）的排版动画因此只会在最后触发一次。
+    ///
+    /// 之所以发布实测值而不是「画布宽 — 内缩量」的推算值：推算值在过程中会随画布一步步变动，
+    /// 每变一步内容就重排一次动画；而实测值本身就是容器给的提案宽，与网格自身的宽度完全一致，
+    /// 不会出现固定尺寸的 specimen 溢出栏位、互相重叠的问题。
+    ///
+    /// 为 0 表示尚未量到（首帧），消费端应退回自己的保守估值。
+    public private(set) var sidebarRowContentWidth: CGFloat = 0
+
+    /// 清单列的**可用内容宽**：Main Column（detail 栏）。语义同 `sidebarRowContentWidth`。
+    public private(set) var mainColumnRowContentWidth: CGFloat = 0
+
     /// Main Column 的画布尺寸。
     /// 从 `windowSizeObserved` — `actualSidebarWidthObserved` — `mainColumnSidebarPaddingOffset` 推算。
-    /// 由于读取了三个 @Observable stored property，它们任一变化都会触发依赖方重绘。
+    /// 三者都是**已提交值**，因此它只在一次排版状态提交之后才变动一次。
     public var mainColumnCanvasSizeObserved: CGSize {
         var newResult = windowSizeObserved
         guard splitViewVisibility != .detailOnly else { return newResult }
@@ -168,8 +210,7 @@ public final class ScreenVM {
 
     /// 铰链是否处于张开状态：有铰链资讯、且开阖角度大于 0。
     public var isHingeOpen: Bool {
-        guard hingeStatus != nil else { return false }
-        return (hingeAngleInDegrees ?? 0) > 0
+        Self.isHingeOpen(status: hingeStatus, angleInDegrees: hingeAngleInDegrees)
     }
 
     /// App 的视窗是否占满整个萤幕，而不是被系统塞在左页、右页或上下其中一页。
@@ -178,6 +219,12 @@ public final class ScreenVM {
     /// 被塞进单页时其中一轴只剩约 0.5，故门槛取 0.75。
     public var isAppOccupyingWholeScreen: Bool {
         Self.isAppOccupyingWholeScreen(windowSize: windowSizeObserved, screenSize: Self.getScreenSize())
+    }
+
+    /// `isHingeOpen` 的纯函式版本；供 staged 观测值（尚未提交、不能碰 self 属性时）判定用。
+    public static func isHingeOpen(status: HingeStatus?, angleInDegrees: Double?) -> Bool {
+        guard status != nil else { return false }
+        return (angleInDegrees ?? 0) > 0
     }
 
     /// `isAppOccupyingWholeScreen` 的纯函式版本；供 init（尚不能碰 self 方法时）与实例属性共用。
@@ -218,40 +265,297 @@ public final class ScreenVM {
         )
     }
 
-    /// 回报一次铰链观测结果。
+    /// 回报一次「影响整体排版状态」的观测。
     ///
-    /// **异步 + debounce**：铰链在扳动时会高频回报，这里等它静下来之后才真正写入 `ScreenVM`
-    /// （trailing-edge：后一次回报会取消前一次待处理的写入）。
-    public func reportHingeObservation(status: HingeStatus?, angleInDegrees: Double?) async {
-        await hingeObservationDebouncer.debounce { [weak self] in
-            await self?.applyHingeObservation(status: status, angleInDegrees: angleInDegrees)
+    /// 视窗尺寸、方向、铰链、各栏宽度原本各自带不同的去抖机制与延迟，于是一次旋转 /
+    /// 铰链开合会让 `splitViewVisibility` 与各栏宽度基准先后变动好几次，内容端
+    /// （specimen 这类 `StaggeredGrid`）便跟着重排好几次、与 `NavigationSplitView`
+    /// 的自适应动画彼此撞车。
+    ///
+    /// 现在这些观测一律只写进 pending 槽，并 poke 唯一的静默窗：
+    /// **记录本身也是去抖的**——等原始观测流停下来，才把最后一代写进 staged 快照并提交一次
+    /// （见 `recordPendingObservations()`）。这样中间世代既不会污染派生值（offset），
+    /// 也不会被当成真值提交给消费端。
+    public func reportLayoutStateObservation() {
+        // 落定条件：从「第一笔观测」算起，要嘛已经静默满 `settleDelay`，要嘛已经等满 `maxDelay`。
+        // 上限存在的理由：纯 trailing-edge 在观测**持续到来**时可以永远不触发——一次旋转 /
+        // 铰链开合期间系统会连续给出一世代又一世代的中途值，若每次都被重新计时，就一次都提交不了。
+        // 上限保证「输入不停也终究会落定一次」。
+        let now = Date()
+        observationRecordStartedAt = observationRecordStartedAt ?? now
+        lastObservationAt = now
+        // 闸门：同一时间只允许一个计时任务。少了它，持续输入下每一笔观测都会另起一个任务，
+        // 每个任务各自提交一次，于是「一次旋转」被拆成几十次提交。
+        guard observationRecordTask == nil else { return }
+        observationRecordTask = Task { @MainActor [weak self] in
+            let settleDelay = self?.layoutSettleDelay ?? 0.7
+            let maxDelay = 3.0
+            let startedAt = self?.observationRecordStartedAt
+            do {
+                while let self {
+                    // 每一圈都先检查取消：`Task.sleep` 一旦被取消就**立刻返回**
+                    // （而不是抛错），若不在圈首显式检查，这个回圈会变成不睡的空转。
+                    try Task.checkCancellation()
+                    if let lastObservationAt = lastObservationAt,
+                       Date().timeIntervalSince(lastObservationAt) >= settleDelay {
+                        lastObservationLooksSettled = true
+                        break // 静默窗内没有新观测进来：真的静下来了。
+                    }
+                    if let startedAt, Date().timeIntervalSince(startedAt) >= maxDelay {
+                        lastObservationLooksSettled = false
+                        break // 观测持续不断：到上限就强制落定一次。
+                    }
+                    try await Task.sleep(for: .seconds(settleDelay))
+                }
+                try Task.checkCancellation()
+                guard let self else { return }
+                observationRecordStartedAt = nil
+                lastObservationAt = nil
+                await recordPendingObservations()
+            } catch {
+                // 被 `recordPendingObservationsImmediately()` 或除役取消。
+            }
+            // 提交确实结束之后才解除闸门：否则下一笔观测会在提交还在跑时就另起一个任务。
+            self?.observationRecordTask = nil
         }
     }
 
-    public func handleTrackedMainColumnCanvasSize(_ trackedSize: CGSize) {
-        let measuredWidth = trackedSize.width.rounded(.up)
-        let sidebarWidth = actualSidebarWidthObserved.rounded(.up)
-        let windowWidth = windowSizeObserved.width.rounded(.up)
-        let computedWidth = windowWidth - sidebarWidth
-        guard computedWidth > 0 else { return }
-        let offset = (computedWidth - measuredWidth).rounded(.up)
-        let clampedOffset = max(0, offset)
-        if mainColumnSidebarPaddingOffset != clampedOffset {
-            mainColumnSidebarPaddingOffset = clampedOffset
+    /// 回报一次铰链观测结果。
+    ///
+    /// 与其它排版观测一样只写 pending；但**开阖状态一翻就立刻记录并提交一次**：折叠过程中角度会持续
+    /// 高频变化，若一路走 trailing-edge 去抖，可见性判定要等手停下来才落定（实测很慢）。
+    /// 开阖状态翻转过后的角度微调仍走去抖，不会再多触发提交。
+    public func reportHingeObservation(status: HingeStatus?, angleInDegrees: Double?) {
+        let wasOpen = Self.isHingeOpen(status: hingeStatus, angleInDegrees: hingeAngleInDegrees)
+        applyHingeObservation(status: status, angleInDegrees: angleInDegrees)
+        let isOpenNow = Self.isHingeOpen(
+            status: pendingHinge?.status ?? stagedHinge?.status ?? hingeStatus,
+            angleInDegrees: pendingHinge?.angleInDegrees ?? stagedHinge?.angleInDegrees ?? hingeAngleInDegrees
+        )
+        guard wasOpen != isOpenNow else { return }
+        // 立刻记录，不必再等静默窗：折合状态翻转需要即时生效。
+        recordPendingObservationsImmediately()
+    }
+
+    /// 回报一次方向观测。
+    public func reportOrientation(_ newOrientation: Orientation) {
+        guard (pendingOrientation ?? stagedOrientation ?? orientation) != newOrientation else { return }
+        pendingOrientation = newOrientation
+        // A（转向 / 铰链翻转）就是一次排版过渡的起点。见 `layoutTransitionArmedAt`。
+        layoutTransitionArmedAt = Date()
+        reportLayoutStateObservation()
+    }
+
+    /// 回报一次横向 size class 观测。
+    public func reportHorizontalSizeClass(isCompact: Bool) {
+        guard (pendingIsHorizontallyCompact ?? stagedIsHorizontallyCompact ?? isHorizontallyCompact) != isCompact
+        else { return }
+        pendingIsHorizontallyCompact = isCompact
+        layoutTransitionArmedAt = Date()
+        reportLayoutStateObservation()
+    }
+
+    /// 回报一次「App 视窗尺寸（含出血）」观测：由 `ScreenVM.ViewTracker` 的量测器调用。
+    public func reportWindowSize(_ trackedSize: CGSize) {
+        guard trackedSize.width > 0, trackedSize.height > 0 else { return }
+        var newSize = trackedSize
+        newSize.width.round(.up)
+        newSize.height.round(.up)
+        guard (pendingWindowSize ?? stagedWindowSize ?? windowSizeObserved) != newSize else { return }
+        pendingWindowSize = newSize
+        reportLayoutStateObservation()
+    }
+
+    /// 回报一次「该栏清单列可用内容宽」的就地量测结果。
+    ///
+    /// 收到的就是消费端最终要用的宽度（容器给的提案宽），但**不会立刻发布**：与其它几何观测一样
+    /// 只写 pending，由 `reportLayoutStateObservation()` 那唯一的静默窗一次落定。
+    ///
+    /// - Important: 这里**刻意不再**带自己的去抖器。曾经它由一个独立的 0.7s 去抖器发布，结果是
+    ///   它可以跟「栏位画布」分属不同排版世代：`isStaleRowWidthMeasurement` 与
+    ///   `invalidateRowContentWidthsExceedingCanvas()` 都只在提交时机检查，而两者来自不同的时序，
+    ///   于是「已发布的宽 > 当下画布」这种状态会存在（实测 rowMain=807 与 canvas=372 并存）。
+    ///   同一批提交既保证世代一致，也让消抖只剩一处。
+    /// 见 `View.reportListRowContentWidth(for:debounceDelay:)`。
+    public func reportListRowContentWidth(_ width: CGFloat, for column: ListRowColumn) {
+        let rounded = max(width.rounded(.down), 0)
+        guard rounded > 0 else { return }
+        var didChange = false
+        switch column {
+        case .sidebar:
+            // 清单列不可能比它所在的栏位画布还宽：更宽的量测必然来自上一个排版世代
+            // （例如侧栏正在收起时，页面曾按整窗宽排版）。这种量测若被发布出去，消费端会
+            // 算出比实际更多的栏数，固定尺寸的卡片就会互相重叠。
+            // 比较对象用**同一世代**的 pending 画布，而不是已提交的画布：后者本身可能还停在
+            // 上一世代，拿它当门槛会把这一世代正确的量测也一并丢掉。
+            let canvas = pendingSidebarWidth ?? stagedSidebarWidth ?? actualSidebarWidthObserved
+            guard !isStaleRowWidthMeasurement(rounded, canvasWidth: canvas, columnName: "sidebar") else { return }
+            guard (pendingSidebarRowContentWidth ?? stagedSidebarRowContentWidth ?? sidebarRowContentWidth) != rounded
+            else { return }
+            lastReportedSidebarRowContentWidth = rounded
+            pendingSidebarRowContentWidth = rounded
+            didChange = true
+        case .mainColumn:
+            let canvas = (pendingMainColumnSansBleed ?? stagedMainColumnSansBleed ?? mainColumnSizeObservedSansBleed)
+                .width
+            guard !isStaleRowWidthMeasurement(rounded, canvasWidth: canvas, columnName: "mainColumn") else { return }
+            guard (pendingMainColumnRowContentWidth ?? stagedMainColumnRowContentWidth ?? mainColumnRowContentWidth) !=
+                rounded
+            else { return }
+            lastReportedMainColumnRowContentWidth = rounded
+            pendingMainColumnRowContentWidth = rounded
+            didChange = true
         }
+        guard didChange else { return }
+        // - Important: 首次量到的内容宽**立刻发布**，不等提交。
+        //
+        // 消费端（Specimen / 战报 / 角色清单 / 抽卡图表 / 桌布廊）在环境值还是 nil 时，
+        // 会退回「即时画布 − 内缩」自行推算。那条退路读的是**当下**画布，因此一次旋转里
+        // 它会跟着中间世代抖动，正是要消掉的那份「多段重排」。先在这里把首帧值补上，
+        // 环境值此后永远非 nil，退路就不再有实际戏份。
+        if mainColumnRowContentWidth <= 0, let seeded = pendingMainColumnRowContentWidth {
+            mainColumnRowContentWidth = seeded
+        }
+        if sidebarRowContentWidth <= 0, let seeded = pendingSidebarRowContentWidth {
+            sidebarRowContentWidth = seeded
+        }
+        reportLayoutStateObservation()
     }
 
     public func handleTrackedSidebarCanvasSize(_ trackedSize: CGSize) {
-        let existingWidth = actualSidebarWidthObserved
+        guard trackedSize.width > 0 else { return }
         let newValue = trackedSize.width.rounded(.up)
-        guard existingWidth != newValue else { return }
-        actualSidebarWidthObserved = newValue
+        guard (pendingSidebarWidth ?? stagedSidebarWidth ?? actualSidebarWidthObserved) != newValue else { return }
+        pendingSidebarWidth = newValue
+        reportLayoutStateObservation()
+    }
+
+    /// 视窗尺寸的量测回报（`includingBleed == false` 的那一份）。
+    ///
+    /// 含出血的那一份由 `ScreenVM.ViewTracker` 负责（同样挂在 `ContentView` 上），
+    /// 写进 `windowSizeObserved`；此处只补「不含出血」的观测。
+    public func handleTrackedWindowSize(_ trackedSize: CGSize, includingBleed: Bool) {
+        guard !includingBleed else { return }
+        guard trackedSize.width > 0, trackedSize.height > 0 else { return }
+        var newSize = trackedSize
+        newSize.width.round(.up)
+        newSize.height.round(.up)
+        guard (pendingWindowSizeSansBleed ?? stagedWindowSizeSansBleed ?? windowSizeObservedSansBleed) != newSize
+        else { return }
+        pendingWindowSizeSansBleed = newSize
+        reportLayoutStateObservation()
+    }
+
+    /// Main Column（detail 栏）尺寸的量测回报：含出血与不含出血各写一份。
+    public func handleTrackedMainColumnSize(_ trackedSize: CGSize, includingBleed: Bool) {
+        guard trackedSize.width > 0, trackedSize.height > 0 else { return }
+        var newSize = trackedSize
+        newSize.width.round(.up)
+        newSize.height.round(.up)
+        if includingBleed {
+            guard (pendingMainColumnWithBleed ?? stagedMainColumnWithBleed ?? mainColumnSizeObservedWithBleed) !=
+                newSize
+            else { return }
+            pendingMainColumnWithBleed = newSize
+        } else {
+            // offset 不在量测当下推算：那时窗口 / 侧栏宽可能还停在上一世代。改由
+            // `recordPendingObservations()` 从同一批已记录的观测推算，因此这里值没变就不必 poke
+            // （窗口 / 侧栏若有变动，各自会 poke；无谓地重启静默窗只会把提交一直往后推）。
+            guard (pendingMainColumnSansBleed ?? stagedMainColumnSansBleed ?? mainColumnSizeObservedSansBleed)
+                != newSize else { return }
+            pendingMainColumnSansBleed = newSize
+        }
+        reportLayoutStateObservation()
     }
 
     // MARK: Private
 
-    /// 铰链观测的写入去抖器（与画布尺寸观测推導使用同一套 `Debouncer` 机制）。
-    private let hingeObservationDebouncer: Debouncer = .init(delay: 0.1)
+    private struct HingeObservation {
+        var status: HingeStatus?
+        var angleInDegrees: Double?
+    }
+
+    /// 刚收到的**原始**排版观测值（pending）。
+    ///
+    /// 旋转 / 铰链 / 视窗与栏位量测在系统动画与栏位动画期间会连续给出好几代中途值（实测相隔
+    /// 0.25–0.7s，甚至一秒以上）。这些原始值只写在这里；`reportLayoutStateObservation()` 等它们停下来
+    /// 之后才「记录」进 staged 快照（`recordPendingObservations()`），中间世代于是既不会污染派生值
+    /// （例如 sidebar padding offset 由窗口 − 侧栏 − 主栏宽推算，混用世代会算出荒谬值），
+    /// 也不会被当成真值提交给消费端。
+    private var pendingOrientation: Orientation?
+    private var pendingHinge: HingeObservation?
+    private var pendingIsHorizontallyCompact: Bool?
+    private var pendingWindowSize: CGSize?
+    private var pendingWindowSizeSansBleed: CGSize?
+    private var pendingSidebarWidth: CGFloat?
+    private var pendingMainColumnSansBleed: CGSize?
+    private var pendingMainColumnWithBleed: CGSize?
+    private var pendingSidebarRowContentWidth: CGFloat?
+    private var pendingMainColumnRowContentWidth: CGFloat?
+
+    /// 已记录、待提交的排版观测值（staged）。只由 `recordPendingObservations()` 写入，
+    /// 再由 `commitLayoutState()` 一次性落定给消费端。
+    ///
+    /// 视窗尺寸、方向、铰链、各栏宽度与「清单列可用内容宽」原本各自带不同的去抖机制与延迟，
+    /// 于是一次旋转 / 铰链开合会让消费端看到的状态先后变动好几次、内容跟着重排好几次。
+    /// 现在所有观测都只在同一批记录里写进来，再由 `commitLayoutState()` 一次提交。
+    private var stagedOrientation: Orientation?
+    private var stagedHinge: HingeObservation?
+    private var stagedIsHorizontallyCompact: Bool?
+    private var stagedWindowSize: CGSize?
+    private var stagedWindowSizeSansBleed: CGSize?
+    private var stagedSidebarWidth: CGFloat?
+    private var stagedMainColumnSansBleed: CGSize?
+    private var stagedMainColumnWithBleed: CGSize?
+    private var stagedSidebarPaddingOffset: CGFloat?
+    private var stagedSidebarRowContentWidth: CGFloat?
+    private var stagedMainColumnRowContentWidth: CGFloat?
+
+    /// 最近一次就地量到的原始内容宽（去重用；提交后仍保留，staged 槽则会被清空）。
+    private var lastReportedSidebarRowContentWidth: CGFloat?
+    private var lastReportedMainColumnRowContentWidth: CGFloat?
+
+    /// 「原始观测」的记录静默窗：**记录本身也要去抖**。
+    ///
+    /// 一次旋转 / 铰链开合期间，pending 槽会被同一场排版的中间世代反复覆写。0.7s 是实测足以跨越
+    /// 这些世代间隔的静默窗：等原始观测流停下来，才把最后一代记录进 staged 快照并提交一次，
+    /// 可见性、各栏宽度基准与派生值于是在同一次提交里落定。
+    ///
+    /// - Important: 静默窗另有一个 3s 的上限（见 `reportLayoutStateObservation()`）。纯 trailing-edge
+    ///   去抖在观测**持续到来**时可以永远不触发：实测 60Hz 合成过渡期间 300 次/秒的 poke 换到
+    ///   `commits == 0`，也就是一次都不提交、画面停在旧几何上（使用者所谓「过了十几秒还是这样」）。
+    ///   有上限才能保证「input 不停也终究会落定一次」。
+    private var observationRecordTask: Task<Void, Never>?
+    private var observationRecordStartedAt: Date?
+    private var lastObservationAt: Date?
+    /// 手上这份「清单列内容宽」是否是在**旧边栏可见性**下量到的过渡世代；是的话先不发布，
+    /// 等下一个世代（边栏动画结束、追踪器重新回报之后）再落定。见 `commitLayoutState()`。
+    private var deferredRowContentWidth: Bool = false
+    /// 排版过渡的起点：最近一次「转向 / 横竖 size class 变化 / 铰链开阖翻转」的时刻。
+    ///
+    /// 边栏可见性（B）常常比几何（C1）晚几拍才到——`shouldShowSidebar()` 要等 `orientation`、
+    /// `isHorizontallyCompact`、`hingeStatus` 都齐了才会给出新答案，而这些观测不是同一刻送达的。
+    /// 若只在「这次提交刚好翻转可见性」时才按住内容宽，早几拍的那次提交就会把过渡世代发出去，
+    /// 消费端于是先重排一次（D1），B/C2 落定后再重排一次（D2）——正是使用者描述的时序。
+    /// 因此从 A 起就按住，等过了 `layoutSettleDelay` 才允许发布。
+    private var layoutTransitionArmedAt: Date?
+    /// 落定所需的静默时长。`reportLayoutStateObservation()` 的计时条件与
+    /// `commitLayoutState()` 的「过渡是否已过」判断共用这一个值。
+    private let layoutSettleDelay: TimeInterval = 0.7
+    /// 上一轮静默窗是「真的静下来」结束的，还是被 `maxDelay` 上限强制结束的。
+    ///
+    /// 这是「内容宽能不能发布」的唯一可信判据。观测流没停下来时（`maxDelay` 强制提交、
+    /// 或铰链翻转的立即提交），当下这份内容宽是在几何还在动的世代里量到的过渡态；发布出去
+    /// 就是使用者看到的 D1。只有静默窗自然到期的那次提交，才保证几何已经静止了整整一个
+    /// `layoutSettleDelay`。
+    private var lastObservationLooksSettled: Bool = false
+    /// 按住内容宽期间排定的一次补提交，见 `scheduleRowContentWidthReleaseIfNeeded()`。
+    private var rowContentWidthReleaseTask: Task<Void, Never>?
+
+    /// 上一次真正写进 `UserDefaults` 的铰链暂定值。用来挡掉折合过程中的高频重复写入
+    /// （见 `applyHingeObservation(status:angleInDegrees:)`）。
+    private var lastPersistedHingeStatus: HingeStatus?
+    private var lastPersistedHingeAngleInDegrees: Double?
 
     #if os(iOS) && !targetEnvironment(macCatalyst)
     /// 启动阶段就挂在 key window 上的铰链观察器；见 `startEarlyHingeTracking()`。
@@ -296,20 +600,313 @@ public final class ScreenVM {
         #endif
     }
 
-    /// 真正把铰链观测结果写入 `ScreenVM`。
-    private func applyHingeObservation(status newStatus: HingeStatus?, angleInDegrees newAngleInDegrees: Double?) {
-        guard hingeStatus != newStatus || hingeAngleInDegrees != newAngleInDegrees else { return }
-        let previousIsOpen = isHingeOpen
-        let statusDidChange = hingeStatus != newStatus
-        hingeStatus = newStatus
-        hingeAngleInDegrees = newAngleInDegrees
-        let openStateDidChange = previousIsOpen != isHingeOpen
-        // 记下来给下次启动当暂定值用（含主动清空的情形）。
-        Defaults[.lastKnownHingeStatus] = newStatus?.rawValue
-        Defaults[.lastKnownHingeAngleInDegrees] = newAngleInDegrees
-        // 角度会在高频扳动时变化，因此只在开阖状态改变时才写日志与更新追踪哈希。
-        guard statusDidChange || openStateDidChange else { return }
+    /// 判断一次「清单列可用内容宽」的量测是不是上一个排版世代的残留。
+    ///
+    /// 画布宽尚未量到时（启动阶段）一律接受，否则会把最先到的量测全部丢掉。
+    private func isStaleRowWidthMeasurement(
+        _ measured: CGFloat,
+        canvasWidth: CGFloat,
+        columnName: String
+    )
+        -> Bool {
+        guard canvasWidth > 0 else { return false }
+        let isStale = measured > canvasWidth.rounded(.up)
+        #if DEBUG
+        if isStale {
+            PZLog.info("ignored a stale \(columnName) row-width measurement: \(measured) > canvas \(canvasWidth)")
+        }
+        #endif
+        return isStale
+    }
+
+    /// 作废「比刚提交的栏位画布还宽」的已发布内容宽。
+    ///
+    /// 已发布的宽度可能是在「栏位还比较宽」的排版世代量到的：侧栏之后若出现（画布由整窗缩到栏内），
+    /// 那个旧值就会比当前画布还宽。消费端拿它算栏数会算出装不下的栏数，固定尺寸的卡片于是互相重叠
+    /// （ID Photo Specimen 页曾如此卡住）。作废之后消费端会退用自己的保守估值（画布减固定内缩量），
+    /// 等新的量测落定再发布一次。
+    private func invalidateRowContentWidthsExceedingCanvas() {
+        let sidebarCanvas = actualSidebarWidthObserved
+        if sidebarCanvas > 0, sidebarRowContentWidth > sidebarCanvas {
+            #if DEBUG
+            PZLog.info("invalidated sidebar row width \(sidebarRowContentWidth) > canvas \(sidebarCanvas)")
+            #endif
+            sidebarRowContentWidth = 0
+        }
+        let mainCanvas = mainColumnCanvasSizeObserved.width
+        if mainCanvas > 0, mainColumnRowContentWidth > mainCanvas {
+            #if DEBUG
+            PZLog.info("invalidated mainColumn row width \(mainColumnRowContentWidth) > canvas \(mainCanvas)")
+            #endif
+            mainColumnRowContentWidth = 0
+        }
+    }
+
+    /// 按住内容宽时排定的一次补提交。
+    ///
+    /// 必须有它：静默窗提交若刚好撞上边栏可见性翻转，那一刻内容宽会被按住；而这次提交之后
+    /// 观测流已经静下来，不会有下一笔观测来触发下一次提交——少了补提交，新宽度就永远发不出去。
+    /// 补提交只在「排定之后确实没有任何新观测」时才动手，否则交给正常的静默窗去落定。
+    private func scheduleRowContentWidthReleaseIfNeeded() {
+        guard deferredRowContentWidth else { return }
+        guard rowContentWidthReleaseTask == nil else { return }
+        rowContentWidthReleaseTask = Task { @MainActor [weak self] in
+            guard let self else { return }
+            let delay = layoutSettleDelay
+            try? await Task.sleep(for: .seconds(delay))
+            guard !Task.isCancelled else { return }
+            rowContentWidthReleaseTask = nil
+            // `lastObservationAt` 在每次提交时被清成 nil；它仍非 nil 就代表又来了新观测，
+            // 那一轮自然会由静默窗落定，这里不抢。
+            guard lastObservationAt == nil else { return }
+            lastObservationLooksSettled = true
+            await commitLayoutState()
+        }
+    }
+
+    /// 立刻记录并提交一次（不等静默窗）。用于铰链开阖翻转这种必须即时生效的场合。
+    private func recordPendingObservationsImmediately() {
+        // 刻意**不取消**计时任务：`recordPendingObservations()` 会在第一个 await 之前就把 pending
+        // 槽清空，取消一个已经越过最后一个停止点的任务无法阻止那次提交，反而取消一个还没越过
+        // 停止点的任务会留下「pending 已被耗尽」的空窗。`reportLayoutStateObservation()` 的闸门
+        // 已保证同时只有一个计时任务，这里直接提交即可。
+        observationRecordStartedAt = nil
+        lastObservationAt = nil
+        // 立即提交意味着观测流没有停下来：这次手里的内容宽不算静定态。
+        lastObservationLooksSettled = false
+        Task { @MainActor [weak self] in
+            await self?.recordPendingObservations()
+        }
+    }
+
+    /// 把静下来的原始观测「记录」下来：pending → staged 快照，随即提交一次。
+    ///
+    /// 由 `reportLayoutStateObservation()` 的静默窗触发（铰链开阖翻转时则直接调用，以求即时）。记录是**整批**做的：
+    /// 同一场排版里的窗口、侧栏、主栏与方向值因此永远取自同一世代，派生值（padding offset）也就不会
+    /// 混用世代而算出荒谬结果。
+    private func recordPendingObservations() async {
+        if let value = pendingOrientation { stagedOrientation = value; pendingOrientation = nil }
+        if let value = pendingHinge { stagedHinge = value; pendingHinge = nil }
+        if let value = pendingIsHorizontallyCompact {
+            stagedIsHorizontallyCompact = value
+            pendingIsHorizontallyCompact = nil
+        }
+        if let value = pendingWindowSize { stagedWindowSize = value; pendingWindowSize = nil }
+        if let value = pendingWindowSizeSansBleed {
+            stagedWindowSizeSansBleed = value
+            pendingWindowSizeSansBleed = nil
+        }
+        if let value = pendingSidebarWidth { stagedSidebarWidth = value; pendingSidebarWidth = nil }
+        if let value = pendingMainColumnSansBleed {
+            stagedMainColumnSansBleed = value
+            pendingMainColumnSansBleed = nil
+        }
+        if let value = pendingMainColumnWithBleed {
+            stagedMainColumnWithBleed = value
+            pendingMainColumnWithBleed = nil
+        }
+        if let value = pendingSidebarRowContentWidth {
+            stagedSidebarRowContentWidth = value
+            pendingSidebarRowContentWidth = nil
+        }
+        if let value = pendingMainColumnRowContentWidth {
+            stagedMainColumnRowContentWidth = value
+            pendingMainColumnRowContentWidth = nil
+        }
+        recordSidebarPaddingOffset()
+        await commitLayoutState()
+    }
+
+    /// 由**同一批已记录**的观测推算 split view 的 sidebar padding offset。
+    ///
+    /// offset ＝（窗口宽 − 侧栏宽）− 主栏实测宽。三者若取自不同排版世代，会算出荒谬的值
+    /// （启动阶段曾因此得到 404，进而让 `mainColumnCanvasSizeObserved` 只有 227）。
+    /// 窗口宽必须用**整窗**值：`windowSizeObservedSansBleed` 已经扣掉出血（951 → 867），
+    /// 拿它减侧栏宽会算出 0 这种假 offset。
+    private func recordSidebarPaddingOffset() {
+        guard let mainColumn = stagedMainColumnSansBleed else { return }
+        let sidebarWidth = (stagedSidebarWidth ?? actualSidebarWidthObserved).rounded(.up)
+        let windowWidth = (stagedWindowSize ?? windowSizeObserved).width.rounded(.up)
+        let computedWidth = windowWidth - sidebarWidth
+        guard computedWidth > 0, sidebarWidth > 0 else { return }
+        stagedSidebarPaddingOffset = max(0, (computedWidth - mainColumn.width.rounded(.up)).rounded(.up))
+    }
+
+    /// 提交一次排版状态：把 staged 的观测落定成消费端可见的值，再重算 sidebar 可见性。
+    /// 见 `reportLayoutStateObservation()`。
+    private func commitLayoutState() async {
+        // 几何先落定，再判断这次提交会不会翻转边栏可见性。
+        // 顺序不能反：`splitViewVisibilityAfterCommit()` 要看 `isHorizontallyCompact` /
+        // `orientation` / `hingeStatus` / `windowSizeObserved`，这些若还停在上一世代，
+        // 预测出来的可见性就是错的，延后逻辑会整个失效。
+        applyStagedObservations()
+
+        // 边栏可见性翻转的那一次提交，内容宽一律不落定。
+        //
+        // 理由就是使用者描述的那串时序：A（铰链/旋转）→ C1（主栏画布变）→ D1（内容重排）
+        // → B（边栏开关）→ C2 → D2。C1 那次提交手上的内容宽，是在「边栏还没动画完」的
+        // 几何下量到的过渡态；一旦发布，消费端就照它先重排一次（D1），等 B/C2 落定再重排
+        // 一次（D2）——于是使用者看到「动画分了好几步、最后卡在最终动作」。
+        // 这一版把它按住：只要这次提交会改变 `splitViewVisibility`，内容宽就不发布，
+        // 由下一个世代（边栏动画结束、追踪器重新回报之后）的那次提交一次落定。
+        let visibilityChangesNow = splitViewVisibilityAfterCommit() != splitViewVisibility
+        // 过渡刚起头（还没静默满一个 `layoutSettleDelay`）时也按住：B 可能还在几拍之后。
+        let transitionHasSettled = layoutTransitionArmedAt
+            .map { Date().timeIntervalSince($0) >= layoutSettleDelay } ?? true
+        // 关键的一条：观测流没停下来时一律按住。
+        //
+        // 只盯「这次提交会不会翻转可见性」是不够的——旋转过程中 `maxDelay` 上限会强制提交
+        // 好几次，那几次的 `visibilityChangesNow` 早就是 false 了，手上的内容宽却还是边栏
+        // 动画中途量到的过渡值；发出去正是 D1。真正可信的信号只有一个：静默窗是自然到期的
+        // （观测流确实停了一个 `layoutSettleDelay`），几何才真的静止。
+        if visibilityChangesNow || !transitionHasSettled || !lastObservationLooksSettled {
+            deferredRowContentWidth = true
+        } else {
+            deferredRowContentWidth = false
+            rowContentWidthReleaseTask?.cancel()
+            rowContentWidthReleaseTask = nil
+            applyStagedRowContentWidthsIfNeeded()
+        }
+        scheduleRowContentWidthReleaseIfNeeded()
+
+        applySplitViewVisibilityIfNeeded()
+
         updateHash4Tracking()
+        // 延后期间刻意不清理内容宽：清理会把已发布值归零，环境值一变 nil，消费端就退回
+        // 「即时画布 − 内缩」的推算路径，等于绕个弯又把过渡世代放进来。这里宁可让手上这份
+        // 旧值多留一个提交的时间：网格的输入宽不变，它就不会重排，正好是「边栏动画期间先按住、
+        // 收尾时一次结算」。延后一定会在下一个提交结束（`splitViewVisibility` 一变就必然触发
+        // 重排，追踪器随之回报），因此这段不一致是有界的。
+        if !deferredRowContentWidth {
+            invalidateRowContentWidthsExceedingCanvas()
+        }
+        #if DEBUG
+        // 诊断用：一次旋转 / 铰链开合到底触发了几次提交、每次提交消费端看到的值是什么。
+        PZLog.info(
+            "layout commit: win=\(Int(windowSizeObserved.width))×\(Int(windowSizeObserved.height))"
+                + ", side=\(Int(actualSidebarWidthObserved)), offset=\(Int(mainColumnSidebarPaddingOffset))"
+                + ", canvas=\(Int(mainColumnCanvasSizeObserved.width))"
+                + ", rowMain=\(Int(mainColumnRowContentWidth)), rowSide=\(Int(sidebarRowContentWidth))"
+                + ", hingeOpen=\(isHingeOpen), compact=\(isHorizontallyCompact)"
+                + ", vis=\(String(describing: splitViewVisibility))"
+        )
+        #endif
+    }
+
+    /// 把 staged 的几何观测写进消费端可见的属性。
+    ///
+    /// 值没变就不写：`@Observable` 对每次赋值都会发通知，重复写入只会制造多余的重绘。
+    /// 「清单列可用内容宽」不在这里落定，由 `commitLayoutState()` 依可见性是否翻转单独决定
+    /// （见该处的说明）。
+    private func applyStagedObservations() {
+        if let stagedOrientation, orientation != stagedOrientation {
+            orientation = stagedOrientation
+        }
+        if let stagedHinge {
+            if hingeStatus != stagedHinge.status { hingeStatus = stagedHinge.status }
+            if hingeAngleInDegrees != stagedHinge.angleInDegrees { hingeAngleInDegrees = stagedHinge.angleInDegrees }
+        }
+        if let stagedIsHorizontallyCompact, isHorizontallyCompact != stagedIsHorizontallyCompact {
+            isHorizontallyCompact = stagedIsHorizontallyCompact
+        }
+        if let stagedWindowSize, windowSizeObserved != stagedWindowSize {
+            windowSizeObserved = stagedWindowSize
+        }
+        if let stagedWindowSizeSansBleed, windowSizeObservedSansBleed != stagedWindowSizeSansBleed {
+            windowSizeObservedSansBleed = stagedWindowSizeSansBleed
+        }
+        if let stagedSidebarWidth, actualSidebarWidthObserved != stagedSidebarWidth {
+            actualSidebarWidthObserved = stagedSidebarWidth
+        }
+        if let stagedMainColumnSansBleed, mainColumnSizeObservedSansBleed != stagedMainColumnSansBleed {
+            mainColumnSizeObservedSansBleed = stagedMainColumnSansBleed
+        }
+        if let stagedMainColumnWithBleed, mainColumnSizeObservedWithBleed != stagedMainColumnWithBleed {
+            mainColumnSizeObservedWithBleed = stagedMainColumnWithBleed
+        }
+        if let stagedSidebarPaddingOffset, mainColumnSidebarPaddingOffset != stagedSidebarPaddingOffset {
+            mainColumnSidebarPaddingOffset = stagedSidebarPaddingOffset
+        }
+    }
+
+    /// 把 staged 的「清单列可用内容宽」落定成消费端可见的值。
+    ///
+    /// 与几何分开是为了让内容宽可以延后一拍落定（见 `commitLayoutState()`）。
+    private func applyStagedRowContentWidthsIfNeeded() {
+        if let stagedSidebarRowContentWidth, sidebarRowContentWidth != stagedSidebarRowContentWidth {
+            sidebarRowContentWidth = stagedSidebarRowContentWidth
+        }
+        if let stagedMainColumnRowContentWidth, mainColumnRowContentWidth != stagedMainColumnRowContentWidth {
+            mainColumnRowContentWidth = stagedMainColumnRowContentWidth
+        }
+    }
+
+    /// 按当前（已落定的）几何与铰链状态算出这次提交该显示的边栏可见性。
+    private func splitViewVisibilityAfterCommit() -> NavigationSplitViewVisibility {
+        if OS.type == .macOS {
+            // 似乎在 iOS 系统下没有办法停用与边栏有关的出入动画；macOS 则固定显示边栏。
+            return .all
+        }
+        // 边栏是否显示交给 `shouldShowSidebar` 单点判定（铰链张开时改看视窗长宽比）。
+        let isCompactWidth = isHorizontallyCompact
+        return shouldShowSidebar(isCompactWidth: isCompactWidth) ? .all : .detailOnly
+    }
+
+    /// 依 `splitViewVisibilityAfterCommit()` 的结果更新边栏可见性；变了才写。
+    private func applySplitViewVisibilityIfNeeded() {
+        if OS.type == .macOS {
+            applySplitViewVisibility(.all, reason: "macOS")
+            return
+        }
+        let isCompactWidth = isHorizontallyCompact
+        let showsSidebar = shouldShowSidebar(isCompactWidth: isCompactWidth)
+        let windowSize = windowSizeObserved
+        let windowSizeRAW = "\(Int(windowSize.width))×\(Int(windowSize.height))"
+        let hingeNote = windowSize.width > windowSize.height ? "比高宽" : "比宽高"
+        let reason: String = isHingeOpen
+            ? "铰链张开：占满萤幕 \(isAppOccupyingWholeScreen)，视窗 \(windowSizeRAW)（\(hingeNote)）"
+            : "铰链未张开：\(orientation.rawValue)，compact 宽度 \(isCompactWidth)"
+        applySplitViewVisibility(showsSidebar ? .all : .detailOnly, reason: reason)
+    }
+
+    private func applySplitViewVisibility(
+        _ newValue: NavigationSplitViewVisibility,
+        reason: String
+    ) {
+        guard splitViewVisibility != newValue else { return }
+        splitViewVisibility = newValue
+        PZLog.info("splitViewVisibility 更新为 \(String(describing: newValue))（\(reason)）")
+    }
+
+    /// 把铰链观测 stage 起来；真正落定于 `commitLayoutState()`。
+    private func applyHingeObservation(status newStatus: HingeStatus?, angleInDegrees newAngleInDegrees: Double?) {
+        let previous = pendingHinge ?? stagedHinge ?? .init(status: hingeStatus, angleInDegrees: hingeAngleInDegrees)
+        guard previous.status != newStatus || previous.angleInDegrees != newAngleInDegrees else { return }
+        let wasOpen = Self.isHingeOpen(status: previous.status, angleInDegrees: previous.angleInDegrees)
+        let isOpenNow = Self.isHingeOpen(status: newStatus, angleInDegrees: newAngleInDegrees)
+        pendingHinge = .init(status: newStatus, angleInDegrees: newAngleInDegrees)
+        if previous.status != newStatus {
+            // A：铰链开阖翻转，同样是一次排版过渡的起点。
+            layoutTransitionArmedAt = Date()
+        }
+        // 记下来给下次启动当暂定值用（含主动清空的情形）。
+        //
+        // - Important: 这两笔 `UserDefaults` 写入在扳动铰链时属于高频路径：铰链角度每次回呼都不同，
+        //   照单全写的话，一次折合（数秒、回呼可达 60Hz）会产生数百次写入。角度在储存前先四舍五入到
+        //   整度——它只用于下次启动的暂定值（首次回呼约 0.9 秒后才到，粒度本来就粗），差一度没有影响，
+        //   写入次数却降为至多约一百多次。
+        let persistedAngle = newAngleInDegrees.map { $0.rounded() }
+        if lastPersistedHingeStatus != newStatus {
+            Defaults[.lastKnownHingeStatus] = newStatus?.rawValue
+            lastPersistedHingeStatus = newStatus
+        }
+        if lastPersistedHingeAngleInDegrees != persistedAngle {
+            Defaults[.lastKnownHingeAngleInDegrees] = persistedAngle
+            lastPersistedHingeAngleInDegrees = persistedAngle
+        }
+        reportLayoutStateObservation()
+        // 角度会在高频扳动时变化，因此只在开阖状态改变时才写日志。
+        guard previous.status != newStatus || wasOpen != isOpenNow else { return }
         let angleText = newAngleInDegrees.map { "\(($0 * 10).rounded() / 10)°" } ?? "nil"
         PZLog.info("铰链状态: \(newStatus?.rawValue ?? "nil"), 角度: \(angleText)")
     }
@@ -323,6 +920,7 @@ public final class ScreenVM {
         hasher.combine(windowSizeObserved.width)
         hasher.combine(windowSizeObserved.height)
         hasher.combine(mainColumnSidebarPaddingOffset)
+        hasher.combine(mainColumnSizeObservedSansBleed.width)
         hashForTracking = hasher.finalize()
     }
 
@@ -332,15 +930,53 @@ public final class ScreenVM {
             _ = hingeStatus
             _ = isHorizontallyCompact
             _ = actualSidebarWidthObserved
+            _ = mainColumnSizeObservedSansBleed
             _ = windowSizeObserved.hashValue
             _ = mainColumnSidebarPaddingOffset
         } onChange: { [weak self] in
             Task { @MainActor [weak self] in
                 guard let this = self else { return }
+                // 只需要更新追踪哈希：提交动作由各个回报入口 poke；
+                // 若在这里再 poke 一次，每次提交都会多绕一圈去抖。
                 this.updateHash4Tracking()
                 this.registerObservation()
             }
         }
+    }
+}
+
+// MARK: - ListRowContentWidthKey
+
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+private struct ListRowContentWidthKey: EnvironmentKey {
+    static let defaultValue: CGFloat? = nil
+}
+
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+extension EnvironmentValues {
+    /// 当前栏位中 `Form` / `List` 单行内容区的**实测可用宽**（`ScreenVM` 已提交的值）。
+    /// 由 `ContentView` 依栏位注入（Sidebar 栏给 `ScreenVM.sidebarRowContentWidth`、
+    /// Main Column 给 `mainColumnRowContentWidth`）。
+    /// 为 `nil` 表示尚未量到（首帧），消费端应退回自己的保守估值。
+    public var listRowContentWidth: CGFloat? {
+        get { self[ListRowContentWidthKey.self] }
+        set { self[ListRowContentWidthKey.self] = newValue }
+    }
+}
+
+// MARK: - ListRowColumnKey
+
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+private struct ListRowColumnKey: EnvironmentKey {
+    static let defaultValue: ScreenVM.ListRowColumn = .mainColumn
+}
+
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+extension EnvironmentValues {
+    /// 当前画面所在的栏位：`View.reportListRowContentWidth()` 用它决定把量到的宽度回报给哪一栏。
+    public var listRowColumn: ScreenVM.ListRowColumn {
+        get { self[ListRowColumnKey.self] }
+        set { self[ListRowColumnKey.self] = newValue }
     }
 }
 
@@ -390,16 +1026,15 @@ extension ScreenVM {
     }
 }
 
-// MARK: ScreenVM.ViewTracker
+// MARK: - ScreenVM.ViewTracker
 
 @available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension ScreenVM {
     fileprivate struct ViewTracker: ViewModifier {
         // MARK: Lifecycle
 
-        public init(debounceDelay: TimeInterval = 0.1) {
+        public init(debounceDelay: TimeInterval = 0.05) {
             self.debounceDelay = debounceDelay
-            self._debouncer = .init(wrappedValue: Debouncer(delay: debounceDelay))
         }
 
         // MARK: Public
@@ -424,22 +1059,12 @@ extension ScreenVM {
                     includingSafeArea: .container,
                     edges: .all
                 ) { newSizeRAW in
-                    var newSize = newSizeRAW
-                    newSize.width.round(.up)
-                    newSize.height.round(.up)
-                    let oldSize = screenVM.windowSizeObserved
-                    if oldSize.width != newSize.width {
-                        screenVM.windowSizeObserved.width = newSize.width
-                    }
-                    if oldSize.height != newSize.height {
-                        screenVM.windowSizeObserved.height = newSize.height
-                    }
+                    let newSize = newSizeRAW
+                    screenVM.reportWindowSize(newSize)
                 }
                 .onAppBecomeActive {
                     Task {
-                        await debouncer.debounce {
-                            await pushTrackedPropertiesToScreenVM()
-                        }
+                        await pushTrackedPropertiesToScreenVM()
                     }
                 }
                 .task {
@@ -451,9 +1076,7 @@ extension ScreenVM {
                 }
                 .react(to: combinedHash, initial: true) { _, _ in
                     Task {
-                        await debouncer.debounce {
-                            await pushTrackedPropertiesToScreenVM()
-                        }
+                        await pushTrackedPropertiesToScreenVM()
                     }
                 }
                 .trackDeviceHinge()
@@ -462,43 +1085,22 @@ extension ScreenVM {
         // MARK: Private
 
         @State private var screenVM: ScreenVM = .shared
-        @State private var debouncer: Debouncer
         @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
         private let debounceDelay: TimeInterval
 
+        /// 这里不再自带去抖器：视窗尺寸的观测去抖由 `trackCanvasSize` 负责，
+        /// 而「排版状态」的提交去抖由 `ScreenVM.reportLayoutStateObservation()` 统一负责。
+        /// 原本两层去抖（本层 0.1s ＋ 提交层 0.35s）会让一次旋转 / 铰链开合多绕一圈。
         private func pushTrackedPropertiesToScreenVM() async {
-            defer {
-                syncLayoutParamsToBackend()
-            }
-            // 似乎在 iOS 系统下没有办法停用与边栏有关的出入动画。
-            guard OS.type != .macOS else {
-                applySplitViewVisibility(.all, reason: "macOS")
-                return
-            }
-            // 边栏是否显示交给 `shouldShowSidebar` 单点判定（铰链张开时改看视窗长宽比）。
-            let isCompactWidth = (horizontalSizeClass ?? .regular) == .compact
-            let showsSidebar = screenVM.shouldShowSidebar(isCompactWidth: isCompactWidth)
-            let windowSize = screenVM.windowSizeObserved
-            let windowSizeRAW = "\(Int(windowSize.width))×\(Int(windowSize.height))"
-            let hingeNote = windowSize.width > windowSize.height ? "比高宽" : "比宽高"
-            let reason: String = screenVM.isHingeOpen
-                ? "铰链张开：占满萤幕 \(screenVM.isAppOccupyingWholeScreen)，视窗 \(windowSizeRAW)（\(hingeNote)）"
-                : "铰链未张开：\(screenVM.orientation.rawValue)，compact 宽度 \(isCompactWidth)"
-            applySplitViewVisibility(showsSidebar ? .all : .detailOnly, reason: reason)
-        }
-
-        private func applySplitViewVisibility(
-            _ newValue: NavigationSplitViewVisibility,
-            reason: String
-        ) {
-            guard screenVM.splitViewVisibility != newValue else { return }
-            screenVM.splitViewVisibility = newValue
-            PZLog.info("splitViewVisibility 更新为 \(String(describing: newValue))（\(reason)）")
+            syncLayoutParamsToBackend()
+            // 边栏可见性改由 `ScreenVM` 统一提交（与各栏宽度快照同一次落定），
+            // 这里只负责把所有观测汇总过去。
+            screenVM.reportLayoutStateObservation()
         }
 
         private func syncLayoutParamsToBackend() {
-            screenVM.isHorizontallyCompact = (horizontalSizeClass ?? .regular) == .compact
+            screenVM.reportHorizontalSizeClass(isCompact: (horizontalSizeClass ?? .regular) == .compact)
         }
     }
 }
@@ -506,7 +1108,7 @@ extension ScreenVM {
 @available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension View {
     @ViewBuilder
-    public func trackScreenVMParameters(debounceDelay: TimeInterval = 0.1) -> some View {
+    public func trackScreenVMParameters(debounceDelay: TimeInterval = 0.05) -> some View {
         modifier(ScreenVM.ViewTracker(debounceDelay: debounceDelay))
     }
 }
@@ -522,7 +1124,7 @@ private struct DeviceHingeTrackingModifier: ViewModifier {
             let newStatus = ScreenVM.HingeStatus(hinge: newContext.hinge)
             let newAngleInDegrees = newContext.hinge?.angle.degrees
             Task { @MainActor in
-                await ScreenVM.shared.reportHingeObservation(status: newStatus, angleInDegrees: newAngleInDegrees)
+                ScreenVM.shared.reportHingeObservation(status: newStatus, angleInDegrees: newAngleInDegrees)
             }
         }
     }
@@ -618,7 +1220,7 @@ extension ScreenVM {
             let newStatus = HingeStatus(hinge: update.hinge)
             let newAngleInDegrees = update.hinge.map { Double($0.angle) * 180 / .pi }
             Task { @MainActor in
-                await self.reportHingeObservation(status: newStatus, angleInDegrees: newAngleInDegrees)
+                self.reportHingeObservation(status: newStatus, angleInDegrees: newAngleInDegrees)
             }
         }
         window.addInteraction(interaction)

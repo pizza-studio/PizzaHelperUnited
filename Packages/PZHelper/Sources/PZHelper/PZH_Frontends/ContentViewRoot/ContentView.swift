@@ -40,9 +40,14 @@ public struct ContentView: View {
                 .tint(Color.accessibilityAccent(colorScheme))
                 .fontWidth(screenVM.actualSidebarWidthObserved < 350 ? .compressed : nil)
                 .frame(width: OS.isAppKit ? sideBarWidth : nil)
-                .trackCanvasSize(debounceDelay: 0.3) {
+                .trackCanvasSize(debounceDelay: 0.05) {
                     screenVM.handleTrackedSidebarCanvasSize($0)
                 }
+                .environment(\.listRowColumn, .sidebar)
+                .environment(
+                    \.listRowContentWidth,
+                    screenVM.sidebarRowContentWidth > 0 ? screenVM.sidebarRowContentWidth : nil
+                )
         } detail: {
             AppRootPageViewWrapper(tab: rootNavVM.rootPageNav)
                 .scrollEdgeStyleEnforced()
@@ -61,9 +66,17 @@ public struct ContentView: View {
                         mainColumnContent
                     }
                 }
-                .trackCanvasSize(debounceDelay: 0.3) {
-                    screenVM.handleTrackedMainColumnCanvasSize($0)
+                // Main Column 尺寸（不含出血）：清单列可用宽以它为基准推算。
+                // 含出血的那份实测恒等于整个视窗尺寸（`windowSizeObserved`），故不再另挂 tracker
+                // ——在 split view 的栏位内挂「含安全区」的量测会诱发安全区/卷动监听互相递回而卡死。
+                .trackCanvasSize(debounceDelay: 0.05) {
+                    screenVM.handleTrackedMainColumnSize($0, includingBleed: false)
                 }
+                .environment(\.listRowColumn, .mainColumn)
+                .environment(
+                    \.listRowContentWidth,
+                    screenVM.mainColumnRowContentWidth > 0 ? screenVM.mainColumnRowContentWidth : nil
+                )
         }
         .navigationSplitViewStyle(.balanced)
         .tint(tintForCurrentTab)

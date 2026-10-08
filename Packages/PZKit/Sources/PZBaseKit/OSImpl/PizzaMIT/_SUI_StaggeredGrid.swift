@@ -63,7 +63,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
         }
         .react(to: columns) { _, newColumns in
             guard newColumns > 0 else { return }
-            vm.updateGridArray(list: list, columns: newColumns)
+            vm.scheduleGridArrayUpdate(list: list, columns: newColumns)
         }
         .onAppear {
             if vm.gridArray.isEmpty, !list.isEmpty {
@@ -143,9 +143,44 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
         updateTask = newTask
     }
 
+    /// 栏数变动时的重排：合并连续变动，且不与调用方的卡片尺寸脱节。
+    ///
+    /// 栏数不只决定分栏，**也决定每一栏的宽度**——调用方通常用同一个「清单列可用宽」同时算出
+    /// 栏数与卡片边长（见 `AllIconSpecimenView_PerGame.gridMetrics(rowWidth:)`）。因此
+    /// `gridArray.count` 与调用方的 `columns` 一旦不同步，网格就会以**旧栏数**摆放**新尺寸**的
+    /// 固定尺寸卡片：卡片溢出自己的栏位、与邻栏重叠，内容高度也超出调用方给的
+    /// `.frame(height: metrics.gridHeight)`。溢出的内容会让 `LazyVStack` 实体化远超可视范围的
+    /// 元素，触发大量 HEIF 解码——实测 main thread 2075/2075 个采样全部卡在
+    /// `RB::TextureCache::prepare_cgimage` → ImageIO 解码上，UI 因而看起来「卡死」。
+    ///
+    /// 逐次重排又都会带上 `withAnimation`，连续变动会把内容拆成好几段动画。所以这里的策略是
+    /// **leading-edge ＋ trailing-edge 合并**：静默够久之后的第一次变动**立刻**重排（单一次
+    /// 栏数变动不留任何尺寸／结构不一致的空窗）；只有紧接着又来变动（真的连续变动）才改成
+    /// 等 `delay` 静默后做一次，把多段动画并成一段。
+    func scheduleGridArrayUpdate(list: [T], columns: Int, delay: TimeInterval = 0.7) {
+        let now = Date()
+        // 与上一次栏数变动相隔够久 ⇒ 这是一次独立的变动，立刻重排。
+        let isIsolatedChange = lastColumnsChangeAt.map { now.timeIntervalSince($0) >= delay } ?? true
+        columnsUpdateTask?.cancel()
+        columnsUpdateTask = nil
+        lastColumnsChangeAt = now
+        guard !isIsolatedChange else {
+            updateGridArray(list: list, columns: columns)
+            return
+        }
+        columnsUpdateTask = Task { @MainActor [weak self] in
+            try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
+            guard !Task.isCancelled else { return }
+            self?.lastColumnsChangeAt = Date()
+            self?.updateGridArray(list: list, columns: columns)
+        }
+    }
+
     // MARK: Private
 
     @ObservationIgnored private var updateTask: Task<Void, Never>?
+    @ObservationIgnored private var columnsUpdateTask: Task<Void, Never>?
+    @ObservationIgnored private var lastColumnsChangeAt: Date?
 
     // 异步计算方法，会彻底打碎排序。慎用。
     private func computeGridArrayAsync(list: [T], columns: Int) async -> [[T]] {

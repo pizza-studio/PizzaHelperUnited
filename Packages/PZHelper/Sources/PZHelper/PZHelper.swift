@@ -33,6 +33,15 @@ extension PZHelper {
                     if #available(iOS 17.0, macCatalyst 17.0, *) {
                         ContentView()
                             .trackScreenVMParameters()
+                            // 视窗尺寸量两份：`trackScreenVMParameters()` 量的是含出血边界的那份
+                            // （`windowSizeObserved`），这里在与它相同的挂载层级补量「不含出血」的那份。
+                            // 刻意不在 split view 的栏位内部量测安全区，以免诱发安全区/卷动监听递回。
+                            // 量测去抖只留 0.05s：所有排版观测最终都汇进 `ScreenVM` 那唯一的
+                            // 提交去抖器（`layoutStateDebouncer`），这里再过长的去抖只会让
+                            // 一次旋转 / 铰链开合多绕一圈、落定更慢。
+                            .trackCanvasSize(debounceDelay: 0.05) {
+                                ScreenVM.shared.handleTrackedWindowSize($0, includingBleed: false)
+                            }
                             .sheet(isPresented: $isEOLNoticeDisplayed) {
                                 ContentView4iOS14 {
                                     Task.detached { @MainActor in
