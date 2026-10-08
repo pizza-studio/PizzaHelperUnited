@@ -63,8 +63,18 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
         .react(to: list) { _, newList in
             vm.updateGridArray(list: newList, columns: columns)
         }
-        .react(to: columns) { _, newColumns in
-            guard newColumns > 0 else { return }
+        // - Important: `initial: true` 是这条通知链的必要环节，不能省。
+        //
+        //   栏数变动的那一刻，若这个视图没有重算 body，`.react(to: columns)` 的通知就会漏接；
+        //   而 `vm` 是 `@State`，会跟着视图存活下来，栏数从此**永远**停在旧值——这正是
+        //   「一开始 viewport 外的内容」永远少一栏的成因（离屏列被 `List` 保留、不保证重算）。
+        //
+        //   `initial: true` 让视图每次实体化（含被 `List` 回收后重新出现）都先校对一次：栏数
+        //   对不上就补做重排。补的仍然是**原来那条动画路径**（`updateGridArray` →
+        //   `withAnimation`），所以动画形态与栏数正常的那些列完全一致，不是硬切。
+        .react(to: columns, initial: true) { _, newColumns in
+            guard newColumns > 0, !list.isEmpty else { return }
+            guard vm.gridArray.count != newColumns else { return }
             vm.scheduleGridArrayUpdate(list: list, columns: newColumns)
         }
         .onAppear {
@@ -148,7 +158,7 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
             )
             await MainActor.run {
                 if !Task.isCancelled {
-                    withAnimation {
+                    withAnimation(.easeInOut(duration: 0.2)) {
                         self.gridArray = newGridArray
                     }
                 }
