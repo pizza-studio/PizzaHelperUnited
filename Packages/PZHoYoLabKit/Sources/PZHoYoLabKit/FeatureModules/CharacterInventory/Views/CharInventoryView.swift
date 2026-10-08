@@ -131,7 +131,17 @@ public struct CharacterInventoryView: View {
                                 let mainIntel = avatar.wrappedValue.mainInfo
                                 mainIntel.idExpressable.asRowBG(element: mainIntel.element)
                             }
+                            // 这一行仍然是整页最贵的子树（头像、圣遗物、武器、若干角标），
+                            // 每次滚动／重排都要重画一遍文字与角标，所以这里照样要光栅化。
+                            //
+                            // - Important: 光栅化层必须有一个**稳定且唯一**的身份，否则父视图每
+                            //   重算一次 body，SwiftUI 就把这层离屏快取当成全新的视图重建一次：
+                            //   重建即重绘，而重绘会连带把行内图片重新解码。这正是先前在 ID Photo
+                            //   Specimen 页量到的 ImageIO 解码风暴的同一种病根（`drawingGroup()`
+                            //   产生的层不进 `RB::TextureCache` 的跨帧快取，靠身份复用才省得下来）。
+                            //   用角色 ID 当身份：清单内容不变时身份不变，离屏快取就能一直被复用。
                             .drawingGroup()
+                            .id(avatar.id)
                     }
                     .buttonStyle(.plain)
                 }
@@ -237,12 +247,13 @@ public struct CharacterInventoryView: View {
 
     private let game: Pizza.SupportedGame
 
-    /// 优先采用 `ScreenVM` 已提交的实测行内容宽；尚未量到（首帧）才退回
-    /// 「清单列可用宽 − `listRowContentInsetDelta`」的保守推算值（单翼状态下该推算值会高估）。
+    /// 优先采用本页实测的行内容宽，其次用 `ScreenVM` 已提交的实测值；尚未量到（首帧）
+    /// 才退回「清单列可用宽 − `listRowContentInsetDelta`」的保守推算值。
     private var containerWidth: CGFloat {
-        if let listRowContentWidth, listRowContentWidth > 0 { return listRowContentWidth }
-        let derived = screenVM.mainColumnCanvasSizeObserved.width - Self.listRowContentInsetDelta
-        return Swift.max(derived, 0)
+        screenVM.resolvedListRowContentWidth(
+            injected: listRowContentWidth,
+            canvasInset: Self.listRowContentInsetDelta
+        )
     }
 
     private var lineCapacity: Int {
