@@ -194,7 +194,7 @@ public final class ScreenVM {
     // iPhone Portrait Display mode or similar canvas size.
     // 440 是 iPhone 16 Pro Max 的荧幕画布尺寸。
     public var isPhonePortraitSituation: Bool {
-        isHorizontallyCompact && windowSizeObserved.width <= 440
+        isHorizontallyCompact && phonePortraitReferenceWidth <= 440
     }
 
     // iPhone SE3 ZOOMED mode.
@@ -593,6 +593,18 @@ public final class ScreenVM {
     @ObservationIgnored private var hingeTrackingObserver: (any NSObjectProtocol)?
     #endif
 
+    /// 「手机直向情境」判定的参考宽度：优先取**扣掉出血**后的可用画布宽。
+    ///
+    /// `windowSizeObserved` 含安全区出血：iPhone Duo 的尾端竖条恒占 84pt（下缘另有 34pt），
+    /// 该竖条并非可用排版区域。若拿满版尺寸比对 440 这道门槛，会把封面萤幕（实测满版
+    /// 466×678、可用 382×644）这类可用宽本来就在门槛内的情境误判成宽萤幕，
+    /// 进而让 root page switcher 从底部 tab bar 被换成顶端 Picker。
+    /// 量测尚未回报时（`windowSizeObservedSansBleed == .zero`）退回满版尺寸。
+    private var phonePortraitReferenceWidth: CGFloat {
+        let sansBleedWidth = windowSizeObservedSansBleed.width
+        return sansBleedWidth > 0 ? sansBleedWidth : windowSizeObserved.width
+    }
+
     /// 主栏内容宽的残量判定与作废共用的「主栏画布」。
     ///
     /// - Important: 必须把**尚未落定**的窗口 / 侧栏观测一并算进来，而不是只读已提交值。
@@ -877,9 +889,11 @@ public final class ScreenVM {
         PZLog.info(
             "layout commit: win=\(Int(windowSizeObserved.width))×\(Int(windowSizeObserved.height))"
                 + ", side=\(Int(actualSidebarWidthObserved)), offset=\(Int(mainColumnSidebarPaddingOffset))"
+                + ", sansBleed=\(Int(windowSizeObservedSansBleed.width))×\(Int(windowSizeObservedSansBleed.height))"
                 + ", canvas=\(Int(mainColumnCanvasSizeObserved.width))"
                 + ", rowMain=\(Int(mainColumnRowContentWidth)), rowSide=\(Int(sidebarRowContentWidth))"
                 + ", hingeOpen=\(isHingeOpen), compact=\(isHorizontallyCompact)"
+                + ", phonePortrait=\(isPhonePortraitSituation)"
                 + ", vis=\(String(describing: splitViewVisibility))"
         )
         #endif
