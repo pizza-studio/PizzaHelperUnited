@@ -628,13 +628,29 @@ public final class ScreenVM {
     ///   「每行格数」永远不更新——实测连续六笔 `485.0 > canvas 372.0` 全部被弃。
     ///
     ///   画布偏宽只会让判定变宽松（接受一笔将被证实的量测），偏窄才会误杀，因此这里一律取
-    ///   「pending 优先」的较宽值。
+    ///   「三个世代里最宽」的一版。
+    ///
+    ///   - Important: 「pending 优先」并不足以保证偏宽：侧栏自身也在动画，pending 的侧栏宽可能比已落定值
+    ///     **更宽**（实测由 400 收到 251 的过程中出现过 533），算出的画布 295 会把一笔本来装得下的 336
+    ///     判成残量丢掉，随后 `retryRejectedRowContentWidths()` 又把它重投一次——每一笔误杀都换成一次
+    ///     多余的提交与 7–8 行诊断。因此这里改为：窗口宽取**最宽**、侧栏宽取**最窄**。
+    ///
+    ///   - Note: 放到这么宽是安全的，因为「发出去的值必须装得进当下这块画布」由
+    ///     `clampPublishedRowContentWidthsToCanvas()` 在每次提交末尾兜底；这个判据只负责不误杀。
     private var mainColumnRowWidthCanvas: CGFloat {
-        guard splitViewVisibility != .detailOnly else { return windowSizeObserved.width }
-        let sidebarWidth = pendingSidebarWidth ?? stagedSidebarWidth ?? actualSidebarWidthObserved
-        let windowWidth = (pendingWindowSize ?? stagedWindowSize ?? windowSizeObserved).width
+        guard splitViewVisibility != .detailOnly else {
+            return max(windowSizeObserved.width, pendingWindowSize?.width ?? 0, stagedWindowSize?.width ?? 0)
+        }
+        let windowWidth = max(
+            windowSizeObserved.width,
+            pendingWindowSize?.width ?? 0,
+            stagedWindowSize?.width ?? 0
+        )
+        let sidebarWidth = [pendingSidebarWidth, stagedSidebarWidth, actualSidebarWidthObserved]
+            .compactMap { $0 }
+            .min() ?? actualSidebarWidthObserved
         let derived = windowWidth - sidebarWidth - mainColumnSidebarPaddingOffset
-        return derived > 0 ? derived : windowSizeObserved.width
+        return derived > 0 ? derived : windowWidth
     }
 
     // MARK: Static Helpers
