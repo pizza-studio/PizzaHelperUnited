@@ -299,8 +299,8 @@ public final class ScreenVM {
         // 每个任务各自提交一次，于是「一次旋转」被拆成几十次提交。
         guard observationRecordTask == nil else { return }
         observationRecordTask = Task { @MainActor [weak self] in
-            let settleDelay = self?.layoutSettleDelay ?? 0.7
-            let maxDelay = 3.0
+            let settleDelay = self?.layoutSettleDelay ?? 0.3
+            let maxDelay = self?.observationRecordMaxDelay ?? 0.8
             let startedAt = self?.observationRecordStartedAt
             do {
                 while let self {
@@ -542,7 +542,12 @@ public final class ScreenVM {
     private var layoutTransitionArmedAt: Date?
     /// 落定所需的静默时长。`reportLayoutStateObservation()` 的计时条件与
     /// `commitLayoutState()` 的「过渡是否已过」判断共用这一个值。
-    private let layoutSettleDelay: TimeInterval = 0.7
+    private let layoutSettleDelay: TimeInterval = 0.3
+    /// 观测流停不下来时的强制落定上限（例如慢速折叠铰链时角度一直在变）。同样每
+    /// `layoutSettleDelay` 检查一次，所以实际落点会略大于这个值。
+    private let observationRecordMaxDelay: TimeInterval = 0.8
+    /// 边栏开阖（`NavigationSplitView` 栏位可见性）的动画时长。
+    private let sidebarVisibilityAnimationDuration: TimeInterval = 0.1
     /// 上一轮静默窗是「真的静下来」结束的，还是被 `maxDelay` 上限强制结束的。
     ///
     /// 这是「内容宽能不能发布」的唯一可信判据。观测流没停下来时（`maxDelay` 强制提交、
@@ -1140,7 +1145,10 @@ public final class ScreenVM {
         reason: String
     ) {
         guard splitViewVisibility != newValue else { return }
-        splitViewVisibility = newValue
+        // 用明确的动画时长驱动，否则栏位开阖会走系统预设的时长。
+        withAnimation(.easeInOut(duration: sidebarVisibilityAnimationDuration)) {
+            splitViewVisibility = newValue
+        }
         PZLog.info("splitViewVisibility 更新为 \(String(describing: newValue))（\(reason)）")
     }
 
