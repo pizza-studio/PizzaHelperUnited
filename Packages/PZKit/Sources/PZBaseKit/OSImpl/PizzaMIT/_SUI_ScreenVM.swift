@@ -389,64 +389,7 @@ public final class ScreenVM {
     ///   同一批提交既保证世代一致，也让消抖只剩一处。
     /// 见 `View.reportListRowContentWidth(for:debounceDelay:)`。
     public func reportListRowContentWidth(_ width: CGFloat, for column: ListRowColumn) {
-        let rounded = max(width.rounded(.down), 0)
-        guard rounded > 0 else { return }
-        var didChange = false
-        switch column {
-        case .sidebar:
-            // 清单列不可能比它所在的栏位画布还宽：更宽的量测必然来自上一个排版世代
-            // （例如侧栏正在收起时，页面曾按整窗宽排版）。这种量测若被发布出去，消费端会
-            // 算出比实际更多的栏数，固定尺寸的卡片就会互相重叠。
-            // 比较对象用**同一世代**的 pending 画布，而不是已提交的画布：后者本身可能还停在
-            // 上一世代，拿它当门槛会把这一世代正确的量测也一并丢掉。
-            let canvas = pendingSidebarWidth ?? stagedSidebarWidth ?? actualSidebarWidthObserved
-            if isStaleRowWidthMeasurement(rounded, canvasWidth: canvas, columnName: "sidebar") {
-                // 丢掉但记着：栏位画布一更新就重投（见 `retryRejectedRowContentWidths()`）。
-                rejectedSidebarRowContentWidth = rounded
-                return
-            }
-            rejectedSidebarRowContentWidth = nil
-            guard (pendingSidebarRowContentWidth ?? stagedSidebarRowContentWidth ?? sidebarRowContentWidth) != rounded
-            else { return }
-            lastReportedSidebarRowContentWidth = rounded
-            pendingSidebarRowContentWidth = rounded
-            didChange = true
-        case .mainColumn:
-            // - Important: 残量判定用的画布必须是**即时**主栏可用宽，不能是主栏实测宽。
-            //
-            // 实测主栏宽只在主栏真的重测时才更新；铰链 halfOpen ↔ fullyOpen 这类「窗口 / 侧栏变了、
-            // 主栏没重测」的转换里它是旧世代的残量（实测恒为 372）。拿它当画布，会把「窗变宽之后
-            // 量到的新内容宽」一律判成残量而丢弃，而 `reportListRowContentWidth()` 只在宽度**变化**
-            // 时才被叫用，丢掉就没人回来补发 —— 消费端（`CharInventoryView` 的每行格数）于是永远不更新。
-            let canvas = mainColumnRowWidthCanvas
-            if isStaleRowWidthMeasurement(rounded, canvasWidth: canvas, columnName: "mainColumn") {
-                rejectedMainColumnRowContentWidth = rounded
-                return
-            }
-            guard (pendingMainColumnRowContentWidth ?? stagedMainColumnRowContentWidth ?? mainColumnRowContentWidth) !=
-                rounded
-            else { return }
-            // 清掉待重投的量测要在「确认这一笔真的被受理」之后：否则当前值的重复回报会把一笔
-            // 更宽、只是暂时比旧画布宽的量测顺手抹掉（实测：一笔 309 的重报把 pending 的 485 抹掉）。
-            rejectedMainColumnRowContentWidth = nil
-            lastReportedMainColumnRowContentWidth = rounded
-            pendingMainColumnRowContentWidth = rounded
-            didChange = true
-        }
-        guard didChange else { return }
-        // - Important: 首次量到的内容宽**立刻发布**，不等提交。
-        //
-        // 消费端（Specimen / 战报 / 角色清单 / 抽卡图表 / 桌布廊）在环境值还是 nil 时，
-        // 会退回「即时画布 − 内缩」自行推算。那条退路读的是**当下**画布，因此一次旋转里
-        // 它会跟着中间世代抖动，正是要消掉的那份「多段重排」。先在这里把首帧值补上，
-        // 环境值此后永远非 nil，退路就不再有实际戏份。
-        if mainColumnRowContentWidth <= 0, let seeded = pendingMainColumnRowContentWidth {
-            mainColumnRowContentWidth = seeded
-        }
-        if sidebarRowContentWidth <= 0, let seeded = pendingSidebarRowContentWidth {
-            sidebarRowContentWidth = seeded
-        }
-        reportLayoutStateObservation()
+        reportListRowContentWidth(width, for: column, pokingTheSettleWindow: true)
     }
 
     public func handleTrackedSidebarCanvasSize(_ trackedSize: CGSize) {
@@ -722,6 +665,77 @@ public final class ScreenVM {
         #endif
     }
 
+    /// 与上面同一个入口，但可以**不惊动静默窗**。
+    ///
+    /// - Parameter shouldPoke: 受理后是否叫醒静默窗。提交途中的重投（`retryRejectedRowContentWidths()`）
+    ///   传 false：那笔量测之所以成立，正是因为本次提交刚把新的画布写进去，由呼叫端在同一个提交里落定；
+    ///   若再叫醒静默窗，同一笔量测要多花一趟 0.7 秒的往返与一次多余的提交。
+    private func reportListRowContentWidth(
+        _ width: CGFloat,
+        for column: ListRowColumn,
+        pokingTheSettleWindow shouldPoke: Bool
+    ) {
+        let rounded = max(width.rounded(.down), 0)
+        guard rounded > 0 else { return }
+        var didChange = false
+        switch column {
+        case .sidebar:
+            // 清单列不可能比它所在的栏位画布还宽：更宽的量测必然来自上一个排版世代
+            // （例如侧栏正在收起时，页面曾按整窗宽排版）。这种量测若被发布出去，消费端会
+            // 算出比实际更多的栏数，固定尺寸的卡片就会互相重叠。
+            // 比较对象用**同一世代**的 pending 画布，而不是已提交的画布：后者本身可能还停在
+            // 上一世代，拿它当门槛会把这一世代正确的量测也一并丢掉。
+            let canvas = pendingSidebarWidth ?? stagedSidebarWidth ?? actualSidebarWidthObserved
+            if isStaleRowWidthMeasurement(rounded, canvasWidth: canvas, columnName: "sidebar") {
+                // 丢掉但记着：栏位画布一更新就重投（见 `retryRejectedRowContentWidths()`）。
+                rejectedSidebarRowContentWidth = rounded
+                return
+            }
+            rejectedSidebarRowContentWidth = nil
+            guard (pendingSidebarRowContentWidth ?? stagedSidebarRowContentWidth ?? sidebarRowContentWidth) != rounded
+            else { return }
+            lastReportedSidebarRowContentWidth = rounded
+            pendingSidebarRowContentWidth = rounded
+            didChange = true
+        case .mainColumn:
+            // - Important: 残量判定用的画布必须是**即时**主栏可用宽，不能是主栏实测宽。
+            //
+            // 实测主栏宽只在主栏真的重测时才更新；铰链 halfOpen ↔ fullyOpen 这类「窗口 / 侧栏变了、
+            // 主栏没重测」的转换里它是旧世代的残量（实测恒为 372）。拿它当画布，会把「窗变宽之后
+            // 量到的新内容宽」一律判成残量而丢弃，而 `reportListRowContentWidth()` 只在宽度**变化**
+            // 时才被叫用，丢掉就没人回来补发 —— 消费端（`CharInventoryView` 的每行格数）于是永远不更新。
+            let canvas = mainColumnRowWidthCanvas
+            if isStaleRowWidthMeasurement(rounded, canvasWidth: canvas, columnName: "mainColumn") {
+                rejectedMainColumnRowContentWidth = rounded
+                return
+            }
+            guard (pendingMainColumnRowContentWidth ?? stagedMainColumnRowContentWidth ?? mainColumnRowContentWidth) !=
+                rounded
+            else { return }
+            // 清掉待重投的量测要在「确认这一笔真的被受理」之后：否则当前值的重复回报会把一笔
+            // 更宽、只是暂时比旧画布宽的量测顺手抹掉（实测：一笔 309 的重报把 pending 的 485 抹掉）。
+            rejectedMainColumnRowContentWidth = nil
+            lastReportedMainColumnRowContentWidth = rounded
+            pendingMainColumnRowContentWidth = rounded
+            didChange = true
+        }
+        guard didChange else { return }
+        // - Important: 首次量到的内容宽**立刻发布**，不等提交。
+        //
+        // 消费端（Specimen / 战报 / 角色清单 / 抽卡图表 / 桌布廊）在环境值还是 nil 时，
+        // 会退回「即时画布 − 内缩」自行推算。那条退路读的是**当下**画布，因此一次旋转里
+        // 它会跟着中间世代抖动，正是要消掉的那份「多段重排」。先在这里把首帧值补上，
+        // 环境值此后永远非 nil，退路就不再有实际戏份。
+        if mainColumnRowContentWidth <= 0, let seeded = pendingMainColumnRowContentWidth {
+            mainColumnRowContentWidth = seeded
+        }
+        if sidebarRowContentWidth <= 0, let seeded = pendingSidebarRowContentWidth {
+            sidebarRowContentWidth = seeded
+        }
+        guard shouldPoke else { return }
+        reportLayoutStateObservation()
+    }
+
     /// 判断一次「清单列可用内容宽」的量测是不是上一个排版世代的残留。
     ///
     /// 画布宽尚未量到时（启动阶段）一律接受，否则会把最先到的量测全部丢掉。
@@ -746,15 +760,25 @@ public final class ScreenVM {
     /// 呼叫时机：任一个「栏位画布」观测更新之后。画布一变宽，先前那笔量测就不再是残量，
     /// 而这个时机是唯一能补救它的场合——`reportListRowContentWidth()` 只在宽度变化时才被叫用，
     /// 不会自己再回来重试。
-    private func retryRejectedRowContentWidths() {
+    ///
+    /// - Important: 重投本身**不叫醒静默窗**，它只把一笔量测写进 pending 槽。观测更新路径的呼叫端
+    ///   紧接着就会叫醒（它自己会 poke）；提交路径的呼叫端则在同一个提交里直接落定，不再多走一趟往返。
+    ///
+    /// - Returns: 是否真的重投了东西。
+    @discardableResult
+    private func retryRejectedRowContentWidths() -> Bool {
+        var didRetry = false
         if let rejected = rejectedSidebarRowContentWidth {
             rejectedSidebarRowContentWidth = nil
-            reportListRowContentWidth(rejected, for: .sidebar)
+            reportListRowContentWidth(rejected, for: .sidebar, pokingTheSettleWindow: false)
+            didRetry = true
         }
         if let rejected = rejectedMainColumnRowContentWidth {
             rejectedMainColumnRowContentWidth = nil
-            reportListRowContentWidth(rejected, for: .mainColumn)
+            reportListRowContentWidth(rejected, for: .mainColumn, pokingTheSettleWindow: false)
+            didRetry = true
         }
+        return didRetry
     }
 
     /// 作废「比刚提交的栏位画布还宽」的已发布内容宽。
@@ -949,10 +973,6 @@ public final class ScreenVM {
 
         applySplitViewVisibilityIfNeeded()
 
-        // 已公布的内容宽一律夹到当前画布以内（延后期间也夹，见该函式的说明）：延后期间手上留的是上一代
-        // 的量测，新姿态的画布更窄时它会宽于画布，消费端据此算栏数就会让固定尺寸的卡片溢出重叠。
-        clampPublishedRowContentWidthsToCanvas()
-
         updateHash4Tracking()
         // 延后期间刻意不清理内容宽：清理会把已发布值归零，环境值一变 nil，消费端就退回
         // 「即时画布 − 内缩」的推算路径，等于绕个弯又把过渡世代放进来。这里宁可让手上这份
@@ -966,8 +986,26 @@ public final class ScreenVM {
             // 这个时机才是对的。栏位量测当下（`handleTrackedSidebarCanvasSize()` 等）触发的那次重投
             // 读到的仍是**旧世代**画布，必然再被丢弃一次；只有等本次提交把新的窗口 / 侧栏写进去之后
             // 重投，那笔更宽的量测才会被受理（见 `mainColumnRowWidthCanvas`）。
-            retryRejectedRowContentWidths()
+            //
+            // 重投的那笔就地落定（重投写 pending，这里顺手收进 staged 再发布），不等静默窗——否则同一笔
+            // 量测要再多花一趟 0.7 秒的往返与一次额外提交。
+            if retryRejectedRowContentWidths() {
+                if let value = pendingSidebarRowContentWidth {
+                    stagedSidebarRowContentWidth = value
+                    pendingSidebarRowContentWidth = nil
+                }
+                if let value = pendingMainColumnRowContentWidth {
+                    stagedMainColumnRowContentWidth = value
+                    pendingMainColumnRowContentWidth = nil
+                }
+                applyStagedRowContentWidthsIfNeeded()
+            }
         }
+        // 已公布的内容宽一律夹到当前画布以内（延后期间也夹，见该函式的说明）：延后期间手上留的是上一代
+        // 的量测，新姿态的画布更窄时它会宽于画布，消费端据此算栏数就会让固定尺寸的卡片溢出重叠。
+        //
+        // 放在所有发布路径之后，上面重投落定的那一笔也在夹的范围内。
+        clampPublishedRowContentWidthsToCanvas()
         #if DEBUG
         // 诊断用：一次旋转 / 铰链开合到底触发了几次提交、每次提交消费端看到的值是什么。
         PZLog.info(
