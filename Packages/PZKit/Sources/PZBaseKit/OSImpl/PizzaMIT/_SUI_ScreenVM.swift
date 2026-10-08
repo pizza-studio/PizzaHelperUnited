@@ -505,6 +505,23 @@ public final class ScreenVM {
         var angleInDegrees: Double?
     }
 
+    /// 消费端当下可见的几何快照。
+    ///
+    /// 用来回答「这次提交到底改变了什么」。快照而不是逐槽标记：判据一旦写成「有没有哪一笔 staged 与已落定值
+    /// 不同」，日后新增一个槽却忘了加标记，就会让一次该有的提交被略过——而这是最难查的一类错。
+    private struct CommittedGeometry: Equatable {
+        var orientation: Orientation
+        var hingeStatus: HingeStatus?
+        var hingeAngleInDegrees: Double?
+        var isHorizontallyCompact: Bool
+        var windowSizeObserved: CGSize
+        var windowSizeObservedSansBleed: CGSize
+        var actualSidebarWidthObserved: CGFloat
+        var mainColumnSizeObservedSansBleed: CGSize
+        var mainColumnSizeObservedWithBleed: CGSize
+        var mainColumnSidebarPaddingOffset: CGFloat
+    }
+
     /// 刚收到的**原始**排版观测值（pending）。
     ///
     /// 旋转 / 铰链 / 视窗与栏位量测在系统动画与栏位动画期间会连续给出好几代中途值（实测相隔
@@ -651,6 +668,21 @@ public final class ScreenVM {
             .min() ?? actualSidebarWidthObserved
         let derived = windowWidth - sidebarWidth - mainColumnSidebarPaddingOffset
         return derived > 0 ? derived : windowWidth
+    }
+
+    private var committedGeometry: CommittedGeometry {
+        CommittedGeometry(
+            orientation: orientation,
+            hingeStatus: hingeStatus,
+            hingeAngleInDegrees: hingeAngleInDegrees,
+            isHorizontallyCompact: isHorizontallyCompact,
+            windowSizeObserved: windowSizeObserved,
+            windowSizeObservedSansBleed: windowSizeObservedSansBleed,
+            actualSidebarWidthObserved: actualSidebarWidthObserved,
+            mainColumnSizeObservedSansBleed: mainColumnSizeObservedSansBleed,
+            mainColumnSizeObservedWithBleed: mainColumnSizeObservedWithBleed,
+            mainColumnSidebarPaddingOffset: mainColumnSidebarPaddingOffset
+        )
     }
 
     // MARK: Static Helpers
@@ -865,7 +897,9 @@ public final class ScreenVM {
         // 顺序不能反：`splitViewVisibilityAfterCommit()` 要看 `isHorizontallyCompact` /
         // `orientation` / `hingeStatus` / `windowSizeObserved`，这些若还停在上一世代，
         // 预测出来的可见性就是错的，延后逻辑会整个失效。
+        let geometryBefore = committedGeometry
         applyStagedObservations()
+        let geometryDidChange = geometryBefore != committedGeometry
 
         // 边栏可见性翻转的那一次提交，内容宽一律不落定。
         //
@@ -892,6 +926,24 @@ public final class ScreenVM {
             rowContentWidthReleaseTask?.cancel()
             rowContentWidthReleaseTask = nil
             applyStagedRowContentWidthsIfNeeded()
+        }
+        // 还有一笔内容宽等着落定吗（`staged…` 与已落定值不同）。
+        //
+        // 早退判据必须带上它：`applyStagedRowContentWidthsIfNeeded()` 只在上面「非延后」分支里跑，
+        // 若这次提交的差事就是发布它，早退掉就再也没有下一次提交来发布。
+        let rowContentWidthPublishPending = (stagedSidebarRowContentWidth.map { $0 != sidebarRowContentWidth } ?? false)
+            || (stagedMainColumnRowContentWidth.map { $0 != mainColumnRowContentWidth } ?? false)
+        // 这次提交无事可做就直接结束。
+        //
+        // 实测一次旋转 / 折合会留下 2–3 笔「每个字段都与上一次完全相同」的提交：跟踪器在过渡尾巴上又回报了
+        // 一轮同样的尺寸，静默窗于是重新计时并再提交一次。它们不写任何 `@Observable` 属性、因此不会造成
+        // 重绘，却会白跑一次提交、留下一行一模一样的诊断，也让「一次事件触发几次提交」这个指标失真。
+        //
+        // 判据必须严格：内容宽还等着落定、观测流还没静定（这次提交得把 `deferredRowContentWidth` 立起来）、
+        // 或正处于延后中（`scheduleRowContentWidthReleaseIfNeeded()` 的补提交还没排）时都不能提早结束。
+        if !geometryDidChange, !rowContentWidthPublishPending, !visibilityChangesNow,
+           !deferredRowContentWidth, transitionHasSettled, lastObservationLooksSettled {
+            return
         }
         scheduleRowContentWidthReleaseIfNeeded()
 
