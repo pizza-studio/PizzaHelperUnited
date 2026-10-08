@@ -107,17 +107,17 @@ public struct AvatarStatCollectionTabView: View {
         }
         .background {
             // 为了兼容 iOS 26 / macOS 26，必须得把背景挪到这个层面来处理。
-            ZStack {
-                Color(hue: 0, saturation: 0, brightness: 0.1)
-                avatar?.asBackground(useNameCardBG: useNameCardBackgrounds)
-                    .scaledToFill()
-                    .scaleEffect(1.2)
-                    .clipped()
-                    .frame(width: screenVM.windowSizeObserved.width)
-                    .animation(.easeIn(duration: 0.2), value: screenVM.mainColumnCanvasSizeObserved)
+            backdropLayer {
+                ZStack {
+                    Color(hue: 0, saturation: 0, brightness: 0.1)
+                    avatar?.asBackground(useNameCardBG: useNameCardBackgrounds)
+                        .scaledToFill()
+                        .scaleEffect(1.2)
+                        .clipped()
+                        .frame(width: screenVM.windowSizeObserved.width)
+                        .animation(.easeIn(duration: 0.2), value: screenVM.mainColumnCanvasSizeObserved)
+                }
             }
-            .drawingGroup()
-            .ignoresSafeArea(.all, edges: .all)
             .animation(.default, value: showingCharacterIdentifier)
         }
         #if os(iOS) || targetEnvironment(macCatalyst)
@@ -259,5 +259,25 @@ public struct AvatarStatCollectionTabView: View {
 
     private var isMainBodyVisible: Bool {
         !hasNoAvatars && allIDs.contains(showingCharacterIdentifier)
+    }
+
+    /// 背景層必須鋪滿整個視窗，但它在 `.background` 裡拿到的版面尺寸只是安全區內縮後的畫布
+    /// （iPhone Duo 闔上時 trailing 少 84pt，展開直向時底部少 34pt）。這層原本只靠
+    /// `.ignoresSafeArea(.all, edges: .all)` 撐出去，但在 NavigationStack 推入的頁面裡它並不穩定：
+    /// 同一份程式碼在部分姿態／啟動路徑下會失效，於是畫面邊緣露出一條純黑。
+    /// 所以不再依賴安全區語意：直接把背景層撐成整個視窗，再對齊視窗左上角。
+    ///
+    /// 註：這裡用 `.compositingGroup()` 而非 `.drawingGroup()`：後者會反覆重解圖片素材，
+    /// 與 `CharacterIconView` 那批同樣的離屏繪製問題。
+    @ViewBuilder
+    private func backdropLayer<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        let backdrop = content()
+        GeometryReader { proxy in
+            let globalFrame = proxy.frame(in: .global)
+            backdrop
+                .frame(width: screenVM.windowSizeObserved.width, height: screenVM.windowSizeObserved.height)
+                .compositingGroup()
+                .offset(x: -globalFrame.minX, y: -globalFrame.minY)
+        }
     }
 }
