@@ -1321,6 +1321,7 @@ extension ScreenVM {
         PZLog.info("已在启动阶段挂上铰链观察器（key window: \(windowSizeRAW)）")
     }
 }
+#endif
 
 @available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension ScreenVM {
@@ -1343,4 +1344,3 @@ extension ScreenVM {
         return Swift.max(mainColumnCanvasSizeObserved.width - canvasInset, 0)
     }
 }
-#endif
