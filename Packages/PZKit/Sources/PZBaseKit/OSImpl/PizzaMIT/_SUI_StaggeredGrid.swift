@@ -153,7 +153,7 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
         // let threshold = 100 // 可调整的阈值
         let newTask = Task.detached(priority: .userInitiated) {
             _ = await oldTask?.value
-            let newGridArray: [[T]] = await self.computeGridArray(
+            let newGridArray: [[T]] = self.computeGridArray(
                 list: list, columns: columns
             )
             await MainActor.run {
@@ -206,29 +206,9 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
     @ObservationIgnored private var columnsUpdateTask: Task<Void, Never>?
     @ObservationIgnored private var lastColumnsChangeAt: Date?
 
-    // 异步计算方法，会彻底打碎排序。慎用。
-    private func computeGridArrayAsync(list: [T], columns: Int) async -> [[T]] {
-        await withTaskGroup(of: [T].self) { group in
-            let chunkSize = max(1, list.count / columns)
-            for i in 0 ..< columns {
-                let start = i * chunkSize
-                let end = min((i + 1) * chunkSize, list.count)
-                group.addTask {
-                    Array(list[start ..< end])
-                }
-            }
-            var gridArray: [[T]] = Array(repeating: [], count: columns)
-            for await chunk in group {
-                if let index = gridArray.firstIndex(where: { $0.isEmpty }) {
-                    gridArray[index] = chunk
-                }
-            }
-            return gridArray
-        }
-    }
-
-    // 同步计算方法
-    private func computeGridArray(list: [T], columns: Int) -> [[T]] {
+    // 同步计算方法，`nonisolated`：只读参数、不碰隔离状态，所以 `updateGridArray()` 的
+    // `Task.detached` 能真的把这段分堆丢到背景跑（否则 `await` 会先跳回主执行绪再算）。
+    nonisolated private func computeGridArray(list: [T], columns: Int) -> [[T]] {
         var gridArray: [[T]] = Array(repeating: [], count: columns)
         var currentIndex = 0
         for object in list {
