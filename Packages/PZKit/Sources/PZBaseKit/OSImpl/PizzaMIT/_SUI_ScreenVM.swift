@@ -179,22 +179,41 @@ public final class ScreenVM {
     /// 清单列的**可用内容宽**：Main Column（detail 栏）。语义同 `sidebarRowContentWidth`。
     public private(set) var mainColumnRowContentWidth: CGFloat = 0
 
-    /// Main Column 的画布尺寸。
-    /// 从 `windowSizeObserved` — `actualSidebarWidthObserved` — `mainColumnSidebarPaddingOffset` 推算。
+    /// Main Column 的画布尺寸（**可排版区**）。
+    ///
+    /// 宽度依侧栏是否在场分成两种取法，但两者都得到**不含出血**的主栏宽：
+    /// - `.all`：`windowSizeObserved`（含出血）− `actualSidebarWidthObserved` −
+    ///   `mainColumnSidebarPaddingOffset`。这里必须用含出血的整窗宽，因为
+    ///   `mainColumnSidebarPaddingOffset` 正是拿含出血的整窗宽校准出来的
+    ///   （见 `recordSidebarPaddingOffset()`）：同源相减，出血才会被恰好抵消掉。
+    /// - `.detailOnly`：主栏即整窗，没有侧栏与 offset 可扣，于是直接取整窗——但必须取
+    ///   **不含出血**的整窗宽，否则画布会比实际可排版区宽出一条安全区
+    ///   （封面萤幕实测：满版 466 / 可用 382，差 84pt）。上面 `.all` 那条路若推算出
+    ///   非正值，也退回同一个可用宽。
+    ///
+    /// 高度沿用含出血的整窗高，与本次变更前的行为一致：改用可用高会连带动到
+    /// `CGImageCropper` 的 `maxHeight` 与 `scaleRatioCompatible` 的缩放，属于另一件事。
+    ///
     /// 三者都是**已提交值**，因此它只在一次排版状态提交之后才变动一次。
     public var mainColumnCanvasSizeObserved: CGSize {
         var newResult = windowSizeObserved
-        guard splitViewVisibility != .detailOnly else { return newResult }
+        guard splitViewVisibility != .detailOnly else {
+            newResult.width = usableWindowWidth
+            return newResult
+        }
         newResult.width -= actualSidebarWidthObserved
         newResult.width -= mainColumnSidebarPaddingOffset
-        guard newResult.width > 0 else { return windowSizeObserved }
+        guard newResult.width > 0 else {
+            newResult.width = usableWindowWidth
+            return newResult
+        }
         return newResult
     }
 
     // iPhone Portrait Display mode or similar canvas size.
     // 440 是 iPhone 16 Pro Max 的荧幕画布尺寸。
     public var isPhonePortraitSituation: Bool {
-        isHorizontallyCompact && phonePortraitReferenceWidth <= 440
+        isHorizontallyCompact && usableWindowWidth <= 440
     }
 
     // iPhone SE3 ZOOMED mode.
@@ -593,14 +612,17 @@ public final class ScreenVM {
     @ObservationIgnored private var hingeTrackingObserver: (any NSObjectProtocol)?
     #endif
 
-    /// 「手机直向情境」判定的参考宽度：优先取**扣掉出血**后的可用画布宽。
+    /// 不含出血边界的整窗宽。
     ///
     /// `windowSizeObserved` 含安全区出血：iPhone Duo 的尾端竖条恒占 84pt（下缘另有 34pt），
-    /// 该竖条并非可用排版区域。若拿满版尺寸比对 440 这道门槛，会把封面萤幕（实测满版
-    /// 466×678、可用 382×644）这类可用宽本来就在门槛内的情境误判成宽萤幕，
-    /// 进而让 root page switcher 从底部 tab bar 被换成顶端 Picker。
+    /// 而该竖条并非可用排版区域。凡是「可用宽」语义的判定都必须用它，目前有两处：
+    /// - `isPhonePortraitSituation`：440 这道门槛是按可用画布宽校准的，拿满版宽比对会把
+    ///   封面萤幕（实测满版 466×678、可用 382×644）这种可用宽本来就在门槛内的情境
+    ///   误判成宽萤幕，root page switcher 于是从底部 tab bar 被换成顶端 Picker。
+    /// - `mainColumnCanvasSizeObserved`：`.detailOnly` 时主栏即整窗。
+    ///
     /// 量测尚未回报时（`windowSizeObservedSansBleed == .zero`）退回满版尺寸。
-    private var phonePortraitReferenceWidth: CGFloat {
+    private var usableWindowWidth: CGFloat {
         let sansBleedWidth = windowSizeObservedSansBleed.width
         return sansBleedWidth > 0 ? sansBleedWidth : windowSizeObserved.width
     }

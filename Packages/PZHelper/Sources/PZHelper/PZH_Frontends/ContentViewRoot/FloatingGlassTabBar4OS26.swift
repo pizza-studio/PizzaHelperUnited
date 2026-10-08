@@ -137,20 +137,8 @@ internal struct FloatingGlassTabBar: View {
         max(0, measuredSize.height - horizontalInset * 2)
     }
 
-    /// Width available to the floating capsule.
-    ///
-    /// The main-column canvas is bleed-free only while the split view actually shows
-    /// a sidebar; in the detail-only posture it falls back to the whole window, which
-    /// still carries the trailing safe-area bleed (measured on the iPhone Duo cover
-    /// screen: 466pt window vs 382pt usable). Sizing the capsule from that window
-    /// stretches it one safe area too wide, so cap it by the usable window width.
-    /// The cap is inert whenever the canvas is already the narrower of the two — as
-    /// in split view, where subtracting the sidebar already removed the bleed.
     private var buttonBarWidth: Double {
-        let canvasWidth = screenVM.mainColumnCanvasSizeObserved.width
-        let usableWindowWidth = screenVM.windowSizeObservedSansBleed.width
-        let availableWidth = usableWindowWidth > 0 ? Swift.min(canvasWidth, usableWindowWidth) : canvasWidth
-        return availableWidth - 70
+        screenVM.mainColumnCanvasSizeObserved.width - 70
     }
 
     private var labelTextShadowColor: Color {
