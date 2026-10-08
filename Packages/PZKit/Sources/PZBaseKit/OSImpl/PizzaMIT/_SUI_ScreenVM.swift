@@ -881,6 +881,10 @@ public final class ScreenVM {
 
         applySplitViewVisibilityIfNeeded()
 
+        // 已公布的内容宽一律夹到当前画布以内（延后期间也夹，见该函式的说明）：延后期间手上留的是上一代
+        // 的量测，新姿态的画布更窄时它会宽于画布，消费端据此算栏数就会让固定尺寸的卡片溢出重叠。
+        clampPublishedRowContentWidthsToCanvas()
+
         updateHash4Tracking()
         // 延后期间刻意不清理内容宽：清理会把已发布值归零，环境值一变 nil，消费端就退回
         // 「即时画布 − 内缩」的推算路径，等于绕个弯又把过渡世代放进来。这里宁可让手上这份
@@ -966,6 +970,34 @@ public final class ScreenVM {
         }
         if let stagedMainColumnRowContentWidth, mainColumnRowContentWidth != stagedMainColumnRowContentWidth {
             mainColumnRowContentWidth = stagedMainColumnRowContentWidth
+        }
+    }
+
+    /// 把「已公布」的清单列可用内容宽夹到当前画布以内。
+    ///
+    /// 过渡期间多数提交走的是延后路径（见 `commitLayoutState()`），内容宽还没轮到落定，消费端手上留着的是
+    /// **上一代**的量测值；若新姿态的画布更窄，那个值就会比画布还宽，消费端拿它去算栏数，固定尺寸的卡片
+    /// 便溢出重叠（2026-10-08 记录的「rowMain=807 配 canvas=372」正是这个形态）。
+    ///
+    /// - Important: 只夹**已公布**的衍生值，`staged…` 里的真实量测原封不动，画布一宽回来就会照原值公布；
+    /// 因此过渡期间最多短暂偏窄（栏数只会少、不会多），不会重叠。
+    ///
+    ///   上界取**已落定**的 `mainColumnCanvasSizeObserved` / `actualSidebarWidthObserved`，也就是消费端
+    ///   此刻真的会看到的画布（诊断行印的 `canvas=` 正是前者）。这比残量判定用的 `mainColumnRowWidthCanvas`
+    ///   更紧——那个刻意取 pending 优先的较宽值、宁可放宽也不误杀（见其说明）；夹的职责不同：它保证
+    ///   「发出去的值装得进当下这块画布」。
+    private func clampPublishedRowContentWidthsToCanvas() {
+        if actualSidebarWidthObserved > 0 {
+            let clamped = min(sidebarRowContentWidth, actualSidebarWidthObserved)
+            if sidebarRowContentWidth != clamped {
+                sidebarRowContentWidth = clamped
+            }
+        }
+        if mainColumnCanvasSizeObserved.width > 0 {
+            let clamped = min(mainColumnRowContentWidth, mainColumnCanvasSizeObserved.width)
+            if mainColumnRowContentWidth != clamped {
+                mainColumnRowContentWidth = clamped
+            }
         }
     }
 
