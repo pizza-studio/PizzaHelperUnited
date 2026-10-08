@@ -593,11 +593,6 @@ public final class ScreenVM {
     /// 按住内容宽期间排定的一次补提交，见 `scheduleRowContentWidthReleaseIfNeeded()`。
     private var rowContentWidthReleaseTask: Task<Void, Never>?
 
-    /// 上一次真正写进 `UserDefaults` 的铰链暂定值。用来挡掉折合过程中的高频重复写入
-    /// （见 `applyHingeObservation(status:angleInDegrees:)`）。
-    private var lastPersistedHingeStatus: HingeStatus?
-    private var lastPersistedHingeAngleInDegrees: Double?
-
     #if os(iOS) && !targetEnvironment(macCatalyst)
     /// 启动阶段就挂在 key window 上的铰链观察器；见 `startEarlyHingeTracking()`。
     @ObservationIgnored private var hingeInteraction: (any UIInteraction)?
@@ -926,8 +921,18 @@ public final class ScreenVM {
             orientation = stagedOrientation
         }
         if let stagedHinge {
-            if hingeStatus != stagedHinge.status { hingeStatus = stagedHinge.status }
-            if hingeAngleInDegrees != stagedHinge.angleInDegrees { hingeAngleInDegrees = stagedHinge.angleInDegrees }
+            if hingeStatus != stagedHinge.status {
+                hingeStatus = stagedHinge.status
+                // 铰链暂定值只在**落定时**才落盘。扳动铰链时角度每次回呼都不同（可达 60Hz），
+                // 若在 pending 阶段就写，一次折合会产生上百次 `UserDefaults` 写入。这个值只用于
+                // 下次启动的暂定值（首次回呼约 0.9 秒后才到，粒度本来就粗），因此延后到提交、
+                // 并且只存四舍五入到整度的角度即可。
+                Defaults[.lastKnownHingeStatus] = stagedHinge.status?.rawValue
+            }
+            if hingeAngleInDegrees != stagedHinge.angleInDegrees {
+                hingeAngleInDegrees = stagedHinge.angleInDegrees
+                Defaults[.lastKnownHingeAngleInDegrees] = stagedHinge.angleInDegrees.map { $0.rounded() }
+            }
         }
         if let stagedIsHorizontallyCompact, isHorizontallyCompact != stagedIsHorizontallyCompact {
             isHorizontallyCompact = stagedIsHorizontallyCompact
@@ -1012,21 +1017,8 @@ public final class ScreenVM {
             // A：铰链开阖翻转，同样是一次排版过渡的起点。
             layoutTransitionArmedAt = Date()
         }
-        // 记下来给下次启动当暂定值用（含主动清空的情形）。
-        //
-        // - Important: 这两笔 `UserDefaults` 写入在扳动铰链时属于高频路径：铰链角度每次回呼都不同，
-        //   照单全写的话，一次折合（数秒、回呼可达 60Hz）会产生数百次写入。角度在储存前先四舍五入到
-        //   整度——它只用于下次启动的暂定值（首次回呼约 0.9 秒后才到，粒度本来就粗），差一度没有影响，
-        //   写入次数却降为至多约一百多次。
-        let persistedAngle = newAngleInDegrees.map { $0.rounded() }
-        if lastPersistedHingeStatus != newStatus {
-            Defaults[.lastKnownHingeStatus] = newStatus?.rawValue
-            lastPersistedHingeStatus = newStatus
-        }
-        if lastPersistedHingeAngleInDegrees != persistedAngle {
-            Defaults[.lastKnownHingeAngleInDegrees] = persistedAngle
-            lastPersistedHingeAngleInDegrees = persistedAngle
-        }
+        // 铰链暂定值的 `UserDefaults` 落盘延后到 `applyStagedObservations()`：这条路径在扳动
+        // 铰链时是高频的（角度每次回呼都不同），见该处的说明。
         reportLayoutStateObservation()
         // 角度会在高频扳动时变化，因此只在开阖状态改变时才写日志。
         guard previous.status != newStatus || wasOpen != isOpenNow else { return }

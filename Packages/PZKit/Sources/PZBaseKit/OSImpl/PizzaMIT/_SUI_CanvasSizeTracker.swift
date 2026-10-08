@@ -80,11 +80,7 @@ private struct CanvasSizeTracker: ViewModifier {
                 regions: safeAreaRegions,
                 edges: safeAreaEdges
             )
-            SizeReadingLayout(onChange: { size in
-                let measured = CGSize(
-                    width: size.width + inflations.leading + inflations.trailing,
-                    height: size.height + inflations.top + inflations.bottom
-                )
+            SizeReadingLayout(inflations: inflations, onChange: { measured in
                 Task { @MainActor in
                     // 这个 `yield` 是必要的：`Task { @MainActor in }` 在同一个 main actor
                     // （也就是 `placeSubviews(in:proposal:subviews:cache:)` 所在的执行绪）
@@ -92,6 +88,9 @@ private struct CanvasSizeTracker: ViewModifier {
                     // `sizeState.update(...)` 会在 SwiftUI 的 layout pass 之内发生，可能立刻
                     // 触发下一轮 layout、形成同步递回。先让出一次，保证这段工作绝不在
                     // layout pass 内执行。
+                    //
+                    // 同尺寸的重复回报已经在 `placeSubviews` 里挡掉了，所以这里配置的每个
+                    // `Task` 都对应一次真的变了的量测。
                     await Task.yield()
                     guard let sizeState else { return }
                     sizeState.update(width: measured.width, height: measured.height)
@@ -129,28 +128,57 @@ private struct CanvasSizeTracker: ViewModifier {
 private struct SizeReadingLayout: Layout {
     // MARK: Lifecycle
 
-    init(onChange: @Sendable @escaping (CGSize) -> Void) {
+    init(inflations: EdgeInsets, onChange: @Sendable @escaping (CGSize) -> Void) {
+        self.inflations = inflations
         self.onChange = .init(onChange)
     }
 
     // MARK: Internal
 
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout Void) -> CGSize {
+    /// 上一次真的回报出去的量测值。
+    ///
+    /// `Layout.Cache` 由 SwiftUI 依 layout 节点保存，会在节点重建（view identity 变更）时
+    /// 自动重置，因此不必额外处理「换了 view 却还记着旧值」的情形。
+    struct Cache {
+        var lastMeasured: CGSize?
+    }
+
+    func makeCache(subviews _: Subviews) -> Cache {
+        Cache()
+    }
+
+    /// 刻意**不**重建 cache：它必须跨排版留存，才能挡掉同尺寸的重复回报。
+    func updateCache(_: inout Cache, subviews _: Subviews) {}
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout Cache) -> CGSize {
         // 直接返回子视图（Color.clear）在当前建议下的大小
         // Color.clear 通常会填充建议的尺寸
         subviews.first?.sizeThatFits(proposal) ?? .zero
     }
 
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout Void) {
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout Cache) {
         // 放置子视图
         subviews.first?.place(at: bounds.origin, proposal: proposal)
 
-        // 报告尺寸
-        onChange.withLock { $0(bounds.size) }
+        // 报告尺寸（含上一段 `GeometryReader` 读到的出血边界）。
+        //
+        // 去重必须在这里、也就是**配置 `Task` 之前**做：`placeSubviews` 每次排版都会走一遍，
+        // 而同尺寸的重复回报占绝大多数（实测静置期间的 Layout pass 除了最初两秒之外，
+        // 每一轮都回报一次相同尺寸）。先前把去重放在 `SizeState.debounce()` 里，
+        // 挡掉的是「配置 Task 之后」的重复工作；每次排版仍要配置一个 Task、跳一次 main actor、
+        // 再 `Task.yield()` 调度一次，全部白费。放在这里则连 Task 都不必配置。
+        let measured = CGSize(
+            width: bounds.width + inflations.leading + inflations.trailing,
+            height: bounds.height + inflations.top + inflations.bottom
+        )
+        guard cache.lastMeasured != measured else { return }
+        cache.lastMeasured = measured
+        onChange.withLock { $0(measured) }
     }
 
     // MARK: Private
 
+    private let inflations: EdgeInsets
     private let onChange: NSMutex<(CGSize) -> Void>
 }
 
