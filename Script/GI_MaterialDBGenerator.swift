@@ -269,7 +269,7 @@ public enum DimbreathMaterialRAW {
     // MARK: Fileprivate
 
     fileprivate static let remoteBaseURL =
-        "https://gitlab.com/Dimbreath/AnimeGameData2/-/raw/main/"
+        "https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/main/"
 
     /// 统一从本机路径或线上 URL 读取资料。relativePath 即 ExcelBinOutput/xxx.json。
     fileprivate static func fetchData(relativePath: String) async throws -> Data {

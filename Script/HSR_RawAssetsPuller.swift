@@ -300,7 +300,7 @@ public enum DataType: String, CaseIterable {
 
     // MARK: Internal
 
-    static let srdBasePath = "https://gitlab.com/Dimbreath/TurnBasedGameData/-/raw/main/ExcelOutput/"
+    static let srdBasePath = "https://raw.githubusercontent.com/DimbreathBot/TurnBasedGameData/main/ExcelOutput/"
     static let mar7BasePath = "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/index_new/en/"
     static let mar7ResHeader = "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/"
     static let yattaResHeader = "https://sr.yatta.moe/hsr/assets/"

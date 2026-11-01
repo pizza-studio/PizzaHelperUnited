@@ -137,7 +137,7 @@ public enum GenshinLang: String, CaseIterable, Sendable, Identifiable {
     public var urls: [URL] {
         filenamesForChunks.compactMap { currentFileName in
             URL(string: """
-            https://gitlab.com/Dimbreath/AnimeGameData2/-/raw/main/TextMap/\(currentFileName)
+            https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/main/TextMap/\(currentFileName)
             """)
         }
     }
@@ -271,7 +271,7 @@ struct MaterialExcelConfigData: Decodable {
     // MARK: Internal
 
     static let urlPath = """
-    https://gitlab.com/Dimbreath/AnimeGameData2/-/raw/main/ExcelBinOutput/MaterialExcelConfigData.json
+    https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/main/ExcelBinOutput/MaterialExcelConfigData.json
     """
 
     let id: Int
@@ -357,11 +357,11 @@ struct RewardEntry: Decodable {
 
 do {
     let fetterURLStr = """
-    https://gitlab.com/Dimbreath/AnimeGameData2/-/raw/main/\
+    https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/main/\
     ExcelBinOutput/FetterCharacterCardExcelConfigData.json
     """
     let rewardURLStr = """
-    https://gitlab.com/Dimbreath/AnimeGameData2/-/raw/main/\
+    https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/main/\
     ExcelBinOutput/RewardExcelConfigData.json
     """
     async let fetterResp = URLSession.shared.data(from: fetterURLStr.asURL)
