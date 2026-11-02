@@ -172,69 +172,51 @@ public enum DimbreathMaterialRAW {
         // MARK: Lifecycle
 
         /// 负责解码任何结构的每日副本资料。
-        /// - 先尝试用可读栏位名称（旧版 Dimbreath 资料）。
-        /// - 若失败则用 DynamicCodingKeys 遍历所有混淆栏位，依据值特征（长度 ≥ 3 的 [Int] 阵列）自动判定当天的副本清单。
+        /// 以 DynamicCodingKeys 遍历所有栏位、并集所有 `[Int]` 阵列（去重）取得该条目全部副本 ID，
+        /// 并记录单栏位的最大元素数。
+        /// Dimbreath 自 2026-11-01 起同时给出可读栏位名（`monday`…`sunday`）与混淆栏位名，
+        /// 但两者对同一条目所列的副本并集、以及单栏位最大元素数完全一致，
+        /// 故解码结果不受栏位命名形式影响，不得因可读栏位存在就改走另一套逻辑。
         public init(from decoder: any Decoder) throws {
-            do {
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                self.id = try container.decode(Int.self, forKey: .id)
-                self.monday = try container.decode([Int].self, forKey: .monday)
-                self.tuesday = try container.decode([Int].self, forKey: .tuesday)
-                self.wednesday = try container.decode([Int].self, forKey: .wednesday)
-                self.maxArrayLength = monday.count
-                self.thursday = monday
-                self.friday = tuesday
-                self.saturday = wednesday
-            } catch {
-                // 混淆栏位备援：使用 DynamicCodingKeys 遍历所有 key。
-                // 6.7+ 须并集所有阵列（去重）才能拿到该条目全部副本 ID。
-                let container = try decoder.container(keyedBy: DynamicCodingKeys.self)
-                var idFound: Int?
-                var allDungeonIDs = Set<Int>()
-                var maxLen = 0
-                var loops = 0
-                for key in container.allKeys {
-                    loops += 1
-                    precondition(
-                        loops < 200,
-                        "DailyDungeonConfigDatum decoding exceeded 200 key iterations; possible infinite loop."
-                    )
-                    if key.stringValue == "id" {
-                        idFound = try container.decode(Int.self, forKey: key)
-                        continue
-                    }
-                    guard let candidate = try? container.decode([Int].self, forKey: key),
-                          !candidate.isEmpty
-                    else { continue }
-                    allDungeonIDs.formUnion(candidate)
-                    maxLen = max(maxLen, candidate.count)
+            let container = try decoder.container(keyedBy: DynamicCodingKeys.self)
+            var idFound: Int?
+            var allDungeonIDs = Set<Int>()
+            var maxLen = 0
+            var loops = 0
+            for key in container.allKeys {
+                loops += 1
+                precondition(
+                    loops < 200,
+                    "DailyDungeonConfigDatum decoding exceeded 200 key iterations; possible infinite loop."
+                )
+                if key.stringValue == "id" {
+                    idFound = try container.decode(Int.self, forKey: key)
+                    continue
                 }
-                guard let id = idFound, !allDungeonIDs.isEmpty else {
-                    throw DecodingError.dataCorrupted(.init(
-                        codingPath: decoder.codingPath,
-                        debugDescription: "Cannot decode DailyDungeonConfig: no readable keys nor valid array fields found."
-                    ))
-                }
-                let merged = Array(allDungeonIDs)
-                self.id = id
-                self.maxArrayLength = maxLen
-                self.monday = merged
-                self.tuesday = merged
-                self.wednesday = merged
-                self.thursday = merged
-                self.friday = merged
-                self.saturday = merged
+                guard let candidate = try? container.decode([Int].self, forKey: key),
+                      !candidate.isEmpty
+                else { continue }
+                allDungeonIDs.formUnion(candidate)
+                maxLen = max(maxLen, candidate.count)
             }
+            guard let id = idFound, !allDungeonIDs.isEmpty else {
+                throw DecodingError.dataCorrupted(.init(
+                    codingPath: decoder.codingPath,
+                    debugDescription: "Cannot decode DailyDungeonConfig: no readable keys nor valid array fields found."
+                ))
+            }
+            let merged = allDungeonIDs.sorted()
+            self.id = id
+            self.maxArrayLength = maxLen
+            self.monday = merged
+            self.tuesday = merged
+            self.wednesday = merged
+            self.thursday = merged
+            self.friday = merged
+            self.saturday = merged
         }
 
         // MARK: Public
-
-        public enum CodingKeys: String, CodingKey {
-            case id
-            case monday
-            case tuesday
-            case wednesday
-        }
 
         public var id: Int
         public var monday, tuesday, wednesday: [Int]
@@ -345,7 +327,8 @@ extension DimbreathMaterialRAW {
                 rotationIndex += 1
             } else {
                 // 单元素条目沿用前一组轮转的星期（代表周四/周五/周六与周一/周二/周三对应）。
-                weekday = (rotationIndex - 1) % dayNames.count
+                // 若它出现在任何多日条目之前（无「前一组」可继承），退回 MR，不得让索引变成负数。
+                weekday = max(0, rotationIndex - 1) % dayNames.count
             }
             dungeon.monday.forEach { dungeonID in
                 guard dungeonID != 0, allValidDungeons.contains(dungeonID) else { return }
