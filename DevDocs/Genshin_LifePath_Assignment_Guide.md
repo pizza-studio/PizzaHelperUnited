@@ -138,7 +138,7 @@
 1. 取得角色資料（例：`https://gi.yatta.moe/api/v2/chs/avatar/<avatarID>`，或本機 AnimeGameData／EnkaDB 產物）。
 2. 依第 3 節判準決定命途；在 `GenshinLifePathMap.json` 的 ID 遞增位置插入條目。
 3. 跑下方驗證；有疑慮時再核 `LifePath.swift` 的解碼語意。
-4. 在 `EndUserPublicDocs/ReleaseNotesArchive/` 當期 Release Notes 記錄對應關係，沿用既有句式，例如：「新角色（及其命途）：沃雅妮莎（同諧）、薇斯納（毀滅）」。
+4. 在 `EndUserPublicDocs/ReleaseNotesArchive/` 當期 Release Notes 記錄對應關係，沿用既有句式，例如：「新角色（及其命途）：沃雅妮莎（同諧）、薇斯納（毀滅）」。各語系的命途名稱見第 8 節。
 5. 若產生新判例，補記到第 5 節。
 
 ### 驗證
@@ -187,6 +187,26 @@ Swift 端的行為（case 名稱比對、`guessPath` 的 14／12／8 碼回退�
 | 2026-09-21 | `1cf2e8ee` | 新增本文件 |
 | 2026-09-21 | `c5cca50b` | 奇偶（14 筆）→ 歡愉（改判） |
 | 2026-09-21 | `right-after-61516410` | 判準補記：星鐵對照的時序陷阱、記憶＝憶靈系統、Hyacine 對照複核；沃雅妮莎減抗數字修正（−16.5% → −30%（Lv.10））；芙寧娜條目的星鐵對照修正（v4.5 → v4.0） |
+| 2026-11-02 | `71742523` | 米提亞 → 虛無；瓦列里 → 存護 |
+
+## 8. 附錄：命途名稱 L10N 對照表
+
+供撰寫 Release Notes 的「新角色（及其命途）」句式時查名。資料由維護者於 2026-11-02 提供；Preservation 與 Abundance 兩列依官方譯名補齊。
+
+| English | 简体中文 | 繁體中文 | 日本語 | Русский |
+| --- | --- | --- | --- | --- |
+| Remembrance | 记忆 | 記憶 | 記憶 | Память |
+| Nihility | 虚无 | 虛無 | 虚無 | Небытие |
+| The Hunt | 巡猎 | 巡獵 | 巡狩 | Охота |
+| Destruction | 毁灭 | 毀滅 | 壊滅 | Разрушение |
+| Propagation | 繁育 | 繁育 | 繁殖 | Распространение |
+| Elation | 欢愉 | 歡愉 | 愉悦 | Радость |
+| Erudition | 智识 | 智識 | 知恵 | Эрудиция |
+| Harmony | 同谐 | 同諧 | 調和 | Гармония |
+| Preservation | 存护 | 存護 | 存護 | Сохранение |
+| Abundance | 丰饶 | 豐饒 | 豊穣 | Изобилие |
+
+「命途」一詞本身：簡體中文與繁體中文均作「命途」，日文作「運命」，俄文作「Путь」（複數「Пути」）；英文 Release Notes 沿用既有 "life-paths" 寫法。
 
 ---
 
