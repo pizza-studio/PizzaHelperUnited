@@ -292,7 +292,12 @@
     "210295" : "Vesna – Ausgelassenheit",
     "210296" : "Vodyanitsa – Strudel",
     "210297" : "Snezhnaya – Eisiger Sturz",
-    "210298" : "Erlebnispass – Zum Mond"
+    "210298" : "Erlebnispass – Zum Mond",
+    "210299" : "Mitya – Schal",
+    "210300" : "Valeriy – Dienstgrad",
+    "210301" : "Snezhnaya – Schneeflügel",
+    "210302" : "Errungenschaften – Stille",
+    "210303" : "Erlebnispass – Heiligkeit"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -587,7 +592,12 @@
     "210295" : "Vesna: Revelry",
     "210296" : "Vodyanitsa: Whirlpool",
     "210297" : "Snezhnaya: Frostfall",
-    "210298" : "Travel Notes: Moontrace"
+    "210298" : "Travel Notes: Moontrace",
+    "210299" : "Mitya: Scarf",
+    "210300" : "Valeriy: Rank",
+    "210301" : "Snezhnaya: Snow Wings",
+    "210302" : "Achievement: Stillness",
+    "210303" : "Travel Notes: Sacred Spirit"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -882,7 +892,12 @@
     "210295" : "Vesna - Deleite",
     "210296" : "Vodyanitsa - Remolino",
     "210297" : "Snezhnaya - Gotas heladas",
-    "210298" : "PB - En pos de la luna"
+    "210298" : "PB - En pos de la luna",
+    "210299" : "Mitya - Bufanda",
+    "210300" : "Valeri - Rango militar",
+    "210301" : "Snezhnaya - Ala de nieve",
+    "210302" : "Logro - Serenidad",
+    "210303" : "PB - Espíritu sagrado"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -1177,7 +1192,12 @@
     "210295" : "Vesna - Réjouissance",
     "210296" : "Vodyanitsa - Tourbillon",
     "210297" : "Snezhnaya - Chute de givre",
-    "210298" : "PB - Trace lunaire"
+    "210298" : "PB - Trace lunaire",
+    "210299" : "Mitya - Écharpe",
+    "210300" : "Valeriy - Grade",
+    "210301" : "Snezhnaya - Ailes de neige",
+    "210302" : "Succès - Sérénité",
+    "210303" : "PB - Esprit sacré"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1472,7 +1492,12 @@
     "210295" : "Vesna: Revelry",
     "210296" : "Vodyanitsa: Whirlpool",
     "210297" : "Snezhnaya: Buih Es",
-    "210298" : "Catatan Perjalanan: Menyusuri Rembulan"
+    "210298" : "Catatan Perjalanan: Menyusuri Rembulan",
+    "210299" : "Mitya: Scarf",
+    "210300" : "Valeriy: Rank",
+    "210301" : "Snezhnaya: Sayap Salju",
+    "210302" : "Achievement: Ketenangan",
+    "210303" : "Catatan Perjalanan: Roh Suci"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1767,7 +1792,12 @@
     "210295" : "Vesna: Festosità",
     "210296" : "Vodyanitsa: Gorgo",
     "210297" : "Snezhnaya: Cascata di gelo",
-    "210298" : "Appunti di viaggio: Traccia lunare"
+    "210298" : "Appunti di viaggio: Traccia lunare",
+    "210299" : "Mitya: Sciarpa",
+    "210300" : "Valeriy: Grado",
+    "210301" : "Snezhnaya: Ala di neve",
+    "210302" : "Obiettivo: Quiete",
+    "210303" : "Appunti di viaggio: Sacro Spirito"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -2062,7 +2092,12 @@
     "210295" : "ヴェスナ・逸楽",
     "210296" : "ヴォジャニーツァ・渦潮",
     "210297" : "スネージナヤ・沫雪",
-    "210298" : "紀行・月逐"
+    "210298" : "紀行・月逐",
+    "210299" : "ミティヤ・マフラー",
+    "210300" : "バレリー・勲等",
+    "210301" : "スネージナヤ・雪の翼",
+    "210302" : "アチーブメント・静謐",
+    "210303" : "紀行・聖霊"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -2357,7 +2392,12 @@
     "210295" : "베스나·여흥",
     "210296" : "보댜니차·소용돌이",
     "210297" : "스네즈나야·녹은 얼음",
-    "210298" : "기행·달맞이"
+    "210298" : "기행·달맞이",
+    "210299" : "미탸·머플러",
+    "210300" : "발레리·훈장",
+    "210301" : "스네즈나야·눈날개",
+    "210302" : "업적·고요",
+    "210303" : "기행·신성"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2652,7 +2692,12 @@
     "210295" : "Vesna: Júbilo",
     "210296" : "Vodyanitsa: Redemoinho",
     "210297" : "Snezhnaya: Queda da Geada",
-    "210298" : "Passe de Batalha: Rumo à Lua"
+    "210298" : "Passe de Batalha: Rumo à Lua",
+    "210299" : "Mitya: Cachecol",
+    "210300" : "Valeriy: Patente",
+    "210301" : "Snezhnaya: Asas Nevadas",
+    "210302" : "Conquista: Serenidade",
+    "210303" : "Passe de Batalha: Espírito Sagrado"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2947,7 +2992,12 @@
     "210295" : "Веселье",
     "210296" : "Водоворот",
     "210297" : "Ледяная стужа",
-    "210298" : "Восходящая луна"
+    "210298" : "Восходящая луна",
+    "210299" : "Шарф",
+    "210300" : "Звание",
+    "210301" : "Снежные крылья",
+    "210302" : "Достижение: Умиротворение",
+    "210303" : "Боевой пропуск: Священный дух"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -3242,7 +3292,12 @@
     "210295" : "Vesna - ความสำราญ",
     "210296" : "Vodyanitsa - วังวน",
     "210297" : "Snezhnaya - ฟองน้ำแข็ง",
-    "210298" : "บันทึก - ย้อนรอยจันทรา"
+    "210298" : "บันทึก - ย้อนรอยจันทรา",
+    "210299" : "Mitya - ผ้าพันคอ",
+    "210300" : "Valeriy - ยศตำแหน่ง",
+    "210301" : "Snezhnaya - ปีกหิมะ",
+    "210302" : "ความสำเร็จ - เงียบสงัด",
+    "210303" : "บันทึก - วิญญาณศักดิ์สิทธิ์"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -3537,7 +3592,12 @@
     "210295" : "Vesna: Cümbüş",
     "210296" : "Vodyanitsa: Girdap",
     "210297" : "Snezhnaya: Ayaz Düşüşü",
-    "210298" : "Gezi Notları: Ay İzi"
+    "210298" : "Gezi Notları: Ay İzi",
+    "210299" : "Mitya: Atkı",
+    "210300" : "Valeriy: Rütbe",
+    "210301" : "Snezhnaya: Kar Kanatları",
+    "210302" : "Başarım: Dinginlik",
+    "210303" : "Gezi Notları: Kutsal Ruh"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3832,7 +3892,12 @@
     "210295" : "Vesna - Thong Dong Vui Vẻ",
     "210296" : "Vodyanitsa - Xoáy Nước",
     "210297" : "Snezhnaya - Bọt Băng",
-    "210298" : "Nhật Ký Hành Trình - Tố Nguyệt"
+    "210298" : "Nhật Ký Hành Trình - Tố Nguyệt",
+    "210299" : "Mitya - Khăn Quàng",
+    "210300" : "Valeriy - Quân Hàm",
+    "210301" : "Snezhnaya - Cánh Tuyết",
+    "210302" : "Thành Tựu - Tĩnh Lặng",
+    "210303" : "Nhật Ký Hành Trình - Linh Thánh"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -4127,7 +4192,12 @@
     "210295" : "薇斯纳·逸乐",
     "210296" : "沃雅妮莎·漩涡",
     "210297" : "至冬·冰沫",
-    "210298" : "纪行·溯月"
+    "210298" : "纪行·溯月",
+    "210299" : "米提亚·围巾",
+    "210300" : "瓦列里·勋衔",
+    "210301" : "至冬·雪翼",
+    "210302" : "成就·静谧",
+    "210303" : "纪行·灵圣"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -4422,6 +4492,11 @@
     "210295" : "薇斯納·逸樂",
     "210296" : "沃雅妮莎·漩渦",
     "210297" : "至冬·冰沫",
-    "210298" : "紀行·溯月"
+    "210298" : "紀行·溯月",
+    "210299" : "米提亞·圍巾",
+    "210300" : "瓦列里·勳銜",
+    "210301" : "至冬·雪翼",
+    "210302" : "成就·靜謐",
+    "210303" : "紀行·靈聖"
   }
 }
