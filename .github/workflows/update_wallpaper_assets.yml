@@ -15,6 +15,7 @@ jobs:
           xcode-version: latest-stable
       - name: Update WallpaperKit Assets (Attempt 1/2)
         id: update_assets
+        continue-on-error: true
         run: |
           swift ./Script/WallpaperAssetCollector.swift
       - name: Check for deleted assets
@@ -31,16 +32,20 @@ jobs:
             echo "has_deletions=true" >> "$GITHUB_OUTPUT"
           fi
       - name: Reset and retry (Attempt 2/2)
-        if: steps.check_deletions.outputs.has_deletions == 'true'
+        if: steps.update_assets.outcome == 'failure' || steps.check_deletions.outputs.has_deletions == 'true'
         run: |
-          echo "::warning::Restoring original assets and retrying..."
+          if [ "${{ steps.update_assets.outcome }}" = "failure" ]; then
+            echo "::warning::Attempt 1 failed (script crash or network error). Resetting the worktree and retrying."
+          else
+            echo "::warning::Deleted assets detected on attempt 1. Restoring original assets and retrying."
+          fi
           ASSETS_DIR="Packages/WallpaperKit/Sources/WallpaperKit/Resources/Assets.xcassets/GILiveActivityBGs"
-          git checkout -- "$ASSETS_DIR"
+          git checkout -- .
           git clean -fd -- "$ASSETS_DIR"
           swift ./Script/WallpaperAssetCollector.swift
       - name: Verify no deleted assets after retry
         id: verify_retry
-        if: steps.check_deletions.outputs.has_deletions == 'true'
+        if: steps.update_assets.outcome == 'failure' || steps.check_deletions.outputs.has_deletions == 'true'
         run: |
           ASSETS_DIR="Packages/WallpaperKit/Sources/WallpaperKit/Resources/Assets.xcassets/GILiveActivityBGs"
           DELETED_FILES=$(git diff --name-only --diff-filter=D -- "$ASSETS_DIR" || true)
