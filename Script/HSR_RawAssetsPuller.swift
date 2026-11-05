@@ -229,7 +229,7 @@ public enum DataType: String, CaseIterable {
     public func generateLinkDataDict() async throws -> [String: String] {
         var dict = [String: String]()
         guard let sourceURL = getSourceURL(isCollab: false) else { return [:] }
-        let (data, _) = try await URLSession.shared.data(from: sourceURL)
+        let (data, _) = try await fetchDataWithRetry(from: sourceURL)
         var data4Collab: Data = .init([])
         if let collabURL = getSourceURL(isCollab: true) {
             (data4Collab, _) = try await URLSession.shared.data(from: collabURL)
@@ -496,4 +496,36 @@ private actor URLAsyncTaskStack {
             }
         }
     }
+}
+
+// MARK: - Retrying Fetch
+
+/// 带指数退避的抓取：网络层错误与 429／5xx 一律重试，最多 3 次（重试间隔 1 000 ms、2 000 ms）。
+/// 三次都失败才抛出最后一次的错误；429 的纯文本回传不会再被当成档案内容送进 JSONDecoder。
+func fetchDataWithRetry(
+    from url: URL,
+    session: URLSession = .shared
+) async throws
+    -> (Data, URLResponse) {
+    var lastError: any Error = URLError(.unknown)
+    for attempt in 0 ..< 3 {
+        if attempt > 0 {
+            let seconds = UInt64(1 << (attempt - 1))
+            let note = "// Retrying fetch (\(attempt + 1)/3) after \(seconds)s: \(url.absoluteString)\n"
+            FileHandle.standardError.write(Data(note.utf8))
+            try? await Task.sleep(nanoseconds: seconds * 1_000_000_000)
+        }
+        do {
+            let result = try await session.data(from: url)
+            if let http = result.1 as? HTTPURLResponse,
+               http.statusCode == 429 || (500 ... 599).contains(http.statusCode) {
+                lastError = URLError(.badServerResponse)
+                continue
+            }
+            return result
+        } catch {
+            lastError = error
+        }
+    }
+    throw lastError
 }

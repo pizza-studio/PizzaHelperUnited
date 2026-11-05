@@ -13,9 +13,16 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: latest-stable
-      - name: Update Genshin Daily Material DB
+      - name: Update Genshin Daily Material DB (Attempt 1/2)
         id: compare_shas
+        continue-on-error: true
         run: |
+          swift ./Script/GI_MaterialDBGenerator.swift
+      - name: Reset and retry (Attempt 2/2)
+        if: steps.compare_shas.outcome == 'failure'
+        run: |
+          echo "::warning::Attempt 1 failed (script crash or network error). Resetting the worktree and retrying."
+          git checkout -- .
           swift ./Script/GI_MaterialDBGenerator.swift
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3

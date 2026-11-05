@@ -229,7 +229,7 @@ struct EnkaCharacterDictValueType: Decodable {
 
     static func getRemoteMap() async throws -> [String: EnkaCharacterDictValueType] {
         let url = urlPath.asURL
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let (data, _) = try await fetchDataWithRetry(from: url)
         do {
             return try JSONDecoder().decode([String: EnkaCharacterDictValueType].self, from: data)
         } catch {
@@ -291,7 +291,7 @@ struct MaterialExcelConfigData: Decodable {
 
     static func getRemoteMap() async throws -> [MaterialExcelConfigData] {
         let url = urlPath.asURL
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let (data, _) = try await fetchDataWithRetry(from: url)
         do {
             let valMap = try JSONDecoder().decode([MaterialExcelConfigData].self, from: data)
             var newValues = [MaterialExcelConfigData]()
@@ -364,8 +364,8 @@ do {
     https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/main/\
     ExcelBinOutput/RewardExcelConfigData.json
     """
-    async let fetterResp = URLSession.shared.data(from: fetterURLStr.asURL)
-    async let rewardResp = URLSession.shared.data(from: rewardURLStr.asURL)
+    async let fetterResp = fetchDataWithRetry(from: fetterURLStr.asURL)
+    async let rewardResp = fetchDataWithRetry(from: rewardURLStr.asURL)
 
     let fetterData = try await fetterResp.0
     let rewardData = try await rewardResp.0
@@ -464,7 +464,7 @@ let assetDataMap: [String: Data] = try await withThrowingTaskGroup(
     assetIDURLMap.forEach { id, url in
         taskGroup.addTask {
             do {
-                let (data, _) = try await URLSession.shared.data(from: url)
+                let (data, _) = try await fetchDataWithRetry(from: url)
                 let newData = try resizeImageToJPEGData(from: data)
                 return (id, newData)
             } catch {
@@ -515,7 +515,7 @@ func makeLanguageMeta() async throws {
                 var finalDict = [String: String]()
                 for url in locale.urls {
                     print("// Fetching: \(url.absoluteString)")
-                    let (data, _) = try await URLSession.shared.data(from: url)
+                    let (data, _) = try await fetchDataWithRetry(from: url)
                     do {
                         let dict = try JSONDecoder().decode([String: String].self, from: data)
                         dict.forEach { key, value in
@@ -692,3 +692,35 @@ cleanWorkspace()
 // Finally, compile the language data.
 
 try await makeLanguageMeta()
+
+// MARK: - Retrying Fetch
+
+/// 带指数退避的抓取：网络层错误与 429／5xx 一律重试，最多 3 次（重试间隔 1 000 ms、2 000 ms）。
+/// 三次都失败才抛出最后一次的错误；429 的纯文本回传不会再被当成档案内容送进 JSONDecoder。
+func fetchDataWithRetry(
+    from url: URL,
+    session: URLSession = .shared
+) async throws
+    -> (Data, URLResponse) {
+    var lastError: any Error = URLError(.unknown)
+    for attempt in 0 ..< 3 {
+        if attempt > 0 {
+            let seconds = UInt64(1 << (attempt - 1))
+            let note = "// Retrying fetch (\(attempt + 1)/3) after \(seconds)s: \(url.absoluteString)\n"
+            FileHandle.standardError.write(Data(note.utf8))
+            try? await Task.sleep(nanoseconds: seconds * 1_000_000_000)
+        }
+        do {
+            let result = try await session.data(from: url)
+            if let http = result.1 as? HTTPURLResponse,
+               http.statusCode == 429 || (500 ... 599).contains(http.statusCode) {
+                lastError = URLError(.badServerResponse)
+                continue
+            }
+            return result
+        } catch {
+            lastError = error
+        }
+    }
+    throw lastError
+}
