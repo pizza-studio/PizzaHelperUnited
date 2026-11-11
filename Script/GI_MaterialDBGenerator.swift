@@ -185,10 +185,9 @@ public enum DimbreathMaterialRAW {
             var loops = 0
             for key in container.allKeys {
                 loops += 1
-                precondition(
-                    loops < 200,
-                    "DailyDungeonConfigDatum decoding exceeded 200 key iterations; possible infinite loop."
-                )
+                if loops >= 200 {
+                    fatalError("DailyDungeonConfigDatum decoding exceeded 200 key iterations; possible infinite loop.")
+                }
                 if key.stringValue == "id" {
                     idFound = try container.decode(Int.self, forKey: key)
                     continue
@@ -299,18 +298,24 @@ extension DimbreathMaterialRAW {
             throw error
         }
 
-        assert(!obj4Dungeons.isEmpty)
+        if obj4Dungeons.isEmpty {
+            fatalError("DailyDungeonConfig is empty; the upstream data changed shape or the fetch returned nothing.")
+        }
         // ---------------------
         var itemIDtoDungeonID = [Int: Int]()
         obj4Materials.forEach { material in
             guard let dungeonGroupID = material.dungeonGroup.last else { return }
             itemIDtoDungeonID[material.id] = dungeonGroupID
         }
-        assert(!itemIDtoDungeonID.isEmpty)
+        if itemIDtoDungeonID.isEmpty {
+            fatalError("MaterialSourceData yielded no dungeonGroup; cannot build the weekday map.")
+        }
         // ---------------------
         var dungeonWeekdayMap = [Int: Int]() // 0 = MR, 1 = TF, 2 = WS.
         let allValidDungeons = itemIDtoDungeonID.values
-        assert(!allValidDungeons.isEmpty)
+        if allValidDungeons.isEmpty {
+            fatalError("No valid dungeon ID was collected; cannot map any dungeon to a weekday.")
+        }
         print("AllValidDungeons: \(allValidDungeons)")
         print("Obj4Dungeons: \(obj4Dungeons)")
         // 6.7+ 每日副本资料已改为按天分条目的格式。
@@ -338,7 +343,9 @@ extension DimbreathMaterialRAW {
                 }
             }
         }
-        assert(!dungeonWeekdayMap.isEmpty)
+        if dungeonWeekdayMap.isEmpty {
+            fatalError("No dungeon was mapped to a weekday; DailyDungeonConfig is out of sync with MaterialSourceData.")
+        }
         // ---------------------
         var itemWeekdayMap = [Int: Int]()
         itemIDtoDungeonID.forEach { itemID, dungeonID in
@@ -354,10 +361,12 @@ extension DimbreathMaterialRAW {
 
 extension Encodable {
     @discardableResult
-    func printEncoded() -> Data {
+    func printEncoded() throws -> Data {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.sortedKeys, .prettyPrinted]
-        let encoded = (try? encoder.encode(self)) ?? Data([])
+        // 不得吞掉编码错误：旧写法 `(try? …) ?? Data([])` 会在编码失败时
+        // 安静地写出一个空档案，CI 还会把它当成有效结果开 PR。
+        let encoded = try encoder.encode(self)
         let encodedStr = String(data: encoded, encoding: .utf8) ?? ""
         print(encodedStr)
         return encoded
