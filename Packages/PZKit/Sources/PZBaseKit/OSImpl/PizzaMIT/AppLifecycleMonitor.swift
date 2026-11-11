@@ -72,7 +72,7 @@ public final class AppLifecycleMonitor: @unchecked Sendable {
         #elseif canImport(AppKit)
         NSApplication.willResignActiveNotification
         #else
-        preconditionFailure("Unsupported platform")
+        fatalError("Unsupported platform")
         #endif
     }
 
@@ -82,7 +82,7 @@ public final class AppLifecycleMonitor: @unchecked Sendable {
         #elseif canImport(AppKit)
         NSApplication.didBecomeActiveNotification
         #else
-        preconditionFailure("Unsupported platform")
+        fatalError("Unsupported platform")
         #endif
     }
 

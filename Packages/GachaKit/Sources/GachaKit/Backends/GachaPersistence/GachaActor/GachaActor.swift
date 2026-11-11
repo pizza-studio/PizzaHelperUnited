@@ -61,7 +61,7 @@ extension GachaActor {
                 configurations: Self.modelConfig
             )
         } catch {
-            preconditionFailure("Could not create ModelContainer: \(error)")
+            fatalError("Could not create ModelContainer: \(error)")
         }
     }
 }

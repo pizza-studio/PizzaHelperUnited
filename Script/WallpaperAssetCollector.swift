@@ -499,7 +499,7 @@ do {
 
     print("\n// RAW Name Cards Pulled Succesfully.\n")
 } catch {
-    preconditionFailure(error.localizedDescription)
+    fatalError(error.localizedDescription)
 }
 
 // MARK: - Handle translation table.
@@ -656,7 +656,7 @@ func initNewWorkspace() {
         let contentsJSONURL = URL(fileURLWithPath: workSpaceDirPath + "/Contents.json")
         try folderJSONContents.write(to: contentsJSONURL, atomically: true, encoding: .utf8)
     } catch {
-        preconditionFailure(error.localizedDescription)
+        fatalError(error.localizedDescription)
     }
 }
 
@@ -664,7 +664,7 @@ func cleanWorkspace() {
     do {
         try FileManager.default.removeItem(atPath: "./Assets/AssetTemp")
     } catch {
-        preconditionFailure(error.localizedDescription)
+        fatalError(error.localizedDescription)
     }
 }
 
@@ -680,7 +680,7 @@ func handleAllFiles() {
         do {
             try $0.deploy()
         } catch {
-            preconditionFailure(error.localizedDescription)
+            fatalError(error.localizedDescription)
         }
     }
 }

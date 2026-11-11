@@ -104,7 +104,7 @@ extension PZProfileActor {
                 PZLog.error("[PZProfileActor] Second ModelContainer creation also failed: \(error)")
             }
             // 兜底失败。
-            preconditionFailure(
+            fatalError(
                 "[PZProfileActor] Falling back to in-memory ModelContainer."
             )
         }

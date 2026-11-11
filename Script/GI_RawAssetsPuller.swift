@@ -568,7 +568,7 @@ do {
 
     print("\n// RAW Images Pulled Succesfully.\n")
 } catch {
-    preconditionFailure(error.localizedDescription)
+    fatalError(error.localizedDescription)
 }
 
 // MARK: - URLAsyncTaskStack
