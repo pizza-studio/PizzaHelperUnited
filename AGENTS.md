@@ -125,6 +125,10 @@ asc builds test-notes list --build <build-id> --output json
 - 分隔線格式為 `// CHT - - - - - - - - - - - -`（`// ` + 語言碼 + 一串 ` - `）。**第一塊（簡體中文）沒有前置分隔線**——檔案直接以 `// 《拿铁小助手》v<版本> 的更新内容简述：` 開頭；只有後四塊有 `// CHT`、`// ENU`、`// JPN`、`// RUS` 標頭。不要去找 `// CHS`。
 - 這五塊**正好對應** App Store 上的五個 locale（`zh-Hans`、`zh-Hant`、`en-US`、`ja`、`ru`），也就是步驟 D 逐 locale 更新時用的同一組。撰寫新版本時五塊都要寫。
 - 這些內文即 App Store 的 What's New 素材，會經 `asc metadata push`／`asc localizations update` 上到 ASC。
+- **送上 ASC 的實際字串規則**（已用線上既有版本反推逐字元驗證）：
+  - 版本頁 `whatsNew` = 該語言區塊（自 `//` 標頭行起、剝掉前置的 `// CHT…` 分隔線）**＋ `\n\n$EOF.`**，末尾不帶換行。**`$EOF.` 不可省**（5.9.0／5.9.3／5.9.5／5.9.7 皆含；5.9.6 曾漏掉，該版已上架故無法補正）。
+  - TestFlight「What to Test」= 同一份內容，但**首行的版本號後面要插入 `RC<N> Build <建置號>`**（例：`v5.9.5 RC1 Build 6560`）；依慣例只填 `zh-Hans` 與 `en-US`，且若該 build 已有空的 localization 記錄要用 `test-notes update`（`create` 會撞重複）。
+  - 版本一經 `READY_FOR_DISTRIBUTION`（已上架）就**無法事後補正** `whatsNew`，推送前務必確認尾端 `$EOF.` 與首行版本號都正確。
 - 前作《披薩小助手》的存檔在 `ReleaseNotesArchive/ThePizzaHelper/`（止於 5.7.0），**不再更新**。
 - 注意：App Store 審核曾因 OOBE 文件的語言自適應問題被打槍（見工作階段 `ef48ef53`），HTML 文件相關改動要一併考慮。
 
