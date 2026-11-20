@@ -14,7 +14,7 @@ extension HoYo {
         /// The following salts are LK2. Intelligence provided by Snap.Hutao.
         /// LK2 is at least dedicated for tasks related to gacha records.
         let s = switch region {
-        case .miyoushe: "AUtLYA9P6PLDXW6VC7pEBDLRarap3RsA"
+        case .miyoushe: "28decef2209c4b7c8775e0800ea26d8b"
         case .hoyoLab: "rk4xg2hakoi26nljpr099fv9fck1ah10"
         }
         let t = String(Int(Date().timeIntervalSince1970))
@@ -33,7 +33,7 @@ extension HoYo {
 extension URLRequestConfig {
     static func xRPCAppVersion4Gacha(region: HoYo.AccountRegion) -> String {
         switch region {
-        case .miyoushe: "2.100.0" // 跟 SnapGenshin Internal 一致。
+        case .miyoushe: "2.118.1" // 跟 SnapGenshin Internal 一致。
         case .hoyoLab: "2.54.0" // 跟 SnapGenshin Internal 一致。
         }
     }
