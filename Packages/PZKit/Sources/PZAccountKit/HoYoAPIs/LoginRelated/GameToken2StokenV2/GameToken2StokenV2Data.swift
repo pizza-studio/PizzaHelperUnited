@@ -37,9 +37,3 @@ public struct GameToken2StokenV2Data: Decodable, DecodableFromMiHoYoAPIJSONResul
         let mid: String
     }
 }
-
-// MARK: - Stoken2LTokenV1Data
-
-public struct Stoken2LTokenV1Data: Decodable, DecodableFromMiHoYoAPIJSONResult {
-    public let ltoken: String
-}

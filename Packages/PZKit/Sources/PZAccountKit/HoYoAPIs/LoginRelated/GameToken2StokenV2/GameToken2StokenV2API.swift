@@ -33,18 +33,4 @@ extension HoYo {
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.gameToken2StokenV2()")
     }
-
-    public static func stoken2LTokenV1(mid: String, stoken: String) async throws -> Stoken2LTokenV1Data {
-        let headers: HTTPHeaders = [
-            "cookie": "mid=\(mid); stoken=\(stoken); ",
-        ]
-
-        let data = try await AF.request(
-            "https://passport-api.mihoyo.com/account/auth/api/getLTokenBySToken",
-            method: .get,
-            headers: headers
-        ).serializingData().value
-
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.stoken2LTokenV1()")
-    }
 }

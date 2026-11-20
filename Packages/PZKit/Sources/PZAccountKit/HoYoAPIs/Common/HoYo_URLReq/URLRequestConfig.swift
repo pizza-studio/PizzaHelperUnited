@@ -9,6 +9,20 @@ import PZBaseKit
 
 /// Abstract class storing salt, version, etc for API.
 public enum URLRequestConfig {
+    /// 米游社 App 端签名（BBS 代号 K2）的 salt。
+    /// - Note: `stoken` 换票、角色列表等 App 端接口只认这组 App salt，与网页端 X4 不同。
+    public static let miyousheAppSignSalt: String = "24cf11fb14a84f0683e7cadf7c788ba2"
+    /// 米游社 App 端版本号，与 `miyousheAppSignSalt` 同属 miHoYoBBS 2.119.0 版本线。
+    public static let miyousheAppVersion: String = "2.119.0"
+    /// 米游社 App 端接口使用的 User-Agent。
+    public static let miyousheAppUserAgent: String = "Mozilla/5.0 (Linux; Android 12) Mobile miHoYoBBS/2.119.0"
+    /// 米游社 App 端接口宣称的系统版本，需与 `miyousheAppUserAgent` 的 Android 12 一致。
+    public static let miyousheAppSystemVersion: String = "12"
+    /// 通行证 SDK 版本，取自米游社 APK 2.119.0 内建的通行证 SDK 生产环境配置。
+    public static let passportSDKVersion: String = "2.44.0"
+    /// 通行证 V2 换票接口（`account/ma-cn-session/app/exchange`）的 DS salt。
+    public static let passportTokenExchangeSalt: String = "JwYDpKvLj6MrMqqYU6jTKF17KNO2PXoS"
+
     public static func getUserAgent(region: HoYo.AccountRegion) -> String {
         """
         Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) \

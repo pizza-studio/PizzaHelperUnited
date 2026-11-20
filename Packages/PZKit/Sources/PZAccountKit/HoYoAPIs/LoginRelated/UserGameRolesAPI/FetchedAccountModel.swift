@@ -14,7 +14,12 @@ public struct FetchedAccount: Decodable, Sendable {
         self.region = try container.decode(String.self, forKey: .region)
         self.gameBiz = try container.decode(String.self, forKey: .gameBiz)
         self.nickname = try container.decode(String.self, forKey: .nickname)
-        self.level = try container.decode(Int.self, forKey: .level)
+        // stoken 路由会以字符串形式回传等级，cookie 路由回传整数。
+        if let level = try? container.decode(Int.self, forKey: .level) {
+            self.level = level
+        } else {
+            self.level = Int(try container.decode(String.self, forKey: .level)) ?? 0
+        }
         self.isOfficial = try container.decode(Bool.self, forKey: .isOfficial)
         self.regionName = try container.decode(String.self, forKey: .regionName)
         self.gameUid = try container.decode(String.self, forKey: .gameUid)

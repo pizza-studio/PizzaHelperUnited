@@ -38,17 +38,15 @@ public enum QueryQRCodeStatus: Decodable, Sendable {
     public struct ParsedResult: Sendable {
         public let accountId: String
         public let stoken: String
-        public let ltoken: String
         public let mid: String
     }
 
     public func parsed() async throws -> ParsedResult? {
         guard case let .confirmed(accountId, stoken, mid) = self else { return nil }
-        // 新版 API 直接返回 stoken，ltoken 同 stoken（参照 TRSS-Plugin 实作）
+        // 扫码只回传 stoken，网页端凭据需另外经通行证 V2 换票取得。
         return .init(
             accountId: accountId,
             stoken: stoken,
-            ltoken: stoken,
             mid: mid
         )
     }

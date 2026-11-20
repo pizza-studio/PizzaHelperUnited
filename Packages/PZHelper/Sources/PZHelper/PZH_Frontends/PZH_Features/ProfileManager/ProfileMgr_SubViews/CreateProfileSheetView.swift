@@ -219,25 +219,26 @@ extension ProfileManagerPageContent {
                 givenTask: {
                     var map = [(Pizza.SupportedGame, FetchedAccount)]()
 
-                    try await HoYo.getUserGameRolesByCookie(
-                        region: region.withGame(.genshinImpact),
-                        cookie: profile.cookie
-                    ).forEach {
-                        map.append((.genshinImpact, $0))
-                    }
-
-                    try await HoYo.getUserGameRolesByCookie(
-                        region: region.withGame(.starRail),
-                        cookie: profile.cookie
-                    ).forEach {
-                        map.append((.starRail, $0))
-                    }
-
-                    try await HoYo.getUserGameRolesByCookie(
-                        region: region.withGame(.zenlessZone),
-                        cookie: profile.cookie
-                    ).forEach {
-                        map.append((.zenlessZone, $0))
+                    switch region {
+                    case .miyoushe:
+                        // 米游社的 stoken 路由一次回传全部游戏的角色，无需按游戏重复请求。
+                        try await HoYo.getUserGameRolesByStoken(
+                            cookie: profile.cookie,
+                            deviceID: profile.deviceID,
+                            deviceFP: profile.deviceFingerPrint
+                        ).forEach {
+                            guard let game = HoYo.AccountRegion.game(forGameBiz: $0.gameBiz) else { return }
+                            map.append((game, $0))
+                        }
+                    case .hoyoLab:
+                        for game in Pizza.SupportedGame.allCases {
+                            try await HoYo.getUserGameRolesByCookie(
+                                region: region.withGame(game),
+                                cookie: profile.cookie
+                            ).forEach {
+                                map.append((game, $0))
+                            }
+                        }
                     }
                     var existingProfilesCount = theVM.profiles.count
                     var allProfilesFetched = Set<PZProfileSendable>()
@@ -274,9 +275,11 @@ extension ProfileManagerPageContent {
             Task(priority: .userInitiated) {
                 if !profile.cookie.isEmpty {
                     do {
-                        fetchedAccounts = try await HoYo.getUserGameRolesByCookie(
+                        fetchedAccounts = try await HoYo.getUserGameRoles(
                             region: region,
-                            cookie: profile.cookie
+                            cookie: profile.cookie,
+                            deviceID: profile.deviceID,
+                            deviceFP: profile.deviceFingerPrint
                         )
                         if let account = fetchedAccounts.first,
                            let server = HoYo.Server(uid: account.gameUid, game: region.game) {

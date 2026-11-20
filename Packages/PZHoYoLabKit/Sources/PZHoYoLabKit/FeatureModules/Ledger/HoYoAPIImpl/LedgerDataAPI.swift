@@ -73,8 +73,12 @@ extension HoYo {
         #endif
         let cookie = try await { () -> String in
             guard case .miyoushe = server.region else { return cookie }
-            let cookieToken = try await cookieToken(game: .genshinImpact, cookie: cookie)
-            return "cookie_token=\(cookieToken.cookieToken); account_id=\(cookieToken.uid);"
+            var miyousheCookie = MiyousheCookie(cookieString: cookie)
+            miyousheCookie.cookieTokenV2 = try await exchangePassportToken(
+                cookie: miyousheCookie,
+                target: .cookieToken
+            ).token
+            return miyousheCookie.webCookieHeader
         }()
         let queryItems: [URLQueryItem] = switch server.region {
         case .miyoushe:
@@ -123,8 +127,12 @@ extension HoYo {
         #endif
         let cookie = try await { () -> String in
             guard case .miyoushe = server.region else { return cookie }
-            let cookieToken = try await cookieToken(game: .genshinImpact, cookie: cookie)
-            return "cookie_token=\(cookieToken.cookieToken); account_id=\(cookieToken.uid);"
+            var miyousheCookie = MiyousheCookie(cookieString: cookie)
+            miyousheCookie.cookieTokenV2 = try await exchangePassportToken(
+                cookie: miyousheCookie,
+                target: .cookieToken
+            ).token
+            return miyousheCookie.webCookieHeader
         }()
         let queryItems: [URLQueryItem] = switch server.region {
         case .miyoushe:

@@ -67,6 +67,18 @@ extension HoYo.AccountRegion: CaseIterable {
     public static let allCases4ZZZ: [Self] = [
         .hoyoLab(.zenlessZone), .miyoushe(.zenlessZone),
     ]
+
+    /// 依 `game_biz` 判定对应的游戏，与区域归属无关。
+    /// - Parameter gameBiz: 形如 `hk4e_cn`、`hkrpg_global` 的 `game_biz`。
+    /// - Returns: 对应的游戏；无法识别时返回 `nil`。
+    public static func game(forGameBiz gameBiz: String) -> Pizza.SupportedGame? {
+        switch gameBiz.lowercased() {
+        case "hk4e_cn", "hk4e_global": .genshinImpact
+        case "hkrpg_cn", "hkrpg_global": .starRail
+        case "nap_cn", "nap_global": .zenlessZone
+        default: nil
+        }
+    }
 }
 
 // MARK: - HoYo.AccountRegion + RawRepresentable, Codable, Identifiable, Hashable

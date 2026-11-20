@@ -78,7 +78,7 @@ struct GetCookieQRCodeView: View {
             }
             .onAppear {
                 viewModel.onQRCodeConfirmed = { parsedResult in
-                    try await parseGameToken(game: game, from: parsedResult, dismiss: true)
+                    try await parseGameToken(from: parsedResult, dismiss: true)
                 }
                 viewModel.onAppear()
             }
@@ -176,26 +176,40 @@ struct GetCookieQRCodeView: View {
     }
 
     private func parseGameToken(
-        game: Pizza.SupportedGame,
         from parsedResult: QueryQRCodeStatus.ParsedResult,
         dismiss shouldDismiss: Bool = true
     ) async throws {
-        var cookie = ""
-        cookie += "stuid=" + parsedResult.accountId + "; "
-        cookie += "stoken=" + parsedResult.stoken + "; "
-        cookie += "ltuid=" + parsedResult.accountId + "; "
-        cookie += "ltoken=" + parsedResult.ltoken + "; "
-        cookie += "mid=" + parsedResult.mid + "; "
-        // 新版 passport API 需透过 getCookieAccountInfoBySToken 获取 cookie_token
-        let stokenCookie = "stuid=\(parsedResult.accountId); stoken=\(parsedResult.stoken); mid=\(parsedResult.mid)"
-        let cookieTokenResult = try await HoYo.cookieToken(
-            game: game,
-            cookie: stokenCookie
+        guard !parsedResult.accountId.isEmpty,
+              !parsedResult.mid.isEmpty,
+              !parsedResult.stoken.isEmpty
+        else {
+            throw MiHoYoAPIError.other(retcode: -9999, message: "扫码结果缺少登录所需的凭据。")
+        }
+        try await refreshDeviceFingerPrint()
+        // cookie_token 与 ltoken 的旧版取票接口已自 2026-11-20 起停用，一律改用通行证 V2 换票。
+        let ltoken = try await HoYo.exchangePassportToken(
+            stoken: parsedResult.stoken,
+            mid: parsedResult.mid,
+            target: .ltoken,
+            deviceID: deviceID,
+            deviceFP: deviceFP
         )
-        cookie += "cookie_token=" + cookieTokenResult.cookieToken + "; "
-        cookie += "account_id=" + cookieTokenResult.uid + "; "
-        try await extraCookieProcess(cookie: &cookie)
-        self.cookie = cookie
+        let cookieToken = try await HoYo.exchangePassportToken(
+            stoken: parsedResult.stoken,
+            mid: parsedResult.mid,
+            target: .cookieToken,
+            deviceID: deviceID,
+            deviceFP: deviceFP
+        )
+        cookie = HoYo.MiyousheCookie(
+            accountIDV2: cookieToken.uid ?? parsedResult.accountId,
+            cookieTokenV2: cookieToken.token,
+            ltokenV2: ltoken.token,
+            ltuidV2: parsedResult.accountId,
+            mid: parsedResult.mid,
+            stoken: parsedResult.stoken,
+            stuid: parsedResult.accountId
+        ).cookieString
         if shouldDismiss {
             presentationMode.wrappedValue.dismiss()
         }

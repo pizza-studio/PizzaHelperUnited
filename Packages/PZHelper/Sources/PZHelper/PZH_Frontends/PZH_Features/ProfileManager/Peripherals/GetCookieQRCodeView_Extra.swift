@@ -6,11 +6,9 @@ import PZAccountKit
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension GetCookieQRCodeView {
-    func extraCookieProcess(cookie: inout String) async throws {
-        let fpResult = try await HoYo.getDeviceFingerPrint(region: .miyoushe(.genshinImpact), deviceID: deviceID)
-        // cookie += "DEVICEFP=\(fpResult.deviceFP); "
-        // cookie += "DEVICEFP_SEED_ID=\(fpResult.seedID); "
-        // cookie += "DEVICEFP_SEED_TIME=\(fpResult.seedTime); "
+    /// 获取设备指纹并写回资料库，供本机后续的战绩接口使用。
+    func refreshDeviceFingerPrint() async throws {
+        let fpResult = try await HoYo.getDeviceFingerPrint(region: .miyoushe(game), deviceID: deviceID)
         deviceFP = fpResult.deviceFP
     }
 }

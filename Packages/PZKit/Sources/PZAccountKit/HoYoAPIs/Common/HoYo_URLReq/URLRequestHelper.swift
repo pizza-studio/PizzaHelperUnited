@@ -9,6 +9,8 @@ import PZBaseKit
 
 /// Abstract class help generate api url request
 enum URLRequestHelper {
+    // MARK: Public
+
     /// Calculate the DS used in url request headers
     /// - Parameters:
     ///   - region: the region of account. `.china` for miyoushe and `.global` for hoyolab.
@@ -32,6 +34,43 @@ enum URLRequestHelper {
         let verification = "salt=\(salt)&t=\(time)&r=\(randomNumber)&b=\(bodyString)&q=\(query)".md5
 
         return time + "," + randomNumber + "," + verification
+    }
+
+    /// Calculate the DS used by miyoushe App-end routes (e.g. K2 salt).
+    /// - Parameter salt: App-end salt.
+    /// - Returns: `ds` used in url request headers.
+    public static func getAppSignDS(salt: String) -> String {
+        appSignDS(salt: salt, time: epochSecondsAsString(), nonce: generateSignNonce())
+    }
+
+    /// Calculate the DS used by the V2 passport token exchange, which signs the request body.
+    /// - Parameters:
+    ///   - salt: the DS salt of the passport exchange route.
+    ///   - body: the exact request body which will be sent.
+    /// - Returns: `ds` used in url request headers.
+    public static func getSignedBodyDS(salt: String, body: String) -> String {
+        signedBodyDS(salt: salt, body: body, time: epochSecondsAsString(), nonce: generateSignNonce())
+    }
+
+    // MARK: Internal
+
+    static func appSignDS(salt: String, time: String, nonce: String) -> String {
+        "\(time),\(nonce),\("salt=\(salt)&t=\(time)&r=\(nonce)".md5)"
+    }
+
+    static func signedBodyDS(salt: String, body: String, time: String, nonce: String) -> String {
+        "\(time),\(nonce),\("salt=\(salt)&t=\(time)&r=\(nonce)&b=\(body)&q=".md5)"
+    }
+
+    static func generateSignNonce() -> String {
+        let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0 ..< 6).map { _ in characters.randomElement() ?? "0" })
+    }
+
+    // MARK: Private
+
+    private static func epochSecondsAsString() -> String {
+        String(Date().timeIntervalSince1970.asIntIfFinite() ?? 0)
     }
 }
 
