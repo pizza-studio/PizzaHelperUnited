@@ -233,7 +233,7 @@ final class GetCookieQRCodeViewModel {
     public func onAppear() {
         if let ticket = qrCodeAndTicket?.ticket, error == nil {
             // 恢复前台：沿用现有 QR 码继续轮询，避免更换 ticket 导致米游社扫码结果作废。
-            // 轮询若已在进行，则沿用现有轮询任务，不打断其可能正在完成的登入流程。
+            // 轮询若已在进行，则沿用现有轮询任务，不打断其可能正在完成的登录流程。
             if pollingTask == nil {
                 startAutoPolling(ticket: ticket)
             }
@@ -264,9 +264,9 @@ final class GetCookieQRCodeViewModel {
 
     /// 对应「已扫描，请检查」按钮。
     ///
-    /// 这里刻意不再取消既有的轮询任务：该任务随时可能在完成登入（换取 cookie_token 与装置指纹），
-    /// 一旦将其取消，原本会成功的登入就会失败、且该轮询自此不再恢复。手动检查只负责立刻多查一次；
-    /// 无论结果是什么，轮询都会照旧持续到登入完成或 QR 码失效为止。
+    /// 这里刻意不再取消既有的轮询任务：该任务随时可能在完成登录（换取 cookie_token 与装置指纹），
+    /// 一旦将其取消，原本会成功的登录就会失败、且该轮询自此不再恢复。手动检查只负责立刻多查一次；
+    /// 无论结果是什么，轮询都会照旧持续到登录完成或 QR 码失效为止。
     public func checkScannedStatusManually() {
         guard let ticket = qrCodeAndTicket?.ticket else { return }
         // 同一个按钮的重复触发，沿用手上这一份检查就够了。
@@ -291,7 +291,7 @@ final class GetCookieQRCodeViewModel {
                     do {
                         try await fireLogin(with: parsedResult)
                     } catch {
-                        // 登入失败要立刻让使用者看到，否则这边只会留下一个无声的进度圈。
+                        // 登录失败要立刻让使用者看到，否则这边只会留下一个无声的进度圈。
                         if !Task.isCancelled { self.error = error }
                     }
                 } else if case .unscanned = status {
@@ -428,8 +428,8 @@ final class GetCookieQRCodeViewModel {
         try await Task.sleep(for: remaining)
     }
 
-    /// 登入流程同样只会跑一份：无论自动轮询或手动检查先看到 `Confirmed`，都只会真的登入一次。
-    /// 这份任务会保留到流程重新开始为止，以免稍后的轮询又触发第二次登入。
+    /// 登录流程同样只会跑一份：无论自动轮询或手动检查先看到 `Confirmed`，都只会真的登录一次。
+    /// 这份任务会保留到流程重新开始为止，以免稍后的轮询又触发第二次登录。
     private func fireLogin(with parsedResult: QueryQRCodeStatus.ParsedResult) async throws {
         if let loginTask {
             try await loginTask.value

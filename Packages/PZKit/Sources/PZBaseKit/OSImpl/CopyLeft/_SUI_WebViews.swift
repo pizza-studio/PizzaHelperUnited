@@ -159,7 +159,7 @@ public final class OPWebView: WKWebView {
             viewPref.isTextInteractionEnabled = true
         }
         #endif
-        // 防止 iPad 用户受困于登入网页所显示的荧幕旋转提示。
+        // 防止 iPad 用户受困于登录网页所显示的荧幕旋转提示。
         pagePref.preferredContentMode = .mobile
         result.defaultWebpagePreferences = pagePref
         result.preferences = viewPref

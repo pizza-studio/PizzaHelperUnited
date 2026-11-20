@@ -126,7 +126,7 @@ struct ProfileConfigEditorView: View {
         switch region {
         case .hoyoLab: false
         case .miyoushe: false
-            // 注：这个功能是否有用，得再讨论。目前似乎只有刚刚登入时抓到的 STokenV2 是正确可用的。
+            // 注：这个功能是否有用，得再讨论。目前似乎只有刚刚登录时抓到的 STokenV2 是正确可用的。
         }
     }
 }
